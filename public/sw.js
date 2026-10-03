@@ -1,6 +1,6 @@
 import {mutate,read,write,mergeById} from './shared/storage.mjs';
-const CACHE='reset-radar-codex-shell-2ebc6caf7e93eff8';
-const FILES=['./shared/local-usage.mjs','./shared/day-usage.mjs','./shared/usage-file.mjs','./shared/usage-view.mjs','./','./index.html','./boot.mjs','./app.mjs','./styles.css','./compass.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./config.json','./history-seed.json','./shared/time.mjs','./shared/core.mjs','./shared/domain.mjs','./shared/storage.mjs','./shared/wait.mjs','./shared/wait-view.mjs','./shared/radar-motion.mjs','./shared/release-notes.mjs','./shared/release-view.mjs'];
+const CACHE='reset-radar-codex-shell-413dfdd8acd07350';
+const FILES=['./shared/push-setup.mjs','./shared/local-usage.mjs','./shared/day-usage.mjs','./shared/usage-file.mjs','./shared/usage-view.mjs','./','./index.html','./boot.mjs','./app.mjs','./styles.css','./compass.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./config.json','./history-seed.json','./shared/time.mjs','./shared/core.mjs','./shared/domain.mjs','./shared/storage.mjs','./shared/wait.mjs','./shared/wait-view.mjs','./shared/radar-motion.mjs','./shared/release-notes.mjs','./shared/release-view.mjs'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES.map(file=>new Request(new URL(file,self.location),{cache:'reload'}))))));
 self.addEventListener('message',e=>{if(e.data?.type==='ACTIVATE')self.skipWaiting()});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{await Promise.all((await caches.keys()).filter(k=>k.startsWith('reset-radar-codex-shell-')&&k!==CACHE).map(k=>caches.delete(k)));await self.clients.claim()})()));

@@ -2,7 +2,7 @@
 
 Responsive offline Codex reset monitor, designed around Asia/Nicosia calendar rules. Public site: https://arisconstantinou.github.io/codex/.
 
-The website is independent of the Windows app. It never reads Windows profiles, Codex credentials, account IDs or account quota. Public assets contain only the original public history with provenance and observations from OpenAI News, Codex Releases and OpenAI Status. X profile links are manual.
+The public website and cloud notification service never read Windows profiles, Codex credentials or account quota. The fixed localhost preview can read the installed Windows app's verified usage cache locally; see DAY_USAGE.md. Public assets contain only the original public history with provenance and observations from OpenAI News, Codex Releases and OpenAI Status. X profile links are manual.
 
 ## Local preview and tests
 
@@ -21,6 +21,10 @@ Browser clearing/uninstallation or storage eviction can remove data; an external
 Codex release details retain the full authored GitHub body. A version-only prerelease shows actual commits from the previous applicable tag, with explicit divergence and coverage information, original text and source links. Notes are stored in IndexedDB and included in backup merges; feed refresh cannot erase them. The collector preloads the latest release, earlier releases are fetched on demand, and GitHub backoff survives browser or collector restart. The renderer escapes source content and does not execute source HTML or fetch embedded images.
 
 ## Hosting and the push backend
+
+An iPhone onboarding guide and a Netlify Free service candidate are described in
+[IPHONE_NOTIFICATIONS.md](IPHONE_NOTIFICATIONS.md). The service is awaiting user
+confirmation for creation; it is not deployed or connected to the public PWA.
 
 GitHub Pages serves the PWA and a retained public snapshot. The workflow reads the three official feeds and appends observations to `public/snapshot.json`. Scheduled runs may be delayed by GitHub; the UI shows source timestamps rather than promising continuous live updates.
 

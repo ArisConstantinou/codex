@@ -1,0 +1,16 @@
+[build]
+  command = "npm ci --prefix cloud"
+  publish = "cloud/public"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[functions]
+  directory = "cloud/netlify/functions"
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
