@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-03T19:32:13.509Z",
+  "generatedAt": "2026-10-03T22:24:07.320Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -3105,9 +3105,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.11",
-      "at": "2026-10-03T19:10:11.000Z",
+      "at": "2026-10-03T20:21:16.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.11",
-      "text": "rust-v0.162.0-alpha.11. Release 0.162.0-alpha.11",
+      "text": "0.162.0-alpha.11. Release 0.162.0-alpha.11",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -3116,7 +3116,48 @@
         "release"
       ],
       "origin": "direct-official",
-      "prerelease": true
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.11",
+        "title": "0.162.0-alpha.11",
+        "body": "Release 0.162.0-alpha.11\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-03T22:24:07.322Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.11",
+        "publishedAt": "2026-10-03T20:09:12Z",
+        "commits": [
+          {
+            "sha": "58ae3ba61186c39b849a6ebe60e60f4b11690373",
+            "title": "Keep third-party tools deferred in strict Code Mode Only (#50687)",
+            "message": "Keep third-party tools deferred in strict Code Mode Only (#50687)\n\n## Why\n\nThird-party exposure settings can eagerly expose tool schemas or exclude tools from `exec`. Keeping eligible tools deferred lets MCP catalogs change between turns without changing the model's eager tool prefix.\n\n## What changed\n\nAdd the disabled-by-default `code_mode_only_strict_3p_tools` feature, applied only when the effective model tool mode is Code Mode Only.\n\n- Defer eligible MCP, app, and client-supplied dynamic tools while keeping them discoverable and callable through `exec`.\n- Override `deferLoading`, MCP/app `omit_tools_from`, and direct-only or excluded namespace settings. Log conflicts without adding prompt warnings.\n- Preserve disabled, app-only, policy-denied, and over-budget tool restrictions. Keep built-in tool exposure unchanged, including when a dynamic tool has the same name.\n\n## Testing\n\nAdd unit and integration coverage for exposure overrides, effective model modes, tool eligibility, and app discovery and dispatch. Add an MCP refresh scenario that verifies the eager tool prefix stays unchanged as tools are added, replaced, and removed while `exec` tracks the current catalog.\n\nGitOrigin-RevId: a6a8e401214119bb02ea4711473c8fa3ec85c81a",
+            "url": "https://github.com/openai/codex/commit/58ae3ba61186c39b849a6ebe60e60f4b11690373"
+          },
+          {
+            "sha": "3a69ec3ef8fb87b41e99b8942af061ad58ae6732",
+            "title": "Preserve local Markdown link labels in the TUI (#50695)",
+            "message": "Preserve local Markdown link labels in the TUI (#50695)\n\n## Why\n\nPath-like link labels were collapsed into their destinations, discarding the author's label text and formatting.\n\n## What changed\n\nPreserve nonblank local link labels alongside the formatted destination as `label (target)`, including in tables. Empty or whitespace-only labels show only the destination. Keep destination formatting and fall back to the original destination when a local file URL cannot be parsed.\n\nRender file citations without a label so they continue to display only the formatted destination.\n\n## Testing\n\nUpdate rendering and transcript-copy tests and snapshots to cover preserved path labels, styled labels, empty labels, malformed file URLs, tables, and Markdown escaping.\n\nGitOrigin-RevId: 2810b70f1ecdc59d7f90fa1b254b1e9069c8fc29",
+            "url": "https://github.com/openai/codex/commit/3a69ec3ef8fb87b41e99b8942af061ad58ae6732"
+          },
+          {
+            "sha": "260f9619e07037e307a09eab0ed1bfeee86e725d",
+            "title": "Release 0.162.0-alpha.11",
+            "message": "Release 0.162.0-alpha.11",
+            "url": "https://github.com/openai/codex/commit/260f9619e07037e307a09eab0ed1bfeee86e725d"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.10",
+          "head": "rust-v0.162.0-alpha.11",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.10...rust-v0.162.0-alpha.11",
+          "status": "diverged",
+          "total": 3,
+          "behind": 1,
+          "complete": true,
+          "fetched": 3
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -3125,7 +3166,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-03T19:32:13.152Z",
+      "lastSuccessAt": "2026-10-03T22:24:06.894Z",
       "error": null,
       "count": 150
     },
@@ -3134,7 +3175,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-03T19:32:13.152Z",
+      "lastSuccessAt": "2026-10-03T22:24:06.894Z",
       "error": null,
       "count": 10
     },
@@ -3143,7 +3184,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-03T19:32:13.152Z",
+      "lastSuccessAt": "2026-10-03T22:24:06.894Z",
       "error": null,
       "count": 25
     }
@@ -7666,12 +7707,117 @@
         "origin": "direct-official",
         "prerelease": true
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.11:2026-10-03T22:24:07.320Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-03T22:24:07.320Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.11",
+        "at": "2026-10-03T20:21:16.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.11",
+        "text": "0.162.0-alpha.11. Release 0.162.0-alpha.11",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.162.0-alpha.11",
+          "title": "0.162.0-alpha.11",
+          "body": "Release 0.162.0-alpha.11\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-03T22:24:07.322Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.11",
+          "publishedAt": "2026-10-03T20:09:12Z",
+          "commits": [
+            {
+              "sha": "58ae3ba61186c39b849a6ebe60e60f4b11690373",
+              "title": "Keep third-party tools deferred in strict Code Mode Only (#50687)",
+              "message": "Keep third-party tools deferred in strict Code Mode Only (#50687)\n\n## Why\n\nThird-party exposure settings can eagerly expose tool schemas or exclude tools from `exec`. Keeping eligible tools deferred lets MCP catalogs change between turns without changing the model's eager tool prefix.\n\n## What changed\n\nAdd the disabled-by-default `code_mode_only_strict_3p_tools` feature, applied only when the effective model tool mode is Code Mode Only.\n\n- Defer eligible MCP, app, and client-supplied dynamic tools while keeping them discoverable and callable through `exec`.\n- Override `deferLoading`, MCP/app `omit_tools_from`, and direct-only or excluded namespace settings. Log conflicts without adding prompt warnings.\n- Preserve disabled, app-only, policy-denied, and over-budget tool restrictions. Keep built-in tool exposure unchanged, including when a dynamic tool has the same name.\n\n## Testing\n\nAdd unit and integration coverage for exposure overrides, effective model modes, tool eligibility, and app discovery and dispatch. Add an MCP refresh scenario that verifies the eager tool prefix stays unchanged as tools are added, replaced, and removed while `exec` tracks the current catalog.\n\nGitOrigin-RevId: a6a8e401214119bb02ea4711473c8fa3ec85c81a",
+              "url": "https://github.com/openai/codex/commit/58ae3ba61186c39b849a6ebe60e60f4b11690373"
+            },
+            {
+              "sha": "3a69ec3ef8fb87b41e99b8942af061ad58ae6732",
+              "title": "Preserve local Markdown link labels in the TUI (#50695)",
+              "message": "Preserve local Markdown link labels in the TUI (#50695)\n\n## Why\n\nPath-like link labels were collapsed into their destinations, discarding the author's label text and formatting.\n\n## What changed\n\nPreserve nonblank local link labels alongside the formatted destination as `label (target)`, including in tables. Empty or whitespace-only labels show only the destination. Keep destination formatting and fall back to the original destination when a local file URL cannot be parsed.\n\nRender file citations without a label so they continue to display only the formatted destination.\n\n## Testing\n\nUpdate rendering and transcript-copy tests and snapshots to cover preserved path labels, styled labels, empty labels, malformed file URLs, tables, and Markdown escaping.\n\nGitOrigin-RevId: 2810b70f1ecdc59d7f90fa1b254b1e9069c8fc29",
+              "url": "https://github.com/openai/codex/commit/3a69ec3ef8fb87b41e99b8942af061ad58ae6732"
+            },
+            {
+              "sha": "260f9619e07037e307a09eab0ed1bfeee86e725d",
+              "title": "Release 0.162.0-alpha.11",
+              "message": "Release 0.162.0-alpha.11",
+              "url": "https://github.com/openai/codex/commit/260f9619e07037e307a09eab0ed1bfeee86e725d"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.162.0-alpha.10",
+            "head": "rust-v0.162.0-alpha.11",
+            "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.10...rust-v0.162.0-alpha.11",
+            "status": "diverged",
+            "total": 3,
+            "behind": 1,
+            "complete": true,
+            "fetched": 3
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.11:2026-10-03T22:24:07.320Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-03T22:24:07.320Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.11",
+        "title": "0.162.0-alpha.11",
+        "body": "Release 0.162.0-alpha.11\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-03T22:24:07.322Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.11",
+        "publishedAt": "2026-10-03T20:09:12Z",
+        "commits": [
+          {
+            "sha": "58ae3ba61186c39b849a6ebe60e60f4b11690373",
+            "title": "Keep third-party tools deferred in strict Code Mode Only (#50687)",
+            "message": "Keep third-party tools deferred in strict Code Mode Only (#50687)\n\n## Why\n\nThird-party exposure settings can eagerly expose tool schemas or exclude tools from `exec`. Keeping eligible tools deferred lets MCP catalogs change between turns without changing the model's eager tool prefix.\n\n## What changed\n\nAdd the disabled-by-default `code_mode_only_strict_3p_tools` feature, applied only when the effective model tool mode is Code Mode Only.\n\n- Defer eligible MCP, app, and client-supplied dynamic tools while keeping them discoverable and callable through `exec`.\n- Override `deferLoading`, MCP/app `omit_tools_from`, and direct-only or excluded namespace settings. Log conflicts without adding prompt warnings.\n- Preserve disabled, app-only, policy-denied, and over-budget tool restrictions. Keep built-in tool exposure unchanged, including when a dynamic tool has the same name.\n\n## Testing\n\nAdd unit and integration coverage for exposure overrides, effective model modes, tool eligibility, and app discovery and dispatch. Add an MCP refresh scenario that verifies the eager tool prefix stays unchanged as tools are added, replaced, and removed while `exec` tracks the current catalog.\n\nGitOrigin-RevId: a6a8e401214119bb02ea4711473c8fa3ec85c81a",
+            "url": "https://github.com/openai/codex/commit/58ae3ba61186c39b849a6ebe60e60f4b11690373"
+          },
+          {
+            "sha": "3a69ec3ef8fb87b41e99b8942af061ad58ae6732",
+            "title": "Preserve local Markdown link labels in the TUI (#50695)",
+            "message": "Preserve local Markdown link labels in the TUI (#50695)\n\n## Why\n\nPath-like link labels were collapsed into their destinations, discarding the author's label text and formatting.\n\n## What changed\n\nPreserve nonblank local link labels alongside the formatted destination as `label (target)`, including in tables. Empty or whitespace-only labels show only the destination. Keep destination formatting and fall back to the original destination when a local file URL cannot be parsed.\n\nRender file citations without a label so they continue to display only the formatted destination.\n\n## Testing\n\nUpdate rendering and transcript-copy tests and snapshots to cover preserved path labels, styled labels, empty labels, malformed file URLs, tables, and Markdown escaping.\n\nGitOrigin-RevId: 2810b70f1ecdc59d7f90fa1b254b1e9069c8fc29",
+            "url": "https://github.com/openai/codex/commit/3a69ec3ef8fb87b41e99b8942af061ad58ae6732"
+          },
+          {
+            "sha": "260f9619e07037e307a09eab0ed1bfeee86e725d",
+            "title": "Release 0.162.0-alpha.11",
+            "message": "Release 0.162.0-alpha.11",
+            "url": "https://github.com/openai/codex/commit/260f9619e07037e307a09eab0ed1bfeee86e725d"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.10",
+          "head": "rust-v0.162.0-alpha.11",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.10...rust-v0.162.0-alpha.11",
+          "status": "diverged",
+          "total": 3,
+          "behind": 1,
+          "complete": true,
+          "fetched": 3
+        },
+        "comparisonError": null
+      }
     }
   ],
   "releaseRequests": {
     "blockedUntil": 0,
-    "retryByTag": {
-      "rust-v0.162.0-alpha.11": 1791056833510
-    }
+    "retryByTag": {}
   }
 }
