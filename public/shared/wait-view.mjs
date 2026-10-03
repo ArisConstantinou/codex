@@ -49,4 +49,3 @@ export function historyHint(element) {
   const hint = document.getElementById('history-hint');
   if (hint && element?.dataset.gap) hint.textContent = `Αναμονή ${Number(element.dataset.gapIndex) + 1}: ${duration(Number(element.dataset.gap) * 86400000)} (${days(Number(element.dataset.gap))}).`;
 }
-

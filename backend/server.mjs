@@ -44,4 +44,3 @@ server.on('error',e=>{console.error(`Server refused port ${config.port}: ${e.cod
 server.listen(config.port,config.host,()=>console.log(`Reset Radar website: http://${config.host}:${config.port}/codex/ (strict port)`));
 const scheduler=setInterval(()=>void flush(),15000),collector=setInterval(()=>void refresh(),300000);if(process.env.RADAR_NO_COLLECT!=='1')void refresh();
 for(const sig of ['SIGTERM','SIGINT'])process.on(sig,()=>{clearInterval(scheduler);clearInterval(collector);server.close(()=>{ledger.close();process.exit(0)})});
-

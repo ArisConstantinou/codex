@@ -1,5 +1,5 @@
 import {mutate,read,write,mergeById} from './shared/storage.mjs';
-const CACHE='reset-radar-codex-shell-6a62158cbbee6b5c';
+const CACHE='reset-radar-codex-shell-3e1232e54bc9c0a9';
 const FILES=['./','./index.html','./app.mjs','./styles.css','./compass.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./config.json','./history-seed.json','./shared/time.mjs','./shared/core.mjs','./shared/domain.mjs','./shared/storage.mjs','./shared/wait.mjs','./shared/wait-view.mjs','./shared/radar-motion.mjs'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))));
 self.addEventListener('message',e=>{if(e.data?.type==='ACTIVATE')self.skipWaiting()});

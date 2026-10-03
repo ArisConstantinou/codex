@@ -73,4 +73,3 @@ export async function readDirectFeeds(previous={},fetcher=fetch,now=Date.now()) 
   if(!successes)throw new Error('Οι απευθείας πηγές δεν ήταν διαθέσιμες: '+Object.values(sources).map(source=>source.error).join(' · '));
   return {items,sources};
 }
-
