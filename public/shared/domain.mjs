@@ -1,6 +1,7 @@
 import {validTime,CYPRUS_ZONE} from './time.mjs';
 import {safeLink} from './core.mjs';
 import {validateNotes} from './release-notes.mjs';
+import {validateUsage} from './usage-file.mjs';
 export const defaults={notifications:true,dayBefore:true,resetDay:true,morning:'08:00',evening:'20:00',repeatHours:3,reducedMotion:false};
 const H=3600000,D=86400000;
 const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:CYPRUS_ZONE,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
@@ -34,6 +35,7 @@ export function officialPlans(items){const complete=new Map();for(const x of ite
 export function reconcilePlans(previous,items){const incoming=officialPlans(items),ids=new Set(incoming.map(p=>p.id)),map=new Map(previous.map(p=>[p.id,p.kind==='official'&&!ids.has(p.id)?{...p,cancelled:true}:p]));for(const p of incoming){const old=map.get(p.id);map.set(p.id,{...old,...p,cancelled:old?.dismissed===true})}return [...map.values()]}
 export function emptyState(){return {version:1,records:[],items:[],sources:{},plans:[],inbox:[],journal:[],settings:{...defaults},cursor:0,deviceCursor:0,updatedAt:new Date().toISOString(),provenance:null}}
 export function validateState(s){
+ if(s.usage!==undefined)validateUsage(s.usage);
  if(s?.version!==1||!Number.isSafeInteger(s.cursor)||s.cursor<0||!Number.isSafeInteger(s.deviceCursor)||s.deviceCursor<0||!validTime(s.updatedAt))throw Error('Μη συμβατό backup.');
  for(const k of ['records','items','plans','inbox','journal'])if(!Array.isArray(s[k]))throw Error('Μη έγκυρο αρχείο δεδομένων.');
  for(const r of s.records)if(typeof r.id!=='string'||!validTime(r.at)||!['global','banked'].includes(r.kind)||typeof r.text!=='string'||r.url!=null&&!safeLink(r.url))throw Error('Μη έγκυρο ιστορικό.');
