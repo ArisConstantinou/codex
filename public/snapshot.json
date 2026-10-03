@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-03T06:52:57.975Z",
+  "generatedAt": "2026-10-03T07:03:23.319Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -2809,7 +2809,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-03T06:52:57.482Z",
+      "lastSuccessAt": "2026-10-03T07:03:22.942Z",
       "error": null,
       "count": 150
     },
@@ -2818,7 +2818,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-03T06:52:57.482Z",
+      "lastSuccessAt": "2026-10-03T07:03:22.942Z",
       "error": null,
       "count": 10
     },
@@ -2827,7 +2827,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-03T06:52:57.482Z",
+      "lastSuccessAt": "2026-10-03T07:03:22.942Z",
       "error": null,
       "count": 25
     }
