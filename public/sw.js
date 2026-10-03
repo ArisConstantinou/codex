@@ -1,12 +1,12 @@
 import {mutate,read,write,mergeById} from './shared/storage.mjs';
-const CACHE='reset-radar-codex-shell-29a676d874702b96';
-const FILES=['./','./index.html','./app.mjs','./styles.css','./compass.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./config.json','./history-seed.json','./shared/time.mjs','./shared/core.mjs','./shared/domain.mjs','./shared/storage.mjs','./shared/wait.mjs','./shared/wait-view.mjs','./shared/radar-motion.mjs','./shared/release-notes.mjs','./shared/release-view.mjs'];
-self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))));
+const CACHE='reset-radar-codex-shell-04aebc1c614d229c';
+const FILES=['./','./index.html','./boot.mjs','./app.mjs','./styles.css','./compass.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./config.json','./history-seed.json','./shared/time.mjs','./shared/core.mjs','./shared/domain.mjs','./shared/storage.mjs','./shared/wait.mjs','./shared/wait-view.mjs','./shared/radar-motion.mjs','./shared/release-notes.mjs','./shared/release-view.mjs'];
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES.map(file=>new Request(new URL(file,self.location),{cache:'reload'}))))));
 self.addEventListener('message',e=>{if(e.data?.type==='ACTIVATE')self.skipWaiting()});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{await Promise.all((await caches.keys()).filter(k=>k.startsWith('reset-radar-codex-shell-')&&k!==CACHE).map(k=>caches.delete(k)));await self.clients.claim()})()));
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==self.location.origin||!u.pathname.startsWith('/codex/'))return;
- if(e.request.mode==='navigate'){e.respondWith(fetch(e.request).catch(()=>caches.match(new URL('./index.html',self.location).href)));return}
- e.respondWith((async()=>{const c=await caches.open(CACHE);if(u.pathname.endsWith('/config.json')){try{const r=await fetch(e.request);if(r.ok)await c.put(e.request,r.clone());return r}catch{return c.match(e.request)}}return await c.match(e.request)||fetch(e.request)})());
+ if(e.request.mode==='navigate'){e.respondWith(fetch(e.request).catch(async()=>{const c=await caches.open(CACHE);return c.match(new URL('./index.html',self.location).href)}));return}
+ e.respondWith((async()=>{const c=await caches.open(CACHE);if(u.pathname.endsWith('/config.json')){try{const r=await fetch(e.request);if(r.ok)await c.put(e.request,r.clone());return r}catch{return c.match(e.request)}}let saved=await c.match(e.request);if(!saved&&!u.search){const versioned=new URL(u);versioned.searchParams.set('v',CACHE.slice('reset-radar-codex-shell-'.length));saved=await c.match(versioned.href)}return saved||fetch(e.request)})());
 });
 function navigate(value){try{const u=new URL(value);return u.origin===self.location.origin&&u.pathname.startsWith('/codex/')?u.href:new URL('./#inbox',self.location).href}catch{return new URL('./#inbox',self.location).href}}
 self.addEventListener('push',e=>e.waitUntil((async()=>{let payload;try{payload=e.data?.json()}catch{};const raw=payload?.radar,n=payload?.notification||{},notice={id:typeof raw?.id==='string'?raw.id:`push:${Date.now()}`,at:raw?.at||new Date().toISOString(),title:String(n.title||'Reset Radar').slice(0,300),body:String(n.body||'Άνοιξε την εφαρμογή για τις αποθηκευμένες πληροφορίες.').slice(0,1000),read:false,planId:raw?.planId||null,...(raw?.deadline?{deadline:raw.deadline}:{})};

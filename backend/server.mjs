@@ -8,6 +8,7 @@ import {newVapid,subscription,sendPush} from './push.mjs';
 import {readDirectFeeds,FEEDS} from '../public/shared/direct-feeds.mjs';
 import {officialPlans,reconcilePlans} from '../public/shared/domain.mjs';
 const root=path.resolve(fileURLToPath(new URL('..',import.meta.url))),config=JSON.parse(await fs.readFile(path.join(root,'runtime.json'),'utf8'));
+const staticDir=path.join(root,process.env.RADAR_SERVE_BUILD==='1'?'dist':'public');
 const runtime=process.env.RADAR_DATA_DIR||path.join(root,'.runtime');await fs.mkdir(runtime,{recursive:true});
 const ledger=new Ledger(path.join(runtime,'ledger.sqlite'));let vapid=ledger.get('vapid');if(!vapid){vapid=newVapid();ledger.set('vapid',vapid)}
 const clientOrigin=process.env.RADAR_CLIENT_ORIGIN||'https://arisconstantinou.github.io',origins=new Set([clientOrigin,`http://127.0.0.1:${config.port}`]);
@@ -36,7 +37,7 @@ const server=http.createServer(async(req,res)=>{const origin=req.headers.origin;
  }
  if(req.method!=='GET'&&req.method!=='HEAD')return json(405,{error:'Method not allowed'});
  if(u.pathname==='/'){res.writeHead(302,{Location:'/codex/'});res.end();return}if(!u.pathname.startsWith('/codex/'))return json(404,{error:'Not found'});
- const relative=decodeURIComponent(u.pathname.slice(7))||'index.html',file=path.resolve(root,'public',relative);if(!file.startsWith(path.join(root,'public')+path.sep))return json(403,{error:'Forbidden'});
+ const relative=decodeURIComponent(u.pathname.slice(7))||'index.html',file=path.resolve(staticDir,relative);if(!file.startsWith(staticDir+path.sep))return json(403,{error:'Forbidden'});
  let body;if(relative==='config.json')body=Buffer.from(JSON.stringify({version:'0.1.0',backendUrl:`http://127.0.0.1:${config.port}`,backendStatus:'local-running'}));else body=await fs.readFile(file);
  res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream','Cache-Control':relative==='sw.js'?'no-cache':'no-cache','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'"});res.end(req.method==='HEAD'?undefined:body);
  }catch(e){json(e.code==='ENOENT'?404:400,{error:e.message==='Body too large'?'Body too large':'Invalid request'})}});
