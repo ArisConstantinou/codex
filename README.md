@@ -8,6 +8,8 @@ The website is independent of the Windows app. It never reads Windows profiles, 
 
 Node.js 24 or later, no npm dependencies. `npm start` serves **http://127.0.0.1:5376/codex/** and the local backend on the same fixed port. A collision fails; it never switches ports. `npm test` tests timezone calendars, deadline/snooze behavior, conservative source parsing, independent push cryptography, durable SQLite and outbox recovery. `npm run build` copies only `public/` to `dist/`.
 
+Browser QA is optional and reuses an existing `playwright-core` installation supplied through `RADAR_PLAYWRIGHT_MODULE`; it does not install packages. `npm run qa` tests the local representative slice, real push receipt and process cleanup. `scripts/qa-deployed.mjs` tests the actual HTTPS Pages site and offline reload. Recovery QA requires a browser profile containing the previous shell version. Screenshots, profiles and detailed reports stay in ignored `output/` and must not be published.
+
 ## Data and offline behavior
 
 Service Worker caches a self-contained shell within `/codex/`. IndexedDB and Cache names are prefixed `reset-radar-codex`. Deadlines are UTC timestamps, countdowns use wall clock, calendar reminders use Asia/Nicosia including DST. History, notification inbox and action journal persist across reopening. Persistence is requested explicitly and the actual result is shown. Backup export has SHA-256 integrity checking; import validates and merges without deleting existing records. Backups omit push credentials.

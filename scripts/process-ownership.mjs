@@ -1,0 +1,2 @@
+const epoch=value=>{const m=String(value).match(/\/Date\((\d+)\)\//);return m?Number(m[1]):Date.parse(value)};
+export function ownedTree(profile,all){const owned=all.filter(p=>p.CommandLine?.includes(profile)).map(p=>({pid:p.ProcessId,created:p.CreationDate}));for(let change=true;change;){change=false;for(const p of all){const parent=owned.find(x=>x.pid===p.ParentProcessId);if(parent&&epoch(p.CreationDate)>=epoch(parent.created)&&!owned.some(x=>x.pid===p.ProcessId)){owned.push({pid:p.ProcessId,created:p.CreationDate});change=true}}}return owned}
