@@ -1,6 +1,6 @@
 import {mutate,read,write,mergeById} from './shared/storage.mjs';
-const CACHE='reset-radar-codex-shell-3e1232e54bc9c0a9';
-const FILES=['./','./index.html','./app.mjs','./styles.css','./compass.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./config.json','./history-seed.json','./shared/time.mjs','./shared/core.mjs','./shared/domain.mjs','./shared/storage.mjs','./shared/wait.mjs','./shared/wait-view.mjs','./shared/radar-motion.mjs'];
+const CACHE='reset-radar-codex-shell-29a676d874702b96';
+const FILES=['./','./index.html','./app.mjs','./styles.css','./compass.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./config.json','./history-seed.json','./shared/time.mjs','./shared/core.mjs','./shared/domain.mjs','./shared/storage.mjs','./shared/wait.mjs','./shared/wait-view.mjs','./shared/radar-motion.mjs','./shared/release-notes.mjs','./shared/release-view.mjs'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))));
 self.addEventListener('message',e=>{if(e.data?.type==='ACTIVATE')self.skipWaiting()});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{await Promise.all((await caches.keys()).filter(k=>k.startsWith('reset-radar-codex-shell-')&&k!==CACHE).map(k=>caches.delete(k)));await self.clients.claim()})()));

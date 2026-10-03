@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-03T07:03:23.319Z",
+  "generatedAt": "2026-10-03T07:29:34.628Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -2265,7 +2265,144 @@
         "release"
       ],
       "origin": "direct-official",
-      "prerelease": true
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.9",
+        "title": "0.162.0-alpha.9",
+        "body": "Release 0.162.0-alpha.9\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-03T07:14:14.946Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.9",
+        "publishedAt": "2026-10-03T01:24:32Z",
+        "commits": [
+          {
+            "sha": "66561d03012edb96e4ea87513cb10dea4c909986",
+            "title": "Allow API-key accounts to use Daybreak in the TUI (#50433)",
+            "message": "Allow API-key accounts to use Daybreak in the TUI (#50433)\n\n## What changed\n\nAllow accounts using an API key with the OpenAI provider to access `/daybreak` and Daybreak policy notices. Model availability and the connected server still determine program access.\n\nUse the same eligibility checks for turn submission, continuation, and retries. For API-key accounts, send the selected `cyberAccessProgram` when Daybreak is enabled and omit it when Daybreak is off.\n\n## Testing\n\nExtend session lifecycle coverage to check API-key turn parameters with Daybreak enabled and disabled. Add an API-key `/daybreak` help snapshot and update the signed-out error snapshot.\n\nGitOrigin-RevId: ab6d4313c430f316ef9835d4facb878aab0b9725",
+            "url": "https://github.com/openai/codex/commit/66561d03012edb96e4ea87513cb10dea4c909986"
+          },
+          {
+            "sha": "c536ffcb18271cd5ad8e6a0675b3e1f49b9dc555",
+            "title": "Add keyboard copy selection to the owned transcript (#50434)",
+            "message": "Add keyboard copy selection to the owned transcript (#50434)\n\n## What changed\n\n- Make `/copy` select the latest completed response directly in the owned transcript. Navigate user messages, code blocks, and blockquotes with arrow keys or `j`/`k`, use `g`/`G` to jump to the ends, and press Enter to copy or Escape to close.\n- Highlight selected blocks and keep surrounding context visible during navigation and resizing. Preserve source payloads for code and quotes, including rendered Mermaid diagrams and fenced Markdown tables.\n- Pause queued submissions until copy mode closes, and report clipboard results in the transcript footer.\n\n## Testing\n\nAdd tests for copy routing, keyboard navigation, highlighting and resize behavior, source whitespace and line endings, clipboard completion, and queued-input resumption.\n\nGitOrigin-RevId: bd4f58ec17568f95d0e91014e5ddba33ca8bd57c",
+            "url": "https://github.com/openai/codex/commit/c536ffcb18271cd5ad8e6a0675b3e1f49b9dc555"
+          },
+          {
+            "sha": "602d2add6e6df7e2c301c0507434b02a7463337d",
+            "title": "Persist additional tool definitions in rollout history (#50435)",
+            "message": "Persist additional tool definitions in rollout history (#50435)\n\n## Why\n\n`additional_tools` response items were excluded from rollout persistence, dropping their tool definitions from saved history.\n\n## What changed\n\n- Persist `additional_tools` items in both legacy and paginated history modes.\n- Expose the variant in generated JSON schemas, TypeScript types, and Python models, with an optional `id`, a `role`, and arbitrary JSON tool definitions.\n\n## Testing\n\nAdd a recorder round-trip test that verifies tool definitions survive recording and loading in both history modes without parse errors.\n\nGitOrigin-RevId: 0e7c7b1c10401ec6513fb744de642a1cf9e461d7",
+            "url": "https://github.com/openai/codex/commit/602d2add6e6df7e2c301c0507434b02a7463337d"
+          },
+          {
+            "sha": "12a30d4e6dbd7e527898142b6f4f65fd8070a3b5",
+            "title": "Add a CLI command to uninstall the legacy Windows sandbox (#50437)",
+            "message": "Add a CLI command to uninstall the legacy Windows sandbox (#50437)\n\n## What changed\n\nAdd `codex sandbox uninstall` to remove machine-wide legacy Windows sandbox accounts and network rules with administrator privileges. Run cleanup without loading configuration, preserving Codex home, sandbox directories, and filesystem permissions. Reject the command on other platforms.\n\nKeep commands after `--` forwarded to the sandbox, including `codex sandbox -- uninstall --help`.\n\n## Testing\n\nAdd parsing coverage for the uninstall subcommand and command separator. Add an integration test verifying that help and invalid arguments work with malformed configuration and leave configuration and credentials unchanged.\n\nGitOrigin-RevId: d2b02ef7bc0a05742dd5eb3c47292ad517d46664",
+            "url": "https://github.com/openai/codex/commit/12a30d4e6dbd7e527898142b6f4f65fd8070a3b5"
+          },
+          {
+            "sha": "0df76892b13277eca943a6507c7964e4b0f99a5b",
+            "title": "Support ordered response items in world-state context updates (#50441)",
+            "message": "Support ordered response items in world-state context updates (#50441)\n\n## Why\n\nWorld-state sections could return only a single optional text fragment, with message separation controlled by the fragment itself. They could not contribute explicit `ResponseItem` values alongside instructions.\n\n## What changed\n\n- Let sections return ordered `WorldStateUpdate` values containing fragments or response items, with `Prefix`, `Standalone`, or `Mergeable` placement.\n- Preserve explicit item boundaries when grouping context updates, and place prefix updates first when assembling initial context.\n- Move standalone-message decisions from fragments to world-state updates and retain snapshot handling.\n\n## Testing\n\nAdd tests for mixed fragment/item ordering, role and standalone boundaries, initial-context prefix placement, and snapshot restoration without repeated updates.\n\nGitOrigin-RevId: c2514c3c98538da83f5140c10a9d89f531de6549",
+            "url": "https://github.com/openai/codex/commit/0df76892b13277eca943a6507c7964e4b0f99a5b"
+          },
+          {
+            "sha": "3629508849fe7679ae6362ffa1541fb0ab9fb0cb",
+            "title": "Preserve native USD amounts in thread usage responses (#50442)",
+            "message": "Preserve native USD amounts in thread usage responses (#50442)\n\n## What changed\n\nAdd optional `native_usage_usd_micros` fields to thread usage totals and breakdown groups, and carry backend values through the client alongside existing credit and USD estimates. Missing or null native amounts remain `None`, while explicit zero amounts remain `Some(0)`.\n\n## Testing\n\nAdd coverage for native totals and group amounts, mixed batches with legacy responses, and the distinction between missing, null, and zero native group amounts.\n\nGitOrigin-RevId: 53891fc95807138e2eccb99d4cda1520b857dba4",
+            "url": "https://github.com/openai/codex/commit/3629508849fe7679ae6362ffa1541fb0ab9fb0cb"
+          },
+          {
+            "sha": "a4bfd07d51fa941d70e41cc0345b631ab5a41224",
+            "title": "Stabilize paused-time code-mode service tests (#50443)",
+            "message": "Stabilize paused-time code-mode service tests (#50443)\n\n## Why\n\nTokio's paused clock can auto-advance while tests await the V8 thread. The service tests need explicit control over time when checking yield limits and grace periods.\n\n## What changed\n\n- Hold virtual time with a blocking-task guard that is released when dropped.\n- Replace bounded polling loops with tool-start notifications and direct awaits of response tasks.\n- Return an error from the test helper if the cell closes before a nested tool starts.\n\n## Testing\n\nAdd tests covering tool-start acknowledgement when a cell throws or is terminated before invoking a nested tool, including assertions on the resulting cell responses.\n\nGitOrigin-RevId: c221c0501ec0354052102c0211cc651008babff3",
+            "url": "https://github.com/openai/codex/commit/a4bfd07d51fa941d70e41cc0345b631ab5a41224"
+          },
+          {
+            "sha": "d4eed6dca57fc72298808aed5a4bfe43285bf98f",
+            "title": "Assert that only direct tool calls emit timing events (#50445)",
+            "message": "Assert that only direct tool calls emit timing events (#50445)\n\n## What changed\n\nStrengthen `tool_call_timing_guard_ignores_code_mode_source` to capture tracing output and assert that direct and nested code-mode calls together emit exactly one `codex.tool_call` event. Disable ANSI formatting and keep callsite interest independent of untraced parallel test threads.\n\nGitOrigin-RevId: cbf0c9bf6d4e5a72b6a1eb08e6aac43e257f2dcb",
+            "url": "https://github.com/openai/codex/commit/d4eed6dca57fc72298808aed5a4bfe43285bf98f"
+          },
+          {
+            "sha": "9b0a676d5dcac661f8aeaa02edb73a1ccf730295",
+            "title": "Bundle rollout attachments into a gzip tar archive (#50446)",
+            "message": "Bundle rollout attachments into a gzip tar archive (#50446)\n\n## What changed\n\n- Combine file-backed rollouts and buffered rollout prefixes into `rollouts.tar.gz`, keeping diagnostics as separate attachments.\n- Bound the archive and its upload envelope by the existing size limit, skip invalid or duplicate archive filenames, and fall back to individual rollout attachments if archiving fails.\n- Add `rollout_archive_filename` to the report thread index so rollout filenames identify archive entries or fallback attachments.\n\n## Testing\n\nAdd an upload test that extracts the archive and verifies the filenames and contents of both a compressed file-backed rollout and a buffered rollout. Update the thread index test to check the archive filename.\n\nGitOrigin-RevId: 973da6eec2249b04ef7992b5e1e4fd27f044b80f",
+            "url": "https://github.com/openai/codex/commit/9b0a676d5dcac661f8aeaa02edb73a1ccf730295"
+          },
+          {
+            "sha": "fd75aa116c4a6d1db0fa1e0a0f896e3368349649",
+            "title": "Remove the provider capability gate for tool namespaces (#50447)",
+            "message": "Remove the provider capability gate for tool namespaces (#50447)\n\n## What changed\n\n- Remove `namespace_tools` from `ProviderCapabilities` and `namespaceTools` from `ModelProviderCapabilitiesReadResponse`, updating generated schemas and SDK types.\n- Preserve tool namespaces and configured collaboration tool namespaces without a provider capability check, and always use Responses Lite tool serialization for Responses Lite requests.\n- Gate tool search on `supports_search_tool` and retain the existing image generation and web search checks without requiring a namespace capability.\n\nGitOrigin-RevId: ae1843563736765a40e03a02c41ff5e470018a93",
+            "url": "https://github.com/openai/codex/commit/fd75aa116c4a6d1db0fa1e0a0f896e3368349649"
+          },
+          {
+            "sha": "3c3a990da04e04a4db37f4c1fe3fc00cd934d6f5",
+            "title": "Measure rollout persistence size reductions (#50454)",
+            "message": "Measure rollout persistence size reductions (#50454)\n\n## What changed\n\n- Record original and persisted item sizes in `codex.rollout.persistence.item_bytes_v2`, distinguished by stage, and record positive size reductions in `codex.rollout.persistence.bytes_removed`. Count the full original size as removed for dropped items.\n- Use explicit histogram boundaries from 1 KiB to 64 MiB for item sizes, bytes removed, and `codex.rollout.persistence.turn_bytes_v2`. Larger values remain represented in the overflow bucket and histogram sum.\n- Align item and turn size stages and report a measurement error when a kept item's persisted size cannot be measured.\n\nGitOrigin-RevId: 6487acf1c6f2c041ab9680ab398491d3c1541388",
+            "url": "https://github.com/openai/codex/commit/3c3a990da04e04a4db37f4c1fe3fc00cd934d6f5"
+          },
+          {
+            "sha": "820f85cf597b492adc6149759a22e71c72b01afa",
+            "title": "Truncate oversized MCP results in paginated thread history (#50458)",
+            "message": "Truncate oversized MCP results in paginated thread history (#50458)\n\n## Why\n\nPaginated thread history can persist large MCP results in completed tool-call items. Bound these stored results to avoid retaining multi-megabyte payloads.\n\n## What changed\n\nApply a 64 KiB preview budget when persisting oversized MCP results in paginated history. Replace the result with a truncated text preview of its serialized JSON, preserving `is_error` and clearing `structuredContent` and `_meta`. Leave small results unchanged.\n\nShare the truncation helper with the existing MCP tool-call event path.\n\n## Testing\n\nAdd helper tests for unchanged small results and oversized results with structured content and metadata. Add a thread-history test verifying that persisted MCP results contain a bounded preview with the beginning, end, and truncation marker while preserving tool arguments.\n\nGitOrigin-RevId: 09dce73c70bfd357c9b9630f456e9e5c1d8492cf",
+            "url": "https://github.com/openai/codex/commit/820f85cf597b492adc6149759a22e71c72b01afa"
+          },
+          {
+            "sha": "c6049ebd9694c941386d85fb3e09acab2af289cb",
+            "title": "Add capability overrides for custom model providers (#50459)",
+            "message": "Add capability overrides for custom model providers (#50459)\n\n## What changed\n\nAllow Responses-compatible providers to configure live web access and remote compaction under `model_providers.<id>.capabilities`:\n\n```toml\n[model_providers.custom.capabilities]\nexternal_web_access = false\nremote_compaction = \"v2\"\n```\n\n`external_web_access = false` keeps hosted web search from accessing the live web. `remote_compaction` accepts `v2` to send `compaction_trigger` items through the Responses endpoint, or `unsupported` to use local compaction. Omitted capabilities retain existing provider defaults.\n\n## Testing\n\nAdd unit coverage for preserving unspecified defaults and a request-snapshot scenario verifying cached web search and V2 compaction for a custom provider.\n\nGitOrigin-RevId: fbcc4870aa51c112af575d711679a3941d1e7878",
+            "url": "https://github.com/openai/codex/commit/c6049ebd9694c941386d85fb3e09acab2af289cb"
+          },
+          {
+            "sha": "09bced5ad95069494aa5a2da49c77a50a317a9b1",
+            "title": "Populate thread previews from delegated task inputs (#50462)",
+            "message": "Populate thread previews from delegated task inputs (#50462)\n\n## Why\n\nDelegated turns can begin without a user message, leaving threads without a task preview. Populate the preview from delegated input so these threads are discoverable before a user follow-up.\n\n## What changed\n\n- Extract previews from completed `create_thread` and `send_message_to_thread` outputs in the `codex_app` and `codex_tui` namespaces.\n- Unwrap recognized `<codex_delegation>` inputs and decode their escaped task text for display, preserving model content. Keep plain or unrecognized wrappers as text and ignore blank inputs.\n- Fill missing previews in state metadata extraction and live thread metadata updates without replacing existing previews or setting the title or `first_user_message`.\n\n## Testing\n\nAdd tests for delegation decoding and tool filtering, preview-only metadata updates, preservation of later user-message metadata, and database listing before a user follow-up in both legacy and paginated history modes.\n\nGitOrigin-RevId: f7b3c60ef75e08c76b4084d043e3967bf2bade22",
+            "url": "https://github.com/openai/codex/commit/09bced5ad95069494aa5a2da49c77a50a317a9b1"
+          },
+          {
+            "sha": "a0bfaac70ccdd14291763d832f6f7f3f4558e662",
+            "title": "Add the `incremental_tools` feature flag (#50464)",
+            "message": "Add the `incremental_tools` feature flag (#50464)\n\nRegister `incremental_tools` as an under-development feature that is disabled by default, and expose it in the configuration schema for top-level and profile feature settings.\n\nGitOrigin-RevId: 9579822c745e9fce598085bdc5ef8da6aabb06d7",
+            "url": "https://github.com/openai/codex/commit/a0bfaac70ccdd14291763d832f6f7f3f4558e662"
+          },
+          {
+            "sha": "ef8cfe5e96f7782b38745f3f86da61af3ba35e10",
+            "title": "Retry registry authentication outages and jitter executor reconnects (#50465)",
+            "message": "Retry registry authentication outages and jitter executor reconnects (#50465)\n\n## Why\n\nRemote executors need to recover from confirmed authentication-service outages and spread reconnect attempts after a shared outage. Registration retries must remain limited to confirmed failures before a write, since replaying an ambiguous request can replace a newer registration.\n\n## What changed\n\n- Retry registry responses with HTTP 502 and `authentication_service_unavailable`, alongside the existing HTTP 503 `registration_conflict` retries.\n- Accept structured registry errors in `detail`, keeping the canonical `error` authoritative when both are present.\n- Randomize reconnect delays between half and all of the current exponential backoff, retaining the 30-second cap.\n\n## Testing\n\nAdd coverage for reconnect jitter bounds, authentication-outage retry cancellation, error-envelope precedence, and preservation of Noise identity and initialized sessions across retries. Make the HTTP-header helper cleanup test wait for the helper PID before cancellation and verify process termination when the provider is dropped.\n\nGitOrigin-RevId: 35fdb57732d17b0bbfeca8a4dc557a0988e29a31",
+            "url": "https://github.com/openai/codex/commit/ef8cfe5e96f7782b38745f3f86da61af3ba35e10"
+          },
+          {
+            "sha": "f5a2272c6cb6d22635b7bd58b9a2f9ab3c1ca683",
+            "title": "Copy transcript selections as literal text while preserving rich HTML (#50467)",
+            "message": "Copy transcript selections as literal text while preserving rich HTML (#50467)\n\n## Why\n\nCopying rendered transcript selections added Markdown formatting and escapes to the plain-text clipboard payload. Selecting bold text such as `hello` could paste as `**hello**`.\n\n## What changed\n\nSeparate the literal selection text from the Markdown source used to render clipboard HTML. Plain-text copies omit inline formatting delimiters, added code fences, and Markdown escapes while retaining list and table structure. Rich-text pastes continue to preserve formatting through HTML.\n\n## Testing\n\nUpdate clipboard and transcript selection tests to verify literal text alongside rich HTML, including lists, inline code, paths with Markdown punctuation, hard breaks, streamed code blocks, and tables across layout widths.\n\nGitOrigin-RevId: 980ee2ed0b0e201b581a3a301fa04d796c65af2e",
+            "url": "https://github.com/openai/codex/commit/f5a2272c6cb6d22635b7bd58b9a2f9ab3c1ca683"
+          },
+          {
+            "sha": "be48ae396e57621cee374423a19c2f427e1b4373",
+            "title": "Account for JSON overhead when truncating MCP tool results (#50470)",
+            "message": "Account for JSON overhead when truncating MCP tool results (#50470)\n\n## Why\n\nTruncating the preview alone can leave the serialized MCP tool result above its byte budget because JSON escaping and the result wrapper add bytes.\n\n## What changed\n\nMeasure the complete serialized replacement and progressively reduce the preview budget until the result fits or the preview is empty.\n\n## Testing\n\nStrengthen the regression test with quotes, backslashes, and newlines. Assert that the serialized result fits within the 1,024-byte budget and that truncating it again returns the existing result unchanged.\n\nGitOrigin-RevId: ebd97b1a6ca71343941a96e472cb313028ac680c",
+            "url": "https://github.com/openai/codex/commit/be48ae396e57621cee374423a19c2f427e1b4373"
+          },
+          {
+            "sha": "635a0c0b1353e22c8783ef15652c3985078cb2c5",
+            "title": "Release 0.162.0-alpha.9",
+            "message": "Release 0.162.0-alpha.9",
+            "url": "https://github.com/openai/codex/commit/635a0c0b1353e22c8783ef15652c3985078cb2c5"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.8",
+          "head": "rust-v0.162.0-alpha.9",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.8...rust-v0.162.0-alpha.9",
+          "status": "diverged",
+          "total": 19,
+          "behind": 1,
+          "complete": true,
+          "fetched": 19
+        },
+        "comparisonError": null
+      }
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.8",
@@ -2809,7 +2946,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-03T07:03:22.942Z",
+      "lastSuccessAt": "2026-10-03T07:29:33.990Z",
       "error": null,
       "count": 150
     },
@@ -2818,7 +2955,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-03T07:03:22.942Z",
+      "lastSuccessAt": "2026-10-03T07:29:33.990Z",
       "error": null,
       "count": 10
     },
@@ -2827,7 +2964,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-03T07:03:22.942Z",
+      "lastSuccessAt": "2026-10-03T07:29:33.990Z",
       "error": null,
       "count": 25
     }
@@ -6557,6 +6694,152 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-09-14T02:46:48.000Z"
       }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.9:2026-10-03T07:14:14.945Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-03T07:14:14.945Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.9",
+        "title": "0.162.0-alpha.9",
+        "body": "Release 0.162.0-alpha.9\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-03T07:14:14.946Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.9",
+        "publishedAt": "2026-10-03T01:24:32Z",
+        "commits": [
+          {
+            "sha": "66561d03012edb96e4ea87513cb10dea4c909986",
+            "title": "Allow API-key accounts to use Daybreak in the TUI (#50433)",
+            "message": "Allow API-key accounts to use Daybreak in the TUI (#50433)\n\n## What changed\n\nAllow accounts using an API key with the OpenAI provider to access `/daybreak` and Daybreak policy notices. Model availability and the connected server still determine program access.\n\nUse the same eligibility checks for turn submission, continuation, and retries. For API-key accounts, send the selected `cyberAccessProgram` when Daybreak is enabled and omit it when Daybreak is off.\n\n## Testing\n\nExtend session lifecycle coverage to check API-key turn parameters with Daybreak enabled and disabled. Add an API-key `/daybreak` help snapshot and update the signed-out error snapshot.\n\nGitOrigin-RevId: ab6d4313c430f316ef9835d4facb878aab0b9725",
+            "url": "https://github.com/openai/codex/commit/66561d03012edb96e4ea87513cb10dea4c909986"
+          },
+          {
+            "sha": "c536ffcb18271cd5ad8e6a0675b3e1f49b9dc555",
+            "title": "Add keyboard copy selection to the owned transcript (#50434)",
+            "message": "Add keyboard copy selection to the owned transcript (#50434)\n\n## What changed\n\n- Make `/copy` select the latest completed response directly in the owned transcript. Navigate user messages, code blocks, and blockquotes with arrow keys or `j`/`k`, use `g`/`G` to jump to the ends, and press Enter to copy or Escape to close.\n- Highlight selected blocks and keep surrounding context visible during navigation and resizing. Preserve source payloads for code and quotes, including rendered Mermaid diagrams and fenced Markdown tables.\n- Pause queued submissions until copy mode closes, and report clipboard results in the transcript footer.\n\n## Testing\n\nAdd tests for copy routing, keyboard navigation, highlighting and resize behavior, source whitespace and line endings, clipboard completion, and queued-input resumption.\n\nGitOrigin-RevId: bd4f58ec17568f95d0e91014e5ddba33ca8bd57c",
+            "url": "https://github.com/openai/codex/commit/c536ffcb18271cd5ad8e6a0675b3e1f49b9dc555"
+          },
+          {
+            "sha": "602d2add6e6df7e2c301c0507434b02a7463337d",
+            "title": "Persist additional tool definitions in rollout history (#50435)",
+            "message": "Persist additional tool definitions in rollout history (#50435)\n\n## Why\n\n`additional_tools` response items were excluded from rollout persistence, dropping their tool definitions from saved history.\n\n## What changed\n\n- Persist `additional_tools` items in both legacy and paginated history modes.\n- Expose the variant in generated JSON schemas, TypeScript types, and Python models, with an optional `id`, a `role`, and arbitrary JSON tool definitions.\n\n## Testing\n\nAdd a recorder round-trip test that verifies tool definitions survive recording and loading in both history modes without parse errors.\n\nGitOrigin-RevId: 0e7c7b1c10401ec6513fb744de642a1cf9e461d7",
+            "url": "https://github.com/openai/codex/commit/602d2add6e6df7e2c301c0507434b02a7463337d"
+          },
+          {
+            "sha": "12a30d4e6dbd7e527898142b6f4f65fd8070a3b5",
+            "title": "Add a CLI command to uninstall the legacy Windows sandbox (#50437)",
+            "message": "Add a CLI command to uninstall the legacy Windows sandbox (#50437)\n\n## What changed\n\nAdd `codex sandbox uninstall` to remove machine-wide legacy Windows sandbox accounts and network rules with administrator privileges. Run cleanup without loading configuration, preserving Codex home, sandbox directories, and filesystem permissions. Reject the command on other platforms.\n\nKeep commands after `--` forwarded to the sandbox, including `codex sandbox -- uninstall --help`.\n\n## Testing\n\nAdd parsing coverage for the uninstall subcommand and command separator. Add an integration test verifying that help and invalid arguments work with malformed configuration and leave configuration and credentials unchanged.\n\nGitOrigin-RevId: d2b02ef7bc0a05742dd5eb3c47292ad517d46664",
+            "url": "https://github.com/openai/codex/commit/12a30d4e6dbd7e527898142b6f4f65fd8070a3b5"
+          },
+          {
+            "sha": "0df76892b13277eca943a6507c7964e4b0f99a5b",
+            "title": "Support ordered response items in world-state context updates (#50441)",
+            "message": "Support ordered response items in world-state context updates (#50441)\n\n## Why\n\nWorld-state sections could return only a single optional text fragment, with message separation controlled by the fragment itself. They could not contribute explicit `ResponseItem` values alongside instructions.\n\n## What changed\n\n- Let sections return ordered `WorldStateUpdate` values containing fragments or response items, with `Prefix`, `Standalone`, or `Mergeable` placement.\n- Preserve explicit item boundaries when grouping context updates, and place prefix updates first when assembling initial context.\n- Move standalone-message decisions from fragments to world-state updates and retain snapshot handling.\n\n## Testing\n\nAdd tests for mixed fragment/item ordering, role and standalone boundaries, initial-context prefix placement, and snapshot restoration without repeated updates.\n\nGitOrigin-RevId: c2514c3c98538da83f5140c10a9d89f531de6549",
+            "url": "https://github.com/openai/codex/commit/0df76892b13277eca943a6507c7964e4b0f99a5b"
+          },
+          {
+            "sha": "3629508849fe7679ae6362ffa1541fb0ab9fb0cb",
+            "title": "Preserve native USD amounts in thread usage responses (#50442)",
+            "message": "Preserve native USD amounts in thread usage responses (#50442)\n\n## What changed\n\nAdd optional `native_usage_usd_micros` fields to thread usage totals and breakdown groups, and carry backend values through the client alongside existing credit and USD estimates. Missing or null native amounts remain `None`, while explicit zero amounts remain `Some(0)`.\n\n## Testing\n\nAdd coverage for native totals and group amounts, mixed batches with legacy responses, and the distinction between missing, null, and zero native group amounts.\n\nGitOrigin-RevId: 53891fc95807138e2eccb99d4cda1520b857dba4",
+            "url": "https://github.com/openai/codex/commit/3629508849fe7679ae6362ffa1541fb0ab9fb0cb"
+          },
+          {
+            "sha": "a4bfd07d51fa941d70e41cc0345b631ab5a41224",
+            "title": "Stabilize paused-time code-mode service tests (#50443)",
+            "message": "Stabilize paused-time code-mode service tests (#50443)\n\n## Why\n\nTokio's paused clock can auto-advance while tests await the V8 thread. The service tests need explicit control over time when checking yield limits and grace periods.\n\n## What changed\n\n- Hold virtual time with a blocking-task guard that is released when dropped.\n- Replace bounded polling loops with tool-start notifications and direct awaits of response tasks.\n- Return an error from the test helper if the cell closes before a nested tool starts.\n\n## Testing\n\nAdd tests covering tool-start acknowledgement when a cell throws or is terminated before invoking a nested tool, including assertions on the resulting cell responses.\n\nGitOrigin-RevId: c221c0501ec0354052102c0211cc651008babff3",
+            "url": "https://github.com/openai/codex/commit/a4bfd07d51fa941d70e41cc0345b631ab5a41224"
+          },
+          {
+            "sha": "d4eed6dca57fc72298808aed5a4bfe43285bf98f",
+            "title": "Assert that only direct tool calls emit timing events (#50445)",
+            "message": "Assert that only direct tool calls emit timing events (#50445)\n\n## What changed\n\nStrengthen `tool_call_timing_guard_ignores_code_mode_source` to capture tracing output and assert that direct and nested code-mode calls together emit exactly one `codex.tool_call` event. Disable ANSI formatting and keep callsite interest independent of untraced parallel test threads.\n\nGitOrigin-RevId: cbf0c9bf6d4e5a72b6a1eb08e6aac43e257f2dcb",
+            "url": "https://github.com/openai/codex/commit/d4eed6dca57fc72298808aed5a4bfe43285bf98f"
+          },
+          {
+            "sha": "9b0a676d5dcac661f8aeaa02edb73a1ccf730295",
+            "title": "Bundle rollout attachments into a gzip tar archive (#50446)",
+            "message": "Bundle rollout attachments into a gzip tar archive (#50446)\n\n## What changed\n\n- Combine file-backed rollouts and buffered rollout prefixes into `rollouts.tar.gz`, keeping diagnostics as separate attachments.\n- Bound the archive and its upload envelope by the existing size limit, skip invalid or duplicate archive filenames, and fall back to individual rollout attachments if archiving fails.\n- Add `rollout_archive_filename` to the report thread index so rollout filenames identify archive entries or fallback attachments.\n\n## Testing\n\nAdd an upload test that extracts the archive and verifies the filenames and contents of both a compressed file-backed rollout and a buffered rollout. Update the thread index test to check the archive filename.\n\nGitOrigin-RevId: 973da6eec2249b04ef7992b5e1e4fd27f044b80f",
+            "url": "https://github.com/openai/codex/commit/9b0a676d5dcac661f8aeaa02edb73a1ccf730295"
+          },
+          {
+            "sha": "fd75aa116c4a6d1db0fa1e0a0f896e3368349649",
+            "title": "Remove the provider capability gate for tool namespaces (#50447)",
+            "message": "Remove the provider capability gate for tool namespaces (#50447)\n\n## What changed\n\n- Remove `namespace_tools` from `ProviderCapabilities` and `namespaceTools` from `ModelProviderCapabilitiesReadResponse`, updating generated schemas and SDK types.\n- Preserve tool namespaces and configured collaboration tool namespaces without a provider capability check, and always use Responses Lite tool serialization for Responses Lite requests.\n- Gate tool search on `supports_search_tool` and retain the existing image generation and web search checks without requiring a namespace capability.\n\nGitOrigin-RevId: ae1843563736765a40e03a02c41ff5e470018a93",
+            "url": "https://github.com/openai/codex/commit/fd75aa116c4a6d1db0fa1e0a0f896e3368349649"
+          },
+          {
+            "sha": "3c3a990da04e04a4db37f4c1fe3fc00cd934d6f5",
+            "title": "Measure rollout persistence size reductions (#50454)",
+            "message": "Measure rollout persistence size reductions (#50454)\n\n## What changed\n\n- Record original and persisted item sizes in `codex.rollout.persistence.item_bytes_v2`, distinguished by stage, and record positive size reductions in `codex.rollout.persistence.bytes_removed`. Count the full original size as removed for dropped items.\n- Use explicit histogram boundaries from 1 KiB to 64 MiB for item sizes, bytes removed, and `codex.rollout.persistence.turn_bytes_v2`. Larger values remain represented in the overflow bucket and histogram sum.\n- Align item and turn size stages and report a measurement error when a kept item's persisted size cannot be measured.\n\nGitOrigin-RevId: 6487acf1c6f2c041ab9680ab398491d3c1541388",
+            "url": "https://github.com/openai/codex/commit/3c3a990da04e04a4db37f4c1fe3fc00cd934d6f5"
+          },
+          {
+            "sha": "820f85cf597b492adc6149759a22e71c72b01afa",
+            "title": "Truncate oversized MCP results in paginated thread history (#50458)",
+            "message": "Truncate oversized MCP results in paginated thread history (#50458)\n\n## Why\n\nPaginated thread history can persist large MCP results in completed tool-call items. Bound these stored results to avoid retaining multi-megabyte payloads.\n\n## What changed\n\nApply a 64 KiB preview budget when persisting oversized MCP results in paginated history. Replace the result with a truncated text preview of its serialized JSON, preserving `is_error` and clearing `structuredContent` and `_meta`. Leave small results unchanged.\n\nShare the truncation helper with the existing MCP tool-call event path.\n\n## Testing\n\nAdd helper tests for unchanged small results and oversized results with structured content and metadata. Add a thread-history test verifying that persisted MCP results contain a bounded preview with the beginning, end, and truncation marker while preserving tool arguments.\n\nGitOrigin-RevId: 09dce73c70bfd357c9b9630f456e9e5c1d8492cf",
+            "url": "https://github.com/openai/codex/commit/820f85cf597b492adc6149759a22e71c72b01afa"
+          },
+          {
+            "sha": "c6049ebd9694c941386d85fb3e09acab2af289cb",
+            "title": "Add capability overrides for custom model providers (#50459)",
+            "message": "Add capability overrides for custom model providers (#50459)\n\n## What changed\n\nAllow Responses-compatible providers to configure live web access and remote compaction under `model_providers.<id>.capabilities`:\n\n```toml\n[model_providers.custom.capabilities]\nexternal_web_access = false\nremote_compaction = \"v2\"\n```\n\n`external_web_access = false` keeps hosted web search from accessing the live web. `remote_compaction` accepts `v2` to send `compaction_trigger` items through the Responses endpoint, or `unsupported` to use local compaction. Omitted capabilities retain existing provider defaults.\n\n## Testing\n\nAdd unit coverage for preserving unspecified defaults and a request-snapshot scenario verifying cached web search and V2 compaction for a custom provider.\n\nGitOrigin-RevId: fbcc4870aa51c112af575d711679a3941d1e7878",
+            "url": "https://github.com/openai/codex/commit/c6049ebd9694c941386d85fb3e09acab2af289cb"
+          },
+          {
+            "sha": "09bced5ad95069494aa5a2da49c77a50a317a9b1",
+            "title": "Populate thread previews from delegated task inputs (#50462)",
+            "message": "Populate thread previews from delegated task inputs (#50462)\n\n## Why\n\nDelegated turns can begin without a user message, leaving threads without a task preview. Populate the preview from delegated input so these threads are discoverable before a user follow-up.\n\n## What changed\n\n- Extract previews from completed `create_thread` and `send_message_to_thread` outputs in the `codex_app` and `codex_tui` namespaces.\n- Unwrap recognized `<codex_delegation>` inputs and decode their escaped task text for display, preserving model content. Keep plain or unrecognized wrappers as text and ignore blank inputs.\n- Fill missing previews in state metadata extraction and live thread metadata updates without replacing existing previews or setting the title or `first_user_message`.\n\n## Testing\n\nAdd tests for delegation decoding and tool filtering, preview-only metadata updates, preservation of later user-message metadata, and database listing before a user follow-up in both legacy and paginated history modes.\n\nGitOrigin-RevId: f7b3c60ef75e08c76b4084d043e3967bf2bade22",
+            "url": "https://github.com/openai/codex/commit/09bced5ad95069494aa5a2da49c77a50a317a9b1"
+          },
+          {
+            "sha": "a0bfaac70ccdd14291763d832f6f7f3f4558e662",
+            "title": "Add the `incremental_tools` feature flag (#50464)",
+            "message": "Add the `incremental_tools` feature flag (#50464)\n\nRegister `incremental_tools` as an under-development feature that is disabled by default, and expose it in the configuration schema for top-level and profile feature settings.\n\nGitOrigin-RevId: 9579822c745e9fce598085bdc5ef8da6aabb06d7",
+            "url": "https://github.com/openai/codex/commit/a0bfaac70ccdd14291763d832f6f7f3f4558e662"
+          },
+          {
+            "sha": "ef8cfe5e96f7782b38745f3f86da61af3ba35e10",
+            "title": "Retry registry authentication outages and jitter executor reconnects (#50465)",
+            "message": "Retry registry authentication outages and jitter executor reconnects (#50465)\n\n## Why\n\nRemote executors need to recover from confirmed authentication-service outages and spread reconnect attempts after a shared outage. Registration retries must remain limited to confirmed failures before a write, since replaying an ambiguous request can replace a newer registration.\n\n## What changed\n\n- Retry registry responses with HTTP 502 and `authentication_service_unavailable`, alongside the existing HTTP 503 `registration_conflict` retries.\n- Accept structured registry errors in `detail`, keeping the canonical `error` authoritative when both are present.\n- Randomize reconnect delays between half and all of the current exponential backoff, retaining the 30-second cap.\n\n## Testing\n\nAdd coverage for reconnect jitter bounds, authentication-outage retry cancellation, error-envelope precedence, and preservation of Noise identity and initialized sessions across retries. Make the HTTP-header helper cleanup test wait for the helper PID before cancellation and verify process termination when the provider is dropped.\n\nGitOrigin-RevId: 35fdb57732d17b0bbfeca8a4dc557a0988e29a31",
+            "url": "https://github.com/openai/codex/commit/ef8cfe5e96f7782b38745f3f86da61af3ba35e10"
+          },
+          {
+            "sha": "f5a2272c6cb6d22635b7bd58b9a2f9ab3c1ca683",
+            "title": "Copy transcript selections as literal text while preserving rich HTML (#50467)",
+            "message": "Copy transcript selections as literal text while preserving rich HTML (#50467)\n\n## Why\n\nCopying rendered transcript selections added Markdown formatting and escapes to the plain-text clipboard payload. Selecting bold text such as `hello` could paste as `**hello**`.\n\n## What changed\n\nSeparate the literal selection text from the Markdown source used to render clipboard HTML. Plain-text copies omit inline formatting delimiters, added code fences, and Markdown escapes while retaining list and table structure. Rich-text pastes continue to preserve formatting through HTML.\n\n## Testing\n\nUpdate clipboard and transcript selection tests to verify literal text alongside rich HTML, including lists, inline code, paths with Markdown punctuation, hard breaks, streamed code blocks, and tables across layout widths.\n\nGitOrigin-RevId: 980ee2ed0b0e201b581a3a301fa04d796c65af2e",
+            "url": "https://github.com/openai/codex/commit/f5a2272c6cb6d22635b7bd58b9a2f9ab3c1ca683"
+          },
+          {
+            "sha": "be48ae396e57621cee374423a19c2f427e1b4373",
+            "title": "Account for JSON overhead when truncating MCP tool results (#50470)",
+            "message": "Account for JSON overhead when truncating MCP tool results (#50470)\n\n## Why\n\nTruncating the preview alone can leave the serialized MCP tool result above its byte budget because JSON escaping and the result wrapper add bytes.\n\n## What changed\n\nMeasure the complete serialized replacement and progressively reduce the preview budget until the result fits or the preview is empty.\n\n## Testing\n\nStrengthen the regression test with quotes, backslashes, and newlines. Assert that the serialized result fits within the 1,024-byte budget and that truncating it again returns the existing result unchanged.\n\nGitOrigin-RevId: ebd97b1a6ca71343941a96e472cb313028ac680c",
+            "url": "https://github.com/openai/codex/commit/be48ae396e57621cee374423a19c2f427e1b4373"
+          },
+          {
+            "sha": "635a0c0b1353e22c8783ef15652c3985078cb2c5",
+            "title": "Release 0.162.0-alpha.9",
+            "message": "Release 0.162.0-alpha.9",
+            "url": "https://github.com/openai/codex/commit/635a0c0b1353e22c8783ef15652c3985078cb2c5"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.8",
+          "head": "rust-v0.162.0-alpha.9",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.8...rust-v0.162.0-alpha.9",
+          "status": "diverged",
+          "total": 19,
+          "behind": 1,
+          "complete": true,
+          "fetched": 19
+        },
+        "comparisonError": null
+      }
     }
-  ]
+  ],
+  "releaseRequests": {
+    "blockedUntil": 0,
+    "retryByTag": {}
+  }
 }

@@ -16,6 +16,8 @@ Service Worker caches a self-contained shell within `/codex/`. IndexedDB and Cac
 
 Browser clearing/uninstallation or storage eviction can remove data; an external backup remains necessary. Offline while open: countdowns and due notices work. An offline closed browser or powered-off device cannot guarantee exact alarms. Arrival asks for confirmation and never refills quota. Historical forecasts never become exact scheduled resets.
 
+Codex release details retain the full authored GitHub body. A version-only prerelease shows actual commits from the previous applicable tag, with explicit divergence and coverage information, original text and source links. Notes are stored in IndexedDB and included in backup merges; feed refresh cannot erase them. The collector preloads the latest release, earlier releases are fetched on demand, and GitHub backoff survives browser or collector restart. The renderer escapes source content and does not execute source HTML or fetch embedded images.
+
 ## Hosting and the push backend
 
 GitHub Pages serves the PWA and a retained public snapshot. The workflow reads the three official feeds and appends observations to `public/snapshot.json`. Scheduled runs may be delayed by GitHub; the UI shows source timestamps rather than promising continuous live updates.
