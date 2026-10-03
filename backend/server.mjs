@@ -7,6 +7,7 @@ import {Ledger} from './ledger.mjs';
 import {newVapid,subscription,sendPush} from './push.mjs';
 import {readDirectFeeds,FEEDS} from '../public/shared/direct-feeds.mjs';
 import {officialPlans,reconcilePlans} from '../public/shared/domain.mjs';
+import {WindowsUsageReader,localUsageAllowed} from './windows-usage.mjs';
 const root=path.resolve(fileURLToPath(new URL('..',import.meta.url))),config=JSON.parse(await fs.readFile(path.join(root,'runtime.json'),'utf8'));
 const staticDir=path.join(root,process.env.RADAR_SERVE_BUILD==='1'?'dist':'public');
 const runtime=process.env.RADAR_DATA_DIR||path.join(root,'.runtime');await fs.mkdir(runtime,{recursive:true});
@@ -20,8 +21,15 @@ async function refresh(){if(refreshing)return;refreshing=true;try{const old=ledg
 async function flush(){if(flushing)return;flushing=true;try{ledger.schedule();for(const row of ledger.jobs()){try{const n=JSON.parse(row.payload);const payload={web_push:8030,notification:{title:n.title,body:n.body,navigate:`${clientOrigin}/codex/#inbox`,tag:`radar:${n.planId||n.id}`,icon:`${clientOrigin}/codex/icon-512.png`,silent:false},radar:{...n,deviceCursor:row.seq}};await sendPush(JSON.parse(row.subscription),payload,vapid);ledger.success(row)}catch(e){ledger.failure(row,e)}}}finally{flushing=false}}
 const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.webmanifest':'application/manifest+json','.png':'image/png','.svg':'image/svg+xml'};
 const rates=new Map();
+const windowsUsage = new WindowsUsageReader();
 const server=http.createServer(async(req,res)=>{const origin=req.headers.origin;if(origin&&origins.has(origin)){res.setHeader('Access-Control-Allow-Origin',origin);res.setHeader('Vary','Origin');res.setHeader('Access-Control-Allow-Headers','Authorization, Content-Type');res.setHeader('Access-Control-Allow-Methods','GET,POST,DELETE,OPTIONS')}res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','no-referrer');const json=(status,value)=>{res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(value))};
  try{const u=new URL(req.url,'http://localhost');if(req.method==='OPTIONS'){res.writeHead(origins.has(origin)?204:403);res.end();return}if(u.pathname.startsWith('/api/')){
+ if(u.pathname==='/api/windows-usage'){
+   res.removeHeader('Access-Control-Allow-Origin');
+   if(!localUsageAllowed(req,config))return json(403,{error:'Local usage access refused'});
+   if(req.method!=='GET')return json(405,{error:'Method not allowed'});
+   return json(200,await windowsUsage.read());
+ }
  if(origin&&!origins.has(origin))return json(403,{error:'Origin refused'});
  const key=req.socket.remoteAddress,bucket=rates.get(key)||{start:Date.now(),count:0};if(Date.now()-bucket.start>60000){bucket.start=Date.now();bucket.count=0}bucket.count++;rates.set(key,bucket);if(bucket.count>120)return json(429,{error:'Rate limit'});
  if(req.method==='GET'&&u.pathname==='/api/config')return json(200,{publicKey:vapid.publicKey,status:'running',lastRefreshAt:lastRefresh?new Date(lastRefresh).toISOString():null});
@@ -38,7 +46,7 @@ const server=http.createServer(async(req,res)=>{const origin=req.headers.origin;
  if(req.method!=='GET'&&req.method!=='HEAD')return json(405,{error:'Method not allowed'});
  if(u.pathname==='/'){res.writeHead(302,{Location:'/codex/'});res.end();return}if(!u.pathname.startsWith('/codex/'))return json(404,{error:'Not found'});
  const relative=decodeURIComponent(u.pathname.slice(7))||'index.html',file=path.resolve(staticDir,relative);if(!file.startsWith(staticDir+path.sep))return json(403,{error:'Forbidden'});
- let body;if(relative==='config.json')body=Buffer.from(JSON.stringify({version:'0.1.0',backendUrl:`http://127.0.0.1:${config.port}`,backendStatus:'local-running'}));else body=await fs.readFile(file);
+ let body;if(relative==='config.json')body=Buffer.from(JSON.stringify({version:'0.1.2',backendUrl:`http://127.0.0.1:${config.port}`,backendStatus:'local-running'}));else body=await fs.readFile(file);
  res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream','Cache-Control':relative==='sw.js'?'no-cache':'no-cache','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'"});res.end(req.method==='HEAD'?undefined:body);
  }catch(e){json(e.code==='ENOENT'?404:400,{error:e.message==='Body too large'?'Body too large':'Invalid request'})}});
 server.on('error',e=>{console.error(`Server refused port ${config.port}: ${e.code}`);clearInterval(scheduler);clearInterval(collector);ledger.close();process.exit(1)});

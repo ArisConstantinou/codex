@@ -1,10 +1,12 @@
 import {mutate,read,write,mergeById} from './shared/storage.mjs';
-const CACHE='reset-radar-codex-shell-e37d95fe595de016';
-const FILES=['./shared/day-usage.mjs','./shared/usage-file.mjs','./shared/usage-view.mjs','./','./index.html','./boot.mjs','./app.mjs','./styles.css','./compass.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./config.json','./history-seed.json','./shared/time.mjs','./shared/core.mjs','./shared/domain.mjs','./shared/storage.mjs','./shared/wait.mjs','./shared/wait-view.mjs','./shared/radar-motion.mjs','./shared/release-notes.mjs','./shared/release-view.mjs'];
+const CACHE='reset-radar-codex-shell-2ebc6caf7e93eff8';
+const FILES=['./shared/local-usage.mjs','./shared/day-usage.mjs','./shared/usage-file.mjs','./shared/usage-view.mjs','./','./index.html','./boot.mjs','./app.mjs','./styles.css','./compass.css','./manifest.webmanifest','./icon-192.png','./icon-512.png','./config.json','./history-seed.json','./shared/time.mjs','./shared/core.mjs','./shared/domain.mjs','./shared/storage.mjs','./shared/wait.mjs','./shared/wait-view.mjs','./shared/radar-motion.mjs','./shared/release-notes.mjs','./shared/release-view.mjs'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES.map(file=>new Request(new URL(file,self.location),{cache:'reload'}))))));
 self.addEventListener('message',e=>{if(e.data?.type==='ACTIVATE')self.skipWaiting()});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{await Promise.all((await caches.keys()).filter(k=>k.startsWith('reset-radar-codex-shell-')&&k!==CACHE).map(k=>caches.delete(k)));await self.clients.claim()})()));
-self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==self.location.origin||!u.pathname.startsWith('/codex/'))return;
+self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==self.location.origin)return;
+ if(u.pathname==='/api/windows-usage'){e.respondWith(fetch(e.request,{cache:'no-store'}));return}
+ if(!u.pathname.startsWith('/codex/'))return;
  if(e.request.mode==='navigate'){e.respondWith(fetch(e.request).catch(async()=>{const c=await caches.open(CACHE);return c.match(new URL('./index.html',self.location).href)}));return}
  e.respondWith((async()=>{const c=await caches.open(CACHE);if(u.pathname.endsWith('/config.json')){try{const r=await fetch(e.request);if(r.ok)await c.put(e.request,r.clone());return r}catch{return c.match(e.request)}}let saved=await c.match(e.request);if(!saved&&!u.search){const versioned=new URL(u);versioned.searchParams.set('v',CACHE.slice('reset-radar-codex-shell-'.length));saved=await c.match(versioned.href)}return saved||fetch(e.request)})());
 });
