@@ -1,0 +1,1 @@
+export function safeLink(value) {try {const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&['x.com','twitter.com','openai.com','developers.openai.com','learn.chatgpt.com','status.openai.com','github.com'].includes(u.hostname)&&(u.hostname!=='github.com'||u.pathname.startsWith('/openai/codex/'))?u.href:null;}catch{return null;}}
