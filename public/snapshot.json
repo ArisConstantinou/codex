@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-04T08:22:00.901Z",
+  "generatedAt": "2026-10-04T14:13:28.141Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -3179,7 +3179,7 @@
         "title": "0.162.0-alpha.12",
         "body": "Release 0.162.0-alpha.12\n\n",
         "authored": false,
-        "fetchedAt": "2026-10-04T08:22:00.904Z",
+        "fetchedAt": "2026-10-04T14:13:28.142Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.12",
         "publishedAt": "2026-10-04T05:48:25Z",
         "commits": [
@@ -3270,7 +3270,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-04T08:22:00.494Z",
+      "lastSuccessAt": "2026-10-04T14:13:27.822Z",
       "error": null,
       "count": 150
     },
@@ -3279,7 +3279,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-04T08:22:00.494Z",
+      "lastSuccessAt": "2026-10-04T14:13:27.822Z",
       "error": null,
       "count": 10
     },
@@ -3288,7 +3288,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-04T08:22:00.494Z",
+      "lastSuccessAt": "2026-10-04T14:13:27.822Z",
       "error": null,
       "count": 25
     }
@@ -8085,6 +8085,100 @@
         "body": "Release 0.162.0-alpha.12\n\n",
         "authored": false,
         "fetchedAt": "2026-10-04T08:22:00.904Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.12",
+        "publishedAt": "2026-10-04T05:48:25Z",
+        "commits": [
+          {
+            "sha": "b172810921f89847cd310ecc496f9c901760e933",
+            "title": "Let the transport create the Windows remote-control socket directory (#50700)",
+            "message": "Let the transport create the Windows remote-control socket directory (#50700)\n\n## Why\n\nForeground remote control on Windows should let the transport create its socket parent with a protected DACL instead of inheriting the broader ACL from a temporary directory.\n\n## What changed\n\nUse `codex-remote-control/rc-<pid>.sock` under `std::env::temp_dir()` on Windows, leaving parent directory creation to the transport. Keep the existing temporary socket directory behavior on other platforms.\n\nGitOrigin-RevId: 6482ed0fc4ebc6b0e5de4e1d0e13adc93afa56d1",
+            "url": "https://github.com/openai/codex/commit/b172810921f89847cd310ecc496f9c901760e933"
+          },
+          {
+            "sha": "447eac3b81183b32c1a09f5fba9617abfacbebe3",
+            "title": "Decode Windows Terminal's mapped Shift+Enter sequence (#50720)",
+            "message": "Decode Windows Terminal's mapped Shift+Enter sequence (#50720)\n\n## Why\n\nWindows Terminal's `sendInput` mapping delivers `ESC[13;2u` as individual console key events. Decode it as `Shift+Enter` so the mapping inserts a newline in the composer.\n\n## What changed\n\n- Wrap the Windows event stream with a decoder for the complete Escape-prefixed sequence, including interleaved key releases.\n- Use a fixed 50 ms deadline for partial sequences and replay incomplete or mismatched input unchanged. Preserve literal text, paste events, and native key events.\n- Update the `crossterm` revision and dependency lockfiles.\n\n## Testing\n\nAdd tests for repeated and fragmented mappings, deadline handling, unchanged input, error and end-of-stream replay, and composer newline rendering with a snapshot.\n\nGitOrigin-RevId: 95ab39960510d71322824c63817710633a2fda23",
+            "url": "https://github.com/openai/codex/commit/447eac3b81183b32c1a09f5fba9617abfacbebe3"
+          },
+          {
+            "sha": "3e238776e857eccd3bde6bff3026e2e9798f6524",
+            "title": "Show model and reasoning effort near the top of task details (#50727)",
+            "message": "Show model and reasoning effort near the top of task details (#50727)\n\n## What changed\n\n- Display reasoning effort alongside the model in the agents overview, using `Unknown` when unavailable.\n- Place model, reasoning, project, and usage information before attention details, activity, and the last message.\n- Truncate long model and reasoning values with an ellipsis to keep each on one line.\n\n## Testing\n\nUpdate overview snapshots for the new layout and extend fixtures to cover a known model and long model and custom reasoning values.\n\nGitOrigin-RevId: 1f36e5e1e0ccf09a851f8982bbbe4fbc7d9c7461",
+            "url": "https://github.com/openai/codex/commit/3e238776e857eccd3bde6bff3026e2e9798f6524"
+          },
+          {
+            "sha": "550eb50545a78468a09ce86b82426338640ef22d",
+            "title": "Keep environment-backed tools exposed across readiness changes (#50741)",
+            "message": "Keep environment-backed tools exposed across readiness changes (#50741)\n\n## Why\n\nEnvironment readiness previously changed which tools and command parameters were advertised to the model, even when the selected environments stayed the same.\n\n## What changed\n\n- Keep enabled command, patch, image, and permission tools exposed when environments are absent, starting, or failed.\n- Return a consistent message asking the model to wait when no usable execution environment is available, while preserving distinct errors for unknown environment IDs.\n- Derive environment selectors from all selected environments rather than only ready ones.\n- Always advertise `exec_command`'s `shell` and `login` parameters while continuing to enforce login policy at execution time.\n\n## Testing\n\nExpand integration coverage for empty, pending, failed, ready, and recovered environments, including stable command parameters and login-policy rejection. Update subagent and skill-catalog snapshots, with separate Windows expectations.\n\nGitOrigin-RevId: bb08084066896a9f14b3b568c081c3eaac981db7",
+            "url": "https://github.com/openai/codex/commit/550eb50545a78468a09ce86b82426338640ef22d"
+          },
+          {
+            "sha": "cd7d9e128cc53a8cc3d510772721ccd897b2c366",
+            "title": "Show unavailable slash commands when searched in side conversations (#50756)",
+            "message": "Show unavailable slash commands when searched in side conversations (#50756)\n\n## Why\n\nSide conversations hide unavailable slash commands, leaving users without an explanation when searching for a known command.\n\n## What changed\n\n- Show matching unavailable commands as disabled rows with the reason `not available in a side conversation`. For example, `/arch` now shows a disabled `/archive` entry. Keep these commands hidden from the unfiltered `/` menu.\n- Rank available matches first and skip disabled rows during keyboard selection and completion.\n- Prevent `Tab` from queuing input when only disabled matches are visible, and insert `/` normally when no selectable command is present.\n\n## Testing\n\nAdd a rendering snapshot and regression tests for unavailable command discovery, navigation, available command completion and queuing, blocked queuing of unavailable matches, and slash insertion.\n\nGitOrigin-RevId: 7160b308ca57a24a5dcb6e2686b5248a8eb4b6a7",
+            "url": "https://github.com/openai/codex/commit/cd7d9e128cc53a8cc3d510772721ccd897b2c366"
+          },
+          {
+            "sha": "dde5f8c5ae9b644c6882b3a48581ac317255d597",
+            "title": "Allow `/archive` while a turn is running (#50764)",
+            "message": "Allow `/archive` while a turn is running (#50764)\n\n## Why\n\n`/archive` was disabled during a running turn, preventing users from archiving the current session until the turn ended.\n\n## What changed\n\nEnable `/archive` during a running turn and warn in the confirmation dialog that archiving will stop the current turn. Cancelling the dialog leaves the turn running.\n\n## Testing\n\nExtend confirmation tests to cover both idle and running sessions, add a snapshot of the running-turn warning, and verify that cancellation leaves the task running without emitting archive events or operations.\n\nGitOrigin-RevId: c7c530aa671b5f04e5dc2a637e3d27a81d98d8bf",
+            "url": "https://github.com/openai/codex/commit/dde5f8c5ae9b644c6882b3a48581ac317255d597"
+          },
+          {
+            "sha": "f365d5754bb643983079676c29e8f7562399019e",
+            "title": "Restrict TUI MCP startup notifications to owned threads (#50781)",
+            "message": "Restrict TUI MCP startup notifications to owned threads (#50781)\n\n## Why\n\nMCP startup notifications from unrelated threads could create TUI event channels, allowing subsequent approval requests from those threads to appear in the current session.\n\n## What changed\n\nCheck the parent of an untracked subagent before accepting its MCP startup notifications. Read thread metadata with bounded retries for threads that are not yet found or loaded, and ignore notifications unless the parent belongs to the TUI.\n\nShare thread ownership checks across notification and approval routing, including side threads.\n\n## Testing\n\nExtend approval-routing coverage to verify that owned subagent approvals are preserved both before thread-start notifications and after MCP startup notifications, while unrelated threads do not create event channels or display approval prompts.\n\nGitOrigin-RevId: 6f78f237f7441aadf10b491ed191357df75c3a6a",
+            "url": "https://github.com/openai/codex/commit/f365d5754bb643983079676c29e8f7562399019e"
+          },
+          {
+            "sha": "d0759639f20af955a5c6447f4683e99bf42ab6cf",
+            "title": "Retry Windows daemon release publication on transient file locks (#50782)",
+            "message": "Retry Windows daemon release publication on transient file locks (#50782)\n\n## Why\n\nExecutable scanners can briefly hold newly staged files without delete sharing, causing the rename that publishes a managed daemon release to fail on Windows.\n\n## What changed\n\nRetry publication on permission-denied or sharing-violation errors at 50 ms intervals, up to 100 retries. Report the staging and release paths if publication fails.\n\n## Testing\n\nAdd a Windows test that holds the staging directory open without delete sharing, releases the handle after a delay, and verifies that publication succeeds with the payload intact.\n\nGitOrigin-RevId: 4fbd50934ec8937d3b440d38203a2cb7356a316d",
+            "url": "https://github.com/openai/codex/commit/d0759639f20af955a5c6447f4683e99bf42ab6cf"
+          },
+          {
+            "sha": "acf9818faef932ad0b26049c6f7f8b1acd94149b",
+            "title": "Remember Command Center grouping across launches (#50786)",
+            "message": "Remember Command Center grouping across launches (#50786)\n\n## Why\n\nCommand Center previously reset to project grouping on startup, losing the user's selected grouping.\n\n## What changed\n\nSave grouping changes to `tui.agents_overview_grouping` in the client’s user configuration and restore the saved choice at startup. Support `project`, `status`, and `model`, with `project` as the default. Report save failures in Command Center while keeping the selected grouping active.\n\n## Testing\n\nAdd tests for cycling through and persisting all grouping modes, preserving unrelated settings in a custom configuration file, displaying save errors, and restoring saved grouping during startup.\n\nGitOrigin-RevId: fd56dfecb4b79cfa8439f54420ce58cc0ed66ec7",
+            "url": "https://github.com/openai/codex/commit/acf9818faef932ad0b26049c6f7f8b1acd94149b"
+          },
+          {
+            "sha": "b8dceb0d4f29e49e73daa08f57fcf5181186f354",
+            "title": "Open slash commands from empty drafts in Vim Normal mode (#50788)",
+            "message": "Open slash commands from empty drafts in Vim Normal mode (#50788)\n\n## Why\n\nPressing `/` in Vim Normal mode starts a composer search, even when the draft is empty. Allow this key to open slash commands directly on an empty draft.\n\n## What changed\n\nWhen slash commands are enabled, a standalone `/` on an empty draft switches to Insert mode, inserts `/`, and opens command completion. Preserve Vim search behavior for nonempty drafts, `?`, and pending operators.\n\n## Testing\n\nAdd a snapshot test for the Insert mode transition and command picker. Exercise Vim slash-command entry in the transcript overlay test across terminal sizes, and extend command sparkle coverage to Vim mode.\n\nGitOrigin-RevId: 806c2f6b841190ccdc1a258f88dfa590773ba33a",
+            "url": "https://github.com/openai/codex/commit/b8dceb0d4f29e49e73daa08f57fcf5181186f354"
+          },
+          {
+            "sha": "a56c8b4b96bd806cd45bd044b6e73ac54d17d0b3",
+            "title": "Release 0.162.0-alpha.12",
+            "message": "Release 0.162.0-alpha.12",
+            "url": "https://github.com/openai/codex/commit/a56c8b4b96bd806cd45bd044b6e73ac54d17d0b3"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.11",
+          "head": "rust-v0.162.0-alpha.12",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.11...rust-v0.162.0-alpha.12",
+          "status": "diverged",
+          "total": 11,
+          "behind": 1,
+          "complete": true,
+          "fetched": 11
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.12:2026-10-04T14:13:28.141Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-04T14:13:28.141Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.12",
+        "title": "0.162.0-alpha.12",
+        "body": "Release 0.162.0-alpha.12\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-04T14:13:28.142Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.12",
         "publishedAt": "2026-10-04T05:48:25Z",
         "commits": [
