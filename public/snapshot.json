@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-04T21:39:07.834Z",
+  "generatedAt": "2026-10-05T00:14:27.987Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -3283,7 +3283,7 @@
         "title": "0.162.0-alpha.13",
         "body": "Release 0.162.0-alpha.13\n\n",
         "authored": false,
-        "fetchedAt": "2026-10-04T21:39:07.837Z",
+        "fetchedAt": "2026-10-05T00:14:27.990Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.13",
         "publishedAt": "2026-10-04T15:42:32Z",
         "commits": [
@@ -3344,7 +3344,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-04T21:39:07.494Z",
+      "lastSuccessAt": "2026-10-05T00:14:27.421Z",
       "error": null,
       "count": 150
     },
@@ -3353,7 +3353,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-04T21:39:07.494Z",
+      "lastSuccessAt": "2026-10-05T00:14:27.421Z",
       "error": null,
       "count": 10
     },
@@ -3362,7 +3362,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-04T21:39:07.494Z",
+      "lastSuccessAt": "2026-10-05T00:14:27.421Z",
       "error": null,
       "count": 25
     }
@@ -8490,6 +8490,70 @@
         "body": "Release 0.162.0-alpha.13\n\n",
         "authored": false,
         "fetchedAt": "2026-10-04T21:39:07.837Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.13",
+        "publishedAt": "2026-10-04T15:42:32Z",
+        "commits": [
+          {
+            "sha": "b989f795b11ad4897b6acb7c1b9b5cc202782fd6",
+            "title": "Fall back to mklink when Windows daemon junction updates are denied (#50802)",
+            "message": "Fall back to mklink when Windows daemon junction updates are denied (#50802)\n\n## Why\n\nSome Windows policies deny in-process reparse-point mutation while allowing the system junction creator, preventing managed daemon release selection.\n\n## What changed\n\nFall back to `cmd.exe` with `mklink /J` when native junction creation or retargeting returns `PermissionDenied`. Pass quoted paths through environment variables and disable delayed expansion to handle shell metacharacters.\n\nCreate the replacement junction before moving the existing `current` junction aside, and attempt to restore the previous junction if installation fails. Preserve it for recovery if restoration also fails.\n\n## Testing\n\nExtend the Windows junction test to cover fallback creation, native retargeting, and fallback replacement under a path containing spaces, `&`, `%`, and `!`, while verifying that no standalone CLI installation is created.\n\nGitOrigin-RevId: 039ee850f8c788f44f08116614ca3927e3e9952f",
+            "url": "https://github.com/openai/codex/commit/b989f795b11ad4897b6acb7c1b9b5cc202782fd6"
+          },
+          {
+            "sha": "8f82b8a31cfdf690479067a179eba2c761102643",
+            "title": "Use the managed daemon for eligible remote-control launches (#50803)",
+            "message": "Use the managed daemon for eligible remote-control launches (#50803)\n\n## What changed\n\nMake plain `codex remote-control` start or reuse the managed daemon and enable remote control when daemon auto-start is enabled and the environment is eligible. Fall back to the foreground server when no managed backend is available or Windows restricts detached launch.\n\nAdd `codex remote-control --no-daemon` to explicitly run the foreground server, and honor the top-level `--no-daemon` flag. Reject this flag with `start`, `stop`, or `pair`. Keep `--json` and launches with configuration overrides or unsupported environments on the foreground path.\n\nGitOrigin-RevId: cb28ae3f6074993b748660972c3cb7cbf6612c2f",
+            "url": "https://github.com/openai/codex/commit/8f82b8a31cfdf690479067a179eba2c761102643"
+          },
+          {
+            "sha": "ab45264919aaeb8a421cc156f1a5459ef9d60b72",
+            "title": "Preserve review lifecycle ordering on failure (#50804)",
+            "message": "Preserve review lifecycle ordering on failure (#50804)\n\n## Why\n\nA review can fail before the UI receives the event that enters review mode. Failed-turn completion also needs to preserve the running indicator when a queued `/review` has already been submitted and is awaiting startup.\n\n## What changed\n\n- Emit the review-entry lifecycle before starting the review task, after aborting existing tasks and clearing connector selection.\n- When a live failed-turn completion repeats an already handled error, refresh task state only if no user turn is pending startup, and continue processing queued input.\n\n## Testing\n\nAdd regression tests for lifecycle ordering on a server-overload response and for preserving the running indicator while a queued review awaits startup after a failed turn.\n\nGitOrigin-RevId: 0f91d3d1a1a983542c54c2686630de9c232321b1",
+            "url": "https://github.com/openai/codex/commit/ab45264919aaeb8a421cc156f1a5459ef9d60b72"
+          },
+          {
+            "sha": "e57fc9ea5a7ccdf1d45b5c9d50047ebd8e344b05",
+            "title": "Prune TUI snapshots and consolidate behavior tests (#50808)",
+            "message": "Prune TUI snapshots and consolidate behavior tests (#50808)\n\n## What changed\n\n- Remove redundant snapshot fixtures and selected rendering test cases across the TUI.\n- Replace several full-output snapshots with direct assertions on messages, popup state, status indicators, and rendered content.\n- Consolidate slash-command aliases, command-prefix selection, category titles, and hook events into shared test loops.\n- Use shared snapshots for the setup import prompt and paginated transcript overlay across platforms.\n\nGitOrigin-RevId: 461e30ebaf70ba930d91a135d2fc598ee4f04f27",
+            "url": "https://github.com/openai/codex/commit/e57fc9ea5a7ccdf1d45b5c9d50047ebd8e344b05"
+          },
+          {
+            "sha": "afb436df8b70bb5bc57b86d9a3e829968988cd21",
+            "title": "Honor server reasoning summary defaults in new TUI threads (#50811)",
+            "message": "Honor server reasoning summary defaults in new TUI threads (#50811)\n\n## Why\n\nNew embedded TUI threads forced reasoning summaries off when no summary was explicitly configured, overriding the model's default. Client settings could also override the destination server's reasoning summary configuration.\n\n## What changed\n\nUse the same launch override handling for embedded and remote thread starts so server configuration and model defaults determine reasoning summaries. Forward explicit profile and command-line choices for `model_reasoning_summary` and `features.concurrent_reasoning_summaries`, preserving both enabled and disabled values.\n\n## Testing\n\nExtend coverage for model defaults reaching Responses requests, concurrent summary delivery, direct startup, and replacement sessions with profile and command-line overrides.\n\nGitOrigin-RevId: c60e33d077298d7a89d6b95f94b1292c175d6c77",
+            "url": "https://github.com/openai/codex/commit/afb436df8b70bb5bc57b86d9a3e829968988cd21"
+          },
+          {
+            "sha": "edd4147ab85a1e674e8b7002bf8f5e3e3c0715d1",
+            "title": "Release 0.162.0-alpha.13",
+            "message": "Release 0.162.0-alpha.13",
+            "url": "https://github.com/openai/codex/commit/edd4147ab85a1e674e8b7002bf8f5e3e3c0715d1"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.12",
+          "head": "rust-v0.162.0-alpha.13",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.12...rust-v0.162.0-alpha.13",
+          "status": "diverged",
+          "total": 6,
+          "behind": 1,
+          "complete": true,
+          "fetched": 6
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.13:2026-10-05T00:14:27.987Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-05T00:14:27.987Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.13",
+        "title": "0.162.0-alpha.13",
+        "body": "Release 0.162.0-alpha.13\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-05T00:14:27.990Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.13",
         "publishedAt": "2026-10-04T15:42:32Z",
         "commits": [
