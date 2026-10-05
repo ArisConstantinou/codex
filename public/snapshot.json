@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-05T00:14:27.987Z",
+  "generatedAt": "2026-10-05T05:54:52.526Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -3336,6 +3336,80 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.14",
+      "at": "2026-10-05T02:17:14.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.14",
+      "text": "0.162.0-alpha.14. Release 0.162.0-alpha.14",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.14",
+        "title": "0.162.0-alpha.14",
+        "body": "Release 0.162.0-alpha.14\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-05T05:54:52.529Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.14",
+        "publishedAt": "2026-10-05T02:05:59Z",
+        "commits": [
+          {
+            "sha": "c2f7fe89d87ce853900d0b5cb1f5dc4863e44d73",
+            "title": "Use server model defaults for connected TUI fresh starts (#50913)",
+            "message": "Use server model defaults for connected TUI fresh starts (#50913)\n\n## Why\n\nFresh starts connected to an app server can bootstrap with stale client model settings before reading the server configuration. An empty model catalog can also prevent startup even when managed new-thread defaults provide a model.\n\n## What changed\n\n- Read server configuration before model bootstrap for fresh starts using a local daemon or remote server without an explicit profile.\n- Preserve explicit model and reasoning-effort overrides, clear implicit client settings when `config/read` is unsupported, and allow managed new-thread defaults to supply a model when the catalog is empty.\n- Use the launch directory for local daemon configuration reads and the server directory for remote reads.\n\n## Testing\n\nUpdate startup-default tests to cover managed model selection with an empty catalog. Strengthen the reconnect test with a stale client model and an assertion that `config/read` uses the server directory.\n\nGitOrigin-RevId: 8fe1485c6e66c8d46560b34d904ce1724458993a",
+            "url": "https://github.com/openai/codex/commit/c2f7fe89d87ce853900d0b5cb1f5dc4863e44d73"
+          },
+          {
+            "sha": "de3721a7be07054c8c2a41102b5a501f34155361",
+            "title": "Recover malformed Windows deny-read ACL state safely (#50940)",
+            "message": "Recover malformed Windows deny-read ACL state safely (#50940)\n\n## Why\n\nMalformed `deny_read_acl_state.json` previously caused deny-read ACL reconciliation to fail. Recovery must restore bookkeeping without removing unknown existing restrictions or modifying a linked file's contents.\n\n## What changed\n\n- Retry malformed reads for up to two seconds, then rebuild bookkeeping only after excluding active writers and successfully applying current deny-read ACLs. Preserve unknown historical denies and continue propagating I/O errors.\n- Validate the opened state file before reading or writing, rejecting reparse points and files with multiple hard links.\n- Write state in place without truncating before validation, preserving file identity and permissions. Retry sharing violations during writes while preventing replacement through delete access.\n\n## Testing\n\nAdd Windows tests for corrupt-state recovery, linked-file rejection, concurrent writer and delete-handle behavior, file identity and ACL preservation, and subsequent permission-profile changes. Extend the elevated sandbox integration test to verify that denied reads remain blocked after recovery while allowed writes and deletes succeed.\n\nGitOrigin-RevId: 4aca32df00d015df3763fdc447ffdfbe3fd6cec0",
+            "url": "https://github.com/openai/codex/commit/de3721a7be07054c8c2a41102b5a501f34155361"
+          },
+          {
+            "sha": "335c7f8ecab29c4462a553bbf174276d2c67a766",
+            "title": "Gate stable environment tool exposure behind a feature flag (#50962)",
+            "message": "Gate stable environment tool exposure behind a feature flag (#50962)\n\n## What changed\n\nAdd the default-off `stable_environment_tools` feature flag. When enabled, advertise environment-backed tools before an executor is ready, keep environment selectors stable as readiness changes, and include the `shell` and `login` parameters. Execution still requires a usable environment and its policy.\n\nWhen disabled, expose environment-backed tools only when a usable environment exists, derive selectors from usable environments, and condition shell parameters on the execution configuration. Restore tool-specific unavailable-environment errors and skip the environment readiness check for `write_stdin`.\n\n## Testing\n\nParameterize the empty-environment tool availability test for both flag states, check that commands require a ready transport by default, and explicitly opt tests that rely on stable tool exposure into the feature.\n\nGitOrigin-RevId: 68c6240fb3adf85d7f9b407804d4823c515abfdc",
+            "url": "https://github.com/openai/codex/commit/335c7f8ecab29c4462a553bbf174276d2c67a766"
+          },
+          {
+            "sha": "4ad985e2caaf877b96dafd8138dae2def467e01e",
+            "title": "Track inference tool changes in turn analytics (#50964)",
+            "message": "Track inference tool changes in turn analytics (#50964)\n\n## What changed\n\nAdd `tools_change_count` to turn profiles and turn analytics events. Compare the full model-visible tool list before each sampling request, retaining the previous list across turns and connection resets. The first list establishes a baseline; subsequent changes increment the current turn's count.\n\n## Testing\n\nAdd coverage for schema changes, tool additions, ordering changes, empty lists, and tracking across sessions and transport fallback. Extend the turn event serialization test to include `tools_change_count`.\n\nGitOrigin-RevId: 44a15c42dc7d0b35c166666faeb9627b718b33dd",
+            "url": "https://github.com/openai/codex/commit/4ad985e2caaf877b96dafd8138dae2def467e01e"
+          },
+          {
+            "sha": "7f892275e31002f0422477c6219189284560e689",
+            "title": "Isolate tracing in the strict third-party tool deferral test (#50977)",
+            "message": "Isolate tracing in the strict third-party tool deferral test (#50977)\n\n## Why\n\nThe warning assertions need tracing callsite interest to remain independent of untraced parallel tests, even when the test runner already owns the global subscriber.\n\n## What changed\n\nRun the test on a current-thread Tokio runtime and capture warnings with a thread-local subscriber and an explicit buffer. Keep a `NoSubscriber` dispatch alive to stabilize callsite interest, and assert the deferral warning and `client_echo` directly against the captured logs.\n\nGitOrigin-RevId: 5bf22b2cbfefcf8f65016d2cc1444112d9f6a6c7",
+            "url": "https://github.com/openai/codex/commit/7f892275e31002f0422477c6219189284560e689"
+          },
+          {
+            "sha": "01c4cd84967d6900adb57335db59d7ca0f85ef3e",
+            "title": "Release 0.162.0-alpha.14",
+            "message": "Release 0.162.0-alpha.14",
+            "url": "https://github.com/openai/codex/commit/01c4cd84967d6900adb57335db59d7ca0f85ef3e"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.13",
+          "head": "rust-v0.162.0-alpha.14",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.13...rust-v0.162.0-alpha.14",
+          "status": "diverged",
+          "total": 6,
+          "behind": 1,
+          "complete": true,
+          "fetched": 6
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -3344,7 +3418,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-05T00:14:27.421Z",
+      "lastSuccessAt": "2026-10-05T05:54:51.996Z",
       "error": null,
       "count": 150
     },
@@ -3353,7 +3427,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-05T00:14:27.421Z",
+      "lastSuccessAt": "2026-10-05T05:54:51.996Z",
       "error": null,
       "count": 10
     },
@@ -3362,7 +3436,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-05T00:14:27.421Z",
+      "lastSuccessAt": "2026-10-05T05:54:51.996Z",
       "error": null,
       "count": 25
     }
@@ -8598,6 +8672,149 @@
           "base": "rust-v0.162.0-alpha.12",
           "head": "rust-v0.162.0-alpha.13",
           "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.12...rust-v0.162.0-alpha.13",
+          "status": "diverged",
+          "total": 6,
+          "behind": 1,
+          "complete": true,
+          "fetched": 6
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.14:2026-10-05T05:54:52.526Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-05T05:54:52.526Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.14",
+        "at": "2026-10-05T02:17:14.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.14",
+        "text": "0.162.0-alpha.14. Release 0.162.0-alpha.14",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.162.0-alpha.14",
+          "title": "0.162.0-alpha.14",
+          "body": "Release 0.162.0-alpha.14\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-05T05:54:52.529Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.14",
+          "publishedAt": "2026-10-05T02:05:59Z",
+          "commits": [
+            {
+              "sha": "c2f7fe89d87ce853900d0b5cb1f5dc4863e44d73",
+              "title": "Use server model defaults for connected TUI fresh starts (#50913)",
+              "message": "Use server model defaults for connected TUI fresh starts (#50913)\n\n## Why\n\nFresh starts connected to an app server can bootstrap with stale client model settings before reading the server configuration. An empty model catalog can also prevent startup even when managed new-thread defaults provide a model.\n\n## What changed\n\n- Read server configuration before model bootstrap for fresh starts using a local daemon or remote server without an explicit profile.\n- Preserve explicit model and reasoning-effort overrides, clear implicit client settings when `config/read` is unsupported, and allow managed new-thread defaults to supply a model when the catalog is empty.\n- Use the launch directory for local daemon configuration reads and the server directory for remote reads.\n\n## Testing\n\nUpdate startup-default tests to cover managed model selection with an empty catalog. Strengthen the reconnect test with a stale client model and an assertion that `config/read` uses the server directory.\n\nGitOrigin-RevId: 8fe1485c6e66c8d46560b34d904ce1724458993a",
+              "url": "https://github.com/openai/codex/commit/c2f7fe89d87ce853900d0b5cb1f5dc4863e44d73"
+            },
+            {
+              "sha": "de3721a7be07054c8c2a41102b5a501f34155361",
+              "title": "Recover malformed Windows deny-read ACL state safely (#50940)",
+              "message": "Recover malformed Windows deny-read ACL state safely (#50940)\n\n## Why\n\nMalformed `deny_read_acl_state.json` previously caused deny-read ACL reconciliation to fail. Recovery must restore bookkeeping without removing unknown existing restrictions or modifying a linked file's contents.\n\n## What changed\n\n- Retry malformed reads for up to two seconds, then rebuild bookkeeping only after excluding active writers and successfully applying current deny-read ACLs. Preserve unknown historical denies and continue propagating I/O errors.\n- Validate the opened state file before reading or writing, rejecting reparse points and files with multiple hard links.\n- Write state in place without truncating before validation, preserving file identity and permissions. Retry sharing violations during writes while preventing replacement through delete access.\n\n## Testing\n\nAdd Windows tests for corrupt-state recovery, linked-file rejection, concurrent writer and delete-handle behavior, file identity and ACL preservation, and subsequent permission-profile changes. Extend the elevated sandbox integration test to verify that denied reads remain blocked after recovery while allowed writes and deletes succeed.\n\nGitOrigin-RevId: 4aca32df00d015df3763fdc447ffdfbe3fd6cec0",
+              "url": "https://github.com/openai/codex/commit/de3721a7be07054c8c2a41102b5a501f34155361"
+            },
+            {
+              "sha": "335c7f8ecab29c4462a553bbf174276d2c67a766",
+              "title": "Gate stable environment tool exposure behind a feature flag (#50962)",
+              "message": "Gate stable environment tool exposure behind a feature flag (#50962)\n\n## What changed\n\nAdd the default-off `stable_environment_tools` feature flag. When enabled, advertise environment-backed tools before an executor is ready, keep environment selectors stable as readiness changes, and include the `shell` and `login` parameters. Execution still requires a usable environment and its policy.\n\nWhen disabled, expose environment-backed tools only when a usable environment exists, derive selectors from usable environments, and condition shell parameters on the execution configuration. Restore tool-specific unavailable-environment errors and skip the environment readiness check for `write_stdin`.\n\n## Testing\n\nParameterize the empty-environment tool availability test for both flag states, check that commands require a ready transport by default, and explicitly opt tests that rely on stable tool exposure into the feature.\n\nGitOrigin-RevId: 68c6240fb3adf85d7f9b407804d4823c515abfdc",
+              "url": "https://github.com/openai/codex/commit/335c7f8ecab29c4462a553bbf174276d2c67a766"
+            },
+            {
+              "sha": "4ad985e2caaf877b96dafd8138dae2def467e01e",
+              "title": "Track inference tool changes in turn analytics (#50964)",
+              "message": "Track inference tool changes in turn analytics (#50964)\n\n## What changed\n\nAdd `tools_change_count` to turn profiles and turn analytics events. Compare the full model-visible tool list before each sampling request, retaining the previous list across turns and connection resets. The first list establishes a baseline; subsequent changes increment the current turn's count.\n\n## Testing\n\nAdd coverage for schema changes, tool additions, ordering changes, empty lists, and tracking across sessions and transport fallback. Extend the turn event serialization test to include `tools_change_count`.\n\nGitOrigin-RevId: 44a15c42dc7d0b35c166666faeb9627b718b33dd",
+              "url": "https://github.com/openai/codex/commit/4ad985e2caaf877b96dafd8138dae2def467e01e"
+            },
+            {
+              "sha": "7f892275e31002f0422477c6219189284560e689",
+              "title": "Isolate tracing in the strict third-party tool deferral test (#50977)",
+              "message": "Isolate tracing in the strict third-party tool deferral test (#50977)\n\n## Why\n\nThe warning assertions need tracing callsite interest to remain independent of untraced parallel tests, even when the test runner already owns the global subscriber.\n\n## What changed\n\nRun the test on a current-thread Tokio runtime and capture warnings with a thread-local subscriber and an explicit buffer. Keep a `NoSubscriber` dispatch alive to stabilize callsite interest, and assert the deferral warning and `client_echo` directly against the captured logs.\n\nGitOrigin-RevId: 5bf22b2cbfefcf8f65016d2cc1444112d9f6a6c7",
+              "url": "https://github.com/openai/codex/commit/7f892275e31002f0422477c6219189284560e689"
+            },
+            {
+              "sha": "01c4cd84967d6900adb57335db59d7ca0f85ef3e",
+              "title": "Release 0.162.0-alpha.14",
+              "message": "Release 0.162.0-alpha.14",
+              "url": "https://github.com/openai/codex/commit/01c4cd84967d6900adb57335db59d7ca0f85ef3e"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.162.0-alpha.13",
+            "head": "rust-v0.162.0-alpha.14",
+            "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.13...rust-v0.162.0-alpha.14",
+            "status": "diverged",
+            "total": 6,
+            "behind": 1,
+            "complete": true,
+            "fetched": 6
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.14:2026-10-05T05:54:52.526Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-05T05:54:52.526Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.14",
+        "title": "0.162.0-alpha.14",
+        "body": "Release 0.162.0-alpha.14\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-05T05:54:52.529Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.14",
+        "publishedAt": "2026-10-05T02:05:59Z",
+        "commits": [
+          {
+            "sha": "c2f7fe89d87ce853900d0b5cb1f5dc4863e44d73",
+            "title": "Use server model defaults for connected TUI fresh starts (#50913)",
+            "message": "Use server model defaults for connected TUI fresh starts (#50913)\n\n## Why\n\nFresh starts connected to an app server can bootstrap with stale client model settings before reading the server configuration. An empty model catalog can also prevent startup even when managed new-thread defaults provide a model.\n\n## What changed\n\n- Read server configuration before model bootstrap for fresh starts using a local daemon or remote server without an explicit profile.\n- Preserve explicit model and reasoning-effort overrides, clear implicit client settings when `config/read` is unsupported, and allow managed new-thread defaults to supply a model when the catalog is empty.\n- Use the launch directory for local daemon configuration reads and the server directory for remote reads.\n\n## Testing\n\nUpdate startup-default tests to cover managed model selection with an empty catalog. Strengthen the reconnect test with a stale client model and an assertion that `config/read` uses the server directory.\n\nGitOrigin-RevId: 8fe1485c6e66c8d46560b34d904ce1724458993a",
+            "url": "https://github.com/openai/codex/commit/c2f7fe89d87ce853900d0b5cb1f5dc4863e44d73"
+          },
+          {
+            "sha": "de3721a7be07054c8c2a41102b5a501f34155361",
+            "title": "Recover malformed Windows deny-read ACL state safely (#50940)",
+            "message": "Recover malformed Windows deny-read ACL state safely (#50940)\n\n## Why\n\nMalformed `deny_read_acl_state.json` previously caused deny-read ACL reconciliation to fail. Recovery must restore bookkeeping without removing unknown existing restrictions or modifying a linked file's contents.\n\n## What changed\n\n- Retry malformed reads for up to two seconds, then rebuild bookkeeping only after excluding active writers and successfully applying current deny-read ACLs. Preserve unknown historical denies and continue propagating I/O errors.\n- Validate the opened state file before reading or writing, rejecting reparse points and files with multiple hard links.\n- Write state in place without truncating before validation, preserving file identity and permissions. Retry sharing violations during writes while preventing replacement through delete access.\n\n## Testing\n\nAdd Windows tests for corrupt-state recovery, linked-file rejection, concurrent writer and delete-handle behavior, file identity and ACL preservation, and subsequent permission-profile changes. Extend the elevated sandbox integration test to verify that denied reads remain blocked after recovery while allowed writes and deletes succeed.\n\nGitOrigin-RevId: 4aca32df00d015df3763fdc447ffdfbe3fd6cec0",
+            "url": "https://github.com/openai/codex/commit/de3721a7be07054c8c2a41102b5a501f34155361"
+          },
+          {
+            "sha": "335c7f8ecab29c4462a553bbf174276d2c67a766",
+            "title": "Gate stable environment tool exposure behind a feature flag (#50962)",
+            "message": "Gate stable environment tool exposure behind a feature flag (#50962)\n\n## What changed\n\nAdd the default-off `stable_environment_tools` feature flag. When enabled, advertise environment-backed tools before an executor is ready, keep environment selectors stable as readiness changes, and include the `shell` and `login` parameters. Execution still requires a usable environment and its policy.\n\nWhen disabled, expose environment-backed tools only when a usable environment exists, derive selectors from usable environments, and condition shell parameters on the execution configuration. Restore tool-specific unavailable-environment errors and skip the environment readiness check for `write_stdin`.\n\n## Testing\n\nParameterize the empty-environment tool availability test for both flag states, check that commands require a ready transport by default, and explicitly opt tests that rely on stable tool exposure into the feature.\n\nGitOrigin-RevId: 68c6240fb3adf85d7f9b407804d4823c515abfdc",
+            "url": "https://github.com/openai/codex/commit/335c7f8ecab29c4462a553bbf174276d2c67a766"
+          },
+          {
+            "sha": "4ad985e2caaf877b96dafd8138dae2def467e01e",
+            "title": "Track inference tool changes in turn analytics (#50964)",
+            "message": "Track inference tool changes in turn analytics (#50964)\n\n## What changed\n\nAdd `tools_change_count` to turn profiles and turn analytics events. Compare the full model-visible tool list before each sampling request, retaining the previous list across turns and connection resets. The first list establishes a baseline; subsequent changes increment the current turn's count.\n\n## Testing\n\nAdd coverage for schema changes, tool additions, ordering changes, empty lists, and tracking across sessions and transport fallback. Extend the turn event serialization test to include `tools_change_count`.\n\nGitOrigin-RevId: 44a15c42dc7d0b35c166666faeb9627b718b33dd",
+            "url": "https://github.com/openai/codex/commit/4ad985e2caaf877b96dafd8138dae2def467e01e"
+          },
+          {
+            "sha": "7f892275e31002f0422477c6219189284560e689",
+            "title": "Isolate tracing in the strict third-party tool deferral test (#50977)",
+            "message": "Isolate tracing in the strict third-party tool deferral test (#50977)\n\n## Why\n\nThe warning assertions need tracing callsite interest to remain independent of untraced parallel tests, even when the test runner already owns the global subscriber.\n\n## What changed\n\nRun the test on a current-thread Tokio runtime and capture warnings with a thread-local subscriber and an explicit buffer. Keep a `NoSubscriber` dispatch alive to stabilize callsite interest, and assert the deferral warning and `client_echo` directly against the captured logs.\n\nGitOrigin-RevId: 5bf22b2cbfefcf8f65016d2cc1444112d9f6a6c7",
+            "url": "https://github.com/openai/codex/commit/7f892275e31002f0422477c6219189284560e689"
+          },
+          {
+            "sha": "01c4cd84967d6900adb57335db59d7ca0f85ef3e",
+            "title": "Release 0.162.0-alpha.14",
+            "message": "Release 0.162.0-alpha.14",
+            "url": "https://github.com/openai/codex/commit/01c4cd84967d6900adb57335db59d7ca0f85ef3e"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.13",
+          "head": "rust-v0.162.0-alpha.14",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.13...rust-v0.162.0-alpha.14",
           "status": "diverged",
           "total": 6,
           "behind": 1,
