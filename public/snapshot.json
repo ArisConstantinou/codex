@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-05T05:54:52.526Z",
+  "generatedAt": "2026-10-05T14:26:45.308Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -3410,6 +3410,133 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/new-chatgpt-ads-format-and-measurement",
+      "at": "2026-10-05T10:00:00.000Z",
+      "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
+      "text": "Building advertising for the way people use AI. OpenAI introduces a new visual ad format in ChatGPT and expands measurement tools, attribution partnerships, and brand suitability for advertisers.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.15",
+      "at": "2026-10-05T13:23:38.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.15",
+      "text": "0.162.0-alpha.15. Release 0.162.0-alpha.15",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.15",
+        "title": "0.162.0-alpha.15",
+        "body": "Release 0.162.0-alpha.15\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-05T14:26:45.310Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.15",
+        "publishedAt": "2026-10-05T13:10:52Z",
+        "commits": [
+          {
+            "sha": "435d1b3f19e20b96dc3a0eb63c73bb7f213d1e27",
+            "title": "Gate Guardian continuation tests on classifier request capture (#51061)",
+            "message": "Gate Guardian continuation tests on classifier request capture (#51061)\n\n## Why\n\nSnapshot classifier requests can arrive out of order, so continuation tests need to keep the next tool blocked until the current tool's classifier request has been captured and checked.\n\n## What changed\n\nGate every mock Guardian review in high-risk review continuation scenarios. Release each review after checking the corresponding classifier request, preserving the ordering needed by the existing assertions.\n\nGitOrigin-RevId: 9e52acd2bb1ce2fb71100fe0e1b92304d29e9634",
+            "url": "https://github.com/openai/codex/commit/435d1b3f19e20b96dc3a0eb63c73bb7f213d1e27"
+          },
+          {
+            "sha": "cacdc4661934c77142738722ffde215e0db3f46e",
+            "title": "Honor prior cancellation before starting Codex delegates (#51063)",
+            "message": "Honor prior cancellation before starting Codex delegates (#51063)\n\n## Why\n\nAn already-cancelled delegate spawn can report a runtime admission or startup error instead of `TurnAborted`, including when runtime shutdown has been requested.\n\n## What changed\n\nCheck the cancellation token before runtime admission and session startup so prior cancellation returns `TurnAborted` immediately after approval-policy validation.\n\n## Testing\n\nExtend the pre-cancelled spawn test to cover both normal operation and requested runtime shutdown, asserting `TurnAborted` within a one-second timeout.\n\nGitOrigin-RevId: 5a25a211acdd5c246a3c638243ccc8b7240fd051",
+            "url": "https://github.com/openai/codex/commit/cacdc4661934c77142738722ffde215e0db3f46e"
+          },
+          {
+            "sha": "c8949e55c28a97eb2770971eb3c6a918bdefd9af",
+            "title": "Ignore stale refresh responses in agents overview tests (#51064)",
+            "message": "Ignore stale refresh responses in agents overview tests (#51064)\n\n## Why\n\nAborting a refresh task cannot retract a response already queued for delivery. The test helper could consume that stale response and return before the replacement refresh completed.\n\n## What changed\n\nMake `finish_overview_refresh` skip responses whose request ID does not match the active refresh. Extend the lifecycle test to queue an invalidated response before removing a task, exercising the wait for the replacement refresh.\n\nGitOrigin-RevId: 97341681682e8dce9a9512fbcc1d5c0351b084f5",
+            "url": "https://github.com/openai/codex/commit/c8949e55c28a97eb2770971eb3c6a918bdefd9af"
+          },
+          {
+            "sha": "315f0efb34880e44b642208b4b2cb289760c7ca1",
+            "title": "Scope Guardian V2 response timing to snapshot sampling (#51065)",
+            "message": "Scope Guardian V2 response timing to snapshot sampling (#51065)\n\n## What changed\n\nMeasure `responses_duration` directly around `sampler.sample()` in the snapshot classification path. Leave it unset for conversation classification instead of timing submission and waiting for the score.\n\nGitOrigin-RevId: 4cfac9db6f19f3c8513d7bf839ea9631d41bf3ac",
+            "url": "https://github.com/openai/codex/commit/315f0efb34880e44b642208b4b2cb289760c7ca1"
+          },
+          {
+            "sha": "39e013c8b7cb6eec46d16ff2b74fac4e22992e8c",
+            "title": "Use issuing-step context for Guardian MCP elicitation reviews (#51067)",
+            "message": "Use issuing-step context for Guardian MCP elicitation reviews (#51067)\n\n## Why\n\nMCP elicitation reviews used turn-start context, which could omit remote environments that became ready before the tool invocation and use stale environment permissions.\n\n## What changed\n\nCapture the issuing step's Guardian review context with each live MCP invocation and reuse it for elicitation reviews. Fall back to turn context when no matching live invocation is available, and preserve the captured context for in-flight actions.\n\n## Testing\n\nExtend the deferred-executor regression test to cover MCP elicitations, checking that Guardian receives the newly ready remote environment and its denied paths, excludes stale local denied paths, and returns the denial to the parent model.\n\nGitOrigin-RevId: 0cc58b8f30543a9af87d53e1a90f574a8e6a2f84",
+            "url": "https://github.com/openai/codex/commit/39e013c8b7cb6eec46d16ff2b74fac4e22992e8c"
+          },
+          {
+            "sha": "823ea830c0fd418b09ff02d36cad9a1fff66465b",
+            "title": "Preserve trusted-tool context in Guardian Decisions requests (#51070)",
+            "message": "Preserve trusted-tool context in Guardian Decisions requests (#51070)\n\n## Why\n\nThe Decisions adapter rejected developer messages, including host-annotated trusted-tool context. Requests containing that context could not be classified.\n\n## What changed\n\nAppend developer text annotated with `TrustedTool::KIND` to the classification rubric, preserving its authority while keeping user evidence in the input messages. Accept only a single text part with a single matching annotation; continue rejecting other developer messages and unsupported evidence.\n\n## Testing\n\nAdd a regression test covering trusted-tool context alongside untrusted user text, plus rejection of incorrect roles, missing or mismatched annotations, multiple annotations or content parts, and image content.\n\nGitOrigin-RevId: 65b6301b2ee1ac54d67275978ccb5e37dcac7c16",
+            "url": "https://github.com/openai/codex/commit/823ea830c0fd418b09ff02d36cad9a1fff66465b"
+          },
+          {
+            "sha": "e620a5e37f5bd1906c957ce4b5b10a4555f42a06",
+            "title": "Release 0.162.0-alpha.15",
+            "message": "Release 0.162.0-alpha.15",
+            "url": "https://github.com/openai/codex/commit/e620a5e37f5bd1906c957ce4b5b10a4555f42a06"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.14",
+          "head": "rust-v0.162.0-alpha.15",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.14...rust-v0.162.0-alpha.15",
+          "status": "diverged",
+          "total": 7,
+          "behind": 1,
+          "complete": true,
+          "fetched": 7
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-status:01M461GYDMCVJJK8330PVCH42C",
+      "at": "2026-10-05T13:04:30.000Z",
+      "url": "https://status.openai.com/incidents/01M461GYDMCVJJK8330PVCH42C",
+      "text": "Issues saving and editing Pages. The issue affecting saving and live editing in Pages has been resolved",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-05T12:44:53.000Z"
+    },
+    {
+      "id": "openai-status:01M45E0JFFJZ6EQ3BWYPW74R2Z",
+      "at": "2026-10-05T09:50:38.000Z",
+      "url": "https://status.openai.com/incidents/01M45E0JFFJZ6EQ3BWYPW74R2Z",
+      "text": "Elevated Work Mode errors. We have mitigated the issue, and are monitoring recovery.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "monitoring",
+      "publishedAt": "2026-10-05T07:03:53.000Z"
     }
   ],
   "sources": {
@@ -3418,7 +3545,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-05T05:54:51.996Z",
+      "lastSuccessAt": "2026-10-05T14:26:44.922Z",
       "error": null,
       "count": 150
     },
@@ -3427,7 +3554,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-05T05:54:51.996Z",
+      "lastSuccessAt": "2026-10-05T14:26:44.922Z",
       "error": null,
       "count": 10
     },
@@ -3436,7 +3563,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-05T05:54:51.996Z",
+      "lastSuccessAt": "2026-10-05T14:26:44.922Z",
       "error": null,
       "count": 25
     }
@@ -8820,6 +8947,223 @@
           "behind": 1,
           "complete": true,
           "fetched": 6
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/new-chatgpt-ads-format-and-measurement:2026-10-05T14:26:45.308Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-05T14:26:45.308Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/new-chatgpt-ads-format-and-measurement",
+        "at": "2026-10-05T10:00:00.000Z",
+        "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
+        "text": "Building advertising for the way people use AI. OpenAI introduces a new visual ad format in ChatGPT and expands measurement tools, attribution partnerships, and brand suitability for advertisers.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.15:2026-10-05T14:26:45.308Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-05T14:26:45.308Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.15",
+        "at": "2026-10-05T13:23:38.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.15",
+        "text": "0.162.0-alpha.15. Release 0.162.0-alpha.15",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.162.0-alpha.15",
+          "title": "0.162.0-alpha.15",
+          "body": "Release 0.162.0-alpha.15\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-05T14:26:45.310Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.15",
+          "publishedAt": "2026-10-05T13:10:52Z",
+          "commits": [
+            {
+              "sha": "435d1b3f19e20b96dc3a0eb63c73bb7f213d1e27",
+              "title": "Gate Guardian continuation tests on classifier request capture (#51061)",
+              "message": "Gate Guardian continuation tests on classifier request capture (#51061)\n\n## Why\n\nSnapshot classifier requests can arrive out of order, so continuation tests need to keep the next tool blocked until the current tool's classifier request has been captured and checked.\n\n## What changed\n\nGate every mock Guardian review in high-risk review continuation scenarios. Release each review after checking the corresponding classifier request, preserving the ordering needed by the existing assertions.\n\nGitOrigin-RevId: 9e52acd2bb1ce2fb71100fe0e1b92304d29e9634",
+              "url": "https://github.com/openai/codex/commit/435d1b3f19e20b96dc3a0eb63c73bb7f213d1e27"
+            },
+            {
+              "sha": "cacdc4661934c77142738722ffde215e0db3f46e",
+              "title": "Honor prior cancellation before starting Codex delegates (#51063)",
+              "message": "Honor prior cancellation before starting Codex delegates (#51063)\n\n## Why\n\nAn already-cancelled delegate spawn can report a runtime admission or startup error instead of `TurnAborted`, including when runtime shutdown has been requested.\n\n## What changed\n\nCheck the cancellation token before runtime admission and session startup so prior cancellation returns `TurnAborted` immediately after approval-policy validation.\n\n## Testing\n\nExtend the pre-cancelled spawn test to cover both normal operation and requested runtime shutdown, asserting `TurnAborted` within a one-second timeout.\n\nGitOrigin-RevId: 5a25a211acdd5c246a3c638243ccc8b7240fd051",
+              "url": "https://github.com/openai/codex/commit/cacdc4661934c77142738722ffde215e0db3f46e"
+            },
+            {
+              "sha": "c8949e55c28a97eb2770971eb3c6a918bdefd9af",
+              "title": "Ignore stale refresh responses in agents overview tests (#51064)",
+              "message": "Ignore stale refresh responses in agents overview tests (#51064)\n\n## Why\n\nAborting a refresh task cannot retract a response already queued for delivery. The test helper could consume that stale response and return before the replacement refresh completed.\n\n## What changed\n\nMake `finish_overview_refresh` skip responses whose request ID does not match the active refresh. Extend the lifecycle test to queue an invalidated response before removing a task, exercising the wait for the replacement refresh.\n\nGitOrigin-RevId: 97341681682e8dce9a9512fbcc1d5c0351b084f5",
+              "url": "https://github.com/openai/codex/commit/c8949e55c28a97eb2770971eb3c6a918bdefd9af"
+            },
+            {
+              "sha": "315f0efb34880e44b642208b4b2cb289760c7ca1",
+              "title": "Scope Guardian V2 response timing to snapshot sampling (#51065)",
+              "message": "Scope Guardian V2 response timing to snapshot sampling (#51065)\n\n## What changed\n\nMeasure `responses_duration` directly around `sampler.sample()` in the snapshot classification path. Leave it unset for conversation classification instead of timing submission and waiting for the score.\n\nGitOrigin-RevId: 4cfac9db6f19f3c8513d7bf839ea9631d41bf3ac",
+              "url": "https://github.com/openai/codex/commit/315f0efb34880e44b642208b4b2cb289760c7ca1"
+            },
+            {
+              "sha": "39e013c8b7cb6eec46d16ff2b74fac4e22992e8c",
+              "title": "Use issuing-step context for Guardian MCP elicitation reviews (#51067)",
+              "message": "Use issuing-step context for Guardian MCP elicitation reviews (#51067)\n\n## Why\n\nMCP elicitation reviews used turn-start context, which could omit remote environments that became ready before the tool invocation and use stale environment permissions.\n\n## What changed\n\nCapture the issuing step's Guardian review context with each live MCP invocation and reuse it for elicitation reviews. Fall back to turn context when no matching live invocation is available, and preserve the captured context for in-flight actions.\n\n## Testing\n\nExtend the deferred-executor regression test to cover MCP elicitations, checking that Guardian receives the newly ready remote environment and its denied paths, excludes stale local denied paths, and returns the denial to the parent model.\n\nGitOrigin-RevId: 0cc58b8f30543a9af87d53e1a90f574a8e6a2f84",
+              "url": "https://github.com/openai/codex/commit/39e013c8b7cb6eec46d16ff2b74fac4e22992e8c"
+            },
+            {
+              "sha": "823ea830c0fd418b09ff02d36cad9a1fff66465b",
+              "title": "Preserve trusted-tool context in Guardian Decisions requests (#51070)",
+              "message": "Preserve trusted-tool context in Guardian Decisions requests (#51070)\n\n## Why\n\nThe Decisions adapter rejected developer messages, including host-annotated trusted-tool context. Requests containing that context could not be classified.\n\n## What changed\n\nAppend developer text annotated with `TrustedTool::KIND` to the classification rubric, preserving its authority while keeping user evidence in the input messages. Accept only a single text part with a single matching annotation; continue rejecting other developer messages and unsupported evidence.\n\n## Testing\n\nAdd a regression test covering trusted-tool context alongside untrusted user text, plus rejection of incorrect roles, missing or mismatched annotations, multiple annotations or content parts, and image content.\n\nGitOrigin-RevId: 65b6301b2ee1ac54d67275978ccb5e37dcac7c16",
+              "url": "https://github.com/openai/codex/commit/823ea830c0fd418b09ff02d36cad9a1fff66465b"
+            },
+            {
+              "sha": "e620a5e37f5bd1906c957ce4b5b10a4555f42a06",
+              "title": "Release 0.162.0-alpha.15",
+              "message": "Release 0.162.0-alpha.15",
+              "url": "https://github.com/openai/codex/commit/e620a5e37f5bd1906c957ce4b5b10a4555f42a06"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.162.0-alpha.14",
+            "head": "rust-v0.162.0-alpha.15",
+            "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.14...rust-v0.162.0-alpha.15",
+            "status": "diverged",
+            "total": 7,
+            "behind": 1,
+            "complete": true,
+            "fetched": 7
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "openai-status:01M461GYDMCVJJK8330PVCH42C:2026-10-05T14:26:45.308Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-05T14:26:45.308Z",
+      "item": {
+        "id": "openai-status:01M461GYDMCVJJK8330PVCH42C",
+        "at": "2026-10-05T13:04:30.000Z",
+        "url": "https://status.openai.com/incidents/01M461GYDMCVJJK8330PVCH42C",
+        "text": "Issues saving and editing Pages. The issue affecting saving and live editing in Pages has been resolved",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-05T12:44:53.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M45E0JFFJZ6EQ3BWYPW74R2Z:2026-10-05T14:26:45.308Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-05T14:26:45.308Z",
+      "item": {
+        "id": "openai-status:01M45E0JFFJZ6EQ3BWYPW74R2Z",
+        "at": "2026-10-05T09:50:38.000Z",
+        "url": "https://status.openai.com/incidents/01M45E0JFFJZ6EQ3BWYPW74R2Z",
+        "text": "Elevated Work Mode errors. We have mitigated the issue, and are monitoring recovery.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "monitoring",
+        "publishedAt": "2026-10-05T07:03:53.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.15:2026-10-05T14:26:45.308Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-05T14:26:45.308Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.15",
+        "title": "0.162.0-alpha.15",
+        "body": "Release 0.162.0-alpha.15\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-05T14:26:45.310Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.15",
+        "publishedAt": "2026-10-05T13:10:52Z",
+        "commits": [
+          {
+            "sha": "435d1b3f19e20b96dc3a0eb63c73bb7f213d1e27",
+            "title": "Gate Guardian continuation tests on classifier request capture (#51061)",
+            "message": "Gate Guardian continuation tests on classifier request capture (#51061)\n\n## Why\n\nSnapshot classifier requests can arrive out of order, so continuation tests need to keep the next tool blocked until the current tool's classifier request has been captured and checked.\n\n## What changed\n\nGate every mock Guardian review in high-risk review continuation scenarios. Release each review after checking the corresponding classifier request, preserving the ordering needed by the existing assertions.\n\nGitOrigin-RevId: 9e52acd2bb1ce2fb71100fe0e1b92304d29e9634",
+            "url": "https://github.com/openai/codex/commit/435d1b3f19e20b96dc3a0eb63c73bb7f213d1e27"
+          },
+          {
+            "sha": "cacdc4661934c77142738722ffde215e0db3f46e",
+            "title": "Honor prior cancellation before starting Codex delegates (#51063)",
+            "message": "Honor prior cancellation before starting Codex delegates (#51063)\n\n## Why\n\nAn already-cancelled delegate spawn can report a runtime admission or startup error instead of `TurnAborted`, including when runtime shutdown has been requested.\n\n## What changed\n\nCheck the cancellation token before runtime admission and session startup so prior cancellation returns `TurnAborted` immediately after approval-policy validation.\n\n## Testing\n\nExtend the pre-cancelled spawn test to cover both normal operation and requested runtime shutdown, asserting `TurnAborted` within a one-second timeout.\n\nGitOrigin-RevId: 5a25a211acdd5c246a3c638243ccc8b7240fd051",
+            "url": "https://github.com/openai/codex/commit/cacdc4661934c77142738722ffde215e0db3f46e"
+          },
+          {
+            "sha": "c8949e55c28a97eb2770971eb3c6a918bdefd9af",
+            "title": "Ignore stale refresh responses in agents overview tests (#51064)",
+            "message": "Ignore stale refresh responses in agents overview tests (#51064)\n\n## Why\n\nAborting a refresh task cannot retract a response already queued for delivery. The test helper could consume that stale response and return before the replacement refresh completed.\n\n## What changed\n\nMake `finish_overview_refresh` skip responses whose request ID does not match the active refresh. Extend the lifecycle test to queue an invalidated response before removing a task, exercising the wait for the replacement refresh.\n\nGitOrigin-RevId: 97341681682e8dce9a9512fbcc1d5c0351b084f5",
+            "url": "https://github.com/openai/codex/commit/c8949e55c28a97eb2770971eb3c6a918bdefd9af"
+          },
+          {
+            "sha": "315f0efb34880e44b642208b4b2cb289760c7ca1",
+            "title": "Scope Guardian V2 response timing to snapshot sampling (#51065)",
+            "message": "Scope Guardian V2 response timing to snapshot sampling (#51065)\n\n## What changed\n\nMeasure `responses_duration` directly around `sampler.sample()` in the snapshot classification path. Leave it unset for conversation classification instead of timing submission and waiting for the score.\n\nGitOrigin-RevId: 4cfac9db6f19f3c8513d7bf839ea9631d41bf3ac",
+            "url": "https://github.com/openai/codex/commit/315f0efb34880e44b642208b4b2cb289760c7ca1"
+          },
+          {
+            "sha": "39e013c8b7cb6eec46d16ff2b74fac4e22992e8c",
+            "title": "Use issuing-step context for Guardian MCP elicitation reviews (#51067)",
+            "message": "Use issuing-step context for Guardian MCP elicitation reviews (#51067)\n\n## Why\n\nMCP elicitation reviews used turn-start context, which could omit remote environments that became ready before the tool invocation and use stale environment permissions.\n\n## What changed\n\nCapture the issuing step's Guardian review context with each live MCP invocation and reuse it for elicitation reviews. Fall back to turn context when no matching live invocation is available, and preserve the captured context for in-flight actions.\n\n## Testing\n\nExtend the deferred-executor regression test to cover MCP elicitations, checking that Guardian receives the newly ready remote environment and its denied paths, excludes stale local denied paths, and returns the denial to the parent model.\n\nGitOrigin-RevId: 0cc58b8f30543a9af87d53e1a90f574a8e6a2f84",
+            "url": "https://github.com/openai/codex/commit/39e013c8b7cb6eec46d16ff2b74fac4e22992e8c"
+          },
+          {
+            "sha": "823ea830c0fd418b09ff02d36cad9a1fff66465b",
+            "title": "Preserve trusted-tool context in Guardian Decisions requests (#51070)",
+            "message": "Preserve trusted-tool context in Guardian Decisions requests (#51070)\n\n## Why\n\nThe Decisions adapter rejected developer messages, including host-annotated trusted-tool context. Requests containing that context could not be classified.\n\n## What changed\n\nAppend developer text annotated with `TrustedTool::KIND` to the classification rubric, preserving its authority while keeping user evidence in the input messages. Accept only a single text part with a single matching annotation; continue rejecting other developer messages and unsupported evidence.\n\n## Testing\n\nAdd a regression test covering trusted-tool context alongside untrusted user text, plus rejection of incorrect roles, missing or mismatched annotations, multiple annotations or content parts, and image content.\n\nGitOrigin-RevId: 65b6301b2ee1ac54d67275978ccb5e37dcac7c16",
+            "url": "https://github.com/openai/codex/commit/823ea830c0fd418b09ff02d36cad9a1fff66465b"
+          },
+          {
+            "sha": "e620a5e37f5bd1906c957ce4b5b10a4555f42a06",
+            "title": "Release 0.162.0-alpha.15",
+            "message": "Release 0.162.0-alpha.15",
+            "url": "https://github.com/openai/codex/commit/e620a5e37f5bd1906c957ce4b5b10a4555f42a06"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.14",
+          "head": "rust-v0.162.0-alpha.15",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.14...rust-v0.162.0-alpha.15",
+          "status": "diverged",
+          "total": 7,
+          "behind": 1,
+          "complete": true,
+          "fetched": 7
         },
         "comparisonError": null
       }
