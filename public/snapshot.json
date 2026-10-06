@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-06T08:55:56.880Z",
+  "generatedAt": "2026-10-06T15:52:53.400Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -3588,7 +3588,7 @@
         "title": "0.162.0-alpha.16",
         "body": "Release 0.162.0-alpha.16\n\n",
         "authored": false,
-        "fetchedAt": "2026-10-06T08:55:56.884Z",
+        "fetchedAt": "2026-10-06T15:52:53.403Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.16",
         "publishedAt": "2026-10-05T21:37:19Z",
         "commits": [
@@ -3763,6 +3763,38 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-10-06T02:41:12.000Z"
+    },
+    {
+      "id": "openai-status:01M48Y8E81QAFF9XKVGE118E6X",
+      "at": "2026-10-06T15:45:31.000Z",
+      "url": "https://status.openai.com/incidents/01M48Y8E81QAFF9XKVGE118E6X",
+      "text": "Errors processing large PDFs in the Responses API. We are investigating the issue for the listed services.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "investigating",
+      "publishedAt": "2026-10-06T15:45:31.000Z"
+    },
+    {
+      "id": "openai-status:01M48PT6B8SDTW023NC9XZTBC0",
+      "at": "2026-10-06T14:40:31.000Z",
+      "url": "https://status.openai.com/incidents/01M48PT6B8SDTW023NC9XZTBC0",
+      "text": "Elevated error rates in ChatGPT Go conversations. All impacted services have now fully recovered.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-06T13:35:25.000Z"
     }
   ],
   "sources": {
@@ -3771,7 +3803,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-06T08:55:56.529Z",
+      "lastSuccessAt": "2026-10-06T15:52:52.672Z",
       "error": null,
       "count": 150
     },
@@ -3780,7 +3812,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-06T08:55:56.529Z",
+      "lastSuccessAt": "2026-10-06T15:52:52.672Z",
       "error": null,
       "count": 10
     },
@@ -3789,7 +3821,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-06T08:55:56.529Z",
+      "lastSuccessAt": "2026-10-06T15:52:52.672Z",
       "error": null,
       "count": 25
     }
@@ -9861,6 +9893,124 @@
         "body": "Release 0.162.0-alpha.16\n\n",
         "authored": false,
         "fetchedAt": "2026-10-06T08:55:56.884Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.16",
+        "publishedAt": "2026-10-05T21:37:19Z",
+        "commits": [
+          {
+            "sha": "8571b9eaa46e42c8f75e0842ac6f2b02f550c9f7",
+            "title": "Install full context in compaction replacement history (#51117)",
+            "message": "Install full context in compaction replacement history (#51117)\n\n## Why\n\nManual, pre-turn, and post-turn compaction previously deferred rebuilding initial context until the next turn. Their saved replacement history could omit refreshed instructions and skill catalogs.\n\n## What changed\n\n- Install initial context during local and remote compaction, before the last real user message or summary, keeping the compaction summary last.\n- Persist matching full world-state and turn-context baselines with every replacement instead of retaining only partial extension metadata.\n- Build replacement context and recompute token usage for the current model even when the previous model performs compaction. Reuse that captured context for eligible current-model retries.\n- Capture manual compaction context centrally and propagate preparation errors to the task runner.\n\n## Testing\n\nUpdate assertions and snapshots for context ordering, refreshed instructions, resume and fork history, current-model checkpoint baselines, and cloud skill catalog retention across compaction and resume.\n\nGitOrigin-RevId: 8572a76c31c6884a3c580b3bbb350d49af876bd1",
+            "url": "https://github.com/openai/codex/commit/8571b9eaa46e42c8f75e0842ac6f2b02f550c9f7"
+          },
+          {
+            "sha": "402f5b6fdf28a7a72c153dbe6fe01e252205d7d6",
+            "title": "Clarify incremental tool namespace updates in Responses Lite (#51119)",
+            "message": "Clarify incremental tool namespace updates in Responses Lite (#51119)\n\n## Why\n\nIncremental namespace declarations contain only changed or added tools. Their descriptions need to make clear that previously declared tools remain available unless explicitly marked unavailable, and that redefinitions replace earlier definitions.\n\n## What changed\n\nAppend this guidance to updates of existing namespaces, preserving any namespace description. Leave initial declarations and catalog hashes unchanged.\n\n## Testing\n\nExtend unit and request-history coverage for the namespace hint, unchanged turns that append no tool definitions, and MCP tool removals that append a standalone notice without rewriting history or repeating the notice on the next turn.\n\nGitOrigin-RevId: e32f3c9948efb44a1253868fe67967f117cc21e8",
+            "url": "https://github.com/openai/codex/commit/402f5b6fdf28a7a72c153dbe6fe01e252205d7d6"
+          },
+          {
+            "sha": "28a264fbc766a59f2b550b8318f88e4a4b8dffe1",
+            "title": "Add promise settlement streaming helpers to code mode (#51126)",
+            "message": "Add promise settlement streaming helpers to code mode (#51126)\n\n## What changed\n\nExpose two JavaScript globals for consuming results as inputs settle:\n\n- `as_settled(promises)` returns an async iterator of fulfilled and rejected records in settlement order, preserving queued results while the consumer is busy.\n- `stream_settled(promises, emit)` delivers those records to a callback, awaiting each invocation and propagating callback errors.\n\nRecords include an `index`, a `status`, and either a `value` or a `reason`. Iterable inputs use positional indices; `Map` inputs retain their keys. Both helpers accept promises, thenables, and plain values.\n\n## Testing\n\nAdd runtime coverage for ordering, input types, object identity, callback behavior, early iteration exit, and termination. Add stdio and gRPC host tests for partial results across waits, plus a scenario snapshot verifying fulfilled and rejected records reach the model.\n\nGitOrigin-RevId: cddc9f3679ae04f2421e154caa0417afb15f550d",
+            "url": "https://github.com/openai/codex/commit/28a264fbc766a59f2b550b8318f88e4a4b8dffe1"
+          },
+          {
+            "sha": "4c9f42f4f849e513e5fd99fe1c1a717ce93fadbf",
+            "title": "Allow Guardian Decisions to fall back to `OPENAI_API_KEY` (#51133)",
+            "message": "Allow Guardian Decisions to fall back to `OPENAI_API_KEY` (#51133)\n\n## What changed\n\nUse `OPENAI_API_KEY` for the Guardian Decisions sampler when `CODEX_GUARDIAN_DECISIONS_API_KEY` is absent, the provider is `openai`, and no custom base URL is configured. Preserve dedicated-key precedence, including empty values, and do not fall back for other providers or custom base URLs.\n\n## Testing\n\nAdd a credential-selection test covering fallback, dedicated-key precedence, empty dedicated keys, and provider and base URL restrictions.\n\nGitOrigin-RevId: a2a62c28789597f013544b51e142b21f9e214080",
+            "url": "https://github.com/openai/codex/commit/4c9f42f4f849e513e5fd99fe1c1a717ce93fadbf"
+          },
+          {
+            "sha": "5f8b37cc65965bb7b44f45d7e71741fb3a05f742",
+            "title": "Recover Guardian reviews from parent checkpoints (#51137)",
+            "message": "Recover Guardian reviews from parent checkpoints (#51137)\n\n## Why\n\nReviewer compaction can invalidate previously admitted transcript evidence. When a parent checkpoint is available, restarting from that checkpoint preserves the captured parent context instead of relying on a lossy reviewer summary.\n\n## What changed\n\n- Restart an invalidated reviewer once from the action-time parent checkpoint, within the original review deadline.\n- Preserve fresh checkpoints during startup and fit review input using the existing budget selection.\n- Select transcript evidence from the checkpoint actually loaded by the reviewer. Track the transcript source so cursors remain valid across legacy-history eviction and reset when the source changes.\n- Resume transcript deltas after successful recovery, including authorization added after the parent checkpoint.\n\n## Testing\n\nAdd regression coverage for checkpoint recovery, post-checkpoint authorization, resumed deltas, and stopping after one restart. Extend history tests to cover both legacy retention and parent-checkpoint reuse, and update the checkpoint-migration snapshot.\n\nGitOrigin-RevId: bc20fb9489afaad963303beff1c79f62fa5023f7",
+            "url": "https://github.com/openai/codex/commit/5f8b37cc65965bb7b44f45d7e71741fb3a05f742"
+          },
+          {
+            "sha": "16cb72218cb5fa07a5dceca9db58839bd220a049",
+            "title": "Force fresh Guardian sessions for parent-checkpoint recovery (#51139)",
+            "message": "Force fresh Guardian sessions for parent-checkpoint recovery (#51139)\n\n## Why\n\nA Guardian review restarting from the parent checkpoint must bypass cached reviewer sessions and snapshots, even when another review is using the cached session.\n\n## What changed\n\n- Add `ReviewerRequest::requires_fresh_session` and enable it for parent-checkpoint recovery.\n- Replace an idle cached session with a fresh reusable session, or start a fresh ephemeral session when the cached session is busy. Neither recovery path inherits a cached snapshot.\n- Reserve the review permit before validating a cached session and before exposing a newly spawned session to concurrent requests.\n\n## Testing\n\nAdd tests covering recovery with idle and busy cached sessions, verifying that recovery receives no cached snapshot and that subsequent reviews reuse the appropriate session.\n\nGitOrigin-RevId: 894f685736da54312336932aa2037e74a20629d9",
+            "url": "https://github.com/openai/codex/commit/16cb72218cb5fa07a5dceca9db58839bd220a049"
+          },
+          {
+            "sha": "3f1ccb7ceb814e54314826f68d61c892e2f5a48e",
+            "title": "Isolate Guardian checkpoint recovery flags per review attempt (#51140)",
+            "message": "Isolate Guardian checkpoint recovery flags per review attempt (#51140)\n\n## What changed\n\nGive the initial Guardian review and its checkpoint recovery attempt separate recovery flags instead of resetting a shared flag. Keep the single restart under the original review deadline.\n\nRepresent reviewer selection explicitly with `ReuseIfAvailable` and `FreshParentCheckpoint`, so recovery requires a fresh session and ignores reusable fork snapshots.\n\nGitOrigin-RevId: 35f63f375e2a8bef10271944e222ffce1d1939c4",
+            "url": "https://github.com/openai/codex/commit/3f1ccb7ceb814e54314826f68d61c892e2f5a48e"
+          },
+          {
+            "sha": "6cfcb98e0f0e9ef20d78ebc901de18f6e66f5ff1",
+            "title": "Release 0.162.0-alpha.16",
+            "message": "Release 0.162.0-alpha.16",
+            "url": "https://github.com/openai/codex/commit/6cfcb98e0f0e9ef20d78ebc901de18f6e66f5ff1"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.15",
+          "head": "rust-v0.162.0-alpha.16",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.15...rust-v0.162.0-alpha.16",
+          "status": "diverged",
+          "total": 8,
+          "behind": 1,
+          "complete": true,
+          "fetched": 8
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-status:01M48Y8E81QAFF9XKVGE118E6X:2026-10-06T15:52:53.400Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-06T15:52:53.400Z",
+      "item": {
+        "id": "openai-status:01M48Y8E81QAFF9XKVGE118E6X",
+        "at": "2026-10-06T15:45:31.000Z",
+        "url": "https://status.openai.com/incidents/01M48Y8E81QAFF9XKVGE118E6X",
+        "text": "Errors processing large PDFs in the Responses API. We are investigating the issue for the listed services.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "investigating",
+        "publishedAt": "2026-10-06T15:45:31.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M48PT6B8SDTW023NC9XZTBC0:2026-10-06T15:52:53.400Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-06T15:52:53.400Z",
+      "item": {
+        "id": "openai-status:01M48PT6B8SDTW023NC9XZTBC0",
+        "at": "2026-10-06T14:40:31.000Z",
+        "url": "https://status.openai.com/incidents/01M48PT6B8SDTW023NC9XZTBC0",
+        "text": "Elevated error rates in ChatGPT Go conversations. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-06T13:35:25.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.16:2026-10-06T15:52:53.400Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-06T15:52:53.400Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.16",
+        "title": "0.162.0-alpha.16",
+        "body": "Release 0.162.0-alpha.16\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-06T15:52:53.403Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.16",
         "publishedAt": "2026-10-05T21:37:19Z",
         "commits": [
