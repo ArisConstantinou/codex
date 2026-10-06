@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-06T15:52:53.400Z",
+  "generatedAt": "2026-10-06T20:55:37.739Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -2637,7 +2637,7 @@
     },
     {
       "id": "openai-status:01M3Q4RK1SM4EMK445GGPG7C0N",
-      "at": "2026-10-06T08:26:10.000Z",
+      "at": "2026-10-06T18:48:00.000Z",
       "url": "https://status.openai.com/incidents/01M3Q4RK1SM4EMK445GGPG7C0N",
       "text": "Elevated errors across ChatGPT, Codex, and the API including the Agents API. All impacted services have now fully recovered.",
       "kind": "signal",
@@ -3766,9 +3766,9 @@
     },
     {
       "id": "openai-status:01M48Y8E81QAFF9XKVGE118E6X",
-      "at": "2026-10-06T15:45:31.000Z",
+      "at": "2026-10-06T20:11:27.000Z",
       "url": "https://status.openai.com/incidents/01M48Y8E81QAFF9XKVGE118E6X",
-      "text": "Errors processing large PDFs in the Responses API. We are investigating the issue for the listed services.",
+      "text": "Errors processing large PDFs in the Responses API. All impacted services have now fully recovered.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -3777,7 +3777,7 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "investigating",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-10-06T15:45:31.000Z"
     },
     {
@@ -3795,6 +3795,67 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-10-06T13:35:25.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/advancing-computer-use-with-ironclad",
+      "at": "2026-10-06T10:00:00.000Z",
+      "url": "https://openai.com/index/advancing-computer-use-with-ironclad",
+      "text": "Advancing computer use with Ironclad. Learn how OpenAI and Ironclad are training and evaluating AI agents on complex contracting workflows to advance computer use for professional work.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/atlassian-partnership",
+      "at": "2026-10-06T16:00:00.000Z",
+      "url": "https://openai.com/index/atlassian-partnership",
+      "text": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action. Atlassian and OpenAI are expanding their partnership to connect frontier models with enterprise knowledge and help teams plan, build, and deliver work.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.17",
+      "at": "2026-10-06T17:49:29.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.17",
+      "text": "rust-v0.162.0-alpha.17. Release 0.162.0-alpha.17",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M493CZ0CB14KPC0EER83MNVB",
+      "at": "2026-10-06T20:00:46.000Z",
+      "url": "https://status.openai.com/incidents/01M493CZ0CB14KPC0EER83MNVB",
+      "text": "Computer Use Is Experiencing Issues. All impacted services have now fully recovered.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-06T17:15:23.000Z"
     }
   ],
   "sources": {
@@ -3803,7 +3864,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-06T15:52:52.672Z",
+      "lastSuccessAt": "2026-10-06T20:55:37.280Z",
       "error": null,
       "count": 150
     },
@@ -3812,7 +3873,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-06T15:52:52.672Z",
+      "lastSuccessAt": "2026-10-06T20:55:37.280Z",
       "error": null,
       "count": 10
     },
@@ -3821,7 +3882,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-06T15:52:52.672Z",
+      "lastSuccessAt": "2026-10-06T20:55:37.280Z",
       "error": null,
       "count": 25
     }
@@ -10075,10 +10136,175 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/advancing-computer-use-with-ironclad:2026-10-06T20:55:37.739Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-06T20:55:37.739Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/advancing-computer-use-with-ironclad",
+        "at": "2026-10-06T10:00:00.000Z",
+        "url": "https://openai.com/index/advancing-computer-use-with-ironclad",
+        "text": "Advancing computer use with Ironclad. Learn how OpenAI and Ironclad are training and evaluating AI agents on complex contracting workflows to advance computer use for professional work.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/atlassian-partnership:2026-10-06T20:55:37.739Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-06T20:55:37.739Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/atlassian-partnership",
+        "at": "2026-10-06T16:00:00.000Z",
+        "url": "https://openai.com/index/atlassian-partnership",
+        "text": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action. Atlassian and OpenAI are expanding their partnership to connect frontier models with enterprise knowledge and help teams plan, build, and deliver work.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol:2026-10-06T20:55:37.739Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-06T20:55:37.739Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol",
+        "at": "2026-09-29T17:00:00.000Z",
+        "url": "https://openai.com/index/introducing-gpt-6-1-sol",
+        "text": "Introducing GPT-6.1 Sol. Meet GPT-6.1 Sol: near-Astra intelligence for coding, computer use, and professional work at one-fifth of Astra’s standard API input and output token prices.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol:2026-10-06T20:55:37.739Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-06T20:55:37.739Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol",
+        "at": "2026-09-29T10:00:00.000Z",
+        "url": "https://openai.com/index/introducing-gpt-6-1-sol",
+        "text": "Introducing GPT-6.1 Sol. Meet GPT-6.1 Sol: near-Astra intelligence for coding, computer use, and professional work at one-fifth of Astra’s standard API input and output token prices.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.17:2026-10-06T20:55:37.739Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-06T20:55:37.739Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.17",
+        "at": "2026-10-06T17:49:29.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.17",
+        "text": "rust-v0.162.0-alpha.17. Release 0.162.0-alpha.17",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M48Y8E81QAFF9XKVGE118E6X:2026-10-06T20:55:37.739Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-06T20:55:37.739Z",
+      "item": {
+        "id": "openai-status:01M48Y8E81QAFF9XKVGE118E6X",
+        "at": "2026-10-06T20:11:27.000Z",
+        "url": "https://status.openai.com/incidents/01M48Y8E81QAFF9XKVGE118E6X",
+        "text": "Errors processing large PDFs in the Responses API. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-06T15:45:31.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M493CZ0CB14KPC0EER83MNVB:2026-10-06T20:55:37.739Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-06T20:55:37.739Z",
+      "item": {
+        "id": "openai-status:01M493CZ0CB14KPC0EER83MNVB",
+        "at": "2026-10-06T20:00:46.000Z",
+        "url": "https://status.openai.com/incidents/01M493CZ0CB14KPC0EER83MNVB",
+        "text": "Computer Use Is Experiencing Issues. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-06T17:15:23.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M3Q4RK1SM4EMK445GGPG7C0N:2026-10-06T20:55:37.739Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-06T20:55:37.739Z",
+      "item": {
+        "id": "openai-status:01M3Q4RK1SM4EMK445GGPG7C0N",
+        "at": "2026-10-06T18:48:00.000Z",
+        "url": "https://status.openai.com/incidents/01M3Q4RK1SM4EMK445GGPG7C0N",
+        "text": "Elevated errors across ChatGPT, Codex, and the API including the Agents API. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-09-29T17:52:52.000Z"
+      }
     }
   ],
   "releaseRequests": {
     "blockedUntil": 0,
-    "retryByTag": {}
+    "retryByTag": {
+      "rust-v0.162.0-alpha.17": 1791321037742
+    }
   }
 }
