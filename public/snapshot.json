@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-07T06:36:06.233Z",
+  "generatedAt": "2026-10-07T13:54:49.451Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -3922,7 +3922,7 @@
         "title": "0.162.0-alpha.18",
         "body": "Release 0.162.0-alpha.18\n\n",
         "authored": false,
-        "fetchedAt": "2026-10-07T06:36:06.236Z",
+        "fetchedAt": "2026-10-07T13:54:49.454Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.18",
         "publishedAt": "2026-10-07T02:04:32Z",
         "commits": [
@@ -4170,9 +4170,9 @@
     },
     {
       "id": "openai-status:01M4ADHMMBK7K92NJFJ0DXRYJM",
-      "at": "2026-10-07T05:54:27.000Z",
+      "at": "2026-10-07T11:53:35.000Z",
       "url": "https://status.openai.com/incidents/01M4ADHMMBK7K92NJFJ0DXRYJM",
-      "text": "Unable to create new ChatGPT Work threads in latest version of desktop app. we have identified the issue, working on rolling back to the previous version. ",
+      "text": "Unable to create new ChatGPT Work threads in latest version of desktop app. We have released an updated app version with the fix for Linux, macOS and Windows. Affected users should update to the latest version.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -4181,7 +4181,7 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "identified",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-10-07T05:31:56.000Z"
     },
     {
@@ -4207,7 +4207,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-07T06:36:05.833Z",
+      "lastSuccessAt": "2026-10-07T13:54:48.980Z",
       "error": null,
       "count": 150
     },
@@ -4216,7 +4216,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-07T06:36:05.833Z",
+      "lastSuccessAt": "2026-10-07T13:54:48.980Z",
       "error": null,
       "count": 10
     },
@@ -4225,7 +4225,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-07T06:36:05.833Z",
+      "lastSuccessAt": "2026-10-07T13:54:48.980Z",
       "error": null,
       "count": 25
     }
@@ -11047,6 +11047,283 @@
         "body": "Release 0.162.0-alpha.18\n\n",
         "authored": false,
         "fetchedAt": "2026-10-07T06:36:06.236Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.18",
+        "publishedAt": "2026-10-07T02:04:32Z",
+        "commits": [
+          {
+            "sha": "8e23d1836fd22d1c920533f39851db1c7d795744",
+            "title": "Show hook status messages as titles in the hooks browser (#51433)",
+            "message": "Show hook status messages as titles in the hooks browser (#51433)\n\n## What changed\n\nReplace generic `Hook 1` labels with trimmed `status_message` titles, falling back to `Unnamed hook` when the message is missing or blank. Show aligned, dimmed row numbers alongside the titles and retain trust-status suffixes.\n\nRender rows with `Paragraph` to preserve full-row selection styling and per-span dimming, including titles containing wide characters and emoji.\n\n## Testing\n\nAdd snapshot and buffer assertions for title trimming, blank and missing messages, wide characters, selection styling, and dimmed indices. Update snapshots for long-title truncation and scrolling across two-digit row numbers.\n\nGitOrigin-RevId: a9b20ea91e7252b6399d1c8a9fa849186f16a651",
+            "url": "https://github.com/openai/codex/commit/8e23d1836fd22d1c920533f39851db1c7d795744"
+          },
+          {
+            "sha": "bc3ebcb77d189f92572a6ed2f358dfbad81edf7a",
+            "title": "Preserve clickable URLs in TUI approval headers (#51439)",
+            "message": "Preserve clickable URLs in TUI approval headers (#51439)\n\n## What changed\n\nRender command, permission, patch, and MCP elicitation approval headers with `HyperlinkText`, which annotates web URLs and preserves their full destinations across wrapping and clipping.\n\n## Testing\n\nAdd a regression test covering wrapped URL destinations in all four header types, plus a snapshot of the wrapped command approval header.\n\nGitOrigin-RevId: 7f6b79484c9297cd03514da2d6805b0d239fee63",
+            "url": "https://github.com/openai/codex/commit/bc3ebcb77d189f92572a6ed2f358dfbad81edf7a"
+          },
+          {
+            "sha": "f6cf05af1dc701322664bb3f22ee4dafbc733ffc",
+            "title": "Honor Retry-After in WebSocket error events (#51440)",
+            "message": "Honor Retry-After in WebSocket error events (#51440)\n\n## Why\n\nWebSocket rate-limit and overload errors ignored `Retry-After` advice and ended turns even when the server supplied a retry delay.\n\n## What changed\n\nExtract retry advice from nested `error.headers`, falling back to top-level `headers` when nested advice is missing or invalid. Use the shared HTTP header validation and retry-delay parser, and preserve the delay when mapping WebSocket errors.\n\n## Testing\n\nAdd coverage for nested-header precedence, malformed headers, HTTP header validation, and recovery after an advised rate limit. Verify that overloads retry only while advice is present, without falling back to HTTP, and that headerless rate limits, usage limits, and `flex_unavailable` errors remain terminal.\n\nGitOrigin-RevId: 61add0c36197e10402d6d3c325332aac72a5a521",
+            "url": "https://github.com/openai/codex/commit/f6cf05af1dc701322664bb3f22ee4dafbc733ffc"
+          },
+          {
+            "sha": "a9abdeaff1773ec6e867253ae59b19128077676f",
+            "title": "Fix core integration tests for updated turn APIs (#51441)",
+            "message": "Fix core integration tests for updated turn APIs (#51441)\n\nUse `TurnEnvironmentRequests` and the executor environment's `request()` in the MCP turn metadata test to match `ThreadSettingsOverrides`. Allow additional fields when matching `TurnInputSubmission::Started` in the pending input test.\n\nGitOrigin-RevId: 6f7f7c60511d999274079f715ba2a68163e69caf",
+            "url": "https://github.com/openai/codex/commit/a9abdeaff1773ec6e867253ae59b19128077676f"
+          },
+          {
+            "sha": "44fe0289c6ef35a0153c291e81cf9a232b49499c",
+            "title": "Make URLs clickable in TUI user input questions (#51449)",
+            "message": "Make URLs clickable in TUI user input questions (#51449)\n\n## What changed\n\nRender web URLs in `request_user_input` question text as terminal hyperlinks. Preserve the complete destination when a URL wraps across rows, along with explicit newlines and blank lines in the question.\n\n## Testing\n\nAdd a regression test that checks each linked fragment retains the complete URL, including its query string, and snapshots the wrapped question layout.\n\nGitOrigin-RevId: 473c8a8a00797c0b353a9cdb762dea2c718d9190",
+            "url": "https://github.com/openai/codex/commit/44fe0289c6ef35a0153c291e81cf9a232b49499c"
+          },
+          {
+            "sha": "eb2a33aa18a0445325366eba31d07f62e940f77b",
+            "title": "Make URLs clickable in MCP elicitation prompts (#51450)",
+            "message": "Make URLs clickable in MCP elicitation prompts (#51450)\n\n## What changed\n\nRender web URLs in TUI MCP elicitation prompts as terminal hyperlinks. Preserve the full destination when a URL wraps across lines, while retaining the existing styling for answered and unanswered prompts.\n\n## Testing\n\nAdd a regression test that verifies each linked cell of a wrapped URL targets the complete URL, including its query string, and a snapshot of the rendered form.\n\nGitOrigin-RevId: 74baabbee6b72b695e1534d694296a3352f7e47d",
+            "url": "https://github.com/openai/codex/commit/eb2a33aa18a0445325366eba31d07f62e940f77b"
+          },
+          {
+            "sha": "5da229e54d9d8f5779116c66decb18a21a9c8e2f",
+            "title": "Make URLs in the TUI warnings viewer clickable (#51451)",
+            "message": "Make URLs in the TUI warnings viewer clickable (#51451)\n\n## What changed\n\nRender web URLs in warning details as terminal hyperlinks, preserving the full destination when a URL wraps across lines or the viewer scrolls.\n\n## Testing\n\nAdd a regression test for hyperlink destinations after wrapping and scrolling, plus a snapshot of a warning containing a wrapped URL.\n\nGitOrigin-RevId: 6500e6129a95b2dea8e8f53296ca056e63196a57",
+            "url": "https://github.com/openai/codex/commit/5da229e54d9d8f5779116c66decb18a21a9c8e2f"
+          },
+          {
+            "sha": "4b5c11134974dd6ec733b89d0e5a5f4c7d74856d",
+            "title": "Make banner URLs clickable across wrapped lines (#51452)",
+            "message": "Make banner URLs clickable across wrapped lines (#51452)\n\n## What changed\n\nRender URLs in TUI banner titles and descriptions as terminal hyperlinks, preserving the full destination when a URL wraps across lines.\n\n## Testing\n\nAdd a regression test that checks hyperlink destinations for a wrapped URL and snapshots the visible banner layout.\n\nGitOrigin-RevId: 1b1957570c1c0940a60f5a202648b0eeed5b95e1",
+            "url": "https://github.com/openai/codex/commit/4b5c11134974dd6ec733b89d0e5a5f4c7d74856d"
+          },
+          {
+            "sha": "e44b9bb3da036320853abd032e2e2f065342b964",
+            "title": "Preserve status usage hyperlinks when the URL wraps (#51457)",
+            "message": "Preserve status usage hyperlinks when the URL wraps (#51457)\n\n## Why\n\nThe ChatGPT usage URL in the status card loses its terminal hyperlink when it wraps across lines in a narrow terminal.\n\n## What changed\n\nAttach the usage URL destination to each underlined span so every wrapped fragment remains clickable.\n\n## Testing\n\nExtend status hyperlink coverage at widths of 24, 42, and 120 columns to verify that linked fragments reconstruct the full URL and all point to the same destination.\n\nGitOrigin-RevId: 516421380763f48da8af63b4d374e2b352722ddb",
+            "url": "https://github.com/openai/codex/commit/e44b9bb3da036320853abd032e2e2f065342b964"
+          },
+          {
+            "sha": "858aea34491fec77cb5069548fc842d4a177a84a",
+            "title": "Make URLs clickable in user verification prompts (#51458)",
+            "message": "Make URLs clickable in user verification prompts (#51458)\n\n## What changed\n\nRender user verification titles and request details with `HyperlinkText` so URLs carry terminal hyperlinks, including in the waiting-for-verification view.\n\n## Testing\n\nExtend the narrow-prompt regression test to verify that wrapped URLs retain their full hyperlink targets before and during verification. Strip OSC 8 annotations when comparing visible text in snapshots.\n\nGitOrigin-RevId: 9b2fba963c028eaa2b177220b0487364b44d04bb",
+            "url": "https://github.com/openai/codex/commit/858aea34491fec77cb5069548fc842d4a177a84a"
+          },
+          {
+            "sha": "414d165b47a90d44a231d62a6c2cf2f876306c1a",
+            "title": "Preserve wrapped help links in Windows sandbox prompts (#51459)",
+            "message": "Preserve wrapped help links in Windows sandbox prompts (#51459)\n\n## What changed\n\nRender help text in Windows sandbox setup and fallback prompts with `HyperlinkText` so each wrapped URL fragment links to the complete destination. Strip OSC 8 sequences when rendering popup snapshots to keep assertions focused on visible text.\n\n## Testing\n\nAdd a regression test covering both prompts at 40 columns, asserting that every linked cell retains the complete destination and the visible link text remains intact. Include a snapshot of the wrapped setup prompt.\n\nGitOrigin-RevId: 98bd60f04ab3ec8d6552a0b74b9637cce26169d5",
+            "url": "https://github.com/openai/codex/commit/414d165b47a90d44a231d62a6c2cf2f876306c1a"
+          },
+          {
+            "sha": "44984d20817fc58026a8bbccf053e288c6897c8f",
+            "title": "Retry realtime sideband attachment while an existing call activates (#51460)",
+            "message": "Retry realtime sideband attachment while an existing call activates (#51460)\n\n## Why\n\nInstant Connect can return a call ID before ICE activates the call, causing sideband attachment to briefly fail with HTTP `404` while the client connects media.\n\n## What changed\n\nRetry `404` responses from `connect_existing_call_sideband` up to three times, waiting 100, 300, and 800 milliseconds. Return the error once this activation retry budget is exhausted, and preserve the existing handling of other errors.\n\n## Testing\n\nAdd WebSocket coverage for successful attachment after three `404` responses, failure after four `404` responses, and no retry on HTTP `410`. Verify that successful attachment does not overwrite the prepared session configuration.\n\nGitOrigin-RevId: 5d18ff7eeeb9abd56388808828382f7350c7ae57",
+            "url": "https://github.com/openai/codex/commit/44984d20817fc58026a8bbccf053e288c6897c8f"
+          },
+          {
+            "sha": "b0a6b8d86f455d3db9dd869fc1178a5fbd865e7f",
+            "title": "Record resolved model and reasoning effort in sub-agent activity (#51463)",
+            "message": "Record resolved model and reasoning effort in sub-agent activity (#51463)\n\n## What changed\n\nAdd `model` and `reasoningEffort` to `subAgentActivity` items for multi-agent v2 spawns. Capture startup settings before the child begins its turn and resolve the reported effort against model metadata, including model defaults, while preserving the child's configured effort.\n\nCarry these fields through live notifications, persisted activity, thread history, and legacy rollout migration. Update the JSON schemas and generated TypeScript and Python types. Older records and other activity kinds retain null values.\n\n## Testing\n\nAdd coverage for resolved spawn settings matching the child's request across legacy and paginated history, preserving configured effort, forwarding metadata through events and history, and reading and migrating older records without the new fields.\n\nGitOrigin-RevId: a9e4241ae21bb8db1ead293f78ffba8257cca0ae",
+            "url": "https://github.com/openai/codex/commit/b0a6b8d86f455d3db9dd869fc1178a5fbd865e7f"
+          },
+          {
+            "sha": "61969074a7c49fbd31467dc2e8c5ede0edfd3962",
+            "title": "Add an optional JSON transcript format for Guardian (#51465)",
+            "message": "Add an optional JSON transcript format for Guardian (#51465)\n\n## Why\n\nTranscript content can contain forged role headers, transcript boundaries, or claims of user approval. Guardian needs to distinguish that content from host-assigned authorship metadata.\n\n## What changed\n\n- Add `features.guardianv2.transcript_mode` with `line` (the default) and `json` options for synchronous review and asynchronous scoring.\n- Render JSON transcript entries with host-assigned metadata and escaped `text`, and prepend matching provenance instructions to reviewer and classifier prompts.\n- Preserve JSON metadata when budget recovery shortens historical text, and keep provenance instructions outside the configured classifier prompt limit.\n\n## Testing\n\nAdd coverage for forged roles and approvals remaining within their original entries, JSON metadata surviving budget recovery, and provenance instructions surviving prompt limits. Extend review and scoring integration tests to verify JSON evidence and matching instructions.\n\nGitOrigin-RevId: 81a3580390d3c4d1a664e554976cda5f1adc9a2c",
+            "url": "https://github.com/openai/codex/commit/61969074a7c49fbd31467dc2e8c5ede0edfd3962"
+          },
+          {
+            "sha": "b2592701e107804a70ab91326a2e2218237279f2",
+            "title": "Keep Guardian transcript records structured through budget recovery (#51466)",
+            "message": "Keep Guardian transcript records structured through budget recovery (#51466)\n\n## What changed\n\nIntroduce `TranscriptRecord` and `PreparedTranscript` to retain attributed transcript text through preparation and composition. Cache rendered content, byte counts, and token estimates, refreshing them when text or framing changes.\n\nKeep JSON records structured during budget recovery so truncation replaces only `text`, preserving metadata, field order, and framing without reparsing serialized JSON. Preserve whole-entry truncation for line transcripts and update synchronous and asynchronous consumers to use the preparation API.\n\n## Testing\n\nExpand coverage for cached estimates and delivery with escaped text, Unicode, and large payloads; metadata and framing preservation during recovery; and stable asynchronous history prefixes in both line and JSON formats.\n\nGitOrigin-RevId: 8b3b5231ca4a6ee47d17dcc788ea68c56dd1a9bc",
+            "url": "https://github.com/openai/codex/commit/b2592701e107804a70ab91326a2e2218237279f2"
+          },
+          {
+            "sha": "5679e675f49e4316f6fda592314d83f9ab3c90c6",
+            "title": "Keep submission logs useful without exposing payloads (#51467)",
+            "message": "Keep submission logs useful without exposing payloads (#51467)\n\n## Why\n\nSubmission diagnostics need approval and turn metadata without logging user input, tool responses, commands, paths, or instruction payloads.\n\n## What changed\n\n- Log thread and submission IDs, operation kind, and parent/root turn IDs as explicit fields.\n- Give `Op` and `ThreadSettingsOverrides` selective `Debug` output that retains identifiers, approval decisions, and policy categories while omitting payloads.\n- Preserve Guardian review identifiers and status when logging approval of a denied-action retry.\n\n## Testing\n\nAdd an app-server integration test that verifies command approval, Guardian review, and turn policy metadata reach SQLite-backed diagnostic logs with `RUST_LOG=off`.\n\nGitOrigin-RevId: 308acb7b70e4849cf31514b11e4d9b46eaf6a09b",
+            "url": "https://github.com/openai/codex/commit/5679e675f49e4316f6fda592314d83f9ab3c90c6"
+          },
+          {
+            "sha": "8519cde1badf7cf9d6788cfe42f67ac71acd1c95",
+            "title": "Raise the managed app-server file descriptor limit on Unix (#51470)",
+            "message": "Raise the managed app-server file descriptor limit on Unix (#51470)\n\n## What changed\n\nFor managed app-server daemons using Unix sockets, raise the soft\n`RLIMIT_NOFILE` limit to 4096 at startup, capped by the inherited hard limit.\nPreserve existing higher soft limits and log a warning if the adjustment fails.\n\nGitOrigin-RevId: 2ef27370e55cd86a7a62cbc3d47041933b89ac21",
+            "url": "https://github.com/openai/codex/commit/8519cde1badf7cf9d6788cfe42f67ac71acd1c95"
+          },
+          {
+            "sha": "4854cfa64343bc507c9bc28faa6612e68ead5a10",
+            "title": "Preserve clickable URLs in pending input previews (#51471)",
+            "message": "Preserve clickable URLs in pending input previews (#51471)\n\n## What changed\n\nRender web URLs in pending steers, rejected steers, and queued follow-up messages as terminal hyperlinks. Preserve the complete destination when the visible URL is clipped to the preview width.\n\nAdd `HyperlinkRows` to render already-wrapped rows without changing their spacing or row count, clipping text and hyperlink ranges to the viewport.\n\n## Testing\n\nAdd regression coverage for complete URL destinations across all three preview sections, plus snapshots for oversized URLs and clipping overflow text and the edit hint in a narrow preview.\n\nGitOrigin-RevId: 959df27bba381b1b3895f5a86cc2ecb1419806b1",
+            "url": "https://github.com/openai/codex/commit/4854cfa64343bc507c9bc28faa6612e68ead5a10"
+          },
+          {
+            "sha": "b0a5191bd6ac383313353d86b464859596c9ef39",
+            "title": "Preserve clickable URLs in TUI selection rows (#51472)",
+            "message": "Preserve clickable URLs in TUI selection rows (#51472)\n\n## What changed\n\nRender web URLs in selection labels and descriptions as terminal hyperlinks, preserving their complete destinations when text wraps or is truncated. Carry hyperlink ranges through two-column layouts and keep truncation ellipses outside links.\n\n## Testing\n\nAdd regression assertions and a snapshot covering wrapped and single-line rows, prefixed labels, descriptions, and wide Unicode characters. Verify that visible URL fragments retain complete destinations and ellipses are not linked.\n\nGitOrigin-RevId: 9d50b3ced79cbd29200e48a676445ec169d60758",
+            "url": "https://github.com/openai/codex/commit/b0a5191bd6ac383313353d86b464859596c9ef39"
+          },
+          {
+            "sha": "0b863c69f50335acd92164aab971cb58d298c2fe",
+            "title": "Preserve URL destinations in wrapped hook details (#51473)",
+            "message": "Preserve URL destinations in wrapped hook details (#51473)\n\n## Why\n\nThe hooks browser rendered detail URLs as plain text. Long URLs in hook commands can wrap or be truncated, so their visible text may omit part of the destination.\n\n## What changed\n\nRender web URLs in hook details as terminal hyperlinks, preserving the complete destination across wrapped lines and truncated text. Keep truncation ellipses outside the links.\n\n## Testing\n\nAdd a regression test and snapshot for a wrapped, truncated hook command URL, checking that linked cells retain the complete destination and the ellipsis remains unlinked.\n\nGitOrigin-RevId: 488562266bd5ef880c03bf313bc4cfa7d3104c7b",
+            "url": "https://github.com/openai/codex/commit/0b863c69f50335acd92164aab971cb58d298c2fe"
+          },
+          {
+            "sha": "e79c498b5e44352eb1543d5631bdaec0a57bae58",
+            "title": "Preserve tool declaration mode across resumed context windows (#51480)",
+            "message": "Preserve tool declaration mode across resumed context windows (#51480)\n\n## Why\n\nChanging the incremental tools setting on resume should not move tool declarations and base instructions within an existing context window.\n\n## What changed\n\n- Determine the current window's tool declaration mode from its history, and apply the incremental tools setting when building a new window after compaction or a context reset.\n- Use that mode consistently for sampling, remote compaction, startup prewarm, prompt debugging, and Guardian input budgeting.\n- Preserve tool declarations alongside their comparison baseline in full-history agent forks, including compacted histories; remove them together when rebuilding context.\n\n## Testing\n\nAdd request snapshots covering legacy resume, migration after remote compaction or a context reset, disabling incremental tools, and tool updates after restart. Extend agent fork and WebSocket startup prewarm tests to cover retained declarations and incremental tools.\n\nGitOrigin-RevId: 7c46849a1788027a8435082e4d1f7e7f48d2700c",
+            "url": "https://github.com/openai/codex/commit/e79c498b5e44352eb1543d5631bdaec0a57bae58"
+          },
+          {
+            "sha": "c9870d01577d2ddb39b55672e66f8fe6844a6a0d",
+            "title": "Use PathUri for skill identity and path matching (#51482)",
+            "message": "Use PathUri for skill identity and path matching (#51482)\n\n## Why\n\nSkill selection and disabled-path matching need to recognize equivalent Windows paths across case and separator differences while preserving literal spaces, `%`, and `#` in native filenames.\n\n## What changed\n\n- Carry `PathUri` through skill metadata, discovery mappings, filesystem lookups, disabled-path sets, and invocation analytics.\n- Match linked skill mentions and TUI selections by parsed path identity.\n- Use `LegacyAppPathString` for app-server skill paths and regenerate schemas and SDK types, preserving native path strings on the wire.\n- Preserve native catalog display paths and ordering. Keep host filesystem probes and configuration writes restricted to host-compatible paths.\n\n## Testing\n\nAdd regression tests for Windows path identity and disabled-skill matching, literal filename characters, catalog resource reads, native path ordering, and foreign-path analytics normalization.\n\nGitOrigin-RevId: c212916dc9fef0e7616542726e107f0d6a313267",
+            "url": "https://github.com/openai/codex/commit/c9870d01577d2ddb39b55672e66f8fe6844a6a0d"
+          },
+          {
+            "sha": "0b47040dc9eb08d9c37d51e0824870ce5b27101b",
+            "title": "Add correlated, credential-free rendezvous connection diagnostics (#51483)",
+            "message": "Add correlated, credential-free rendezvous connection diagnostics (#51483)\n\n## Why\n\nRendezvous connection warnings report only a generic WebSocket error, while debug logs include raw error text. Structured diagnostics make failures easier to investigate without logging potentially sensitive error payloads.\n\n## What changed\n\n- Generate a request ID for each connection attempt, send it as `x-request-id`, and include it in the connection span and connection, disconnection, and failure logs alongside the attempt count.\n- Replace raw error logging with typed error categories, I/O error kinds, HTTP status codes, and allowlisted values from `x-codex-rendezvous-rejection-reason`.\n- Ignore unknown rejection reasons and response bodies.\n\n## Testing\n\nAdd tests for rejection-header allowlisting, typed I/O failures, and a rejected WebSocket handshake that verifies the request ID header and preserves the HTTP status and known rejection reason.\n\nGitOrigin-RevId: a8274fec965bcf5b8453b047c0bb79396cdf6ba4",
+            "url": "https://github.com/openai/codex/commit/0b47040dc9eb08d9c37d51e0824870ce5b27101b"
+          },
+          {
+            "sha": "b3b83ace1705ec093738ed8fb9cb7e468b2c9346",
+            "title": "Classify executor capability root ownership independently of parsing (#51491)",
+            "message": "Classify executor capability root ownership independently of parsing (#51491)\n\n## Why\n\nA malformed plugin manifest still marks a capability root as plugin-owned. Discovery or metadata failures must not be treated as evidence that a root is standalone.\n\n## What changed\n\n- Add `ExecutorPluginProvider::root_ownership` and export `PluginRootOwnership` to distinguish plugin-owned roots from standalone roots before capability parsing.\n- Use discovery results when conclusive; otherwise probe manifest files at the selected root and its ancestors using the supplied filesystem sandbox. Nested plugin manifests do not establish ownership of their parent root.\n- Share manifest lookup with plugin resolution and pipeline up to 256 metadata probes while preserving ancestor and manifest priority, including error ordering.\n\n## Testing\n\nAdd tests for malformed ancestor manifests, discovery failures, ancestor versus nested ownership, concurrent probe ordering, and sandboxed metadata checks without reading manifest contents.\n\nGitOrigin-RevId: 3512452cf1df22f52c2a2b422f96c760d98c24ac",
+            "url": "https://github.com/openai/codex/commit/b3b83ace1705ec093738ed8fb9cb7e468b2c9346"
+          },
+          {
+            "sha": "28cd3e25014cef77ef42a624dbb90ade3e897560",
+            "title": "Remove obsolete fields from persisted turn context (#51492)",
+            "message": "Remove obsolete fields from persisted turn context (#51492)\n\n## What changed\n\nRemove `workspace_roots`, `current_date`, `timezone`, `network`, `personality`, and `multi_agent_mode` from `TurnContextItem` and stop recording them in rollouts. Update the precomputed protocol schema accordingly.\n\nMake `summary` optional when reading turn context and write `\"none\"` as a compatibility placeholder for older readers, rather than persisting the active reasoning-summary setting.\n\n## Testing\n\nUpdate protocol tests to cover omitted `summary` fields and compatibility-placeholder serialization. Extend compaction tests to verify that model requests retain the updated reasoning-summary setting after compaction while the rollout checkpoint records the placeholder.\n\nGitOrigin-RevId: d49eabaa1b340be1d79f7f09115281a307ea8a64",
+            "url": "https://github.com/openai/codex/commit/28cd3e25014cef77ef42a624dbb90ade3e897560"
+          },
+          {
+            "sha": "9479e1fdb7396c3e3254f5e123489af829186893",
+            "title": "Bind capability roots to environment selections (#51493)",
+            "message": "Bind capability roots to environment selections (#51493)\n\n## Why\n\nCapability discovery needs the roots captured with each environment snapshot. Threads sharing an executor can select different roots, and changing environment order must preserve executor skill aliases.\n\n## What changed\n\n- Attach the receiving thread's capability roots when constructing `TurnEnvironmentSelection` at startup and settings updates, including roots loaded from saved history.\n- Resolve capability roots from environment snapshots while preserving their original order. Retain startup roots so deselecting and reselecting an environment restores its capabilities.\n- Match inherited configuration by environment and workspace so differences in capability root metadata do not interrupt configuration propagation.\n\n## Testing\n\nAdd regression coverage for root ordering across environment states and configuration changes, independent root selections on a shared executor, reselection with startup or saved roots, active turn updates, and pending configuration failures reaching child and grandchild threads.\n\nGitOrigin-RevId: 4f2e4bb414d27195a6752406117a6050718a1198",
+            "url": "https://github.com/openai/codex/commit/9479e1fdb7396c3e3254f5e123489af829186893"
+          },
+          {
+            "sha": "a9bc7bebfa439e608543f45e9fc3415895c39153",
+            "title": "Load rollout history on a single blocking worker (#51499)",
+            "message": "Load rollout history on a single blocking worker (#51499)\n\n## What changed\n\nMove full rollout history reading and parsing into one blocking worker for both plain `.jsonl` and compressed `.jsonl.zst` files. Use the shared cancellation-aware line iterator so canceled loads stop before processing another record, while preserving rollout items, thread IDs, and parse-error counts.\n\n## Testing\n\nAdd regression tests for cancellation between records and equivalent history-loading results across plain and compressed files, including Unicode, CRLF line endings, malformed records, empty files, and invalid UTF-8.\n\nGitOrigin-RevId: 65e1bd7ebcdbbd0ab5f560e73b2c7f074f627f8f",
+            "url": "https://github.com/openai/codex/commit/a9bc7bebfa439e608543f45e9fc3415895c39153"
+          },
+          {
+            "sha": "7298a6e02003ec6975843dcf8068197a315793ee",
+            "title": "Add shared task pinning to the agent command center (#51500)",
+            "message": "Add shared task pinning to the agent command center (#51500)\n\n## What changed\n\n- Use `p` to pin or unpin the selected task, with a configurable `agents.toggle_pin` binding.\n- Display pinned tasks first in a `Pinned` group, preserving shared section order and applying search and status filters.\n- Load pins from the shared thread section, including tasks outside the recent-task window, and refresh after pin changes. Disable pinning when the server does not support shared sections.\n\n## Testing\n\nAdd coverage for shared pin/unpin state, paginated pin discovery and refreshing pins on reopen, shortcut dispatch and duplicate-action suppression, and pinned-group and custom-help snapshots.\n\nGitOrigin-RevId: d1a2cab6642d059c3c8df8480b5c59a10c493936",
+            "url": "https://github.com/openai/codex/commit/7298a6e02003ec6975843dcf8068197a315793ee"
+          },
+          {
+            "sha": "ddabe594e6f053f2d6d193b5768ece5f4c8c771d",
+            "title": "Bound relay connection attempts and handle pongs during blocked writes (#51502)",
+            "message": "Bound relay connection attempts and handle pongs during blocked writes (#51502)\n\n## Why\n\nA stalled rendezvous WebSocket upgrade can prevent reconnects, while short-lived connections reset reconnect backoff too early. Blocked relay writes also prevent received pongs from clearing their heartbeat deadline.\n\n## What changed\n\n- Bound rendezvous WebSocket connection attempts with `DEFAULT_REMOTE_EXEC_SERVER_CONNECT_TIMEOUT`.\n- Retain exponential reconnect backoff across short-lived connections, resetting it only after a connection lasts at least 120 seconds.\n- Process pongs during blocked data writes while preserving the in-flight send and its independent write timeout. Prefer queued pongs over an expired heartbeat deadline.\n- Abort the relay writer when its owning connection task is dropped.\n\n## Testing\n\nAdd coverage for pongs arriving during blocked writes, missing and queued pongs, independent write timeouts, and writer cancellation. Extend reconnect tests to cover stalled WebSocket upgrades without re-registration and backoff reset after a stable session.\n\nGitOrigin-RevId: 0efa350c2b4ada9b89e23df8909063fbb69f33dc",
+            "url": "https://github.com/openai/codex/commit/ddabe594e6f053f2d6d193b5768ece5f4c8c771d"
+          },
+          {
+            "sha": "044da98b4a7ff2dd0079f706280e0a6934048222",
+            "title": "Expose selected environments to MCP contributors (#51503)",
+            "message": "Expose selected environments to MCP contributors (#51503)\n\n## Why\n\nMCP contributors need the complete executor selection to distinguish an unavailable primary executor from a ready secondary. Ready capability roots alone do not preserve pending or failed selections.\n\n## What changed\n\nAdd `with_selected_environments` and `selected_environments` to `McpServerContributionContext`, and pass the captured selections during thread MCP resolution and model-step plugin selection. Preserve priority order and pending or failed entries. Use `None` for threadless discovery and `Some(&[])` for an explicitly empty selection.\n\n## Testing\n\nAdd regression coverage for executor ordering with pending and failed selections, environment context in model-step plugin selection, and the distinction between absent and explicitly empty selections.\n\nGitOrigin-RevId: 2c1222fae72c7e2c75b2f40abfad3b2048cf9316",
+            "url": "https://github.com/openai/codex/commit/044da98b4a7ff2dd0079f706280e0a6934048222"
+          },
+          {
+            "sha": "eb2d3c6416e0db91b462f1853445145fceb43d89",
+            "title": "Preserve live TUI settings when configuration reloads fail (#51510)",
+            "message": "Preserve live TUI settings when configuration reloads fail (#51510)\n\n## Why\n\nLive preferences can be newer than the last successful configuration load. Starting a new thread after a reload failure could overwrite those preferences with stale settings.\n\n## What changed\n\nCarry local settings alongside the new-session configuration, retaining the live settings when reloading fails and applying the staged settings when the new thread starts. During resume and agent selection, replace staged local settings only when the directory-trust check actually reloads configuration.\n\n## Testing\n\nAdd a regression test that changes a live rendering preference, writes invalid `config.toml`, and verifies that loading a new thread's configuration preserves the live local settings.\n\nGitOrigin-RevId: 4ac3c70de6d627e1609cc0a5d4ba5df5a61a8b20",
+            "url": "https://github.com/openai/codex/commit/eb2d3c6416e0db91b462f1853445145fceb43d89"
+          },
+          {
+            "sha": "9545947c6da3f8ecc9a94eefd3d81e8799f185ec",
+            "title": "Fix Windows 10 drive-letter opens for no-follow filesystem operations (#51511)",
+            "message": "Fix Windows 10 drive-letter opens for no-follow filesystem operations (#51511)\n\n## Why\n\nOn Windows 10, strict native opens can reject the DOS drive alias itself as a reparse point, preventing no-follow filesystem operations on ordinary drive-letter paths.\n\n## What changed\n\nRetry rejected drive-letter opens relative to a verified local volume root. Require the root to resolve to a physical disk volume directory without reparse attributes, and retain `OBJ_DONT_REPARSE` for paths beneath it so junctions remain blocked.\n\n## Testing\n\nAdd Windows tests for file creation and reading through the volume fallback, opening the drive root, and rejecting junction traversal and creation. Validate accepted volume-root names and verify that named pipes are rejected without establishing a client connection.\n\nGitOrigin-RevId: 51ffde4f77d2af45d18dfc4cb026d73a0e69b061",
+            "url": "https://github.com/openai/codex/commit/9545947c6da3f8ecc9a94eefd3d81e8799f185ec"
+          },
+          {
+            "sha": "7efc49b258587fbe872c7897e90ffa6144bea2a0",
+            "title": "Align Windows sandbox temp permissions with the child environment (#51512)",
+            "message": "Align Windows sandbox temp permissions with the child environment (#51512)\n\n## Why\n\nWindows temp grants could fall back to host `TEMP`/`TMP` values and bypass read-only or denied subpaths. Sandbox permissions must match the environment passed to the child process.\n\n## What changed\n\n- Resolve `:tmpdir` from absolute `TEMP`/`TMP` paths in the completed workload environment, preserving access modes and missing-path rules without falling back to host values.\n- Deduplicate Windows environment keys case-insensitively in a deterministic order so permission resolution and the child environment select the same value.\n- Use the resolved temp policy for elevated sandbox overrides across core execution, exec-server, and direct spawning.\n- Launch direct-spawn sandbox wrappers with the supplied Codex executable, materializing an inner helper only when it is that executable.\n\n## Testing\n\nAdd Windows regression coverage for temp-only writes, read-only and denied carveouts, mixed-case and duplicate environment keys, unavailable temp paths, and empty or missing write-root overrides. Exercise core execution and direct spawning, and extend exec-server RPC coverage to the elevated backend with temp values set through the environment policy.\n\nGitOrigin-RevId: 16b8bd4702cc434fd743a08c75a3e4515780bff3",
+            "url": "https://github.com/openai/codex/commit/7efc49b258587fbe872c7897e90ffa6144bea2a0"
+          },
+          {
+            "sha": "24edd7b89026865149d58d0a090694a2146b6d3c",
+            "title": "Expose detailed agent tree shutdown failure reports (#51515)",
+            "message": "Expose detailed agent tree shutdown failure reports (#51515)\n\n## Why\n\nAgent tree shutdown previously returned a generic error without identifying which operation or thread failed, making cleanup failures difficult to diagnose.\n\n## What changed\n\n- Add `AgentTreeShutdown::wait_detailed()` and public report types while preserving the existing `wait()` result and error message.\n- Record operation, optional thread ID, and either an abandoned teardown guard or a failed phase with a payload-free error category across session cleanup, child spawn cleanup, and resident eviction.\n- Give each tree a correlation ID, log each failure, and retain up to 64 failures with a count of additional failures omitted. Record failures before releasing tree membership so all completed waiters observe the same report.\n\n## Testing\n\nAdd unit coverage for aborted and completed teardown, cloned guard context, concurrent and repeated waiters, omitted failure counts, and report formatting without raw error payloads. Extend integration coverage for successful tree shutdown and persistence writer failures, including compatibility with `wait()`.\n\nGitOrigin-RevId: 68784af28b63e875b00a55d78729f0cc5b01ac15",
+            "url": "https://github.com/openai/codex/commit/24edd7b89026865149d58d0a090694a2146b6d3c"
+          },
+          {
+            "sha": "19c4793964f3d70a9c916010376f96f636847a95",
+            "title": "Pass thread persistence intent to attachment uploads (#51517)",
+            "message": "Pass thread persistence intent to attachment uploads (#51517)\n\n## Why\n\nAttachment stores need to distinguish uploads from ephemeral threads, which intentionally skip durable persistence.\n\n## What changed\n\nAdd `ephemeral` to `UploadRequest` and propagate the turn configuration through image preparation for messages, tool outputs, and history replay. Include the flag in debug output while keeping attachment bytes redacted.\n\n## Testing\n\nExtend the Guardian context-budget test to assert that a persistent Guardian uploads exactly one image with `ephemeral: false`. Update the attachment debug-output assertion to include the new field.\n\nGitOrigin-RevId: 42814c514a571ed6798e4dcf79a22028ee4efc28",
+            "url": "https://github.com/openai/codex/commit/19c4793964f3d70a9c916010376f96f636847a95"
+          },
+          {
+            "sha": "ed59a6c1cdf5e6fc96351fd46dfc1ef8a16db385",
+            "title": "Preserve the CLI MXC preference in executor config reads (#51525)",
+            "message": "Preserve the CLI MXC preference in executor config reads (#51525)\n\n## Why\n\nExecutor config reads omitted the startup `features.prefer_mxc` override, so clients could not see the CLI sandbox preference.\n\n## What changed\n\n- Include the explicit CLI `features.prefer_mxc` value in `environmentConfig/read` as a `session-flags` layer, above project config and below legacy managed file and MDM config.\n- Retain only this preference from startup overrides.\n- Expose `windows_mxc_allowed_by_config` to share MXC eligibility checks after callers resolve the active permission profile.\n\n## Testing\n\nAdd CLI and remote executor coverage for preference propagation and filtering, plus a unit test verifying that both legacy managed config sources retain precedence.\n\nGitOrigin-RevId: 5ac6f5257f1e807c2f197dcf5dcb2385cedca0ea",
+            "url": "https://github.com/openai/codex/commit/ed59a6c1cdf5e6fc96351fd46dfc1ef8a16db385"
+          },
+          {
+            "sha": "ac9b5b8380517ded445b09dd3196d8d9e2ba3c59",
+            "title": "Ignore ripgrep configuration when expanding sandbox deny globs (#51527)",
+            "message": "Ignore ripgrep configuration when expanding sandbox deny globs (#51527)\n\n## Why\n\nUser ripgrep configuration can suppress the file list used to construct Linux sandbox deny masks. For example, `--quiet` in `RIPGREP_CONFIG_PATH` can leave files matching deny globs unmasked.\n\n## What changed\n\nPass `--no-config` to the ripgrep invocation that expands denied-file globs.\n\n## Testing\n\nExtend the multiple-denied-files regression test with a ripgrep configuration containing `--quiet`, checking that denied files remain unreadable and unwritable while allowed files remain accessible. Skip the ripgrep-specific case when no protected `rg` executable is available.\n\nGitOrigin-RevId: 06a6e27e0edec92e79e99af5144b57f86079953f",
+            "url": "https://github.com/openai/codex/commit/ac9b5b8380517ded445b09dd3196d8d9e2ba3c59"
+          },
+          {
+            "sha": "cedb4fd34c54cf81f44bfeabb000c7cc01eced82",
+            "title": "Release 0.162.0-alpha.18",
+            "message": "Release 0.162.0-alpha.18",
+            "url": "https://github.com/openai/codex/commit/cedb4fd34c54cf81f44bfeabb000c7cc01eced82"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.17",
+          "head": "rust-v0.162.0-alpha.18",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.17...rust-v0.162.0-alpha.18",
+          "status": "diverged",
+          "total": 38,
+          "behind": 1,
+          "complete": true,
+          "fetched": 38
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-status:01M4ADHMMBK7K92NJFJ0DXRYJM:2026-10-07T13:54:49.451Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-07T13:54:49.451Z",
+      "item": {
+        "id": "openai-status:01M4ADHMMBK7K92NJFJ0DXRYJM",
+        "at": "2026-10-07T11:53:35.000Z",
+        "url": "https://status.openai.com/incidents/01M4ADHMMBK7K92NJFJ0DXRYJM",
+        "text": "Unable to create new ChatGPT Work threads in latest version of desktop app. We have released an updated app version with the fix for Linux, macOS and Windows. Affected users should update to the latest version.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-07T05:31:56.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.18:2026-10-07T13:54:49.451Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-07T13:54:49.451Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.18",
+        "title": "0.162.0-alpha.18",
+        "body": "Release 0.162.0-alpha.18\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-07T13:54:49.454Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.18",
         "publishedAt": "2026-10-07T02:04:32Z",
         "commits": [
