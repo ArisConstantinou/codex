@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-06T20:55:37.739Z",
+  "generatedAt": "2026-10-07T00:37:35.325Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -3828,9 +3828,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.17",
-      "at": "2026-10-06T17:49:29.000Z",
+      "at": "2026-10-06T22:09:21.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.17",
-      "text": "rust-v0.162.0-alpha.17. Release 0.162.0-alpha.17",
+      "text": "0.162.0-alpha.17. Release 0.162.0-alpha.17",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -3856,6 +3856,51 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-10-06T17:15:23.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/jump-trading",
+      "at": "2026-10-06T12:00:00.000Z",
+      "url": "https://openai.com/index/jump-trading",
+      "text": "How Jump Trading is scaling quant research with ChatGPT. Jump Trading uses OpenAI to expand quantitative research. See how longer-running AI workflows combine multiple data sources with human review.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/sharing-ai-progress-in-mathematics",
+      "at": "2026-10-06T12:00:00.000Z",
+      "url": "https://openai.com/index/sharing-ai-progress-in-mathematics",
+      "text": "Sharing AI progress in mathematics. OpenAI publishes new results on open problems in mathematics from an internal frontier model and shares Lean proof formalizations and research details on GitHub.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.161.0",
+      "at": "2026-10-06T22:34:38.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.161.0",
+      "text": "rust-v0.161.0. Release 0.161.0",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -3864,7 +3909,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-06T20:55:37.280Z",
+      "lastSuccessAt": "2026-10-07T00:37:34.942Z",
       "error": null,
       "count": 150
     },
@@ -3873,7 +3918,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-06T20:55:37.280Z",
+      "lastSuccessAt": "2026-10-07T00:37:34.942Z",
       "error": null,
       "count": 10
     },
@@ -3882,7 +3927,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-06T20:55:37.280Z",
+      "lastSuccessAt": "2026-10-07T00:37:34.942Z",
       "error": null,
       "count": 25
     }
@@ -10299,12 +10344,93 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-09-29T17:52:52.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/jump-trading:2026-10-07T00:37:35.325Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-07T00:37:35.325Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/jump-trading",
+        "at": "2026-10-06T12:00:00.000Z",
+        "url": "https://openai.com/index/jump-trading",
+        "text": "How Jump Trading is scaling quant research with ChatGPT. Jump Trading uses OpenAI to expand quantitative research. See how longer-running AI workflows combine multiple data sources with human review.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/sharing-ai-progress-in-mathematics:2026-10-07T00:37:35.325Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-07T00:37:35.325Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/sharing-ai-progress-in-mathematics",
+        "at": "2026-10-06T12:00:00.000Z",
+        "url": "https://openai.com/index/sharing-ai-progress-in-mathematics",
+        "text": "Sharing AI progress in mathematics. OpenAI publishes new results on open problems in mathematics from an internal frontier model and shares Lean proof formalizations and research details on GitHub.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.17:2026-10-07T00:37:35.325Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-07T00:37:35.325Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.17",
+        "at": "2026-10-06T22:09:21.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.17",
+        "text": "0.162.0-alpha.17. Release 0.162.0-alpha.17",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.161.0:2026-10-07T00:37:35.325Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-07T00:37:35.325Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.161.0",
+        "at": "2026-10-06T22:34:38.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.161.0",
+        "text": "rust-v0.161.0. Release 0.161.0",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
     }
   ],
   "releaseRequests": {
     "blockedUntil": 0,
     "retryByTag": {
-      "rust-v0.162.0-alpha.17": 1791321037742
+      "rust-v0.162.0-alpha.17": 1791321037742,
+      "rust-v0.161.0": 1791334355326
     }
   }
 }
