@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-08T00:08:36.537Z",
+  "generatedAt": "2026-10-08T06:19:07.864Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4320,6 +4320,67 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-10-07T23:42:12.000Z"
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.20",
+      "at": "2026-10-08T02:42:40.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.20",
+      "text": "0.162.0-alpha.20. Release 0.162.0-alpha.20",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.19",
+      "at": "2026-10-08T00:13:21.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.19",
+      "text": "rust-v0.162.0-alpha.19. Release 0.162.0-alpha.19",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.18.1",
+      "at": "2026-10-08T02:58:48.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.18.1",
+      "text": "0.162.0-alpha.18.1. Release 0.162.0-alpha.18.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M4CR8GCAFC1RYQXZDXAZP2VT",
+      "at": "2026-10-08T04:51:39.000Z",
+      "url": "https://status.openai.com/incidents/01M4CR8GCAFC1RYQXZDXAZP2VT",
+      "text": "Some APAC users are seeing errors in ChatGPT Work, conversations, and GPTs.. All impacted services have now fully recovered.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-08T03:17:40.000Z"
     }
   ],
   "sources": {
@@ -4328,7 +4389,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-08T00:08:35.786Z",
+      "lastSuccessAt": "2026-10-08T06:19:07.330Z",
       "error": null,
       "count": 150
     },
@@ -4337,7 +4398,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-08T00:08:35.786Z",
+      "lastSuccessAt": "2026-10-08T06:19:07.330Z",
       "error": null,
       "count": 10
     },
@@ -4346,7 +4407,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-08T00:08:35.786Z",
+      "lastSuccessAt": "2026-10-08T06:19:07.330Z",
       "error": null,
       "count": 25
     }
@@ -11904,12 +11965,134 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-10-01T18:46:17.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol:2026-10-08T06:19:07.864Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T06:19:07.864Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol",
+        "at": "2026-09-29T17:00:00.000Z",
+        "url": "https://openai.com/index/introducing-gpt-6-1-sol",
+        "text": "Introducing GPT-6.1 Sol. Meet GPT-6.1 Sol: near-Astra intelligence for coding, computer use, and professional work at one-fifth of Astra’s standard API input and output token prices.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol:2026-10-08T06:19:07.864Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T06:19:07.864Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol",
+        "at": "2026-09-29T10:00:00.000Z",
+        "url": "https://openai.com/index/introducing-gpt-6-1-sol",
+        "text": "Introducing GPT-6.1 Sol. Meet GPT-6.1 Sol: near-Astra intelligence for coding, computer use, and professional work at one-fifth of Astra’s standard API input and output token prices.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.20:2026-10-08T06:19:07.864Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T06:19:07.864Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.20",
+        "at": "2026-10-08T02:42:40.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.20",
+        "text": "0.162.0-alpha.20. Release 0.162.0-alpha.20",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.19:2026-10-08T06:19:07.864Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T06:19:07.864Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.19",
+        "at": "2026-10-08T00:13:21.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.19",
+        "text": "rust-v0.162.0-alpha.19. Release 0.162.0-alpha.19",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.18.1:2026-10-08T06:19:07.864Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T06:19:07.864Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.18.1",
+        "at": "2026-10-08T02:58:48.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.18.1",
+        "text": "0.162.0-alpha.18.1. Release 0.162.0-alpha.18.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M4CR8GCAFC1RYQXZDXAZP2VT:2026-10-08T06:19:07.864Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T06:19:07.864Z",
+      "item": {
+        "id": "openai-status:01M4CR8GCAFC1RYQXZDXAZP2VT",
+        "at": "2026-10-08T04:51:39.000Z",
+        "url": "https://status.openai.com/incidents/01M4CR8GCAFC1RYQXZDXAZP2VT",
+        "text": "Some APAC users are seeing errors in ChatGPT Work, conversations, and GPTs.. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-08T03:17:40.000Z"
+      }
     }
   ],
   "releaseRequests": {
-    "blockedUntil": 0,
+    "blockedUntil": 1791440909000,
     "retryByTag": {
-      "rust-v0.162.0-alpha.17": 1791321037742
+      "rust-v0.162.0-alpha.17": 1791321037742,
+      "rust-v0.162.0-alpha.20": 1791440909000
     }
   }
 }
