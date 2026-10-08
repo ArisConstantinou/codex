@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-08T13:45:17.779Z",
+  "generatedAt": "2026-10-08T19:31:31.540Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4431,6 +4431,81 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "openai-news:https://openai.com/index/oracle",
+      "at": "2026-10-08T16:00:00.000Z",
+      "url": "https://openai.com/index/oracle",
+      "text": "How Oracle turns days of work into minutes with ChatGPT and Codex. Across recruiting, engineering, and operations, Oracle turns specialist knowledge into fast, repeatable workflows with ChatGPT Work and Codex.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/pollo-ai",
+      "at": "2026-10-08T12:00:00.000Z",
+      "url": "https://openai.com/index/pollo-ai",
+      "text": "Pollo AI turns creative ideas into campaigns with OpenAI. With GPT-5.6, GPT-6 Astra, and GPT‑Image‑2.5, Pollo AI helps creators turn bold ideas into detailed images and cinematic video ads.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/disrupting-ai-enabled-false-front-operations",
+      "at": "2026-10-08T00:00:00.000Z",
+      "url": "https://openai.com/index/disrupting-ai-enabled-false-front-operations",
+      "text": "Disrupting AI-enabled “false front” operations. OpenAI disrupted two AI-enabled influence operations that used false-front journalists and a think tank to spread geopolitical messaging.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.1",
+      "at": "2026-10-08T19:23:43.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.1",
+      "text": "rust-v0.163.0-alpha.1. Release 0.163.0-alpha.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0",
+      "at": "2026-10-08T18:58:03.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0",
+      "text": "0.162.0. New Features Add tools for creating and listing managed Git worktrees from trusted local projects when the worktrees feature is enabled. ( #50148 ) Pin tasks in the agent Command Center with p and keep them in a shared Pinned group when supported by the server. ( #51500 ) Navigate and copy transcript blocks with /copy , use Ctrl+Insert to copy selections, and tune mouse-wheel scrolling with tui.mouse_scroll_speed . ( #50434 , #50215 , #50209 ) Make URLs clickable in approval headers, questions, MCP prompts, warnings, banners, and verification prompts, including when links wrap across lines. ( #51439 , #51449 , #51450 , #51451 , #51452 , #51458 ) Configure live web access and remote compaction capabilities for custom Responses-compatible model providers. ( #50459 ) Add JavaScript helpers for streaming promise results as they settle, plus opt-in ranked tool search in Code Mode. ( #51126 , #51209 ) Bug Fixes Respect server model and reasoning-summary defaults for new TUI threads while retaining explicit launch overrides. ( #50013 , #50811 , #50913 ) Preserve existing CRLF line endings in apply_patch updates without requiring an opt-in. ( #51203 ) Fix Linux sandbox startup with multiple denied files, reject writable sandbox-construction executables, and keep ripgrep configuration from weakening deny-glob masks. ( #50059 , #51211 , #51407 , #51527 ) Restore ordinary drive-letter file access on Windows 10 and match Windows sandbox temp permissions to the child process environment. ( #51511 , #51512 ) Honor server Retry-After advice for retryable Responses and WebSocket failures. ( #50418 , #51440 ) Fix archive checksum verification when installing through Windows PowerShell with PowerShell 7 module paths present. ( #51257 ) Chores Publish a signed PowerShell installer with Windows releases. ( #51158 ) Keep older stable releases and prereleases from replacing newer stable download targets or installer aliases. ( #51186 , #51425 ) Changelog Full Changelog: rust-v0.161.0...rust-v0.162.0 #50013 Honor server model defaults when starting fresh TUI threads @etraut-openai #50018 Use descriptor-safe helpers for executable test fixtures @jif-oai #50019 Protect the guardian decisions API key from environment forwarding @swastik-oai #50026 Preserve user restrictions in Guardian handoff context @jif-oai #50035 Follow MCP tool pagination in legacy protocol mode @jif-oai #50039 Keep transcript Find results readable after closing the query @fcoury-oai #50045 Keep transcript Find expansion scoped to the current match @fcoury-oai #50046 Stabilize Windows voice build cache keys across tool reinstalls @anp-oai #50050 Keep plugin and skill snapshots scoped to each step @sayan-oai #50052 Preserve question context in recovered TUI answer drafts @imac-oai #50054 Check token estimate filtering directly on the tracing subscriber @tamird #50058 Upgrade Windows bindings to windows-sys 0.61.2 @tamird #50059 Fix Linux sandbox startup with multiple denied files @yuzhu-oai #50066 Add a bounded Decisions transport for Guardian comparison classification @swastik-oai #50082 Enable dynamic tool inheritance for fresh V2 subagents @ke-oai #50083 Add paginated reverse lookup for thread attachments @joeytrasatti-openai #50087 Preserve queued agent mail across session eviction @jif-oai #50093 Prevent shared instruction providers from delegating to themselves @bryanashley #50094 Add attachment owner lookup to the app-server @joeytrasatti-openai #50099 Add opt-in Decisions comparison for Guardian V2 @swastik-oai #50105 Consolidate chat composer footer logic in footer_state @imac-oai #50109 Keep fullscreen prompts bounded and scrollable @imac-oai #50112 Centralize TUI loading glyphs and frame scheduling @imac-oai #50113 Add a native gRPC client for cloud thread resume and attach @bc-openai #50128 Expose the model selected for a running turn's next step @sayan-oai #50129 Preserve Windows environment variables for remote MCP servers @aidanv-oai #50131 Add opt-in JSON diagnostics for TCP tunnels @richardopenai #50140 Use the server permission catalog for TUI permission shortcuts @etraut-openai #50148 Add managed worktree tools to the TUI @bc-openai #50162 Bound in-flight file opens in exec-server @anp-oai #50166 Upgrade age to 0.12.1 and remove the obsolete advisory exception @michaelm-openai #50177 Enable writable file streaming in exec-server @anp-oai #50183 Add dots to issue labeler guidance @etraut-openai #50189 Replace the Figma OAuth exception with Mercado Pago @mzeng-openai #50199 Restore the account email in /status after account updates @etraut-openai #50200 Report the configured TUI mode in codex doctor @etraut-openai #50207 Release stable Markdown tables into scrollback during streaming @etraut-openai #50209 Make transcript mouse scroll speed configurable @etraut-openai #50215 Support Ctrl+Insert for copying TUI selections @etraut-openai #50216 Use the shared text editor for command-center task renaming @bc-openai #50219 Bound tmux option probes to one second @etraut-openai #50273 Record Guardian V2 Decisions agreement and latency metrics @swastik-oai #50339 Add end-to-end coverage for MCP sandbox state enforcement @bolinfest #50345 Keep the subagent picker consistent with thread archive state @etraut-openai #50348 Back off automatic remote control reconnects with jitter @cooper-oai #50354 Skip unrelated subtrees during config alias normalization @btraut-openai #50359 Render ANSI styles in TUI hook system messages @etraut-openai #50360 Remove initial messages from session configuration events @owenlin0 #50375 Use printable ASCII terminal titles under GNU Screen @imac-oai #50380 Fix thread unloading after disconnect during MCP startup @yuzhu-oai #50384 Allow opting into 16 KiB ARM64 code pages for macOS signing @chess-oai #50389 Honor configured keybindings before transcript navigation @etraut-openai #50396 Honor pager bindings for transcript page keys @bc-openai #50402 Consolidate command execution output into aggregated_output ",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -4439,7 +4514,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-08T13:45:16.999Z",
+      "lastSuccessAt": "2026-10-08T19:31:30.440Z",
       "error": null,
       "count": 150
     },
@@ -4448,7 +4523,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-08T13:45:16.999Z",
+      "lastSuccessAt": "2026-10-08T19:31:30.440Z",
       "error": null,
       "count": 10
     },
@@ -4457,7 +4532,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-08T13:45:16.999Z",
+      "lastSuccessAt": "2026-10-08T19:31:30.440Z",
       "error": null,
       "count": 25
     }
@@ -12236,12 +12311,113 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/oracle:2026-10-08T19:31:31.540Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T19:31:31.540Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/oracle",
+        "at": "2026-10-08T16:00:00.000Z",
+        "url": "https://openai.com/index/oracle",
+        "text": "How Oracle turns days of work into minutes with ChatGPT and Codex. Across recruiting, engineering, and operations, Oracle turns specialist knowledge into fast, repeatable workflows with ChatGPT Work and Codex.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/pollo-ai:2026-10-08T19:31:31.540Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T19:31:31.540Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/pollo-ai",
+        "at": "2026-10-08T12:00:00.000Z",
+        "url": "https://openai.com/index/pollo-ai",
+        "text": "Pollo AI turns creative ideas into campaigns with OpenAI. With GPT-5.6, GPT-6 Astra, and GPT‑Image‑2.5, Pollo AI helps creators turn bold ideas into detailed images and cinematic video ads.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/disrupting-ai-enabled-false-front-operations:2026-10-08T19:31:31.540Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T19:31:31.540Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/disrupting-ai-enabled-false-front-operations",
+        "at": "2026-10-08T00:00:00.000Z",
+        "url": "https://openai.com/index/disrupting-ai-enabled-false-front-operations",
+        "text": "Disrupting AI-enabled “false front” operations. OpenAI disrupted two AI-enabled influence operations that used false-front journalists and a think tank to spread geopolitical messaging.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.1:2026-10-08T19:31:31.540Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T19:31:31.540Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.1",
+        "at": "2026-10-08T19:23:43.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.1",
+        "text": "rust-v0.163.0-alpha.1. Release 0.163.0-alpha.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0:2026-10-08T19:31:31.540Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T19:31:31.540Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0",
+        "at": "2026-10-08T18:58:03.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0",
+        "text": "0.162.0. New Features Add tools for creating and listing managed Git worktrees from trusted local projects when the worktrees feature is enabled. ( #50148 ) Pin tasks in the agent Command Center with p and keep them in a shared Pinned group when supported by the server. ( #51500 ) Navigate and copy transcript blocks with /copy , use Ctrl+Insert to copy selections, and tune mouse-wheel scrolling with tui.mouse_scroll_speed . ( #50434 , #50215 , #50209 ) Make URLs clickable in approval headers, questions, MCP prompts, warnings, banners, and verification prompts, including when links wrap across lines. ( #51439 , #51449 , #51450 , #51451 , #51452 , #51458 ) Configure live web access and remote compaction capabilities for custom Responses-compatible model providers. ( #50459 ) Add JavaScript helpers for streaming promise results as they settle, plus opt-in ranked tool search in Code Mode. ( #51126 , #51209 ) Bug Fixes Respect server model and reasoning-summary defaults for new TUI threads while retaining explicit launch overrides. ( #50013 , #50811 , #50913 ) Preserve existing CRLF line endings in apply_patch updates without requiring an opt-in. ( #51203 ) Fix Linux sandbox startup with multiple denied files, reject writable sandbox-construction executables, and keep ripgrep configuration from weakening deny-glob masks. ( #50059 , #51211 , #51407 , #51527 ) Restore ordinary drive-letter file access on Windows 10 and match Windows sandbox temp permissions to the child process environment. ( #51511 , #51512 ) Honor server Retry-After advice for retryable Responses and WebSocket failures. ( #50418 , #51440 ) Fix archive checksum verification when installing through Windows PowerShell with PowerShell 7 module paths present. ( #51257 ) Chores Publish a signed PowerShell installer with Windows releases. ( #51158 ) Keep older stable releases and prereleases from replacing newer stable download targets or installer aliases. ( #51186 , #51425 ) Changelog Full Changelog: rust-v0.161.0...rust-v0.162.0 #50013 Honor server model defaults when starting fresh TUI threads @etraut-openai #50018 Use descriptor-safe helpers for executable test fixtures @jif-oai #50019 Protect the guardian decisions API key from environment forwarding @swastik-oai #50026 Preserve user restrictions in Guardian handoff context @jif-oai #50035 Follow MCP tool pagination in legacy protocol mode @jif-oai #50039 Keep transcript Find results readable after closing the query @fcoury-oai #50045 Keep transcript Find expansion scoped to the current match @fcoury-oai #50046 Stabilize Windows voice build cache keys across tool reinstalls @anp-oai #50050 Keep plugin and skill snapshots scoped to each step @sayan-oai #50052 Preserve question context in recovered TUI answer drafts @imac-oai #50054 Check token estimate filtering directly on the tracing subscriber @tamird #50058 Upgrade Windows bindings to windows-sys 0.61.2 @tamird #50059 Fix Linux sandbox startup with multiple denied files @yuzhu-oai #50066 Add a bounded Decisions transport for Guardian comparison classification @swastik-oai #50082 Enable dynamic tool inheritance for fresh V2 subagents @ke-oai #50083 Add paginated reverse lookup for thread attachments @joeytrasatti-openai #50087 Preserve queued agent mail across session eviction @jif-oai #50093 Prevent shared instruction providers from delegating to themselves @bryanashley #50094 Add attachment owner lookup to the app-server @joeytrasatti-openai #50099 Add opt-in Decisions comparison for Guardian V2 @swastik-oai #50105 Consolidate chat composer footer logic in footer_state @imac-oai #50109 Keep fullscreen prompts bounded and scrollable @imac-oai #50112 Centralize TUI loading glyphs and frame scheduling @imac-oai #50113 Add a native gRPC client for cloud thread resume and attach @bc-openai #50128 Expose the model selected for a running turn's next step @sayan-oai #50129 Preserve Windows environment variables for remote MCP servers @aidanv-oai #50131 Add opt-in JSON diagnostics for TCP tunnels @richardopenai #50140 Use the server permission catalog for TUI permission shortcuts @etraut-openai #50148 Add managed worktree tools to the TUI @bc-openai #50162 Bound in-flight file opens in exec-server @anp-oai #50166 Upgrade age to 0.12.1 and remove the obsolete advisory exception @michaelm-openai #50177 Enable writable file streaming in exec-server @anp-oai #50183 Add dots to issue labeler guidance @etraut-openai #50189 Replace the Figma OAuth exception with Mercado Pago @mzeng-openai #50199 Restore the account email in /status after account updates @etraut-openai #50200 Report the configured TUI mode in codex doctor @etraut-openai #50207 Release stable Markdown tables into scrollback during streaming @etraut-openai #50209 Make transcript mouse scroll speed configurable @etraut-openai #50215 Support Ctrl+Insert for copying TUI selections @etraut-openai #50216 Use the shared text editor for command-center task renaming @bc-openai #50219 Bound tmux option probes to one second @etraut-openai #50273 Record Guardian V2 Decisions agreement and latency metrics @swastik-oai #50339 Add end-to-end coverage for MCP sandbox state enforcement @bolinfest #50345 Keep the subagent picker consistent with thread archive state @etraut-openai #50348 Back off automatic remote control reconnects with jitter @cooper-oai #50354 Skip unrelated subtrees during config alias normalization @btraut-openai #50359 Render ANSI styles in TUI hook system messages @etraut-openai #50360 Remove initial messages from session configuration events @owenlin0 #50375 Use printable ASCII terminal titles under GNU Screen @imac-oai #50380 Fix thread unloading after disconnect during MCP startup @yuzhu-oai #50384 Allow opting into 16 KiB ARM64 code pages for macOS signing @chess-oai #50389 Honor configured keybindings before transcript navigation @etraut-openai #50396 Honor pager bindings for transcript page keys @bc-openai #50402 Consolidate command execution output into aggregated_output ",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
     }
   ],
   "releaseRequests": {
     "blockedUntil": 1791440909000,
     "retryByTag": {
-      "rust-v0.162.0-alpha.17": 1791321037742
+      "rust-v0.162.0-alpha.17": 1791321037742,
+      "rust-v0.163.0-alpha.1": 1791488791542
     }
   }
 }
