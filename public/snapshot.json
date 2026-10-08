@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-08T19:31:31.540Z",
+  "generatedAt": "2026-10-08T23:55:41.505Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4479,9 +4479,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.1",
-      "at": "2026-10-08T19:23:43.000Z",
+      "at": "2026-10-08T21:24:42.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.1",
-      "text": "rust-v0.163.0-alpha.1. Release 0.163.0-alpha.1",
+      "text": "0.163.0-alpha.1. Release 0.163.0-alpha.1",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -4506,6 +4506,36 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/legalon-halves-codex-costs",
+      "at": "2026-10-08T12:00:00.000Z",
+      "url": "https://openai.com/index/legalon-halves-codex-costs",
+      "text": "LegalOn halves Codex costs while maintaining development speed. LegalOn cut estimated daily Codex costs by 65% while maintaining development speed. It matched Astra, Sol, and Luna to tasks and managed budgets strategically.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.2",
+      "at": "2026-10-08T23:46:09.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.2",
+      "text": "rust-v0.163.0-alpha.2. Release 0.163.0-alpha.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -4514,7 +4544,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-08T19:31:30.440Z",
+      "lastSuccessAt": "2026-10-08T23:55:40.920Z",
       "error": null,
       "count": 150
     },
@@ -4523,7 +4553,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-08T19:31:30.440Z",
+      "lastSuccessAt": "2026-10-08T23:55:40.920Z",
       "error": null,
       "count": 10
     },
@@ -4532,7 +4562,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-08T19:31:30.440Z",
+      "lastSuccessAt": "2026-10-08T23:55:40.920Z",
       "error": null,
       "count": 25
     }
@@ -12411,13 +12441,74 @@
         "origin": "direct-official",
         "prerelease": false
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/legalon-halves-codex-costs:2026-10-08T23:55:41.505Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T23:55:41.505Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/legalon-halves-codex-costs",
+        "at": "2026-10-08T12:00:00.000Z",
+        "url": "https://openai.com/index/legalon-halves-codex-costs",
+        "text": "LegalOn halves Codex costs while maintaining development speed. LegalOn cut estimated daily Codex costs by 65% while maintaining development speed. It matched Astra, Sol, and Luna to tasks and managed budgets strategically.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.2:2026-10-08T23:55:41.505Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T23:55:41.505Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.2",
+        "at": "2026-10-08T23:46:09.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.2",
+        "text": "rust-v0.163.0-alpha.2. Release 0.163.0-alpha.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.1:2026-10-08T23:55:41.505Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T23:55:41.505Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.1",
+        "at": "2026-10-08T21:24:42.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.1",
+        "text": "0.163.0-alpha.1. Release 0.163.0-alpha.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
     "blockedUntil": 1791440909000,
     "retryByTag": {
       "rust-v0.162.0-alpha.17": 1791321037742,
-      "rust-v0.163.0-alpha.1": 1791488791542
+      "rust-v0.163.0-alpha.1": 1791488791542,
+      "rust-v0.163.0-alpha.2": 1791504641507
     }
   }
 }
