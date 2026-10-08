@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-08T06:19:07.864Z",
+  "generatedAt": "2026-10-08T13:45:17.779Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4334,7 +4334,42 @@
         "release"
       ],
       "origin": "direct-official",
-      "prerelease": true
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.20",
+        "title": "0.162.0-alpha.20",
+        "body": "Release 0.162.0-alpha.20\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-08T13:45:17.781Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.20",
+        "publishedAt": "2026-10-08T02:25:14Z",
+        "commits": [
+          {
+            "sha": "c333d755d44d4eb764cffd2bd862d86d790e91e6",
+            "title": "Add the missing `mxc-sdk` UTF-8 resource patch for Bazel (#51890)",
+            "message": "Add the missing `mxc-sdk` UTF-8 resource patch for Bazel (#51890)\n\n## Why\n\n`MODULE.bazel` already references `mxc-sdk_utf8_resources.patch`, but the patch file and its Bazel export are missing.\n\n## What changed\n\nAdd and export the patch to pass `/c65001` to the Windows resource compiler when embedding `mxc-sdk` binary version information, selecting UTF-8 as the resource code page.\n\nGitOrigin-RevId: 80cd64e6a8056c61868b5e20fd8e2fee69c1b96b",
+            "url": "https://github.com/openai/codex/commit/c333d755d44d4eb764cffd2bd862d86d790e91e6"
+          },
+          {
+            "sha": "15c477d788a575de432f661def200ae7bc4a835e",
+            "title": "Release 0.162.0-alpha.20",
+            "message": "Release 0.162.0-alpha.20",
+            "url": "https://github.com/openai/codex/commit/15c477d788a575de432f661def200ae7bc4a835e"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.19",
+          "head": "rust-v0.162.0-alpha.20",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.19...rust-v0.162.0-alpha.20",
+          "status": "diverged",
+          "total": 2,
+          "behind": 1,
+          "complete": true,
+          "fetched": 2
+        },
+        "comparisonError": null
+      }
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.19",
@@ -4381,6 +4416,21 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-10-08T03:17:40.000Z"
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.17.2",
+      "at": "2026-10-08T07:43:55.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.17.2",
+      "text": "0.162.0-alpha.17.2. Release 0.162.0-alpha.17.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -4389,7 +4439,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-08T06:19:07.330Z",
+      "lastSuccessAt": "2026-10-08T13:45:16.999Z",
       "error": null,
       "count": 150
     },
@@ -4398,7 +4448,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-08T06:19:07.330Z",
+      "lastSuccessAt": "2026-10-08T13:45:16.999Z",
       "error": null,
       "count": 10
     },
@@ -4407,7 +4457,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-08T06:19:07.330Z",
+      "lastSuccessAt": "2026-10-08T13:45:16.999Z",
       "error": null,
       "count": 25
     }
@@ -12086,13 +12136,112 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-10-08T03:17:40.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol:2026-10-08T13:45:17.779Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T13:45:17.779Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol",
+        "at": "2026-09-29T17:00:00.000Z",
+        "url": "https://openai.com/index/introducing-gpt-6-1-sol",
+        "text": "Introducing GPT-6.1 Sol. Meet GPT-6.1 Sol: near-Astra intelligence for coding, computer use, and professional work at one-fifth of Astra’s standard API input and output token prices.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol:2026-10-08T13:45:17.779Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T13:45:17.779Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-sol",
+        "at": "2026-09-29T10:00:00.000Z",
+        "url": "https://openai.com/index/introducing-gpt-6-1-sol",
+        "text": "Introducing GPT-6.1 Sol. Meet GPT-6.1 Sol: near-Astra intelligence for coding, computer use, and professional work at one-fifth of Astra’s standard API input and output token prices.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.17.2:2026-10-08T13:45:17.779Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-08T13:45:17.779Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.17.2",
+        "at": "2026-10-08T07:43:55.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.17.2",
+        "text": "0.162.0-alpha.17.2. Release 0.162.0-alpha.17.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.0-alpha.20:2026-10-08T13:45:17.779Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-08T13:45:17.779Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.162.0-alpha.20",
+        "title": "0.162.0-alpha.20",
+        "body": "Release 0.162.0-alpha.20\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-08T13:45:17.781Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.20",
+        "publishedAt": "2026-10-08T02:25:14Z",
+        "commits": [
+          {
+            "sha": "c333d755d44d4eb764cffd2bd862d86d790e91e6",
+            "title": "Add the missing `mxc-sdk` UTF-8 resource patch for Bazel (#51890)",
+            "message": "Add the missing `mxc-sdk` UTF-8 resource patch for Bazel (#51890)\n\n## Why\n\n`MODULE.bazel` already references `mxc-sdk_utf8_resources.patch`, but the patch file and its Bazel export are missing.\n\n## What changed\n\nAdd and export the patch to pass `/c65001` to the Windows resource compiler when embedding `mxc-sdk` binary version information, selecting UTF-8 as the resource code page.\n\nGitOrigin-RevId: 80cd64e6a8056c61868b5e20fd8e2fee69c1b96b",
+            "url": "https://github.com/openai/codex/commit/c333d755d44d4eb764cffd2bd862d86d790e91e6"
+          },
+          {
+            "sha": "15c477d788a575de432f661def200ae7bc4a835e",
+            "title": "Release 0.162.0-alpha.20",
+            "message": "Release 0.162.0-alpha.20",
+            "url": "https://github.com/openai/codex/commit/15c477d788a575de432f661def200ae7bc4a835e"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.162.0-alpha.19",
+          "head": "rust-v0.162.0-alpha.20",
+          "url": "https://github.com/openai/codex/compare/rust-v0.162.0-alpha.19...rust-v0.162.0-alpha.20",
+          "status": "diverged",
+          "total": 2,
+          "behind": 1,
+          "complete": true,
+          "fetched": 2
+        },
+        "comparisonError": null
+      }
     }
   ],
   "releaseRequests": {
     "blockedUntil": 1791440909000,
     "retryByTag": {
-      "rust-v0.162.0-alpha.17": 1791321037742,
-      "rust-v0.162.0-alpha.20": 1791440909000
+      "rust-v0.162.0-alpha.17": 1791321037742
     }
   }
 }
