@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-09T13:07:39.450Z",
+  "generatedAt": "2026-10-09T18:52:11.281Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4685,9 +4685,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.4",
-      "at": "2026-10-09T11:37:20.000Z",
+      "at": "2026-10-09T13:45:56.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.4",
-      "text": "rust-v0.163.0-alpha.4. Release 0.163.0-alpha.4",
+      "text": "0.163.0-alpha.4. Release 0.163.0-alpha.4",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -4697,6 +4697,67 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "openai-news:https://openai.com/index/asana-browser-agent",
+      "at": "2026-10-09T07:00:00.000Z",
+      "url": "https://openai.com/index/asana-browser-agent",
+      "text": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol. Using GPT-6 Astra in Codex, Asana made its browser agent 76x cheaper and 5x faster in tests to offer customers more capable models.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/lowes",
+      "at": "2026-09-25T07:00:00.000Z",
+      "url": "https://openai.com/index/lowes",
+      "text": "Lowe’s answers millions of home improvement questions with OpenAI. Lowe’s uses OpenAI models to power Mylow and Mylow Companion, helping customers and associates answer 25M+ questions and move home improvement projects forward.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.1",
+      "at": "2026-10-09T17:39:06.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.1",
+      "text": "rust-v0.162.1. Release 0.162.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-status:01M4GV1M2A3K38T73JCVCD9G0R",
+      "at": "2026-10-09T18:46:25.000Z",
+      "url": "https://status.openai.com/incidents/01M4GV1M2A3K38T73JCVCD9G0R",
+      "text": "Delayed Costs data in the Compliance API. Some customers may continue to experience delayed Costs data through the Compliance API. ChatGPT usage and API Platform requests are not affected, and other reporting channels remain available. We have identified the cause and are continuing work to restore normal data freshness. We will provide another update as work progresses.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "identified",
+      "publishedAt": "2026-10-09T17:23:18.000Z"
     }
   ],
   "sources": {
@@ -4705,7 +4766,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-09T13:07:38.645Z",
+      "lastSuccessAt": "2026-10-09T18:52:10.570Z",
       "error": null,
       "count": 150
     },
@@ -4714,7 +4775,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-09T13:07:38.645Z",
+      "lastSuccessAt": "2026-10-09T18:52:10.570Z",
       "error": null,
       "count": 10
     },
@@ -4723,7 +4784,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-09T13:07:38.645Z",
+      "lastSuccessAt": "2026-10-09T18:52:10.570Z",
       "error": null,
       "count": 25
     }
@@ -12989,6 +13050,107 @@
         "origin": "direct-official",
         "prerelease": true
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/asana-browser-agent:2026-10-09T18:52:11.281Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T18:52:11.281Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/asana-browser-agent",
+        "at": "2026-10-09T07:00:00.000Z",
+        "url": "https://openai.com/index/asana-browser-agent",
+        "text": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol. Using GPT-6 Astra in Codex, Asana made its browser agent 76x cheaper and 5x faster in tests to offer customers more capable models.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/lowes:2026-10-09T18:52:11.281Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T18:52:11.281Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/lowes",
+        "at": "2026-09-25T07:00:00.000Z",
+        "url": "https://openai.com/index/lowes",
+        "text": "Lowe’s answers millions of home improvement questions with OpenAI. Lowe’s uses OpenAI models to power Mylow and Mylow Companion, helping customers and associates answer 25M+ questions and move home improvement projects forward.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.4:2026-10-09T18:52:11.281Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T18:52:11.281Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.4",
+        "at": "2026-10-09T13:45:56.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.4",
+        "text": "0.163.0-alpha.4. Release 0.163.0-alpha.4",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.1:2026-10-09T18:52:11.281Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T18:52:11.281Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.1",
+        "at": "2026-10-09T17:39:06.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.1",
+        "text": "rust-v0.162.1. Release 0.162.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-status:01M4GV1M2A3K38T73JCVCD9G0R:2026-10-09T18:52:11.281Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T18:52:11.281Z",
+      "item": {
+        "id": "openai-status:01M4GV1M2A3K38T73JCVCD9G0R",
+        "at": "2026-10-09T18:46:25.000Z",
+        "url": "https://status.openai.com/incidents/01M4GV1M2A3K38T73JCVCD9G0R",
+        "text": "Delayed Costs data in the Compliance API. Some customers may continue to experience delayed Costs data through the Compliance API. ChatGPT usage and API Platform requests are not affected, and other reporting channels remain available. We have identified the cause and are continuing work to restore normal data freshness. We will provide another update as work progresses.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "identified",
+        "publishedAt": "2026-10-09T17:23:18.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -12996,7 +13158,8 @@
     "retryByTag": {
       "rust-v0.162.0-alpha.17": 1791321037742,
       "rust-v0.163.0-alpha.1": 1791488791542,
-      "rust-v0.163.0-alpha.4": 1791552159451
+      "rust-v0.163.0-alpha.4": 1791552159451,
+      "rust-v0.162.1": 1791572831284
     }
   }
 }
