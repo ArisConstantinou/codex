@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-09T05:59:43.921Z",
+  "generatedAt": "2026-10-09T13:07:39.450Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4667,6 +4667,36 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/sophos",
+      "at": "2026-10-09T07:00:00.000Z",
+      "url": "https://openai.com/index/sophos",
+      "text": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak. Discover how Sophos uses OpenAI’s Daybreak to cut cyber-threat investigation time by 96% and automate 52% of MDR cases while preserving human oversight.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.4",
+      "at": "2026-10-09T11:37:20.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.4",
+      "text": "rust-v0.163.0-alpha.4. Release 0.163.0-alpha.4",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -4675,7 +4705,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-09T05:59:43.084Z",
+      "lastSuccessAt": "2026-10-09T13:07:38.645Z",
       "error": null,
       "count": 150
     },
@@ -4684,7 +4714,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-09T05:59:43.084Z",
+      "lastSuccessAt": "2026-10-09T13:07:38.645Z",
       "error": null,
       "count": 10
     },
@@ -4693,7 +4723,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-09T05:59:43.084Z",
+      "lastSuccessAt": "2026-10-09T13:07:38.645Z",
       "error": null,
       "count": 25
     }
@@ -12919,13 +12949,54 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/sophos:2026-10-09T13:07:39.450Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T13:07:39.450Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/sophos",
+        "at": "2026-10-09T07:00:00.000Z",
+        "url": "https://openai.com/index/sophos",
+        "text": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak. Discover how Sophos uses OpenAI’s Daybreak to cut cyber-threat investigation time by 96% and automate 52% of MDR cases while preserving human oversight.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.4:2026-10-09T13:07:39.450Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T13:07:39.450Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.4",
+        "at": "2026-10-09T11:37:20.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.4",
+        "text": "rust-v0.163.0-alpha.4. Release 0.163.0-alpha.4",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
     "blockedUntil": 1791440909000,
     "retryByTag": {
       "rust-v0.162.0-alpha.17": 1791321037742,
-      "rust-v0.163.0-alpha.1": 1791488791542
+      "rust-v0.163.0-alpha.1": 1791488791542,
+      "rust-v0.163.0-alpha.4": 1791552159451
     }
   }
 }
