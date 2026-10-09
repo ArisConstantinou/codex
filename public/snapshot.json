@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-09T18:52:11.281Z",
+  "generatedAt": "2026-10-09T23:11:19.959Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4730,9 +4730,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.1",
-      "at": "2026-10-09T17:39:06.000Z",
+      "at": "2026-10-09T19:47:24.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.1",
-      "text": "rust-v0.162.1. Release 0.162.1",
+      "text": "0.162.1. Bug Fixes Fixed a TUI crash when asynchronous questions contain multiple lines, preserving line breaks and complete hyperlink destinations. ( #51866 ) Fixed startup failures caused by differences between a running background server's feature settings and CLI defaults. Compatibility checks now apply only to explicit command-line feature overrides. ( #52648 ) Full Changelog: rust-v0.162.0...rust-v0.162.1",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -4745,9 +4745,56 @@
     },
     {
       "id": "openai-status:01M4GV1M2A3K38T73JCVCD9G0R",
-      "at": "2026-10-09T18:46:25.000Z",
+      "at": "2026-10-09T22:03:59.000Z",
       "url": "https://status.openai.com/incidents/01M4GV1M2A3K38T73JCVCD9G0R",
-      "text": "Delayed Costs data in the Compliance API. Some customers may continue to experience delayed Costs data through the Compliance API. ChatGPT usage and API Platform requests are not affected, and other reporting channels remain available. We have identified the cause and are continuing work to restore normal data freshness. We will provide another update as work progresses.",
+      "text": "Delayed Costs data in the Compliance API. We have implemented a mitigation, and delayed Costs data is now processing through the Compliance API. Some customers may continue to see incomplete Costs data while the backlog catches up. We expect this catch-up process to continue through Sunday, October 11. ChatGPT usage and API Platform requests remain unaffected. We are monitoring recovery.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "monitoring",
+      "publishedAt": "2026-10-09T17:23:18.000Z"
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.5",
+      "at": "2026-10-09T22:57:01.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.5",
+      "text": "rust-v0.163.0-alpha.5. Release 0.163.0-alpha.5",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M4HA7BCCXVHTR5DCYMSBQF2H",
+      "at": "2026-10-09T22:52:35.000Z",
+      "url": "https://status.openai.com/incidents/01M4HA7BCCXVHTR5DCYMSBQF2H",
+      "text": "Workspace admins may be unable to manage plugins. We are seeing recovery in workspace administrators’ ability to view and manage plugin availability and settings. We are monitoring to ensure service remains stable.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "monitoring",
+      "publishedAt": "2026-10-09T21:48:34.000Z"
+    },
+    {
+      "id": "openai-status:01M4H7FKXDA425TDNP2CRGEYA3",
+      "at": "2026-10-09T21:00:39.000Z",
+      "url": "https://status.openai.com/incidents/01M4H7FKXDA425TDNP2CRGEYA3",
+      "text": "Some ChatGPT content may be unavailable on Android. We have identified an issue affecting the ChatGPT Android app where users may see “This content is unavailable in this version of the app” instead of certain content. A fix is rolling out gradually in the latest Android version. Users can use ChatGPT on the web while we work to restore the experience for older app versions.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -4757,7 +4804,7 @@
       ],
       "origin": "direct-official",
       "serviceStatus": "identified",
-      "publishedAt": "2026-10-09T17:23:18.000Z"
+      "publishedAt": "2026-10-09T21:00:39.000Z"
     }
   ],
   "sources": {
@@ -4766,7 +4813,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-09T18:52:10.570Z",
+      "lastSuccessAt": "2026-10-09T23:11:19.073Z",
       "error": null,
       "count": 150
     },
@@ -4775,7 +4822,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-09T18:52:10.570Z",
+      "lastSuccessAt": "2026-10-09T23:11:19.073Z",
       "error": null,
       "count": 10
     },
@@ -4784,7 +4831,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-09T18:52:10.570Z",
+      "lastSuccessAt": "2026-10-09T23:11:19.073Z",
       "error": null,
       "count": 25
     }
@@ -13151,6 +13198,109 @@
         "serviceStatus": "identified",
         "publishedAt": "2026-10-09T17:23:18.000Z"
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.5:2026-10-09T23:11:19.959Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T23:11:19.959Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.5",
+        "at": "2026-10-09T22:57:01.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.5",
+        "text": "rust-v0.163.0-alpha.5. Release 0.163.0-alpha.5",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.1:2026-10-09T23:11:19.959Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T23:11:19.959Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.162.1",
+        "at": "2026-10-09T19:47:24.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.162.1",
+        "text": "0.162.1. Bug Fixes Fixed a TUI crash when asynchronous questions contain multiple lines, preserving line breaks and complete hyperlink destinations. ( #51866 ) Fixed startup failures caused by differences between a running background server's feature settings and CLI defaults. Compatibility checks now apply only to explicit command-line feature overrides. ( #52648 ) Full Changelog: rust-v0.162.0...rust-v0.162.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-status:01M4HA7BCCXVHTR5DCYMSBQF2H:2026-10-09T23:11:19.959Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T23:11:19.959Z",
+      "item": {
+        "id": "openai-status:01M4HA7BCCXVHTR5DCYMSBQF2H",
+        "at": "2026-10-09T22:52:35.000Z",
+        "url": "https://status.openai.com/incidents/01M4HA7BCCXVHTR5DCYMSBQF2H",
+        "text": "Workspace admins may be unable to manage plugins. We are seeing recovery in workspace administrators’ ability to view and manage plugin availability and settings. We are monitoring to ensure service remains stable.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "monitoring",
+        "publishedAt": "2026-10-09T21:48:34.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M4GV1M2A3K38T73JCVCD9G0R:2026-10-09T23:11:19.959Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T23:11:19.959Z",
+      "item": {
+        "id": "openai-status:01M4GV1M2A3K38T73JCVCD9G0R",
+        "at": "2026-10-09T22:03:59.000Z",
+        "url": "https://status.openai.com/incidents/01M4GV1M2A3K38T73JCVCD9G0R",
+        "text": "Delayed Costs data in the Compliance API. We have implemented a mitigation, and delayed Costs data is now processing through the Compliance API. Some customers may continue to see incomplete Costs data while the backlog catches up. We expect this catch-up process to continue through Sunday, October 11. ChatGPT usage and API Platform requests remain unaffected. We are monitoring recovery.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "monitoring",
+        "publishedAt": "2026-10-09T17:23:18.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M4H7FKXDA425TDNP2CRGEYA3:2026-10-09T23:11:19.959Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-09T23:11:19.959Z",
+      "item": {
+        "id": "openai-status:01M4H7FKXDA425TDNP2CRGEYA3",
+        "at": "2026-10-09T21:00:39.000Z",
+        "url": "https://status.openai.com/incidents/01M4H7FKXDA425TDNP2CRGEYA3",
+        "text": "Some ChatGPT content may be unavailable on Android. We have identified an issue affecting the ChatGPT Android app where users may see “This content is unavailable in this version of the app” instead of certain content. A fix is rolling out gradually in the latest Android version. Users can use ChatGPT on the web while we work to restore the experience for older app versions.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "identified",
+        "publishedAt": "2026-10-09T21:00:39.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -13159,7 +13309,8 @@
       "rust-v0.162.0-alpha.17": 1791321037742,
       "rust-v0.163.0-alpha.1": 1791488791542,
       "rust-v0.163.0-alpha.4": 1791552159451,
-      "rust-v0.162.1": 1791572831284
+      "rust-v0.162.1": 1791572831284,
+      "rust-v0.163.0-alpha.5": 1791588379961
     }
   }
 }
