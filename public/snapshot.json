@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-12T09:05:09.658Z",
+  "generatedAt": "2026-10-12T18:58:14.937Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4745,9 +4745,9 @@
     },
     {
       "id": "openai-status:01M4GV1M2A3K38T73JCVCD9G0R",
-      "at": "2026-10-09T22:03:59.000Z",
+      "at": "2026-10-12T16:02:47.000Z",
       "url": "https://status.openai.com/incidents/01M4GV1M2A3K38T73JCVCD9G0R",
-      "text": "Delayed Costs data in the Compliance API. We have implemented a mitigation, and delayed Costs data is now processing through the Compliance API. Some customers may continue to see incomplete Costs data while the backlog catches up. We expect this catch-up process to continue through Sunday, October 11. ChatGPT usage and API Platform requests remain unaffected. We are monitoring recovery.",
+      "text": "Delayed Costs data in the Compliance API. All impacted services have now fully recovered.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -4756,7 +4756,7 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "monitoring",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-10-09T17:23:18.000Z"
     },
     {
@@ -4828,7 +4828,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-12T09:05:08.903Z",
+      "lastSuccessAt": "2026-10-12T18:58:14.234Z",
       "error": null,
       "count": 150
     },
@@ -4837,7 +4837,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-12T09:05:08.903Z",
+      "lastSuccessAt": "2026-10-12T18:58:14.234Z",
       "error": null,
       "count": 10
     },
@@ -4846,7 +4846,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-12T09:05:08.903Z",
+      "lastSuccessAt": "2026-10-12T18:58:14.234Z",
       "error": null,
       "count": 25
     }
@@ -13398,6 +13398,27 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-10-09T21:48:34.000Z"
       }
+    },
+    {
+      "id": "openai-status:01M4GV1M2A3K38T73JCVCD9G0R:2026-10-12T18:58:14.937Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-12T18:58:14.937Z",
+      "item": {
+        "id": "openai-status:01M4GV1M2A3K38T73JCVCD9G0R",
+        "at": "2026-10-12T16:02:47.000Z",
+        "url": "https://status.openai.com/incidents/01M4GV1M2A3K38T73JCVCD9G0R",
+        "text": "Delayed Costs data in the Compliance API. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-09T17:23:18.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -13408,7 +13429,7 @@
       "rust-v0.163.0-alpha.4": 1791552159451,
       "rust-v0.162.1": 1791572831284,
       "rust-v0.163.0-alpha.5": 1791588379961,
-      "rust-v0.163.0-alpha.6": 1791796809660
+      "rust-v0.163.0-alpha.6": 1791832394939
     }
   }
 }
