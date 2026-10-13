@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-13T20:45:18.507Z",
+  "generatedAt": "2026-10-13T23:59:12.953Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4895,7 +4895,102 @@
         "release"
       ],
       "origin": "direct-official",
-      "prerelease": true
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.163.0-alpha.10",
+        "title": "0.163.0-alpha.10",
+        "body": "Release 0.163.0-alpha.10\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-13T23:59:12.956Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.10",
+        "publishedAt": "2026-10-13T19:04:12Z",
+        "commits": [
+          {
+            "sha": "044e74fef3d1af2b01f4375158ac1e7ad4ae17ea",
+            "title": "Preserve inherited context in prediction forks (#53678)",
+            "message": "Preserve inherited context in prediction forks (#53678)\n\n## Why\n\nPrediction forks need to retain their parent's context even when it exceeds the automatic compaction threshold. Compaction or context resets can otherwise replace the history used for the prediction.\n\n## What changed\n\n- Apply a thread-local `AutoCompactionDisabled` policy to experimental prediction forks without changing model or skill budgets.\n- Skip automatic compaction before, during, and after turns, including context-limit recovery, and suppress new token-budget reminders.\n- Reject `new_context` requests for these threads and report context-limit failures without compacting their history.\n\n## Testing\n\nAdd regression tests for legacy and paginated prediction forks across compaction thresholds, unchanged parent compaction and skill/tool inputs, context-limit failures, and rejected context resets. Add a request-history snapshot verifying inherited context and reminders survive without compaction or additional reminders after a tool call.\n\nGitOrigin-RevId: 7df374287f4142f776981bb6c22e5caa564d74a5",
+            "url": "https://github.com/openai/codex/commit/044e74fef3d1af2b01f4375158ac1e7ad4ae17ea"
+          },
+          {
+            "sha": "c03bbff4831a23a6dfc6f178838b73a50a9f554a",
+            "title": "Constrain API-key model access programs to server support (#53689)",
+            "message": "Constrain API-key model access programs to server support (#53689)\n\n## Why\n\nServers can advertise cyber access programs without accepting them for API-key accounts. The TUI must account for server support before exposing those programs.\n\n## What changed\n\n- Check `features.api_key_cyber_access_programs` at startup and when loading models for API-key accounts, clearing `available_access_programs` when forwarding is unavailable.\n- Use thread-scoped feature settings after thread creation and honor feature requirements and CLI overrides at startup.\n- Refresh account-scoped models when switching to or from API-key authentication or changing API-key thread context, clearing cached access programs while the refresh is pending.\n\n## Testing\n\nExtend session tests to cover enabled and disabled server settings, CLI overrides, and catalog filtering before and after thread creation. Update account-change tests to handle the model refresh.\n\nGitOrigin-RevId: c80de30a0063b84949098d137715d8678bd70587",
+            "url": "https://github.com/openai/codex/commit/c03bbff4831a23a6dfc6f178838b73a50a9f554a"
+          },
+          {
+            "sha": "979771476a6dc8cae59dfc9224b91ae0515b04fd",
+            "title": "Account for replay caches in encrypted compaction budgets (#53691)",
+            "message": "Account for replay caches in encrypted compaction budgets (#53691)\n\n## Why\n\nEncrypted compaction payloads can include sampled-token replay caches that increase their size roughly threefold. Budgeting them as ordinary text can reject checkpoints that fit the model context budget.\n\n## What changed\n\nUse a shared estimate of one token per twelve ciphertext bytes, rounded up, for encrypted `Compaction` and `ContextCompaction` items in history and Guardian context budgeting. Guardian continues to count framing and metadata separately.\n\nCheck parent compactions against the configured token budget and a separate hard wire-size limit. Preserve the complete encrypted checkpoint when it fits. The token estimate remains a heuristic and can underestimate legacy checkpoints without replay caches.\n\n## Testing\n\nAdd coverage for token-estimate rounding, parent compaction token and wire-size limits, and reviewer continuation with a cached compaction preserved intact.\n\nGitOrigin-RevId: cc18ca29802491865167eef992830efcf93d97da",
+            "url": "https://github.com/openai/codex/commit/979771476a6dc8cae59dfc9224b91ae0515b04fd"
+          },
+          {
+            "sha": "31434401fa3cd111866acdc1bba2a73b561f53d5",
+            "title": "Add keyboard selection support to the transcript view (#53693)",
+            "message": "Add keyboard selection support to the transcript view (#53693)\n\n## What changed\n\nAdd transcript select-mode state with an underlined cursor, grapheme-aware movement via arrow keys or `h`/`j`/`k`/`l`, and vertical movement that preserves the preferred display column. Support marking with `v`, Space, or Shift-arrow keys and copying through the existing selection machinery.\n\nKeep the displayed transcript snapshot and reading position paused during selection and after exiting the mode. Add entry and exit methods; this change does not yet bind mode entry to a user-facing key.\n\n## Testing\n\nAdd unit tests for initial cursor placement, movement across empty lines and entry boundaries, wrapped text, preferred-column preservation, and Enter behavior with and without a marked range.\n\nGitOrigin-RevId: e5bc380ea0eb6e2c6157ba73ac063d548a7de145",
+            "url": "https://github.com/openai/codex/commit/31434401fa3cd111866acdc1bba2a73b561f53d5"
+          },
+          {
+            "sha": "ffc14026337b3637cb2b61b9adee55aa4dcba2e6",
+            "title": "Interrupt and drain canceled classifier responses before socket reuse (#53698)",
+            "message": "Interrupt and drain canceled classifier responses before socket reuse (#53698)\n\n## Why\n\nCanceled classifier requests need bounded cleanup that preserves received token usage and returns only safe WebSocket connections to the pool.\n\n## What changed\n\n- Own classifier response streams and connection leases together, interrupting dropped responses with a one-second cleanup deadline.\n- Require a matching interruption acknowledgement and response completion before reusing a canceled response's socket. Retire sockets on rejection, invalid acknowledgements, or timeout while preserving any received completion and token usage.\n- Skip requests canceled before dispatch and return their unused sockets to the pool.\n- Distinguish cancellation from ordinary steering, which continues draining without requiring an interruption acknowledgement.\n\n## Testing\n\nAdd regression coverage for cancellation, acknowledgement ordering and failures, cleanup timeouts, socket reuse, and token accounting under backpressure. Extend steering tests to cover rejected and missing acknowledgements.\n\nGitOrigin-RevId: c4e7aac49d36cea2c2d0e9f2ba5f6147f67471dd",
+            "url": "https://github.com/openai/codex/commit/ffc14026337b3637cb2b61b9adee55aa4dcba2e6"
+          },
+          {
+            "sha": "f6aca7dc461d6a9e0ae12828cd04845c31dd504e",
+            "title": "Cancel Guardian V2 classifications that exceed the tool-call lag window (#53699)",
+            "message": "Cancel Guardian V2 classifications that exceed the tool-call lag window (#53699)\n\n## Why\n\nPending classifications can outlive the `max_tool_call_lag` window in which their scores are reusable, keeping metadata waits or classifier transports active after the result becomes stale.\n\n## What changed\n\n- Expire pending classifications when tool-call progress exceeds the configured lag allowance, preserving the wrapper discount while nested code-mode actions remain active.\n- Cancel metadata waits and sampling in snapshot and conversation modes, including snapshot response drains after an early score.\n- Treat expiry as supersession, preserving cached scores and the last completed conversation checkpoint and transcript cursor.\n\n## Testing\n\nAdd regression coverage for lag boundaries, active wrapper discounts, transport cancellation before and after early scores, expired requests skipping preparation, and conversation history and transcript deltas surviving cancellation.\n\nGitOrigin-RevId: 892ff13a05fd2b1573cef9842b934d1fc865d951",
+            "url": "https://github.com/openai/codex/commit/f6aca7dc461d6a9e0ae12828cd04845c31dd504e"
+          },
+          {
+            "sha": "6fbfc352cafb50332d62dbdc8720cb5d7fe3b7c7",
+            "title": "Enable CLI Daybreak by default and enforce background-turn eligibility (#53701)",
+            "message": "Enable CLI Daybreak by default and enforce background-turn eligibility (#53701)\n\n## What changed\n\n- Mark `cli_daybreak` as stable and enable it by default.\n- Apply Daybreak to background turns only for eligible OpenAI accounts, allowing API-key accounts when `api_key_cyber_access_programs` is enabled. Preserve saved settings for ineligible accounts and report account lookup failures when Daybreak is enabled for the OpenAI provider.\n- Skip inheriting Daybreak configuration when the app server does not support reading effective configuration.\n\n## Testing\n\nExpand dynamic-tool request tests to cover the feature toggle, ChatGPT and API-key authentication, API-key program eligibility, and unsupported configuration reads.\n\nGitOrigin-RevId: 55a57315c9f527f977dd8305ea62d4096ed7dae9",
+            "url": "https://github.com/openai/codex/commit/6fbfc352cafb50332d62dbdc8720cb5d7fe3b7c7"
+          },
+          {
+            "sha": "cb7091b1803761ea882bf4017f519b9b83b83fd4",
+            "title": "Preserve URLs and email addresses during external agent migration (#53706)",
+            "message": "Preserve URLs and email addresses during external agent migration (#53706)\n\n## Why\n\nRewriting source agent names and instruction filenames inside URLs and email addresses can change their destinations when importing external agent content.\n\n## What changed\n\nUse `linkify` to preserve recognized URLs and email addresses while rewriting surrounding text, including Markdown link labels and titles. Continue migrating instruction filename references to `AGENTS.md`, including relative links and references with line or column suffixes.\n\n## Testing\n\nAdd rewrite coverage for URLs, email addresses, Markdown links, and surrounding Unicode text. Extend skill import and app-server configuration import tests to verify that link labels migrate while URL destinations remain unchanged.\n\nGitOrigin-RevId: c4d210a287c99b6440438c99527364d379c568bd",
+            "url": "https://github.com/openai/codex/commit/cb7091b1803761ea882bf4017f519b9b83b83fd4"
+          },
+          {
+            "sha": "7d0b91d5d686688893fecb356e27fdebaad66ee1",
+            "title": "Separate MCP sandbox policy from launcher metadata (#53709)",
+            "message": "Separate MCP sandbox policy from launcher metadata (#53709)\n\n## Why\n\nMCP servers must forward sandbox policy unchanged to `codex sandbox --sandbox-state-json`, while interpreting launcher information to find the Codex CLI. Keep those contracts separate so consumers can preserve unknown policy fields.\n\n## What changed\n\n- Accept the experimental `codex/sandbox-state` capability alongside the deprecated `codex/sandbox-state-meta` capability, and send identical policy values under both `_meta` keys.\n- Move `codexExecutable` out of the policy into `codex/sandbox-launcher`, supplied only when a verified CLI path is available for a local stdio server.\n- Replace stale sandbox metadata while retaining unrelated entries, and remove stale launcher metadata when no launcher is available.\n- Document the metadata contract and how servers should forward policy and retain authority for long-lived subprocesses.\n\n## Testing\n\nUpdate unit and integration coverage for policy serialization, identical state aliases, launcher availability across execution environments, and stale metadata replacement.\n\nGitOrigin-RevId: e544c06e6e023953b1fc8069b7b1affa065262d1",
+            "url": "https://github.com/openai/codex/commit/7d0b91d5d686688893fecb356e27fdebaad66ee1"
+          },
+          {
+            "sha": "6cc7d9cc5c702c0ca133f7ea48432166e0b880be",
+            "title": "Enable Cyber access programs for API-key sessions by default (#53717)",
+            "message": "Enable Cyber access programs for API-key sessions by default (#53717)\n\n## What changed\n\n- Default `features.api_key_cyber_access_programs` to `true` and allow `codex exec` to select Daybreak with an OpenAI API key. Select the advertised standard program when `daybreak=false`, while respecting explicit feature opt-outs.\n- Resolve API-key eligibility for TUI background turns from the target thread's feature settings, including project opt-outs. Omit access-program overrides when the server cannot report those settings.\n- Preserve automatic server treatment for unlisted models and missing or empty Cyber program metadata in exec and TUI. Continue rejecting Daybreak when a nonempty program list does not offer it.\n\n## Testing\n\nUpdate regression coverage for API-key Daybreak selection, the off override, explicit opt-outs, resumed sessions, target-thread settings, and missing model metadata.\n\nGitOrigin-RevId: f3cf7bd95a2754d4b4281bc70b18c7da4b177552",
+            "url": "https://github.com/openai/codex/commit/6cc7d9cc5c702c0ca133f7ea48432166e0b880be"
+          },
+          {
+            "sha": "703d253ed676c26e4b9708a374b7344b5c1bcc53",
+            "title": "Wire V2 capability discovery through exec-server RPC (#53723)",
+            "message": "Wire V2 capability discovery through exec-server RPC (#53723)\n\n## What changed\n\n- Register `capabilities/discoverV2` for initialized sessions and expose it through `ExecServerClient` and remote `Environment` APIs, checking executor support before calling it.\n- Reuse startup discovery locations and retry failed prewarming on demand. Replay discovery once after executor recovery while preserving the request parameters.\n- Track whether all required filesystem watches registered successfully and reload locations and metadata on each request when registration fails.\n\n## Testing\n\nAdd coverage for RPC metadata refresh, omission of skill instruction bodies, sandbox isolation, startup scan recovery, disconnect replay, and successful or failed watch registration.\n\nGitOrigin-RevId: 726e8f7e8b4d835b877f31d1d8a9f8eea1ad9c8b",
+            "url": "https://github.com/openai/codex/commit/703d253ed676c26e4b9708a374b7344b5c1bcc53"
+          },
+          {
+            "sha": "cd643519fb56011557d09b41053a3a4c0e013e1f",
+            "title": "Release 0.163.0-alpha.10",
+            "message": "Release 0.163.0-alpha.10",
+            "url": "https://github.com/openai/codex/commit/cd643519fb56011557d09b41053a3a4c0e013e1f"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.163.0-alpha.9",
+          "head": "rust-v0.163.0-alpha.10",
+          "url": "https://github.com/openai/codex/compare/rust-v0.163.0-alpha.9...rust-v0.163.0-alpha.10",
+          "status": "diverged",
+          "total": 12,
+          "behind": 1,
+          "complete": true,
+          "fetched": 12
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -4904,7 +4999,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-13T20:45:17.639Z",
+      "lastSuccessAt": "2026-10-13T23:59:12.335Z",
       "error": null,
       "count": 150
     },
@@ -4913,7 +5008,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-13T20:45:17.639Z",
+      "lastSuccessAt": "2026-10-13T23:59:12.335Z",
       "error": null,
       "count": 10
     },
@@ -4922,7 +5017,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-13T20:45:17.639Z",
+      "lastSuccessAt": "2026-10-13T23:59:12.335Z",
       "error": null,
       "count": 25
     }
@@ -13637,6 +13732,106 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-10-13T08:10:00.000Z"
       }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.10:2026-10-13T23:59:12.953Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-13T23:59:12.953Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.163.0-alpha.10",
+        "title": "0.163.0-alpha.10",
+        "body": "Release 0.163.0-alpha.10\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-13T23:59:12.956Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.10",
+        "publishedAt": "2026-10-13T19:04:12Z",
+        "commits": [
+          {
+            "sha": "044e74fef3d1af2b01f4375158ac1e7ad4ae17ea",
+            "title": "Preserve inherited context in prediction forks (#53678)",
+            "message": "Preserve inherited context in prediction forks (#53678)\n\n## Why\n\nPrediction forks need to retain their parent's context even when it exceeds the automatic compaction threshold. Compaction or context resets can otherwise replace the history used for the prediction.\n\n## What changed\n\n- Apply a thread-local `AutoCompactionDisabled` policy to experimental prediction forks without changing model or skill budgets.\n- Skip automatic compaction before, during, and after turns, including context-limit recovery, and suppress new token-budget reminders.\n- Reject `new_context` requests for these threads and report context-limit failures without compacting their history.\n\n## Testing\n\nAdd regression tests for legacy and paginated prediction forks across compaction thresholds, unchanged parent compaction and skill/tool inputs, context-limit failures, and rejected context resets. Add a request-history snapshot verifying inherited context and reminders survive without compaction or additional reminders after a tool call.\n\nGitOrigin-RevId: 7df374287f4142f776981bb6c22e5caa564d74a5",
+            "url": "https://github.com/openai/codex/commit/044e74fef3d1af2b01f4375158ac1e7ad4ae17ea"
+          },
+          {
+            "sha": "c03bbff4831a23a6dfc6f178838b73a50a9f554a",
+            "title": "Constrain API-key model access programs to server support (#53689)",
+            "message": "Constrain API-key model access programs to server support (#53689)\n\n## Why\n\nServers can advertise cyber access programs without accepting them for API-key accounts. The TUI must account for server support before exposing those programs.\n\n## What changed\n\n- Check `features.api_key_cyber_access_programs` at startup and when loading models for API-key accounts, clearing `available_access_programs` when forwarding is unavailable.\n- Use thread-scoped feature settings after thread creation and honor feature requirements and CLI overrides at startup.\n- Refresh account-scoped models when switching to or from API-key authentication or changing API-key thread context, clearing cached access programs while the refresh is pending.\n\n## Testing\n\nExtend session tests to cover enabled and disabled server settings, CLI overrides, and catalog filtering before and after thread creation. Update account-change tests to handle the model refresh.\n\nGitOrigin-RevId: c80de30a0063b84949098d137715d8678bd70587",
+            "url": "https://github.com/openai/codex/commit/c03bbff4831a23a6dfc6f178838b73a50a9f554a"
+          },
+          {
+            "sha": "979771476a6dc8cae59dfc9224b91ae0515b04fd",
+            "title": "Account for replay caches in encrypted compaction budgets (#53691)",
+            "message": "Account for replay caches in encrypted compaction budgets (#53691)\n\n## Why\n\nEncrypted compaction payloads can include sampled-token replay caches that increase their size roughly threefold. Budgeting them as ordinary text can reject checkpoints that fit the model context budget.\n\n## What changed\n\nUse a shared estimate of one token per twelve ciphertext bytes, rounded up, for encrypted `Compaction` and `ContextCompaction` items in history and Guardian context budgeting. Guardian continues to count framing and metadata separately.\n\nCheck parent compactions against the configured token budget and a separate hard wire-size limit. Preserve the complete encrypted checkpoint when it fits. The token estimate remains a heuristic and can underestimate legacy checkpoints without replay caches.\n\n## Testing\n\nAdd coverage for token-estimate rounding, parent compaction token and wire-size limits, and reviewer continuation with a cached compaction preserved intact.\n\nGitOrigin-RevId: cc18ca29802491865167eef992830efcf93d97da",
+            "url": "https://github.com/openai/codex/commit/979771476a6dc8cae59dfc9224b91ae0515b04fd"
+          },
+          {
+            "sha": "31434401fa3cd111866acdc1bba2a73b561f53d5",
+            "title": "Add keyboard selection support to the transcript view (#53693)",
+            "message": "Add keyboard selection support to the transcript view (#53693)\n\n## What changed\n\nAdd transcript select-mode state with an underlined cursor, grapheme-aware movement via arrow keys or `h`/`j`/`k`/`l`, and vertical movement that preserves the preferred display column. Support marking with `v`, Space, or Shift-arrow keys and copying through the existing selection machinery.\n\nKeep the displayed transcript snapshot and reading position paused during selection and after exiting the mode. Add entry and exit methods; this change does not yet bind mode entry to a user-facing key.\n\n## Testing\n\nAdd unit tests for initial cursor placement, movement across empty lines and entry boundaries, wrapped text, preferred-column preservation, and Enter behavior with and without a marked range.\n\nGitOrigin-RevId: e5bc380ea0eb6e2c6157ba73ac063d548a7de145",
+            "url": "https://github.com/openai/codex/commit/31434401fa3cd111866acdc1bba2a73b561f53d5"
+          },
+          {
+            "sha": "ffc14026337b3637cb2b61b9adee55aa4dcba2e6",
+            "title": "Interrupt and drain canceled classifier responses before socket reuse (#53698)",
+            "message": "Interrupt and drain canceled classifier responses before socket reuse (#53698)\n\n## Why\n\nCanceled classifier requests need bounded cleanup that preserves received token usage and returns only safe WebSocket connections to the pool.\n\n## What changed\n\n- Own classifier response streams and connection leases together, interrupting dropped responses with a one-second cleanup deadline.\n- Require a matching interruption acknowledgement and response completion before reusing a canceled response's socket. Retire sockets on rejection, invalid acknowledgements, or timeout while preserving any received completion and token usage.\n- Skip requests canceled before dispatch and return their unused sockets to the pool.\n- Distinguish cancellation from ordinary steering, which continues draining without requiring an interruption acknowledgement.\n\n## Testing\n\nAdd regression coverage for cancellation, acknowledgement ordering and failures, cleanup timeouts, socket reuse, and token accounting under backpressure. Extend steering tests to cover rejected and missing acknowledgements.\n\nGitOrigin-RevId: c4e7aac49d36cea2c2d0e9f2ba5f6147f67471dd",
+            "url": "https://github.com/openai/codex/commit/ffc14026337b3637cb2b61b9adee55aa4dcba2e6"
+          },
+          {
+            "sha": "f6aca7dc461d6a9e0ae12828cd04845c31dd504e",
+            "title": "Cancel Guardian V2 classifications that exceed the tool-call lag window (#53699)",
+            "message": "Cancel Guardian V2 classifications that exceed the tool-call lag window (#53699)\n\n## Why\n\nPending classifications can outlive the `max_tool_call_lag` window in which their scores are reusable, keeping metadata waits or classifier transports active after the result becomes stale.\n\n## What changed\n\n- Expire pending classifications when tool-call progress exceeds the configured lag allowance, preserving the wrapper discount while nested code-mode actions remain active.\n- Cancel metadata waits and sampling in snapshot and conversation modes, including snapshot response drains after an early score.\n- Treat expiry as supersession, preserving cached scores and the last completed conversation checkpoint and transcript cursor.\n\n## Testing\n\nAdd regression coverage for lag boundaries, active wrapper discounts, transport cancellation before and after early scores, expired requests skipping preparation, and conversation history and transcript deltas surviving cancellation.\n\nGitOrigin-RevId: 892ff13a05fd2b1573cef9842b934d1fc865d951",
+            "url": "https://github.com/openai/codex/commit/f6aca7dc461d6a9e0ae12828cd04845c31dd504e"
+          },
+          {
+            "sha": "6fbfc352cafb50332d62dbdc8720cb5d7fe3b7c7",
+            "title": "Enable CLI Daybreak by default and enforce background-turn eligibility (#53701)",
+            "message": "Enable CLI Daybreak by default and enforce background-turn eligibility (#53701)\n\n## What changed\n\n- Mark `cli_daybreak` as stable and enable it by default.\n- Apply Daybreak to background turns only for eligible OpenAI accounts, allowing API-key accounts when `api_key_cyber_access_programs` is enabled. Preserve saved settings for ineligible accounts and report account lookup failures when Daybreak is enabled for the OpenAI provider.\n- Skip inheriting Daybreak configuration when the app server does not support reading effective configuration.\n\n## Testing\n\nExpand dynamic-tool request tests to cover the feature toggle, ChatGPT and API-key authentication, API-key program eligibility, and unsupported configuration reads.\n\nGitOrigin-RevId: 55a57315c9f527f977dd8305ea62d4096ed7dae9",
+            "url": "https://github.com/openai/codex/commit/6fbfc352cafb50332d62dbdc8720cb5d7fe3b7c7"
+          },
+          {
+            "sha": "cb7091b1803761ea882bf4017f519b9b83b83fd4",
+            "title": "Preserve URLs and email addresses during external agent migration (#53706)",
+            "message": "Preserve URLs and email addresses during external agent migration (#53706)\n\n## Why\n\nRewriting source agent names and instruction filenames inside URLs and email addresses can change their destinations when importing external agent content.\n\n## What changed\n\nUse `linkify` to preserve recognized URLs and email addresses while rewriting surrounding text, including Markdown link labels and titles. Continue migrating instruction filename references to `AGENTS.md`, including relative links and references with line or column suffixes.\n\n## Testing\n\nAdd rewrite coverage for URLs, email addresses, Markdown links, and surrounding Unicode text. Extend skill import and app-server configuration import tests to verify that link labels migrate while URL destinations remain unchanged.\n\nGitOrigin-RevId: c4d210a287c99b6440438c99527364d379c568bd",
+            "url": "https://github.com/openai/codex/commit/cb7091b1803761ea882bf4017f519b9b83b83fd4"
+          },
+          {
+            "sha": "7d0b91d5d686688893fecb356e27fdebaad66ee1",
+            "title": "Separate MCP sandbox policy from launcher metadata (#53709)",
+            "message": "Separate MCP sandbox policy from launcher metadata (#53709)\n\n## Why\n\nMCP servers must forward sandbox policy unchanged to `codex sandbox --sandbox-state-json`, while interpreting launcher information to find the Codex CLI. Keep those contracts separate so consumers can preserve unknown policy fields.\n\n## What changed\n\n- Accept the experimental `codex/sandbox-state` capability alongside the deprecated `codex/sandbox-state-meta` capability, and send identical policy values under both `_meta` keys.\n- Move `codexExecutable` out of the policy into `codex/sandbox-launcher`, supplied only when a verified CLI path is available for a local stdio server.\n- Replace stale sandbox metadata while retaining unrelated entries, and remove stale launcher metadata when no launcher is available.\n- Document the metadata contract and how servers should forward policy and retain authority for long-lived subprocesses.\n\n## Testing\n\nUpdate unit and integration coverage for policy serialization, identical state aliases, launcher availability across execution environments, and stale metadata replacement.\n\nGitOrigin-RevId: e544c06e6e023953b1fc8069b7b1affa065262d1",
+            "url": "https://github.com/openai/codex/commit/7d0b91d5d686688893fecb356e27fdebaad66ee1"
+          },
+          {
+            "sha": "6cc7d9cc5c702c0ca133f7ea48432166e0b880be",
+            "title": "Enable Cyber access programs for API-key sessions by default (#53717)",
+            "message": "Enable Cyber access programs for API-key sessions by default (#53717)\n\n## What changed\n\n- Default `features.api_key_cyber_access_programs` to `true` and allow `codex exec` to select Daybreak with an OpenAI API key. Select the advertised standard program when `daybreak=false`, while respecting explicit feature opt-outs.\n- Resolve API-key eligibility for TUI background turns from the target thread's feature settings, including project opt-outs. Omit access-program overrides when the server cannot report those settings.\n- Preserve automatic server treatment for unlisted models and missing or empty Cyber program metadata in exec and TUI. Continue rejecting Daybreak when a nonempty program list does not offer it.\n\n## Testing\n\nUpdate regression coverage for API-key Daybreak selection, the off override, explicit opt-outs, resumed sessions, target-thread settings, and missing model metadata.\n\nGitOrigin-RevId: f3cf7bd95a2754d4b4281bc70b18c7da4b177552",
+            "url": "https://github.com/openai/codex/commit/6cc7d9cc5c702c0ca133f7ea48432166e0b880be"
+          },
+          {
+            "sha": "703d253ed676c26e4b9708a374b7344b5c1bcc53",
+            "title": "Wire V2 capability discovery through exec-server RPC (#53723)",
+            "message": "Wire V2 capability discovery through exec-server RPC (#53723)\n\n## What changed\n\n- Register `capabilities/discoverV2` for initialized sessions and expose it through `ExecServerClient` and remote `Environment` APIs, checking executor support before calling it.\n- Reuse startup discovery locations and retry failed prewarming on demand. Replay discovery once after executor recovery while preserving the request parameters.\n- Track whether all required filesystem watches registered successfully and reload locations and metadata on each request when registration fails.\n\n## Testing\n\nAdd coverage for RPC metadata refresh, omission of skill instruction bodies, sandbox isolation, startup scan recovery, disconnect replay, and successful or failed watch registration.\n\nGitOrigin-RevId: 726e8f7e8b4d835b877f31d1d8a9f8eea1ad9c8b",
+            "url": "https://github.com/openai/codex/commit/703d253ed676c26e4b9708a374b7344b5c1bcc53"
+          },
+          {
+            "sha": "cd643519fb56011557d09b41053a3a4c0e013e1f",
+            "title": "Release 0.163.0-alpha.10",
+            "message": "Release 0.163.0-alpha.10",
+            "url": "https://github.com/openai/codex/commit/cd643519fb56011557d09b41053a3a4c0e013e1f"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.163.0-alpha.9",
+          "head": "rust-v0.163.0-alpha.10",
+          "url": "https://github.com/openai/codex/compare/rust-v0.163.0-alpha.9...rust-v0.163.0-alpha.10",
+          "status": "diverged",
+          "total": 12,
+          "behind": 1,
+          "complete": true,
+          "fetched": 12
+        },
+        "comparisonError": null
+      }
     }
   ],
   "releaseRequests": {
@@ -13648,8 +13843,7 @@
       "rust-v0.162.1": 1791572831284,
       "rust-v0.163.0-alpha.5": 1791588379961,
       "rust-v0.163.0-alpha.6": 1791878671244,
-      "rust-v0.163.0-alpha.9": 1791905643313,
-      "rust-v0.163.0-alpha.10": 1791924729000
+      "rust-v0.163.0-alpha.9": 1791905643313
     }
   }
 }
