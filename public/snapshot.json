@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-13T15:19:03.310Z",
+  "generatedAt": "2026-10-13T20:45:18.507Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4823,9 +4823,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.9",
-      "at": "2026-10-13T14:15:28.000Z",
+      "at": "2026-10-13T15:52:39.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.9",
-      "text": "rust-v0.163.0-alpha.9. Release 0.163.0-alpha.9",
+      "text": "0.163.0-alpha.9. Release 0.163.0-alpha.9",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -4853,9 +4853,9 @@
     },
     {
       "id": "openai-status:01M4T4ZCM54D3ZPTQXRSWFG0XS",
-      "at": "2026-10-13T09:30:00.000Z",
+      "at": "2026-10-13T16:36:42.000Z",
       "url": "https://status.openai.com/incidents/01M4T4ZCM54D3ZPTQXRSWFG0XS",
-      "text": "Degraded performance in GPT-6.1 Sol Codex and Work mode. We have applied the mitigation and are monitoring the recovery.",
+      "text": "Degraded performance in GPT-6.1 Sol Codex and Work mode. We have resolved the issue causing degraded performance with GPT-6.1 Sol in Codex and ChatGPT Work.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -4864,8 +4864,38 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "monitoring",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-10-13T08:10:00.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/higgsfield-longer-videos-voice",
+      "at": "2026-10-13T12:00:00.000Z",
+      "url": "https://openai.com/index/higgsfield-longer-videos-voice",
+      "text": "Higgsfield takes AI video from 1 minute to over 10. Higgsfield brings creators longer videos with GPT-6 Astra, precise visuals with GPT-Image-2.5, and a path to voice filmmaking with GPT-Live.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.10",
+      "at": "2026-10-13T19:12:24.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.10",
+      "text": "0.163.0-alpha.10. Release 0.163.0-alpha.10",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -4874,7 +4904,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-13T15:19:02.469Z",
+      "lastSuccessAt": "2026-10-13T20:45:17.639Z",
       "error": null,
       "count": 150
     },
@@ -4883,7 +4913,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-13T15:19:02.469Z",
+      "lastSuccessAt": "2026-10-13T20:45:17.639Z",
       "error": null,
       "count": 10
     },
@@ -4892,7 +4922,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-13T15:19:02.469Z",
+      "lastSuccessAt": "2026-10-13T20:45:17.639Z",
       "error": null,
       "count": 25
     }
@@ -13526,10 +13556,91 @@
         "serviceStatus": "monitoring",
         "publishedAt": "2026-10-13T08:10:00.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/higgsfield-longer-videos-voice:2026-10-13T20:45:18.507Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-13T20:45:18.507Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/higgsfield-longer-videos-voice",
+        "at": "2026-10-13T12:00:00.000Z",
+        "url": "https://openai.com/index/higgsfield-longer-videos-voice",
+        "text": "Higgsfield takes AI video from 1 minute to over 10. Higgsfield brings creators longer videos with GPT-6 Astra, precise visuals with GPT-Image-2.5, and a path to voice filmmaking with GPT-Live.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.10:2026-10-13T20:45:18.507Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-13T20:45:18.507Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.10",
+        "at": "2026-10-13T19:12:24.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.10",
+        "text": "0.163.0-alpha.10. Release 0.163.0-alpha.10",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.9:2026-10-13T20:45:18.507Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-13T20:45:18.507Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.9",
+        "at": "2026-10-13T15:52:39.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.9",
+        "text": "0.163.0-alpha.9. Release 0.163.0-alpha.9",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M4T4ZCM54D3ZPTQXRSWFG0XS:2026-10-13T20:45:18.507Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-13T20:45:18.507Z",
+      "item": {
+        "id": "openai-status:01M4T4ZCM54D3ZPTQXRSWFG0XS",
+        "at": "2026-10-13T16:36:42.000Z",
+        "url": "https://status.openai.com/incidents/01M4T4ZCM54D3ZPTQXRSWFG0XS",
+        "text": "Degraded performance in GPT-6.1 Sol Codex and Work mode. We have resolved the issue causing degraded performance with GPT-6.1 Sol in Codex and ChatGPT Work.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-13T08:10:00.000Z"
+      }
     }
   ],
   "releaseRequests": {
-    "blockedUntil": 1791440909000,
+    "blockedUntil": 1791924729000,
     "retryByTag": {
       "rust-v0.162.0-alpha.17": 1791321037742,
       "rust-v0.163.0-alpha.1": 1791488791542,
@@ -13537,7 +13648,8 @@
       "rust-v0.162.1": 1791572831284,
       "rust-v0.163.0-alpha.5": 1791588379961,
       "rust-v0.163.0-alpha.6": 1791878671244,
-      "rust-v0.163.0-alpha.9": 1791905643313
+      "rust-v0.163.0-alpha.9": 1791905643313,
+      "rust-v0.163.0-alpha.10": 1791924729000
     }
   }
 }
