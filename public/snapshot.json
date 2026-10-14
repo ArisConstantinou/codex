@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-14T09:47:45.311Z",
+  "generatedAt": "2026-10-14T14:42:55.949Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5200,9 +5200,9 @@
     },
     {
       "id": "openai-status:01M4WKPE1EY48ZB4RZJ80YH7ES",
-      "at": "2026-10-14T09:19:46.000Z",
+      "at": "2026-10-14T09:53:11.000Z",
       "url": "https://status.openai.com/incidents/01M4WKPE1EY48ZB4RZJ80YH7ES",
-      "text": "Degraded performance in Codex and ChatGPT Work. We have identified that users are experiencing elevated errors for the impacted services.\nWe are still implementing the mitigation.",
+      "text": "Degraded performance in Codex and ChatGPT Work. All impacted services have now fully recovered.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -5211,8 +5211,24 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "identified",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-10-14T07:05:44.000Z"
+    },
+    {
+      "id": "openai-status:01M4WYPP5QA0CJ3JV76KH285K8",
+      "at": "2026-10-14T10:58:07.000Z",
+      "url": "https://status.openai.com/incidents/01M4WYPP5QA0CJ3JV76KH285K8",
+      "text": "Limited availability on gpt-image-2.5-flare and gpt-image-2.5-sunburst. All impacted services have now fully recovered.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-14T10:18:07.000Z"
     }
   ],
   "sources": {
@@ -5221,7 +5237,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-14T09:47:44.834Z",
+      "lastSuccessAt": "2026-10-14T14:42:55.504Z",
       "error": null,
       "count": 150
     },
@@ -5230,7 +5246,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-14T09:47:44.834Z",
+      "lastSuccessAt": "2026-10-14T14:42:55.504Z",
       "error": null,
       "count": 10
     },
@@ -5239,7 +5255,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-14T09:47:44.834Z",
+      "lastSuccessAt": "2026-10-14T14:42:55.504Z",
       "error": null,
       "count": 25
     }
@@ -14462,6 +14478,48 @@
         "serviceStatus": "identified",
         "publishedAt": "2026-10-14T07:05:44.000Z"
       }
+    },
+    {
+      "id": "openai-status:01M4WYPP5QA0CJ3JV76KH285K8:2026-10-14T14:42:55.949Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T14:42:55.949Z",
+      "item": {
+        "id": "openai-status:01M4WYPP5QA0CJ3JV76KH285K8",
+        "at": "2026-10-14T10:58:07.000Z",
+        "url": "https://status.openai.com/incidents/01M4WYPP5QA0CJ3JV76KH285K8",
+        "text": "Limited availability on gpt-image-2.5-flare and gpt-image-2.5-sunburst. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-14T10:18:07.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M4WKPE1EY48ZB4RZJ80YH7ES:2026-10-14T14:42:55.949Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T14:42:55.949Z",
+      "item": {
+        "id": "openai-status:01M4WKPE1EY48ZB4RZJ80YH7ES",
+        "at": "2026-10-14T09:53:11.000Z",
+        "url": "https://status.openai.com/incidents/01M4WKPE1EY48ZB4RZJ80YH7ES",
+        "text": "Degraded performance in Codex and ChatGPT Work. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-14T07:05:44.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -14474,7 +14532,7 @@
       "rust-v0.163.0-alpha.5": 1791588379961,
       "rust-v0.163.0-alpha.6": 1791878671244,
       "rust-v0.163.0-alpha.9": 1791905643313,
-      "rust-v0.163.0-alpha.12": 1791972165312
+      "rust-v0.163.0-alpha.12": 1791989875953
     }
   }
 }
