@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-14T18:59:23.784Z",
+  "generatedAt": "2026-10-14T22:15:17.935Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5292,9 +5292,9 @@
     },
     {
       "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG",
-      "at": "2026-10-14T17:02:47.000Z",
+      "at": "2026-10-14T20:00:36.000Z",
       "url": "https://status.openai.com/incidents/01M4XNQX7C6RCBNGX9H711WFSG",
-      "text": "Delayed Costs data in the Compliance API. We have identified an issue causing delays in publishing organization cost data through the Costs API. API and ChatGPT usage are not affected, and other reporting channels remain available. We are working to restore normal data freshness.",
+      "text": "Delayed Costs data in the Compliance API. We have identified an issue causing delays in publishing organization cost data through the Costs API. A fix is in progress and currently undergoing testing. API and ChatGPT usage are not affected, and other reporting channels remain available. We are continuing work to restore normal data freshness.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -5305,6 +5305,21 @@
       "origin": "direct-official",
       "serviceStatus": "identified",
       "publishedAt": "2026-10-14T17:00:44.000Z"
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.10.1",
+      "at": "2026-10-14T20:55:38.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.10.1",
+      "text": "0.163.0-alpha.10.1. Release 0.163.0-alpha.10.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -5313,7 +5328,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-14T18:59:23.437Z",
+      "lastSuccessAt": "2026-10-14T22:15:17.511Z",
       "error": null,
       "count": 150
     },
@@ -5322,7 +5337,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-14T18:59:23.437Z",
+      "lastSuccessAt": "2026-10-14T22:15:17.511Z",
       "error": null,
       "count": 10
     },
@@ -5331,7 +5346,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-14T18:59:23.437Z",
+      "lastSuccessAt": "2026-10-14T22:15:17.511Z",
       "error": null,
       "count": 25
     }
@@ -14697,6 +14712,47 @@
         "serviceStatus": "identified",
         "publishedAt": "2026-10-14T17:00:44.000Z"
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.10.1:2026-10-14T22:15:17.935Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T22:15:17.935Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.10.1",
+        "at": "2026-10-14T20:55:38.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.10.1",
+        "text": "0.163.0-alpha.10.1. Release 0.163.0-alpha.10.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG:2026-10-14T22:15:17.935Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T22:15:17.935Z",
+      "item": {
+        "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG",
+        "at": "2026-10-14T20:00:36.000Z",
+        "url": "https://status.openai.com/incidents/01M4XNQX7C6RCBNGX9H711WFSG",
+        "text": "Delayed Costs data in the Compliance API. We have identified an issue causing delays in publishing organization cost data through the Costs API. A fix is in progress and currently undergoing testing. API and ChatGPT usage are not affected, and other reporting channels remain available. We are continuing work to restore normal data freshness.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "identified",
+        "publishedAt": "2026-10-14T17:00:44.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -14710,7 +14766,7 @@
       "rust-v0.163.0-alpha.6": 1791878671244,
       "rust-v0.163.0-alpha.9": 1791905643313,
       "rust-v0.163.0-alpha.12": 1791989875953,
-      "rust-v0.163.0-alpha.13": 1792005263786
+      "rust-v0.163.0-alpha.13": 1792017017937
     }
   }
 }
