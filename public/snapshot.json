@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-14T04:44:49.754Z",
+  "generatedAt": "2026-10-14T09:47:45.311Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5167,6 +5167,52 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic",
+      "at": "2026-10-14T00:00:00.000Z",
+      "url": "https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic",
+      "text": "The EU’s next chapter in AI is agentic. New analysis shows how agentic AI adoption is growing across EU enterprises and small businesses—and where deeper use could unlock more value.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.12",
+      "at": "2026-10-14T09:38:13.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.12",
+      "text": "rust-v0.163.0-alpha.12. Release 0.163.0-alpha.12",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M4WKPE1EY48ZB4RZJ80YH7ES",
+      "at": "2026-10-14T09:19:46.000Z",
+      "url": "https://status.openai.com/incidents/01M4WKPE1EY48ZB4RZJ80YH7ES",
+      "text": "Degraded performance in Codex and ChatGPT Work. We have identified that users are experiencing elevated errors for the impacted services.\nWe are still implementing the mitigation.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "identified",
+      "publishedAt": "2026-10-14T07:05:44.000Z"
     }
   ],
   "sources": {
@@ -5175,7 +5221,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-14T04:44:49.324Z",
+      "lastSuccessAt": "2026-10-14T09:47:44.834Z",
       "error": null,
       "count": 150
     },
@@ -5184,7 +5230,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-14T04:44:49.324Z",
+      "lastSuccessAt": "2026-10-14T09:47:44.834Z",
       "error": null,
       "count": 10
     },
@@ -5193,7 +5239,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-14T04:44:49.324Z",
+      "lastSuccessAt": "2026-10-14T09:47:44.834Z",
       "error": null,
       "count": 25
     }
@@ -14355,6 +14401,67 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic:2026-10-14T09:47:45.311Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T09:47:45.311Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic",
+        "at": "2026-10-14T00:00:00.000Z",
+        "url": "https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic",
+        "text": "The EU’s next chapter in AI is agentic. New analysis shows how agentic AI adoption is growing across EU enterprises and small businesses—and where deeper use could unlock more value.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.12:2026-10-14T09:47:45.311Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T09:47:45.311Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.12",
+        "at": "2026-10-14T09:38:13.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.12",
+        "text": "rust-v0.163.0-alpha.12. Release 0.163.0-alpha.12",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M4WKPE1EY48ZB4RZJ80YH7ES:2026-10-14T09:47:45.311Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T09:47:45.311Z",
+      "item": {
+        "id": "openai-status:01M4WKPE1EY48ZB4RZJ80YH7ES",
+        "at": "2026-10-14T09:19:46.000Z",
+        "url": "https://status.openai.com/incidents/01M4WKPE1EY48ZB4RZJ80YH7ES",
+        "text": "Degraded performance in Codex and ChatGPT Work. We have identified that users are experiencing elevated errors for the impacted services.\nWe are still implementing the mitigation.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "identified",
+        "publishedAt": "2026-10-14T07:05:44.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -14366,7 +14473,8 @@
       "rust-v0.162.1": 1791572831284,
       "rust-v0.163.0-alpha.5": 1791588379961,
       "rust-v0.163.0-alpha.6": 1791878671244,
-      "rust-v0.163.0-alpha.9": 1791905643313
+      "rust-v0.163.0-alpha.9": 1791905643313,
+      "rust-v0.163.0-alpha.12": 1791972165312
     }
   }
 }
