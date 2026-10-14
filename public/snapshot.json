@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-13T23:59:12.953Z",
+  "generatedAt": "2026-10-14T04:44:49.754Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -4991,6 +4991,182 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11",
+      "at": "2026-10-14T03:34:27.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.11",
+      "text": "0.163.0-alpha.11. Release 0.163.0-alpha.11",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.163.0-alpha.11",
+        "title": "0.163.0-alpha.11",
+        "body": "Release 0.163.0-alpha.11\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-14T04:44:49.756Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.11",
+        "publishedAt": "2026-10-14T03:27:29Z",
+        "commits": [
+          {
+            "sha": "72ad8747e926daa9a761ec858a99c061e2734a18",
+            "title": "Render Markdown web links as labels in Rex (#53725)",
+            "message": "Render Markdown web links as labels in Rex (#53725)\n\n## What changed\n\nSelect label-only web link rendering when `TERM_PROGRAM` is `rex`, matched case-insensitively. Preserve the existing visible-destination fallback for multiplexers and `dumb`, `screen`, or `tmux` terminal modes.\n\n## Testing\n\nAdd a regression test verifying that Rex renders `[label](https://example.com)` with the label-only policy.\n\nGitOrigin-RevId: 615ca6186d84fc17cef9286e75848877b542b6ab",
+            "url": "https://github.com/openai/codex/commit/72ad8747e926daa9a761ec858a99c061e2734a18"
+          },
+          {
+            "sha": "237b7d4323f876237c10c14592525c8bec25b74e",
+            "title": "Preserve the remote cwd filter in the in-app resume picker (#53728)",
+            "message": "Preserve the remote cwd filter in the in-app resume picker (#53728)\n\n## Why\n\nOpening the in-app resume picker created a new app-server session without the active session's remote working directory override, dropping the remote directory filter from the thread list.\n\n## What changed\n\nPass the active session's remote working directory override to the picker session so its `thread/list` request retains the `cwd` filter.\n\n## Testing\n\nAdd a regression test that opens the in-app picker against a recording remote server and verifies that `thread/list` includes the remote working directory in `cwd`.\n\nGitOrigin-RevId: 0073ed77e9d9b0ffdd647fcb9f157d20ea2aa599",
+            "url": "https://github.com/openai/codex/commit/237b7d4323f876237c10c14592525c8bec25b74e"
+          },
+          {
+            "sha": "efa159f7aa3fcdb23a2f3aaf1f6f1249376bffc7",
+            "title": "Reuse compiled search patterns across compressed rollouts (#53732)",
+            "message": "Reuse compiled search patterns across compressed rollouts (#53732)\n\n## Why\n\nCompressed rollout searches recompiled the same query patterns for every file.\n\n## What changed\n\nLazily compile and reuse the JSON-escaped and content search patterns across each scan, including the fallback scan when `ripgrep` is unavailable. Keep compilation failures within the existing per-file error handling and open files before compiling patterns.\n\n## Testing\n\nAdd regression coverage verifying that an oversized query does not fail the compressed rollout scan and that a missing file still returns `NotFound` before query compilation.\n\nGitOrigin-RevId: 0d41cbca6e1f716fc234c268493d8dd94c34975e",
+            "url": "https://github.com/openai/codex/commit/efa159f7aa3fcdb23a2f3aaf1f6f1249376bffc7"
+          },
+          {
+            "sha": "4d82d36ccf0746b75437d78b874ba4c96ff2cc75",
+            "title": "Default Guardian v2 async classification to conversation mode (#53733)",
+            "message": "Default Guardian v2 async classification to conversation mode (#53733)\n\n## What changed\n\nUse `conversation` when neither a local `async_classifier_mode` override nor a model default specifies a mode. Keep `snapshot` available as an explicit override and update the configuration documentation and schema to describe the new fallback.\n\n## Testing\n\nExpand configuration tests to cover all local override and model default combinations. Update app-server approval tests to exercise conversation mode without an explicit override, and explicitly select snapshot mode in tests that depend on it.\n\nGitOrigin-RevId: a62479a3f6454bf28d589373a236d8b0ab5023b9",
+            "url": "https://github.com/openai/codex/commit/4d82d36ccf0746b75437d78b874ba4c96ff2cc75"
+          },
+          {
+            "sha": "cf0ed4c600161fcaa18eeac02b5fc715e1076955",
+            "title": "Acquire and cache opt-in executor capability inventories via V2 (#53736)",
+            "message": "Acquire and cache opt-in executor capability inventories via V2 (#53736)\n\n## What changed\n\n- Add the disabled-by-default `executor_capability_discovery_v2` feature to acquire `capabilities/discoverV2` inventories from supporting remote executors using each selected environment's working directory and sandbox.\n- Share snapshots with MCP and world-state contributors and skill providers without activating discovered plugins or publishing discovered skills to the model.\n- Cache inventories by environment instance, executor session, working directory, and sandbox. Coalesce concurrent requests, refresh the cache at turn start, retry transient failures, and refresh MCP projections after recovery.\n- Resolve the system skills root in the executor and pass it explicitly to capability location discovery.\n\n## Testing\n\nAdd coverage for feature gating, unsupported executors, inert inventories, cache reuse and eviction, turn refreshes, failure recovery, executor replacement, and system skill locations.\n\nGitOrigin-RevId: 1bdca28fa7f17622b27e2713ab3dcc0c13426889",
+            "url": "https://github.com/openai/codex/commit/cf0ed4c600161fcaa18eeac02b5fc715e1076955"
+          },
+          {
+            "sha": "c12cdc924bdd3ce8a2e57d16b882c865d363fceb",
+            "title": "Remove `modelSlug` from the latest-model resolver output (#53745)",
+            "message": "Remove `modelSlug` from the latest-model resolver output (#53745)\n\n## What changed\n\nUpdate the OpenAI docs sample resolver to return only `model`, `migrationGuideUrl`, and `promptingGuideUrl`, and remove the model-to-slug conversion helper.\n\nGitOrigin-RevId: d7cea29ff8121b1a4df3b062d54dcbed6a1589bd",
+            "url": "https://github.com/openai/codex/commit/c12cdc924bdd3ce8a2e57d16b882c865d363fceb"
+          },
+          {
+            "sha": "5d4922595ae0eb81dde3c0f0f412ad771628d205",
+            "title": "Prefer remote Visualize installs over the bundled plugin (#53747)",
+            "message": "Prefer remote Visualize installs over the bundled plugin (#53747)\n\n## What changed\n\nWhen the remote global catalog is active, let a cached `visualize@openai-curated-remote` install supersede `visualize@openai-bundled`, matching the existing Sites behavior. A disabled remote install also suppresses the bundled plugin; a missing remote bundle preserves the bundled fallback.\n\n## Testing\n\nExtend the agent-turn compatibility tests to cover Visualize with enabled, disabled, and missing remote bundles, asserting which skills appear in the developer prompt.\n\nGitOrigin-RevId: 7d0cc564189249e597d5bd29b5800353d89a9060",
+            "url": "https://github.com/openai/codex/commit/5d4922595ae0eb81dde3c0f0f412ad771628d205"
+          },
+          {
+            "sha": "e762c05bd686dd1eb3595aef2e14cc37c739f401",
+            "title": "Apply feature overrides when restarting the app-server daemon (#53751)",
+            "message": "Apply feature overrides when restarting the app-server daemon (#53751)\n\n## Why\n\n`codex app-server daemon restart` previously reused saved settings without applying feature flags supplied on the command line.\n\n## What changed\n\nApply `--enable`, `--disable`, and boolean `-c features.*` overrides during an explicit restart and persist them for subsequent restarts. Accept nested `enabled` values, normalize feature aliases, and replace conflicting saved aliases while preserving unrelated settings.\n\nReject invalid feature toggles before stopping the daemon or saving settings.\n\n## Testing\n\nAdd integration coverage for overrides on stopped and running daemons, alias replacement, preservation of saved settings, restarts without flags, and rejection of non-toggle keys without interrupting the running daemon.\n\nGitOrigin-RevId: 14a657bc4758b9c248e363f9dac58f8887070a04",
+            "url": "https://github.com/openai/codex/commit/e762c05bd686dd1eb3595aef2e14cc37c739f401"
+          },
+          {
+            "sha": "3517671c6061e1704cf1c0df4a5039de23514df8",
+            "title": "Extend copy-on-select to composer text (#53753)",
+            "message": "Extend copy-on-select to composer text (#53753)\n\n## What changed\n\nApply `tui.copy_on_select` to composer mouse selections on release, including X11 PRIMARY publication when enabled. Keep editable selections highlighted so typing can replace the selected text, even when `tui.copy_on_select_clear_selection` is enabled.\n\nShare clipboard destination handling across the transcript, footer, and composer. Apply automatic deselection to footer selections after confirmed delivery, and release composer and footer PRIMARY ownership on focus loss or resume. Update configuration descriptions to clarify the behavior across all three surfaces.\n\n## Testing\n\nAdd composer tests covering copy on release, retained selection highlights, replacement by typing, PRIMARY ownership lifetime, and clipboard-only status reporting for pending copies.\n\nGitOrigin-RevId: 46999a32170149193fca561741000e97dfc458cf",
+            "url": "https://github.com/openai/codex/commit/3517671c6061e1704cf1c0df4a5039de23514df8"
+          },
+          {
+            "sha": "21c16161191ff965031d1ac41fe9046011610743",
+            "title": "Support Command/Super shortcuts in the TUI keymap (#53754)",
+            "message": "Support Command/Super shortcuts in the TUI keymap (#53754)\n\n## What changed\n\n- Accept `super` modifiers and normalize `cmd` and `command` aliases to `super`. Support capturing, displaying, and using these bindings in shortcuts, chords, and leaders.\n- Add `super-left`, `super-right`, and `super-backspace` editor defaults for moving to the start or end of a line and deleting to its start.\n- Honor safe Super-modified editor shortcuts during startup without treating them as text or inserting a pending paste newline.\n- Save keymap edits through `config/value/write` when connected to a local daemon so it can validate bindings before they are saved or applied. Preserve the configuration and active keymap if the daemon rejects the edit.\n\n## Testing\n\nAdd coverage for modifier aliases, shortcut capture and labels, chords and leaders, line editing, startup input, and daemon acceptance or rejection of keymap edits. Extend the startup PTY test with Command editing sequences.\n\nGitOrigin-RevId: 8ed74f8253c89d423d5dfe87aa092844ce834454",
+            "url": "https://github.com/openai/codex/commit/21c16161191ff965031d1ac41fe9046011610743"
+          },
+          {
+            "sha": "20b4ff2f35f2193608385e4caa8da8ceee45a3cf",
+            "title": "Enrich V2 capability discovery with resolved plugin and skill metadata (#53763)",
+            "message": "Enrich V2 capability discovery with resolved plugin and skill metadata (#53763)\n\n## What changed\n\n- Return qualified skill names such as `team:deploy` and parsed `dependencies` and `policy` instead of a separate namespace and raw metadata file. Share `agents/openai.yaml` parsing and validation between skill loaders and executor discovery.\n- Include each standalone skill's search-root ID and path in `discoveryRoot`, while accepting responses from older executors that omit it.\n- Add plugin `displayName`, falling back to the manifest name or installation directory.\n- Materialize inline MCP declarations in `mcpConfig` with the manifest as their source path, and report incomplete discovery when declared MCP or Apps configuration files have no returned contents.\n\n## Testing\n\nAdd coverage for JSON round trips, omitted `discoveryRoot`, optional and invalid skill metadata, qualified names, display-name fallbacks, and inline MCP configuration. Verify standalone search roots survive cached discovery and sandboxed RPC responses.\n\nGitOrigin-RevId: 4124972444ad7c2fb8c6418acbf9a589d797fad2",
+            "url": "https://github.com/openai/codex/commit/20b4ff2f35f2193608385e4caa8da8ceee45a3cf"
+          },
+          {
+            "sha": "8b507a8e4566288b4b35e81905673900198c479b",
+            "title": "Remove redundant Codex manual cache directory check (#53780)",
+            "message": "Remove redundant Codex manual cache directory check (#53780)\n\n`nearestExistingParent` already checks whether the cache path exists and is a directory. Remove the duplicate `stat` check from `usableCacheDir` in the OpenAI docs manual fetcher, retaining the existing parent lookup and write/execute permission checks.\n\nGitOrigin-RevId: 42583353bfdd06881171d8b24fa2b2d5b6fb3135",
+            "url": "https://github.com/openai/codex/commit/8b507a8e4566288b4b35e81905673900198c479b"
+          },
+          {
+            "sha": "b56a579fc6f5ca54a690c0e463e0a33f5c276d63",
+            "title": "Remove the product-gating TODO from `SkillPolicy` (#53781)",
+            "message": "Remove the product-gating TODO from `SkillPolicy` (#53781)\n\nGitOrigin-RevId: 8cfd2ba212fc944d09ede97d569fea13142ba389",
+            "url": "https://github.com/openai/codex/commit/b56a579fc6f5ca54a690c0e463e0a33f5c276d63"
+          },
+          {
+            "sha": "6786dccbe7261b75103260475bc0a04cb36c2c0a",
+            "title": "Forward client voice session IDs in realtime requests (#53784)",
+            "message": "Forward client voice session IDs in realtime requests (#53784)\n\n## What changed\n\nAdd optional `voiceSessionId` to realtime start parameters and forward it as the `voice-session-id` header for WebSocket, WebRTC, and existing-call transports. Keep this client-generated voice session identifier distinct from `realtimeSessionId`, which uses `x-session-id`.\n\n## Testing\n\nExtend serialization tests and add coverage for distinct session ID headers, WebRTC request forwarding, and existing-call handshake forwarding.\n\nGitOrigin-RevId: cb558dbb9d438f2d34e281199a7e81fe5d33b879",
+            "url": "https://github.com/openai/codex/commit/6786dccbe7261b75103260475bc0a04cb36c2c0a"
+          },
+          {
+            "sha": "815ef9bbc47bef3bde9cfceaaaf3ef74bb43d052",
+            "title": "Fix cancellation of macOS user-verification prompts (#53790)",
+            "message": "Fix cancellation of macOS user-verification prompts (#53790)\n\n## Why\n\nKeychain signing reconstructs its own authentication context, so invalidating the caller's context does not reliably cancel the context that owns the biometric prompt.\n\n## What changed\n\nEvaluate the stored key's access-control policy explicitly with `LAContext` before signing. On cancellation, invalidate that context and wait for its authorization callback before releasing the lifecycle lock, rejecting any late success. Reload the key with the authorized context and disable further interaction so signing cannot open another prompt.\n\n## Testing\n\nUpdate unit tests to cover waiting for cancellation completion and rejecting completed authorization after cancellation. Add an ignored macOS hardware test and setup instructions covering persisted Secure Enclave key reuse, signature verification, cancellation, retry signing, and cleanup.\n\nGitOrigin-RevId: 4ea9756430c5649654e95e047d1666617503072c",
+            "url": "https://github.com/openai/codex/commit/815ef9bbc47bef3bde9cfceaaaf3ef74bb43d052"
+          },
+          {
+            "sha": "a373281e9ef021ffb1b340123ce96c75bac869fb",
+            "title": "Retain rollout migration locks across worker cancellation (#53794)",
+            "message": "Retain rollout migration locks across worker cancellation (#53794)\n\n## Why\n\nCancelling an async migration caller can leave its blocking compression or decompression worker running. Releasing migration locks before that worker finishes allows other writers or migrations to access files still being processed.\n\n## What changed\n\nShare maintenance, cross-process writer, and local writer locks with blocking workers during migration and recovery. Keep those locks held until file work completes, releasing cross-process locks before allowing local writers to proceed.\n\n## Testing\n\nAdd a regression test for cancelled compression and decompression callers that verifies locks remain held until the worker finishes and the output is complete. Preserve the Unix check that decompression temporaries have owner-only permissions.\n\nGitOrigin-RevId: 74855250d89ecab81eaadc2956e328d37b65e72e",
+            "url": "https://github.com/openai/codex/commit/a373281e9ef021ffb1b340123ce96c75bac869fb"
+          },
+          {
+            "sha": "8af93416ddf2c56575a7e9c890d5f446ec909943",
+            "title": "Use the bundled model catalog in the MCP startup invalidation test (#53795)",
+            "message": "Use the bundled model catalog in the MCP startup invalidation test (#53795)\n\nSet `config.model_catalog` to the bundled catalog in\n`mcp_invalidation_refreshes_threads_that_are_still_starting` so model\nresolution completes locally before the test waits for the startup\nlifecycle hook.\n\nGitOrigin-RevId: fd12df5140670dad4c9e2d22fabe73b0437af2b4",
+            "url": "https://github.com/openai/codex/commit/8af93416ddf2c56575a7e9c890d5f446ec909943"
+          },
+          {
+            "sha": "2b2d7923055f3ad4827270edefe65e71293cf26c",
+            "title": "Refresh Guardian reviews when review context changes (#53797)",
+            "message": "Refresh Guardian reviews when review context changes (#53797)\n\n## Why\n\nAssistant messages delivered during a pending Guardian review can change its evidence. Previously, these context changes aborted the review instead of triggering a fresh assessment.\n\n## What changed\n\nTreat changes to local or root review context as stale authorization so Guardian retries with updated evidence. Cancellation and history resets still abort the review.\n\n## Testing\n\nExtend local and worker delivery tests to cover refreshed allow and deny decisions, verify that the new review includes the delivered message, and ensure commands execute exactly once after approval and never on stale approval or denial.\n\nGitOrigin-RevId: 019205bee6d3f4e8cf6b9268f72bbc5db6b3899e",
+            "url": "https://github.com/openai/codex/commit/2b2d7923055f3ad4827270edefe65e71293cf26c"
+          },
+          {
+            "sha": "9e03960cf8807c37fc987bf17b4e745b8b3339d2",
+            "title": "Wire background compaction into the turn lifecycle (#53800)",
+            "message": "Wire background compaction into the turn lifecycle (#53800)\n\n## What changed\n\n- Launch background compaction at eligible pre-turn, mid-turn, and post-turn checkpoints when `AsyncCompaction` is enabled, capturing the current world state and client routing state.\n- Adopt ready results at compaction checkpoints while preserving newer messages, tool outputs, and world-state updates. Continue normally if an optional result is rejected.\n- Run one foreground compaction if an adopted result still exceeds the context limit.\n- Prevent cancelled turns from launching new background work while preserving already-running work for later reuse.\n\n## Testing\n\nAdd unit and scenario coverage for stale history and account changes, cancellation, pending-result reuse and fallback, retained tool outputs, compaction event pairing, and token usage accounting. Add a context snapshot covering a collaboration-mode change while compaction runs.\n\nGitOrigin-RevId: 04ac028d9fe2e3ea64aacaaeb351c3c776cf3940",
+            "url": "https://github.com/openai/codex/commit/9e03960cf8807c37fc987bf17b4e745b8b3339d2"
+          },
+          {
+            "sha": "923f276f579c64251825ba767ff5bc36a28e36a0",
+            "title": "Keep the Agent command center visible during archive and delete (#53804)",
+            "message": "Keep the Agent command center visible during archive and delete (#53804)\n\n## Why\n\nArchive and delete progress replaced the task list, hiding the selected task and surrounding context while the request was pending.\n\n## What changed\n\nRender progress as a centered dialog over the Agent command center. Preserve the selected task and shared scroll/filter state, and re-render the backdrop on terminal resize.\n\n## Testing\n\nUpdate narrow-terminal snapshots for both archive and delete to cover the progress overlay, task list, and selected row. Adapt the existing modal input-isolation test to supply a backdrop.\n\nGitOrigin-RevId: e155478aeaddef189fbc53b27b8ff05d54bc3711",
+            "url": "https://github.com/openai/codex/commit/923f276f579c64251825ba767ff5bc36a28e36a0"
+          },
+          {
+            "sha": "ca2b076fffbc24ad5fa57258ece8a8277b326138",
+            "title": "Add safe diagnostics to workspace routing configuration errors (#53805)",
+            "message": "Add safe diagnostics to workspace routing configuration errors (#53805)\n\n## Why\n\nWorkspace routing reported generic requirements load and reload failures, hiding the cause. Raw configuration errors can contain secrets, so exposing their messages directly is unsafe.\n\n## What changed\n\nInclude a safe reason in configuration load and reload errors: file locations or non-file line and column numbers, cloud error categories and HTTP status codes, known network policy denials, or OS error details. Exclude raw parser messages, configuration contents, and backend-supplied policy names and IDs.\n\n## Testing\n\nAdd regression coverage for configuration locations, cloud failures, and network policy denials. Verify that malformed local and cloud configuration reports useful errors without exposing secret values or policy identifiers, and still prevents workspace routing from falling back to startup configuration.\n\nGitOrigin-RevId: a71484c700d32662ced9e19041dbedda5d1da8a5",
+            "url": "https://github.com/openai/codex/commit/ca2b076fffbc24ad5fa57258ece8a8277b326138"
+          },
+          {
+            "sha": "eb1d7065f8b1b2fb3d197bc66448deb432ab0a12",
+            "title": "Support daemon installation from Windows WinGet packages (#53811)",
+            "message": "Support daemon installation from Windows WinGet packages (#53811)\n\n## Why\n\nWinGet archives place the CLI and code mode host at the package root, while daemon installation expects them under `bin/`. This layout mismatch prevents installing the daemon from a WinGet CLI package.\n\n## What changed\n\nValidate WinGet packages in their original layout before converting the staged copy to the daemon layout. Move the executables under `bin/`, update the package entrypoint and optional voice manifest checksum key, and hash the final tree for release reuse. Leave the source package unchanged.\n\n## Testing\n\nAdd a Windows integration test covering daemon startup, repeated `update --from-cli --yes` calls, rewritten manifests, and rejection of an incomplete package without changing the selected release or source manifests.\n\nGitOrigin-RevId: e78c461a557a4d005fe1f5fe37fb5ba05bb38608",
+            "url": "https://github.com/openai/codex/commit/eb1d7065f8b1b2fb3d197bc66448deb432ab0a12"
+          },
+          {
+            "sha": "5425d3e625daa58eea3ad1de27c087eb3b2ffbd3",
+            "title": "Release 0.163.0-alpha.11",
+            "message": "Release 0.163.0-alpha.11",
+            "url": "https://github.com/openai/codex/commit/5425d3e625daa58eea3ad1de27c087eb3b2ffbd3"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.163.0-alpha.10",
+          "head": "rust-v0.163.0-alpha.11",
+          "url": "https://github.com/openai/codex/compare/rust-v0.163.0-alpha.10...rust-v0.163.0-alpha.11",
+          "status": "diverged",
+          "total": 23,
+          "behind": 1,
+          "complete": true,
+          "fetched": 23
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -4999,7 +5175,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-13T23:59:12.335Z",
+      "lastSuccessAt": "2026-10-14T04:44:49.324Z",
       "error": null,
       "count": 150
     },
@@ -5008,7 +5184,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-13T23:59:12.335Z",
+      "lastSuccessAt": "2026-10-14T04:44:49.324Z",
       "error": null,
       "count": 10
     },
@@ -5017,7 +5193,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-13T23:59:12.335Z",
+      "lastSuccessAt": "2026-10-14T04:44:49.324Z",
       "error": null,
       "count": 25
     }
@@ -13829,6 +14005,353 @@
           "behind": 1,
           "complete": true,
           "fetched": 12
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11:2026-10-14T04:44:49.754Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T04:44:49.754Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11",
+        "at": "2026-10-14T03:34:27.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.11",
+        "text": "0.163.0-alpha.11. Release 0.163.0-alpha.11",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.163.0-alpha.11",
+          "title": "0.163.0-alpha.11",
+          "body": "Release 0.163.0-alpha.11\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-14T04:44:49.756Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.11",
+          "publishedAt": "2026-10-14T03:27:29Z",
+          "commits": [
+            {
+              "sha": "72ad8747e926daa9a761ec858a99c061e2734a18",
+              "title": "Render Markdown web links as labels in Rex (#53725)",
+              "message": "Render Markdown web links as labels in Rex (#53725)\n\n## What changed\n\nSelect label-only web link rendering when `TERM_PROGRAM` is `rex`, matched case-insensitively. Preserve the existing visible-destination fallback for multiplexers and `dumb`, `screen`, or `tmux` terminal modes.\n\n## Testing\n\nAdd a regression test verifying that Rex renders `[label](https://example.com)` with the label-only policy.\n\nGitOrigin-RevId: 615ca6186d84fc17cef9286e75848877b542b6ab",
+              "url": "https://github.com/openai/codex/commit/72ad8747e926daa9a761ec858a99c061e2734a18"
+            },
+            {
+              "sha": "237b7d4323f876237c10c14592525c8bec25b74e",
+              "title": "Preserve the remote cwd filter in the in-app resume picker (#53728)",
+              "message": "Preserve the remote cwd filter in the in-app resume picker (#53728)\n\n## Why\n\nOpening the in-app resume picker created a new app-server session without the active session's remote working directory override, dropping the remote directory filter from the thread list.\n\n## What changed\n\nPass the active session's remote working directory override to the picker session so its `thread/list` request retains the `cwd` filter.\n\n## Testing\n\nAdd a regression test that opens the in-app picker against a recording remote server and verifies that `thread/list` includes the remote working directory in `cwd`.\n\nGitOrigin-RevId: 0073ed77e9d9b0ffdd647fcb9f157d20ea2aa599",
+              "url": "https://github.com/openai/codex/commit/237b7d4323f876237c10c14592525c8bec25b74e"
+            },
+            {
+              "sha": "efa159f7aa3fcdb23a2f3aaf1f6f1249376bffc7",
+              "title": "Reuse compiled search patterns across compressed rollouts (#53732)",
+              "message": "Reuse compiled search patterns across compressed rollouts (#53732)\n\n## Why\n\nCompressed rollout searches recompiled the same query patterns for every file.\n\n## What changed\n\nLazily compile and reuse the JSON-escaped and content search patterns across each scan, including the fallback scan when `ripgrep` is unavailable. Keep compilation failures within the existing per-file error handling and open files before compiling patterns.\n\n## Testing\n\nAdd regression coverage verifying that an oversized query does not fail the compressed rollout scan and that a missing file still returns `NotFound` before query compilation.\n\nGitOrigin-RevId: 0d41cbca6e1f716fc234c268493d8dd94c34975e",
+              "url": "https://github.com/openai/codex/commit/efa159f7aa3fcdb23a2f3aaf1f6f1249376bffc7"
+            },
+            {
+              "sha": "4d82d36ccf0746b75437d78b874ba4c96ff2cc75",
+              "title": "Default Guardian v2 async classification to conversation mode (#53733)",
+              "message": "Default Guardian v2 async classification to conversation mode (#53733)\n\n## What changed\n\nUse `conversation` when neither a local `async_classifier_mode` override nor a model default specifies a mode. Keep `snapshot` available as an explicit override and update the configuration documentation and schema to describe the new fallback.\n\n## Testing\n\nExpand configuration tests to cover all local override and model default combinations. Update app-server approval tests to exercise conversation mode without an explicit override, and explicitly select snapshot mode in tests that depend on it.\n\nGitOrigin-RevId: a62479a3f6454bf28d589373a236d8b0ab5023b9",
+              "url": "https://github.com/openai/codex/commit/4d82d36ccf0746b75437d78b874ba4c96ff2cc75"
+            },
+            {
+              "sha": "cf0ed4c600161fcaa18eeac02b5fc715e1076955",
+              "title": "Acquire and cache opt-in executor capability inventories via V2 (#53736)",
+              "message": "Acquire and cache opt-in executor capability inventories via V2 (#53736)\n\n## What changed\n\n- Add the disabled-by-default `executor_capability_discovery_v2` feature to acquire `capabilities/discoverV2` inventories from supporting remote executors using each selected environment's working directory and sandbox.\n- Share snapshots with MCP and world-state contributors and skill providers without activating discovered plugins or publishing discovered skills to the model.\n- Cache inventories by environment instance, executor session, working directory, and sandbox. Coalesce concurrent requests, refresh the cache at turn start, retry transient failures, and refresh MCP projections after recovery.\n- Resolve the system skills root in the executor and pass it explicitly to capability location discovery.\n\n## Testing\n\nAdd coverage for feature gating, unsupported executors, inert inventories, cache reuse and eviction, turn refreshes, failure recovery, executor replacement, and system skill locations.\n\nGitOrigin-RevId: 1bdca28fa7f17622b27e2713ab3dcc0c13426889",
+              "url": "https://github.com/openai/codex/commit/cf0ed4c600161fcaa18eeac02b5fc715e1076955"
+            },
+            {
+              "sha": "c12cdc924bdd3ce8a2e57d16b882c865d363fceb",
+              "title": "Remove `modelSlug` from the latest-model resolver output (#53745)",
+              "message": "Remove `modelSlug` from the latest-model resolver output (#53745)\n\n## What changed\n\nUpdate the OpenAI docs sample resolver to return only `model`, `migrationGuideUrl`, and `promptingGuideUrl`, and remove the model-to-slug conversion helper.\n\nGitOrigin-RevId: d7cea29ff8121b1a4df3b062d54dcbed6a1589bd",
+              "url": "https://github.com/openai/codex/commit/c12cdc924bdd3ce8a2e57d16b882c865d363fceb"
+            },
+            {
+              "sha": "5d4922595ae0eb81dde3c0f0f412ad771628d205",
+              "title": "Prefer remote Visualize installs over the bundled plugin (#53747)",
+              "message": "Prefer remote Visualize installs over the bundled plugin (#53747)\n\n## What changed\n\nWhen the remote global catalog is active, let a cached `visualize@openai-curated-remote` install supersede `visualize@openai-bundled`, matching the existing Sites behavior. A disabled remote install also suppresses the bundled plugin; a missing remote bundle preserves the bundled fallback.\n\n## Testing\n\nExtend the agent-turn compatibility tests to cover Visualize with enabled, disabled, and missing remote bundles, asserting which skills appear in the developer prompt.\n\nGitOrigin-RevId: 7d0cc564189249e597d5bd29b5800353d89a9060",
+              "url": "https://github.com/openai/codex/commit/5d4922595ae0eb81dde3c0f0f412ad771628d205"
+            },
+            {
+              "sha": "e762c05bd686dd1eb3595aef2e14cc37c739f401",
+              "title": "Apply feature overrides when restarting the app-server daemon (#53751)",
+              "message": "Apply feature overrides when restarting the app-server daemon (#53751)\n\n## Why\n\n`codex app-server daemon restart` previously reused saved settings without applying feature flags supplied on the command line.\n\n## What changed\n\nApply `--enable`, `--disable`, and boolean `-c features.*` overrides during an explicit restart and persist them for subsequent restarts. Accept nested `enabled` values, normalize feature aliases, and replace conflicting saved aliases while preserving unrelated settings.\n\nReject invalid feature toggles before stopping the daemon or saving settings.\n\n## Testing\n\nAdd integration coverage for overrides on stopped and running daemons, alias replacement, preservation of saved settings, restarts without flags, and rejection of non-toggle keys without interrupting the running daemon.\n\nGitOrigin-RevId: 14a657bc4758b9c248e363f9dac58f8887070a04",
+              "url": "https://github.com/openai/codex/commit/e762c05bd686dd1eb3595aef2e14cc37c739f401"
+            },
+            {
+              "sha": "3517671c6061e1704cf1c0df4a5039de23514df8",
+              "title": "Extend copy-on-select to composer text (#53753)",
+              "message": "Extend copy-on-select to composer text (#53753)\n\n## What changed\n\nApply `tui.copy_on_select` to composer mouse selections on release, including X11 PRIMARY publication when enabled. Keep editable selections highlighted so typing can replace the selected text, even when `tui.copy_on_select_clear_selection` is enabled.\n\nShare clipboard destination handling across the transcript, footer, and composer. Apply automatic deselection to footer selections after confirmed delivery, and release composer and footer PRIMARY ownership on focus loss or resume. Update configuration descriptions to clarify the behavior across all three surfaces.\n\n## Testing\n\nAdd composer tests covering copy on release, retained selection highlights, replacement by typing, PRIMARY ownership lifetime, and clipboard-only status reporting for pending copies.\n\nGitOrigin-RevId: 46999a32170149193fca561741000e97dfc458cf",
+              "url": "https://github.com/openai/codex/commit/3517671c6061e1704cf1c0df4a5039de23514df8"
+            },
+            {
+              "sha": "21c16161191ff965031d1ac41fe9046011610743",
+              "title": "Support Command/Super shortcuts in the TUI keymap (#53754)",
+              "message": "Support Command/Super shortcuts in the TUI keymap (#53754)\n\n## What changed\n\n- Accept `super` modifiers and normalize `cmd` and `command` aliases to `super`. Support capturing, displaying, and using these bindings in shortcuts, chords, and leaders.\n- Add `super-left`, `super-right`, and `super-backspace` editor defaults for moving to the start or end of a line and deleting to its start.\n- Honor safe Super-modified editor shortcuts during startup without treating them as text or inserting a pending paste newline.\n- Save keymap edits through `config/value/write` when connected to a local daemon so it can validate bindings before they are saved or applied. Preserve the configuration and active keymap if the daemon rejects the edit.\n\n## Testing\n\nAdd coverage for modifier aliases, shortcut capture and labels, chords and leaders, line editing, startup input, and daemon acceptance or rejection of keymap edits. Extend the startup PTY test with Command editing sequences.\n\nGitOrigin-RevId: 8ed74f8253c89d423d5dfe87aa092844ce834454",
+              "url": "https://github.com/openai/codex/commit/21c16161191ff965031d1ac41fe9046011610743"
+            },
+            {
+              "sha": "20b4ff2f35f2193608385e4caa8da8ceee45a3cf",
+              "title": "Enrich V2 capability discovery with resolved plugin and skill metadata (#53763)",
+              "message": "Enrich V2 capability discovery with resolved plugin and skill metadata (#53763)\n\n## What changed\n\n- Return qualified skill names such as `team:deploy` and parsed `dependencies` and `policy` instead of a separate namespace and raw metadata file. Share `agents/openai.yaml` parsing and validation between skill loaders and executor discovery.\n- Include each standalone skill's search-root ID and path in `discoveryRoot`, while accepting responses from older executors that omit it.\n- Add plugin `displayName`, falling back to the manifest name or installation directory.\n- Materialize inline MCP declarations in `mcpConfig` with the manifest as their source path, and report incomplete discovery when declared MCP or Apps configuration files have no returned contents.\n\n## Testing\n\nAdd coverage for JSON round trips, omitted `discoveryRoot`, optional and invalid skill metadata, qualified names, display-name fallbacks, and inline MCP configuration. Verify standalone search roots survive cached discovery and sandboxed RPC responses.\n\nGitOrigin-RevId: 4124972444ad7c2fb8c6418acbf9a589d797fad2",
+              "url": "https://github.com/openai/codex/commit/20b4ff2f35f2193608385e4caa8da8ceee45a3cf"
+            },
+            {
+              "sha": "8b507a8e4566288b4b35e81905673900198c479b",
+              "title": "Remove redundant Codex manual cache directory check (#53780)",
+              "message": "Remove redundant Codex manual cache directory check (#53780)\n\n`nearestExistingParent` already checks whether the cache path exists and is a directory. Remove the duplicate `stat` check from `usableCacheDir` in the OpenAI docs manual fetcher, retaining the existing parent lookup and write/execute permission checks.\n\nGitOrigin-RevId: 42583353bfdd06881171d8b24fa2b2d5b6fb3135",
+              "url": "https://github.com/openai/codex/commit/8b507a8e4566288b4b35e81905673900198c479b"
+            },
+            {
+              "sha": "b56a579fc6f5ca54a690c0e463e0a33f5c276d63",
+              "title": "Remove the product-gating TODO from `SkillPolicy` (#53781)",
+              "message": "Remove the product-gating TODO from `SkillPolicy` (#53781)\n\nGitOrigin-RevId: 8cfd2ba212fc944d09ede97d569fea13142ba389",
+              "url": "https://github.com/openai/codex/commit/b56a579fc6f5ca54a690c0e463e0a33f5c276d63"
+            },
+            {
+              "sha": "6786dccbe7261b75103260475bc0a04cb36c2c0a",
+              "title": "Forward client voice session IDs in realtime requests (#53784)",
+              "message": "Forward client voice session IDs in realtime requests (#53784)\n\n## What changed\n\nAdd optional `voiceSessionId` to realtime start parameters and forward it as the `voice-session-id` header for WebSocket, WebRTC, and existing-call transports. Keep this client-generated voice session identifier distinct from `realtimeSessionId`, which uses `x-session-id`.\n\n## Testing\n\nExtend serialization tests and add coverage for distinct session ID headers, WebRTC request forwarding, and existing-call handshake forwarding.\n\nGitOrigin-RevId: cb558dbb9d438f2d34e281199a7e81fe5d33b879",
+              "url": "https://github.com/openai/codex/commit/6786dccbe7261b75103260475bc0a04cb36c2c0a"
+            },
+            {
+              "sha": "815ef9bbc47bef3bde9cfceaaaf3ef74bb43d052",
+              "title": "Fix cancellation of macOS user-verification prompts (#53790)",
+              "message": "Fix cancellation of macOS user-verification prompts (#53790)\n\n## Why\n\nKeychain signing reconstructs its own authentication context, so invalidating the caller's context does not reliably cancel the context that owns the biometric prompt.\n\n## What changed\n\nEvaluate the stored key's access-control policy explicitly with `LAContext` before signing. On cancellation, invalidate that context and wait for its authorization callback before releasing the lifecycle lock, rejecting any late success. Reload the key with the authorized context and disable further interaction so signing cannot open another prompt.\n\n## Testing\n\nUpdate unit tests to cover waiting for cancellation completion and rejecting completed authorization after cancellation. Add an ignored macOS hardware test and setup instructions covering persisted Secure Enclave key reuse, signature verification, cancellation, retry signing, and cleanup.\n\nGitOrigin-RevId: 4ea9756430c5649654e95e047d1666617503072c",
+              "url": "https://github.com/openai/codex/commit/815ef9bbc47bef3bde9cfceaaaf3ef74bb43d052"
+            },
+            {
+              "sha": "a373281e9ef021ffb1b340123ce96c75bac869fb",
+              "title": "Retain rollout migration locks across worker cancellation (#53794)",
+              "message": "Retain rollout migration locks across worker cancellation (#53794)\n\n## Why\n\nCancelling an async migration caller can leave its blocking compression or decompression worker running. Releasing migration locks before that worker finishes allows other writers or migrations to access files still being processed.\n\n## What changed\n\nShare maintenance, cross-process writer, and local writer locks with blocking workers during migration and recovery. Keep those locks held until file work completes, releasing cross-process locks before allowing local writers to proceed.\n\n## Testing\n\nAdd a regression test for cancelled compression and decompression callers that verifies locks remain held until the worker finishes and the output is complete. Preserve the Unix check that decompression temporaries have owner-only permissions.\n\nGitOrigin-RevId: 74855250d89ecab81eaadc2956e328d37b65e72e",
+              "url": "https://github.com/openai/codex/commit/a373281e9ef021ffb1b340123ce96c75bac869fb"
+            },
+            {
+              "sha": "8af93416ddf2c56575a7e9c890d5f446ec909943",
+              "title": "Use the bundled model catalog in the MCP startup invalidation test (#53795)",
+              "message": "Use the bundled model catalog in the MCP startup invalidation test (#53795)\n\nSet `config.model_catalog` to the bundled catalog in\n`mcp_invalidation_refreshes_threads_that_are_still_starting` so model\nresolution completes locally before the test waits for the startup\nlifecycle hook.\n\nGitOrigin-RevId: fd12df5140670dad4c9e2d22fabe73b0437af2b4",
+              "url": "https://github.com/openai/codex/commit/8af93416ddf2c56575a7e9c890d5f446ec909943"
+            },
+            {
+              "sha": "2b2d7923055f3ad4827270edefe65e71293cf26c",
+              "title": "Refresh Guardian reviews when review context changes (#53797)",
+              "message": "Refresh Guardian reviews when review context changes (#53797)\n\n## Why\n\nAssistant messages delivered during a pending Guardian review can change its evidence. Previously, these context changes aborted the review instead of triggering a fresh assessment.\n\n## What changed\n\nTreat changes to local or root review context as stale authorization so Guardian retries with updated evidence. Cancellation and history resets still abort the review.\n\n## Testing\n\nExtend local and worker delivery tests to cover refreshed allow and deny decisions, verify that the new review includes the delivered message, and ensure commands execute exactly once after approval and never on stale approval or denial.\n\nGitOrigin-RevId: 019205bee6d3f4e8cf6b9268f72bbc5db6b3899e",
+              "url": "https://github.com/openai/codex/commit/2b2d7923055f3ad4827270edefe65e71293cf26c"
+            },
+            {
+              "sha": "9e03960cf8807c37fc987bf17b4e745b8b3339d2",
+              "title": "Wire background compaction into the turn lifecycle (#53800)",
+              "message": "Wire background compaction into the turn lifecycle (#53800)\n\n## What changed\n\n- Launch background compaction at eligible pre-turn, mid-turn, and post-turn checkpoints when `AsyncCompaction` is enabled, capturing the current world state and client routing state.\n- Adopt ready results at compaction checkpoints while preserving newer messages, tool outputs, and world-state updates. Continue normally if an optional result is rejected.\n- Run one foreground compaction if an adopted result still exceeds the context limit.\n- Prevent cancelled turns from launching new background work while preserving already-running work for later reuse.\n\n## Testing\n\nAdd unit and scenario coverage for stale history and account changes, cancellation, pending-result reuse and fallback, retained tool outputs, compaction event pairing, and token usage accounting. Add a context snapshot covering a collaboration-mode change while compaction runs.\n\nGitOrigin-RevId: 04ac028d9fe2e3ea64aacaaeb351c3c776cf3940",
+              "url": "https://github.com/openai/codex/commit/9e03960cf8807c37fc987bf17b4e745b8b3339d2"
+            },
+            {
+              "sha": "923f276f579c64251825ba767ff5bc36a28e36a0",
+              "title": "Keep the Agent command center visible during archive and delete (#53804)",
+              "message": "Keep the Agent command center visible during archive and delete (#53804)\n\n## Why\n\nArchive and delete progress replaced the task list, hiding the selected task and surrounding context while the request was pending.\n\n## What changed\n\nRender progress as a centered dialog over the Agent command center. Preserve the selected task and shared scroll/filter state, and re-render the backdrop on terminal resize.\n\n## Testing\n\nUpdate narrow-terminal snapshots for both archive and delete to cover the progress overlay, task list, and selected row. Adapt the existing modal input-isolation test to supply a backdrop.\n\nGitOrigin-RevId: e155478aeaddef189fbc53b27b8ff05d54bc3711",
+              "url": "https://github.com/openai/codex/commit/923f276f579c64251825ba767ff5bc36a28e36a0"
+            },
+            {
+              "sha": "ca2b076fffbc24ad5fa57258ece8a8277b326138",
+              "title": "Add safe diagnostics to workspace routing configuration errors (#53805)",
+              "message": "Add safe diagnostics to workspace routing configuration errors (#53805)\n\n## Why\n\nWorkspace routing reported generic requirements load and reload failures, hiding the cause. Raw configuration errors can contain secrets, so exposing their messages directly is unsafe.\n\n## What changed\n\nInclude a safe reason in configuration load and reload errors: file locations or non-file line and column numbers, cloud error categories and HTTP status codes, known network policy denials, or OS error details. Exclude raw parser messages, configuration contents, and backend-supplied policy names and IDs.\n\n## Testing\n\nAdd regression coverage for configuration locations, cloud failures, and network policy denials. Verify that malformed local and cloud configuration reports useful errors without exposing secret values or policy identifiers, and still prevents workspace routing from falling back to startup configuration.\n\nGitOrigin-RevId: a71484c700d32662ced9e19041dbedda5d1da8a5",
+              "url": "https://github.com/openai/codex/commit/ca2b076fffbc24ad5fa57258ece8a8277b326138"
+            },
+            {
+              "sha": "eb1d7065f8b1b2fb3d197bc66448deb432ab0a12",
+              "title": "Support daemon installation from Windows WinGet packages (#53811)",
+              "message": "Support daemon installation from Windows WinGet packages (#53811)\n\n## Why\n\nWinGet archives place the CLI and code mode host at the package root, while daemon installation expects them under `bin/`. This layout mismatch prevents installing the daemon from a WinGet CLI package.\n\n## What changed\n\nValidate WinGet packages in their original layout before converting the staged copy to the daemon layout. Move the executables under `bin/`, update the package entrypoint and optional voice manifest checksum key, and hash the final tree for release reuse. Leave the source package unchanged.\n\n## Testing\n\nAdd a Windows integration test covering daemon startup, repeated `update --from-cli --yes` calls, rewritten manifests, and rejection of an incomplete package without changing the selected release or source manifests.\n\nGitOrigin-RevId: e78c461a557a4d005fe1f5fe37fb5ba05bb38608",
+              "url": "https://github.com/openai/codex/commit/eb1d7065f8b1b2fb3d197bc66448deb432ab0a12"
+            },
+            {
+              "sha": "5425d3e625daa58eea3ad1de27c087eb3b2ffbd3",
+              "title": "Release 0.163.0-alpha.11",
+              "message": "Release 0.163.0-alpha.11",
+              "url": "https://github.com/openai/codex/commit/5425d3e625daa58eea3ad1de27c087eb3b2ffbd3"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.163.0-alpha.10",
+            "head": "rust-v0.163.0-alpha.11",
+            "url": "https://github.com/openai/codex/compare/rust-v0.163.0-alpha.10...rust-v0.163.0-alpha.11",
+            "status": "diverged",
+            "total": 23,
+            "behind": 1,
+            "complete": true,
+            "fetched": 23
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11:2026-10-14T04:44:49.754Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-14T04:44:49.754Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.163.0-alpha.11",
+        "title": "0.163.0-alpha.11",
+        "body": "Release 0.163.0-alpha.11\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-14T04:44:49.756Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.11",
+        "publishedAt": "2026-10-14T03:27:29Z",
+        "commits": [
+          {
+            "sha": "72ad8747e926daa9a761ec858a99c061e2734a18",
+            "title": "Render Markdown web links as labels in Rex (#53725)",
+            "message": "Render Markdown web links as labels in Rex (#53725)\n\n## What changed\n\nSelect label-only web link rendering when `TERM_PROGRAM` is `rex`, matched case-insensitively. Preserve the existing visible-destination fallback for multiplexers and `dumb`, `screen`, or `tmux` terminal modes.\n\n## Testing\n\nAdd a regression test verifying that Rex renders `[label](https://example.com)` with the label-only policy.\n\nGitOrigin-RevId: 615ca6186d84fc17cef9286e75848877b542b6ab",
+            "url": "https://github.com/openai/codex/commit/72ad8747e926daa9a761ec858a99c061e2734a18"
+          },
+          {
+            "sha": "237b7d4323f876237c10c14592525c8bec25b74e",
+            "title": "Preserve the remote cwd filter in the in-app resume picker (#53728)",
+            "message": "Preserve the remote cwd filter in the in-app resume picker (#53728)\n\n## Why\n\nOpening the in-app resume picker created a new app-server session without the active session's remote working directory override, dropping the remote directory filter from the thread list.\n\n## What changed\n\nPass the active session's remote working directory override to the picker session so its `thread/list` request retains the `cwd` filter.\n\n## Testing\n\nAdd a regression test that opens the in-app picker against a recording remote server and verifies that `thread/list` includes the remote working directory in `cwd`.\n\nGitOrigin-RevId: 0073ed77e9d9b0ffdd647fcb9f157d20ea2aa599",
+            "url": "https://github.com/openai/codex/commit/237b7d4323f876237c10c14592525c8bec25b74e"
+          },
+          {
+            "sha": "efa159f7aa3fcdb23a2f3aaf1f6f1249376bffc7",
+            "title": "Reuse compiled search patterns across compressed rollouts (#53732)",
+            "message": "Reuse compiled search patterns across compressed rollouts (#53732)\n\n## Why\n\nCompressed rollout searches recompiled the same query patterns for every file.\n\n## What changed\n\nLazily compile and reuse the JSON-escaped and content search patterns across each scan, including the fallback scan when `ripgrep` is unavailable. Keep compilation failures within the existing per-file error handling and open files before compiling patterns.\n\n## Testing\n\nAdd regression coverage verifying that an oversized query does not fail the compressed rollout scan and that a missing file still returns `NotFound` before query compilation.\n\nGitOrigin-RevId: 0d41cbca6e1f716fc234c268493d8dd94c34975e",
+            "url": "https://github.com/openai/codex/commit/efa159f7aa3fcdb23a2f3aaf1f6f1249376bffc7"
+          },
+          {
+            "sha": "4d82d36ccf0746b75437d78b874ba4c96ff2cc75",
+            "title": "Default Guardian v2 async classification to conversation mode (#53733)",
+            "message": "Default Guardian v2 async classification to conversation mode (#53733)\n\n## What changed\n\nUse `conversation` when neither a local `async_classifier_mode` override nor a model default specifies a mode. Keep `snapshot` available as an explicit override and update the configuration documentation and schema to describe the new fallback.\n\n## Testing\n\nExpand configuration tests to cover all local override and model default combinations. Update app-server approval tests to exercise conversation mode without an explicit override, and explicitly select snapshot mode in tests that depend on it.\n\nGitOrigin-RevId: a62479a3f6454bf28d589373a236d8b0ab5023b9",
+            "url": "https://github.com/openai/codex/commit/4d82d36ccf0746b75437d78b874ba4c96ff2cc75"
+          },
+          {
+            "sha": "cf0ed4c600161fcaa18eeac02b5fc715e1076955",
+            "title": "Acquire and cache opt-in executor capability inventories via V2 (#53736)",
+            "message": "Acquire and cache opt-in executor capability inventories via V2 (#53736)\n\n## What changed\n\n- Add the disabled-by-default `executor_capability_discovery_v2` feature to acquire `capabilities/discoverV2` inventories from supporting remote executors using each selected environment's working directory and sandbox.\n- Share snapshots with MCP and world-state contributors and skill providers without activating discovered plugins or publishing discovered skills to the model.\n- Cache inventories by environment instance, executor session, working directory, and sandbox. Coalesce concurrent requests, refresh the cache at turn start, retry transient failures, and refresh MCP projections after recovery.\n- Resolve the system skills root in the executor and pass it explicitly to capability location discovery.\n\n## Testing\n\nAdd coverage for feature gating, unsupported executors, inert inventories, cache reuse and eviction, turn refreshes, failure recovery, executor replacement, and system skill locations.\n\nGitOrigin-RevId: 1bdca28fa7f17622b27e2713ab3dcc0c13426889",
+            "url": "https://github.com/openai/codex/commit/cf0ed4c600161fcaa18eeac02b5fc715e1076955"
+          },
+          {
+            "sha": "c12cdc924bdd3ce8a2e57d16b882c865d363fceb",
+            "title": "Remove `modelSlug` from the latest-model resolver output (#53745)",
+            "message": "Remove `modelSlug` from the latest-model resolver output (#53745)\n\n## What changed\n\nUpdate the OpenAI docs sample resolver to return only `model`, `migrationGuideUrl`, and `promptingGuideUrl`, and remove the model-to-slug conversion helper.\n\nGitOrigin-RevId: d7cea29ff8121b1a4df3b062d54dcbed6a1589bd",
+            "url": "https://github.com/openai/codex/commit/c12cdc924bdd3ce8a2e57d16b882c865d363fceb"
+          },
+          {
+            "sha": "5d4922595ae0eb81dde3c0f0f412ad771628d205",
+            "title": "Prefer remote Visualize installs over the bundled plugin (#53747)",
+            "message": "Prefer remote Visualize installs over the bundled plugin (#53747)\n\n## What changed\n\nWhen the remote global catalog is active, let a cached `visualize@openai-curated-remote` install supersede `visualize@openai-bundled`, matching the existing Sites behavior. A disabled remote install also suppresses the bundled plugin; a missing remote bundle preserves the bundled fallback.\n\n## Testing\n\nExtend the agent-turn compatibility tests to cover Visualize with enabled, disabled, and missing remote bundles, asserting which skills appear in the developer prompt.\n\nGitOrigin-RevId: 7d0cc564189249e597d5bd29b5800353d89a9060",
+            "url": "https://github.com/openai/codex/commit/5d4922595ae0eb81dde3c0f0f412ad771628d205"
+          },
+          {
+            "sha": "e762c05bd686dd1eb3595aef2e14cc37c739f401",
+            "title": "Apply feature overrides when restarting the app-server daemon (#53751)",
+            "message": "Apply feature overrides when restarting the app-server daemon (#53751)\n\n## Why\n\n`codex app-server daemon restart` previously reused saved settings without applying feature flags supplied on the command line.\n\n## What changed\n\nApply `--enable`, `--disable`, and boolean `-c features.*` overrides during an explicit restart and persist them for subsequent restarts. Accept nested `enabled` values, normalize feature aliases, and replace conflicting saved aliases while preserving unrelated settings.\n\nReject invalid feature toggles before stopping the daemon or saving settings.\n\n## Testing\n\nAdd integration coverage for overrides on stopped and running daemons, alias replacement, preservation of saved settings, restarts without flags, and rejection of non-toggle keys without interrupting the running daemon.\n\nGitOrigin-RevId: 14a657bc4758b9c248e363f9dac58f8887070a04",
+            "url": "https://github.com/openai/codex/commit/e762c05bd686dd1eb3595aef2e14cc37c739f401"
+          },
+          {
+            "sha": "3517671c6061e1704cf1c0df4a5039de23514df8",
+            "title": "Extend copy-on-select to composer text (#53753)",
+            "message": "Extend copy-on-select to composer text (#53753)\n\n## What changed\n\nApply `tui.copy_on_select` to composer mouse selections on release, including X11 PRIMARY publication when enabled. Keep editable selections highlighted so typing can replace the selected text, even when `tui.copy_on_select_clear_selection` is enabled.\n\nShare clipboard destination handling across the transcript, footer, and composer. Apply automatic deselection to footer selections after confirmed delivery, and release composer and footer PRIMARY ownership on focus loss or resume. Update configuration descriptions to clarify the behavior across all three surfaces.\n\n## Testing\n\nAdd composer tests covering copy on release, retained selection highlights, replacement by typing, PRIMARY ownership lifetime, and clipboard-only status reporting for pending copies.\n\nGitOrigin-RevId: 46999a32170149193fca561741000e97dfc458cf",
+            "url": "https://github.com/openai/codex/commit/3517671c6061e1704cf1c0df4a5039de23514df8"
+          },
+          {
+            "sha": "21c16161191ff965031d1ac41fe9046011610743",
+            "title": "Support Command/Super shortcuts in the TUI keymap (#53754)",
+            "message": "Support Command/Super shortcuts in the TUI keymap (#53754)\n\n## What changed\n\n- Accept `super` modifiers and normalize `cmd` and `command` aliases to `super`. Support capturing, displaying, and using these bindings in shortcuts, chords, and leaders.\n- Add `super-left`, `super-right`, and `super-backspace` editor defaults for moving to the start or end of a line and deleting to its start.\n- Honor safe Super-modified editor shortcuts during startup without treating them as text or inserting a pending paste newline.\n- Save keymap edits through `config/value/write` when connected to a local daemon so it can validate bindings before they are saved or applied. Preserve the configuration and active keymap if the daemon rejects the edit.\n\n## Testing\n\nAdd coverage for modifier aliases, shortcut capture and labels, chords and leaders, line editing, startup input, and daemon acceptance or rejection of keymap edits. Extend the startup PTY test with Command editing sequences.\n\nGitOrigin-RevId: 8ed74f8253c89d423d5dfe87aa092844ce834454",
+            "url": "https://github.com/openai/codex/commit/21c16161191ff965031d1ac41fe9046011610743"
+          },
+          {
+            "sha": "20b4ff2f35f2193608385e4caa8da8ceee45a3cf",
+            "title": "Enrich V2 capability discovery with resolved plugin and skill metadata (#53763)",
+            "message": "Enrich V2 capability discovery with resolved plugin and skill metadata (#53763)\n\n## What changed\n\n- Return qualified skill names such as `team:deploy` and parsed `dependencies` and `policy` instead of a separate namespace and raw metadata file. Share `agents/openai.yaml` parsing and validation between skill loaders and executor discovery.\n- Include each standalone skill's search-root ID and path in `discoveryRoot`, while accepting responses from older executors that omit it.\n- Add plugin `displayName`, falling back to the manifest name or installation directory.\n- Materialize inline MCP declarations in `mcpConfig` with the manifest as their source path, and report incomplete discovery when declared MCP or Apps configuration files have no returned contents.\n\n## Testing\n\nAdd coverage for JSON round trips, omitted `discoveryRoot`, optional and invalid skill metadata, qualified names, display-name fallbacks, and inline MCP configuration. Verify standalone search roots survive cached discovery and sandboxed RPC responses.\n\nGitOrigin-RevId: 4124972444ad7c2fb8c6418acbf9a589d797fad2",
+            "url": "https://github.com/openai/codex/commit/20b4ff2f35f2193608385e4caa8da8ceee45a3cf"
+          },
+          {
+            "sha": "8b507a8e4566288b4b35e81905673900198c479b",
+            "title": "Remove redundant Codex manual cache directory check (#53780)",
+            "message": "Remove redundant Codex manual cache directory check (#53780)\n\n`nearestExistingParent` already checks whether the cache path exists and is a directory. Remove the duplicate `stat` check from `usableCacheDir` in the OpenAI docs manual fetcher, retaining the existing parent lookup and write/execute permission checks.\n\nGitOrigin-RevId: 42583353bfdd06881171d8b24fa2b2d5b6fb3135",
+            "url": "https://github.com/openai/codex/commit/8b507a8e4566288b4b35e81905673900198c479b"
+          },
+          {
+            "sha": "b56a579fc6f5ca54a690c0e463e0a33f5c276d63",
+            "title": "Remove the product-gating TODO from `SkillPolicy` (#53781)",
+            "message": "Remove the product-gating TODO from `SkillPolicy` (#53781)\n\nGitOrigin-RevId: 8cfd2ba212fc944d09ede97d569fea13142ba389",
+            "url": "https://github.com/openai/codex/commit/b56a579fc6f5ca54a690c0e463e0a33f5c276d63"
+          },
+          {
+            "sha": "6786dccbe7261b75103260475bc0a04cb36c2c0a",
+            "title": "Forward client voice session IDs in realtime requests (#53784)",
+            "message": "Forward client voice session IDs in realtime requests (#53784)\n\n## What changed\n\nAdd optional `voiceSessionId` to realtime start parameters and forward it as the `voice-session-id` header for WebSocket, WebRTC, and existing-call transports. Keep this client-generated voice session identifier distinct from `realtimeSessionId`, which uses `x-session-id`.\n\n## Testing\n\nExtend serialization tests and add coverage for distinct session ID headers, WebRTC request forwarding, and existing-call handshake forwarding.\n\nGitOrigin-RevId: cb558dbb9d438f2d34e281199a7e81fe5d33b879",
+            "url": "https://github.com/openai/codex/commit/6786dccbe7261b75103260475bc0a04cb36c2c0a"
+          },
+          {
+            "sha": "815ef9bbc47bef3bde9cfceaaaf3ef74bb43d052",
+            "title": "Fix cancellation of macOS user-verification prompts (#53790)",
+            "message": "Fix cancellation of macOS user-verification prompts (#53790)\n\n## Why\n\nKeychain signing reconstructs its own authentication context, so invalidating the caller's context does not reliably cancel the context that owns the biometric prompt.\n\n## What changed\n\nEvaluate the stored key's access-control policy explicitly with `LAContext` before signing. On cancellation, invalidate that context and wait for its authorization callback before releasing the lifecycle lock, rejecting any late success. Reload the key with the authorized context and disable further interaction so signing cannot open another prompt.\n\n## Testing\n\nUpdate unit tests to cover waiting for cancellation completion and rejecting completed authorization after cancellation. Add an ignored macOS hardware test and setup instructions covering persisted Secure Enclave key reuse, signature verification, cancellation, retry signing, and cleanup.\n\nGitOrigin-RevId: 4ea9756430c5649654e95e047d1666617503072c",
+            "url": "https://github.com/openai/codex/commit/815ef9bbc47bef3bde9cfceaaaf3ef74bb43d052"
+          },
+          {
+            "sha": "a373281e9ef021ffb1b340123ce96c75bac869fb",
+            "title": "Retain rollout migration locks across worker cancellation (#53794)",
+            "message": "Retain rollout migration locks across worker cancellation (#53794)\n\n## Why\n\nCancelling an async migration caller can leave its blocking compression or decompression worker running. Releasing migration locks before that worker finishes allows other writers or migrations to access files still being processed.\n\n## What changed\n\nShare maintenance, cross-process writer, and local writer locks with blocking workers during migration and recovery. Keep those locks held until file work completes, releasing cross-process locks before allowing local writers to proceed.\n\n## Testing\n\nAdd a regression test for cancelled compression and decompression callers that verifies locks remain held until the worker finishes and the output is complete. Preserve the Unix check that decompression temporaries have owner-only permissions.\n\nGitOrigin-RevId: 74855250d89ecab81eaadc2956e328d37b65e72e",
+            "url": "https://github.com/openai/codex/commit/a373281e9ef021ffb1b340123ce96c75bac869fb"
+          },
+          {
+            "sha": "8af93416ddf2c56575a7e9c890d5f446ec909943",
+            "title": "Use the bundled model catalog in the MCP startup invalidation test (#53795)",
+            "message": "Use the bundled model catalog in the MCP startup invalidation test (#53795)\n\nSet `config.model_catalog` to the bundled catalog in\n`mcp_invalidation_refreshes_threads_that_are_still_starting` so model\nresolution completes locally before the test waits for the startup\nlifecycle hook.\n\nGitOrigin-RevId: fd12df5140670dad4c9e2d22fabe73b0437af2b4",
+            "url": "https://github.com/openai/codex/commit/8af93416ddf2c56575a7e9c890d5f446ec909943"
+          },
+          {
+            "sha": "2b2d7923055f3ad4827270edefe65e71293cf26c",
+            "title": "Refresh Guardian reviews when review context changes (#53797)",
+            "message": "Refresh Guardian reviews when review context changes (#53797)\n\n## Why\n\nAssistant messages delivered during a pending Guardian review can change its evidence. Previously, these context changes aborted the review instead of triggering a fresh assessment.\n\n## What changed\n\nTreat changes to local or root review context as stale authorization so Guardian retries with updated evidence. Cancellation and history resets still abort the review.\n\n## Testing\n\nExtend local and worker delivery tests to cover refreshed allow and deny decisions, verify that the new review includes the delivered message, and ensure commands execute exactly once after approval and never on stale approval or denial.\n\nGitOrigin-RevId: 019205bee6d3f4e8cf6b9268f72bbc5db6b3899e",
+            "url": "https://github.com/openai/codex/commit/2b2d7923055f3ad4827270edefe65e71293cf26c"
+          },
+          {
+            "sha": "9e03960cf8807c37fc987bf17b4e745b8b3339d2",
+            "title": "Wire background compaction into the turn lifecycle (#53800)",
+            "message": "Wire background compaction into the turn lifecycle (#53800)\n\n## What changed\n\n- Launch background compaction at eligible pre-turn, mid-turn, and post-turn checkpoints when `AsyncCompaction` is enabled, capturing the current world state and client routing state.\n- Adopt ready results at compaction checkpoints while preserving newer messages, tool outputs, and world-state updates. Continue normally if an optional result is rejected.\n- Run one foreground compaction if an adopted result still exceeds the context limit.\n- Prevent cancelled turns from launching new background work while preserving already-running work for later reuse.\n\n## Testing\n\nAdd unit and scenario coverage for stale history and account changes, cancellation, pending-result reuse and fallback, retained tool outputs, compaction event pairing, and token usage accounting. Add a context snapshot covering a collaboration-mode change while compaction runs.\n\nGitOrigin-RevId: 04ac028d9fe2e3ea64aacaaeb351c3c776cf3940",
+            "url": "https://github.com/openai/codex/commit/9e03960cf8807c37fc987bf17b4e745b8b3339d2"
+          },
+          {
+            "sha": "923f276f579c64251825ba767ff5bc36a28e36a0",
+            "title": "Keep the Agent command center visible during archive and delete (#53804)",
+            "message": "Keep the Agent command center visible during archive and delete (#53804)\n\n## Why\n\nArchive and delete progress replaced the task list, hiding the selected task and surrounding context while the request was pending.\n\n## What changed\n\nRender progress as a centered dialog over the Agent command center. Preserve the selected task and shared scroll/filter state, and re-render the backdrop on terminal resize.\n\n## Testing\n\nUpdate narrow-terminal snapshots for both archive and delete to cover the progress overlay, task list, and selected row. Adapt the existing modal input-isolation test to supply a backdrop.\n\nGitOrigin-RevId: e155478aeaddef189fbc53b27b8ff05d54bc3711",
+            "url": "https://github.com/openai/codex/commit/923f276f579c64251825ba767ff5bc36a28e36a0"
+          },
+          {
+            "sha": "ca2b076fffbc24ad5fa57258ece8a8277b326138",
+            "title": "Add safe diagnostics to workspace routing configuration errors (#53805)",
+            "message": "Add safe diagnostics to workspace routing configuration errors (#53805)\n\n## Why\n\nWorkspace routing reported generic requirements load and reload failures, hiding the cause. Raw configuration errors can contain secrets, so exposing their messages directly is unsafe.\n\n## What changed\n\nInclude a safe reason in configuration load and reload errors: file locations or non-file line and column numbers, cloud error categories and HTTP status codes, known network policy denials, or OS error details. Exclude raw parser messages, configuration contents, and backend-supplied policy names and IDs.\n\n## Testing\n\nAdd regression coverage for configuration locations, cloud failures, and network policy denials. Verify that malformed local and cloud configuration reports useful errors without exposing secret values or policy identifiers, and still prevents workspace routing from falling back to startup configuration.\n\nGitOrigin-RevId: a71484c700d32662ced9e19041dbedda5d1da8a5",
+            "url": "https://github.com/openai/codex/commit/ca2b076fffbc24ad5fa57258ece8a8277b326138"
+          },
+          {
+            "sha": "eb1d7065f8b1b2fb3d197bc66448deb432ab0a12",
+            "title": "Support daemon installation from Windows WinGet packages (#53811)",
+            "message": "Support daemon installation from Windows WinGet packages (#53811)\n\n## Why\n\nWinGet archives place the CLI and code mode host at the package root, while daemon installation expects them under `bin/`. This layout mismatch prevents installing the daemon from a WinGet CLI package.\n\n## What changed\n\nValidate WinGet packages in their original layout before converting the staged copy to the daemon layout. Move the executables under `bin/`, update the package entrypoint and optional voice manifest checksum key, and hash the final tree for release reuse. Leave the source package unchanged.\n\n## Testing\n\nAdd a Windows integration test covering daemon startup, repeated `update --from-cli --yes` calls, rewritten manifests, and rejection of an incomplete package without changing the selected release or source manifests.\n\nGitOrigin-RevId: e78c461a557a4d005fe1f5fe37fb5ba05bb38608",
+            "url": "https://github.com/openai/codex/commit/eb1d7065f8b1b2fb3d197bc66448deb432ab0a12"
+          },
+          {
+            "sha": "5425d3e625daa58eea3ad1de27c087eb3b2ffbd3",
+            "title": "Release 0.163.0-alpha.11",
+            "message": "Release 0.163.0-alpha.11",
+            "url": "https://github.com/openai/codex/commit/5425d3e625daa58eea3ad1de27c087eb3b2ffbd3"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.163.0-alpha.10",
+          "head": "rust-v0.163.0-alpha.11",
+          "url": "https://github.com/openai/codex/compare/rust-v0.163.0-alpha.10...rust-v0.163.0-alpha.11",
+          "status": "diverged",
+          "total": 23,
+          "behind": 1,
+          "complete": true,
+          "fetched": 23
         },
         "comparisonError": null
       }
