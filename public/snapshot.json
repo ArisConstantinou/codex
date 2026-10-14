@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-14T14:42:55.949Z",
+  "generatedAt": "2026-10-14T18:59:23.784Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5229,6 +5229,82 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-10-14T10:18:07.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/amp-beyond-coding",
+      "at": "2026-10-14T12:00:00.000Z",
+      "url": "https://openai.com/index/amp-beyond-coding",
+      "text": "Amp puts AI agents to work beyond code with OpenAI models. See how Amp pushes the frontier of what agents can do with GPT-6 Astra, Ultrafast, GPT-Live-1, and Sign in with ChatGPT.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/sentinelone",
+      "at": "2026-10-14T12:00:00.000Z",
+      "url": "https://openai.com/index/sentinelone",
+      "text": "SentinelOne cuts malware analysis from weeks to hours. With OpenAI Daybreak, SentinelOne cuts weeks of malware analysis to hours, creating capacity to investigate more threats.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/third-moment-research",
+      "at": "2026-10-14T07:00:00.000Z",
+      "url": "https://openai.com/index/third-moment-research",
+      "text": "How Third Moment Research runs 10,000 agents for 36+ hours. With GPT-6 Astra and GPT-6.1 Sol, Codex, and Daybreak for cybersecurity, this AI lab builds agents that focus for days and improve with use.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.13",
+      "at": "2026-10-14T14:46:39.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.13",
+      "text": "rust-v0.163.0-alpha.13. Release 0.163.0-alpha.13",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG",
+      "at": "2026-10-14T17:02:47.000Z",
+      "url": "https://status.openai.com/incidents/01M4XNQX7C6RCBNGX9H711WFSG",
+      "text": "Delayed Costs data in the Compliance API. We have identified an issue causing delays in publishing organization cost data through the Costs API. API and ChatGPT usage are not affected, and other reporting channels remain available. We are working to restore normal data freshness.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "identified",
+      "publishedAt": "2026-10-14T17:00:44.000Z"
     }
   ],
   "sources": {
@@ -5237,7 +5313,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-14T14:42:55.504Z",
+      "lastSuccessAt": "2026-10-14T18:59:23.437Z",
       "error": null,
       "count": 150
     },
@@ -5246,7 +5322,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-14T14:42:55.504Z",
+      "lastSuccessAt": "2026-10-14T18:59:23.437Z",
       "error": null,
       "count": 10
     },
@@ -5255,7 +5331,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-14T14:42:55.504Z",
+      "lastSuccessAt": "2026-10-14T18:59:23.437Z",
       "error": null,
       "count": 25
     }
@@ -14520,6 +14596,107 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-10-14T07:05:44.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/amp-beyond-coding:2026-10-14T18:59:23.784Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T18:59:23.784Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/amp-beyond-coding",
+        "at": "2026-10-14T12:00:00.000Z",
+        "url": "https://openai.com/index/amp-beyond-coding",
+        "text": "Amp puts AI agents to work beyond code with OpenAI models. See how Amp pushes the frontier of what agents can do with GPT-6 Astra, Ultrafast, GPT-Live-1, and Sign in with ChatGPT.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/sentinelone:2026-10-14T18:59:23.784Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T18:59:23.784Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/sentinelone",
+        "at": "2026-10-14T12:00:00.000Z",
+        "url": "https://openai.com/index/sentinelone",
+        "text": "SentinelOne cuts malware analysis from weeks to hours. With OpenAI Daybreak, SentinelOne cuts weeks of malware analysis to hours, creating capacity to investigate more threats.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/third-moment-research:2026-10-14T18:59:23.784Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T18:59:23.784Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/third-moment-research",
+        "at": "2026-10-14T07:00:00.000Z",
+        "url": "https://openai.com/index/third-moment-research",
+        "text": "How Third Moment Research runs 10,000 agents for 36+ hours. With GPT-6 Astra and GPT-6.1 Sol, Codex, and Daybreak for cybersecurity, this AI lab builds agents that focus for days and improve with use.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.13:2026-10-14T18:59:23.784Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T18:59:23.784Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.13",
+        "at": "2026-10-14T14:46:39.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.13",
+        "text": "rust-v0.163.0-alpha.13. Release 0.163.0-alpha.13",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG:2026-10-14T18:59:23.784Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-14T18:59:23.784Z",
+      "item": {
+        "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG",
+        "at": "2026-10-14T17:02:47.000Z",
+        "url": "https://status.openai.com/incidents/01M4XNQX7C6RCBNGX9H711WFSG",
+        "text": "Delayed Costs data in the Compliance API. We have identified an issue causing delays in publishing organization cost data through the Costs API. API and ChatGPT usage are not affected, and other reporting channels remain available. We are working to restore normal data freshness.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "identified",
+        "publishedAt": "2026-10-14T17:00:44.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -14532,7 +14709,8 @@
       "rust-v0.163.0-alpha.5": 1791588379961,
       "rust-v0.163.0-alpha.6": 1791878671244,
       "rust-v0.163.0-alpha.9": 1791905643313,
-      "rust-v0.163.0-alpha.12": 1791989875953
+      "rust-v0.163.0-alpha.12": 1791989875953,
+      "rust-v0.163.0-alpha.13": 1792005263786
     }
   }
 }
