@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-15T14:58:03.210Z",
+  "generatedAt": "2026-10-15T19:04:31.763Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5350,6 +5350,52 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0",
+      "at": "2026-10-15T18:57:08.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0",
+      "text": "rust-v0.163.0. Release 0.163.0",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.10.2",
+      "at": "2026-10-15T18:33:04.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.10.2",
+      "text": "0.163.0-alpha.10.2. Release 0.163.0-alpha.10.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M506BA4XRSWH7THR53HQGN3Z",
+      "at": "2026-10-15T18:56:00.000Z",
+      "url": "https://status.openai.com/incidents/01M506BA4XRSWH7THR53HQGN3Z",
+      "text": "Widespread feature degradation. All impacted services have now fully recovered.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-15T16:29:26.000Z"
     }
   ],
   "sources": {
@@ -5358,7 +5404,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-15T14:58:02.813Z",
+      "lastSuccessAt": "2026-10-15T19:04:31.172Z",
       "error": null,
       "count": 150
     },
@@ -5367,7 +5413,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-15T14:58:02.813Z",
+      "lastSuccessAt": "2026-10-15T19:04:31.172Z",
       "error": null,
       "count": 10
     },
@@ -5376,7 +5422,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-15T14:58:02.813Z",
+      "lastSuccessAt": "2026-10-15T19:04:31.172Z",
       "error": null,
       "count": 25
     }
@@ -14823,6 +14869,67 @@
         "origin": "direct-official",
         "prerelease": false
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0:2026-10-15T19:04:31.763Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-15T19:04:31.763Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0",
+        "at": "2026-10-15T18:57:08.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0",
+        "text": "rust-v0.163.0. Release 0.163.0",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.10.2:2026-10-15T19:04:31.763Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-15T19:04:31.763Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.10.2",
+        "at": "2026-10-15T18:33:04.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.10.2",
+        "text": "0.163.0-alpha.10.2. Release 0.163.0-alpha.10.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M506BA4XRSWH7THR53HQGN3Z:2026-10-15T19:04:31.763Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-15T19:04:31.763Z",
+      "item": {
+        "id": "openai-status:01M506BA4XRSWH7THR53HQGN3Z",
+        "at": "2026-10-15T18:56:00.000Z",
+        "url": "https://status.openai.com/incidents/01M506BA4XRSWH7THR53HQGN3Z",
+        "text": "Widespread feature degradation. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-15T16:29:26.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -14836,7 +14943,8 @@
       "rust-v0.163.0-alpha.6": 1791878671244,
       "rust-v0.163.0-alpha.9": 1791905643313,
       "rust-v0.163.0-alpha.12": 1791989875953,
-      "rust-v0.163.0-alpha.13": 1792077183213
+      "rust-v0.163.0-alpha.13": 1792077183213,
+      "rust-v0.163.0": 1792091971764
     }
   }
 }
