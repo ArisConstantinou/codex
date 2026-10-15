@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-15T10:05:34.551Z",
+  "generatedAt": "2026-10-15T14:58:03.210Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5335,6 +5335,21 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/teaching-students-to-think-and-learn-through-questions",
+      "at": "2026-10-15T13:00:00.000Z",
+      "url": "https://openai.com/index/teaching-students-to-think-and-learn-through-questions",
+      "text": "Teaching students to think and learn through questions. Celebrate Teachers’ Day with AI for Educators in Brazilian Portuguese and see how Study Mode can help teachers support active, step-by-step learning.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -5343,7 +5358,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-15T10:05:32.848Z",
+      "lastSuccessAt": "2026-10-15T14:58:02.813Z",
       "error": null,
       "count": 150
     },
@@ -5352,7 +5367,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-15T10:05:32.848Z",
+      "lastSuccessAt": "2026-10-15T14:58:02.813Z",
       "error": null,
       "count": 10
     },
@@ -5361,7 +5376,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-15T10:05:32.848Z",
+      "lastSuccessAt": "2026-10-15T14:58:02.813Z",
       "error": null,
       "count": 25
     }
@@ -14788,6 +14803,26 @@
         "origin": "direct-official",
         "prerelease": false
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/teaching-students-to-think-and-learn-through-questions:2026-10-15T14:58:03.210Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-15T14:58:03.210Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/teaching-students-to-think-and-learn-through-questions",
+        "at": "2026-10-15T13:00:00.000Z",
+        "url": "https://openai.com/index/teaching-students-to-think-and-learn-through-questions",
+        "text": "Teaching students to think and learn through questions. Celebrate Teachers’ Day with AI for Educators in Brazilian Portuguese and see how Study Mode can help teachers support active, step-by-step learning.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
     }
   ],
   "releaseRequests": {
@@ -14801,7 +14836,7 @@
       "rust-v0.163.0-alpha.6": 1791878671244,
       "rust-v0.163.0-alpha.9": 1791905643313,
       "rust-v0.163.0-alpha.12": 1791989875953,
-      "rust-v0.163.0-alpha.13": 1792059634553
+      "rust-v0.163.0-alpha.13": 1792077183213
     }
   }
 }
