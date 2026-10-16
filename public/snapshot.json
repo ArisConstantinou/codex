@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-15T22:12:31.600Z",
+  "generatedAt": "2026-10-16T00:29:33.596Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5292,9 +5292,9 @@
     },
     {
       "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG",
-      "at": "2026-10-14T20:00:36.000Z",
+      "at": "2026-10-15T22:36:42.000Z",
       "url": "https://status.openai.com/incidents/01M4XNQX7C6RCBNGX9H711WFSG",
-      "text": "Delayed Costs data in the Compliance API. We have identified an issue causing delays in publishing organization cost data through the Costs API. A fix is in progress and currently undergoing testing. API and ChatGPT usage are not affected, and other reporting channels remain available. We are continuing work to restore normal data freshness.",
+      "text": "Delayed Costs data in the Compliance API. We have deployed a fix and are monitoring recovery. Costs data in the Compliance API remains delayed while we process the backlog. We will provide further updates as processing catches up.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -5303,7 +5303,7 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "identified",
+      "serviceStatus": "monitoring",
       "publishedAt": "2026-10-14T17:00:44.000Z"
     },
     {
@@ -5424,6 +5424,21 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/sullivan-cromwell",
+      "at": "2026-10-15T00:00:00.000Z",
+      "url": "https://openai.com/index/sullivan-cromwell",
+      "text": "Sullivan & Cromwell brings legal expertise into agreement review. In collaboration with OpenAI, Sullivan & Cromwell developed Agreement Analyzer, an AI tool for identifying issues in a draft agreement.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -5432,7 +5447,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-15T22:12:30.950Z",
+      "lastSuccessAt": "2026-10-16T00:29:33.043Z",
       "error": null,
       "count": 150
     },
@@ -5441,7 +5456,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-15T22:12:30.950Z",
+      "lastSuccessAt": "2026-10-16T00:29:33.043Z",
       "error": null,
       "count": 10
     },
@@ -5450,7 +5465,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-15T22:12:30.950Z",
+      "lastSuccessAt": "2026-10-16T00:29:33.043Z",
       "error": null,
       "count": 25
     }
@@ -15028,6 +15043,47 @@
         "commits": [],
         "comparison": null,
         "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/sullivan-cromwell:2026-10-16T00:29:33.596Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-16T00:29:33.596Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/sullivan-cromwell",
+        "at": "2026-10-15T00:00:00.000Z",
+        "url": "https://openai.com/index/sullivan-cromwell",
+        "text": "Sullivan & Cromwell brings legal expertise into agreement review. In collaboration with OpenAI, Sullivan & Cromwell developed Agreement Analyzer, an AI tool for identifying issues in a draft agreement.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG:2026-10-16T00:29:33.596Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-16T00:29:33.596Z",
+      "item": {
+        "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG",
+        "at": "2026-10-15T22:36:42.000Z",
+        "url": "https://status.openai.com/incidents/01M4XNQX7C6RCBNGX9H711WFSG",
+        "text": "Delayed Costs data in the Compliance API. We have deployed a fix and are monitoring recovery. Costs data in the Compliance API remains delayed while we process the backlog. We will provide further updates as processing catches up.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "monitoring",
+        "publishedAt": "2026-10-14T17:00:44.000Z"
       }
     }
   ],
