@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-16T09:42:03.091Z",
+  "generatedAt": "2026-10-16T14:21:32.447Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5292,9 +5292,9 @@
     },
     {
       "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG",
-      "at": "2026-10-15T22:36:42.000Z",
+      "at": "2026-10-16T10:44:58.000Z",
       "url": "https://status.openai.com/incidents/01M4XNQX7C6RCBNGX9H711WFSG",
-      "text": "Delayed Costs data in the Compliance API. We have deployed a fix and are monitoring recovery. Costs data in the Compliance API remains delayed while we process the backlog. We will provide further updates as processing catches up.",
+      "text": "Delayed Costs data in the Compliance API. All impacted services have now fully recovered.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -5303,7 +5303,7 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "monitoring",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-10-14T17:00:44.000Z"
     },
     {
@@ -5439,6 +5439,21 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.1",
+      "at": "2026-10-16T12:39:40.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.1",
+      "text": "rust-v0.164.0-alpha.1. Release 0.164.0-alpha.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -5447,7 +5462,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-16T09:42:02.032Z",
+      "lastSuccessAt": "2026-10-16T14:21:31.476Z",
       "error": null,
       "count": 150
     },
@@ -5456,7 +5471,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-16T09:42:02.032Z",
+      "lastSuccessAt": "2026-10-16T14:21:31.476Z",
       "error": null,
       "count": 10
     },
@@ -5465,7 +5480,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-16T09:42:02.032Z",
+      "lastSuccessAt": "2026-10-16T14:21:31.476Z",
       "error": null,
       "count": 25
     }
@@ -15085,6 +15100,47 @@
         "serviceStatus": "monitoring",
         "publishedAt": "2026-10-14T17:00:44.000Z"
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.1:2026-10-16T14:21:32.447Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-16T14:21:32.447Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.1",
+        "at": "2026-10-16T12:39:40.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.1",
+        "text": "rust-v0.164.0-alpha.1. Release 0.164.0-alpha.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG:2026-10-16T14:21:32.447Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-16T14:21:32.447Z",
+      "item": {
+        "id": "openai-status:01M4XNQX7C6RCBNGX9H711WFSG",
+        "at": "2026-10-16T10:44:58.000Z",
+        "url": "https://status.openai.com/incidents/01M4XNQX7C6RCBNGX9H711WFSG",
+        "text": "Delayed Costs data in the Compliance API. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-14T17:00:44.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -15098,7 +15154,8 @@
       "rust-v0.163.0-alpha.6": 1791878671244,
       "rust-v0.163.0-alpha.9": 1791905643313,
       "rust-v0.163.0-alpha.12": 1791989875953,
-      "rust-v0.163.0-alpha.13": 1792077183213
+      "rust-v0.163.0-alpha.13": 1792077183213,
+      "rust-v0.164.0-alpha.1": 1792161392449
     }
   }
 }
