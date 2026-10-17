@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-16T23:50:24.752Z",
+  "generatedAt": "2026-10-17T01:56:59.633Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5475,7 +5475,7 @@
         "title": "0.164.0-alpha.2",
         "body": "Release 0.164.0-alpha.2\n\n",
         "authored": false,
-        "fetchedAt": "2026-10-16T23:50:24.755Z",
+        "fetchedAt": "2026-10-17T01:56:59.636Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.2",
         "publishedAt": "2026-10-16T17:37:51Z",
         "commits": [
@@ -5566,7 +5566,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-16T23:50:24.181Z",
+      "lastSuccessAt": "2026-10-17T01:56:58.969Z",
       "error": null,
       "count": 150
     },
@@ -5575,7 +5575,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-16T23:50:24.181Z",
+      "lastSuccessAt": "2026-10-17T01:56:58.969Z",
       "error": null,
       "count": 10
     },
@@ -5584,7 +5584,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-16T23:50:24.181Z",
+      "lastSuccessAt": "2026-10-17T01:56:58.969Z",
       "error": null,
       "count": 25
     }
@@ -15524,6 +15524,70 @@
         "body": "Release 0.164.0-alpha.2\n\n",
         "authored": false,
         "fetchedAt": "2026-10-16T23:50:24.755Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.2",
+        "publishedAt": "2026-10-16T17:37:51Z",
+        "commits": [
+          {
+            "sha": "2bf2bdf82c33f4c66ba3f0767b8e4b6a933aac40",
+            "title": "Bind plugin hook approval to plugin contents (#54619)",
+            "message": "Bind plugin hook approval to plugin contents (#54619)\n\n## Why\n\nA plugin's scripts can change without changing its hook declaration. Declaration-only approval therefore lets changed plugin code run under an existing hook approval.\n\n## What changed\n\n- Fingerprint plugin bundle contents and include the content hash in the approval value returned by `hooks/list`. Persist it as `trusted_content_hash`, keeping `trusted_hash` compatible with older clients.\n- Verify contents before each command or MCP hook execution, within the hook's timeout, and require renewed approval when approved contents change.\n- Migrate legacy declaration-only approvals to a shared, immutable content baseline per plugin and config home.\n- Exclude generated Python bytecode, `.venv`, and `.egg-info` entries from fingerprints. Run app-server hook listing on blocking tasks.\n\n## Testing\n\nExtend integration coverage for plugin upgrades and rollbacks requiring approval, same-turn script changes preventing further hook execution, shared legacy approval baselines, and generated Python artifacts preserving trust.\n\nGitOrigin-RevId: faaf7658210d8adb2534ddd614c72ec993920840",
+            "url": "https://github.com/openai/codex/commit/2bf2bdf82c33f4c66ba3f0767b8e4b6a933aac40"
+          },
+          {
+            "sha": "b5115cdd669d37a8635a9742851e97ba4fb1d42c",
+            "title": "Resolve stable releases dynamically for exec-server compatibility tests (#54623)",
+            "message": "Resolve stable releases dynamically for exec-server compatibility tests (#54623)\n\n## What changed\n\nReplace fixed release pins for app-server/exec-server compatibility tests with the latest stable version and the stable release published closest to 60 days ago. Exclude drafts and prereleases, and prefer the higher version when publication dates are equally close.\n\nResolve release versions and SHA-256 asset digests before Linux Bazel CI runs, passing them through `CODEX_COMPAT_RELEASES` to the release archive repositories. Reuse the argument comment lint action so it also prepares compatibility releases. Add bounded retries for transient GitHub release reads.\n\n## Testing\n\nAdd unit coverage for stable release filtering, version ordering, nearest publication dates, tie-breaking, and deduplication when both selections resolve to the same release.\n\nGitOrigin-RevId: 5a8cf8bdabd77ab3fa89bbb711367b5d9ce8044b",
+            "url": "https://github.com/openai/codex/commit/b5115cdd669d37a8635a9742851e97ba4fb1d42c"
+          },
+          {
+            "sha": "34420d42648f627f766bd347532dcaad5475a68b",
+            "title": "Preserve disconnect reasons in Noise handshake errors (#54637)",
+            "message": "Preserve disconnect reasons in Noise handshake errors (#54637)\n\n## Why\n\nNoise handshake failures before connection readiness returned a generic error even when the transport had reported a specific disconnect reason. No `RpcClient` was reading the connection event channel at that point.\n\n## What changed\n\nRead the pending disconnect event when a Noise rendezvous handshake fails and append its reason to the handshake error when available.\n\n## Testing\n\nAdd a regression test covering unexpected text frames and relay stream resets, checking that each produces the expected transport reason in the handshake error.\n\nGitOrigin-RevId: 9b8ef9c8dcba75b46d51dc67784af46d4ca74b85",
+            "url": "https://github.com/openai/codex/commit/34420d42648f627f766bd347532dcaad5475a68b"
+          },
+          {
+            "sha": "4491caf1ad063f753381500454b599d750e50848",
+            "title": "Stream rollout records during thread history materialization (#54639)",
+            "message": "Stream rollout records during thread history materialization (#54639)\n\n## Why\n\nThread history materialization allocated a buffer for the entire unread rollout suffix before processing records, increasing memory use for large rollouts.\n\n## What changed\n\nRead records incrementally with a buffered reader bounded to the captured file end. Reuse the line buffer, preserve trailing partial records for the next pass, and report unexpected EOF if the rollout shrinks during reading.\n\n## Testing\n\nExtend the partial-line boundary test with 64 KiB of padding per record to verify byte offsets and deferred processing until the final newline is durable.\n\nGitOrigin-RevId: c0426e3e364748b117285b248f6988a4fe064b94",
+            "url": "https://github.com/openai/codex/commit/4491caf1ad063f753381500454b599d750e50848"
+          },
+          {
+            "sha": "b3cc59afcf28bf8f8cc35023be67b9e2f62fc066",
+            "title": "Retry npm release publishing and match macOS verification runners (#54641)",
+            "message": "Retry npm release publishing and match macOS verification runners (#54641)\n\n## What changed\n\n- Attempt each `npm publish` up to three times, with 10- and 20-second delays and fresh OIDC credentials on each attempt. Continue skipping already-published versions.\n- Enable verbose npm logging and retain debug logs as artifacts for seven days, including on failure.\n- Use `macos-15-intel` to verify provisioned `x86_64-apple-darwin` packages, while keeping `aarch64-apple-darwin` verification on `macos-15-xlarge`.\n\nGitOrigin-RevId: 1876c66993ecd8cdb44088ab17a3363d21135ec4",
+            "url": "https://github.com/openai/codex/commit/b3cc59afcf28bf8f8cc35023be67b9e2f62fc066"
+          },
+          {
+            "sha": "f37ce690135a69c3d4bb0210786bd95a866c370a",
+            "title": "Release 0.164.0-alpha.2",
+            "message": "Release 0.164.0-alpha.2",
+            "url": "https://github.com/openai/codex/commit/f37ce690135a69c3d4bb0210786bd95a866c370a"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.1",
+          "head": "rust-v0.164.0-alpha.2",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.1...rust-v0.164.0-alpha.2",
+          "status": "diverged",
+          "total": 6,
+          "behind": 1,
+          "complete": true,
+          "fetched": 6
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.2:2026-10-17T01:56:59.633Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-17T01:56:59.633Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.2",
+        "title": "0.164.0-alpha.2",
+        "body": "Release 0.164.0-alpha.2\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-17T01:56:59.636Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.2",
         "publishedAt": "2026-10-16T17:37:51Z",
         "commits": [
