@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-19T10:56:45.305Z",
+  "generatedAt": "2026-10-19T17:26:25.191Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5853,6 +5853,126 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.5",
+      "at": "2026-10-19T14:33:55.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.5",
+      "text": "0.164.0-alpha.5. Release 0.164.0-alpha.5",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.5",
+        "title": "0.164.0-alpha.5",
+        "body": "Release 0.164.0-alpha.5\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-19T17:26:25.193Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.5",
+        "publishedAt": "2026-10-19T14:23:35Z",
+        "commits": [
+          {
+            "sha": "9dc3a1ce7ea53bb818b8dd69416d6dde70d0b680",
+            "title": "Record Guardian sampling retries, attempts, and delivery outcomes (#55234)",
+            "message": "Record Guardian sampling retries, attempts, and delivery outcomes (#55234)\n\n## What changed\n\n- Add sampling retry counters that distinguish transport retries from authentication recovery, with failure reasons.\n- Record attempt counts and final outcomes for successful, failed, cancelled, and superseded sampling requests.\n- Carry retained-score telemetry until the consumer accepts or discards the score, so queued scores that expire are recorded as superseded and accepted early scores remain successful even if response draining fails.\n\n## Testing\n\nAdd metric assertions for transient recovery, retry exhaustion, authentication recovery, cancellation, supersession, and retained-score acceptance or discard, including expiry while a score is queued.\n\nGitOrigin-RevId: 36babd6f431f22cf15b73355e6e026a256a81004",
+            "url": "https://github.com/openai/codex/commit/9dc3a1ce7ea53bb818b8dd69416d6dde70d0b680"
+          },
+          {
+            "sha": "eb354a928b347856055b29fb55ecd740addf8f77",
+            "title": "Add Guardian review routing and cached score metrics (#55237)",
+            "message": "Add Guardian review routing and cached score metrics (#55237)\n\n## What changed\n\n- Count adaptive reviews and record synchronous review routes as `async_fallback` or `required_sync`, with the review reason in snake case.\n- Record cached score readiness and score age in milliseconds, measured from input sampling time and including inference time.\n\n## Testing\n\nExtend approval tests to assert fallback routing, adaptive review counts, score readiness, and sampled score age.\n\nGitOrigin-RevId: 1200b3297add6c4467e460de87b4a6d8d31e1fc4",
+            "url": "https://github.com/openai/codex/commit/eb354a928b347856055b29fb55ecd740addf8f77"
+          },
+          {
+            "sha": "47db41930433487eb1419b3d5887bce7bd53fbe5",
+            "title": "Batch thread history materialization into SQLite (#55244)",
+            "message": "Batch thread history materialization into SQLite (#55244)\n\n## Why\n\nHistory catch-up collected the entire durable rollout prefix before applying it in one SQLite transaction. Large rollouts therefore required buffering all projection steps and committing them together.\n\n## What changed\n\nStream projection batches through a bounded queue and commit each batch with its checkpoint. Flush between complete records after reaching 1 MiB of source data or 256 projection steps, keeping ordinal gaps with their following records and allowing oversized records to remain intact.\n\nWait for batches before opening SQLite transactions so an idle reader does not hold the writer. Preserve committed progress across later failures or cancellation, allowing retries to resume from the last checkpoint.\n\n## Testing\n\nAdd coverage for reader and writer failures under backpressure, atomic batch rollback, retries without replaying committed records, and unrelated writes while projection is paused. Verify that producer disconnection and consumer cancellation retain committed progress.\n\nGitOrigin-RevId: 06e79fa4cf273de9abd95faf7eed370f18cedc33",
+            "url": "https://github.com/openai/codex/commit/47db41930433487eb1419b3d5887bce7bd53fbe5"
+          },
+          {
+            "sha": "5fe32c00015a84e6b704f6f37460bc925cd93ec0",
+            "title": "Preserve rollout access metadata across compression and restoration (#55252)",
+            "message": "Preserve rollout access metadata across compression and restoration (#55252)\n\n## Why\n\nReplacing rollout files can lose Unix ownership or macOS ACLs, changing who can read or append to a transcript. An ACL can also permit appending while denying explicit timestamp updates.\n\n## What changed\n\n- Preserve Unix ownership, permissions, modification times, and macOS ACLs before publishing compressed or restored rollouts, and verify the replacement can be reopened.\n- Abort replacement on metadata failures, reject macOS delete-deny ACLs to keep temporary files removable, and detect Unix access metadata changes through `ctime` checks.\n- Use managed restoration temporary files whose names avoid stale `*.tmp` cleanup.\n- Allow appending when refreshing the rollout's modification time returns `PermissionDenied`.\n\n## Testing\n\nAdd regression coverage for macOS ACL preservation, inherited ACL removal, deletion-protected rollouts, append access despite denied timestamp changes, Unix group preservation, and restoration temporary files surviving stale-file cleanup.\n\nGitOrigin-RevId: 23f3de6e35c0b2e19f3491170e320159ea3bdb6f",
+            "url": "https://github.com/openai/codex/commit/5fe32c00015a84e6b704f6f37460bc925cd93ec0"
+          },
+          {
+            "sha": "9032fc76839e23a0e9defa71920089187fad1b51",
+            "title": "Unload idle ephemeral composer prediction threads without delay (#55255)",
+            "message": "Unload idle ephemeral composer prediction threads without delay (#55255)\n\n## What changed\n\nSet the app server's unload delay to zero for ephemeral threads whose `thread_source` is `composer_predictions`, excluding subagent sessions. These threads unload once they are idle and have no subscribers, while active turns continue to completion.\n\n## Testing\n\nExtend integration coverage to check immediate unloading after an active prediction turn finishes and after unsubscribing from a fork that inherits the prediction configuration. Verify that persistent threads and ephemeral threads without the prediction source retain the configured delay.\n\nGitOrigin-RevId: 04a0e405b666c689ccf6f482055d24692b18ead0",
+            "url": "https://github.com/openai/codex/commit/9032fc76839e23a0e9defa71920089187fad1b51"
+          },
+          {
+            "sha": "c0ce901923c81843d100659fe4cfa5cb0cb1068e",
+            "title": "Share dynamic tool specifications across turn snapshots (#55261)",
+            "message": "Share dynamic tool specifications across turn snapshots (#55261)\n\n## What changed\n\nStore dynamic tool specifications in an `Arc<[DynamicToolSpec]>` so session configuration and turn snapshots share the list fixed at thread startup instead of copying it on each clone.\n\nKeep the `dynamic_tools()` accessor returning a `Vec<DynamicToolSpec>`, but copy the specifications after releasing the session state lock.\n\nGitOrigin-RevId: 092c5f9ea6cc390d948c27cd11340aeb12bd6037",
+            "url": "https://github.com/openai/codex/commit/c0ce901923c81843d100659fe4cfa5cb0cb1068e"
+          },
+          {
+            "sha": "71ab2ea77bc7fca41bb641e8a131bcba7b304a21",
+            "title": "Stop memory dual-write when v2 is selected (#55262)",
+            "message": "Stop memory dual-write when v2 is selected (#55262)\n\n## Why\n\nDual-write prepares v2 memories while v1 is selected. Once v2 is selected, running the v1 pipeline is no longer needed.\n\n## What changed\n\nRun both memory pipelines only when `memories.dual_write` is enabled and `memories.version` selects v1. Run only v2 when it is selected, even if dual-write remains enabled. Update the configuration documentation and schema to describe this behavior.\n\n## Testing\n\nExtend the startup test to cover both selected versions, checking model request counts, versioned extraction and consolidation state, and the absence of v1 rollout summaries when v2 is selected.\n\nGitOrigin-RevId: 1eb85bd67d7b32883b4ff086514a2acfb6b18f3a",
+            "url": "https://github.com/openai/codex/commit/71ab2ea77bc7fca41bb641e8a131bcba7b304a21"
+          },
+          {
+            "sha": "cc44ffb3e2008e25dd216d59fa7871a0b9434346",
+            "title": "Start dormant MCP servers for hook calls (#55263)",
+            "message": "Start dormant MCP servers for hook calls (#55263)\n\n## Why\n\nMCP tool hooks need to invoke model-hidden tools even when a subagent's cached server has not started. Their timeout must also cover server startup.\n\n## What changed\n\n- Let cached servers with allowed model-hidden tools remain dormant until called.\n- Wait for the selected server when executing an MCP hook, leaving unrelated cached servers dormant, and apply the hook timeout to the entire operation.\n- Capture tool namespace attribution after startup and retain it only while catalog revisions remain unchanged.\n- Validate the server, environment, and tool filter before starting a server or capturing attribution.\n\n## Testing\n\nExtend integration coverage for cached subagent hooks under both startup readiness modes, startup timeouts without context injection, and namespace attribution for hook and token-budget context while keeping tools hidden from the model. Verify that a direct call starts a cached server whose tools are hidden from model exposure.\n\nGitOrigin-RevId: 7a54b69aa2515722aeb925e03e1667bf63aa67ca",
+            "url": "https://github.com/openai/codex/commit/cc44ffb3e2008e25dd216d59fa7871a0b9434346"
+          },
+          {
+            "sha": "1b89beea82ae60e0dbeacb38f1ad2eae9dfed377",
+            "title": "Avoid cloning the full catalog for model metadata lookups (#55265)",
+            "message": "Avoid cloning the full catalog for model metadata lookups (#55265)\n\n## Why\n\n`get_model_info` clones the entire model catalog before selecting metadata for a single model.\n\n## What changed\n\nLook up metadata directly in the active catalog for both remote and static model managers. Share catalog selection across remote catalog accessors and metadata lookup, preserving auth identity checks, API-key discovery policy, provider matching rules, and configuration overrides.\n\n## Testing\n\nExtend coverage for custom catalog configuration overrides, metadata fallback after disabling API-key discovery, and fallback after an auth identity change.\n\nGitOrigin-RevId: 7d0bc4c1ccd2b56e16c7a17c1dbdca05a5c14a7b",
+            "url": "https://github.com/openai/codex/commit/1b89beea82ae60e0dbeacb38f1ad2eae9dfed377"
+          },
+          {
+            "sha": "d28be12577cf5e267c97d3018a490d76da4d28e7",
+            "title": "Honor per-thread unload delays in app-server (#55270)",
+            "message": "Honor per-thread unload delays in app-server (#55270)\n\n## Why\n\nThread unload timing used the server-wide delay, ignoring per-thread configuration overrides. Clients need to control how long individual idle, unsubscribed threads remain loaded.\n\n## What changed\n\n- Resolve unload timing from each loaded thread's `thread_unload_delay_secs` configuration. Setting it to `0` allows immediate unloading once the thread has no subscribers or activity.\n- Allow this runtime retention override in `experimentalPredictionMode` forks while continuing to reject other configuration overrides. Reject negative values and delays too large to schedule.\n- Replace the source-specific immediate-unload behavior with explicit configuration.\n\n## Testing\n\nExtend integration coverage for per-thread delays, unloading after active turns finish, fork overrides, and invalid prediction-fork delays. Verify that immediate unloading preserves persistent history and that cold resumes and ordinary nested forks use their default delay instead of retaining the previous runtime's override.\n\nGitOrigin-RevId: fcb82bd73a101260c51e2a8476f94320c23ac929",
+            "url": "https://github.com/openai/codex/commit/d28be12577cf5e267c97d3018a490d76da4d28e7"
+          },
+          {
+            "sha": "de85a077cd48f5ce3c49ddd6037de394d8ff5f85",
+            "title": "Release 0.164.0-alpha.5",
+            "message": "Release 0.164.0-alpha.5",
+            "url": "https://github.com/openai/codex/commit/de85a077cd48f5ce3c49ddd6037de394d8ff5f85"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.4",
+          "head": "rust-v0.164.0-alpha.5",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.4...rust-v0.164.0-alpha.5",
+          "status": "diverged",
+          "total": 11,
+          "behind": 1,
+          "complete": true,
+          "fetched": 11
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-status:01M5A5S1ATN3QB2WCHQ3VDZC81",
+      "at": "2026-10-19T14:14:03.000Z",
+      "url": "https://status.openai.com/incidents/01M5A5S1ATN3QB2WCHQ3VDZC81",
+      "text": "File Download errors. All impacted services have now fully recovered.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-19T13:31:52.000Z"
     }
   ],
   "sources": {
@@ -5861,7 +5981,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-19T10:56:44.611Z",
+      "lastSuccessAt": "2026-10-19T17:26:24.293Z",
       "error": null,
       "count": 150
     },
@@ -5870,7 +5990,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-19T10:56:44.611Z",
+      "lastSuccessAt": "2026-10-19T17:26:24.293Z",
       "error": null,
       "count": 10
     },
@@ -5879,7 +5999,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-19T10:56:44.611Z",
+      "lastSuccessAt": "2026-10-19T17:26:24.293Z",
       "error": null,
       "count": 25
     }
@@ -18902,6 +19022,230 @@
           "behind": 1,
           "complete": true,
           "fetched": 12
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.5:2026-10-19T17:26:25.191Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-19T17:26:25.191Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.5",
+        "at": "2026-10-19T14:33:55.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.5",
+        "text": "0.164.0-alpha.5. Release 0.164.0-alpha.5",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.164.0-alpha.5",
+          "title": "0.164.0-alpha.5",
+          "body": "Release 0.164.0-alpha.5\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-19T17:26:25.193Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.5",
+          "publishedAt": "2026-10-19T14:23:35Z",
+          "commits": [
+            {
+              "sha": "9dc3a1ce7ea53bb818b8dd69416d6dde70d0b680",
+              "title": "Record Guardian sampling retries, attempts, and delivery outcomes (#55234)",
+              "message": "Record Guardian sampling retries, attempts, and delivery outcomes (#55234)\n\n## What changed\n\n- Add sampling retry counters that distinguish transport retries from authentication recovery, with failure reasons.\n- Record attempt counts and final outcomes for successful, failed, cancelled, and superseded sampling requests.\n- Carry retained-score telemetry until the consumer accepts or discards the score, so queued scores that expire are recorded as superseded and accepted early scores remain successful even if response draining fails.\n\n## Testing\n\nAdd metric assertions for transient recovery, retry exhaustion, authentication recovery, cancellation, supersession, and retained-score acceptance or discard, including expiry while a score is queued.\n\nGitOrigin-RevId: 36babd6f431f22cf15b73355e6e026a256a81004",
+              "url": "https://github.com/openai/codex/commit/9dc3a1ce7ea53bb818b8dd69416d6dde70d0b680"
+            },
+            {
+              "sha": "eb354a928b347856055b29fb55ecd740addf8f77",
+              "title": "Add Guardian review routing and cached score metrics (#55237)",
+              "message": "Add Guardian review routing and cached score metrics (#55237)\n\n## What changed\n\n- Count adaptive reviews and record synchronous review routes as `async_fallback` or `required_sync`, with the review reason in snake case.\n- Record cached score readiness and score age in milliseconds, measured from input sampling time and including inference time.\n\n## Testing\n\nExtend approval tests to assert fallback routing, adaptive review counts, score readiness, and sampled score age.\n\nGitOrigin-RevId: 1200b3297add6c4467e460de87b4a6d8d31e1fc4",
+              "url": "https://github.com/openai/codex/commit/eb354a928b347856055b29fb55ecd740addf8f77"
+            },
+            {
+              "sha": "47db41930433487eb1419b3d5887bce7bd53fbe5",
+              "title": "Batch thread history materialization into SQLite (#55244)",
+              "message": "Batch thread history materialization into SQLite (#55244)\n\n## Why\n\nHistory catch-up collected the entire durable rollout prefix before applying it in one SQLite transaction. Large rollouts therefore required buffering all projection steps and committing them together.\n\n## What changed\n\nStream projection batches through a bounded queue and commit each batch with its checkpoint. Flush between complete records after reaching 1 MiB of source data or 256 projection steps, keeping ordinal gaps with their following records and allowing oversized records to remain intact.\n\nWait for batches before opening SQLite transactions so an idle reader does not hold the writer. Preserve committed progress across later failures or cancellation, allowing retries to resume from the last checkpoint.\n\n## Testing\n\nAdd coverage for reader and writer failures under backpressure, atomic batch rollback, retries without replaying committed records, and unrelated writes while projection is paused. Verify that producer disconnection and consumer cancellation retain committed progress.\n\nGitOrigin-RevId: 06e79fa4cf273de9abd95faf7eed370f18cedc33",
+              "url": "https://github.com/openai/codex/commit/47db41930433487eb1419b3d5887bce7bd53fbe5"
+            },
+            {
+              "sha": "5fe32c00015a84e6b704f6f37460bc925cd93ec0",
+              "title": "Preserve rollout access metadata across compression and restoration (#55252)",
+              "message": "Preserve rollout access metadata across compression and restoration (#55252)\n\n## Why\n\nReplacing rollout files can lose Unix ownership or macOS ACLs, changing who can read or append to a transcript. An ACL can also permit appending while denying explicit timestamp updates.\n\n## What changed\n\n- Preserve Unix ownership, permissions, modification times, and macOS ACLs before publishing compressed or restored rollouts, and verify the replacement can be reopened.\n- Abort replacement on metadata failures, reject macOS delete-deny ACLs to keep temporary files removable, and detect Unix access metadata changes through `ctime` checks.\n- Use managed restoration temporary files whose names avoid stale `*.tmp` cleanup.\n- Allow appending when refreshing the rollout's modification time returns `PermissionDenied`.\n\n## Testing\n\nAdd regression coverage for macOS ACL preservation, inherited ACL removal, deletion-protected rollouts, append access despite denied timestamp changes, Unix group preservation, and restoration temporary files surviving stale-file cleanup.\n\nGitOrigin-RevId: 23f3de6e35c0b2e19f3491170e320159ea3bdb6f",
+              "url": "https://github.com/openai/codex/commit/5fe32c00015a84e6b704f6f37460bc925cd93ec0"
+            },
+            {
+              "sha": "9032fc76839e23a0e9defa71920089187fad1b51",
+              "title": "Unload idle ephemeral composer prediction threads without delay (#55255)",
+              "message": "Unload idle ephemeral composer prediction threads without delay (#55255)\n\n## What changed\n\nSet the app server's unload delay to zero for ephemeral threads whose `thread_source` is `composer_predictions`, excluding subagent sessions. These threads unload once they are idle and have no subscribers, while active turns continue to completion.\n\n## Testing\n\nExtend integration coverage to check immediate unloading after an active prediction turn finishes and after unsubscribing from a fork that inherits the prediction configuration. Verify that persistent threads and ephemeral threads without the prediction source retain the configured delay.\n\nGitOrigin-RevId: 04a0e405b666c689ccf6f482055d24692b18ead0",
+              "url": "https://github.com/openai/codex/commit/9032fc76839e23a0e9defa71920089187fad1b51"
+            },
+            {
+              "sha": "c0ce901923c81843d100659fe4cfa5cb0cb1068e",
+              "title": "Share dynamic tool specifications across turn snapshots (#55261)",
+              "message": "Share dynamic tool specifications across turn snapshots (#55261)\n\n## What changed\n\nStore dynamic tool specifications in an `Arc<[DynamicToolSpec]>` so session configuration and turn snapshots share the list fixed at thread startup instead of copying it on each clone.\n\nKeep the `dynamic_tools()` accessor returning a `Vec<DynamicToolSpec>`, but copy the specifications after releasing the session state lock.\n\nGitOrigin-RevId: 092c5f9ea6cc390d948c27cd11340aeb12bd6037",
+              "url": "https://github.com/openai/codex/commit/c0ce901923c81843d100659fe4cfa5cb0cb1068e"
+            },
+            {
+              "sha": "71ab2ea77bc7fca41bb641e8a131bcba7b304a21",
+              "title": "Stop memory dual-write when v2 is selected (#55262)",
+              "message": "Stop memory dual-write when v2 is selected (#55262)\n\n## Why\n\nDual-write prepares v2 memories while v1 is selected. Once v2 is selected, running the v1 pipeline is no longer needed.\n\n## What changed\n\nRun both memory pipelines only when `memories.dual_write` is enabled and `memories.version` selects v1. Run only v2 when it is selected, even if dual-write remains enabled. Update the configuration documentation and schema to describe this behavior.\n\n## Testing\n\nExtend the startup test to cover both selected versions, checking model request counts, versioned extraction and consolidation state, and the absence of v1 rollout summaries when v2 is selected.\n\nGitOrigin-RevId: 1eb85bd67d7b32883b4ff086514a2acfb6b18f3a",
+              "url": "https://github.com/openai/codex/commit/71ab2ea77bc7fca41bb641e8a131bcba7b304a21"
+            },
+            {
+              "sha": "cc44ffb3e2008e25dd216d59fa7871a0b9434346",
+              "title": "Start dormant MCP servers for hook calls (#55263)",
+              "message": "Start dormant MCP servers for hook calls (#55263)\n\n## Why\n\nMCP tool hooks need to invoke model-hidden tools even when a subagent's cached server has not started. Their timeout must also cover server startup.\n\n## What changed\n\n- Let cached servers with allowed model-hidden tools remain dormant until called.\n- Wait for the selected server when executing an MCP hook, leaving unrelated cached servers dormant, and apply the hook timeout to the entire operation.\n- Capture tool namespace attribution after startup and retain it only while catalog revisions remain unchanged.\n- Validate the server, environment, and tool filter before starting a server or capturing attribution.\n\n## Testing\n\nExtend integration coverage for cached subagent hooks under both startup readiness modes, startup timeouts without context injection, and namespace attribution for hook and token-budget context while keeping tools hidden from the model. Verify that a direct call starts a cached server whose tools are hidden from model exposure.\n\nGitOrigin-RevId: 7a54b69aa2515722aeb925e03e1667bf63aa67ca",
+              "url": "https://github.com/openai/codex/commit/cc44ffb3e2008e25dd216d59fa7871a0b9434346"
+            },
+            {
+              "sha": "1b89beea82ae60e0dbeacb38f1ad2eae9dfed377",
+              "title": "Avoid cloning the full catalog for model metadata lookups (#55265)",
+              "message": "Avoid cloning the full catalog for model metadata lookups (#55265)\n\n## Why\n\n`get_model_info` clones the entire model catalog before selecting metadata for a single model.\n\n## What changed\n\nLook up metadata directly in the active catalog for both remote and static model managers. Share catalog selection across remote catalog accessors and metadata lookup, preserving auth identity checks, API-key discovery policy, provider matching rules, and configuration overrides.\n\n## Testing\n\nExtend coverage for custom catalog configuration overrides, metadata fallback after disabling API-key discovery, and fallback after an auth identity change.\n\nGitOrigin-RevId: 7d0bc4c1ccd2b56e16c7a17c1dbdca05a5c14a7b",
+              "url": "https://github.com/openai/codex/commit/1b89beea82ae60e0dbeacb38f1ad2eae9dfed377"
+            },
+            {
+              "sha": "d28be12577cf5e267c97d3018a490d76da4d28e7",
+              "title": "Honor per-thread unload delays in app-server (#55270)",
+              "message": "Honor per-thread unload delays in app-server (#55270)\n\n## Why\n\nThread unload timing used the server-wide delay, ignoring per-thread configuration overrides. Clients need to control how long individual idle, unsubscribed threads remain loaded.\n\n## What changed\n\n- Resolve unload timing from each loaded thread's `thread_unload_delay_secs` configuration. Setting it to `0` allows immediate unloading once the thread has no subscribers or activity.\n- Allow this runtime retention override in `experimentalPredictionMode` forks while continuing to reject other configuration overrides. Reject negative values and delays too large to schedule.\n- Replace the source-specific immediate-unload behavior with explicit configuration.\n\n## Testing\n\nExtend integration coverage for per-thread delays, unloading after active turns finish, fork overrides, and invalid prediction-fork delays. Verify that immediate unloading preserves persistent history and that cold resumes and ordinary nested forks use their default delay instead of retaining the previous runtime's override.\n\nGitOrigin-RevId: fcb82bd73a101260c51e2a8476f94320c23ac929",
+              "url": "https://github.com/openai/codex/commit/d28be12577cf5e267c97d3018a490d76da4d28e7"
+            },
+            {
+              "sha": "de85a077cd48f5ce3c49ddd6037de394d8ff5f85",
+              "title": "Release 0.164.0-alpha.5",
+              "message": "Release 0.164.0-alpha.5",
+              "url": "https://github.com/openai/codex/commit/de85a077cd48f5ce3c49ddd6037de394d8ff5f85"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.164.0-alpha.4",
+            "head": "rust-v0.164.0-alpha.5",
+            "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.4...rust-v0.164.0-alpha.5",
+            "status": "diverged",
+            "total": 11,
+            "behind": 1,
+            "complete": true,
+            "fetched": 11
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "openai-status:01M5A5S1ATN3QB2WCHQ3VDZC81:2026-10-19T17:26:25.191Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-19T17:26:25.191Z",
+      "item": {
+        "id": "openai-status:01M5A5S1ATN3QB2WCHQ3VDZC81",
+        "at": "2026-10-19T14:14:03.000Z",
+        "url": "https://status.openai.com/incidents/01M5A5S1ATN3QB2WCHQ3VDZC81",
+        "text": "File Download errors. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-19T13:31:52.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.5:2026-10-19T17:26:25.191Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-19T17:26:25.191Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.5",
+        "title": "0.164.0-alpha.5",
+        "body": "Release 0.164.0-alpha.5\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-19T17:26:25.193Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.5",
+        "publishedAt": "2026-10-19T14:23:35Z",
+        "commits": [
+          {
+            "sha": "9dc3a1ce7ea53bb818b8dd69416d6dde70d0b680",
+            "title": "Record Guardian sampling retries, attempts, and delivery outcomes (#55234)",
+            "message": "Record Guardian sampling retries, attempts, and delivery outcomes (#55234)\n\n## What changed\n\n- Add sampling retry counters that distinguish transport retries from authentication recovery, with failure reasons.\n- Record attempt counts and final outcomes for successful, failed, cancelled, and superseded sampling requests.\n- Carry retained-score telemetry until the consumer accepts or discards the score, so queued scores that expire are recorded as superseded and accepted early scores remain successful even if response draining fails.\n\n## Testing\n\nAdd metric assertions for transient recovery, retry exhaustion, authentication recovery, cancellation, supersession, and retained-score acceptance or discard, including expiry while a score is queued.\n\nGitOrigin-RevId: 36babd6f431f22cf15b73355e6e026a256a81004",
+            "url": "https://github.com/openai/codex/commit/9dc3a1ce7ea53bb818b8dd69416d6dde70d0b680"
+          },
+          {
+            "sha": "eb354a928b347856055b29fb55ecd740addf8f77",
+            "title": "Add Guardian review routing and cached score metrics (#55237)",
+            "message": "Add Guardian review routing and cached score metrics (#55237)\n\n## What changed\n\n- Count adaptive reviews and record synchronous review routes as `async_fallback` or `required_sync`, with the review reason in snake case.\n- Record cached score readiness and score age in milliseconds, measured from input sampling time and including inference time.\n\n## Testing\n\nExtend approval tests to assert fallback routing, adaptive review counts, score readiness, and sampled score age.\n\nGitOrigin-RevId: 1200b3297add6c4467e460de87b4a6d8d31e1fc4",
+            "url": "https://github.com/openai/codex/commit/eb354a928b347856055b29fb55ecd740addf8f77"
+          },
+          {
+            "sha": "47db41930433487eb1419b3d5887bce7bd53fbe5",
+            "title": "Batch thread history materialization into SQLite (#55244)",
+            "message": "Batch thread history materialization into SQLite (#55244)\n\n## Why\n\nHistory catch-up collected the entire durable rollout prefix before applying it in one SQLite transaction. Large rollouts therefore required buffering all projection steps and committing them together.\n\n## What changed\n\nStream projection batches through a bounded queue and commit each batch with its checkpoint. Flush between complete records after reaching 1 MiB of source data or 256 projection steps, keeping ordinal gaps with their following records and allowing oversized records to remain intact.\n\nWait for batches before opening SQLite transactions so an idle reader does not hold the writer. Preserve committed progress across later failures or cancellation, allowing retries to resume from the last checkpoint.\n\n## Testing\n\nAdd coverage for reader and writer failures under backpressure, atomic batch rollback, retries without replaying committed records, and unrelated writes while projection is paused. Verify that producer disconnection and consumer cancellation retain committed progress.\n\nGitOrigin-RevId: 06e79fa4cf273de9abd95faf7eed370f18cedc33",
+            "url": "https://github.com/openai/codex/commit/47db41930433487eb1419b3d5887bce7bd53fbe5"
+          },
+          {
+            "sha": "5fe32c00015a84e6b704f6f37460bc925cd93ec0",
+            "title": "Preserve rollout access metadata across compression and restoration (#55252)",
+            "message": "Preserve rollout access metadata across compression and restoration (#55252)\n\n## Why\n\nReplacing rollout files can lose Unix ownership or macOS ACLs, changing who can read or append to a transcript. An ACL can also permit appending while denying explicit timestamp updates.\n\n## What changed\n\n- Preserve Unix ownership, permissions, modification times, and macOS ACLs before publishing compressed or restored rollouts, and verify the replacement can be reopened.\n- Abort replacement on metadata failures, reject macOS delete-deny ACLs to keep temporary files removable, and detect Unix access metadata changes through `ctime` checks.\n- Use managed restoration temporary files whose names avoid stale `*.tmp` cleanup.\n- Allow appending when refreshing the rollout's modification time returns `PermissionDenied`.\n\n## Testing\n\nAdd regression coverage for macOS ACL preservation, inherited ACL removal, deletion-protected rollouts, append access despite denied timestamp changes, Unix group preservation, and restoration temporary files surviving stale-file cleanup.\n\nGitOrigin-RevId: 23f3de6e35c0b2e19f3491170e320159ea3bdb6f",
+            "url": "https://github.com/openai/codex/commit/5fe32c00015a84e6b704f6f37460bc925cd93ec0"
+          },
+          {
+            "sha": "9032fc76839e23a0e9defa71920089187fad1b51",
+            "title": "Unload idle ephemeral composer prediction threads without delay (#55255)",
+            "message": "Unload idle ephemeral composer prediction threads without delay (#55255)\n\n## What changed\n\nSet the app server's unload delay to zero for ephemeral threads whose `thread_source` is `composer_predictions`, excluding subagent sessions. These threads unload once they are idle and have no subscribers, while active turns continue to completion.\n\n## Testing\n\nExtend integration coverage to check immediate unloading after an active prediction turn finishes and after unsubscribing from a fork that inherits the prediction configuration. Verify that persistent threads and ephemeral threads without the prediction source retain the configured delay.\n\nGitOrigin-RevId: 04a0e405b666c689ccf6f482055d24692b18ead0",
+            "url": "https://github.com/openai/codex/commit/9032fc76839e23a0e9defa71920089187fad1b51"
+          },
+          {
+            "sha": "c0ce901923c81843d100659fe4cfa5cb0cb1068e",
+            "title": "Share dynamic tool specifications across turn snapshots (#55261)",
+            "message": "Share dynamic tool specifications across turn snapshots (#55261)\n\n## What changed\n\nStore dynamic tool specifications in an `Arc<[DynamicToolSpec]>` so session configuration and turn snapshots share the list fixed at thread startup instead of copying it on each clone.\n\nKeep the `dynamic_tools()` accessor returning a `Vec<DynamicToolSpec>`, but copy the specifications after releasing the session state lock.\n\nGitOrigin-RevId: 092c5f9ea6cc390d948c27cd11340aeb12bd6037",
+            "url": "https://github.com/openai/codex/commit/c0ce901923c81843d100659fe4cfa5cb0cb1068e"
+          },
+          {
+            "sha": "71ab2ea77bc7fca41bb641e8a131bcba7b304a21",
+            "title": "Stop memory dual-write when v2 is selected (#55262)",
+            "message": "Stop memory dual-write when v2 is selected (#55262)\n\n## Why\n\nDual-write prepares v2 memories while v1 is selected. Once v2 is selected, running the v1 pipeline is no longer needed.\n\n## What changed\n\nRun both memory pipelines only when `memories.dual_write` is enabled and `memories.version` selects v1. Run only v2 when it is selected, even if dual-write remains enabled. Update the configuration documentation and schema to describe this behavior.\n\n## Testing\n\nExtend the startup test to cover both selected versions, checking model request counts, versioned extraction and consolidation state, and the absence of v1 rollout summaries when v2 is selected.\n\nGitOrigin-RevId: 1eb85bd67d7b32883b4ff086514a2acfb6b18f3a",
+            "url": "https://github.com/openai/codex/commit/71ab2ea77bc7fca41bb641e8a131bcba7b304a21"
+          },
+          {
+            "sha": "cc44ffb3e2008e25dd216d59fa7871a0b9434346",
+            "title": "Start dormant MCP servers for hook calls (#55263)",
+            "message": "Start dormant MCP servers for hook calls (#55263)\n\n## Why\n\nMCP tool hooks need to invoke model-hidden tools even when a subagent's cached server has not started. Their timeout must also cover server startup.\n\n## What changed\n\n- Let cached servers with allowed model-hidden tools remain dormant until called.\n- Wait for the selected server when executing an MCP hook, leaving unrelated cached servers dormant, and apply the hook timeout to the entire operation.\n- Capture tool namespace attribution after startup and retain it only while catalog revisions remain unchanged.\n- Validate the server, environment, and tool filter before starting a server or capturing attribution.\n\n## Testing\n\nExtend integration coverage for cached subagent hooks under both startup readiness modes, startup timeouts without context injection, and namespace attribution for hook and token-budget context while keeping tools hidden from the model. Verify that a direct call starts a cached server whose tools are hidden from model exposure.\n\nGitOrigin-RevId: 7a54b69aa2515722aeb925e03e1667bf63aa67ca",
+            "url": "https://github.com/openai/codex/commit/cc44ffb3e2008e25dd216d59fa7871a0b9434346"
+          },
+          {
+            "sha": "1b89beea82ae60e0dbeacb38f1ad2eae9dfed377",
+            "title": "Avoid cloning the full catalog for model metadata lookups (#55265)",
+            "message": "Avoid cloning the full catalog for model metadata lookups (#55265)\n\n## Why\n\n`get_model_info` clones the entire model catalog before selecting metadata for a single model.\n\n## What changed\n\nLook up metadata directly in the active catalog for both remote and static model managers. Share catalog selection across remote catalog accessors and metadata lookup, preserving auth identity checks, API-key discovery policy, provider matching rules, and configuration overrides.\n\n## Testing\n\nExtend coverage for custom catalog configuration overrides, metadata fallback after disabling API-key discovery, and fallback after an auth identity change.\n\nGitOrigin-RevId: 7d0bc4c1ccd2b56e16c7a17c1dbdca05a5c14a7b",
+            "url": "https://github.com/openai/codex/commit/1b89beea82ae60e0dbeacb38f1ad2eae9dfed377"
+          },
+          {
+            "sha": "d28be12577cf5e267c97d3018a490d76da4d28e7",
+            "title": "Honor per-thread unload delays in app-server (#55270)",
+            "message": "Honor per-thread unload delays in app-server (#55270)\n\n## Why\n\nThread unload timing used the server-wide delay, ignoring per-thread configuration overrides. Clients need to control how long individual idle, unsubscribed threads remain loaded.\n\n## What changed\n\n- Resolve unload timing from each loaded thread's `thread_unload_delay_secs` configuration. Setting it to `0` allows immediate unloading once the thread has no subscribers or activity.\n- Allow this runtime retention override in `experimentalPredictionMode` forks while continuing to reject other configuration overrides. Reject negative values and delays too large to schedule.\n- Replace the source-specific immediate-unload behavior with explicit configuration.\n\n## Testing\n\nExtend integration coverage for per-thread delays, unloading after active turns finish, fork overrides, and invalid prediction-fork delays. Verify that immediate unloading preserves persistent history and that cold resumes and ordinary nested forks use their default delay instead of retaining the previous runtime's override.\n\nGitOrigin-RevId: fcb82bd73a101260c51e2a8476f94320c23ac929",
+            "url": "https://github.com/openai/codex/commit/d28be12577cf5e267c97d3018a490d76da4d28e7"
+          },
+          {
+            "sha": "de85a077cd48f5ce3c49ddd6037de394d8ff5f85",
+            "title": "Release 0.164.0-alpha.5",
+            "message": "Release 0.164.0-alpha.5",
+            "url": "https://github.com/openai/codex/commit/de85a077cd48f5ce3c49ddd6037de394d8ff5f85"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.4",
+          "head": "rust-v0.164.0-alpha.5",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.4...rust-v0.164.0-alpha.5",
+          "status": "diverged",
+          "total": 11,
+          "behind": 1,
+          "complete": true,
+          "fetched": 11
         },
         "comparisonError": null
       }
