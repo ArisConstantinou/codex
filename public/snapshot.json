@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-19T00:28:05.491Z",
+  "generatedAt": "2026-10-19T05:15:03.708Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5594,7 +5594,7 @@
         "title": "0.164.0-alpha.3",
         "body": "Release 0.164.0-alpha.3\n\n",
         "authored": false,
-        "fetchedAt": "2026-10-19T00:28:05.493Z",
+        "fetchedAt": "2026-10-19T05:15:03.713Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.3",
         "publishedAt": "2026-10-17T04:03:25Z",
         "commits": [
@@ -5751,7 +5751,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-19T00:28:05.036Z",
+      "lastSuccessAt": "2026-10-19T05:15:02.986Z",
       "error": null,
       "count": 150
     },
@@ -5760,7 +5760,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-19T00:28:05.036Z",
+      "lastSuccessAt": "2026-10-19T05:15:02.986Z",
       "error": null,
       "count": 10
     },
@@ -5769,7 +5769,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-19T00:28:05.036Z",
+      "lastSuccessAt": "2026-10-19T05:15:02.986Z",
       "error": null,
       "count": 25
     }
@@ -18272,6 +18272,166 @@
         "body": "Release 0.164.0-alpha.3\n\n",
         "authored": false,
         "fetchedAt": "2026-10-19T00:28:05.493Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.3",
+        "publishedAt": "2026-10-17T04:03:25Z",
+        "commits": [
+          {
+            "sha": "fa46ef3af641f21d0facc69bd11e562fce6a3f9a",
+            "title": "Make remote-control conflict retry tests deterministic (#54647)",
+            "message": "Make remote-control conflict retry tests deterministic (#54647)\n\n## What changed\n\nWait for the rejected socket to close before advancing Tokio's clock through\ncapped retry delays. Keep socket I/O on real time so pending handshakes cannot\nauto-advance their own timeouts.\n\nReturn bodyless HTTP 409 responses in the test server, check that neither\nrejection restarts fast retries, and assert that recovery preserves the expected\nreconnect attempt count. Both cursor and cursorless cases use the updated helper.\n\nGitOrigin-RevId: da167312f28b7e24b864e6929be749865ea70081",
+            "url": "https://github.com/openai/codex/commit/fa46ef3af641f21d0facc69bd11e562fce6a3f9a"
+          },
+          {
+            "sha": "b26b0a7a777bd9c153da2e1e86f00ee1600476bd",
+            "title": "Prefer resource-specific scopes during MCP OAuth discovery (#54653)",
+            "message": "Prefer resource-specific scopes during MCP OAuth discovery (#54653)\n\n## Why\n\nAuthorization server metadata can advertise scopes unrelated to the MCP resource. Using that list for discovery can request broader scopes than the resource requires.\n\n## What changed\n\nUpdate `rmcp` and use its initial scope selection during OAuth discovery: prefer scopes from the initial `WWW-Authenticate` challenge, fall back to protected resource metadata, and include `offline_access` when supported. Stop using the authorization server's general scope list as the discovered resource scopes.\n\n## Testing\n\nAdd coverage for challenge scope precedence, resource metadata fallback, scope normalization, and exclusion of unrelated authorization server scopes. Add a no-browser login regression test for a preregistered client whose authorization server advertises neither scopes nor dynamic registration.\n\nGitOrigin-RevId: 68d83cf61fb0b73dac9e861e476f484990fd93b6",
+            "url": "https://github.com/openai/codex/commit/b26b0a7a777bd9c153da2e1e86f00ee1600476bd"
+          },
+          {
+            "sha": "beae473be8564d884a8cfe9704194a5c803d2ac1",
+            "title": "Allow dynamic tool calls to execute in parallel (#54654)",
+            "message": "Allow dynamic tool calls to execute in parallel (#54654)\n\n## Why\n\nDynamic tool calls should remain independent while waiting for client responses, so one pending call does not block another from reaching the client.\n\n## What changed\n\nEnable parallel execution in `DynamicToolHandler`, allowing code mode programs to issue concurrent dynamic tool calls with `Promise.all`.\n\n## Testing\n\nAdd a code mode regression test that waits for two dynamic tool requests before responding, resolves them in reverse order, and verifies that `Promise.all` preserves the expected result order.\n\nGitOrigin-RevId: c93c1fea720f76c772b0e3452ddc8c01fb1a08d8",
+            "url": "https://github.com/openai/codex/commit/beae473be8564d884a8cfe9704194a5c803d2ac1"
+          },
+          {
+            "sha": "0df4aa67781ae45a3c97befa4db48b734afe46d9",
+            "title": "Honor MCP tool-list changes within a turn (#54656)",
+            "message": "Honor MCP tool-list changes within a turn (#54656)\n\n## Why\n\nMCP servers can expose new tools during discovery. Refreshing the catalog after a tool-list notification lets Codex discover and call those tools in the same turn.\n\n## What changed\n\n- Add the disabled-by-default `mcp_tool_list_changed` feature for ordinary MCP servers.\n- Track notifications in transport order and refresh catalogs before subsequent discovery or tool binding. Coalesce concurrent refreshes and retry listings invalidated by notifications, including during pagination.\n- Retain the previous catalog on refresh failure, apply a retry cooldown, and invalidate affected startup caches. Allow notification refreshes to proceed while admitted calls finish.\n\n## Testing\n\nAdd coverage for same-turn discovery and invocation in direct and Code Mode, notifications during startup and pagination, disabled behavior, cache invalidation, and concurrent refreshes with timeout recovery.\n\nGitOrigin-RevId: 9afee8deba00dd9851b5f32625f61f96965aa00c",
+            "url": "https://github.com/openai/codex/commit/0df4aa67781ae45a3c97befa4db48b734afe46d9"
+          },
+          {
+            "sha": "96eb400d1231f0199e96f640c740096087cf3e9b",
+            "title": "Distinguish retryable thread-store errors from unknown write outcomes (#54664)",
+            "message": "Distinguish retryable thread-store errors from unknown write outcomes (#54664)\n\n## What changed\n\nAdd `ThreadStoreError::Retryable` for transient failures known to be safe to retry and `ThreadStoreError::OutcomeUnknown` for writes that may already have committed. Recovery remains the operation owner's responsibility; neither category automatically triggers retries.\n\nPreserve existing app-server error mappings and fatal session startup behavior, and report the new categories in shutdown diagnostics without exposing raw error payloads.\n\n## Testing\n\nAdd coverage for conservative SQLx error classification, mutation error mappings, session initialization categories, and shutdown diagnostics that omit raw error payloads.\n\nGitOrigin-RevId: 259a9bfaa6ff3cbfa2ee61a01a1f1e744c90f118",
+            "url": "https://github.com/openai/codex/commit/96eb400d1231f0199e96f640c740096087cf3e9b"
+          },
+          {
+            "sha": "088c7a1e75462caec9ec87e93caa8c4616a0c447",
+            "title": "Use shared Bazel CI preparation for lint and V8 jobs (#54672)",
+            "message": "Use shared Bazel CI preparation for lint and V8 jobs (#54672)\n\n## What changed\n\n- Switch argument-comment lint, rusty-v8 release, and V8 canary jobs to `prepare-bazel-ci` to restore repository caches and configure execution logs. Use `bazel-argument-comment-lint` and `bazel-v8` cache scopes.\n- Include changes to `prepare-bazel-ci` in V8 canary path detection.\n- Pass `BUILDBUDDY_API_KEY` to the `MODULE.bazel.lock` check.\n\nGitOrigin-RevId: 6ef150f93413d1d30287f0728358eed26e792204",
+            "url": "https://github.com/openai/codex/commit/088c7a1e75462caec9ec87e93caa8c4616a0c447"
+          },
+          {
+            "sha": "e7de1f444089c29ac002e3df08d940f6de8a2613",
+            "title": "Add an opt-in tool for copying files between environments (#54674)",
+            "message": "Add an opt-in tool for copying files between environments (#54674)\n\n## What changed\n\nAdd the `codex-multi-env-copy-file` extension, exposing `multi_env_copy_file` when registered by the host. Copy files between distinct selected environments without loading their contents into model context, and return `bytes_copied` on completion.\n\nRequire absolute paths in each environment's native path convention and enforce each endpoint's sandbox policy and permission grants. Stream file contents where supported, with a buffered fallback for older executors. Reject same-environment copies and report I/O error kinds without exposing connection details. Warn that failed writes may leave a truncated or partially written target.\n\n## Testing\n\nAdd integration tests for binary transfers in both directions, local and remote executors, path validation, opt-in tool visibility, endpoint permissions and grants, and unavailable or disconnected executors. Verify that copied contents stay outside model context.\n\nGitOrigin-RevId: f5d9e423d105019834e0288828cb68c5711b3a49",
+            "url": "https://github.com/openai/codex/commit/e7de1f444089c29ac002e3df08d940f6de8a2613"
+          },
+          {
+            "sha": "a083a1e49ea499b0dd37afa36f4d8c70d5536056",
+            "title": "Distinguish MCP approval cancellation reasons (#54679)",
+            "message": "Distinguish MCP approval cancellation reasons (#54679)\n\n## Why\n\nMCP tool calls reported every aborted approval as \"user cancelled MCP tool call\", including interrupted requests and automatic cancellations in `exec` mode.\n\n## What changed\n\nCarry `user`, `interrupted`, or `non_interactive` cancellation reasons through MCP approval metadata and resolution. Mark explicit TUI cancellations as user actions, interrupted requests as interruptions, and automatic `exec` cancellations as non-interactive.\n\nUse the reason to report when a call was cancelled before approval or because interactive approval is unavailable in `exec` mode. Preserve the existing cancellation message for clients that omit the reason.\n\n## Testing\n\nUpdate tests to verify that a closed approval response carries the interruption reason and that `exec` cancellation responses include the non-interactive reason.\n\nGitOrigin-RevId: be2a5f7fef539b5db2add53b46aea27e2b8a66fc",
+            "url": "https://github.com/openai/codex/commit/a083a1e49ea499b0dd37afa36f4d8c70d5536056"
+          },
+          {
+            "sha": "440312f11396a58b312dd31798ec3393810d8ff8",
+            "title": "Keep TUI session selections bound to their backend (#54681)",
+            "message": "Keep TUI session selections bound to their backend (#54681)\n\n## Why\n\nA thread ID alone does not identify the backend that owns a session. Resume and fork selections must retain that ownership across connection replacement so they cannot operate on another backend, even when thread IDs match.\n\n## What changed\n\n- Add a process-local `BackendId` to app-server sessions and session targets, preserving it across reconnects and auxiliary picker connections.\n- Reject selections from a different backend before changing session state or sending resume, fork, or unarchive requests.\n- Disable local-daemon fallback to an embedded server for auxiliary pickers and after selecting a session, while retaining fallback for fresh startup.\n\n## Testing\n\nAdd regression coverage for foreign selections with matching thread IDs, startup resume and fork rejection before requests, shared ownership across picker connections, and fallback eligibility.\n\nGitOrigin-RevId: 05a3ca0a901a8dc24337d130548aa2c048b4d586",
+            "url": "https://github.com/openai/codex/commit/440312f11396a58b312dd31798ec3393810d8ff8"
+          },
+          {
+            "sha": "0e67502123b4c6952b9fa5d672d2907fe4059f56",
+            "title": "Preserve MCP tool-list metadata in server status (#54686)",
+            "message": "Preserve MCP tool-list metadata in server status (#54686)\n\n## Why\n\nMCP tool discovery discarded response-level `_meta`, leaving server-status clients unable to inspect metadata associated with the tool catalog.\n\n## What changed\n\n- Preserve opaque `_meta` from the first `tools/list` page through catalog refreshes and caches.\n- Expose it as `toolListMeta` in `McpServerStatus`, with `null` when unavailable, and update generated schemas and bindings.\n- Scope cached Apps catalog metadata to discovery settings, including client capabilities and extensions, while retaining tools from older caches without metadata.\n- Restrict server capabilities in status snapshots to the selected servers.\n\n## Testing\n\nAdd regression coverage for listing legacy cached Apps tools during failed startup, and update protocol serialization expectations for nullable `toolListMeta`.\n\nGitOrigin-RevId: 62335e2fd8c482067a7a78a7612b58c3eaa9fb55",
+            "url": "https://github.com/openai/codex/commit/0e67502123b4c6952b9fa5d672d2907fe4059f56"
+          },
+          {
+            "sha": "b9775a0d57b09b43e5bab17a245ec053cc6b4426",
+            "title": "Honor home deletion preferences during Windows uninstall (#54708)",
+            "message": "Honor home deletion preferences during Windows uninstall (#54708)\n\n## What changed\n\nRead `desktop.uninstall_codex_home` from the owner's current `config.toml` before recursively deleting a desktop-created Codex home during Windows sandbox uninstall.\n\n- Preserve the home by default for ordinary installations; retain the deletion default for OEM preinstalls when no preference is set.\n- Let an explicit boolean preference override either default. Preserve the home when configuration is unreadable, malformed, or contains an invalid preference.\n- Capture OEM metadata before Windows removes it during uninstall, and revoke sandbox permissions on retained homes.\n\n## Testing\n\nAdd unit tests for missing preferences, explicit overrides, malformed or invalid configuration, and configuration read failures across both installation defaults.\n\nGitOrigin-RevId: 46afc2a7b0f4ecf7f447e46b515e50d0d278e4a8",
+            "url": "https://github.com/openai/codex/commit/b9775a0d57b09b43e5bab17a245ec053cc6b4426"
+          },
+          {
+            "sha": "3076caafdf674e0237866a22b647cd9c6931891c",
+            "title": "Move V8's ICU Bazel rules into the workspace (#54710)",
+            "message": "Move V8's ICU Bazel rules into the workspace (#54710)\n\n## What changed\n\nAdd `third_party/v8/icu.BUILD.bazel` and wire V8's ICU repository to use it instead of patching upstream `bazel/BUILD.icu`.\n\nSelect ICU's custom libc++ flags and runtime dependencies through `//third_party/v8:use_rusty_v8_custom_libcxx`, keeping ICU aligned with V8 and its host generators.\n\nGitOrigin-RevId: 92a1b883f5d42d9a3a464002e922295ab166f2bd",
+            "url": "https://github.com/openai/codex/commit/3076caafdf674e0237866a22b647cd9c6931891c"
+          },
+          {
+            "sha": "859bbc87fc80c18a72e08b181e301ddb4f8dabea",
+            "title": "Keep prereleases in draft until release assets finish uploading (#54716)",
+            "message": "Keep prereleases in draft until release assets finish uploading (#54716)\n\n## Why\n\nPrereleases were published before their assets finished uploading, exposing incomplete releases.\n\n## What changed\n\nCreate new prereleases as drafts, matching stable releases, and publish them only after all asset uploads succeed. Publishing a draft emits a `published` event rather than a `prereleased` event.\n\nGitOrigin-RevId: 0d1c52038bb9b7beb4b5b9bf52f0ef4c3734de61",
+            "url": "https://github.com/openai/codex/commit/859bbc87fc80c18a72e08b181e301ddb4f8dabea"
+          },
+          {
+            "sha": "221e4e7c05386d06aa7b91da2a9b04f7f2bd921f",
+            "title": "Preserve prereleased events when creating GitHub prereleases (#54724)",
+            "message": "Preserve prereleased events when creating GitHub prereleases (#54724)\n\n## Why\n\nPublishing a draft prerelease emits a `published` event instead of a `prereleased` event.\n\n## What changed\n\nCreate GitHub prereleases with `--draft=false` so they emit `prereleased` events. Keep stable releases as drafts until all asset uploads succeed.\n\nGitOrigin-RevId: 145fd84f852d7ee9cb3c4edff7007a34c3389e1c",
+            "url": "https://github.com/openai/codex/commit/221e4e7c05386d06aa7b91da2a9b04f7f2bd921f"
+          },
+          {
+            "sha": "835d3049f03ea71491299b2548c5ab8fa932f897",
+            "title": "Enable BuildBuddy for voice release builds (#54737)",
+            "message": "Enable BuildBuddy for voice release builds (#54737)\n\n## What changed\n\nPass `BUILDBUDDY_API_KEY` to Linux, macOS, and Windows voice release builds, and give the dedicated macOS and Windows voice jobs access to the `bazel` environment without creating deployments.\n\nUse the shared Bazel preparation action and BuildBuddy wrapper for Linux and macOS voice builds so they inherit the existing repository cache and remote cache configuration.\n\nGitOrigin-RevId: 52cdf05bc4567f3e8c460d2509e57bb30e667868",
+            "url": "https://github.com/openai/codex/commit/835d3049f03ea71491299b2548c5ab8fa932f897"
+          },
+          {
+            "sha": "527c5deb74e5cc390f8838ac361e340cb23c2234",
+            "title": "Close arg0 lock files before removing temporary directories (#54739)",
+            "message": "Close arg0 lock files before removing temporary directories (#54739)\n\n## Why\n\nRemoving a directory while its lock file is open can leave `.nfs*` entries on NFS and prevent cleanup.\n\n## What changed\n\n- Drop the `Arg0PathEntryGuard` lock file before its temporary directory.\n- On Unix, rename stale helper directories while locked, then close the lock before deleting them. This prevents initializers from publishing at the old path during cleanup.\n\n## Testing\n\nExtend the guard lifetime test to all platforms and assert that its directory is removed after main returns. Strengthen the janitor test to check that cleanup leaves the temporary root empty.\n\nGitOrigin-RevId: 2524afcc63ed7769a7d16b622c1d447918f9478b",
+            "url": "https://github.com/openai/codex/commit/527c5deb74e5cc390f8838ac361e340cb23c2234"
+          },
+          {
+            "sha": "82d958597f672b0f05c8f1fe3a43a9b93dc28ba5",
+            "title": "Gate the file-copy extension behind `multi_env_copy_file` (#54741)",
+            "message": "Gate the file-copy extension behind `multi_env_copy_file` (#54741)\n\n## What changed\n\nAdd the `multi_env_copy_file` feature flag, disabled by default and marked as under development, to the feature registry and configuration schema. Install the file-copy extension in app-server threads and CLI debug prompt construction when the flag is enabled.\n\nGitOrigin-RevId: 6d8b4c7479974f4b70c39f52333491c13d60d2a2",
+            "url": "https://github.com/openai/codex/commit/82d958597f672b0f05c8f1fe3a43a9b93dc28ba5"
+          },
+          {
+            "sha": "5009a99dfc07830ddf7464c26f310a2b8532b55d",
+            "title": "Render slash command prefixes as composer prompt markers (#54742)",
+            "message": "Render slash command prefixes as composer prompt markers (#54742)\n\n## What changed\n\n- Display the leading `/` in the prompt marker instead of the editable text, sharing prefix state with shell mode's `!`.\n- Preserve command prefixes and text element offsets across submission, queuing, history, and external editing. Keep prefixes literal in plain-text composers.\n- Track composer-owned slash command elements separately, omit them from exported draft elements, and refresh them when command availability changes.\n- Let backward deletion at the start of the text remove the prompt prefix while preserving selected-text deletion and Vim Replace recovery.\n\n## Testing\n\nAdd regression coverage for slash prompt cursor placement, prefix deletion, history search highlighting, dynamic command availability, and Vim Replace restoration, including Unicode text. Update rendering snapshots for the slash prompt marker.\n\nGitOrigin-RevId: 0da42da8e98bf7885f9b0ba2c8d5ad4f44d6847e",
+            "url": "https://github.com/openai/codex/commit/5009a99dfc07830ddf7464c26f310a2b8532b55d"
+          },
+          {
+            "sha": "e16b631d08cdf82773831f9bbfb793da687d5299",
+            "title": "Reduce memory overhead in tool JSON schemas (#54754)",
+            "message": "Reduce memory overhead in tool JSON schemas (#54754)\n\n## Why\n\nSchema strings and sequences do not grow after construction, and most schema nodes do not contain maps. Retaining collection capacity and inline optional maps adds unnecessary memory overhead.\n\n## What changed\n\nStore `JsonSchema` strings and sequences as boxed strings and slices, and box optional property and definition maps. Adapt constructors, schema consumers, and existing test expectations to the new representation while preserving the serialized JSON Schema format.\n\nGitOrigin-RevId: 0a249b1ae32932cbbfe3c575c32bfd20b060c303",
+            "url": "https://github.com/openai/codex/commit/e16b631d08cdf82773831f9bbfb793da687d5299"
+          },
+          {
+            "sha": "df8990e2614c8834ae9dc0327eb4834c821e34cc",
+            "title": "Upgrade `zip` to 9.0.0 and update plugin archive extraction (#54761)",
+            "message": "Upgrade `zip` to 9.0.0 and update plugin archive extraction (#54761)\n\n## Why\n\nCurated plugin archives should preserve executable permissions without applying setuid, setgid, or sticky bits.\n\n## What changed\n\n- Upgrade `zip` from 2.4.2 to 9.0.0, retaining the previous feature set and selecting the existing `bzip2-sys` backend explicitly. Update the Cargo and Bazel lockfiles.\n- Adapt plugin extraction to fallible entry names and apply Unix permissions through the open output file, using the mode filtered by `zip`.\n\n## Testing\n\nAdd a Unix regression test that encodes special permission bits directly in an archive entry and verifies that the extracted file has mode `0o755`.\n\nGitOrigin-RevId: 75ee6879a372a36b34208c1359f42b670c9d3837",
+            "url": "https://github.com/openai/codex/commit/df8990e2614c8834ae9dc0327eb4834c821e34cc"
+          },
+          {
+            "sha": "d13db678cb5390f77d7fa6ba762f85b787fedcec",
+            "title": "Stop applying macOS background priority to managed daemons (#54763)",
+            "message": "Stop applying macOS background priority to managed daemons (#54763)\n\n## What changed\n\nLaunch managed app-server and updater processes directly through the shared background command helper, removing the macOS `taskpolicy -b` wrapper and its availability probe. Remove the associated launch-policy tests and macOS daemon-startup test serialization.\n\nRetain the 30-second macOS readiness timeout because older updaters can pass background policy to replacement daemons during upgrades.\n\nGitOrigin-RevId: d8620a49139bd2a5c226c624cf7908e06ba7ba38",
+            "url": "https://github.com/openai/codex/commit/d13db678cb5390f77d7fa6ba762f85b787fedcec"
+          },
+          {
+            "sha": "bd43893f3db678fcb7124296905a65b2dfa9dac0",
+            "title": "Release 0.164.0-alpha.3",
+            "message": "Release 0.164.0-alpha.3",
+            "url": "https://github.com/openai/codex/commit/bd43893f3db678fcb7124296905a65b2dfa9dac0"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.2",
+          "head": "rust-v0.164.0-alpha.3",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.2...rust-v0.164.0-alpha.3",
+          "status": "diverged",
+          "total": 22,
+          "behind": 1,
+          "complete": true,
+          "fetched": 22
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.3:2026-10-19T05:15:03.708Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-19T05:15:03.708Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.3",
+        "title": "0.164.0-alpha.3",
+        "body": "Release 0.164.0-alpha.3\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-19T05:15:03.713Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.3",
         "publishedAt": "2026-10-17T04:03:25Z",
         "commits": [
