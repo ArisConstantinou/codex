@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-19T05:15:03.708Z",
+  "generatedAt": "2026-10-19T10:56:45.305Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -5743,6 +5743,116 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.4",
+      "at": "2026-10-19T10:48:26.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.4",
+      "text": "0.164.0-alpha.4. Release 0.164.0-alpha.4",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.4",
+        "title": "0.164.0-alpha.4",
+        "body": "Release 0.164.0-alpha.4\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-19T10:56:45.307Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.4",
+        "publishedAt": "2026-10-19T10:42:34Z",
+        "commits": [
+          {
+            "sha": "3b8f43a06bb3105e81406b35ff69f94977d18ae4",
+            "title": "Defer unknown TUI config fields to the shared strict-config policy (#54766)",
+            "message": "Defer unknown TUI config fields to the shared strict-config policy (#54766)\n\n## Why\n\nUnknown fields in TUI keymaps and profile TUI settings fail deserialization even when strict config validation is disabled.\n\n## What changed\n\nRemove Serde's `deny_unknown_fields` from these settings so unknown fields are ignored during deserialization and reported by the shared strict-config policy. Keep `schemars(deny_unknown_fields)` so the generated schema continues to disallow unknown fields.\n\nGitOrigin-RevId: 06985161bc3bbb35648712288c1d00bdd50953ba",
+            "url": "https://github.com/openai/codex/commit/3b8f43a06bb3105e81406b35ff69f94977d18ae4"
+          },
+          {
+            "sha": "ce0323f2f2d3b25e82806cd555237da3db4e1897",
+            "title": "Support typed content in contextual prompt fragments (#54776)",
+            "message": "Support typed content in contextual prompt fragments (#54776)\n\n## Why\n\nContextual fragments and extension-owned world-state sections currently return strings, limiting them to text content.\n\n## What changed\n\n- Return `ContentItem` from fragment bodies and rendering, preserving classification and attribution. Apply text markers only to `InputText`; pass other content through unchanged.\n- Allow extension prompt and world-state contributions to carry typed content, and preserve media in context-window hints.\n- Hash non-text world-state fragments by their serialized content and role while retaining the existing text hashing behavior.\n- Add shared content-to-tool-output conversion that preserves image references, image detail, and audio.\n\n## Testing\n\nAdd coverage for typed world-state hashing and preservation of image content and attribution. Expand code-mode output tests to cover input text, output text, file-backed and inline images, and audio.\n\nGitOrigin-RevId: 2ed00d466a3f169b151202f3eef71e667ea64be1",
+            "url": "https://github.com/openai/codex/commit/ce0323f2f2d3b25e82806cd555237da3db4e1897"
+          },
+          {
+            "sha": "8d9f6466ff0294785d56f55b1fe363d132fe4133",
+            "title": "Add negotiated zstd compression to app-server WebSockets (#54930)",
+            "message": "Add negotiated zstd compression to app-server WebSockets (#54930)\n\n## What changed\n\n- Negotiate compression over TCP and local sockets with `x-codex-app-server-compression: zstd-stream-v1`. Keep JSON text messages when compression is not negotiated.\n- Send compressed JSON as binary messages, retaining a separate zstd stream per direction across messages. Export reusable negotiation and codec helpers.\n- Limit decompressed messages to 64 MiB and compression windows to 1 MiB. Close compressed connections on decoding errors or unexpected text messages.\n- Add audit and deny ignores for the unmaintained `zvariant`, `zbus_names`, and `zvariant_derive` versions pulled in through `zbus`.\n\n## Testing\n\nAdd codec tests for retained history, fallback, size limits, malformed data, and oversized compression windows. Add TCP and local-socket round-trip tests covering negotiation, persistent streams, and ping/pong handling, plus TCP fallback for absent or unsupported offers.\n\nGitOrigin-RevId: 50d3861e8fe4a9c523599a5ab773bec7cb883bf2",
+            "url": "https://github.com/openai/codex/commit/8d9f6466ff0294785d56f55b1fe363d132fe4133"
+          },
+          {
+            "sha": "1cc7dc8f2acc63ce6c1cb72271e6b90a76136c2b",
+            "title": "Share additional tool declarations across response item clones (#54945)",
+            "message": "Share additional tool declarations across response item clones (#54945)\n\n## Why\n\nCloning `ResponseItem::AdditionalTools` deep-copies its tool declarations for history and request copies.\n\n## What changed\n\nStore `tools` in an `Arc<[serde_json::Value]>` so clones share immutable declarations. Update constructors and existing test fixtures to use the shared representation.\n\nGitOrigin-RevId: eb8831774afb45fe8431a796f34ae9d1243e884a",
+            "url": "https://github.com/openai/codex/commit/1cc7dc8f2acc63ce6c1cb72271e6b90a76136c2b"
+          },
+          {
+            "sha": "ffd3429d754991183433b4d41b67551e5656ba27",
+            "title": "Preserve model catalog caches across header credential rotation (#54946)",
+            "message": "Preserve model catalog caches across header credential rotation (#54946)\n\n## Why\n\nRotating header credentials should not discard the model catalog when a stable account ID is available.\n\n## What changed\n\n- Use the account ID from `CodexAuth::Headers` instead of opaque auth headers in the catalog cache identity. Provider settings remain part of the key.\n- Retain credential-sensitive keys when the account ID is missing or the provider uses an explicit API key, bearer token, or command auth.\n- Document that hosts using header auth must isolate model managers and cache storage by user and catalog-varying request context, since an account ID can represent a shared workspace.\n\n## Testing\n\nUpdate the auth-rotation test fixture to omit stable account metadata, preserving coverage for catalog invalidation when opaque credentials change.\n\nGitOrigin-RevId: f96a20c5baf76b9235e131140716731da4dbee81",
+            "url": "https://github.com/openai/codex/commit/ffd3429d754991183433b4d41b67551e5656ba27"
+          },
+          {
+            "sha": "7b44ac1661433ae3a6f375fde873fa7123c935fe",
+            "title": "Gate app-server WebSocket compression behind a feature flag (#54949)",
+            "message": "Gate app-server WebSocket compression behind a feature flag (#54949)\n\n## What changed\n\nAdd `features.app_server_websocket_compression`, disabled by default. TCP WebSocket and Unix-domain socket listeners now negotiate zstd compression only when the feature is enabled and the client offers the supported protocol. Otherwise, connections use plain text messages.\n\nInclude the feature in the configuration schema and allow its override during TUI daemon startup.\n\n## Testing\n\nExtend transport tests to cover enabled and disabled compression with supported, unsupported, and absent client offers on both transports. Add an app-server integration test that verifies startup configuration controls negotiation and the message format used for initialization responses.\n\nGitOrigin-RevId: 6001d65f66f9c48f099b85380c2cad8ffee04de7",
+            "url": "https://github.com/openai/codex/commit/7b44ac1661433ae3a6f375fde873fa7123c935fe"
+          },
+          {
+            "sha": "8c076942cb70fba8e5c4732c23f1faabc4aed484",
+            "title": "Allow agent messages to wake idle root sessions behind a feature flag (#54961)",
+            "message": "Allow agent messages to wake idle root sessions behind a feature flag (#54961)\n\n## Why\n\nA worker can finish after its parent has returned a final answer. Agent messages without `trigger_turn` previously needed an outstanding durable sleep to wake an idle session.\n\n## What changed\n\nAdd the disabled-by-default `wake_on_agent_messages` feature to start a new root turn when agent mail arrives through direct delivery or the host mailbox. Reuse the previous turn context for messages without `trigger_turn`. Keep these automatic wakes disabled for interrupted sessions, Plan mode, and child agents.\n\n## Testing\n\nAdd coverage for both delivery paths waking a completed root exactly once, child completion waking a parent after its final answer, and the interruption, Plan mode, and child-agent boundaries.\n\nGitOrigin-RevId: f1a4fc7c22be8ca46b2173a85445126cbdd6c4b6",
+            "url": "https://github.com/openai/codex/commit/8c076942cb70fba8e5c4732c23f1faabc4aed484"
+          },
+          {
+            "sha": "70b3bb6d8814ab3f2045238b4ae14c43da99783b",
+            "title": "Add observation-only model request lifecycle hooks (#55144)",
+            "message": "Add observation-only model request lifecycle hooks (#55144)\n\n## What changed\n\n- Add `PreModelRequest` and `PostModelRequest` hooks around model request attempts, including retries. Pass model, session, turn, and optional subagent context; report completion, failure, or cancellation with errors and token usage when available.\n- Treat hook output as diagnostic data without allowing it to veto requests or alter model context. Wait for synchronous post-request hooks before dispatching tools, while asynchronous hooks allow streaming tool dispatch to continue.\n- Apply memory-consolidation hook filtering and expose the new events through configuration, protocol schemas, generated clients, and the hooks browser.\n\n## Testing\n\nAdd integration coverage for failures and retries, ignored control directives, cancellation, synchronous and asynchronous tool ordering, interrupted-turn resume and token accounting, and memory-consolidation filtering. Update hook schema fixtures and hooks browser snapshots.\n\nGitOrigin-RevId: 6ed7b39fc8bb94cf467e350d07d97fcc729c21ce",
+            "url": "https://github.com/openai/codex/commit/70b3bb6d8814ab3f2045238b4ae14c43da99783b"
+          },
+          {
+            "sha": "89461ea6833832b0551ce24ee32205824d5c108d",
+            "title": "Prune unused standalone releases after successful installation (#55149)",
+            "message": "Prune unused standalone releases after successful installation (#55149)\n\n## What changed\n\nClean up older standalone releases after verifying the installed command, while holding the install lock. Retain the current and previously selected releases, along with releases used by running Codex processes or bundled helpers.\n\nRecord selection history for all standalone installs and preserve it on no-op installs. Only remove validated, installer-owned release directories; skip cleanup when filesystem or process inspection cannot establish that removal is safe. Recheck process usage after moving a release aside and restore it if it is in use.\n\n## Testing\n\nAdd installer regression coverage for running helpers, helpers started during cleanup, repeated installs, failed installs, downgrades, and preservation of unowned directories and symlinks.\n\nGitOrigin-RevId: 8fb363750ace14b4f804fdcfcdb210540f49c928",
+            "url": "https://github.com/openai/codex/commit/89461ea6833832b0551ce24ee32205824d5c108d"
+          },
+          {
+            "sha": "99f617bf74284e10f621247fe490f2469565c0cc",
+            "title": "Bucket admitted Guardian request metrics by input size (#55226)",
+            "message": "Bucket admitted Guardian request metrics by input size (#55226)\n\n## Why\n\nGuardian request counts grouped by input size should reflect admitted sampling inputs without counting synchronous transport retries more than once.\n\n## What changed\n\n- Add a shared `token_bucket` label to admitted total-input observations in `codex.guardian.context.request_tokens` for synchronous and asynchronous reviews. Use inclusive upper bounds in 20k-token steps through 240k, followed by 256k and overflow buckets.\n- Record synchronous request tokens after budget admission, once per sampling step, including the complete input. A fresh step counts again even when its input is identical.\n- Preserve asynchronous component histograms for oversized classifications, but omit `token_bucket` so rejected inputs do not contribute to counts grouped by that label.\n\n## Testing\n\nAdd coverage for bucket boundaries, synchronous retry deduplication and budget rejection, asynchronous retained-history reuse and reset, and admitted versus oversized classification metrics.\n\nGitOrigin-RevId: fac2f102a4c48c5fd21d56bfa701b95a1ff852d0",
+            "url": "https://github.com/openai/codex/commit/99f617bf74284e10f621247fe490f2469565c0cc"
+          },
+          {
+            "sha": "770ed6dcea40fedb83bb831f6d5e3760a933cc9a",
+            "title": "Allow plus signs in metric tags (#55227)",
+            "message": "Allow plus signs in metric tags (#55227)\n\n## Why\n\nApp versions containing build metadata use `+`, which metric tag validation previously rejected.\n\n## What changed\n\nAccept `+` in metric tag keys and values so these versions can be included in the `app.version` session tag.\n\n## Testing\n\nExtend the session metric tag test to cover a version with build metadata, verifying that its value and tag ordering are preserved.\n\nGitOrigin-RevId: 62ad732b8d280c2d0c4e1b0de8cab26ff87c9d47",
+            "url": "https://github.com/openai/codex/commit/770ed6dcea40fedb83bb831f6d5e3760a933cc9a"
+          },
+          {
+            "sha": "c108a58ad4fa46c06079681e96069d01d118b4a7",
+            "title": "Release 0.164.0-alpha.4",
+            "message": "Release 0.164.0-alpha.4",
+            "url": "https://github.com/openai/codex/commit/c108a58ad4fa46c06079681e96069d01d118b4a7"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.3",
+          "head": "rust-v0.164.0-alpha.4",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.3...rust-v0.164.0-alpha.4",
+          "status": "diverged",
+          "total": 12,
+          "behind": 1,
+          "complete": true,
+          "fetched": 12
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -5751,7 +5861,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-19T05:15:02.986Z",
+      "lastSuccessAt": "2026-10-19T10:56:44.611Z",
       "error": null,
       "count": 150
     },
@@ -5760,7 +5870,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-19T05:15:02.986Z",
+      "lastSuccessAt": "2026-10-19T10:56:44.611Z",
       "error": null,
       "count": 10
     },
@@ -5769,7 +5879,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-19T05:15:02.986Z",
+      "lastSuccessAt": "2026-10-19T10:56:44.611Z",
       "error": null,
       "count": 25
     }
@@ -18577,6 +18687,221 @@
           "behind": 1,
           "complete": true,
           "fetched": 22
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.4:2026-10-19T10:56:45.305Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-19T10:56:45.305Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.4",
+        "at": "2026-10-19T10:48:26.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.4",
+        "text": "0.164.0-alpha.4. Release 0.164.0-alpha.4",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.164.0-alpha.4",
+          "title": "0.164.0-alpha.4",
+          "body": "Release 0.164.0-alpha.4\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-19T10:56:45.307Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.4",
+          "publishedAt": "2026-10-19T10:42:34Z",
+          "commits": [
+            {
+              "sha": "3b8f43a06bb3105e81406b35ff69f94977d18ae4",
+              "title": "Defer unknown TUI config fields to the shared strict-config policy (#54766)",
+              "message": "Defer unknown TUI config fields to the shared strict-config policy (#54766)\n\n## Why\n\nUnknown fields in TUI keymaps and profile TUI settings fail deserialization even when strict config validation is disabled.\n\n## What changed\n\nRemove Serde's `deny_unknown_fields` from these settings so unknown fields are ignored during deserialization and reported by the shared strict-config policy. Keep `schemars(deny_unknown_fields)` so the generated schema continues to disallow unknown fields.\n\nGitOrigin-RevId: 06985161bc3bbb35648712288c1d00bdd50953ba",
+              "url": "https://github.com/openai/codex/commit/3b8f43a06bb3105e81406b35ff69f94977d18ae4"
+            },
+            {
+              "sha": "ce0323f2f2d3b25e82806cd555237da3db4e1897",
+              "title": "Support typed content in contextual prompt fragments (#54776)",
+              "message": "Support typed content in contextual prompt fragments (#54776)\n\n## Why\n\nContextual fragments and extension-owned world-state sections currently return strings, limiting them to text content.\n\n## What changed\n\n- Return `ContentItem` from fragment bodies and rendering, preserving classification and attribution. Apply text markers only to `InputText`; pass other content through unchanged.\n- Allow extension prompt and world-state contributions to carry typed content, and preserve media in context-window hints.\n- Hash non-text world-state fragments by their serialized content and role while retaining the existing text hashing behavior.\n- Add shared content-to-tool-output conversion that preserves image references, image detail, and audio.\n\n## Testing\n\nAdd coverage for typed world-state hashing and preservation of image content and attribution. Expand code-mode output tests to cover input text, output text, file-backed and inline images, and audio.\n\nGitOrigin-RevId: 2ed00d466a3f169b151202f3eef71e667ea64be1",
+              "url": "https://github.com/openai/codex/commit/ce0323f2f2d3b25e82806cd555237da3db4e1897"
+            },
+            {
+              "sha": "8d9f6466ff0294785d56f55b1fe363d132fe4133",
+              "title": "Add negotiated zstd compression to app-server WebSockets (#54930)",
+              "message": "Add negotiated zstd compression to app-server WebSockets (#54930)\n\n## What changed\n\n- Negotiate compression over TCP and local sockets with `x-codex-app-server-compression: zstd-stream-v1`. Keep JSON text messages when compression is not negotiated.\n- Send compressed JSON as binary messages, retaining a separate zstd stream per direction across messages. Export reusable negotiation and codec helpers.\n- Limit decompressed messages to 64 MiB and compression windows to 1 MiB. Close compressed connections on decoding errors or unexpected text messages.\n- Add audit and deny ignores for the unmaintained `zvariant`, `zbus_names`, and `zvariant_derive` versions pulled in through `zbus`.\n\n## Testing\n\nAdd codec tests for retained history, fallback, size limits, malformed data, and oversized compression windows. Add TCP and local-socket round-trip tests covering negotiation, persistent streams, and ping/pong handling, plus TCP fallback for absent or unsupported offers.\n\nGitOrigin-RevId: 50d3861e8fe4a9c523599a5ab773bec7cb883bf2",
+              "url": "https://github.com/openai/codex/commit/8d9f6466ff0294785d56f55b1fe363d132fe4133"
+            },
+            {
+              "sha": "1cc7dc8f2acc63ce6c1cb72271e6b90a76136c2b",
+              "title": "Share additional tool declarations across response item clones (#54945)",
+              "message": "Share additional tool declarations across response item clones (#54945)\n\n## Why\n\nCloning `ResponseItem::AdditionalTools` deep-copies its tool declarations for history and request copies.\n\n## What changed\n\nStore `tools` in an `Arc<[serde_json::Value]>` so clones share immutable declarations. Update constructors and existing test fixtures to use the shared representation.\n\nGitOrigin-RevId: eb8831774afb45fe8431a796f34ae9d1243e884a",
+              "url": "https://github.com/openai/codex/commit/1cc7dc8f2acc63ce6c1cb72271e6b90a76136c2b"
+            },
+            {
+              "sha": "ffd3429d754991183433b4d41b67551e5656ba27",
+              "title": "Preserve model catalog caches across header credential rotation (#54946)",
+              "message": "Preserve model catalog caches across header credential rotation (#54946)\n\n## Why\n\nRotating header credentials should not discard the model catalog when a stable account ID is available.\n\n## What changed\n\n- Use the account ID from `CodexAuth::Headers` instead of opaque auth headers in the catalog cache identity. Provider settings remain part of the key.\n- Retain credential-sensitive keys when the account ID is missing or the provider uses an explicit API key, bearer token, or command auth.\n- Document that hosts using header auth must isolate model managers and cache storage by user and catalog-varying request context, since an account ID can represent a shared workspace.\n\n## Testing\n\nUpdate the auth-rotation test fixture to omit stable account metadata, preserving coverage for catalog invalidation when opaque credentials change.\n\nGitOrigin-RevId: f96a20c5baf76b9235e131140716731da4dbee81",
+              "url": "https://github.com/openai/codex/commit/ffd3429d754991183433b4d41b67551e5656ba27"
+            },
+            {
+              "sha": "7b44ac1661433ae3a6f375fde873fa7123c935fe",
+              "title": "Gate app-server WebSocket compression behind a feature flag (#54949)",
+              "message": "Gate app-server WebSocket compression behind a feature flag (#54949)\n\n## What changed\n\nAdd `features.app_server_websocket_compression`, disabled by default. TCP WebSocket and Unix-domain socket listeners now negotiate zstd compression only when the feature is enabled and the client offers the supported protocol. Otherwise, connections use plain text messages.\n\nInclude the feature in the configuration schema and allow its override during TUI daemon startup.\n\n## Testing\n\nExtend transport tests to cover enabled and disabled compression with supported, unsupported, and absent client offers on both transports. Add an app-server integration test that verifies startup configuration controls negotiation and the message format used for initialization responses.\n\nGitOrigin-RevId: 6001d65f66f9c48f099b85380c2cad8ffee04de7",
+              "url": "https://github.com/openai/codex/commit/7b44ac1661433ae3a6f375fde873fa7123c935fe"
+            },
+            {
+              "sha": "8c076942cb70fba8e5c4732c23f1faabc4aed484",
+              "title": "Allow agent messages to wake idle root sessions behind a feature flag (#54961)",
+              "message": "Allow agent messages to wake idle root sessions behind a feature flag (#54961)\n\n## Why\n\nA worker can finish after its parent has returned a final answer. Agent messages without `trigger_turn` previously needed an outstanding durable sleep to wake an idle session.\n\n## What changed\n\nAdd the disabled-by-default `wake_on_agent_messages` feature to start a new root turn when agent mail arrives through direct delivery or the host mailbox. Reuse the previous turn context for messages without `trigger_turn`. Keep these automatic wakes disabled for interrupted sessions, Plan mode, and child agents.\n\n## Testing\n\nAdd coverage for both delivery paths waking a completed root exactly once, child completion waking a parent after its final answer, and the interruption, Plan mode, and child-agent boundaries.\n\nGitOrigin-RevId: f1a4fc7c22be8ca46b2173a85445126cbdd6c4b6",
+              "url": "https://github.com/openai/codex/commit/8c076942cb70fba8e5c4732c23f1faabc4aed484"
+            },
+            {
+              "sha": "70b3bb6d8814ab3f2045238b4ae14c43da99783b",
+              "title": "Add observation-only model request lifecycle hooks (#55144)",
+              "message": "Add observation-only model request lifecycle hooks (#55144)\n\n## What changed\n\n- Add `PreModelRequest` and `PostModelRequest` hooks around model request attempts, including retries. Pass model, session, turn, and optional subagent context; report completion, failure, or cancellation with errors and token usage when available.\n- Treat hook output as diagnostic data without allowing it to veto requests or alter model context. Wait for synchronous post-request hooks before dispatching tools, while asynchronous hooks allow streaming tool dispatch to continue.\n- Apply memory-consolidation hook filtering and expose the new events through configuration, protocol schemas, generated clients, and the hooks browser.\n\n## Testing\n\nAdd integration coverage for failures and retries, ignored control directives, cancellation, synchronous and asynchronous tool ordering, interrupted-turn resume and token accounting, and memory-consolidation filtering. Update hook schema fixtures and hooks browser snapshots.\n\nGitOrigin-RevId: 6ed7b39fc8bb94cf467e350d07d97fcc729c21ce",
+              "url": "https://github.com/openai/codex/commit/70b3bb6d8814ab3f2045238b4ae14c43da99783b"
+            },
+            {
+              "sha": "89461ea6833832b0551ce24ee32205824d5c108d",
+              "title": "Prune unused standalone releases after successful installation (#55149)",
+              "message": "Prune unused standalone releases after successful installation (#55149)\n\n## What changed\n\nClean up older standalone releases after verifying the installed command, while holding the install lock. Retain the current and previously selected releases, along with releases used by running Codex processes or bundled helpers.\n\nRecord selection history for all standalone installs and preserve it on no-op installs. Only remove validated, installer-owned release directories; skip cleanup when filesystem or process inspection cannot establish that removal is safe. Recheck process usage after moving a release aside and restore it if it is in use.\n\n## Testing\n\nAdd installer regression coverage for running helpers, helpers started during cleanup, repeated installs, failed installs, downgrades, and preservation of unowned directories and symlinks.\n\nGitOrigin-RevId: 8fb363750ace14b4f804fdcfcdb210540f49c928",
+              "url": "https://github.com/openai/codex/commit/89461ea6833832b0551ce24ee32205824d5c108d"
+            },
+            {
+              "sha": "99f617bf74284e10f621247fe490f2469565c0cc",
+              "title": "Bucket admitted Guardian request metrics by input size (#55226)",
+              "message": "Bucket admitted Guardian request metrics by input size (#55226)\n\n## Why\n\nGuardian request counts grouped by input size should reflect admitted sampling inputs without counting synchronous transport retries more than once.\n\n## What changed\n\n- Add a shared `token_bucket` label to admitted total-input observations in `codex.guardian.context.request_tokens` for synchronous and asynchronous reviews. Use inclusive upper bounds in 20k-token steps through 240k, followed by 256k and overflow buckets.\n- Record synchronous request tokens after budget admission, once per sampling step, including the complete input. A fresh step counts again even when its input is identical.\n- Preserve asynchronous component histograms for oversized classifications, but omit `token_bucket` so rejected inputs do not contribute to counts grouped by that label.\n\n## Testing\n\nAdd coverage for bucket boundaries, synchronous retry deduplication and budget rejection, asynchronous retained-history reuse and reset, and admitted versus oversized classification metrics.\n\nGitOrigin-RevId: fac2f102a4c48c5fd21d56bfa701b95a1ff852d0",
+              "url": "https://github.com/openai/codex/commit/99f617bf74284e10f621247fe490f2469565c0cc"
+            },
+            {
+              "sha": "770ed6dcea40fedb83bb831f6d5e3760a933cc9a",
+              "title": "Allow plus signs in metric tags (#55227)",
+              "message": "Allow plus signs in metric tags (#55227)\n\n## Why\n\nApp versions containing build metadata use `+`, which metric tag validation previously rejected.\n\n## What changed\n\nAccept `+` in metric tag keys and values so these versions can be included in the `app.version` session tag.\n\n## Testing\n\nExtend the session metric tag test to cover a version with build metadata, verifying that its value and tag ordering are preserved.\n\nGitOrigin-RevId: 62ad732b8d280c2d0c4e1b0de8cab26ff87c9d47",
+              "url": "https://github.com/openai/codex/commit/770ed6dcea40fedb83bb831f6d5e3760a933cc9a"
+            },
+            {
+              "sha": "c108a58ad4fa46c06079681e96069d01d118b4a7",
+              "title": "Release 0.164.0-alpha.4",
+              "message": "Release 0.164.0-alpha.4",
+              "url": "https://github.com/openai/codex/commit/c108a58ad4fa46c06079681e96069d01d118b4a7"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.164.0-alpha.3",
+            "head": "rust-v0.164.0-alpha.4",
+            "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.3...rust-v0.164.0-alpha.4",
+            "status": "diverged",
+            "total": 12,
+            "behind": 1,
+            "complete": true,
+            "fetched": 12
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.4:2026-10-19T10:56:45.305Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-19T10:56:45.305Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.4",
+        "title": "0.164.0-alpha.4",
+        "body": "Release 0.164.0-alpha.4\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-19T10:56:45.307Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.4",
+        "publishedAt": "2026-10-19T10:42:34Z",
+        "commits": [
+          {
+            "sha": "3b8f43a06bb3105e81406b35ff69f94977d18ae4",
+            "title": "Defer unknown TUI config fields to the shared strict-config policy (#54766)",
+            "message": "Defer unknown TUI config fields to the shared strict-config policy (#54766)\n\n## Why\n\nUnknown fields in TUI keymaps and profile TUI settings fail deserialization even when strict config validation is disabled.\n\n## What changed\n\nRemove Serde's `deny_unknown_fields` from these settings so unknown fields are ignored during deserialization and reported by the shared strict-config policy. Keep `schemars(deny_unknown_fields)` so the generated schema continues to disallow unknown fields.\n\nGitOrigin-RevId: 06985161bc3bbb35648712288c1d00bdd50953ba",
+            "url": "https://github.com/openai/codex/commit/3b8f43a06bb3105e81406b35ff69f94977d18ae4"
+          },
+          {
+            "sha": "ce0323f2f2d3b25e82806cd555237da3db4e1897",
+            "title": "Support typed content in contextual prompt fragments (#54776)",
+            "message": "Support typed content in contextual prompt fragments (#54776)\n\n## Why\n\nContextual fragments and extension-owned world-state sections currently return strings, limiting them to text content.\n\n## What changed\n\n- Return `ContentItem` from fragment bodies and rendering, preserving classification and attribution. Apply text markers only to `InputText`; pass other content through unchanged.\n- Allow extension prompt and world-state contributions to carry typed content, and preserve media in context-window hints.\n- Hash non-text world-state fragments by their serialized content and role while retaining the existing text hashing behavior.\n- Add shared content-to-tool-output conversion that preserves image references, image detail, and audio.\n\n## Testing\n\nAdd coverage for typed world-state hashing and preservation of image content and attribution. Expand code-mode output tests to cover input text, output text, file-backed and inline images, and audio.\n\nGitOrigin-RevId: 2ed00d466a3f169b151202f3eef71e667ea64be1",
+            "url": "https://github.com/openai/codex/commit/ce0323f2f2d3b25e82806cd555237da3db4e1897"
+          },
+          {
+            "sha": "8d9f6466ff0294785d56f55b1fe363d132fe4133",
+            "title": "Add negotiated zstd compression to app-server WebSockets (#54930)",
+            "message": "Add negotiated zstd compression to app-server WebSockets (#54930)\n\n## What changed\n\n- Negotiate compression over TCP and local sockets with `x-codex-app-server-compression: zstd-stream-v1`. Keep JSON text messages when compression is not negotiated.\n- Send compressed JSON as binary messages, retaining a separate zstd stream per direction across messages. Export reusable negotiation and codec helpers.\n- Limit decompressed messages to 64 MiB and compression windows to 1 MiB. Close compressed connections on decoding errors or unexpected text messages.\n- Add audit and deny ignores for the unmaintained `zvariant`, `zbus_names`, and `zvariant_derive` versions pulled in through `zbus`.\n\n## Testing\n\nAdd codec tests for retained history, fallback, size limits, malformed data, and oversized compression windows. Add TCP and local-socket round-trip tests covering negotiation, persistent streams, and ping/pong handling, plus TCP fallback for absent or unsupported offers.\n\nGitOrigin-RevId: 50d3861e8fe4a9c523599a5ab773bec7cb883bf2",
+            "url": "https://github.com/openai/codex/commit/8d9f6466ff0294785d56f55b1fe363d132fe4133"
+          },
+          {
+            "sha": "1cc7dc8f2acc63ce6c1cb72271e6b90a76136c2b",
+            "title": "Share additional tool declarations across response item clones (#54945)",
+            "message": "Share additional tool declarations across response item clones (#54945)\n\n## Why\n\nCloning `ResponseItem::AdditionalTools` deep-copies its tool declarations for history and request copies.\n\n## What changed\n\nStore `tools` in an `Arc<[serde_json::Value]>` so clones share immutable declarations. Update constructors and existing test fixtures to use the shared representation.\n\nGitOrigin-RevId: eb8831774afb45fe8431a796f34ae9d1243e884a",
+            "url": "https://github.com/openai/codex/commit/1cc7dc8f2acc63ce6c1cb72271e6b90a76136c2b"
+          },
+          {
+            "sha": "ffd3429d754991183433b4d41b67551e5656ba27",
+            "title": "Preserve model catalog caches across header credential rotation (#54946)",
+            "message": "Preserve model catalog caches across header credential rotation (#54946)\n\n## Why\n\nRotating header credentials should not discard the model catalog when a stable account ID is available.\n\n## What changed\n\n- Use the account ID from `CodexAuth::Headers` instead of opaque auth headers in the catalog cache identity. Provider settings remain part of the key.\n- Retain credential-sensitive keys when the account ID is missing or the provider uses an explicit API key, bearer token, or command auth.\n- Document that hosts using header auth must isolate model managers and cache storage by user and catalog-varying request context, since an account ID can represent a shared workspace.\n\n## Testing\n\nUpdate the auth-rotation test fixture to omit stable account metadata, preserving coverage for catalog invalidation when opaque credentials change.\n\nGitOrigin-RevId: f96a20c5baf76b9235e131140716731da4dbee81",
+            "url": "https://github.com/openai/codex/commit/ffd3429d754991183433b4d41b67551e5656ba27"
+          },
+          {
+            "sha": "7b44ac1661433ae3a6f375fde873fa7123c935fe",
+            "title": "Gate app-server WebSocket compression behind a feature flag (#54949)",
+            "message": "Gate app-server WebSocket compression behind a feature flag (#54949)\n\n## What changed\n\nAdd `features.app_server_websocket_compression`, disabled by default. TCP WebSocket and Unix-domain socket listeners now negotiate zstd compression only when the feature is enabled and the client offers the supported protocol. Otherwise, connections use plain text messages.\n\nInclude the feature in the configuration schema and allow its override during TUI daemon startup.\n\n## Testing\n\nExtend transport tests to cover enabled and disabled compression with supported, unsupported, and absent client offers on both transports. Add an app-server integration test that verifies startup configuration controls negotiation and the message format used for initialization responses.\n\nGitOrigin-RevId: 6001d65f66f9c48f099b85380c2cad8ffee04de7",
+            "url": "https://github.com/openai/codex/commit/7b44ac1661433ae3a6f375fde873fa7123c935fe"
+          },
+          {
+            "sha": "8c076942cb70fba8e5c4732c23f1faabc4aed484",
+            "title": "Allow agent messages to wake idle root sessions behind a feature flag (#54961)",
+            "message": "Allow agent messages to wake idle root sessions behind a feature flag (#54961)\n\n## Why\n\nA worker can finish after its parent has returned a final answer. Agent messages without `trigger_turn` previously needed an outstanding durable sleep to wake an idle session.\n\n## What changed\n\nAdd the disabled-by-default `wake_on_agent_messages` feature to start a new root turn when agent mail arrives through direct delivery or the host mailbox. Reuse the previous turn context for messages without `trigger_turn`. Keep these automatic wakes disabled for interrupted sessions, Plan mode, and child agents.\n\n## Testing\n\nAdd coverage for both delivery paths waking a completed root exactly once, child completion waking a parent after its final answer, and the interruption, Plan mode, and child-agent boundaries.\n\nGitOrigin-RevId: f1a4fc7c22be8ca46b2173a85445126cbdd6c4b6",
+            "url": "https://github.com/openai/codex/commit/8c076942cb70fba8e5c4732c23f1faabc4aed484"
+          },
+          {
+            "sha": "70b3bb6d8814ab3f2045238b4ae14c43da99783b",
+            "title": "Add observation-only model request lifecycle hooks (#55144)",
+            "message": "Add observation-only model request lifecycle hooks (#55144)\n\n## What changed\n\n- Add `PreModelRequest` and `PostModelRequest` hooks around model request attempts, including retries. Pass model, session, turn, and optional subagent context; report completion, failure, or cancellation with errors and token usage when available.\n- Treat hook output as diagnostic data without allowing it to veto requests or alter model context. Wait for synchronous post-request hooks before dispatching tools, while asynchronous hooks allow streaming tool dispatch to continue.\n- Apply memory-consolidation hook filtering and expose the new events through configuration, protocol schemas, generated clients, and the hooks browser.\n\n## Testing\n\nAdd integration coverage for failures and retries, ignored control directives, cancellation, synchronous and asynchronous tool ordering, interrupted-turn resume and token accounting, and memory-consolidation filtering. Update hook schema fixtures and hooks browser snapshots.\n\nGitOrigin-RevId: 6ed7b39fc8bb94cf467e350d07d97fcc729c21ce",
+            "url": "https://github.com/openai/codex/commit/70b3bb6d8814ab3f2045238b4ae14c43da99783b"
+          },
+          {
+            "sha": "89461ea6833832b0551ce24ee32205824d5c108d",
+            "title": "Prune unused standalone releases after successful installation (#55149)",
+            "message": "Prune unused standalone releases after successful installation (#55149)\n\n## What changed\n\nClean up older standalone releases after verifying the installed command, while holding the install lock. Retain the current and previously selected releases, along with releases used by running Codex processes or bundled helpers.\n\nRecord selection history for all standalone installs and preserve it on no-op installs. Only remove validated, installer-owned release directories; skip cleanup when filesystem or process inspection cannot establish that removal is safe. Recheck process usage after moving a release aside and restore it if it is in use.\n\n## Testing\n\nAdd installer regression coverage for running helpers, helpers started during cleanup, repeated installs, failed installs, downgrades, and preservation of unowned directories and symlinks.\n\nGitOrigin-RevId: 8fb363750ace14b4f804fdcfcdb210540f49c928",
+            "url": "https://github.com/openai/codex/commit/89461ea6833832b0551ce24ee32205824d5c108d"
+          },
+          {
+            "sha": "99f617bf74284e10f621247fe490f2469565c0cc",
+            "title": "Bucket admitted Guardian request metrics by input size (#55226)",
+            "message": "Bucket admitted Guardian request metrics by input size (#55226)\n\n## Why\n\nGuardian request counts grouped by input size should reflect admitted sampling inputs without counting synchronous transport retries more than once.\n\n## What changed\n\n- Add a shared `token_bucket` label to admitted total-input observations in `codex.guardian.context.request_tokens` for synchronous and asynchronous reviews. Use inclusive upper bounds in 20k-token steps through 240k, followed by 256k and overflow buckets.\n- Record synchronous request tokens after budget admission, once per sampling step, including the complete input. A fresh step counts again even when its input is identical.\n- Preserve asynchronous component histograms for oversized classifications, but omit `token_bucket` so rejected inputs do not contribute to counts grouped by that label.\n\n## Testing\n\nAdd coverage for bucket boundaries, synchronous retry deduplication and budget rejection, asynchronous retained-history reuse and reset, and admitted versus oversized classification metrics.\n\nGitOrigin-RevId: fac2f102a4c48c5fd21d56bfa701b95a1ff852d0",
+            "url": "https://github.com/openai/codex/commit/99f617bf74284e10f621247fe490f2469565c0cc"
+          },
+          {
+            "sha": "770ed6dcea40fedb83bb831f6d5e3760a933cc9a",
+            "title": "Allow plus signs in metric tags (#55227)",
+            "message": "Allow plus signs in metric tags (#55227)\n\n## Why\n\nApp versions containing build metadata use `+`, which metric tag validation previously rejected.\n\n## What changed\n\nAccept `+` in metric tag keys and values so these versions can be included in the `app.version` session tag.\n\n## Testing\n\nExtend the session metric tag test to cover a version with build metadata, verifying that its value and tag ordering are preserved.\n\nGitOrigin-RevId: 62ad732b8d280c2d0c4e1b0de8cab26ff87c9d47",
+            "url": "https://github.com/openai/codex/commit/770ed6dcea40fedb83bb831f6d5e3760a933cc9a"
+          },
+          {
+            "sha": "c108a58ad4fa46c06079681e96069d01d118b4a7",
+            "title": "Release 0.164.0-alpha.4",
+            "message": "Release 0.164.0-alpha.4",
+            "url": "https://github.com/openai/codex/commit/c108a58ad4fa46c06079681e96069d01d118b4a7"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.3",
+          "head": "rust-v0.164.0-alpha.4",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.3...rust-v0.164.0-alpha.4",
+          "status": "diverged",
+          "total": 12,
+          "behind": 1,
+          "complete": true,
+          "fetched": 12
         },
         "comparisonError": null
       }
