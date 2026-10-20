@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-20T19:26:06.584Z",
+  "generatedAt": "2026-10-20T22:36:32.781Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -6466,6 +6466,224 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.8",
+      "at": "2026-10-20T22:35:19.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.8",
+      "text": "0.164.0-alpha.8. Release 0.164.0-alpha.8",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.8",
+        "title": "0.164.0-alpha.8",
+        "body": "Release 0.164.0-alpha.8\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-20T22:36:32.784Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.8",
+        "publishedAt": "2026-10-20T22:15:45Z",
+        "commits": [
+          {
+            "sha": "46d252f8bf8b09f4ef765bc72e40f02c229da3e6",
+            "title": "Make the startup migration contention test deterministic (#55524)",
+            "message": "Make the startup migration contention test deterministic (#55524)\n\n## Why\n\nThe maintenance-lock test relied on a 50 ms timeout to assume startup migration had encountered contention, and its completion timeout included the production retry delay.\n\n## What changed\n\nAdd a per-store, test-only retry gate to observe lock contention and explicitly resume migration after releasing the maintenance lock. Verify that rollout metadata stays in `Legacy` mode while the lock is held and becomes `Paginated` after migration completes.\n\nGitOrigin-RevId: 657fa6ec6f9494d9e66976560c8158fde8ffb495",
+            "url": "https://github.com/openai/codex/commit/46d252f8bf8b09f4ef765bc72e40f02c229da3e6"
+          },
+          {
+            "sha": "464add49587a7cb6032d5ab04faa8a1585947853",
+            "title": "Separate Guardian conversation preparation from execution (#55533)",
+            "message": "Separate Guardian conversation preparation from execution (#55533)\n\n## What changed\n\nSplit retained conversation scoring into `Reservation::prepare` and `PreparedConversation::run`, exposing the complete admitted input before model execution. Keep the history fork and capacity permit owned by the prepared conversation, and recheck authorization, score expiry, and backend generation before execution.\n\n## Testing\n\nExtend conversation tests to verify that preparation sends no model request, execution uses the prepared input, dropping a prepared conversation releases capacity, and stale prepared reviews cannot start model execution.\n\nGitOrigin-RevId: c96cc6fac69179a78ecd7bcdb8e5a4b3087aa6e6",
+            "url": "https://github.com/openai/codex/commit/464add49587a7cb6032d5ab04faa8a1585947853"
+          },
+          {
+            "sha": "4be9cfdf30bcb1526099aaee4512b31c89df7500",
+            "title": "Improve diagnostics for compressed rollout read failures (#55545)",
+            "message": "Improve diagnostics for compressed rollout read failures (#55545)\n\n## Why\n\nUndecodable compressed rollouts need diagnostic details and their original bytes preserved for investigation.\n\n## What changed\n\n- Log compressed file size, first-frame content size, decoded byte count, and whether the open file changed when a compressed rollout read fails. Limit warnings to once per process per minute and exclude paths and contents.\n- Allow diagnostic reports to attach the raw `.jsonl.zst` archive after a decoding failure when no preferred plain rollout exists. Retain attachment size limits and append `.zst` to filename overrides when needed.\n\n## Testing\n\nAdd coverage for truncated streams, incomplete trailing frame headers, files truncated after opening, and diagnostic uploads that preserve undecodable archives with size limits and filename overrides.\n\nGitOrigin-RevId: 76f7ee466f9bebdab5a91ce1894f4361749edc5b",
+            "url": "https://github.com/openai/codex/commit/4be9cfdf30bcb1526099aaee4512b31c89df7500"
+          },
+          {
+            "sha": "b2aa07db8ac892a865de888dd08726680fcf873c",
+            "title": "Add scoped leases for persisted account OAuth grants (#55546)",
+            "message": "Add scoped leases for persisted account OAuth grants (#55546)\n\n## What changed\n\n- Expose `AccountOAuthGrantLease` to prevent this auth manager's token refreshes from rotating account credentials during an identity-provider exchange. Releasing the lease returns an `AccountOAuthGrant` that callers can recheck before accepting asynchronous results.\n- Validate grants against cached login ownership and persisted credentials, requiring OAuth provenance and complete account identity. Reject stale grants and propagate storage failures, including unavailable keyrings in `Auto` mode.\n- Track `login_generation` separately from account ownership and use it to invalidate enterprise MCP authentication. Losing login metadata invalidates the login while preserving same-account network policy; a new login to the same account advances both generations.\n\n## Testing\n\nExtend auth refresh coverage to verify refresh blocking and wakeup on lease release, invalidation after token rotation or persisted login replacement, metadata loss and restoration, and logout while a lease is held.\n\nGitOrigin-RevId: f51b3cd526d7ee94d5dffa16681f8ca332245ce3",
+            "url": "https://github.com/openai/codex/commit/b2aa07db8ac892a865de888dd08726680fcf873c"
+          },
+          {
+            "sha": "4dbd9d30ea0466ec5bb1524f24c56cfc8ee4c5b1",
+            "title": "Ignore the basic-toml advisory in dependency audits (#55547)",
+            "message": "Ignore the basic-toml advisory in dependency audits (#55547)\n\n`codex-secrets` pulls in unmaintained `basic-toml` 0.1.10 through the localization dependencies of `age` 0.12.1, and no patched release is available.\n\nAdd `RUSTSEC-2026-0374` to the `cargo audit` and `cargo deny` ignore lists. Document that the exception should be removed when the localization dependencies of `age` migrate off `basic-toml`.\n\nGitOrigin-RevId: 92f31b687e91a73620e6f7f9a1b7c94790d9149d",
+            "url": "https://github.com/openai/codex/commit/4dbd9d30ea0466ec5bb1524f24c56cfc8ee4c5b1"
+          },
+          {
+            "sha": "e1b9c9457ceca75a99b034a5df39ac48c3998d15",
+            "title": "Preserve parent history by default in full agent forks (#55548)",
+            "message": "Preserve parent history by default in full agent forks (#55548)\n\n## What changed\n\nDefault `features.multi_agent_v2.preserve_fork_prefix` to `true`, so full-history forks retain the parent's model-visible history and append child instructions. Keep `preserve_fork_prefix = false` as an explicit opt-out for instruction filtering, and update the configuration schema documentation.\n\n## Testing\n\nUpdate coverage to verify inherited prefixes across child and grandchild forks, child instruction ordering after compaction, and explicit filtering opt-outs.\n\nGitOrigin-RevId: f14eae5b924cdeac555d112d0aba3fbbb063b0ea",
+            "url": "https://github.com/openai/codex/commit/e1b9c9457ceca75a99b034a5df39ac48c3998d15"
+          },
+          {
+            "sha": "e8aa7c1678caa9a368243d72bf0e9b7859d97f15",
+            "title": "Avoid panics after background compaction fails before a checkpoint (#55581)",
+            "message": "Avoid panics after background compaction fails before a checkpoint (#55581)\n\n## Why\n\nPolling a failed background compaction consumes the closed oneshot receiver.\nKeeping that receiver in session state can cause a later await to panic instead\nof falling back to foreground compaction.\n\n## What changed\n\nRemove the receiver from session state before polling it, restoring it only when\nits result is still pending. Discard closed receivers so compaction can fall back\nnormally.\n\n## Testing\n\nAdd a regression scenario where background compaction fails before the next\ncheckpoint and automatic compaction falls back successfully.\n\nGitOrigin-RevId: 1461bb403f4b0b8b7e171d1b3cba41411f2014b4",
+            "url": "https://github.com/openai/codex/commit/e8aa7c1678caa9a368243d72bf0e9b7859d97f15"
+          },
+          {
+            "sha": "ab6095dde0040bb8cdf8592acb89c344e5f27a56",
+            "title": "Allow callers to control prompt cache keys independently of session IDs (#55587)",
+            "message": "Allow callers to control prompt cache keys independently of session IDs (#55587)\n\n## What changed\n\nExpose `PromptCacheKey` through `StartThreadOptions` with three policies: retain the default session-derived key, send a custom key, or omit `prompt_cache_key` from model requests. Keep session identity headers independent of this policy.\n\nPropagate the policy to child agents, delegated sessions, and guardian review sessions. Hosts must reapply the policy when resuming a thread from storage.\n\n## Testing\n\nAdd coverage for all three policies across turns, including unchanged session and thread headers. Extend subagent coverage to verify inheritance of the default and omitted-key policies.\n\nGitOrigin-RevId: f9e8ab31fcf568636f9712726760e4e9a4672428",
+            "url": "https://github.com/openai/codex/commit/ab6095dde0040bb8cdf8592acb89c344e5f27a56"
+          },
+          {
+            "sha": "60d78332fc6adbf7f4fd000ede9eabe8d52f4e86",
+            "title": "Measure Guardian approval blocking time per turn (#55591)",
+            "message": "Measure Guardian approval blocking time per turn (#55591)\n\n## What changed\n\nRecord `codex.guardian.turn.blocking_ms` when a turn completes or aborts, with an `outcome` label. Count overlapping approval waits once, exclude idle gaps, and split pending reviews across the active turns they span. Use each turn's telemetry so samples retain the servicing turn's model attribution.\n\n## Testing\n\nAdd unit coverage for overlapping waits, idle gaps, late turn completion, and duplicate stops. Extend integration coverage to verify attribution across turns and model changes for yielded command reviews and MCP elicitation, including aborted turns.\n\nGitOrigin-RevId: a3e6a0c32a06fe58ea93119ecd941076100fb82c",
+            "url": "https://github.com/openai/codex/commit/60d78332fc6adbf7f4fd000ede9eabe8d52f4e86"
+          },
+          {
+            "sha": "d34f104c22ae815fc213641b8a637c5947f14ac1",
+            "title": "Reject unpackaged Windows sandbox provisioning clients (#55593)",
+            "message": "Reject unpackaged Windows sandbox provisioning clients (#55593)\n\nRemove the exception that allowed clients without a package identity to connect\nwhen the provisioning service had one. Keep the debug foreground-mode exception.\n\nGitOrigin-RevId: def2d22a91575477d73e3d8c6ac14808a2ff3b2b",
+            "url": "https://github.com/openai/codex/commit/d34f104c22ae815fc213641b8a637c5947f14ac1"
+          },
+          {
+            "sha": "fa71afc8a701a88cc8c92b94240f7a23e31b3568",
+            "title": "Rank `$` mentions by recent selection frequency (#55596)",
+            "message": "Rank `$` mentions by recent selection frequency (#55596)\n\n## What changed\n\nPrefer frequently selected entries in the TUI's `$` picker within exact, prefix, and fuzzy match tiers, keeping stronger match tiers ahead of usage preferences.\n\nTrack the last 50 confirmed selections and persist them in `mention_usage.json` under `CODEX_HOME` when history persistence is enabled. Preserve in-memory preferences across compatible chat widget replacements, including when history persistence is disabled. Serialize background writes, merge updates under a bounded file lock, and flush pending writes on shutdown.\n\n## Testing\n\nAdd coverage for picker ordering, preference handoff and persistence, history-disabled widget replacement, selection expiry, malformed history, and lock contention.\n\nGitOrigin-RevId: 7efa8c1c365e23000fcda10dbbc2a7e90f4e777c",
+            "url": "https://github.com/openai/codex/commit/fa71afc8a701a88cc8c92b94240f7a23e31b3568"
+          },
+          {
+            "sha": "78d4c7c7fae278d2b0a904316c274681c62461a8",
+            "title": "Extract shared TUI user prompt helpers from IDE context (#55597)",
+            "message": "Extract shared TUI user prompt helpers from IDE context (#55597)\n\nMove context prefixing and request extraction into `user_prompt`, and update\nIDE context injection, thread routing, thread titles, transcript export, and\nuser message rendering to use the shared helpers. Preserve the request\ndelimiter, text element byte offsets, and input ordering.\n\nMove the existing last-delimiter extraction test alongside the shared helpers.\n\nGitOrigin-RevId: 3ee350506a536a6dba9575e8311188bc92fed584",
+            "url": "https://github.com/openai/codex/commit/78d4c7c7fae278d2b0a904316c274681c62461a8"
+          },
+          {
+            "sha": "f29d55ff0697a88226e8a9811b3c007e5f719cba",
+            "title": "Propagate authentication header failures before sending requests (#55607)",
+            "message": "Propagate authentication header failures before sending requests (#55607)\n\n## Why\n\nSynchronous auth header construction could silently return no credentials when managed authentication became unavailable. Callers need an error to avoid sending requests with missing or partial authentication.\n\n## What changed\n\n- Make `AuthProvider::add_auth_headers`, `to_auth_headers`, and auth header telemetry fallible, and propagate failures through request and WebSocket setup.\n- Return a transient error when managed authentication is unavailable, and preserve network policy denials through auth error conversion.\n- Retry transient MCP authentication errors while treating build errors and policy denials as terminal.\n- Cancel local MCP event streams before resolving authentication so cleanup still works when credentials become unavailable.\n\n## Testing\n\nAdd regression coverage for rejected partial authentication, async header resolution, terminal auth errors without sending requests, managed account changes, MCP retry classification, and local stream cancellation after authentication becomes unavailable.\n\nGitOrigin-RevId: 39d981e232cba1e302de502a2fa6239101114ed1",
+            "url": "https://github.com/openai/codex/commit/f29d55ff0697a88226e8a9811b3c007e5f719cba"
+          },
+          {
+            "sha": "61469096fe086ccdbe87c06f9efc4ee59a4b51fe",
+            "title": "Update `rustls-webpki` and `webpki-roots` lockfile versions (#55616)",
+            "message": "Update `rustls-webpki` and `webpki-roots` lockfile versions (#55616)\n\n## What changed\n\n- Update `rustls-webpki` from `0.103.15` to `0.103.16`.\n- Update `webpki-roots` from `1.0.5` to `1.0.10`.\n- Refresh the corresponding entries in `codex-rs/Cargo.lock` and `MODULE.bazel.lock`.\n\nGitOrigin-RevId: c73d2afb6ce9f8bd8756d3cbe6f8114edc461262",
+            "url": "https://github.com/openai/codex/commit/61469096fe086ccdbe87c06f9efc4ee59a4b51fe"
+          },
+          {
+            "sha": "5ac9888436003b24f748bb5938629a7bf0bfbc50",
+            "title": "Move Linux sandbox unit tests into separate files (#55620)",
+            "message": "Move Linux sandbox unit tests into separate files (#55620)\n\n## What changed\n\nExtract the inline test modules for `bundled_bwrap`, `bwrap`, `exec_util`,\n`launcher`, `proxy_routing`, and `seccomp` into sibling `*_tests.rs` files.\nKeep them wired through `#[cfg(test)]` and explicit `#[path]` attributes,\nwith existing test coverage and runtime behavior unchanged.\n\nGitOrigin-RevId: 79b70a092a19b10716939744542415bc1dcaf0b2",
+            "url": "https://github.com/openai/codex/commit/5ac9888436003b24f748bb5938629a7bf0bfbc50"
+          },
+          {
+            "sha": "aa081afb1b044ee66c738b8808c07f13dfcff373",
+            "title": "Refactor Guardian v2 Decisions snapshot comparison (#55623)",
+            "message": "Refactor Guardian v2 Decisions snapshot comparison (#55623)\n\n## What changed\n\n- Rename the snapshot comparison entry point to `start_snapshot_comparison` and extract request spawning into `spawn_request`.\n- Accept a `ContentItem` rubric and an iterator of evidence in the request adapter.\n- Read the Decisions comparison feature flag once per classification and simplify the budget rejection test setup.\n\nGitOrigin-RevId: b4a294eeecb6069db0f80ff6e4f13f558cbd7815",
+            "url": "https://github.com/openai/codex/commit/aa081afb1b044ee66c738b8808c07f13dfcff373"
+          },
+          {
+            "sha": "48b6a9d8e0b5e0d809a60eac1cb48486d6ba5107",
+            "title": "Reserve a sibling rollout candidate slot for the first ancestor (#55627)",
+            "message": "Reserve a sibling rollout candidate slot for the first ancestor (#55627)\n\n## Why\n\nSibling rollout prefetching returns no paths when its candidate set omits the first ancestor. With more than 64 sibling rollouts, the candidate limit could exclude that ancestor and prevent prefetching.\n\n## What changed\n\nPass the first ancestor ID into candidate collection and reserve the final slot for it until it is found, preserving the 64-candidate limit.\n\n## Testing\n\nAdd a regression test that creates more siblings than the candidate limit and verifies that an otherwise omitted ancestor is included when prioritized.\n\nGitOrigin-RevId: 130508dfb1a190af68ccf1911c7501617be79a00",
+            "url": "https://github.com/openai/codex/commit/48b6a9d8e0b5e0d809a60eac1cb48486d6ba5107"
+          },
+          {
+            "sha": "e776b27eb0422c3d10fba676c632ff08ffb4469b",
+            "title": "Add frozen cloud skill snapshots to the app server (#55631)",
+            "message": "Add frozen cloud skill snapshots to the app server (#55631)\n\n## What changed\n\n- Add `--cloud-skills-snapshot PATH` to load a cloud skill catalog and resource contents from JSON once at app-server startup, without contacting a live skill service.\n- Expose snapshot skills through the native `skills.list` and `skills.read` interface, preserving aliases and prompt visibility. Reads remain available after the snapshot file is removed.\n- Validate package boundaries, required resources, duplicate packages, and size limits; fail startup for missing or invalid snapshots.\n- Keep frozen cloud catalog and read caches independent of live MCP resource changes.\n\n## Testing\n\nAdd provider, cache, app-server, and core scenario tests covering validation, exact resource contents, authority boundaries, startup failures, and listing and reading frozen skills alongside a named executor.\n\nGitOrigin-RevId: d438a5d678121db3e17515fc5edcd00d4e20b900",
+            "url": "https://github.com/openai/codex/commit/e776b27eb0422c3d10fba676c632ff08ffb4469b"
+          },
+          {
+            "sha": "7a152fbcf9ecd32d9fb4b45edf80127ee4c8499e",
+            "title": "Treat code-mode collaboration messages as plaintext (#55633)",
+            "message": "Treat code-mode collaboration messages as plaintext (#55633)\n\n## What changed\n\nClassify messages from code-mode collaboration calls as `AgentMessage::Plaintext` so they receive the context wrapper for plaintext messages. Apply this to `spawn_agent`, `send_message`, and `followup_task`.\n\n## Testing\n\nAdd a regression test that spawns an agent through `exec` and verifies that the child receives the task as plaintext with sender and recipient attribution.\n\nGitOrigin-RevId: 495c70ea13fd2bb06989e5aacab60beed0c19a56",
+            "url": "https://github.com/openai/codex/commit/7a152fbcf9ecd32d9fb4b45edf80127ee4c8499e"
+          },
+          {
+            "sha": "a13ab7e4ed6639a77f61df3939cbec4516208fd1",
+            "title": "Enable Decisions comparisons for Guardian V2 conversation mode (#55635)",
+            "message": "Enable Decisions comparisons for Guardian V2 conversation mode (#55635)\n\n## Why\n\nGuardian V2 previously skipped optional Decisions comparisons in conversation mode as unsupported evidence.\n\n## What changed\n\n- Start comparisons from the prepared conversation input, including retained history or rebuilt evidence after a history reset.\n- Extract the classifier rubric and preserve evidence message roles, content order, and boundaries. Omit retained reasoning and compaction items while continuing to reject other unsupported evidence.\n- Measure baseline sampling through the usable score, before history draining and commit, and report skipped comparisons when preparation fails or the request is superseded.\n\n## Testing\n\nExtend coverage to both classifier modes for comparison disagreements, failures, and disabled or uninitialized comparisons without changing baseline scores. Verify conversation evidence across history reuse and resets, malformed input rejection, and budget failures before either backend sends a request.\n\nGitOrigin-RevId: ce32cf876d15d3b82e0b83ac02c33447e7724a51",
+            "url": "https://github.com/openai/codex/commit/a13ab7e4ed6639a77f61df3939cbec4516208fd1"
+          },
+          {
+            "sha": "cb00a67569450aea2fdb1b1f31fc042fc0b5416f",
+            "title": "Add runtime assertion authentication modes and an auth provider (#55636)",
+            "message": "Add runtime assertion authentication modes and an auth provider (#55636)\n\n## What changed\n\nAdd `RuntimeAuthProvider` to resolve request authentication through the runtime auth manager. Support `dual_header` mode, which sends a bearer credential alongside `x-openai-agent-assertion`, and `assertion_only` mode, which uses `Authorization: AgentAssertion …`.\n\nReplace stale authentication headers and sign a fresh assertion for each request attempt. Propagate registration failures without falling back to credential-only authentication, preserving policy errors and classifying transport failures, rate limits, and server errors as transient.\n\nAdd the disabled-by-default `features.runtime_agent_instances` configuration with independent `enabled` and `mode` settings, schema support, and structured override merging. Selecting a mode alone does not enable the feature.\n\n## Testing\n\nAdd coverage for both modes with API key and ChatGPT credentials, stale header replacement, fresh assertions, credential refresh without runtime replacement, registration failures, and configuration parsing and merging.\n\nGitOrigin-RevId: 9e93d25762600f0ff592c5248fe4c8c2c8182c8d",
+            "url": "https://github.com/openai/codex/commit/cb00a67569450aea2fdb1b1f31fc042fc0b5416f"
+          },
+          {
+            "sha": "305db3808cf860ced585808ee4a191bb018a3b18",
+            "title": "Make pending injections interrupt agent waits and sleep (#55644)",
+            "message": "Make pending injections interrupt agent waits and sleep (#55644)\n\n## Why\n\nInput injected before `wait_agent` or `clock.sleep` begins must still interrupt the wait and reach the next model request.\n\n## What changed\n\nTrack notifying response-item injections as pending steering activity. Reset that state when pending input is consumed or cleared so later passive context does not interrupt waits.\n\n## Testing\n\nExtend wait and sleep tests to cover injections queued before the wait and delivered while waiting, alongside user steering. Add queue coverage for pending injection detection and reset after consumption.\n\nGitOrigin-RevId: 90f8d968336082c76271d1ca4f81b855bafc72c6",
+            "url": "https://github.com/openai/codex/commit/305db3808cf860ced585808ee4a191bb018a3b18"
+          },
+          {
+            "sha": "98f92bd0b5574bb9debed669cd48443ee5167434",
+            "title": "Fix in-process app-server shutdown with full queues (#55645)",
+            "message": "Fix in-process app-server shutdown with full queues (#55645)\n\n## Why\n\nWhen unread events block notification delivery and the client request queue is full, shutdown can hang waiting to enqueue its shutdown message before reaching its timeouts.\n\n## What changed\n\nDrop the event receiver at the start of `InProcessClientHandle::shutdown` to unblock notification delivery before waiting for space in the request queue.\n\n## Testing\n\nAdd a regression test that fills both queues with real requests and notifications, then verifies shutdown completes within the configured timeout budget.\n\nGitOrigin-RevId: a2b01042fc81dd2df4affca1d6cf2ddfb64b39db",
+            "url": "https://github.com/openai/codex/commit/98f92bd0b5574bb9debed669cd48443ee5167434"
+          },
+          {
+            "sha": "c6e4438a5d5befe6c8e59b01b6534eb8f0792230",
+            "title": "Guard auth persistence and reloads against concurrent login changes (#55646)",
+            "message": "Guard auth persistence and reloads against concurrent login changes (#55646)\n\n## Why\n\nAn in-flight token refresh or auth reload can outlive a login change or logout. Its result must not overwrite credentials for a different login or restore stale cached auth.\n\n## What changed\n\n- Serialize in-process auth storage reads and writes that participate in credential updates.\n- Verify the stored login before persisting refreshed tokens or agent identity records, while allowing older clients to drop login metadata when the refresh token still matches.\n- Reject stale auth reload results using generation checks, and invalidate pending reads on logout even when the cache is already empty.\n- Keep account grant reads strict when the keyring is unavailable, while preserving ordinary auth fallback behavior.\n\n## Testing\n\nAdd regression coverage for stale reloads after logout, login replacement during refresh, legacy metadata loss, keyring recovery with rotated tokens, and refresh persistence failures.\n\nGitOrigin-RevId: 01bce9ddbc3101de868adcda3370fcdc4eb70163",
+            "url": "https://github.com/openai/codex/commit/c6e4438a5d5befe6c8e59b01b6534eb8f0792230"
+          },
+          {
+            "sha": "801bd4d773ab374959344c36640ddbdec270ddb7",
+            "title": "Search compressed rollouts concurrently (#55652)",
+            "message": "Search compressed rollouts concurrently (#55652)\n\n## What changed\n\nCollect compressed rollout paths and scan them in up to four concurrent batches, reusing compiled search patterns within each batch. Preserve match snippets, plain rollout path keys, and per-file error handling.\n\n## Testing\n\nExtend the regression test to verify matches across seven compressed rollouts while skipping a corrupt file, and retain coverage for oversized search patterns and missing files.\n\nGitOrigin-RevId: 522403654ab8577499f8f8043ccc017590c4833e",
+            "url": "https://github.com/openai/codex/commit/801bd4d773ab374959344c36640ddbdec270ddb7"
+          },
+          {
+            "sha": "87f3c3284e1669b90ad9f4925039e9e3bc769b61",
+            "title": "Track code-mode cell lifecycle and result buffering time (#55653)",
+            "message": "Track code-mode cell lifecycle and result buffering time (#55653)\n\n## What changed\n\n- Add `CodeModeCellTiming` notifications for yielded executions, terminal waits, and unavailable cells, with thread, call, and cell identifiers.\n- Measure how long completed results remain buffered before retrieval and carry `result_buffered_for` through the runtime, stdio protocol, and gRPC response metadata. Immediate delivery reports zero; waits without a completed result report no buffering measurement.\n- Default missing buffering data to zero for compatibility with older hosts.\n\n## Testing\n\nExtend runtime tests to verify buffering duration with a paused clock and retrieval through termination. Add gRPC conversion tests for nanosecond precision, optional metadata, and the distinction between immediate delivery and no completed result.\n\nGitOrigin-RevId: 60c0c5a3affa69ac3779bf1812fca50f5748af76",
+            "url": "https://github.com/openai/codex/commit/87f3c3284e1669b90ad9f4925039e9e3bc769b61"
+          },
+          {
+            "sha": "66d0de9983e82b266e89ee29523324c9d08a5472",
+            "title": "Add lifecycle hooks for inter-agent messages (#55657)",
+            "message": "Add lifecycle hooks for inter-agent messages (#55657)\n\n## What changed\n\nAdd `MessageLifecycleContributor` hooks to capture extension state when local agent control publishes a message and notify contributors when the recipient commits it to history, before sampling.\n\nCarry shared delivery state through submissions, input queues, and mailbox eviction with `PendingAgentMessage`. Notify consumption at most once per delivery, release captured state when consumed or abandoned, and drop pending mail outside queue locks. Preserve the serialized message format without republishing restored history.\n\n## Testing\n\nExtend the mailbox eviction test to verify that publication state survives eviction and retained messages are consumed before the first resumed model sample.\n\nGitOrigin-RevId: 9a1f6832bd48ec646a3fd179485c095e8dcc72cc",
+            "url": "https://github.com/openai/codex/commit/66d0de9983e82b266e89ee29523324c9d08a5472"
+          },
+          {
+            "sha": "2f5e242d9f869b0553bf37e007b85b2cbd9b31ef",
+            "title": "Omit reasoning and compaction from Decisions snapshot comparisons (#55666)",
+            "message": "Omit reasoning and compaction from Decisions snapshot comparisons (#55666)\n\n## Why\n\nDecisions snapshot comparisons reject requests containing reasoning or compaction, while conversation comparisons already omit those items. A parent compaction also causes snapshot comparisons to be rejected.\n\n## What changed\n\n- Share filtering of reasoning, compaction, and context compaction across both comparison modes, and ignore parent compaction when building the Decisions request.\n- Distinguish malformed request setup from unsupported input items. Record setup errors as failures and unsupported input items as skipped comparisons.\n\n## Testing\n\nExtend the HTTP contract test to cover both comparison modes with reasoning, compaction, context compaction, and parent compaction while preserving message content. Update assertions for the distinct setup and unsupported-input errors.\n\nGitOrigin-RevId: e3ba0cce3b6457b3e3eab3589352b70288cbb1ef",
+            "url": "https://github.com/openai/codex/commit/2f5e242d9f869b0553bf37e007b85b2cbd9b31ef"
+          },
+          {
+            "sha": "c465563aa9626d99420062135b187d299f904f81",
+            "title": "Enable app routing for remote curated Agent Plugins (#55667)",
+            "message": "Enable app routing for remote curated Agent Plugins (#55667)\n\n## Why\n\nAgent Plugin manifests previously skipped app declarations, including service-generated declarations installed with remote curated plugins. This prevented those plugins from using app routing and suppressing matching direct MCP connections.\n\n## What changed\n\n- Recognize app declarations for Agent Plugins from `openai-curated-remote` across loading, capability summaries, plugin details, tool suggestions, and install authentication.\n- Apply app routing to suppress same-name MCP servers when an app route is available. Keep unrelated MCP servers available and preserve direct MCP access in API-key mode.\n- Keep app declarations inactive for Agent Plugins from other marketplaces.\n\n## Testing\n\nAdd coverage for marketplace and authentication routing, service-generated app declarations during installation with both manifest formats, and app tools reaching turns. Verify that disabling Apps does not restore matching direct MCP connections.\n\nGitOrigin-RevId: 791739569f0e01c898040bc2d028cf517f767e00",
+            "url": "https://github.com/openai/codex/commit/c465563aa9626d99420062135b187d299f904f81"
+          },
+          {
+            "sha": "57dedf20a502c8d1d13b89f0a9c0cbf4f5f71320",
+            "title": "Release 0.164.0-alpha.8",
+            "message": "Release 0.164.0-alpha.8",
+            "url": "https://github.com/openai/codex/commit/57dedf20a502c8d1d13b89f0a9c0cbf4f5f71320"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.7",
+          "head": "rust-v0.164.0-alpha.8",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.7...rust-v0.164.0-alpha.8",
+          "status": "diverged",
+          "total": 30,
+          "behind": 1,
+          "complete": true,
+          "fetched": 30
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -6474,7 +6692,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-20T19:26:05.678Z",
+      "lastSuccessAt": "2026-10-20T22:36:31.688Z",
       "error": null,
       "count": 150
     },
@@ -6483,7 +6701,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-20T19:26:05.678Z",
+      "lastSuccessAt": "2026-10-20T22:36:31.688Z",
       "error": null,
       "count": 10
     },
@@ -6492,7 +6710,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-20T19:26:05.678Z",
+      "lastSuccessAt": "2026-10-20T22:36:31.688Z",
       "error": null,
       "count": 25
     }
@@ -21153,6 +21371,437 @@
           "behind": 1,
           "complete": true,
           "fetched": 26
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.8:2026-10-20T22:36:32.781Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-20T22:36:32.781Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.8",
+        "at": "2026-10-20T22:35:19.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.8",
+        "text": "0.164.0-alpha.8. Release 0.164.0-alpha.8",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.164.0-alpha.8",
+          "title": "0.164.0-alpha.8",
+          "body": "Release 0.164.0-alpha.8\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-20T22:36:32.784Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.8",
+          "publishedAt": "2026-10-20T22:15:45Z",
+          "commits": [
+            {
+              "sha": "46d252f8bf8b09f4ef765bc72e40f02c229da3e6",
+              "title": "Make the startup migration contention test deterministic (#55524)",
+              "message": "Make the startup migration contention test deterministic (#55524)\n\n## Why\n\nThe maintenance-lock test relied on a 50 ms timeout to assume startup migration had encountered contention, and its completion timeout included the production retry delay.\n\n## What changed\n\nAdd a per-store, test-only retry gate to observe lock contention and explicitly resume migration after releasing the maintenance lock. Verify that rollout metadata stays in `Legacy` mode while the lock is held and becomes `Paginated` after migration completes.\n\nGitOrigin-RevId: 657fa6ec6f9494d9e66976560c8158fde8ffb495",
+              "url": "https://github.com/openai/codex/commit/46d252f8bf8b09f4ef765bc72e40f02c229da3e6"
+            },
+            {
+              "sha": "464add49587a7cb6032d5ab04faa8a1585947853",
+              "title": "Separate Guardian conversation preparation from execution (#55533)",
+              "message": "Separate Guardian conversation preparation from execution (#55533)\n\n## What changed\n\nSplit retained conversation scoring into `Reservation::prepare` and `PreparedConversation::run`, exposing the complete admitted input before model execution. Keep the history fork and capacity permit owned by the prepared conversation, and recheck authorization, score expiry, and backend generation before execution.\n\n## Testing\n\nExtend conversation tests to verify that preparation sends no model request, execution uses the prepared input, dropping a prepared conversation releases capacity, and stale prepared reviews cannot start model execution.\n\nGitOrigin-RevId: c96cc6fac69179a78ecd7bcdb8e5a4b3087aa6e6",
+              "url": "https://github.com/openai/codex/commit/464add49587a7cb6032d5ab04faa8a1585947853"
+            },
+            {
+              "sha": "4be9cfdf30bcb1526099aaee4512b31c89df7500",
+              "title": "Improve diagnostics for compressed rollout read failures (#55545)",
+              "message": "Improve diagnostics for compressed rollout read failures (#55545)\n\n## Why\n\nUndecodable compressed rollouts need diagnostic details and their original bytes preserved for investigation.\n\n## What changed\n\n- Log compressed file size, first-frame content size, decoded byte count, and whether the open file changed when a compressed rollout read fails. Limit warnings to once per process per minute and exclude paths and contents.\n- Allow diagnostic reports to attach the raw `.jsonl.zst` archive after a decoding failure when no preferred plain rollout exists. Retain attachment size limits and append `.zst` to filename overrides when needed.\n\n## Testing\n\nAdd coverage for truncated streams, incomplete trailing frame headers, files truncated after opening, and diagnostic uploads that preserve undecodable archives with size limits and filename overrides.\n\nGitOrigin-RevId: 76f7ee466f9bebdab5a91ce1894f4361749edc5b",
+              "url": "https://github.com/openai/codex/commit/4be9cfdf30bcb1526099aaee4512b31c89df7500"
+            },
+            {
+              "sha": "b2aa07db8ac892a865de888dd08726680fcf873c",
+              "title": "Add scoped leases for persisted account OAuth grants (#55546)",
+              "message": "Add scoped leases for persisted account OAuth grants (#55546)\n\n## What changed\n\n- Expose `AccountOAuthGrantLease` to prevent this auth manager's token refreshes from rotating account credentials during an identity-provider exchange. Releasing the lease returns an `AccountOAuthGrant` that callers can recheck before accepting asynchronous results.\n- Validate grants against cached login ownership and persisted credentials, requiring OAuth provenance and complete account identity. Reject stale grants and propagate storage failures, including unavailable keyrings in `Auto` mode.\n- Track `login_generation` separately from account ownership and use it to invalidate enterprise MCP authentication. Losing login metadata invalidates the login while preserving same-account network policy; a new login to the same account advances both generations.\n\n## Testing\n\nExtend auth refresh coverage to verify refresh blocking and wakeup on lease release, invalidation after token rotation or persisted login replacement, metadata loss and restoration, and logout while a lease is held.\n\nGitOrigin-RevId: f51b3cd526d7ee94d5dffa16681f8ca332245ce3",
+              "url": "https://github.com/openai/codex/commit/b2aa07db8ac892a865de888dd08726680fcf873c"
+            },
+            {
+              "sha": "4dbd9d30ea0466ec5bb1524f24c56cfc8ee4c5b1",
+              "title": "Ignore the basic-toml advisory in dependency audits (#55547)",
+              "message": "Ignore the basic-toml advisory in dependency audits (#55547)\n\n`codex-secrets` pulls in unmaintained `basic-toml` 0.1.10 through the localization dependencies of `age` 0.12.1, and no patched release is available.\n\nAdd `RUSTSEC-2026-0374` to the `cargo audit` and `cargo deny` ignore lists. Document that the exception should be removed when the localization dependencies of `age` migrate off `basic-toml`.\n\nGitOrigin-RevId: 92f31b687e91a73620e6f7f9a1b7c94790d9149d",
+              "url": "https://github.com/openai/codex/commit/4dbd9d30ea0466ec5bb1524f24c56cfc8ee4c5b1"
+            },
+            {
+              "sha": "e1b9c9457ceca75a99b034a5df39ac48c3998d15",
+              "title": "Preserve parent history by default in full agent forks (#55548)",
+              "message": "Preserve parent history by default in full agent forks (#55548)\n\n## What changed\n\nDefault `features.multi_agent_v2.preserve_fork_prefix` to `true`, so full-history forks retain the parent's model-visible history and append child instructions. Keep `preserve_fork_prefix = false` as an explicit opt-out for instruction filtering, and update the configuration schema documentation.\n\n## Testing\n\nUpdate coverage to verify inherited prefixes across child and grandchild forks, child instruction ordering after compaction, and explicit filtering opt-outs.\n\nGitOrigin-RevId: f14eae5b924cdeac555d112d0aba3fbbb063b0ea",
+              "url": "https://github.com/openai/codex/commit/e1b9c9457ceca75a99b034a5df39ac48c3998d15"
+            },
+            {
+              "sha": "e8aa7c1678caa9a368243d72bf0e9b7859d97f15",
+              "title": "Avoid panics after background compaction fails before a checkpoint (#55581)",
+              "message": "Avoid panics after background compaction fails before a checkpoint (#55581)\n\n## Why\n\nPolling a failed background compaction consumes the closed oneshot receiver.\nKeeping that receiver in session state can cause a later await to panic instead\nof falling back to foreground compaction.\n\n## What changed\n\nRemove the receiver from session state before polling it, restoring it only when\nits result is still pending. Discard closed receivers so compaction can fall back\nnormally.\n\n## Testing\n\nAdd a regression scenario where background compaction fails before the next\ncheckpoint and automatic compaction falls back successfully.\n\nGitOrigin-RevId: 1461bb403f4b0b8b7e171d1b3cba41411f2014b4",
+              "url": "https://github.com/openai/codex/commit/e8aa7c1678caa9a368243d72bf0e9b7859d97f15"
+            },
+            {
+              "sha": "ab6095dde0040bb8cdf8592acb89c344e5f27a56",
+              "title": "Allow callers to control prompt cache keys independently of session IDs (#55587)",
+              "message": "Allow callers to control prompt cache keys independently of session IDs (#55587)\n\n## What changed\n\nExpose `PromptCacheKey` through `StartThreadOptions` with three policies: retain the default session-derived key, send a custom key, or omit `prompt_cache_key` from model requests. Keep session identity headers independent of this policy.\n\nPropagate the policy to child agents, delegated sessions, and guardian review sessions. Hosts must reapply the policy when resuming a thread from storage.\n\n## Testing\n\nAdd coverage for all three policies across turns, including unchanged session and thread headers. Extend subagent coverage to verify inheritance of the default and omitted-key policies.\n\nGitOrigin-RevId: f9e8ab31fcf568636f9712726760e4e9a4672428",
+              "url": "https://github.com/openai/codex/commit/ab6095dde0040bb8cdf8592acb89c344e5f27a56"
+            },
+            {
+              "sha": "60d78332fc6adbf7f4fd000ede9eabe8d52f4e86",
+              "title": "Measure Guardian approval blocking time per turn (#55591)",
+              "message": "Measure Guardian approval blocking time per turn (#55591)\n\n## What changed\n\nRecord `codex.guardian.turn.blocking_ms` when a turn completes or aborts, with an `outcome` label. Count overlapping approval waits once, exclude idle gaps, and split pending reviews across the active turns they span. Use each turn's telemetry so samples retain the servicing turn's model attribution.\n\n## Testing\n\nAdd unit coverage for overlapping waits, idle gaps, late turn completion, and duplicate stops. Extend integration coverage to verify attribution across turns and model changes for yielded command reviews and MCP elicitation, including aborted turns.\n\nGitOrigin-RevId: a3e6a0c32a06fe58ea93119ecd941076100fb82c",
+              "url": "https://github.com/openai/codex/commit/60d78332fc6adbf7f4fd000ede9eabe8d52f4e86"
+            },
+            {
+              "sha": "d34f104c22ae815fc213641b8a637c5947f14ac1",
+              "title": "Reject unpackaged Windows sandbox provisioning clients (#55593)",
+              "message": "Reject unpackaged Windows sandbox provisioning clients (#55593)\n\nRemove the exception that allowed clients without a package identity to connect\nwhen the provisioning service had one. Keep the debug foreground-mode exception.\n\nGitOrigin-RevId: def2d22a91575477d73e3d8c6ac14808a2ff3b2b",
+              "url": "https://github.com/openai/codex/commit/d34f104c22ae815fc213641b8a637c5947f14ac1"
+            },
+            {
+              "sha": "fa71afc8a701a88cc8c92b94240f7a23e31b3568",
+              "title": "Rank `$` mentions by recent selection frequency (#55596)",
+              "message": "Rank `$` mentions by recent selection frequency (#55596)\n\n## What changed\n\nPrefer frequently selected entries in the TUI's `$` picker within exact, prefix, and fuzzy match tiers, keeping stronger match tiers ahead of usage preferences.\n\nTrack the last 50 confirmed selections and persist them in `mention_usage.json` under `CODEX_HOME` when history persistence is enabled. Preserve in-memory preferences across compatible chat widget replacements, including when history persistence is disabled. Serialize background writes, merge updates under a bounded file lock, and flush pending writes on shutdown.\n\n## Testing\n\nAdd coverage for picker ordering, preference handoff and persistence, history-disabled widget replacement, selection expiry, malformed history, and lock contention.\n\nGitOrigin-RevId: 7efa8c1c365e23000fcda10dbbc2a7e90f4e777c",
+              "url": "https://github.com/openai/codex/commit/fa71afc8a701a88cc8c92b94240f7a23e31b3568"
+            },
+            {
+              "sha": "78d4c7c7fae278d2b0a904316c274681c62461a8",
+              "title": "Extract shared TUI user prompt helpers from IDE context (#55597)",
+              "message": "Extract shared TUI user prompt helpers from IDE context (#55597)\n\nMove context prefixing and request extraction into `user_prompt`, and update\nIDE context injection, thread routing, thread titles, transcript export, and\nuser message rendering to use the shared helpers. Preserve the request\ndelimiter, text element byte offsets, and input ordering.\n\nMove the existing last-delimiter extraction test alongside the shared helpers.\n\nGitOrigin-RevId: 3ee350506a536a6dba9575e8311188bc92fed584",
+              "url": "https://github.com/openai/codex/commit/78d4c7c7fae278d2b0a904316c274681c62461a8"
+            },
+            {
+              "sha": "f29d55ff0697a88226e8a9811b3c007e5f719cba",
+              "title": "Propagate authentication header failures before sending requests (#55607)",
+              "message": "Propagate authentication header failures before sending requests (#55607)\n\n## Why\n\nSynchronous auth header construction could silently return no credentials when managed authentication became unavailable. Callers need an error to avoid sending requests with missing or partial authentication.\n\n## What changed\n\n- Make `AuthProvider::add_auth_headers`, `to_auth_headers`, and auth header telemetry fallible, and propagate failures through request and WebSocket setup.\n- Return a transient error when managed authentication is unavailable, and preserve network policy denials through auth error conversion.\n- Retry transient MCP authentication errors while treating build errors and policy denials as terminal.\n- Cancel local MCP event streams before resolving authentication so cleanup still works when credentials become unavailable.\n\n## Testing\n\nAdd regression coverage for rejected partial authentication, async header resolution, terminal auth errors without sending requests, managed account changes, MCP retry classification, and local stream cancellation after authentication becomes unavailable.\n\nGitOrigin-RevId: 39d981e232cba1e302de502a2fa6239101114ed1",
+              "url": "https://github.com/openai/codex/commit/f29d55ff0697a88226e8a9811b3c007e5f719cba"
+            },
+            {
+              "sha": "61469096fe086ccdbe87c06f9efc4ee59a4b51fe",
+              "title": "Update `rustls-webpki` and `webpki-roots` lockfile versions (#55616)",
+              "message": "Update `rustls-webpki` and `webpki-roots` lockfile versions (#55616)\n\n## What changed\n\n- Update `rustls-webpki` from `0.103.15` to `0.103.16`.\n- Update `webpki-roots` from `1.0.5` to `1.0.10`.\n- Refresh the corresponding entries in `codex-rs/Cargo.lock` and `MODULE.bazel.lock`.\n\nGitOrigin-RevId: c73d2afb6ce9f8bd8756d3cbe6f8114edc461262",
+              "url": "https://github.com/openai/codex/commit/61469096fe086ccdbe87c06f9efc4ee59a4b51fe"
+            },
+            {
+              "sha": "5ac9888436003b24f748bb5938629a7bf0bfbc50",
+              "title": "Move Linux sandbox unit tests into separate files (#55620)",
+              "message": "Move Linux sandbox unit tests into separate files (#55620)\n\n## What changed\n\nExtract the inline test modules for `bundled_bwrap`, `bwrap`, `exec_util`,\n`launcher`, `proxy_routing`, and `seccomp` into sibling `*_tests.rs` files.\nKeep them wired through `#[cfg(test)]` and explicit `#[path]` attributes,\nwith existing test coverage and runtime behavior unchanged.\n\nGitOrigin-RevId: 79b70a092a19b10716939744542415bc1dcaf0b2",
+              "url": "https://github.com/openai/codex/commit/5ac9888436003b24f748bb5938629a7bf0bfbc50"
+            },
+            {
+              "sha": "aa081afb1b044ee66c738b8808c07f13dfcff373",
+              "title": "Refactor Guardian v2 Decisions snapshot comparison (#55623)",
+              "message": "Refactor Guardian v2 Decisions snapshot comparison (#55623)\n\n## What changed\n\n- Rename the snapshot comparison entry point to `start_snapshot_comparison` and extract request spawning into `spawn_request`.\n- Accept a `ContentItem` rubric and an iterator of evidence in the request adapter.\n- Read the Decisions comparison feature flag once per classification and simplify the budget rejection test setup.\n\nGitOrigin-RevId: b4a294eeecb6069db0f80ff6e4f13f558cbd7815",
+              "url": "https://github.com/openai/codex/commit/aa081afb1b044ee66c738b8808c07f13dfcff373"
+            },
+            {
+              "sha": "48b6a9d8e0b5e0d809a60eac1cb48486d6ba5107",
+              "title": "Reserve a sibling rollout candidate slot for the first ancestor (#55627)",
+              "message": "Reserve a sibling rollout candidate slot for the first ancestor (#55627)\n\n## Why\n\nSibling rollout prefetching returns no paths when its candidate set omits the first ancestor. With more than 64 sibling rollouts, the candidate limit could exclude that ancestor and prevent prefetching.\n\n## What changed\n\nPass the first ancestor ID into candidate collection and reserve the final slot for it until it is found, preserving the 64-candidate limit.\n\n## Testing\n\nAdd a regression test that creates more siblings than the candidate limit and verifies that an otherwise omitted ancestor is included when prioritized.\n\nGitOrigin-RevId: 130508dfb1a190af68ccf1911c7501617be79a00",
+              "url": "https://github.com/openai/codex/commit/48b6a9d8e0b5e0d809a60eac1cb48486d6ba5107"
+            },
+            {
+              "sha": "e776b27eb0422c3d10fba676c632ff08ffb4469b",
+              "title": "Add frozen cloud skill snapshots to the app server (#55631)",
+              "message": "Add frozen cloud skill snapshots to the app server (#55631)\n\n## What changed\n\n- Add `--cloud-skills-snapshot PATH` to load a cloud skill catalog and resource contents from JSON once at app-server startup, without contacting a live skill service.\n- Expose snapshot skills through the native `skills.list` and `skills.read` interface, preserving aliases and prompt visibility. Reads remain available after the snapshot file is removed.\n- Validate package boundaries, required resources, duplicate packages, and size limits; fail startup for missing or invalid snapshots.\n- Keep frozen cloud catalog and read caches independent of live MCP resource changes.\n\n## Testing\n\nAdd provider, cache, app-server, and core scenario tests covering validation, exact resource contents, authority boundaries, startup failures, and listing and reading frozen skills alongside a named executor.\n\nGitOrigin-RevId: d438a5d678121db3e17515fc5edcd00d4e20b900",
+              "url": "https://github.com/openai/codex/commit/e776b27eb0422c3d10fba676c632ff08ffb4469b"
+            },
+            {
+              "sha": "7a152fbcf9ecd32d9fb4b45edf80127ee4c8499e",
+              "title": "Treat code-mode collaboration messages as plaintext (#55633)",
+              "message": "Treat code-mode collaboration messages as plaintext (#55633)\n\n## What changed\n\nClassify messages from code-mode collaboration calls as `AgentMessage::Plaintext` so they receive the context wrapper for plaintext messages. Apply this to `spawn_agent`, `send_message`, and `followup_task`.\n\n## Testing\n\nAdd a regression test that spawns an agent through `exec` and verifies that the child receives the task as plaintext with sender and recipient attribution.\n\nGitOrigin-RevId: 495c70ea13fd2bb06989e5aacab60beed0c19a56",
+              "url": "https://github.com/openai/codex/commit/7a152fbcf9ecd32d9fb4b45edf80127ee4c8499e"
+            },
+            {
+              "sha": "a13ab7e4ed6639a77f61df3939cbec4516208fd1",
+              "title": "Enable Decisions comparisons for Guardian V2 conversation mode (#55635)",
+              "message": "Enable Decisions comparisons for Guardian V2 conversation mode (#55635)\n\n## Why\n\nGuardian V2 previously skipped optional Decisions comparisons in conversation mode as unsupported evidence.\n\n## What changed\n\n- Start comparisons from the prepared conversation input, including retained history or rebuilt evidence after a history reset.\n- Extract the classifier rubric and preserve evidence message roles, content order, and boundaries. Omit retained reasoning and compaction items while continuing to reject other unsupported evidence.\n- Measure baseline sampling through the usable score, before history draining and commit, and report skipped comparisons when preparation fails or the request is superseded.\n\n## Testing\n\nExtend coverage to both classifier modes for comparison disagreements, failures, and disabled or uninitialized comparisons without changing baseline scores. Verify conversation evidence across history reuse and resets, malformed input rejection, and budget failures before either backend sends a request.\n\nGitOrigin-RevId: ce32cf876d15d3b82e0b83ac02c33447e7724a51",
+              "url": "https://github.com/openai/codex/commit/a13ab7e4ed6639a77f61df3939cbec4516208fd1"
+            },
+            {
+              "sha": "cb00a67569450aea2fdb1b1f31fc042fc0b5416f",
+              "title": "Add runtime assertion authentication modes and an auth provider (#55636)",
+              "message": "Add runtime assertion authentication modes and an auth provider (#55636)\n\n## What changed\n\nAdd `RuntimeAuthProvider` to resolve request authentication through the runtime auth manager. Support `dual_header` mode, which sends a bearer credential alongside `x-openai-agent-assertion`, and `assertion_only` mode, which uses `Authorization: AgentAssertion …`.\n\nReplace stale authentication headers and sign a fresh assertion for each request attempt. Propagate registration failures without falling back to credential-only authentication, preserving policy errors and classifying transport failures, rate limits, and server errors as transient.\n\nAdd the disabled-by-default `features.runtime_agent_instances` configuration with independent `enabled` and `mode` settings, schema support, and structured override merging. Selecting a mode alone does not enable the feature.\n\n## Testing\n\nAdd coverage for both modes with API key and ChatGPT credentials, stale header replacement, fresh assertions, credential refresh without runtime replacement, registration failures, and configuration parsing and merging.\n\nGitOrigin-RevId: 9e93d25762600f0ff592c5248fe4c8c2c8182c8d",
+              "url": "https://github.com/openai/codex/commit/cb00a67569450aea2fdb1b1f31fc042fc0b5416f"
+            },
+            {
+              "sha": "305db3808cf860ced585808ee4a191bb018a3b18",
+              "title": "Make pending injections interrupt agent waits and sleep (#55644)",
+              "message": "Make pending injections interrupt agent waits and sleep (#55644)\n\n## Why\n\nInput injected before `wait_agent` or `clock.sleep` begins must still interrupt the wait and reach the next model request.\n\n## What changed\n\nTrack notifying response-item injections as pending steering activity. Reset that state when pending input is consumed or cleared so later passive context does not interrupt waits.\n\n## Testing\n\nExtend wait and sleep tests to cover injections queued before the wait and delivered while waiting, alongside user steering. Add queue coverage for pending injection detection and reset after consumption.\n\nGitOrigin-RevId: 90f8d968336082c76271d1ca4f81b855bafc72c6",
+              "url": "https://github.com/openai/codex/commit/305db3808cf860ced585808ee4a191bb018a3b18"
+            },
+            {
+              "sha": "98f92bd0b5574bb9debed669cd48443ee5167434",
+              "title": "Fix in-process app-server shutdown with full queues (#55645)",
+              "message": "Fix in-process app-server shutdown with full queues (#55645)\n\n## Why\n\nWhen unread events block notification delivery and the client request queue is full, shutdown can hang waiting to enqueue its shutdown message before reaching its timeouts.\n\n## What changed\n\nDrop the event receiver at the start of `InProcessClientHandle::shutdown` to unblock notification delivery before waiting for space in the request queue.\n\n## Testing\n\nAdd a regression test that fills both queues with real requests and notifications, then verifies shutdown completes within the configured timeout budget.\n\nGitOrigin-RevId: a2b01042fc81dd2df4affca1d6cf2ddfb64b39db",
+              "url": "https://github.com/openai/codex/commit/98f92bd0b5574bb9debed669cd48443ee5167434"
+            },
+            {
+              "sha": "c6e4438a5d5befe6c8e59b01b6534eb8f0792230",
+              "title": "Guard auth persistence and reloads against concurrent login changes (#55646)",
+              "message": "Guard auth persistence and reloads against concurrent login changes (#55646)\n\n## Why\n\nAn in-flight token refresh or auth reload can outlive a login change or logout. Its result must not overwrite credentials for a different login or restore stale cached auth.\n\n## What changed\n\n- Serialize in-process auth storage reads and writes that participate in credential updates.\n- Verify the stored login before persisting refreshed tokens or agent identity records, while allowing older clients to drop login metadata when the refresh token still matches.\n- Reject stale auth reload results using generation checks, and invalidate pending reads on logout even when the cache is already empty.\n- Keep account grant reads strict when the keyring is unavailable, while preserving ordinary auth fallback behavior.\n\n## Testing\n\nAdd regression coverage for stale reloads after logout, login replacement during refresh, legacy metadata loss, keyring recovery with rotated tokens, and refresh persistence failures.\n\nGitOrigin-RevId: 01bce9ddbc3101de868adcda3370fcdc4eb70163",
+              "url": "https://github.com/openai/codex/commit/c6e4438a5d5befe6c8e59b01b6534eb8f0792230"
+            },
+            {
+              "sha": "801bd4d773ab374959344c36640ddbdec270ddb7",
+              "title": "Search compressed rollouts concurrently (#55652)",
+              "message": "Search compressed rollouts concurrently (#55652)\n\n## What changed\n\nCollect compressed rollout paths and scan them in up to four concurrent batches, reusing compiled search patterns within each batch. Preserve match snippets, plain rollout path keys, and per-file error handling.\n\n## Testing\n\nExtend the regression test to verify matches across seven compressed rollouts while skipping a corrupt file, and retain coverage for oversized search patterns and missing files.\n\nGitOrigin-RevId: 522403654ab8577499f8f8043ccc017590c4833e",
+              "url": "https://github.com/openai/codex/commit/801bd4d773ab374959344c36640ddbdec270ddb7"
+            },
+            {
+              "sha": "87f3c3284e1669b90ad9f4925039e9e3bc769b61",
+              "title": "Track code-mode cell lifecycle and result buffering time (#55653)",
+              "message": "Track code-mode cell lifecycle and result buffering time (#55653)\n\n## What changed\n\n- Add `CodeModeCellTiming` notifications for yielded executions, terminal waits, and unavailable cells, with thread, call, and cell identifiers.\n- Measure how long completed results remain buffered before retrieval and carry `result_buffered_for` through the runtime, stdio protocol, and gRPC response metadata. Immediate delivery reports zero; waits without a completed result report no buffering measurement.\n- Default missing buffering data to zero for compatibility with older hosts.\n\n## Testing\n\nExtend runtime tests to verify buffering duration with a paused clock and retrieval through termination. Add gRPC conversion tests for nanosecond precision, optional metadata, and the distinction between immediate delivery and no completed result.\n\nGitOrigin-RevId: 60c0c5a3affa69ac3779bf1812fca50f5748af76",
+              "url": "https://github.com/openai/codex/commit/87f3c3284e1669b90ad9f4925039e9e3bc769b61"
+            },
+            {
+              "sha": "66d0de9983e82b266e89ee29523324c9d08a5472",
+              "title": "Add lifecycle hooks for inter-agent messages (#55657)",
+              "message": "Add lifecycle hooks for inter-agent messages (#55657)\n\n## What changed\n\nAdd `MessageLifecycleContributor` hooks to capture extension state when local agent control publishes a message and notify contributors when the recipient commits it to history, before sampling.\n\nCarry shared delivery state through submissions, input queues, and mailbox eviction with `PendingAgentMessage`. Notify consumption at most once per delivery, release captured state when consumed or abandoned, and drop pending mail outside queue locks. Preserve the serialized message format without republishing restored history.\n\n## Testing\n\nExtend the mailbox eviction test to verify that publication state survives eviction and retained messages are consumed before the first resumed model sample.\n\nGitOrigin-RevId: 9a1f6832bd48ec646a3fd179485c095e8dcc72cc",
+              "url": "https://github.com/openai/codex/commit/66d0de9983e82b266e89ee29523324c9d08a5472"
+            },
+            {
+              "sha": "2f5e242d9f869b0553bf37e007b85b2cbd9b31ef",
+              "title": "Omit reasoning and compaction from Decisions snapshot comparisons (#55666)",
+              "message": "Omit reasoning and compaction from Decisions snapshot comparisons (#55666)\n\n## Why\n\nDecisions snapshot comparisons reject requests containing reasoning or compaction, while conversation comparisons already omit those items. A parent compaction also causes snapshot comparisons to be rejected.\n\n## What changed\n\n- Share filtering of reasoning, compaction, and context compaction across both comparison modes, and ignore parent compaction when building the Decisions request.\n- Distinguish malformed request setup from unsupported input items. Record setup errors as failures and unsupported input items as skipped comparisons.\n\n## Testing\n\nExtend the HTTP contract test to cover both comparison modes with reasoning, compaction, context compaction, and parent compaction while preserving message content. Update assertions for the distinct setup and unsupported-input errors.\n\nGitOrigin-RevId: e3ba0cce3b6457b3e3eab3589352b70288cbb1ef",
+              "url": "https://github.com/openai/codex/commit/2f5e242d9f869b0553bf37e007b85b2cbd9b31ef"
+            },
+            {
+              "sha": "c465563aa9626d99420062135b187d299f904f81",
+              "title": "Enable app routing for remote curated Agent Plugins (#55667)",
+              "message": "Enable app routing for remote curated Agent Plugins (#55667)\n\n## Why\n\nAgent Plugin manifests previously skipped app declarations, including service-generated declarations installed with remote curated plugins. This prevented those plugins from using app routing and suppressing matching direct MCP connections.\n\n## What changed\n\n- Recognize app declarations for Agent Plugins from `openai-curated-remote` across loading, capability summaries, plugin details, tool suggestions, and install authentication.\n- Apply app routing to suppress same-name MCP servers when an app route is available. Keep unrelated MCP servers available and preserve direct MCP access in API-key mode.\n- Keep app declarations inactive for Agent Plugins from other marketplaces.\n\n## Testing\n\nAdd coverage for marketplace and authentication routing, service-generated app declarations during installation with both manifest formats, and app tools reaching turns. Verify that disabling Apps does not restore matching direct MCP connections.\n\nGitOrigin-RevId: 791739569f0e01c898040bc2d028cf517f767e00",
+              "url": "https://github.com/openai/codex/commit/c465563aa9626d99420062135b187d299f904f81"
+            },
+            {
+              "sha": "57dedf20a502c8d1d13b89f0a9c0cbf4f5f71320",
+              "title": "Release 0.164.0-alpha.8",
+              "message": "Release 0.164.0-alpha.8",
+              "url": "https://github.com/openai/codex/commit/57dedf20a502c8d1d13b89f0a9c0cbf4f5f71320"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.164.0-alpha.7",
+            "head": "rust-v0.164.0-alpha.8",
+            "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.7...rust-v0.164.0-alpha.8",
+            "status": "diverged",
+            "total": 30,
+            "behind": 1,
+            "complete": true,
+            "fetched": 30
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.8:2026-10-20T22:36:32.781Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-20T22:36:32.781Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.8",
+        "title": "0.164.0-alpha.8",
+        "body": "Release 0.164.0-alpha.8\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-20T22:36:32.784Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.8",
+        "publishedAt": "2026-10-20T22:15:45Z",
+        "commits": [
+          {
+            "sha": "46d252f8bf8b09f4ef765bc72e40f02c229da3e6",
+            "title": "Make the startup migration contention test deterministic (#55524)",
+            "message": "Make the startup migration contention test deterministic (#55524)\n\n## Why\n\nThe maintenance-lock test relied on a 50 ms timeout to assume startup migration had encountered contention, and its completion timeout included the production retry delay.\n\n## What changed\n\nAdd a per-store, test-only retry gate to observe lock contention and explicitly resume migration after releasing the maintenance lock. Verify that rollout metadata stays in `Legacy` mode while the lock is held and becomes `Paginated` after migration completes.\n\nGitOrigin-RevId: 657fa6ec6f9494d9e66976560c8158fde8ffb495",
+            "url": "https://github.com/openai/codex/commit/46d252f8bf8b09f4ef765bc72e40f02c229da3e6"
+          },
+          {
+            "sha": "464add49587a7cb6032d5ab04faa8a1585947853",
+            "title": "Separate Guardian conversation preparation from execution (#55533)",
+            "message": "Separate Guardian conversation preparation from execution (#55533)\n\n## What changed\n\nSplit retained conversation scoring into `Reservation::prepare` and `PreparedConversation::run`, exposing the complete admitted input before model execution. Keep the history fork and capacity permit owned by the prepared conversation, and recheck authorization, score expiry, and backend generation before execution.\n\n## Testing\n\nExtend conversation tests to verify that preparation sends no model request, execution uses the prepared input, dropping a prepared conversation releases capacity, and stale prepared reviews cannot start model execution.\n\nGitOrigin-RevId: c96cc6fac69179a78ecd7bcdb8e5a4b3087aa6e6",
+            "url": "https://github.com/openai/codex/commit/464add49587a7cb6032d5ab04faa8a1585947853"
+          },
+          {
+            "sha": "4be9cfdf30bcb1526099aaee4512b31c89df7500",
+            "title": "Improve diagnostics for compressed rollout read failures (#55545)",
+            "message": "Improve diagnostics for compressed rollout read failures (#55545)\n\n## Why\n\nUndecodable compressed rollouts need diagnostic details and their original bytes preserved for investigation.\n\n## What changed\n\n- Log compressed file size, first-frame content size, decoded byte count, and whether the open file changed when a compressed rollout read fails. Limit warnings to once per process per minute and exclude paths and contents.\n- Allow diagnostic reports to attach the raw `.jsonl.zst` archive after a decoding failure when no preferred plain rollout exists. Retain attachment size limits and append `.zst` to filename overrides when needed.\n\n## Testing\n\nAdd coverage for truncated streams, incomplete trailing frame headers, files truncated after opening, and diagnostic uploads that preserve undecodable archives with size limits and filename overrides.\n\nGitOrigin-RevId: 76f7ee466f9bebdab5a91ce1894f4361749edc5b",
+            "url": "https://github.com/openai/codex/commit/4be9cfdf30bcb1526099aaee4512b31c89df7500"
+          },
+          {
+            "sha": "b2aa07db8ac892a865de888dd08726680fcf873c",
+            "title": "Add scoped leases for persisted account OAuth grants (#55546)",
+            "message": "Add scoped leases for persisted account OAuth grants (#55546)\n\n## What changed\n\n- Expose `AccountOAuthGrantLease` to prevent this auth manager's token refreshes from rotating account credentials during an identity-provider exchange. Releasing the lease returns an `AccountOAuthGrant` that callers can recheck before accepting asynchronous results.\n- Validate grants against cached login ownership and persisted credentials, requiring OAuth provenance and complete account identity. Reject stale grants and propagate storage failures, including unavailable keyrings in `Auto` mode.\n- Track `login_generation` separately from account ownership and use it to invalidate enterprise MCP authentication. Losing login metadata invalidates the login while preserving same-account network policy; a new login to the same account advances both generations.\n\n## Testing\n\nExtend auth refresh coverage to verify refresh blocking and wakeup on lease release, invalidation after token rotation or persisted login replacement, metadata loss and restoration, and logout while a lease is held.\n\nGitOrigin-RevId: f51b3cd526d7ee94d5dffa16681f8ca332245ce3",
+            "url": "https://github.com/openai/codex/commit/b2aa07db8ac892a865de888dd08726680fcf873c"
+          },
+          {
+            "sha": "4dbd9d30ea0466ec5bb1524f24c56cfc8ee4c5b1",
+            "title": "Ignore the basic-toml advisory in dependency audits (#55547)",
+            "message": "Ignore the basic-toml advisory in dependency audits (#55547)\n\n`codex-secrets` pulls in unmaintained `basic-toml` 0.1.10 through the localization dependencies of `age` 0.12.1, and no patched release is available.\n\nAdd `RUSTSEC-2026-0374` to the `cargo audit` and `cargo deny` ignore lists. Document that the exception should be removed when the localization dependencies of `age` migrate off `basic-toml`.\n\nGitOrigin-RevId: 92f31b687e91a73620e6f7f9a1b7c94790d9149d",
+            "url": "https://github.com/openai/codex/commit/4dbd9d30ea0466ec5bb1524f24c56cfc8ee4c5b1"
+          },
+          {
+            "sha": "e1b9c9457ceca75a99b034a5df39ac48c3998d15",
+            "title": "Preserve parent history by default in full agent forks (#55548)",
+            "message": "Preserve parent history by default in full agent forks (#55548)\n\n## What changed\n\nDefault `features.multi_agent_v2.preserve_fork_prefix` to `true`, so full-history forks retain the parent's model-visible history and append child instructions. Keep `preserve_fork_prefix = false` as an explicit opt-out for instruction filtering, and update the configuration schema documentation.\n\n## Testing\n\nUpdate coverage to verify inherited prefixes across child and grandchild forks, child instruction ordering after compaction, and explicit filtering opt-outs.\n\nGitOrigin-RevId: f14eae5b924cdeac555d112d0aba3fbbb063b0ea",
+            "url": "https://github.com/openai/codex/commit/e1b9c9457ceca75a99b034a5df39ac48c3998d15"
+          },
+          {
+            "sha": "e8aa7c1678caa9a368243d72bf0e9b7859d97f15",
+            "title": "Avoid panics after background compaction fails before a checkpoint (#55581)",
+            "message": "Avoid panics after background compaction fails before a checkpoint (#55581)\n\n## Why\n\nPolling a failed background compaction consumes the closed oneshot receiver.\nKeeping that receiver in session state can cause a later await to panic instead\nof falling back to foreground compaction.\n\n## What changed\n\nRemove the receiver from session state before polling it, restoring it only when\nits result is still pending. Discard closed receivers so compaction can fall back\nnormally.\n\n## Testing\n\nAdd a regression scenario where background compaction fails before the next\ncheckpoint and automatic compaction falls back successfully.\n\nGitOrigin-RevId: 1461bb403f4b0b8b7e171d1b3cba41411f2014b4",
+            "url": "https://github.com/openai/codex/commit/e8aa7c1678caa9a368243d72bf0e9b7859d97f15"
+          },
+          {
+            "sha": "ab6095dde0040bb8cdf8592acb89c344e5f27a56",
+            "title": "Allow callers to control prompt cache keys independently of session IDs (#55587)",
+            "message": "Allow callers to control prompt cache keys independently of session IDs (#55587)\n\n## What changed\n\nExpose `PromptCacheKey` through `StartThreadOptions` with three policies: retain the default session-derived key, send a custom key, or omit `prompt_cache_key` from model requests. Keep session identity headers independent of this policy.\n\nPropagate the policy to child agents, delegated sessions, and guardian review sessions. Hosts must reapply the policy when resuming a thread from storage.\n\n## Testing\n\nAdd coverage for all three policies across turns, including unchanged session and thread headers. Extend subagent coverage to verify inheritance of the default and omitted-key policies.\n\nGitOrigin-RevId: f9e8ab31fcf568636f9712726760e4e9a4672428",
+            "url": "https://github.com/openai/codex/commit/ab6095dde0040bb8cdf8592acb89c344e5f27a56"
+          },
+          {
+            "sha": "60d78332fc6adbf7f4fd000ede9eabe8d52f4e86",
+            "title": "Measure Guardian approval blocking time per turn (#55591)",
+            "message": "Measure Guardian approval blocking time per turn (#55591)\n\n## What changed\n\nRecord `codex.guardian.turn.blocking_ms` when a turn completes or aborts, with an `outcome` label. Count overlapping approval waits once, exclude idle gaps, and split pending reviews across the active turns they span. Use each turn's telemetry so samples retain the servicing turn's model attribution.\n\n## Testing\n\nAdd unit coverage for overlapping waits, idle gaps, late turn completion, and duplicate stops. Extend integration coverage to verify attribution across turns and model changes for yielded command reviews and MCP elicitation, including aborted turns.\n\nGitOrigin-RevId: a3e6a0c32a06fe58ea93119ecd941076100fb82c",
+            "url": "https://github.com/openai/codex/commit/60d78332fc6adbf7f4fd000ede9eabe8d52f4e86"
+          },
+          {
+            "sha": "d34f104c22ae815fc213641b8a637c5947f14ac1",
+            "title": "Reject unpackaged Windows sandbox provisioning clients (#55593)",
+            "message": "Reject unpackaged Windows sandbox provisioning clients (#55593)\n\nRemove the exception that allowed clients without a package identity to connect\nwhen the provisioning service had one. Keep the debug foreground-mode exception.\n\nGitOrigin-RevId: def2d22a91575477d73e3d8c6ac14808a2ff3b2b",
+            "url": "https://github.com/openai/codex/commit/d34f104c22ae815fc213641b8a637c5947f14ac1"
+          },
+          {
+            "sha": "fa71afc8a701a88cc8c92b94240f7a23e31b3568",
+            "title": "Rank `$` mentions by recent selection frequency (#55596)",
+            "message": "Rank `$` mentions by recent selection frequency (#55596)\n\n## What changed\n\nPrefer frequently selected entries in the TUI's `$` picker within exact, prefix, and fuzzy match tiers, keeping stronger match tiers ahead of usage preferences.\n\nTrack the last 50 confirmed selections and persist them in `mention_usage.json` under `CODEX_HOME` when history persistence is enabled. Preserve in-memory preferences across compatible chat widget replacements, including when history persistence is disabled. Serialize background writes, merge updates under a bounded file lock, and flush pending writes on shutdown.\n\n## Testing\n\nAdd coverage for picker ordering, preference handoff and persistence, history-disabled widget replacement, selection expiry, malformed history, and lock contention.\n\nGitOrigin-RevId: 7efa8c1c365e23000fcda10dbbc2a7e90f4e777c",
+            "url": "https://github.com/openai/codex/commit/fa71afc8a701a88cc8c92b94240f7a23e31b3568"
+          },
+          {
+            "sha": "78d4c7c7fae278d2b0a904316c274681c62461a8",
+            "title": "Extract shared TUI user prompt helpers from IDE context (#55597)",
+            "message": "Extract shared TUI user prompt helpers from IDE context (#55597)\n\nMove context prefixing and request extraction into `user_prompt`, and update\nIDE context injection, thread routing, thread titles, transcript export, and\nuser message rendering to use the shared helpers. Preserve the request\ndelimiter, text element byte offsets, and input ordering.\n\nMove the existing last-delimiter extraction test alongside the shared helpers.\n\nGitOrigin-RevId: 3ee350506a536a6dba9575e8311188bc92fed584",
+            "url": "https://github.com/openai/codex/commit/78d4c7c7fae278d2b0a904316c274681c62461a8"
+          },
+          {
+            "sha": "f29d55ff0697a88226e8a9811b3c007e5f719cba",
+            "title": "Propagate authentication header failures before sending requests (#55607)",
+            "message": "Propagate authentication header failures before sending requests (#55607)\n\n## Why\n\nSynchronous auth header construction could silently return no credentials when managed authentication became unavailable. Callers need an error to avoid sending requests with missing or partial authentication.\n\n## What changed\n\n- Make `AuthProvider::add_auth_headers`, `to_auth_headers`, and auth header telemetry fallible, and propagate failures through request and WebSocket setup.\n- Return a transient error when managed authentication is unavailable, and preserve network policy denials through auth error conversion.\n- Retry transient MCP authentication errors while treating build errors and policy denials as terminal.\n- Cancel local MCP event streams before resolving authentication so cleanup still works when credentials become unavailable.\n\n## Testing\n\nAdd regression coverage for rejected partial authentication, async header resolution, terminal auth errors without sending requests, managed account changes, MCP retry classification, and local stream cancellation after authentication becomes unavailable.\n\nGitOrigin-RevId: 39d981e232cba1e302de502a2fa6239101114ed1",
+            "url": "https://github.com/openai/codex/commit/f29d55ff0697a88226e8a9811b3c007e5f719cba"
+          },
+          {
+            "sha": "61469096fe086ccdbe87c06f9efc4ee59a4b51fe",
+            "title": "Update `rustls-webpki` and `webpki-roots` lockfile versions (#55616)",
+            "message": "Update `rustls-webpki` and `webpki-roots` lockfile versions (#55616)\n\n## What changed\n\n- Update `rustls-webpki` from `0.103.15` to `0.103.16`.\n- Update `webpki-roots` from `1.0.5` to `1.0.10`.\n- Refresh the corresponding entries in `codex-rs/Cargo.lock` and `MODULE.bazel.lock`.\n\nGitOrigin-RevId: c73d2afb6ce9f8bd8756d3cbe6f8114edc461262",
+            "url": "https://github.com/openai/codex/commit/61469096fe086ccdbe87c06f9efc4ee59a4b51fe"
+          },
+          {
+            "sha": "5ac9888436003b24f748bb5938629a7bf0bfbc50",
+            "title": "Move Linux sandbox unit tests into separate files (#55620)",
+            "message": "Move Linux sandbox unit tests into separate files (#55620)\n\n## What changed\n\nExtract the inline test modules for `bundled_bwrap`, `bwrap`, `exec_util`,\n`launcher`, `proxy_routing`, and `seccomp` into sibling `*_tests.rs` files.\nKeep them wired through `#[cfg(test)]` and explicit `#[path]` attributes,\nwith existing test coverage and runtime behavior unchanged.\n\nGitOrigin-RevId: 79b70a092a19b10716939744542415bc1dcaf0b2",
+            "url": "https://github.com/openai/codex/commit/5ac9888436003b24f748bb5938629a7bf0bfbc50"
+          },
+          {
+            "sha": "aa081afb1b044ee66c738b8808c07f13dfcff373",
+            "title": "Refactor Guardian v2 Decisions snapshot comparison (#55623)",
+            "message": "Refactor Guardian v2 Decisions snapshot comparison (#55623)\n\n## What changed\n\n- Rename the snapshot comparison entry point to `start_snapshot_comparison` and extract request spawning into `spawn_request`.\n- Accept a `ContentItem` rubric and an iterator of evidence in the request adapter.\n- Read the Decisions comparison feature flag once per classification and simplify the budget rejection test setup.\n\nGitOrigin-RevId: b4a294eeecb6069db0f80ff6e4f13f558cbd7815",
+            "url": "https://github.com/openai/codex/commit/aa081afb1b044ee66c738b8808c07f13dfcff373"
+          },
+          {
+            "sha": "48b6a9d8e0b5e0d809a60eac1cb48486d6ba5107",
+            "title": "Reserve a sibling rollout candidate slot for the first ancestor (#55627)",
+            "message": "Reserve a sibling rollout candidate slot for the first ancestor (#55627)\n\n## Why\n\nSibling rollout prefetching returns no paths when its candidate set omits the first ancestor. With more than 64 sibling rollouts, the candidate limit could exclude that ancestor and prevent prefetching.\n\n## What changed\n\nPass the first ancestor ID into candidate collection and reserve the final slot for it until it is found, preserving the 64-candidate limit.\n\n## Testing\n\nAdd a regression test that creates more siblings than the candidate limit and verifies that an otherwise omitted ancestor is included when prioritized.\n\nGitOrigin-RevId: 130508dfb1a190af68ccf1911c7501617be79a00",
+            "url": "https://github.com/openai/codex/commit/48b6a9d8e0b5e0d809a60eac1cb48486d6ba5107"
+          },
+          {
+            "sha": "e776b27eb0422c3d10fba676c632ff08ffb4469b",
+            "title": "Add frozen cloud skill snapshots to the app server (#55631)",
+            "message": "Add frozen cloud skill snapshots to the app server (#55631)\n\n## What changed\n\n- Add `--cloud-skills-snapshot PATH` to load a cloud skill catalog and resource contents from JSON once at app-server startup, without contacting a live skill service.\n- Expose snapshot skills through the native `skills.list` and `skills.read` interface, preserving aliases and prompt visibility. Reads remain available after the snapshot file is removed.\n- Validate package boundaries, required resources, duplicate packages, and size limits; fail startup for missing or invalid snapshots.\n- Keep frozen cloud catalog and read caches independent of live MCP resource changes.\n\n## Testing\n\nAdd provider, cache, app-server, and core scenario tests covering validation, exact resource contents, authority boundaries, startup failures, and listing and reading frozen skills alongside a named executor.\n\nGitOrigin-RevId: d438a5d678121db3e17515fc5edcd00d4e20b900",
+            "url": "https://github.com/openai/codex/commit/e776b27eb0422c3d10fba676c632ff08ffb4469b"
+          },
+          {
+            "sha": "7a152fbcf9ecd32d9fb4b45edf80127ee4c8499e",
+            "title": "Treat code-mode collaboration messages as plaintext (#55633)",
+            "message": "Treat code-mode collaboration messages as plaintext (#55633)\n\n## What changed\n\nClassify messages from code-mode collaboration calls as `AgentMessage::Plaintext` so they receive the context wrapper for plaintext messages. Apply this to `spawn_agent`, `send_message`, and `followup_task`.\n\n## Testing\n\nAdd a regression test that spawns an agent through `exec` and verifies that the child receives the task as plaintext with sender and recipient attribution.\n\nGitOrigin-RevId: 495c70ea13fd2bb06989e5aacab60beed0c19a56",
+            "url": "https://github.com/openai/codex/commit/7a152fbcf9ecd32d9fb4b45edf80127ee4c8499e"
+          },
+          {
+            "sha": "a13ab7e4ed6639a77f61df3939cbec4516208fd1",
+            "title": "Enable Decisions comparisons for Guardian V2 conversation mode (#55635)",
+            "message": "Enable Decisions comparisons for Guardian V2 conversation mode (#55635)\n\n## Why\n\nGuardian V2 previously skipped optional Decisions comparisons in conversation mode as unsupported evidence.\n\n## What changed\n\n- Start comparisons from the prepared conversation input, including retained history or rebuilt evidence after a history reset.\n- Extract the classifier rubric and preserve evidence message roles, content order, and boundaries. Omit retained reasoning and compaction items while continuing to reject other unsupported evidence.\n- Measure baseline sampling through the usable score, before history draining and commit, and report skipped comparisons when preparation fails or the request is superseded.\n\n## Testing\n\nExtend coverage to both classifier modes for comparison disagreements, failures, and disabled or uninitialized comparisons without changing baseline scores. Verify conversation evidence across history reuse and resets, malformed input rejection, and budget failures before either backend sends a request.\n\nGitOrigin-RevId: ce32cf876d15d3b82e0b83ac02c33447e7724a51",
+            "url": "https://github.com/openai/codex/commit/a13ab7e4ed6639a77f61df3939cbec4516208fd1"
+          },
+          {
+            "sha": "cb00a67569450aea2fdb1b1f31fc042fc0b5416f",
+            "title": "Add runtime assertion authentication modes and an auth provider (#55636)",
+            "message": "Add runtime assertion authentication modes and an auth provider (#55636)\n\n## What changed\n\nAdd `RuntimeAuthProvider` to resolve request authentication through the runtime auth manager. Support `dual_header` mode, which sends a bearer credential alongside `x-openai-agent-assertion`, and `assertion_only` mode, which uses `Authorization: AgentAssertion …`.\n\nReplace stale authentication headers and sign a fresh assertion for each request attempt. Propagate registration failures without falling back to credential-only authentication, preserving policy errors and classifying transport failures, rate limits, and server errors as transient.\n\nAdd the disabled-by-default `features.runtime_agent_instances` configuration with independent `enabled` and `mode` settings, schema support, and structured override merging. Selecting a mode alone does not enable the feature.\n\n## Testing\n\nAdd coverage for both modes with API key and ChatGPT credentials, stale header replacement, fresh assertions, credential refresh without runtime replacement, registration failures, and configuration parsing and merging.\n\nGitOrigin-RevId: 9e93d25762600f0ff592c5248fe4c8c2c8182c8d",
+            "url": "https://github.com/openai/codex/commit/cb00a67569450aea2fdb1b1f31fc042fc0b5416f"
+          },
+          {
+            "sha": "305db3808cf860ced585808ee4a191bb018a3b18",
+            "title": "Make pending injections interrupt agent waits and sleep (#55644)",
+            "message": "Make pending injections interrupt agent waits and sleep (#55644)\n\n## Why\n\nInput injected before `wait_agent` or `clock.sleep` begins must still interrupt the wait and reach the next model request.\n\n## What changed\n\nTrack notifying response-item injections as pending steering activity. Reset that state when pending input is consumed or cleared so later passive context does not interrupt waits.\n\n## Testing\n\nExtend wait and sleep tests to cover injections queued before the wait and delivered while waiting, alongside user steering. Add queue coverage for pending injection detection and reset after consumption.\n\nGitOrigin-RevId: 90f8d968336082c76271d1ca4f81b855bafc72c6",
+            "url": "https://github.com/openai/codex/commit/305db3808cf860ced585808ee4a191bb018a3b18"
+          },
+          {
+            "sha": "98f92bd0b5574bb9debed669cd48443ee5167434",
+            "title": "Fix in-process app-server shutdown with full queues (#55645)",
+            "message": "Fix in-process app-server shutdown with full queues (#55645)\n\n## Why\n\nWhen unread events block notification delivery and the client request queue is full, shutdown can hang waiting to enqueue its shutdown message before reaching its timeouts.\n\n## What changed\n\nDrop the event receiver at the start of `InProcessClientHandle::shutdown` to unblock notification delivery before waiting for space in the request queue.\n\n## Testing\n\nAdd a regression test that fills both queues with real requests and notifications, then verifies shutdown completes within the configured timeout budget.\n\nGitOrigin-RevId: a2b01042fc81dd2df4affca1d6cf2ddfb64b39db",
+            "url": "https://github.com/openai/codex/commit/98f92bd0b5574bb9debed669cd48443ee5167434"
+          },
+          {
+            "sha": "c6e4438a5d5befe6c8e59b01b6534eb8f0792230",
+            "title": "Guard auth persistence and reloads against concurrent login changes (#55646)",
+            "message": "Guard auth persistence and reloads against concurrent login changes (#55646)\n\n## Why\n\nAn in-flight token refresh or auth reload can outlive a login change or logout. Its result must not overwrite credentials for a different login or restore stale cached auth.\n\n## What changed\n\n- Serialize in-process auth storage reads and writes that participate in credential updates.\n- Verify the stored login before persisting refreshed tokens or agent identity records, while allowing older clients to drop login metadata when the refresh token still matches.\n- Reject stale auth reload results using generation checks, and invalidate pending reads on logout even when the cache is already empty.\n- Keep account grant reads strict when the keyring is unavailable, while preserving ordinary auth fallback behavior.\n\n## Testing\n\nAdd regression coverage for stale reloads after logout, login replacement during refresh, legacy metadata loss, keyring recovery with rotated tokens, and refresh persistence failures.\n\nGitOrigin-RevId: 01bce9ddbc3101de868adcda3370fcdc4eb70163",
+            "url": "https://github.com/openai/codex/commit/c6e4438a5d5befe6c8e59b01b6534eb8f0792230"
+          },
+          {
+            "sha": "801bd4d773ab374959344c36640ddbdec270ddb7",
+            "title": "Search compressed rollouts concurrently (#55652)",
+            "message": "Search compressed rollouts concurrently (#55652)\n\n## What changed\n\nCollect compressed rollout paths and scan them in up to four concurrent batches, reusing compiled search patterns within each batch. Preserve match snippets, plain rollout path keys, and per-file error handling.\n\n## Testing\n\nExtend the regression test to verify matches across seven compressed rollouts while skipping a corrupt file, and retain coverage for oversized search patterns and missing files.\n\nGitOrigin-RevId: 522403654ab8577499f8f8043ccc017590c4833e",
+            "url": "https://github.com/openai/codex/commit/801bd4d773ab374959344c36640ddbdec270ddb7"
+          },
+          {
+            "sha": "87f3c3284e1669b90ad9f4925039e9e3bc769b61",
+            "title": "Track code-mode cell lifecycle and result buffering time (#55653)",
+            "message": "Track code-mode cell lifecycle and result buffering time (#55653)\n\n## What changed\n\n- Add `CodeModeCellTiming` notifications for yielded executions, terminal waits, and unavailable cells, with thread, call, and cell identifiers.\n- Measure how long completed results remain buffered before retrieval and carry `result_buffered_for` through the runtime, stdio protocol, and gRPC response metadata. Immediate delivery reports zero; waits without a completed result report no buffering measurement.\n- Default missing buffering data to zero for compatibility with older hosts.\n\n## Testing\n\nExtend runtime tests to verify buffering duration with a paused clock and retrieval through termination. Add gRPC conversion tests for nanosecond precision, optional metadata, and the distinction between immediate delivery and no completed result.\n\nGitOrigin-RevId: 60c0c5a3affa69ac3779bf1812fca50f5748af76",
+            "url": "https://github.com/openai/codex/commit/87f3c3284e1669b90ad9f4925039e9e3bc769b61"
+          },
+          {
+            "sha": "66d0de9983e82b266e89ee29523324c9d08a5472",
+            "title": "Add lifecycle hooks for inter-agent messages (#55657)",
+            "message": "Add lifecycle hooks for inter-agent messages (#55657)\n\n## What changed\n\nAdd `MessageLifecycleContributor` hooks to capture extension state when local agent control publishes a message and notify contributors when the recipient commits it to history, before sampling.\n\nCarry shared delivery state through submissions, input queues, and mailbox eviction with `PendingAgentMessage`. Notify consumption at most once per delivery, release captured state when consumed or abandoned, and drop pending mail outside queue locks. Preserve the serialized message format without republishing restored history.\n\n## Testing\n\nExtend the mailbox eviction test to verify that publication state survives eviction and retained messages are consumed before the first resumed model sample.\n\nGitOrigin-RevId: 9a1f6832bd48ec646a3fd179485c095e8dcc72cc",
+            "url": "https://github.com/openai/codex/commit/66d0de9983e82b266e89ee29523324c9d08a5472"
+          },
+          {
+            "sha": "2f5e242d9f869b0553bf37e007b85b2cbd9b31ef",
+            "title": "Omit reasoning and compaction from Decisions snapshot comparisons (#55666)",
+            "message": "Omit reasoning and compaction from Decisions snapshot comparisons (#55666)\n\n## Why\n\nDecisions snapshot comparisons reject requests containing reasoning or compaction, while conversation comparisons already omit those items. A parent compaction also causes snapshot comparisons to be rejected.\n\n## What changed\n\n- Share filtering of reasoning, compaction, and context compaction across both comparison modes, and ignore parent compaction when building the Decisions request.\n- Distinguish malformed request setup from unsupported input items. Record setup errors as failures and unsupported input items as skipped comparisons.\n\n## Testing\n\nExtend the HTTP contract test to cover both comparison modes with reasoning, compaction, context compaction, and parent compaction while preserving message content. Update assertions for the distinct setup and unsupported-input errors.\n\nGitOrigin-RevId: e3ba0cce3b6457b3e3eab3589352b70288cbb1ef",
+            "url": "https://github.com/openai/codex/commit/2f5e242d9f869b0553bf37e007b85b2cbd9b31ef"
+          },
+          {
+            "sha": "c465563aa9626d99420062135b187d299f904f81",
+            "title": "Enable app routing for remote curated Agent Plugins (#55667)",
+            "message": "Enable app routing for remote curated Agent Plugins (#55667)\n\n## Why\n\nAgent Plugin manifests previously skipped app declarations, including service-generated declarations installed with remote curated plugins. This prevented those plugins from using app routing and suppressing matching direct MCP connections.\n\n## What changed\n\n- Recognize app declarations for Agent Plugins from `openai-curated-remote` across loading, capability summaries, plugin details, tool suggestions, and install authentication.\n- Apply app routing to suppress same-name MCP servers when an app route is available. Keep unrelated MCP servers available and preserve direct MCP access in API-key mode.\n- Keep app declarations inactive for Agent Plugins from other marketplaces.\n\n## Testing\n\nAdd coverage for marketplace and authentication routing, service-generated app declarations during installation with both manifest formats, and app tools reaching turns. Verify that disabling Apps does not restore matching direct MCP connections.\n\nGitOrigin-RevId: 791739569f0e01c898040bc2d028cf517f767e00",
+            "url": "https://github.com/openai/codex/commit/c465563aa9626d99420062135b187d299f904f81"
+          },
+          {
+            "sha": "57dedf20a502c8d1d13b89f0a9c0cbf4f5f71320",
+            "title": "Release 0.164.0-alpha.8",
+            "message": "Release 0.164.0-alpha.8",
+            "url": "https://github.com/openai/codex/commit/57dedf20a502c8d1d13b89f0a9c0cbf4f5f71320"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.7",
+          "head": "rust-v0.164.0-alpha.8",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.7...rust-v0.164.0-alpha.8",
+          "status": "diverged",
+          "total": 30,
+          "behind": 1,
+          "complete": true,
+          "fetched": 30
         },
         "comparisonError": null
       }
