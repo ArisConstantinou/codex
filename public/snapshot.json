@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-21T20:14:54.976Z",
+  "generatedAt": "2026-10-21T23:27:37.390Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -7052,6 +7052,67 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/broad-access-through-consistent-standards",
+      "at": "2026-10-21T21:00:00.000Z",
+      "url": "https://openai.com/index/broad-access-through-consistent-standards",
+      "text": "Broad access through consistent standards. How OpenAI works with distribution partners to uphold consistent safeguards, support responsible access, and clarify expectations in our Usage Policies.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.10",
+      "at": "2026-10-21T22:46:30.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.10",
+      "text": "rust-v0.164.0-alpha.10. Release 0.164.0-alpha.10",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11.1",
+      "at": "2026-10-21T22:23:33.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.11.1",
+      "text": "0.163.0-alpha.11.1. Release 0.163.0-alpha.11.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M5G9QQ9V4CYDWFRYF9BWZ5GG",
+      "at": "2026-10-21T23:03:45.000Z",
+      "url": "https://status.openai.com/incidents/01M5G9QQ9V4CYDWFRYF9BWZ5GG",
+      "text": "Authentication errors for some users. On October 20, from 9:35 to 10:35 a.m. PDT, some users near Illinois experienced authentication errors with the API, ChatGPT, and Codex. We rolled back a configuration change, and service was restored.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-21T22:36:29.000Z"
     }
   ],
   "sources": {
@@ -7060,7 +7121,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-21T20:14:53.853Z",
+      "lastSuccessAt": "2026-10-21T23:27:36.859Z",
       "error": null,
       "count": 150
     },
@@ -7069,7 +7130,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-21T20:14:53.853Z",
+      "lastSuccessAt": "2026-10-21T23:27:36.859Z",
       "error": null,
       "count": 10
     },
@@ -7078,7 +7139,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-21T20:14:53.853Z",
+      "lastSuccessAt": "2026-10-21T23:27:36.859Z",
       "error": null,
       "count": 25
     }
@@ -23647,6 +23708,87 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/broad-access-through-consistent-standards:2026-10-21T23:27:37.390Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T23:27:37.390Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/broad-access-through-consistent-standards",
+        "at": "2026-10-21T21:00:00.000Z",
+        "url": "https://openai.com/index/broad-access-through-consistent-standards",
+        "text": "Broad access through consistent standards. How OpenAI works with distribution partners to uphold consistent safeguards, support responsible access, and clarify expectations in our Usage Policies.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.10:2026-10-21T23:27:37.390Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T23:27:37.390Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.10",
+        "at": "2026-10-21T22:46:30.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.10",
+        "text": "rust-v0.164.0-alpha.10. Release 0.164.0-alpha.10",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11.1:2026-10-21T23:27:37.390Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T23:27:37.390Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11.1",
+        "at": "2026-10-21T22:23:33.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.11.1",
+        "text": "0.163.0-alpha.11.1. Release 0.163.0-alpha.11.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M5G9QQ9V4CYDWFRYF9BWZ5GG:2026-10-21T23:27:37.390Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T23:27:37.390Z",
+      "item": {
+        "id": "openai-status:01M5G9QQ9V4CYDWFRYF9BWZ5GG",
+        "at": "2026-10-21T23:03:45.000Z",
+        "url": "https://status.openai.com/incidents/01M5G9QQ9V4CYDWFRYF9BWZ5GG",
+        "text": "Authentication errors for some users. On October 20, from 9:35 to 10:35 a.m. PDT, some users near Illinois experienced authentication errors with the API, ChatGPT, and Codex. We rolled back a configuration change, and service was restored.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-21T22:36:29.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -23661,7 +23803,8 @@
       "rust-v0.163.0-alpha.9": 1791905643313,
       "rust-v0.163.0-alpha.12": 1791989875953,
       "rust-v0.163.0-alpha.13": 1792077183213,
-      "rust-v0.164.0-alpha.1": 1792161392449
+      "rust-v0.164.0-alpha.1": 1792161392449,
+      "rust-v0.164.0-alpha.10": 1792626157392
     }
   }
 }
