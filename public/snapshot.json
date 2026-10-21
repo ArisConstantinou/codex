@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-21T11:40:05.855Z",
+  "generatedAt": "2026-10-21T16:08:35.728Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -6715,6 +6715,313 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-10-21T02:26:28.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/openai-models-google-cloud",
+      "at": "2026-10-21T12:00:00.000Z",
+      "url": "https://openai.com/index/openai-models-google-cloud",
+      "text": "OpenAI models are coming to Google Cloud. OpenAI and Google Cloud are bringing frontier models and Codex workflows to Gemini’s Model Garden, available through Google Cloud Marketplace.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
+      "at": "2026-10-21T07:00:00.000Z",
+      "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
+      "text": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities. Patch the Planet connects security researchers, maintainers, and incident responders to help address critical vulnerabilities across open source.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/chatgpt-ads-expands-26-new-countries",
+      "at": "2026-10-21T13:00:00.000Z",
+      "url": "https://openai.com/index/chatgpt-ads-expands-26-new-countries",
+      "text": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform. From local businesses to global brands, more advertisers can now reach people as they explore, compare and decide what to buy in ChatGPT.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+      "at": "2026-10-21T04:50:00.000Z",
+      "url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+      "text": "Using thousands of AI agents to uncover new leads in biological data. See how OpenAI, PerturbAI, and Scripps Research used distributed AI agents to uncover promising research leads in data from millions of brain cells.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/building-chatgpt-ad-stack",
+      "at": "2026-10-21T07:00:00.000Z",
+      "url": "https://openai.com/index/building-chatgpt-ad-stack",
+      "text": "How we built ChatGPT’s novel ad stack for user trust and relevance. Learn how OpenAI built ChatGPT’s LLM-powered ad stack to understand conversational intent, keep ads separate from answers, and deliver relevant ads at scale.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.9",
+      "at": "2026-10-21T14:19:35.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.9",
+      "text": "0.164.0-alpha.9. Release 0.164.0-alpha.9",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.9",
+        "title": "0.164.0-alpha.9",
+        "body": "Release 0.164.0-alpha.9\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-21T16:08:35.731Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.9",
+        "publishedAt": "2026-10-21T14:12:01Z",
+        "commits": [
+          {
+            "sha": "ef1604d8f5f01114ede3b3484901d5826378db0e",
+            "title": "Upgrade the Rust toolchain to 1.99.1 (#55677)",
+            "message": "Upgrade the Rust toolchain to 1.99.1 (#55677)\n\n## What changed\n\n- Update Cargo and Bazel toolchain pins, CI and release workflows, and Windows setup from Rust `1.95.0` to `1.99.1`.\n- Adapt Rust code to updated APIs and lint requirements, including `try_update` and `as_chunks`, and refresh the halfwidth sound marks snapshot.\n- Update `webpki-root-certs` from `1.0.5` to `1.0.10` in the Cargo and Bazel lockfiles.\n\nGitOrigin-RevId: e1aaed63b7e72bb8c8bbe25b32c6329c9a37b6c3",
+            "url": "https://github.com/openai/codex/commit/ef1604d8f5f01114ede3b3484901d5826378db0e"
+          },
+          {
+            "sha": "2623f206bd40e0a9a9b16a49b4da415585c0e45f",
+            "title": "Recheck account login ownership for enterprise MCP (#55680)",
+            "message": "Recheck account login ownership for enterprise MCP (#55680)\n\n## Why\n\nA persisted login replacement can leave the auth cache holding the previous login, even for the same account. Enterprise MCP authorization must detect that replacement before continuing to use enterprise credentials.\n\n## What changed\n\n- Check cached and persisted account login ownership before enterprise MCP connections and around token exchanges, revoking authorization when ownership changes.\n- Recheck account ownership and login generation before committing enterprise sign-in credentials.\n- Compare complete token data when checking whether an account OAuth grant is still current, and expose grant token access and credential comparison helpers.\n\n## Testing\n\nAdd regression coverage for detecting a same-account login replacement without updating cached auth, rejecting enterprise MCP use after replacement, and keeping ordinary MCP usable while an enterprise account storage read is blocked.\n\nGitOrigin-RevId: 6303f88a9cbcc84c99e453dc281b23d66930f518",
+            "url": "https://github.com/openai/codex/commit/2623f206bd40e0a9a9b16a49b4da415585c0e45f"
+          },
+          {
+            "sha": "7389eebf45df47895b386334bc1c5b9809eb9605",
+            "title": "Fix TUI permission selection and session state handling (#55682)",
+            "message": "Fix TUI permission selection and session state handling (#55682)\n\n## Why\n\nQueued prompts can resume before a pending permissions menu opens, and local\n`/permissions` commands can bypass guards for outstanding permission changes.\nAttaching to a different project can also retain model access information from\nthe launch directory.\n\n## What changed\n\n- Route `/permissions` through app permission guards and hold queued prompts\n  while the menu is pending. Settle the hold when opening is rejected, discovery\n  is invalidated, or a covering request is resolved.\n- Apply the custom permission profile selection check beyond embedded servers.\n- Refresh API-key model access when the first attached session changes the\n  working directory, including with an embedded server. Propagate the widget's\n  model catalog to the app and server even when the model response matches the\n  widget's already-updated catalog.\n- Skip sessions reported as `thread not loaded` during name lookup for all\n  server types instead of falling back to unverified list metadata.\n\n## Testing\n\nAdd regression coverage for permission guards, queued prompts across successive\npermission menus, invalidated and covered menus, model catalog propagation,\nproject changes on initial attachment, and name lookup across server pages with\nunreadable entries.\n\nGitOrigin-RevId: eb49cb5268ce0ce1e40009b73a0180f23e61ed72",
+            "url": "https://github.com/openai/codex/commit/7389eebf45df47895b386334bc1c5b9809eb9605"
+          },
+          {
+            "sha": "36512a34ffe71a48bd9aab66fc81c3b909ef2dfc",
+            "title": "Add account credential support to EMA token exchange helpers (#55685)",
+            "message": "Add account credential support to EMA token exchange helpers (#55685)\n\n## What changed\n\n- Add an account IdP identity resolver that checks ID-token bindings against trusted issuer and client provenance before discovering the refresh-token endpoint. An expired ID token does not by itself invalidate the refresh grant.\n- Generalize `EmaIdpIdentity` and token exchange requests to carry caller-owned credential leases. Invoke a `finish_idp` callback after the IdP exchange and before resource authorization server I/O so callers can release their refresh guards at that boundary.\n- Reject empty expected OIDC issuers and client IDs, and expose an unverified issuer hint solely for explaining legacy login migration.\n\nGitOrigin-RevId: 34473fed82a9a6e58997664cd5e6e67049b5ee7e",
+            "url": "https://github.com/openai/codex/commit/36512a34ffe71a48bd9aab66fc81c3b909ef2dfc"
+          },
+          {
+            "sha": "69727ae170297c1057108ea170e6f0cf41ba993f",
+            "title": "Clean up failed and abandoned marketplace staging directories (#55689)",
+            "message": "Clean up failed and abandoned marketplace staging directories (#55689)\n\n## Why\n\nFailed marketplace adds can leave temporary checkouts behind, and interrupted adds or upgrades can leave abandoned staging directories.\n\n## What changed\n\n- Share a staging guard across marketplace adds and upgrades so temporary checkouts are removed on completion or failure, including config-write rollback.\n- Reclaim up to four abandoned directories per cleanup pass during add and upgrade operations. Use file locks to preserve active checkouts and operating-system-specific names to avoid reclaiming another platform's staging directories.\n- Skip symlinks and unrelated entries, and report cleanup failures as warnings.\n\n## Testing\n\nAdd regression coverage for failed adds, CLI and automatic-upgrade cleanup, cross-process ownership and abandonment, lock contention, bounded cleanup, and symlink handling.\n\nGitOrigin-RevId: 20999da0eab861dfb8025aad5e9fba2bcaf818b8",
+            "url": "https://github.com/openai/codex/commit/69727ae170297c1057108ea170e6f0cf41ba993f"
+          },
+          {
+            "sha": "75c78768d2c04da11326adb2354ff32083fe60e8",
+            "title": "Reclaim aged legacy marketplace staging directories (#55690)",
+            "message": "Reclaim aged legacy marketplace staging directories (#55690)\n\n## Why\n\nLegacy marketplace checkouts have no owner lock and were skipped by staging cleanup. Age thresholds allow cleanup to reclaim them while leaving recent clones from older binaries alone.\n\n## What changed\n\nRemove legacy `marketplace-add-` directories after 24 hours and `marketplace-upgrade-` directories after 10 minutes, based on directory modification time. Keep owner locks authoritative for current staging directories.\n\n## Testing\n\nExtend cleanup tests to cover both legacy age thresholds, preservation of recent legacy clones and live locked checkouts, and skipping legacy symlinks.\n\nGitOrigin-RevId: 77b55bfe50ab29f5ceae46a80276b2c9e361107f",
+            "url": "https://github.com/openai/codex/commit/75c78768d2c04da11326adb2354ff32083fe60e8"
+          },
+          {
+            "sha": "ec8edd576cb4f938e44d3e837ae4e369b44083d5",
+            "title": "Refine enterprise MCP auth errors and request authority checks (#55691)",
+            "message": "Refine enterprise MCP auth errors and request authority checks (#55691)\n\n## What changed\n\n- Classify token-source failures by credential kind and exchange stage, with sign-in or administrator guidance that omits provider error text. Treat resource authorization failures separately from enterprise identity failures when deciding whether authentication is required.\n- Add policy-bound request authority checks that return `RequestNotSent` when policy is updating or unavailable, while allowing admitted responses to finish. Support child authorities that isolate connection revocation and share response draining.\n- Recheck account validity after acquiring the credential invalidation lock and check cancellation before deleting a rejected credential.\n\n## Testing\n\nExtend regression coverage for policy suspension during token renewal, completion of admitted requests, recovery with fresh authority, and transport retry classification. Expand provider-error tests to cover `unauthorized_client` and `invalid_client` while checking that credential text is not exposed.\n\nGitOrigin-RevId: c0097adc35cb5fdffde1466e4bc2b5ec78114a4b",
+            "url": "https://github.com/openai/codex/commit/ec8edd576cb4f938e44d3e837ae4e369b44083d5"
+          },
+          {
+            "sha": "d4e03acb6147dc83f5e013fd91f729da72712a03",
+            "title": "Tag tool registration metrics with effective incremental tools mode (#55692)",
+            "message": "Tag tool registration metrics with effective incremental tools mode (#55692)\n\n## What changed\n\nAdd an `incremental_tools` attribute to `codex.tools.registered` using the effective mode for the current sampling request. Compute the mode once and reuse it for registration metrics and prompt construction across transport retries.\n\n## Testing\n\nExtend integration tests to verify the attribute for incremental and non-incremental requests, including when the feature flag is enabled but the Responses API does not support incremental tools. Assert registration sample counts and retain coverage that stream retries do not duplicate registration metrics.\n\nGitOrigin-RevId: e5b7a1075fe722ef6bdf900ae07e2b1b06aecfb5",
+            "url": "https://github.com/openai/codex/commit/d4e03acb6147dc83f5e013fd91f729da72712a03"
+          },
+          {
+            "sha": "6fb1c3903d42e3cc7da2c89e3a045fe0ce137af4",
+            "title": "Use hermetic dsymutil for macOS Bazel builds (#55693)",
+            "message": "Use hermetic dsymutil for macOS Bazel builds (#55693)\n\n## What changed\n\n- Add a `dsymutil` wrapper that delegates to the C toolchain's `LLVM_DSYMUTIL`, and include it in macOS Rust binary compile inputs and `PATH` so `rustc` can find it by name.\n- Build macOS release staging archives with `--config=ci-macos`, `--remote_download_toplevel`, and `--build_metadata=VISIBILITY=PRIVATE`.\n\nGitOrigin-RevId: 0f46520807dd9804049b6ae18351275af3693907",
+            "url": "https://github.com/openai/codex/commit/6fb1c3903d42e3cc7da2c89e3a045fe0ce137af4"
+          },
+          {
+            "sha": "feadd9441e67f2d8970ffc390212c32f3dfbba43",
+            "title": "Preserve enterprise MCP authorization across runtime refreshes (#55696)",
+            "message": "Preserve enterprise MCP authorization across runtime refreshes (#55696)\n\n## Why\n\nConfiguration reloads must cancel stale enterprise MCP startups while preserving access for running threads that still pass validation. Replacing a runtime during `thread/revert` must also leave the replacement able to use enterprise tools.\n\n## What changed\n\n- Separate pending startup cancellation from published thread lifetimes, with independent startup state for forks and replacement runtimes.\n- Retain eligible enterprise MCP connections across refreshes and explicit reconnects while applying updated tool restrictions and approvals. Do not create replacement enterprise connections after initial startup.\n- Revoke enterprise authorization when a thread is removed, drain requests when access is disabled, and revoke a connection's authority when token renewal requires authentication.\n\n## Testing\n\nExtend regression coverage to verify enterprise tool calls survive `thread/revert`, inherited fork configurations are cancelled after a reload, and enterprise calls fail after logout while ordinary MCP calls remain available.\n\nGitOrigin-RevId: 2d634be3011854b57f73c741bd1ec6b5aed94ee5",
+            "url": "https://github.com/openai/codex/commit/feadd9441e67f2d8970ffc390212c32f3dfbba43"
+          },
+          {
+            "sha": "6b13dffc5e4c334fe87f823b214ed15a4bf37a11",
+            "title": "Reuse Codex account grants for enterprise MCP authentication (#55698)",
+            "message": "Reuse Codex account grants for enterprise MCP authentication (#55698)\n\n## What changed\n\n- Prefer stored enterprise credentials when available; otherwise use a validated Codex account OAuth grant whose issuer matches the enterprise MCP configuration.\n- Pin each connection to its credential source and OAuth client, reject stale account grants, and hold the account refresh lease only during the IdP exchange.\n- Report actionable sign-in and issuer configuration errors, and classify token failures by credential source.\n\nGitOrigin-RevId: 26673f276a31e4ca5290f6b120f0ac44c77d7239",
+            "url": "https://github.com/openai/codex/commit/6b13dffc5e4c334fe87f823b214ed15a4bf37a11"
+          },
+          {
+            "sha": "35757adb728b268a1e75eabeb3e4cf9a6def5c18",
+            "title": "Enable MCP OAuth refresh coordination by default (#55701)",
+            "message": "Enable MCP OAuth refresh coordination by default (#55701)\n\n## What changed\n\nMark `mcp_oauth_refresh_coordination` as stable and enable it by default.\n\nGitOrigin-RevId: f82074c7d148808ceeb4acd206bbadefd470e5b1",
+            "url": "https://github.com/openai/codex/commit/35757adb728b268a1e75eabeb3e4cf9a6def5c18"
+          },
+          {
+            "sha": "b48277327d427b92ace30c1ee9d4817f8fa836b7",
+            "title": "Centralize cloud skill cache state under the catalog lock (#55705)",
+            "message": "Centralize cloud skill cache state under the catalog lock (#55705)\n\n## What changed\n\nMove cached cloud skill contents into `SkillCatalogState` alongside the published catalog generation. Prepare auth scopes and access cached contents under the same lock, clearing contents when the auth scope changes and retaining them when a partial refresh preserves a complete catalog. Keep generation checks around asynchronous discovery and reads.\n\nUse the auth key already captured by `prepare_cloud_generation` when creating a cloud plugin generation, so the stored and returned keys match.\n\nGitOrigin-RevId: 426bb7868baf9ff7855988291783a8d3e38d9c93",
+            "url": "https://github.com/openai/codex/commit/b48277327d427b92ace30c1ee9d4817f8fa836b7"
+          },
+          {
+            "sha": "3f31c0a040ca58b86cea70a8d40ad79d481e45d2",
+            "title": "Resolve MCP backend identity from runtime events in rollout traces (#55710)",
+            "message": "Resolve MCP backend identity from runtime events in rollout traces (#55710)\n\n## Why\n\nMCP callable namespaces and tool names can differ from their backend identities or match built-in tool names. Classifying calls by name can misidentify MCP calls and incorrectly parse namespaced `write_stdin` calls as terminal operations.\n\n## What changed\n\nResolve `ToolCallKind::Mcp` from the runtime invocation's server and tool as soon as the runtime starts, before MCP correlation assignment. Preserve the caller-facing summary and raw invocation, and skip built-in runtime handling for MCP calls.\n\nOnly create dispatch-based `write_stdin` terminal operations for calls without a namespace.\n\n## Testing\n\nAdd replay regression coverage for prefixed and unprefixed MCP aliases, names that match built-in tools, and `write_stdin` arguments with and without a session ID. Verify backend classification, preserved callable identity and dispatch lifecycle, and the absence of terminal operations and sessions.\n\nGitOrigin-RevId: 71f31335c1eb36b6b7e1a34383d10fc500bd2c4f",
+            "url": "https://github.com/openai/codex/commit/3f31c0a040ca58b86cea70a8d40ad79d481e45d2"
+          },
+          {
+            "sha": "db58a987b8a0b94b81ab321f0e0192757758df67",
+            "title": "Allow unified exec to fall back when credential masking is unavailable (#55719)",
+            "message": "Allow unified exec to fall back when credential masking is unavailable (#55719)\n\n## Why\n\nDisabled or failed protected shell snapshots prevent commands from running when credential masking is enabled.\n\n## What changed\n\nRestore unmasked credentials and continue execution when a protected shell snapshot is unavailable. Log and emit a warning explaining that the command will run with unmasked credentials.\n\n## Testing\n\nExtend `brokered_shell_snapshot_fallback` coverage for disabled and failed snapshots, including managed feature settings. Verify the warning, successful execution with restored credentials, continued filesystem sandbox and network policy enforcement, and masking recovery after snapshot storage is repaired.\n\nGitOrigin-RevId: 28561e571b2a043d0b6cfa248c9ba2a61dd558ba",
+            "url": "https://github.com/openai/codex/commit/db58a987b8a0b94b81ab321f0e0192757758df67"
+          },
+          {
+            "sha": "57d4fac64adbcaed0523ca6bf8d58c4ef6875157",
+            "title": "Avoid redundant clones when sending app-server notifications (#55723)",
+            "message": "Avoid redundant clones when sending app-server notifications (#55723)\n\n## Why\n\nTargeted notification delivery and broadcast routing clone the message for every recipient, then discard the original.\n\n## What changed\n\nUse `std::iter::repeat_n` to move the original message to the last recipient, avoiding one clone per nonempty recipient list while preserving delivery behavior.\n\n## Testing\n\nExpand notification tests to cover empty, single, and multiple recipient lists, checking payloads, target order, and shared timestamps. Add broadcast coverage for zero, one, and two eligible recipients, verifying that uninitialized clients, clients without the required experimental API support, and clients that opted out are skipped.\n\nGitOrigin-RevId: 2ba192f416ccd786e3566da3e5c851518b509afe",
+            "url": "https://github.com/openai/codex/commit/57d4fac64adbcaed0523ca6bf8d58c4ef6875157"
+          },
+          {
+            "sha": "2744e8686c3defaa96f7aff6c51a9df961c51224",
+            "title": "Share prepared MCP tool definitions across sessions (#55724)",
+            "message": "Share prepared MCP tool definitions across sessions (#55724)\n\n## Why\n\nSessions using the same MCP catalog can repeat schema normalization and retain duplicate tool specifications.\n\n## What changed\n\nSplit immutable MCP tool metadata and normalized specifications from per-handler caches, and reuse matching definitions within each `McpManager`. Require matching tool metadata, agent-plugin mode, and schema budget before reuse.\n\nKeep shared definitions behind weak references and prune expired entries on cache misses so completed sessions do not keep their schemas alive. Build definitions outside the shared index lock.\n\nGitOrigin-RevId: 02345359a1b0d297ca56f2f469de88aba89106f1",
+            "url": "https://github.com/openai/codex/commit/2744e8686c3defaa96f7aff6c51a9df961c51224"
+          },
+          {
+            "sha": "d571eaf1f61d0d93a797506335a99a9950ffe37b",
+            "title": "Preserve code cell response metadata in rollout traces (#55725)",
+            "message": "Preserve code cell response metadata in rollout traces (#55725)\n\n## Why\n\nReducing code cell lifecycle events discarded their response payload references and lost the initial response status when the runtime status changed.\n\n## What changed\n\nStore the initial response status and separate raw payload IDs for the initial response and final result on `CodeCell`. Carry payload references through queued lifecycle events so they survive replay when the source item arrives later.\n\n## Testing\n\nExtend lifecycle tests to verify distinct initial and final payload IDs and the preserved initial status for yielded cells that complete and failed cells whose lifecycle events precede their source item.\n\nGitOrigin-RevId: 8f49a3174ea487a5d91ebc2a6c97133aacaabfd2",
+            "url": "https://github.com/openai/codex/commit/d571eaf1f61d0d93a797506335a99a9950ffe37b"
+          },
+          {
+            "sha": "c7234c1174b27d9c55199fba0d546dc27d1b0415",
+            "title": "Box session metadata and compaction payloads in `RolloutItem` (#55733)",
+            "message": "Box session metadata and compaction payloads in `RolloutItem` (#55733)\n\n## What changed\n\nStore `RolloutItem::SessionMeta` and `RolloutItem::Compacted` payloads in `Box` values and update their producers, consumers, and test fixtures. Preserve the existing serialized rollout format.\n\nGitOrigin-RevId: 59fcc4beb47d23160872dcb6e95ace9b142d3d11",
+            "url": "https://github.com/openai/codex/commit/c7234c1174b27d9c55199fba0d546dc27d1b0415"
+          },
+          {
+            "sha": "af91f6ef2cd66ead278ebe7d5751973eef430aee",
+            "title": "Add a critical-path utility for exclusive duration attribution (#55804)",
+            "message": "Add a critical-path utility for exclusive duration attribution (#55804)\n\n## What changed\n\nAdd `codex-utils-critical-path` to track shared dependency paths and attribute time to inference, automatic review, user waits, tools, overhead, and unknown work. Parallel joins retain the later-finishing branch, preserving its full history without double-counting overlapping work.\n\nClip attribution to the requested interval and count unrecorded gaps as overhead. Bound retained history by collapsing it into unknown work at the depth limit, with nonrecursive destruction and bounded debug output.\n\n## Testing\n\nAdd unit tests for parallel joins, nested dependencies, ties, user waits, interval clipping, overlapping segments, history exhaustion, and safe formatting and concurrent release on small stacks.\n\nGitOrigin-RevId: 2df7453162491d3ae97bf4bee942730c8a4d5e5c",
+            "url": "https://github.com/openai/codex/commit/af91f6ef2cd66ead278ebe7d5751973eef430aee"
+          },
+          {
+            "sha": "2213359bd33f9ffc818e3aeb534faf47544293bc",
+            "title": "Measure Guardian review latency once with a monotonic clock (#55846)",
+            "message": "Measure Guardian review latency once with a monotonic clock (#55846)\n\n## Why\n\nGuardian review metrics derived duration from wall-clock timestamps, while analytics measured elapsed time when tracking the result. Clock changes and delayed tracking could produce inconsistent latencies.\n\n## What changed\n\nCapture one monotonic duration at review completion and pass it to both metrics and analytics. Preserve wall-clock timestamps for event ordering, and saturate analytics latency conversion at `u64::MAX`.\n\n## Testing\n\nAdd a regression test covering skewed wall-clock timestamps and delayed tracking, verifying that the duration metric uses the captured interval and completion timestamps are preserved.\n\nGitOrigin-RevId: 19eafb8e1f1a3d13a751bdc72c218e4cafeae410",
+            "url": "https://github.com/openai/codex/commit/2213359bd33f9ffc818e3aeb534faf47544293bc"
+          },
+          {
+            "sha": "21b1f5f5344db8adb6eb1be6a2e61f6085fdc8f8",
+            "title": "Bound retained turn analytics and clean up closed threads (#55847)",
+            "message": "Bound retained turn analytics and clean up closed threads (#55847)\n\n## Why\n\nDropped lifecycle facts can leave incomplete turns retaining analytics metadata indefinitely.\n\n## What changed\n\n- Limit retained turns to 256, evicting the oldest turn and its associated tool and review state when capacity is reached.\n- Forward `ThreadClosed` notifications to analytics and discard the closed thread's turn and review state, including reviews received without turn lifecycle facts.\n\n## Testing\n\nAdd regression tests covering metadata release after capacity eviction, continued reporting of new complete turns, cleanup isolated to the closed thread, and ignored approval responses after thread closure.\n\nGitOrigin-RevId: eed0a1fef013381654345d535f03de42b99e8607",
+            "url": "https://github.com/openai/codex/commit/21b1f5f5344db8adb6eb1be6a2e61f6085fdc8f8"
+          },
+          {
+            "sha": "4faf60f1265a495a68fd792701c60fa334714683",
+            "title": "Pause relay test time while inspecting handshake diagnostics (#55848)",
+            "message": "Pause relay test time while inspecting handshake diagnostics (#55848)\n\nPause Tokio time after the validation timeout in\n`malformed_handshakes_preserve_active_streams_and_admission_recovers`\nwhile inspecting diagnostics, since that inspection does not poll the\nharness WebSocket for pings. Resume time before closing the WebSocket so\nthe close handshake and its timeout run with an active clock.\n\nGitOrigin-RevId: 733a1fa35f80561424be97c4beb233780a7796cb",
+            "url": "https://github.com/openai/codex/commit/4faf60f1265a495a68fd792701c60fa334714683"
+          },
+          {
+            "sha": "6bae551093d24ad6539a7daba2d9a13b80b28d15",
+            "title": "Bound managed app-server and updater stderr logging (#55856)",
+            "message": "Bound managed app-server and updater stderr logging (#55856)\n\n## Why\n\nManaged stderr logs previously retained a tail only before a new launch, allowing logs to grow during a long-running process. Direct stderr writes could also block lifecycle operations on disk I/O.\n\n## What changed\n\n- Route managed app-server and updater logs through a shared nonblocking worker with a bounded queue. Drop records when the queue is full or a record exceeds 16 KiB, and avoid waiting for the worker at shutdown.\n- Prune live logs when they exceed 1 MiB, preserving the latest 256 KiB in `.log.previous` before truncating the current file. Keep inherited stderr handles usable after truncation.\n- Pause predecessor pruning during Windows updater handoff and resume it after a failed handoff only when ownership has been restored.\n- Keep ordinary stderr output when managed logging has not been initialized.\n\n## Testing\n\nAdd regression tests for stalled workers and queue overflow, tail retention, inherited append and nonappend handles, and pruning exclusion during updater handoff.\n\nGitOrigin-RevId: b6301962b1180fa6cdb231a56edce2429dc20b54",
+            "url": "https://github.com/openai/codex/commit/6bae551093d24ad6539a7daba2d9a13b80b28d15"
+          },
+          {
+            "sha": "c419fd01a70dd1d05356da443ac44328bda2e6f4",
+            "title": "Fix enterprise MCP credential selection and reauthentication (#55859)",
+            "message": "Fix enterprise MCP credential selection and reauthentication (#55859)\n\n## What changed\n\n- Prefer an eligible account grant over saved enterprise credentials, with a fallback to saved enterprise sign-in during initial connection if the account grant is rejected.\n- Remember rejected account grants per enterprise MCP registration across threads and report authentication failures as requiring reauthentication. Keep administrator configuration errors distinct from sign-in failures.\n- Compare account grants independently of access and ID token rotation, recheck the latest identity eligibility after exchange, and retry once when the refresh grant changes.\n- Make MCP authentication status reflect usable account grants, saved enterprise credentials, and completed connection failures.\n\n## Testing\n\nExtend regression coverage for enterprise sign-in failures and recovery, MCP authentication status, account grant identity across token refreshes, and retries after transient credential failures.\n\nGitOrigin-RevId: eeac65f668d5d2d55e9d8bf4547fbcbdd6a6c42d",
+            "url": "https://github.com/openai/codex/commit/c419fd01a70dd1d05356da443ac44328bda2e6f4"
+          },
+          {
+            "sha": "d138398cef7d49e46fe33f1d0ddbd2ca0ed16aa4",
+            "title": "Expand enterprise MCP authorization lifecycle test coverage (#55883)",
+            "message": "Expand enterprise MCP authorization lifecycle test coverage (#55883)\n\n## What changed\n\n- Extend app-server tests for account credential reuse, refresh races, stale bearer rejection, retry exhaustion, and step-up failures at the identity provider and resource authorization server.\n- Assert token-exchange request fields and enterprise protocol negotiation while preserving the ordinary MCP handshake.\n- Add core scenarios for permission and tool-policy refreshes, policy revocation, and thread removal, including cancellation of in-flight enterprise calls.\n- Snapshot conversation history after revocation to verify that prior calls remain visible and ordinary tools continue working.\n- Allow the existing startup-failure test to wait through the MCP startup deadline.\n\nGitOrigin-RevId: 31cf71a28f91bd30746b74df8fa669edb6bc23a1",
+            "url": "https://github.com/openai/codex/commit/d138398cef7d49e46fe33f1d0ddbd2ca0ed16aa4"
+          },
+          {
+            "sha": "bcee56bcdb74cbf08fc6dd47ef0079fded4bba9a",
+            "title": "Release 0.164.0-alpha.9",
+            "message": "Release 0.164.0-alpha.9",
+            "url": "https://github.com/openai/codex/commit/bcee56bcdb74cbf08fc6dd47ef0079fded4bba9a"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.8",
+          "head": "rust-v0.164.0-alpha.9",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.8...rust-v0.164.0-alpha.9",
+          "status": "diverged",
+          "total": 27,
+          "behind": 1,
+          "complete": true,
+          "fetched": 27
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-status:01M5FHKHPQJMSHCE2B2WDPZW2N",
+      "at": "2026-10-21T15:47:26.000Z",
+      "url": "https://status.openai.com/incidents/01M5FHKHPQJMSHCE2B2WDPZW2N",
+      "text": "Elevated error rates for gpt-5.6-luna API requests. We have applied the mitigation and are monitoring the recovery.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "monitoring",
+      "publishedAt": "2026-10-21T15:34:47.000Z"
+    },
+    {
+      "id": "openai-status:01M5FD63HHDRPQPM5YMQWJ5HTN",
+      "at": "2026-10-21T14:17:32.000Z",
+      "url": "https://status.openai.com/incidents/01M5FD63HHDRPQPM5YMQWJ5HTN",
+      "text": "Elevated FedRAMP API error rates for Astra and Sol. We have identified that users are experiencing elevated errors for the impacted services.\n\nWe are working on implementing a mitigation.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "identified",
+      "publishedAt": "2026-10-21T14:17:32.000Z"
     }
   ],
   "sources": {
@@ -6723,7 +7030,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-21T11:40:05.132Z",
+      "lastSuccessAt": "2026-10-21T16:08:35.185Z",
       "error": null,
       "count": 150
     },
@@ -6732,7 +7039,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-21T11:40:05.132Z",
+      "lastSuccessAt": "2026-10-21T16:08:35.185Z",
       "error": null,
       "count": 10
     },
@@ -6741,7 +7048,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-21T11:40:05.132Z",
+      "lastSuccessAt": "2026-10-21T16:08:35.185Z",
       "error": null,
       "count": 25
     }
@@ -22498,6 +22805,543 @@
           "behind": 1,
           "complete": true,
           "fetched": 30
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/openai-models-google-cloud:2026-10-21T16:08:35.728Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T16:08:35.728Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/openai-models-google-cloud",
+        "at": "2026-10-21T12:00:00.000Z",
+        "url": "https://openai.com/index/openai-models-google-cloud",
+        "text": "OpenAI models are coming to Google Cloud. OpenAI and Google Cloud are bringing frontier models and Codex workflows to Gemini’s Model Garden, available through Google Cloud Marketplace.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities:2026-10-21T16:08:35.728Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T16:08:35.728Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
+        "at": "2026-10-21T07:00:00.000Z",
+        "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
+        "text": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities. Patch the Planet connects security researchers, maintainers, and incident responders to help address critical vulnerabilities across open source.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/chatgpt-ads-expands-26-new-countries:2026-10-21T16:08:35.728Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T16:08:35.728Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/chatgpt-ads-expands-26-new-countries",
+        "at": "2026-10-21T13:00:00.000Z",
+        "url": "https://openai.com/index/chatgpt-ads-expands-26-new-countries",
+        "text": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform. From local businesses to global brands, more advertisers can now reach people as they explore, compare and decide what to buy in ChatGPT.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/scaling-ai-research-for-complex-biological-data:2026-10-21T16:08:35.728Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T16:08:35.728Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+        "at": "2026-10-21T04:50:00.000Z",
+        "url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+        "text": "Using thousands of AI agents to uncover new leads in biological data. See how OpenAI, PerturbAI, and Scripps Research used distributed AI agents to uncover promising research leads in data from millions of brain cells.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/building-chatgpt-ad-stack:2026-10-21T16:08:35.728Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T16:08:35.728Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/building-chatgpt-ad-stack",
+        "at": "2026-10-21T07:00:00.000Z",
+        "url": "https://openai.com/index/building-chatgpt-ad-stack",
+        "text": "How we built ChatGPT’s novel ad stack for user trust and relevance. Learn how OpenAI built ChatGPT’s LLM-powered ad stack to understand conversational intent, keep ads separate from answers, and deliver relevant ads at scale.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.9:2026-10-21T16:08:35.728Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T16:08:35.728Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.9",
+        "at": "2026-10-21T14:19:35.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.9",
+        "text": "0.164.0-alpha.9. Release 0.164.0-alpha.9",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.164.0-alpha.9",
+          "title": "0.164.0-alpha.9",
+          "body": "Release 0.164.0-alpha.9\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-21T16:08:35.731Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.9",
+          "publishedAt": "2026-10-21T14:12:01Z",
+          "commits": [
+            {
+              "sha": "ef1604d8f5f01114ede3b3484901d5826378db0e",
+              "title": "Upgrade the Rust toolchain to 1.99.1 (#55677)",
+              "message": "Upgrade the Rust toolchain to 1.99.1 (#55677)\n\n## What changed\n\n- Update Cargo and Bazel toolchain pins, CI and release workflows, and Windows setup from Rust `1.95.0` to `1.99.1`.\n- Adapt Rust code to updated APIs and lint requirements, including `try_update` and `as_chunks`, and refresh the halfwidth sound marks snapshot.\n- Update `webpki-root-certs` from `1.0.5` to `1.0.10` in the Cargo and Bazel lockfiles.\n\nGitOrigin-RevId: e1aaed63b7e72bb8c8bbe25b32c6329c9a37b6c3",
+              "url": "https://github.com/openai/codex/commit/ef1604d8f5f01114ede3b3484901d5826378db0e"
+            },
+            {
+              "sha": "2623f206bd40e0a9a9b16a49b4da415585c0e45f",
+              "title": "Recheck account login ownership for enterprise MCP (#55680)",
+              "message": "Recheck account login ownership for enterprise MCP (#55680)\n\n## Why\n\nA persisted login replacement can leave the auth cache holding the previous login, even for the same account. Enterprise MCP authorization must detect that replacement before continuing to use enterprise credentials.\n\n## What changed\n\n- Check cached and persisted account login ownership before enterprise MCP connections and around token exchanges, revoking authorization when ownership changes.\n- Recheck account ownership and login generation before committing enterprise sign-in credentials.\n- Compare complete token data when checking whether an account OAuth grant is still current, and expose grant token access and credential comparison helpers.\n\n## Testing\n\nAdd regression coverage for detecting a same-account login replacement without updating cached auth, rejecting enterprise MCP use after replacement, and keeping ordinary MCP usable while an enterprise account storage read is blocked.\n\nGitOrigin-RevId: 6303f88a9cbcc84c99e453dc281b23d66930f518",
+              "url": "https://github.com/openai/codex/commit/2623f206bd40e0a9a9b16a49b4da415585c0e45f"
+            },
+            {
+              "sha": "7389eebf45df47895b386334bc1c5b9809eb9605",
+              "title": "Fix TUI permission selection and session state handling (#55682)",
+              "message": "Fix TUI permission selection and session state handling (#55682)\n\n## Why\n\nQueued prompts can resume before a pending permissions menu opens, and local\n`/permissions` commands can bypass guards for outstanding permission changes.\nAttaching to a different project can also retain model access information from\nthe launch directory.\n\n## What changed\n\n- Route `/permissions` through app permission guards and hold queued prompts\n  while the menu is pending. Settle the hold when opening is rejected, discovery\n  is invalidated, or a covering request is resolved.\n- Apply the custom permission profile selection check beyond embedded servers.\n- Refresh API-key model access when the first attached session changes the\n  working directory, including with an embedded server. Propagate the widget's\n  model catalog to the app and server even when the model response matches the\n  widget's already-updated catalog.\n- Skip sessions reported as `thread not loaded` during name lookup for all\n  server types instead of falling back to unverified list metadata.\n\n## Testing\n\nAdd regression coverage for permission guards, queued prompts across successive\npermission menus, invalidated and covered menus, model catalog propagation,\nproject changes on initial attachment, and name lookup across server pages with\nunreadable entries.\n\nGitOrigin-RevId: eb49cb5268ce0ce1e40009b73a0180f23e61ed72",
+              "url": "https://github.com/openai/codex/commit/7389eebf45df47895b386334bc1c5b9809eb9605"
+            },
+            {
+              "sha": "36512a34ffe71a48bd9aab66fc81c3b909ef2dfc",
+              "title": "Add account credential support to EMA token exchange helpers (#55685)",
+              "message": "Add account credential support to EMA token exchange helpers (#55685)\n\n## What changed\n\n- Add an account IdP identity resolver that checks ID-token bindings against trusted issuer and client provenance before discovering the refresh-token endpoint. An expired ID token does not by itself invalidate the refresh grant.\n- Generalize `EmaIdpIdentity` and token exchange requests to carry caller-owned credential leases. Invoke a `finish_idp` callback after the IdP exchange and before resource authorization server I/O so callers can release their refresh guards at that boundary.\n- Reject empty expected OIDC issuers and client IDs, and expose an unverified issuer hint solely for explaining legacy login migration.\n\nGitOrigin-RevId: 34473fed82a9a6e58997664cd5e6e67049b5ee7e",
+              "url": "https://github.com/openai/codex/commit/36512a34ffe71a48bd9aab66fc81c3b909ef2dfc"
+            },
+            {
+              "sha": "69727ae170297c1057108ea170e6f0cf41ba993f",
+              "title": "Clean up failed and abandoned marketplace staging directories (#55689)",
+              "message": "Clean up failed and abandoned marketplace staging directories (#55689)\n\n## Why\n\nFailed marketplace adds can leave temporary checkouts behind, and interrupted adds or upgrades can leave abandoned staging directories.\n\n## What changed\n\n- Share a staging guard across marketplace adds and upgrades so temporary checkouts are removed on completion or failure, including config-write rollback.\n- Reclaim up to four abandoned directories per cleanup pass during add and upgrade operations. Use file locks to preserve active checkouts and operating-system-specific names to avoid reclaiming another platform's staging directories.\n- Skip symlinks and unrelated entries, and report cleanup failures as warnings.\n\n## Testing\n\nAdd regression coverage for failed adds, CLI and automatic-upgrade cleanup, cross-process ownership and abandonment, lock contention, bounded cleanup, and symlink handling.\n\nGitOrigin-RevId: 20999da0eab861dfb8025aad5e9fba2bcaf818b8",
+              "url": "https://github.com/openai/codex/commit/69727ae170297c1057108ea170e6f0cf41ba993f"
+            },
+            {
+              "sha": "75c78768d2c04da11326adb2354ff32083fe60e8",
+              "title": "Reclaim aged legacy marketplace staging directories (#55690)",
+              "message": "Reclaim aged legacy marketplace staging directories (#55690)\n\n## Why\n\nLegacy marketplace checkouts have no owner lock and were skipped by staging cleanup. Age thresholds allow cleanup to reclaim them while leaving recent clones from older binaries alone.\n\n## What changed\n\nRemove legacy `marketplace-add-` directories after 24 hours and `marketplace-upgrade-` directories after 10 minutes, based on directory modification time. Keep owner locks authoritative for current staging directories.\n\n## Testing\n\nExtend cleanup tests to cover both legacy age thresholds, preservation of recent legacy clones and live locked checkouts, and skipping legacy symlinks.\n\nGitOrigin-RevId: 77b55bfe50ab29f5ceae46a80276b2c9e361107f",
+              "url": "https://github.com/openai/codex/commit/75c78768d2c04da11326adb2354ff32083fe60e8"
+            },
+            {
+              "sha": "ec8edd576cb4f938e44d3e837ae4e369b44083d5",
+              "title": "Refine enterprise MCP auth errors and request authority checks (#55691)",
+              "message": "Refine enterprise MCP auth errors and request authority checks (#55691)\n\n## What changed\n\n- Classify token-source failures by credential kind and exchange stage, with sign-in or administrator guidance that omits provider error text. Treat resource authorization failures separately from enterprise identity failures when deciding whether authentication is required.\n- Add policy-bound request authority checks that return `RequestNotSent` when policy is updating or unavailable, while allowing admitted responses to finish. Support child authorities that isolate connection revocation and share response draining.\n- Recheck account validity after acquiring the credential invalidation lock and check cancellation before deleting a rejected credential.\n\n## Testing\n\nExtend regression coverage for policy suspension during token renewal, completion of admitted requests, recovery with fresh authority, and transport retry classification. Expand provider-error tests to cover `unauthorized_client` and `invalid_client` while checking that credential text is not exposed.\n\nGitOrigin-RevId: c0097adc35cb5fdffde1466e4bc2b5ec78114a4b",
+              "url": "https://github.com/openai/codex/commit/ec8edd576cb4f938e44d3e837ae4e369b44083d5"
+            },
+            {
+              "sha": "d4e03acb6147dc83f5e013fd91f729da72712a03",
+              "title": "Tag tool registration metrics with effective incremental tools mode (#55692)",
+              "message": "Tag tool registration metrics with effective incremental tools mode (#55692)\n\n## What changed\n\nAdd an `incremental_tools` attribute to `codex.tools.registered` using the effective mode for the current sampling request. Compute the mode once and reuse it for registration metrics and prompt construction across transport retries.\n\n## Testing\n\nExtend integration tests to verify the attribute for incremental and non-incremental requests, including when the feature flag is enabled but the Responses API does not support incremental tools. Assert registration sample counts and retain coverage that stream retries do not duplicate registration metrics.\n\nGitOrigin-RevId: e5b7a1075fe722ef6bdf900ae07e2b1b06aecfb5",
+              "url": "https://github.com/openai/codex/commit/d4e03acb6147dc83f5e013fd91f729da72712a03"
+            },
+            {
+              "sha": "6fb1c3903d42e3cc7da2c89e3a045fe0ce137af4",
+              "title": "Use hermetic dsymutil for macOS Bazel builds (#55693)",
+              "message": "Use hermetic dsymutil for macOS Bazel builds (#55693)\n\n## What changed\n\n- Add a `dsymutil` wrapper that delegates to the C toolchain's `LLVM_DSYMUTIL`, and include it in macOS Rust binary compile inputs and `PATH` so `rustc` can find it by name.\n- Build macOS release staging archives with `--config=ci-macos`, `--remote_download_toplevel`, and `--build_metadata=VISIBILITY=PRIVATE`.\n\nGitOrigin-RevId: 0f46520807dd9804049b6ae18351275af3693907",
+              "url": "https://github.com/openai/codex/commit/6fb1c3903d42e3cc7da2c89e3a045fe0ce137af4"
+            },
+            {
+              "sha": "feadd9441e67f2d8970ffc390212c32f3dfbba43",
+              "title": "Preserve enterprise MCP authorization across runtime refreshes (#55696)",
+              "message": "Preserve enterprise MCP authorization across runtime refreshes (#55696)\n\n## Why\n\nConfiguration reloads must cancel stale enterprise MCP startups while preserving access for running threads that still pass validation. Replacing a runtime during `thread/revert` must also leave the replacement able to use enterprise tools.\n\n## What changed\n\n- Separate pending startup cancellation from published thread lifetimes, with independent startup state for forks and replacement runtimes.\n- Retain eligible enterprise MCP connections across refreshes and explicit reconnects while applying updated tool restrictions and approvals. Do not create replacement enterprise connections after initial startup.\n- Revoke enterprise authorization when a thread is removed, drain requests when access is disabled, and revoke a connection's authority when token renewal requires authentication.\n\n## Testing\n\nExtend regression coverage to verify enterprise tool calls survive `thread/revert`, inherited fork configurations are cancelled after a reload, and enterprise calls fail after logout while ordinary MCP calls remain available.\n\nGitOrigin-RevId: 2d634be3011854b57f73c741bd1ec6b5aed94ee5",
+              "url": "https://github.com/openai/codex/commit/feadd9441e67f2d8970ffc390212c32f3dfbba43"
+            },
+            {
+              "sha": "6b13dffc5e4c334fe87f823b214ed15a4bf37a11",
+              "title": "Reuse Codex account grants for enterprise MCP authentication (#55698)",
+              "message": "Reuse Codex account grants for enterprise MCP authentication (#55698)\n\n## What changed\n\n- Prefer stored enterprise credentials when available; otherwise use a validated Codex account OAuth grant whose issuer matches the enterprise MCP configuration.\n- Pin each connection to its credential source and OAuth client, reject stale account grants, and hold the account refresh lease only during the IdP exchange.\n- Report actionable sign-in and issuer configuration errors, and classify token failures by credential source.\n\nGitOrigin-RevId: 26673f276a31e4ca5290f6b120f0ac44c77d7239",
+              "url": "https://github.com/openai/codex/commit/6b13dffc5e4c334fe87f823b214ed15a4bf37a11"
+            },
+            {
+              "sha": "35757adb728b268a1e75eabeb3e4cf9a6def5c18",
+              "title": "Enable MCP OAuth refresh coordination by default (#55701)",
+              "message": "Enable MCP OAuth refresh coordination by default (#55701)\n\n## What changed\n\nMark `mcp_oauth_refresh_coordination` as stable and enable it by default.\n\nGitOrigin-RevId: f82074c7d148808ceeb4acd206bbadefd470e5b1",
+              "url": "https://github.com/openai/codex/commit/35757adb728b268a1e75eabeb3e4cf9a6def5c18"
+            },
+            {
+              "sha": "b48277327d427b92ace30c1ee9d4817f8fa836b7",
+              "title": "Centralize cloud skill cache state under the catalog lock (#55705)",
+              "message": "Centralize cloud skill cache state under the catalog lock (#55705)\n\n## What changed\n\nMove cached cloud skill contents into `SkillCatalogState` alongside the published catalog generation. Prepare auth scopes and access cached contents under the same lock, clearing contents when the auth scope changes and retaining them when a partial refresh preserves a complete catalog. Keep generation checks around asynchronous discovery and reads.\n\nUse the auth key already captured by `prepare_cloud_generation` when creating a cloud plugin generation, so the stored and returned keys match.\n\nGitOrigin-RevId: 426bb7868baf9ff7855988291783a8d3e38d9c93",
+              "url": "https://github.com/openai/codex/commit/b48277327d427b92ace30c1ee9d4817f8fa836b7"
+            },
+            {
+              "sha": "3f31c0a040ca58b86cea70a8d40ad79d481e45d2",
+              "title": "Resolve MCP backend identity from runtime events in rollout traces (#55710)",
+              "message": "Resolve MCP backend identity from runtime events in rollout traces (#55710)\n\n## Why\n\nMCP callable namespaces and tool names can differ from their backend identities or match built-in tool names. Classifying calls by name can misidentify MCP calls and incorrectly parse namespaced `write_stdin` calls as terminal operations.\n\n## What changed\n\nResolve `ToolCallKind::Mcp` from the runtime invocation's server and tool as soon as the runtime starts, before MCP correlation assignment. Preserve the caller-facing summary and raw invocation, and skip built-in runtime handling for MCP calls.\n\nOnly create dispatch-based `write_stdin` terminal operations for calls without a namespace.\n\n## Testing\n\nAdd replay regression coverage for prefixed and unprefixed MCP aliases, names that match built-in tools, and `write_stdin` arguments with and without a session ID. Verify backend classification, preserved callable identity and dispatch lifecycle, and the absence of terminal operations and sessions.\n\nGitOrigin-RevId: 71f31335c1eb36b6b7e1a34383d10fc500bd2c4f",
+              "url": "https://github.com/openai/codex/commit/3f31c0a040ca58b86cea70a8d40ad79d481e45d2"
+            },
+            {
+              "sha": "db58a987b8a0b94b81ab321f0e0192757758df67",
+              "title": "Allow unified exec to fall back when credential masking is unavailable (#55719)",
+              "message": "Allow unified exec to fall back when credential masking is unavailable (#55719)\n\n## Why\n\nDisabled or failed protected shell snapshots prevent commands from running when credential masking is enabled.\n\n## What changed\n\nRestore unmasked credentials and continue execution when a protected shell snapshot is unavailable. Log and emit a warning explaining that the command will run with unmasked credentials.\n\n## Testing\n\nExtend `brokered_shell_snapshot_fallback` coverage for disabled and failed snapshots, including managed feature settings. Verify the warning, successful execution with restored credentials, continued filesystem sandbox and network policy enforcement, and masking recovery after snapshot storage is repaired.\n\nGitOrigin-RevId: 28561e571b2a043d0b6cfa248c9ba2a61dd558ba",
+              "url": "https://github.com/openai/codex/commit/db58a987b8a0b94b81ab321f0e0192757758df67"
+            },
+            {
+              "sha": "57d4fac64adbcaed0523ca6bf8d58c4ef6875157",
+              "title": "Avoid redundant clones when sending app-server notifications (#55723)",
+              "message": "Avoid redundant clones when sending app-server notifications (#55723)\n\n## Why\n\nTargeted notification delivery and broadcast routing clone the message for every recipient, then discard the original.\n\n## What changed\n\nUse `std::iter::repeat_n` to move the original message to the last recipient, avoiding one clone per nonempty recipient list while preserving delivery behavior.\n\n## Testing\n\nExpand notification tests to cover empty, single, and multiple recipient lists, checking payloads, target order, and shared timestamps. Add broadcast coverage for zero, one, and two eligible recipients, verifying that uninitialized clients, clients without the required experimental API support, and clients that opted out are skipped.\n\nGitOrigin-RevId: 2ba192f416ccd786e3566da3e5c851518b509afe",
+              "url": "https://github.com/openai/codex/commit/57d4fac64adbcaed0523ca6bf8d58c4ef6875157"
+            },
+            {
+              "sha": "2744e8686c3defaa96f7aff6c51a9df961c51224",
+              "title": "Share prepared MCP tool definitions across sessions (#55724)",
+              "message": "Share prepared MCP tool definitions across sessions (#55724)\n\n## Why\n\nSessions using the same MCP catalog can repeat schema normalization and retain duplicate tool specifications.\n\n## What changed\n\nSplit immutable MCP tool metadata and normalized specifications from per-handler caches, and reuse matching definitions within each `McpManager`. Require matching tool metadata, agent-plugin mode, and schema budget before reuse.\n\nKeep shared definitions behind weak references and prune expired entries on cache misses so completed sessions do not keep their schemas alive. Build definitions outside the shared index lock.\n\nGitOrigin-RevId: 02345359a1b0d297ca56f2f469de88aba89106f1",
+              "url": "https://github.com/openai/codex/commit/2744e8686c3defaa96f7aff6c51a9df961c51224"
+            },
+            {
+              "sha": "d571eaf1f61d0d93a797506335a99a9950ffe37b",
+              "title": "Preserve code cell response metadata in rollout traces (#55725)",
+              "message": "Preserve code cell response metadata in rollout traces (#55725)\n\n## Why\n\nReducing code cell lifecycle events discarded their response payload references and lost the initial response status when the runtime status changed.\n\n## What changed\n\nStore the initial response status and separate raw payload IDs for the initial response and final result on `CodeCell`. Carry payload references through queued lifecycle events so they survive replay when the source item arrives later.\n\n## Testing\n\nExtend lifecycle tests to verify distinct initial and final payload IDs and the preserved initial status for yielded cells that complete and failed cells whose lifecycle events precede their source item.\n\nGitOrigin-RevId: 8f49a3174ea487a5d91ebc2a6c97133aacaabfd2",
+              "url": "https://github.com/openai/codex/commit/d571eaf1f61d0d93a797506335a99a9950ffe37b"
+            },
+            {
+              "sha": "c7234c1174b27d9c55199fba0d546dc27d1b0415",
+              "title": "Box session metadata and compaction payloads in `RolloutItem` (#55733)",
+              "message": "Box session metadata and compaction payloads in `RolloutItem` (#55733)\n\n## What changed\n\nStore `RolloutItem::SessionMeta` and `RolloutItem::Compacted` payloads in `Box` values and update their producers, consumers, and test fixtures. Preserve the existing serialized rollout format.\n\nGitOrigin-RevId: 59fcc4beb47d23160872dcb6e95ace9b142d3d11",
+              "url": "https://github.com/openai/codex/commit/c7234c1174b27d9c55199fba0d546dc27d1b0415"
+            },
+            {
+              "sha": "af91f6ef2cd66ead278ebe7d5751973eef430aee",
+              "title": "Add a critical-path utility for exclusive duration attribution (#55804)",
+              "message": "Add a critical-path utility for exclusive duration attribution (#55804)\n\n## What changed\n\nAdd `codex-utils-critical-path` to track shared dependency paths and attribute time to inference, automatic review, user waits, tools, overhead, and unknown work. Parallel joins retain the later-finishing branch, preserving its full history without double-counting overlapping work.\n\nClip attribution to the requested interval and count unrecorded gaps as overhead. Bound retained history by collapsing it into unknown work at the depth limit, with nonrecursive destruction and bounded debug output.\n\n## Testing\n\nAdd unit tests for parallel joins, nested dependencies, ties, user waits, interval clipping, overlapping segments, history exhaustion, and safe formatting and concurrent release on small stacks.\n\nGitOrigin-RevId: 2df7453162491d3ae97bf4bee942730c8a4d5e5c",
+              "url": "https://github.com/openai/codex/commit/af91f6ef2cd66ead278ebe7d5751973eef430aee"
+            },
+            {
+              "sha": "2213359bd33f9ffc818e3aeb534faf47544293bc",
+              "title": "Measure Guardian review latency once with a monotonic clock (#55846)",
+              "message": "Measure Guardian review latency once with a monotonic clock (#55846)\n\n## Why\n\nGuardian review metrics derived duration from wall-clock timestamps, while analytics measured elapsed time when tracking the result. Clock changes and delayed tracking could produce inconsistent latencies.\n\n## What changed\n\nCapture one monotonic duration at review completion and pass it to both metrics and analytics. Preserve wall-clock timestamps for event ordering, and saturate analytics latency conversion at `u64::MAX`.\n\n## Testing\n\nAdd a regression test covering skewed wall-clock timestamps and delayed tracking, verifying that the duration metric uses the captured interval and completion timestamps are preserved.\n\nGitOrigin-RevId: 19eafb8e1f1a3d13a751bdc72c218e4cafeae410",
+              "url": "https://github.com/openai/codex/commit/2213359bd33f9ffc818e3aeb534faf47544293bc"
+            },
+            {
+              "sha": "21b1f5f5344db8adb6eb1be6a2e61f6085fdc8f8",
+              "title": "Bound retained turn analytics and clean up closed threads (#55847)",
+              "message": "Bound retained turn analytics and clean up closed threads (#55847)\n\n## Why\n\nDropped lifecycle facts can leave incomplete turns retaining analytics metadata indefinitely.\n\n## What changed\n\n- Limit retained turns to 256, evicting the oldest turn and its associated tool and review state when capacity is reached.\n- Forward `ThreadClosed` notifications to analytics and discard the closed thread's turn and review state, including reviews received without turn lifecycle facts.\n\n## Testing\n\nAdd regression tests covering metadata release after capacity eviction, continued reporting of new complete turns, cleanup isolated to the closed thread, and ignored approval responses after thread closure.\n\nGitOrigin-RevId: eed0a1fef013381654345d535f03de42b99e8607",
+              "url": "https://github.com/openai/codex/commit/21b1f5f5344db8adb6eb1be6a2e61f6085fdc8f8"
+            },
+            {
+              "sha": "4faf60f1265a495a68fd792701c60fa334714683",
+              "title": "Pause relay test time while inspecting handshake diagnostics (#55848)",
+              "message": "Pause relay test time while inspecting handshake diagnostics (#55848)\n\nPause Tokio time after the validation timeout in\n`malformed_handshakes_preserve_active_streams_and_admission_recovers`\nwhile inspecting diagnostics, since that inspection does not poll the\nharness WebSocket for pings. Resume time before closing the WebSocket so\nthe close handshake and its timeout run with an active clock.\n\nGitOrigin-RevId: 733a1fa35f80561424be97c4beb233780a7796cb",
+              "url": "https://github.com/openai/codex/commit/4faf60f1265a495a68fd792701c60fa334714683"
+            },
+            {
+              "sha": "6bae551093d24ad6539a7daba2d9a13b80b28d15",
+              "title": "Bound managed app-server and updater stderr logging (#55856)",
+              "message": "Bound managed app-server and updater stderr logging (#55856)\n\n## Why\n\nManaged stderr logs previously retained a tail only before a new launch, allowing logs to grow during a long-running process. Direct stderr writes could also block lifecycle operations on disk I/O.\n\n## What changed\n\n- Route managed app-server and updater logs through a shared nonblocking worker with a bounded queue. Drop records when the queue is full or a record exceeds 16 KiB, and avoid waiting for the worker at shutdown.\n- Prune live logs when they exceed 1 MiB, preserving the latest 256 KiB in `.log.previous` before truncating the current file. Keep inherited stderr handles usable after truncation.\n- Pause predecessor pruning during Windows updater handoff and resume it after a failed handoff only when ownership has been restored.\n- Keep ordinary stderr output when managed logging has not been initialized.\n\n## Testing\n\nAdd regression tests for stalled workers and queue overflow, tail retention, inherited append and nonappend handles, and pruning exclusion during updater handoff.\n\nGitOrigin-RevId: b6301962b1180fa6cdb231a56edce2429dc20b54",
+              "url": "https://github.com/openai/codex/commit/6bae551093d24ad6539a7daba2d9a13b80b28d15"
+            },
+            {
+              "sha": "c419fd01a70dd1d05356da443ac44328bda2e6f4",
+              "title": "Fix enterprise MCP credential selection and reauthentication (#55859)",
+              "message": "Fix enterprise MCP credential selection and reauthentication (#55859)\n\n## What changed\n\n- Prefer an eligible account grant over saved enterprise credentials, with a fallback to saved enterprise sign-in during initial connection if the account grant is rejected.\n- Remember rejected account grants per enterprise MCP registration across threads and report authentication failures as requiring reauthentication. Keep administrator configuration errors distinct from sign-in failures.\n- Compare account grants independently of access and ID token rotation, recheck the latest identity eligibility after exchange, and retry once when the refresh grant changes.\n- Make MCP authentication status reflect usable account grants, saved enterprise credentials, and completed connection failures.\n\n## Testing\n\nExtend regression coverage for enterprise sign-in failures and recovery, MCP authentication status, account grant identity across token refreshes, and retries after transient credential failures.\n\nGitOrigin-RevId: eeac65f668d5d2d55e9d8bf4547fbcbdd6a6c42d",
+              "url": "https://github.com/openai/codex/commit/c419fd01a70dd1d05356da443ac44328bda2e6f4"
+            },
+            {
+              "sha": "d138398cef7d49e46fe33f1d0ddbd2ca0ed16aa4",
+              "title": "Expand enterprise MCP authorization lifecycle test coverage (#55883)",
+              "message": "Expand enterprise MCP authorization lifecycle test coverage (#55883)\n\n## What changed\n\n- Extend app-server tests for account credential reuse, refresh races, stale bearer rejection, retry exhaustion, and step-up failures at the identity provider and resource authorization server.\n- Assert token-exchange request fields and enterprise protocol negotiation while preserving the ordinary MCP handshake.\n- Add core scenarios for permission and tool-policy refreshes, policy revocation, and thread removal, including cancellation of in-flight enterprise calls.\n- Snapshot conversation history after revocation to verify that prior calls remain visible and ordinary tools continue working.\n- Allow the existing startup-failure test to wait through the MCP startup deadline.\n\nGitOrigin-RevId: 31cf71a28f91bd30746b74df8fa669edb6bc23a1",
+              "url": "https://github.com/openai/codex/commit/d138398cef7d49e46fe33f1d0ddbd2ca0ed16aa4"
+            },
+            {
+              "sha": "bcee56bcdb74cbf08fc6dd47ef0079fded4bba9a",
+              "title": "Release 0.164.0-alpha.9",
+              "message": "Release 0.164.0-alpha.9",
+              "url": "https://github.com/openai/codex/commit/bcee56bcdb74cbf08fc6dd47ef0079fded4bba9a"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.164.0-alpha.8",
+            "head": "rust-v0.164.0-alpha.9",
+            "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.8...rust-v0.164.0-alpha.9",
+            "status": "diverged",
+            "total": 27,
+            "behind": 1,
+            "complete": true,
+            "fetched": 27
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "openai-status:01M5FHKHPQJMSHCE2B2WDPZW2N:2026-10-21T16:08:35.728Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T16:08:35.728Z",
+      "item": {
+        "id": "openai-status:01M5FHKHPQJMSHCE2B2WDPZW2N",
+        "at": "2026-10-21T15:47:26.000Z",
+        "url": "https://status.openai.com/incidents/01M5FHKHPQJMSHCE2B2WDPZW2N",
+        "text": "Elevated error rates for gpt-5.6-luna API requests. We have applied the mitigation and are monitoring the recovery.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "monitoring",
+        "publishedAt": "2026-10-21T15:34:47.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M5FD63HHDRPQPM5YMQWJ5HTN:2026-10-21T16:08:35.728Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-21T16:08:35.728Z",
+      "item": {
+        "id": "openai-status:01M5FD63HHDRPQPM5YMQWJ5HTN",
+        "at": "2026-10-21T14:17:32.000Z",
+        "url": "https://status.openai.com/incidents/01M5FD63HHDRPQPM5YMQWJ5HTN",
+        "text": "Elevated FedRAMP API error rates for Astra and Sol. We have identified that users are experiencing elevated errors for the impacted services.\n\nWe are working on implementing a mitigation.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "identified",
+        "publishedAt": "2026-10-21T14:17:32.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.9:2026-10-21T16:08:35.728Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-21T16:08:35.728Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.9",
+        "title": "0.164.0-alpha.9",
+        "body": "Release 0.164.0-alpha.9\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-21T16:08:35.731Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.9",
+        "publishedAt": "2026-10-21T14:12:01Z",
+        "commits": [
+          {
+            "sha": "ef1604d8f5f01114ede3b3484901d5826378db0e",
+            "title": "Upgrade the Rust toolchain to 1.99.1 (#55677)",
+            "message": "Upgrade the Rust toolchain to 1.99.1 (#55677)\n\n## What changed\n\n- Update Cargo and Bazel toolchain pins, CI and release workflows, and Windows setup from Rust `1.95.0` to `1.99.1`.\n- Adapt Rust code to updated APIs and lint requirements, including `try_update` and `as_chunks`, and refresh the halfwidth sound marks snapshot.\n- Update `webpki-root-certs` from `1.0.5` to `1.0.10` in the Cargo and Bazel lockfiles.\n\nGitOrigin-RevId: e1aaed63b7e72bb8c8bbe25b32c6329c9a37b6c3",
+            "url": "https://github.com/openai/codex/commit/ef1604d8f5f01114ede3b3484901d5826378db0e"
+          },
+          {
+            "sha": "2623f206bd40e0a9a9b16a49b4da415585c0e45f",
+            "title": "Recheck account login ownership for enterprise MCP (#55680)",
+            "message": "Recheck account login ownership for enterprise MCP (#55680)\n\n## Why\n\nA persisted login replacement can leave the auth cache holding the previous login, even for the same account. Enterprise MCP authorization must detect that replacement before continuing to use enterprise credentials.\n\n## What changed\n\n- Check cached and persisted account login ownership before enterprise MCP connections and around token exchanges, revoking authorization when ownership changes.\n- Recheck account ownership and login generation before committing enterprise sign-in credentials.\n- Compare complete token data when checking whether an account OAuth grant is still current, and expose grant token access and credential comparison helpers.\n\n## Testing\n\nAdd regression coverage for detecting a same-account login replacement without updating cached auth, rejecting enterprise MCP use after replacement, and keeping ordinary MCP usable while an enterprise account storage read is blocked.\n\nGitOrigin-RevId: 6303f88a9cbcc84c99e453dc281b23d66930f518",
+            "url": "https://github.com/openai/codex/commit/2623f206bd40e0a9a9b16a49b4da415585c0e45f"
+          },
+          {
+            "sha": "7389eebf45df47895b386334bc1c5b9809eb9605",
+            "title": "Fix TUI permission selection and session state handling (#55682)",
+            "message": "Fix TUI permission selection and session state handling (#55682)\n\n## Why\n\nQueued prompts can resume before a pending permissions menu opens, and local\n`/permissions` commands can bypass guards for outstanding permission changes.\nAttaching to a different project can also retain model access information from\nthe launch directory.\n\n## What changed\n\n- Route `/permissions` through app permission guards and hold queued prompts\n  while the menu is pending. Settle the hold when opening is rejected, discovery\n  is invalidated, or a covering request is resolved.\n- Apply the custom permission profile selection check beyond embedded servers.\n- Refresh API-key model access when the first attached session changes the\n  working directory, including with an embedded server. Propagate the widget's\n  model catalog to the app and server even when the model response matches the\n  widget's already-updated catalog.\n- Skip sessions reported as `thread not loaded` during name lookup for all\n  server types instead of falling back to unverified list metadata.\n\n## Testing\n\nAdd regression coverage for permission guards, queued prompts across successive\npermission menus, invalidated and covered menus, model catalog propagation,\nproject changes on initial attachment, and name lookup across server pages with\nunreadable entries.\n\nGitOrigin-RevId: eb49cb5268ce0ce1e40009b73a0180f23e61ed72",
+            "url": "https://github.com/openai/codex/commit/7389eebf45df47895b386334bc1c5b9809eb9605"
+          },
+          {
+            "sha": "36512a34ffe71a48bd9aab66fc81c3b909ef2dfc",
+            "title": "Add account credential support to EMA token exchange helpers (#55685)",
+            "message": "Add account credential support to EMA token exchange helpers (#55685)\n\n## What changed\n\n- Add an account IdP identity resolver that checks ID-token bindings against trusted issuer and client provenance before discovering the refresh-token endpoint. An expired ID token does not by itself invalidate the refresh grant.\n- Generalize `EmaIdpIdentity` and token exchange requests to carry caller-owned credential leases. Invoke a `finish_idp` callback after the IdP exchange and before resource authorization server I/O so callers can release their refresh guards at that boundary.\n- Reject empty expected OIDC issuers and client IDs, and expose an unverified issuer hint solely for explaining legacy login migration.\n\nGitOrigin-RevId: 34473fed82a9a6e58997664cd5e6e67049b5ee7e",
+            "url": "https://github.com/openai/codex/commit/36512a34ffe71a48bd9aab66fc81c3b909ef2dfc"
+          },
+          {
+            "sha": "69727ae170297c1057108ea170e6f0cf41ba993f",
+            "title": "Clean up failed and abandoned marketplace staging directories (#55689)",
+            "message": "Clean up failed and abandoned marketplace staging directories (#55689)\n\n## Why\n\nFailed marketplace adds can leave temporary checkouts behind, and interrupted adds or upgrades can leave abandoned staging directories.\n\n## What changed\n\n- Share a staging guard across marketplace adds and upgrades so temporary checkouts are removed on completion or failure, including config-write rollback.\n- Reclaim up to four abandoned directories per cleanup pass during add and upgrade operations. Use file locks to preserve active checkouts and operating-system-specific names to avoid reclaiming another platform's staging directories.\n- Skip symlinks and unrelated entries, and report cleanup failures as warnings.\n\n## Testing\n\nAdd regression coverage for failed adds, CLI and automatic-upgrade cleanup, cross-process ownership and abandonment, lock contention, bounded cleanup, and symlink handling.\n\nGitOrigin-RevId: 20999da0eab861dfb8025aad5e9fba2bcaf818b8",
+            "url": "https://github.com/openai/codex/commit/69727ae170297c1057108ea170e6f0cf41ba993f"
+          },
+          {
+            "sha": "75c78768d2c04da11326adb2354ff32083fe60e8",
+            "title": "Reclaim aged legacy marketplace staging directories (#55690)",
+            "message": "Reclaim aged legacy marketplace staging directories (#55690)\n\n## Why\n\nLegacy marketplace checkouts have no owner lock and were skipped by staging cleanup. Age thresholds allow cleanup to reclaim them while leaving recent clones from older binaries alone.\n\n## What changed\n\nRemove legacy `marketplace-add-` directories after 24 hours and `marketplace-upgrade-` directories after 10 minutes, based on directory modification time. Keep owner locks authoritative for current staging directories.\n\n## Testing\n\nExtend cleanup tests to cover both legacy age thresholds, preservation of recent legacy clones and live locked checkouts, and skipping legacy symlinks.\n\nGitOrigin-RevId: 77b55bfe50ab29f5ceae46a80276b2c9e361107f",
+            "url": "https://github.com/openai/codex/commit/75c78768d2c04da11326adb2354ff32083fe60e8"
+          },
+          {
+            "sha": "ec8edd576cb4f938e44d3e837ae4e369b44083d5",
+            "title": "Refine enterprise MCP auth errors and request authority checks (#55691)",
+            "message": "Refine enterprise MCP auth errors and request authority checks (#55691)\n\n## What changed\n\n- Classify token-source failures by credential kind and exchange stage, with sign-in or administrator guidance that omits provider error text. Treat resource authorization failures separately from enterprise identity failures when deciding whether authentication is required.\n- Add policy-bound request authority checks that return `RequestNotSent` when policy is updating or unavailable, while allowing admitted responses to finish. Support child authorities that isolate connection revocation and share response draining.\n- Recheck account validity after acquiring the credential invalidation lock and check cancellation before deleting a rejected credential.\n\n## Testing\n\nExtend regression coverage for policy suspension during token renewal, completion of admitted requests, recovery with fresh authority, and transport retry classification. Expand provider-error tests to cover `unauthorized_client` and `invalid_client` while checking that credential text is not exposed.\n\nGitOrigin-RevId: c0097adc35cb5fdffde1466e4bc2b5ec78114a4b",
+            "url": "https://github.com/openai/codex/commit/ec8edd576cb4f938e44d3e837ae4e369b44083d5"
+          },
+          {
+            "sha": "d4e03acb6147dc83f5e013fd91f729da72712a03",
+            "title": "Tag tool registration metrics with effective incremental tools mode (#55692)",
+            "message": "Tag tool registration metrics with effective incremental tools mode (#55692)\n\n## What changed\n\nAdd an `incremental_tools` attribute to `codex.tools.registered` using the effective mode for the current sampling request. Compute the mode once and reuse it for registration metrics and prompt construction across transport retries.\n\n## Testing\n\nExtend integration tests to verify the attribute for incremental and non-incremental requests, including when the feature flag is enabled but the Responses API does not support incremental tools. Assert registration sample counts and retain coverage that stream retries do not duplicate registration metrics.\n\nGitOrigin-RevId: e5b7a1075fe722ef6bdf900ae07e2b1b06aecfb5",
+            "url": "https://github.com/openai/codex/commit/d4e03acb6147dc83f5e013fd91f729da72712a03"
+          },
+          {
+            "sha": "6fb1c3903d42e3cc7da2c89e3a045fe0ce137af4",
+            "title": "Use hermetic dsymutil for macOS Bazel builds (#55693)",
+            "message": "Use hermetic dsymutil for macOS Bazel builds (#55693)\n\n## What changed\n\n- Add a `dsymutil` wrapper that delegates to the C toolchain's `LLVM_DSYMUTIL`, and include it in macOS Rust binary compile inputs and `PATH` so `rustc` can find it by name.\n- Build macOS release staging archives with `--config=ci-macos`, `--remote_download_toplevel`, and `--build_metadata=VISIBILITY=PRIVATE`.\n\nGitOrigin-RevId: 0f46520807dd9804049b6ae18351275af3693907",
+            "url": "https://github.com/openai/codex/commit/6fb1c3903d42e3cc7da2c89e3a045fe0ce137af4"
+          },
+          {
+            "sha": "feadd9441e67f2d8970ffc390212c32f3dfbba43",
+            "title": "Preserve enterprise MCP authorization across runtime refreshes (#55696)",
+            "message": "Preserve enterprise MCP authorization across runtime refreshes (#55696)\n\n## Why\n\nConfiguration reloads must cancel stale enterprise MCP startups while preserving access for running threads that still pass validation. Replacing a runtime during `thread/revert` must also leave the replacement able to use enterprise tools.\n\n## What changed\n\n- Separate pending startup cancellation from published thread lifetimes, with independent startup state for forks and replacement runtimes.\n- Retain eligible enterprise MCP connections across refreshes and explicit reconnects while applying updated tool restrictions and approvals. Do not create replacement enterprise connections after initial startup.\n- Revoke enterprise authorization when a thread is removed, drain requests when access is disabled, and revoke a connection's authority when token renewal requires authentication.\n\n## Testing\n\nExtend regression coverage to verify enterprise tool calls survive `thread/revert`, inherited fork configurations are cancelled after a reload, and enterprise calls fail after logout while ordinary MCP calls remain available.\n\nGitOrigin-RevId: 2d634be3011854b57f73c741bd1ec6b5aed94ee5",
+            "url": "https://github.com/openai/codex/commit/feadd9441e67f2d8970ffc390212c32f3dfbba43"
+          },
+          {
+            "sha": "6b13dffc5e4c334fe87f823b214ed15a4bf37a11",
+            "title": "Reuse Codex account grants for enterprise MCP authentication (#55698)",
+            "message": "Reuse Codex account grants for enterprise MCP authentication (#55698)\n\n## What changed\n\n- Prefer stored enterprise credentials when available; otherwise use a validated Codex account OAuth grant whose issuer matches the enterprise MCP configuration.\n- Pin each connection to its credential source and OAuth client, reject stale account grants, and hold the account refresh lease only during the IdP exchange.\n- Report actionable sign-in and issuer configuration errors, and classify token failures by credential source.\n\nGitOrigin-RevId: 26673f276a31e4ca5290f6b120f0ac44c77d7239",
+            "url": "https://github.com/openai/codex/commit/6b13dffc5e4c334fe87f823b214ed15a4bf37a11"
+          },
+          {
+            "sha": "35757adb728b268a1e75eabeb3e4cf9a6def5c18",
+            "title": "Enable MCP OAuth refresh coordination by default (#55701)",
+            "message": "Enable MCP OAuth refresh coordination by default (#55701)\n\n## What changed\n\nMark `mcp_oauth_refresh_coordination` as stable and enable it by default.\n\nGitOrigin-RevId: f82074c7d148808ceeb4acd206bbadefd470e5b1",
+            "url": "https://github.com/openai/codex/commit/35757adb728b268a1e75eabeb3e4cf9a6def5c18"
+          },
+          {
+            "sha": "b48277327d427b92ace30c1ee9d4817f8fa836b7",
+            "title": "Centralize cloud skill cache state under the catalog lock (#55705)",
+            "message": "Centralize cloud skill cache state under the catalog lock (#55705)\n\n## What changed\n\nMove cached cloud skill contents into `SkillCatalogState` alongside the published catalog generation. Prepare auth scopes and access cached contents under the same lock, clearing contents when the auth scope changes and retaining them when a partial refresh preserves a complete catalog. Keep generation checks around asynchronous discovery and reads.\n\nUse the auth key already captured by `prepare_cloud_generation` when creating a cloud plugin generation, so the stored and returned keys match.\n\nGitOrigin-RevId: 426bb7868baf9ff7855988291783a8d3e38d9c93",
+            "url": "https://github.com/openai/codex/commit/b48277327d427b92ace30c1ee9d4817f8fa836b7"
+          },
+          {
+            "sha": "3f31c0a040ca58b86cea70a8d40ad79d481e45d2",
+            "title": "Resolve MCP backend identity from runtime events in rollout traces (#55710)",
+            "message": "Resolve MCP backend identity from runtime events in rollout traces (#55710)\n\n## Why\n\nMCP callable namespaces and tool names can differ from their backend identities or match built-in tool names. Classifying calls by name can misidentify MCP calls and incorrectly parse namespaced `write_stdin` calls as terminal operations.\n\n## What changed\n\nResolve `ToolCallKind::Mcp` from the runtime invocation's server and tool as soon as the runtime starts, before MCP correlation assignment. Preserve the caller-facing summary and raw invocation, and skip built-in runtime handling for MCP calls.\n\nOnly create dispatch-based `write_stdin` terminal operations for calls without a namespace.\n\n## Testing\n\nAdd replay regression coverage for prefixed and unprefixed MCP aliases, names that match built-in tools, and `write_stdin` arguments with and without a session ID. Verify backend classification, preserved callable identity and dispatch lifecycle, and the absence of terminal operations and sessions.\n\nGitOrigin-RevId: 71f31335c1eb36b6b7e1a34383d10fc500bd2c4f",
+            "url": "https://github.com/openai/codex/commit/3f31c0a040ca58b86cea70a8d40ad79d481e45d2"
+          },
+          {
+            "sha": "db58a987b8a0b94b81ab321f0e0192757758df67",
+            "title": "Allow unified exec to fall back when credential masking is unavailable (#55719)",
+            "message": "Allow unified exec to fall back when credential masking is unavailable (#55719)\n\n## Why\n\nDisabled or failed protected shell snapshots prevent commands from running when credential masking is enabled.\n\n## What changed\n\nRestore unmasked credentials and continue execution when a protected shell snapshot is unavailable. Log and emit a warning explaining that the command will run with unmasked credentials.\n\n## Testing\n\nExtend `brokered_shell_snapshot_fallback` coverage for disabled and failed snapshots, including managed feature settings. Verify the warning, successful execution with restored credentials, continued filesystem sandbox and network policy enforcement, and masking recovery after snapshot storage is repaired.\n\nGitOrigin-RevId: 28561e571b2a043d0b6cfa248c9ba2a61dd558ba",
+            "url": "https://github.com/openai/codex/commit/db58a987b8a0b94b81ab321f0e0192757758df67"
+          },
+          {
+            "sha": "57d4fac64adbcaed0523ca6bf8d58c4ef6875157",
+            "title": "Avoid redundant clones when sending app-server notifications (#55723)",
+            "message": "Avoid redundant clones when sending app-server notifications (#55723)\n\n## Why\n\nTargeted notification delivery and broadcast routing clone the message for every recipient, then discard the original.\n\n## What changed\n\nUse `std::iter::repeat_n` to move the original message to the last recipient, avoiding one clone per nonempty recipient list while preserving delivery behavior.\n\n## Testing\n\nExpand notification tests to cover empty, single, and multiple recipient lists, checking payloads, target order, and shared timestamps. Add broadcast coverage for zero, one, and two eligible recipients, verifying that uninitialized clients, clients without the required experimental API support, and clients that opted out are skipped.\n\nGitOrigin-RevId: 2ba192f416ccd786e3566da3e5c851518b509afe",
+            "url": "https://github.com/openai/codex/commit/57d4fac64adbcaed0523ca6bf8d58c4ef6875157"
+          },
+          {
+            "sha": "2744e8686c3defaa96f7aff6c51a9df961c51224",
+            "title": "Share prepared MCP tool definitions across sessions (#55724)",
+            "message": "Share prepared MCP tool definitions across sessions (#55724)\n\n## Why\n\nSessions using the same MCP catalog can repeat schema normalization and retain duplicate tool specifications.\n\n## What changed\n\nSplit immutable MCP tool metadata and normalized specifications from per-handler caches, and reuse matching definitions within each `McpManager`. Require matching tool metadata, agent-plugin mode, and schema budget before reuse.\n\nKeep shared definitions behind weak references and prune expired entries on cache misses so completed sessions do not keep their schemas alive. Build definitions outside the shared index lock.\n\nGitOrigin-RevId: 02345359a1b0d297ca56f2f469de88aba89106f1",
+            "url": "https://github.com/openai/codex/commit/2744e8686c3defaa96f7aff6c51a9df961c51224"
+          },
+          {
+            "sha": "d571eaf1f61d0d93a797506335a99a9950ffe37b",
+            "title": "Preserve code cell response metadata in rollout traces (#55725)",
+            "message": "Preserve code cell response metadata in rollout traces (#55725)\n\n## Why\n\nReducing code cell lifecycle events discarded their response payload references and lost the initial response status when the runtime status changed.\n\n## What changed\n\nStore the initial response status and separate raw payload IDs for the initial response and final result on `CodeCell`. Carry payload references through queued lifecycle events so they survive replay when the source item arrives later.\n\n## Testing\n\nExtend lifecycle tests to verify distinct initial and final payload IDs and the preserved initial status for yielded cells that complete and failed cells whose lifecycle events precede their source item.\n\nGitOrigin-RevId: 8f49a3174ea487a5d91ebc2a6c97133aacaabfd2",
+            "url": "https://github.com/openai/codex/commit/d571eaf1f61d0d93a797506335a99a9950ffe37b"
+          },
+          {
+            "sha": "c7234c1174b27d9c55199fba0d546dc27d1b0415",
+            "title": "Box session metadata and compaction payloads in `RolloutItem` (#55733)",
+            "message": "Box session metadata and compaction payloads in `RolloutItem` (#55733)\n\n## What changed\n\nStore `RolloutItem::SessionMeta` and `RolloutItem::Compacted` payloads in `Box` values and update their producers, consumers, and test fixtures. Preserve the existing serialized rollout format.\n\nGitOrigin-RevId: 59fcc4beb47d23160872dcb6e95ace9b142d3d11",
+            "url": "https://github.com/openai/codex/commit/c7234c1174b27d9c55199fba0d546dc27d1b0415"
+          },
+          {
+            "sha": "af91f6ef2cd66ead278ebe7d5751973eef430aee",
+            "title": "Add a critical-path utility for exclusive duration attribution (#55804)",
+            "message": "Add a critical-path utility for exclusive duration attribution (#55804)\n\n## What changed\n\nAdd `codex-utils-critical-path` to track shared dependency paths and attribute time to inference, automatic review, user waits, tools, overhead, and unknown work. Parallel joins retain the later-finishing branch, preserving its full history without double-counting overlapping work.\n\nClip attribution to the requested interval and count unrecorded gaps as overhead. Bound retained history by collapsing it into unknown work at the depth limit, with nonrecursive destruction and bounded debug output.\n\n## Testing\n\nAdd unit tests for parallel joins, nested dependencies, ties, user waits, interval clipping, overlapping segments, history exhaustion, and safe formatting and concurrent release on small stacks.\n\nGitOrigin-RevId: 2df7453162491d3ae97bf4bee942730c8a4d5e5c",
+            "url": "https://github.com/openai/codex/commit/af91f6ef2cd66ead278ebe7d5751973eef430aee"
+          },
+          {
+            "sha": "2213359bd33f9ffc818e3aeb534faf47544293bc",
+            "title": "Measure Guardian review latency once with a monotonic clock (#55846)",
+            "message": "Measure Guardian review latency once with a monotonic clock (#55846)\n\n## Why\n\nGuardian review metrics derived duration from wall-clock timestamps, while analytics measured elapsed time when tracking the result. Clock changes and delayed tracking could produce inconsistent latencies.\n\n## What changed\n\nCapture one monotonic duration at review completion and pass it to both metrics and analytics. Preserve wall-clock timestamps for event ordering, and saturate analytics latency conversion at `u64::MAX`.\n\n## Testing\n\nAdd a regression test covering skewed wall-clock timestamps and delayed tracking, verifying that the duration metric uses the captured interval and completion timestamps are preserved.\n\nGitOrigin-RevId: 19eafb8e1f1a3d13a751bdc72c218e4cafeae410",
+            "url": "https://github.com/openai/codex/commit/2213359bd33f9ffc818e3aeb534faf47544293bc"
+          },
+          {
+            "sha": "21b1f5f5344db8adb6eb1be6a2e61f6085fdc8f8",
+            "title": "Bound retained turn analytics and clean up closed threads (#55847)",
+            "message": "Bound retained turn analytics and clean up closed threads (#55847)\n\n## Why\n\nDropped lifecycle facts can leave incomplete turns retaining analytics metadata indefinitely.\n\n## What changed\n\n- Limit retained turns to 256, evicting the oldest turn and its associated tool and review state when capacity is reached.\n- Forward `ThreadClosed` notifications to analytics and discard the closed thread's turn and review state, including reviews received without turn lifecycle facts.\n\n## Testing\n\nAdd regression tests covering metadata release after capacity eviction, continued reporting of new complete turns, cleanup isolated to the closed thread, and ignored approval responses after thread closure.\n\nGitOrigin-RevId: eed0a1fef013381654345d535f03de42b99e8607",
+            "url": "https://github.com/openai/codex/commit/21b1f5f5344db8adb6eb1be6a2e61f6085fdc8f8"
+          },
+          {
+            "sha": "4faf60f1265a495a68fd792701c60fa334714683",
+            "title": "Pause relay test time while inspecting handshake diagnostics (#55848)",
+            "message": "Pause relay test time while inspecting handshake diagnostics (#55848)\n\nPause Tokio time after the validation timeout in\n`malformed_handshakes_preserve_active_streams_and_admission_recovers`\nwhile inspecting diagnostics, since that inspection does not poll the\nharness WebSocket for pings. Resume time before closing the WebSocket so\nthe close handshake and its timeout run with an active clock.\n\nGitOrigin-RevId: 733a1fa35f80561424be97c4beb233780a7796cb",
+            "url": "https://github.com/openai/codex/commit/4faf60f1265a495a68fd792701c60fa334714683"
+          },
+          {
+            "sha": "6bae551093d24ad6539a7daba2d9a13b80b28d15",
+            "title": "Bound managed app-server and updater stderr logging (#55856)",
+            "message": "Bound managed app-server and updater stderr logging (#55856)\n\n## Why\n\nManaged stderr logs previously retained a tail only before a new launch, allowing logs to grow during a long-running process. Direct stderr writes could also block lifecycle operations on disk I/O.\n\n## What changed\n\n- Route managed app-server and updater logs through a shared nonblocking worker with a bounded queue. Drop records when the queue is full or a record exceeds 16 KiB, and avoid waiting for the worker at shutdown.\n- Prune live logs when they exceed 1 MiB, preserving the latest 256 KiB in `.log.previous` before truncating the current file. Keep inherited stderr handles usable after truncation.\n- Pause predecessor pruning during Windows updater handoff and resume it after a failed handoff only when ownership has been restored.\n- Keep ordinary stderr output when managed logging has not been initialized.\n\n## Testing\n\nAdd regression tests for stalled workers and queue overflow, tail retention, inherited append and nonappend handles, and pruning exclusion during updater handoff.\n\nGitOrigin-RevId: b6301962b1180fa6cdb231a56edce2429dc20b54",
+            "url": "https://github.com/openai/codex/commit/6bae551093d24ad6539a7daba2d9a13b80b28d15"
+          },
+          {
+            "sha": "c419fd01a70dd1d05356da443ac44328bda2e6f4",
+            "title": "Fix enterprise MCP credential selection and reauthentication (#55859)",
+            "message": "Fix enterprise MCP credential selection and reauthentication (#55859)\n\n## What changed\n\n- Prefer an eligible account grant over saved enterprise credentials, with a fallback to saved enterprise sign-in during initial connection if the account grant is rejected.\n- Remember rejected account grants per enterprise MCP registration across threads and report authentication failures as requiring reauthentication. Keep administrator configuration errors distinct from sign-in failures.\n- Compare account grants independently of access and ID token rotation, recheck the latest identity eligibility after exchange, and retry once when the refresh grant changes.\n- Make MCP authentication status reflect usable account grants, saved enterprise credentials, and completed connection failures.\n\n## Testing\n\nExtend regression coverage for enterprise sign-in failures and recovery, MCP authentication status, account grant identity across token refreshes, and retries after transient credential failures.\n\nGitOrigin-RevId: eeac65f668d5d2d55e9d8bf4547fbcbdd6a6c42d",
+            "url": "https://github.com/openai/codex/commit/c419fd01a70dd1d05356da443ac44328bda2e6f4"
+          },
+          {
+            "sha": "d138398cef7d49e46fe33f1d0ddbd2ca0ed16aa4",
+            "title": "Expand enterprise MCP authorization lifecycle test coverage (#55883)",
+            "message": "Expand enterprise MCP authorization lifecycle test coverage (#55883)\n\n## What changed\n\n- Extend app-server tests for account credential reuse, refresh races, stale bearer rejection, retry exhaustion, and step-up failures at the identity provider and resource authorization server.\n- Assert token-exchange request fields and enterprise protocol negotiation while preserving the ordinary MCP handshake.\n- Add core scenarios for permission and tool-policy refreshes, policy revocation, and thread removal, including cancellation of in-flight enterprise calls.\n- Snapshot conversation history after revocation to verify that prior calls remain visible and ordinary tools continue working.\n- Allow the existing startup-failure test to wait through the MCP startup deadline.\n\nGitOrigin-RevId: 31cf71a28f91bd30746b74df8fa669edb6bc23a1",
+            "url": "https://github.com/openai/codex/commit/d138398cef7d49e46fe33f1d0ddbd2ca0ed16aa4"
+          },
+          {
+            "sha": "bcee56bcdb74cbf08fc6dd47ef0079fded4bba9a",
+            "title": "Release 0.164.0-alpha.9",
+            "message": "Release 0.164.0-alpha.9",
+            "url": "https://github.com/openai/codex/commit/bcee56bcdb74cbf08fc6dd47ef0079fded4bba9a"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.8",
+          "head": "rust-v0.164.0-alpha.9",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.8...rust-v0.164.0-alpha.9",
+          "status": "diverged",
+          "total": 27,
+          "behind": 1,
+          "complete": true,
+          "fetched": 27
         },
         "comparisonError": null
       }
