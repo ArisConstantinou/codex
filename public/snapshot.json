@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-22T20:47:15.252Z",
+  "generatedAt": "2026-10-22T23:40:51.815Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -7493,7 +7493,7 @@
         "title": "0.164.0-alpha.12",
         "body": "Release 0.164.0-alpha.12\n\n",
         "authored": false,
-        "fetchedAt": "2026-10-22T20:47:15.255Z",
+        "fetchedAt": "2026-10-22T23:40:51.818Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.12",
         "publishedAt": "2026-10-22T11:11:51Z",
         "commits": [
@@ -7612,9 +7612,9 @@
     },
     {
       "id": "openai-status:01M5JHVJVC8WAXB4WRYFMKG6HP",
-      "at": "2026-10-22T19:36:53.000Z",
+      "at": "2026-10-22T21:30:55.000Z",
       "url": "https://status.openai.com/incidents/01M5JHVJVC8WAXB4WRYFMKG6HP",
-      "text": "New Ad Accounts failing to provision admins. We have identified that new ad accounts are failing to assign their creator admin. We are investigating the issue.",
+      "text": "New Ad Accounts failing to provision admins. We have identified the issue and are working to implement the mitigation.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -7628,9 +7628,9 @@
     },
     {
       "id": "openai-status:01M5JF8DR3EGQJNTXPZ24AKX2G",
-      "at": "2026-10-22T18:59:18.000Z",
+      "at": "2026-10-22T20:55:48.000Z",
       "url": "https://status.openai.com/incidents/01M5JF8DR3EGQJNTXPZ24AKX2G",
-      "text": "Degraded Performance of Dots on Enterprise. Our teams have identified the issue and are actively implementing a mitigation. At this time the majority of impact is affecting enterprise customers.",
+      "text": "Degraded Performance of Dots on Enterprise. All impacted services have now fully recovered.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -7639,8 +7639,23 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "identified",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-10-22T18:51:28.000Z"
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.11.1",
+      "at": "2026-10-22T22:54:07.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.11.1",
+      "text": "rust-v0.164.0-alpha.11.1. Release 0.164.0-alpha.11.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -7649,7 +7664,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-22T20:47:14.749Z",
+      "lastSuccessAt": "2026-10-22T23:40:50.896Z",
       "error": null,
       "count": 150
     },
@@ -7658,7 +7673,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-22T20:47:14.749Z",
+      "lastSuccessAt": "2026-10-22T23:40:50.896Z",
       "error": null,
       "count": 10
     },
@@ -7667,7 +7682,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-22T20:47:14.749Z",
+      "lastSuccessAt": "2026-10-22T23:40:50.896Z",
       "error": null,
       "count": 25
     }
@@ -25460,6 +25475,150 @@
         "body": "Release 0.164.0-alpha.12\n\n",
         "authored": false,
         "fetchedAt": "2026-10-22T20:47:15.255Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.12",
+        "publishedAt": "2026-10-22T11:11:51Z",
+        "commits": [
+          {
+            "sha": "b4ad33d1a3c10c9652dd57f7afd7a949f8f26895",
+            "title": "Cache decrypted Codex auth and managed secrets (#56081)",
+            "message": "Cache decrypted Codex auth and managed secrets (#56081)\n\n## Why\n\nRepeated reads of Codex auth and managed secrets repeat expensive scrypt decryption even when the encrypted file and keyring passphrase are unchanged.\n\n## What changed\n\nExtend the decrypted snapshot cache to `CodexAuth` and `ManagedSecrets`, keeping at most one snapshot per namespace. Reuse snapshots only when the file path, ciphertext, and passphrase match, and invalidate matching snapshots on writes. Every read still checks the file and keyring before reusing plaintext.\n\n## Testing\n\nExtend cache tests to cover concurrent reuse, writes, external file replacement, file removal, key rotation, keyring errors, invalid ciphertext, and isolation across homes and namespaces. Prime the auth cache before verifying fallback when the keyring fails.\n\nGitOrigin-RevId: eaf802ef4cfdbe482b56423807a1fe0fe3def2cd",
+            "url": "https://github.com/openai/codex/commit/b4ad33d1a3c10c9652dd57f7afd7a949f8f26895"
+          },
+          {
+            "sha": "47a1f6bb77baa8ba237757196a62cadf97dc854b",
+            "title": "Honor server approval reviewer defaults on fresh TUI startup (#56090)",
+            "message": "Honor server approval reviewer defaults on fresh TUI startup (#56090)\n\n## Why\n\nA saved client `approvals_reviewer` setting could override the app server's default when starting a fresh thread.\n\n## What changed\n\nUse explicit invocation overrides for the first thread's approval reviewer, leaving the selection to the server when no override is provided. Typed overrides take precedence over key-value overrides, and repeated key-value overrides use the last value. Explicit profile launches retain their resolved configuration behavior.\n\n## Testing\n\nExtend startup tests to cover server defaults, embedded startup, explicit override precedence, and profile launches. Verify that the first turn uses the reviewer returned by the server.\n\nGitOrigin-RevId: 19d4d75bb8fbe522fb9495bd9c6951513f8ac4d2",
+            "url": "https://github.com/openai/codex/commit/47a1f6bb77baa8ba237757196a62cadf97dc854b"
+          },
+          {
+            "sha": "c2d5ea52e1b7ab11ee2d71dc44ea1ef00f9c8eb3",
+            "title": "Keep TUI preferences editable when execution settings are invalid (#56091)",
+            "message": "Keep TUI preferences editable when execution settings are invalid (#56091)\n\n## Why\n\nSaving a local preference could succeed but fail to apply live because reloading the full configuration also resolved execution settings. An unknown `model_provider`, for example, prevented the preference from taking effect.\n\n## What changed\n\nReload config-panel preferences from the configuration layer stack into `LocalSettings` without rebuilding execution settings. Preserve CLI overrides, loader overrides, cloud configuration, and the existing choice of working directory.\n\n## Testing\n\nExtend the offline remote-session preference test with an unknown `model_provider` override, verifying that automatic recap and paste detection preferences still persist and apply live.\n\nGitOrigin-RevId: 2377a01c77f3cb978a7ee6cd67c1fe89361131fb",
+            "url": "https://github.com/openai/codex/commit/c2d5ea52e1b7ab11ee2d71dc44ea1ef00f9c8eb3"
+          },
+          {
+            "sha": "86e17e98c7f901277aeeb4649cf1b01462b082f2",
+            "title": "Prepare TUI startup to accept multiple backend sessions (#56097)",
+            "message": "Prepare TUI startup to accept multiple backend sessions (#56097)\n\n## What changed\n\n- Add `InitialBackendSessions` to carry the initial session and additional sessions into the TUI event loop. Existing launches continue to supply a single session.\n- Shut down all supplied sessions on startup errors, cancellation, and early exits.\n- Register the under-development `tui_multi_backend` feature flag, disabled by default, and expose it in the configuration schema.\n\n## Testing\n\nAdd a regression test that fails bootstrap and verifies that both initial backends receive shutdown requests. Update multi-source event polling coverage to use the new initialization path.\n\nGitOrigin-RevId: e5db439552de97594e6f13360b90be71256ab2f0",
+            "url": "https://github.com/openai/codex/commit/86e17e98c7f901277aeeb4649cf1b01462b082f2"
+          },
+          {
+            "sha": "07316174c6f62deb20278c53add2dbd9dcf6da70",
+            "title": "Forward Guardian reviewer events to parent raw-event subscribers (#56124)",
+            "message": "Forward Guardian reviewer events to parent raw-event subscribers (#56124)\n\n## What changed\n\nAdd the disabled-by-default `guardian_recorded_items` feature to forward recorded reviewer items and interruptions through the parent's raw-event subscription, preserving reviewer thread and turn IDs without modifying the parent's history or completing its turn.\n\nEmit reviewer items as `rawResponseItem/completed` notifications and interruptions as interrupted `turn/completed` notifications. Mark opted-in reviewer requests with `guardian_recorded_items` metadata.\n\n## Testing\n\nExtend Guardian integration tests to cover reviewer identity, recorded-item metadata replay, concurrent reviewer interruptions, independent parent completion, and behavior without the feature enabled.\n\nGitOrigin-RevId: beb4dbf6c6f2a800a2fbf3cfd11ae174a1382386",
+            "url": "https://github.com/openai/codex/commit/07316174c6f62deb20278c53add2dbd9dcf6da70"
+          },
+          {
+            "sha": "c260087efe8cc6dcc0526e7018ae9e0e3fc134e3",
+            "title": "Avoid blocking EMA auth status checks on account refresh (#56127)",
+            "message": "Avoid blocking EMA auth status checks on account refresh (#56127)\n\n## Why\n\nEMA MCP auth status checks acquired an account grant lease, making status inspection wait for account refresh coordination or an existing lease.\n\n## What changed\n\nAdd `AuthManager::account_oauth_grant()` to inspect an owner-checked grant without acquiring the refresh lock. Use it for EMA status checks and share a single lazy read across servers, including missing grants and read errors. Keep refresh exclusion for token exchanges through `lease_account_oauth_grant()`.\n\n## Testing\n\nAdd regression coverage for status checks across two EMA servers while an account lease is held. Extend account refresh tests to verify inspection completes with a lease held and refresh queued, and returns no grant after logout.\n\nGitOrigin-RevId: 921214dd552eb216c713596f2737460053a07d08",
+            "url": "https://github.com/openai/codex/commit/c260087efe8cc6dcc0526e7018ae9e0e3fc134e3"
+          },
+          {
+            "sha": "2dbe6bfa44195e0c63b9a2ee59f46482bfd64fae",
+            "title": "Cancel MCP tool requests when response futures are dropped (#56132)",
+            "message": "Cancel MCP tool requests when response futures are dropped (#56132)\n\n## Why\n\nDropping a local tool-call future did not notify the MCP server that the request was cancelled, leaving remote work running.\n\n## What changed\n\n- Send a cancellation notification for the request when its response future is dropped, covering both ordinary tool calls and tool-input rounds.\n- Preserve write order for stdio and in-process transports so cancellation cannot arrive before its tool request, without waiting for tool responses.\n\n## Testing\n\nAdd regression tests for cancellation on drop, request-before-cancellation ordering under reversed send polling and exhausted task budgets, and continued use of the shared connection after cancellation.\n\nGitOrigin-RevId: fab02d546fd82c601756117d9ecbf1017c28ac11",
+            "url": "https://github.com/openai/codex/commit/2dbe6bfa44195e0c63b9a2ee59f46482bfd64fae"
+          },
+          {
+            "sha": "b337fe06b7d8d6e5b42295e04c5e92c2b9c46567",
+            "title": "Defer agent mail after empty final answers (#56133)",
+            "message": "Defer agent mail after empty final answers (#56133)\n\n## Why\n\nAn explicit `final_answer` with empty or whitespace-only text could allow queued agent mail to restart the turn instead of leaving it queued for the next turn.\n\n## What changed\n\nTreat explicit `final_answer` messages as terminal regardless of visible text in both completed-item handling and turn-item finalization. Untagged messages still require visible text to defer mailbox delivery; `commentary` and `partial_answer` messages do not defer it.\n\n## Testing\n\nExtend regression coverage for empty and whitespace-only final answers, delivery of queued agent mail on the next turn, and message board notifications arriving before or after an empty final answer.\n\nGitOrigin-RevId: 466f1a9c613e07d67ce45458858ba32d5d23f11d",
+            "url": "https://github.com/openai/codex/commit/b337fe06b7d8d6e5b42295e04c5e92c2b9c46567"
+          },
+          {
+            "sha": "de8e7df8a026d30ca5e7b98fd0be8fef9249a4b0",
+            "title": "Release 0.164.0-alpha.12",
+            "message": "Release 0.164.0-alpha.12",
+            "url": "https://github.com/openai/codex/commit/de8e7df8a026d30ca5e7b98fd0be8fef9249a4b0"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.11",
+          "head": "rust-v0.164.0-alpha.12",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.11...rust-v0.164.0-alpha.12",
+          "status": "diverged",
+          "total": 9,
+          "behind": 1,
+          "complete": true,
+          "fetched": 9
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.11.1:2026-10-22T23:40:51.815Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-22T23:40:51.815Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.11.1",
+        "at": "2026-10-22T22:54:07.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.11.1",
+        "text": "rust-v0.164.0-alpha.11.1. Release 0.164.0-alpha.11.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M5JHVJVC8WAXB4WRYFMKG6HP:2026-10-22T23:40:51.815Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-22T23:40:51.815Z",
+      "item": {
+        "id": "openai-status:01M5JHVJVC8WAXB4WRYFMKG6HP",
+        "at": "2026-10-22T21:30:55.000Z",
+        "url": "https://status.openai.com/incidents/01M5JHVJVC8WAXB4WRYFMKG6HP",
+        "text": "New Ad Accounts failing to provision admins. We have identified the issue and are working to implement the mitigation.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "identified",
+        "publishedAt": "2026-10-22T19:36:53.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M5JF8DR3EGQJNTXPZ24AKX2G:2026-10-22T23:40:51.815Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-22T23:40:51.815Z",
+      "item": {
+        "id": "openai-status:01M5JF8DR3EGQJNTXPZ24AKX2G",
+        "at": "2026-10-22T20:55:48.000Z",
+        "url": "https://status.openai.com/incidents/01M5JF8DR3EGQJNTXPZ24AKX2G",
+        "text": "Degraded Performance of Dots on Enterprise. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-22T18:51:28.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.12:2026-10-22T23:40:51.815Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-22T23:40:51.815Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.12",
+        "title": "0.164.0-alpha.12",
+        "body": "Release 0.164.0-alpha.12\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-22T23:40:51.818Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.12",
         "publishedAt": "2026-10-22T11:11:51Z",
         "commits": [
