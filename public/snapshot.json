@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-22T01:47:55.070Z",
+  "generatedAt": "2026-10-22T06:40:21.628Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -7283,6 +7283,195 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.11",
+      "at": "2026-10-22T04:31:23.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.11",
+      "text": "0.164.0-alpha.11. Release 0.164.0-alpha.11",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.11",
+        "title": "0.164.0-alpha.11",
+        "body": "Release 0.164.0-alpha.11\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-22T06:40:21.630Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.11",
+        "publishedAt": "2026-10-22T04:22:12Z",
+        "commits": [
+          {
+            "sha": "82ef0672e34391ffe1bd61e1185ed6e9d664a64e",
+            "title": "Scope MITM credential substitution to trusted origins and placeholders (#56003)",
+            "message": "Scope MITM credential substitution to trusted origins and placeholders (#56003)\n\n## Why\n\nCredential substitution needs to authorize the destination and the original request before exposing host secrets. Project configuration must not redirect trusted credential policies, and older clients must reject scoped policies rather than silently apply unconditional injection.\n\n## What changed\n\n- Add hook `schemes` and `ports` constraints and an exact whole-header `placeholder` for secret substitution. Require `network.mitm.version = 2` for these options in permission profiles.\n- Restrict placeholder substitution to HTTPS on port 443 and reject missing, mismatched, or duplicate placeholder headers.\n- Reject project changes to trusted MITM definitions and their inheritance chains. Allow self-contained project header-stripping policies only when no trusted MITM policy exists.\n- Reject ambiguous query values, value-constrained headers, and semicolon paths during authorization, and preserve case-sensitive extension methods.\n- Mark resolved secret headers sensitive, reject secret injection into `User-Agent`, restrict substitution headers, and limit secret files to 64 KiB.\n\n## Testing\n\nAdd regression coverage for scoped TOML resolution, legacy-format rejection, unknown fields, project policy restrictions, origin and placeholder denials, ambiguous request matching, secret redaction, and hook application after credential brokerage.\n\nGitOrigin-RevId: 78dc115ab6c88c9a734377626429bc4840731f89",
+            "url": "https://github.com/openai/codex/commit/82ef0672e34391ffe1bd61e1185ed6e9d664a64e"
+          },
+          {
+            "sha": "3206e532d7515c50f22af6dad3a20b9f3c38b639",
+            "title": "Assert shell tool overlap directly in the parallelism test (#56006)",
+            "message": "Assert shell tool overlap directly in the parallelism test (#56006)\n\n## Why\n\nA total-duration assertion does not prove that two shell commands overlap and depends on execution speed.\n\n## What changed\n\nUpdate `shell_tools_run_in_parallel` to wait for both commands to create start markers before releasing them through a shared file. Fail if both commands do not start within five seconds, and verify that each command exits successfully and returns its expected output.\n\nGitOrigin-RevId: ba322157a60951ad5dd2f1b018ddc6007de1de89",
+            "url": "https://github.com/openai/codex/commit/3206e532d7515c50f22af6dad3a20b9f3c38b639"
+          },
+          {
+            "sha": "bc45d61a9a0c5382d5ee342c1bf5c740f9ef1b77",
+            "title": "Pause Tokio time in the reused Guardian session test (#56007)",
+            "message": "Pause Tokio time in the reused Guardian session test (#56007)\n\nPause the Tokio clock before spawning the review in\n`run_review_on_reused_session_waits_for_submitted_turn` so its one-second\ndeadline uses simulated time while the test verifies that stale turn completions\nare ignored.\n\nGitOrigin-RevId: c6712219f894835b576f499eb080ec15a3f09a78",
+            "url": "https://github.com/openai/codex/commit/bc45d61a9a0c5382d5ee342c1bf5c740f9ef1b77"
+          },
+          {
+            "sha": "082900149cc7c0985e15a1d1ce0330a9e81e53b1",
+            "title": "Add a critical-path timing recorder for direct tool calls (#56008)",
+            "message": "Add a critical-path timing recorder for direct tool calls (#56008)\n\n## What changed\n\nAdd the `codex-direct-tool-timing` crate to record tool execution, automated reviews, human waits, and dependency paths. Human waits take precedence over overlapping reviews, and dependency waits with unavailable history are recorded as unknown time.\n\nInvocation guards complete each call once, explicitly or on drop. Separate invocation identities prevent late review or wait guards from affecting calls that reuse an ID; duplicate active IDs disable ambiguous path attribution. Batch timing exposes the last-finishing invocation's path once all calls complete.\n\n## Testing\n\nAdd unit tests for parallel batch completion, duplicate and reused call IDs, cancellation, missing dependency history, overlapping reviews and human waits, and nested wait guards.\n\nGitOrigin-RevId: 8b251f51a0c52342657f2d244524b562a371bd8e",
+            "url": "https://github.com/openai/codex/commit/082900149cc7c0985e15a1d1ce0330a9e81e53b1"
+          },
+          {
+            "sha": "deede7201da27a178c39befa6b4959bb7d451645",
+            "title": "Keep rollout trace terminal sessions distinct when process IDs are reused (#56011)",
+            "message": "Keep rollout trace terminal sessions distinct when process IDs are reused (#56011)\n\n## Why\n\nRuntime process handles are recyclable and thread-local. Using them as terminal session identities can merge separate commands or associate `write_stdin` operations with the wrong exec.\n\n## What changed\n\n- Give each exec a distinct terminal session and track the latest session for each thread-local process handle.\n- Record the exec selected by `write_stdin` at runtime and use it to correct session membership during replay, including when dispatch is delayed until a handle is reused.\n- Fall back to the latest session for the thread and handle when replaying older traces without runtime target events.\n\n## Testing\n\nExtend reducer coverage for process ID reuse across threads and successive execs, stdin session membership, and delayed runtime target resolution.\n\nGitOrigin-RevId: 330c6fd26a4eebdef03ae600a030dc76920e0dd9",
+            "url": "https://github.com/openai/codex/commit/deede7201da27a178c39befa6b4959bb7d451645"
+          },
+          {
+            "sha": "aafd81a7ad3be2d8ddc3439056841af306cbddcc",
+            "title": "Avoid nested CLI startup in the MCP OAuth persistence test (#56018)",
+            "message": "Avoid nested CLI startup in the MCP OAuth persistence test (#56018)\n\nUse `ConfigEditsBuilder` to persist a concurrent MCP server edit during OAuth discovery without launching another CLI process inside the HTTP timeout. Preserve coverage that the concurrent server and issuer-bound callback are saved, and assert that OAuth fails with the expected invalid authorization endpoint error.\n\nGitOrigin-RevId: 41d782f9dbbc96d528e4990171bffd87e95f6e4f",
+            "url": "https://github.com/openai/codex/commit/aafd81a7ad3be2d8ddc3439056841af306cbddcc"
+          },
+          {
+            "sha": "6f34d3d40816dac9d7a6ca94c3e3974b3f40c532",
+            "title": "Allow thread sampling after failed or interrupted turns (#56020)",
+            "message": "Allow thread sampling after failed or interrupted turns (#56020)\n\n## Why\n\n`thread/sample` previously required the latest source turn to have completed successfully, rejecting failed or interrupted turns even when the source was idle.\n\n## What changed\n\nAccept the latest completed, failed, or interrupted turn in both legacy and paginated history modes. Update the protocol documentation and validation error to reflect the accepted statuses, while continuing to reject stale or active sources.\n\n## Testing\n\nExpand integration coverage across all three terminal statuses and both history modes, checking that sampling preserves context and leaves the source unchanged. Also verify that sampling an active source is rejected before interrupting it.\n\nGitOrigin-RevId: a5dfdb2800868ee178eae16b12ee7f6f9515898c",
+            "url": "https://github.com/openai/codex/commit/6f34d3d40816dac9d7a6ca94c3e3974b3f40c532"
+          },
+          {
+            "sha": "233119375db96d7b71acc5b17138c41114385167",
+            "title": "Keep slash command prefixes in editable composer text (#56021)",
+            "message": "Keep slash command prefixes in editable composer text (#56021)\n\n## What changed\n\nKeep the leading `/` in the textarea and render slash commands after the normal composer prompt, so `/model` appears as `› /model`.\n\nTrack the full `/command` token as a text element and remove stale slash-command elements when the draft changes. Update composer tests and snapshots for the new representation.\n\nGitOrigin-RevId: 60119f18b69cec16f4e21839f45132231feb84b4",
+            "url": "https://github.com/openai/codex/commit/233119375db96d7b71acc5b17138c41114385167"
+          },
+          {
+            "sha": "38da85f49e0ab8247d1840f7437ce06fd12d7856",
+            "title": "Preserve config overrides across CLI subcommand boundaries (#56022)",
+            "message": "Preserve config overrides across CLI subcommand boundaries (#56022)\n\n## Why\n\nWhen `-c` or `--config` appears at multiple command levels, Clap retains only the deepest scope's values, dropping earlier overrides.\n\n## What changed\n\nCollect config overrides from each command scope in order while preserving typed child arguments and their existing precedence. Arguments forwarded after `--` remain unchanged.\n\n## Testing\n\nAdd regression coverage for overrides split across nested `mcp add` commands, forwarded `-c` arguments, and validation of an invalid override before `app-server` when another override follows it.\n\nGitOrigin-RevId: 40c64eda866497e2f59491a523c6777a8bfe5d5f",
+            "url": "https://github.com/openai/codex/commit/38da85f49e0ab8247d1840f7437ce06fd12d7856"
+          },
+          {
+            "sha": "d6a5c9d17e8240a5dbd83cae1a3df23ed5aafcea",
+            "title": "Group Bedrock API key entry with other AWS sign-in methods (#56023)",
+            "message": "Group Bedrock API key entry with other AWS sign-in methods (#56023)\n\n## What changed\n\nWhen AWS profiles or environment credentials are detected, move manual Bedrock API key entry under “Other AWS sign-in methods” and update its description to include API keys. Keep API key entry directly available when no credentials are detected.\n\n## Testing\n\nUpdate onboarding method assertions and rendering snapshots to cover the grouped options and API key entry in the other sign-in methods menu.\n\nGitOrigin-RevId: 992ecf7a2e3ac9f2f0eef2ef6534cf9beb88ea8e",
+            "url": "https://github.com/openai/codex/commit/d6a5c9d17e8240a5dbd83cae1a3df23ed5aafcea"
+          },
+          {
+            "sha": "e8bb1b664170a123af4b844a47e6c6e992b52fe2",
+            "title": "Limit decoded HTTP/3 response headers in the TCP tunnel (#56024)",
+            "message": "Limit decoded HTTP/3 response headers in the TCP tunnel (#56024)\n\n## Why\n\nQPACK can expand compact response headers into large decoded field sections. Bound their size before `h3` constructs its capacity-limited `HeaderMap`.\n\n## What changed\n\nSet the HTTP/3 client's maximum field section size to 64 KiB so oversized responses are rejected with `HeaderTooBig`.\n\n## Testing\n\nAdd a regression test that sends QPACK static references around the size limit and a much larger expansion. Verify that oversized responses are rejected and a subsequent valid response succeeds on the same connection.\n\nGitOrigin-RevId: d7c83a7a755dfafae05919ec52542ffce40a1ef4",
+            "url": "https://github.com/openai/codex/commit/e8bb1b664170a123af4b844a47e6c6e992b52fe2"
+          },
+          {
+            "sha": "943c70d8d203c61404744939eb64a1261acd5d97",
+            "title": "Support client Responses API metadata in `thread/sample` (#56031)",
+            "message": "Support client Responses API metadata in `thread/sample` (#56031)\n\n## What changed\n\nAdd optional `responsesapiClientMetadata` to `ThreadSampleParams` and forward it to the sample turn's Responses API metadata. Update the experimental protocol schema.\n\n## Testing\n\nExtend the thread sample integration test to verify that client metadata appears in both the request header and body, preserves the explicit `turn_trigger` when client metadata supplies a conflicting value, and does not carry over to the next parent turn.\n\nGitOrigin-RevId: eb1f80824d476fc6c584a2b35d97e59d51fd4273",
+            "url": "https://github.com/openai/codex/commit/943c70d8d203c61404744939eb64a1261acd5d97"
+          },
+          {
+            "sha": "004c13292f3ef05e51e2e90e5a2dc6b13b651916",
+            "title": "Fix entrypoint lookup in package debug-symbol smoke tests (#56032)",
+            "message": "Fix entrypoint lookup in package debug-symbol smoke tests (#56032)\n\n## Why\n\nRust v0 symbols can mention `codex_code_mode_host` as the instantiating crate of a dependency's generic function, so matching the crate name alone can select the wrong function.\n\n## What changed\n\nDemangle `nm` output and match `codex_code_mode_host::main` exactly, preserving spaces within demangled names. Include local symbols in the Linux lookup by removing `--extern-only`.\n\nGitOrigin-RevId: b4ea4face3fe861966d3643d13db168143bcefa3",
+            "url": "https://github.com/openai/codex/commit/004c13292f3ef05e51e2e90e5a2dc6b13b651916"
+          },
+          {
+            "sha": "8440e76ae6d4875a6f01398e09bd27734da741e7",
+            "title": "Enable the Bedrock setup wizard by default (#56033)",
+            "message": "Enable the Bedrock setup wizard by default (#56033)\n\n## What changed\n\nPromote `bedrock_setup_wizard` to stable and enable it by default for eligible onboarding. Users can still disable it with `features.bedrock_setup_wizard = false`.\n\n## Testing\n\nUpdate onboarding coverage to check the enabled default and explicit opt-out. Remove the explicit opt-in from daemon startup tests so they exercise the default configuration.\n\nGitOrigin-RevId: 5bd911088681a31d34aa444398e6d3f7d1d87955",
+            "url": "https://github.com/openai/codex/commit/8440e76ae6d4875a6f01398e09bd27734da741e7"
+          },
+          {
+            "sha": "09ec2451bf9a6750a19f334e9bd0fd9ebe6494b5",
+            "title": "Add request-scoped OAuth credentials and session lifecycle APIs (#56036)",
+            "message": "Add request-scoped OAuth credentials and session lifecycle APIs (#56036)\n\n## What changed\n\n- Add `OAuthSessionRequest` to pair access tokens with their authorization identity and retain rejected-token recovery across transient failures and retries. New sign-ins receive an identity that survives token refresh.\n- Expose explicit login, logout, and authorization identity lookup, plus a per-manager option to disable automatic browser login while allowing credential reuse and refresh.\n- Move serializable `OAuthSessionConfig` into `codex-model-provider-info`, add an optional `device_authorization_url` field, and share endpoint URL validation through `codex-http-client`.\n- Distinguish permission failures, transient token endpoint failures, and invalid responses using `io::ErrorKind`.\n\n## Testing\n\nAdd coverage for sign-in identity preservation through refresh retries, removal of saved and cached credentials on logout, and suppression of automatic browser login. Extend token endpoint error classification coverage.\n\nGitOrigin-RevId: ae9f72e787171e179fe139a3b840a9f7e1e46506",
+            "url": "https://github.com/openai/codex/commit/09ec2451bf9a6750a19f334e9bd0fd9ebe6494b5"
+          },
+          {
+            "sha": "45179176e52ab890a3cf5ce47e8ab585e7295f7e",
+            "title": "Add a channel-backed cloud app-server client (#56037)",
+            "message": "Add a channel-backed cloud app-server client (#56037)\n\n## What changed\n\n- Add `CloudClient` and integrate it with `AppServerClient` and `AppServerRequestHandle` for requests, notifications, server-request replies, events, and shutdown.\n- Keep retained request and reply handles bound to their cloud backend, with event delivery independent of request completion and a timeout for shutdown.\n- Return no platform or Codex home metadata for cloud clients, and reject TUI filesystem operations for this backend.\n\n## Testing\n\nAdd tests for backend ownership of retained handles, independent event delivery, errors after the command receiver closes, and shutdown timeouts when the worker does not respond.\n\nGitOrigin-RevId: 4cf308dc0ea6fa6e7b14dd4542d93e8030b0162d",
+            "url": "https://github.com/openai/codex/commit/45179176e52ab890a3cf5ce47e8ab585e7295f7e"
+          },
+          {
+            "sha": "0769c6aeeb1a81cec715e496d2486ece6fcef21b",
+            "title": "Enable executor cleanup hooks with V2 capability discovery (#56044)",
+            "message": "Enable executor cleanup hooks with V2 capability discovery (#56044)\n\n## Why\n\nExecutor hooks depended on V1 discovery snapshots, so plugins discovered through V2 could not run their cleanup hooks.\n\n## What changed\n\nPrepare executor hook sources during step setup from either V1 or V2 discovery and capture them in `StepContext` for stop, interrupt, and memory consolidation hooks. Restrict V2 sources to selected plugin installations while preserving plugin enablement, hook admission, MCP routing, and app tool policy checks.\n\n## Testing\n\nAdd unit coverage for V2 hook admission, environment routing, disabled plugins, and failed discovery. Add integration coverage showing that `Stop` and `Interrupt` cleanup hooks run with V2 discovery alone and remain silent when the plugin is disabled.\n\nGitOrigin-RevId: a4c0e9c56bdebcdf22cea63f02f8fb4c5eed358e",
+            "url": "https://github.com/openai/codex/commit/0769c6aeeb1a81cec715e496d2486ece6fcef21b"
+          },
+          {
+            "sha": "2a77e82f09212c9e1bbf02656afca5d8172c5f9e",
+            "title": "Support configured credential providers in remote execution (#56049)",
+            "message": "Support configured credential providers in remote execution (#56049)\n\n## Why\n\nRemote credential masking previously fell back to unmasked execution whenever custom credential providers were configured.\n\n## What changed\n\n- Transport configured provider rules to the executor-local network proxy, where credential values and destination context are resolved.\n- Advertise `credentialMaskingCustomProviders` and negotiate masking support. Keep the warning and unmasked fallback for executors that support only built-in providers.\n- Discard provider rules when masking is disabled and omit their contents from debug output.\n\n## Testing\n\nExtend coverage for capability compatibility, provider configuration round trips, and fallback on older executors. Exercise configured-provider masking in remote request history and verify that masked placeholders are restored to real credentials in upstream request headers.\n\nGitOrigin-RevId: b036f56900b343ddccc17b5293c82bc1f3426237",
+            "url": "https://github.com/openai/codex/commit/2a77e82f09212c9e1bbf02656afca5d8172c5f9e"
+          },
+          {
+            "sha": "342ed69a174c206c1de52a59491b131e0753cfa5",
+            "title": "Require managed configuration from the configured server (#56055)",
+            "message": "Require managed configuration from the configured server (#56055)\n\n## Why\n\nLocal administrators need to require managed configuration from a specific customer-hosted server before a session can start.\n\n## What changed\n\n- Add a local managed `config_server` requirement with an HTTPS base URL and optional OAuth settings. Validate endpoints and derive the bundle route as `codex/config/bundle` beneath the base URL.\n- Replace the entire `config_server` block when a higher-priority requirements layer supplies one, keeping the endpoint and OAuth settings together. Reject this setting in fetched policy.\n- Track the applied server through configuration snapshots, role overrides, and refreshes. Reject session startup and managed refreshes when the applied server does not match the requirement; user refreshes retain the session's managed configuration.\n\n## Testing\n\nAdd coverage for missing, mismatched, and matching server configuration at session startup, whole-block replacement, rejection of server settings in fetched policy, and preservation across role overrides and refreshes.\n\nGitOrigin-RevId: 51e8a1738dabdb117ae858120f6fb09ae2ff1261",
+            "url": "https://github.com/openai/codex/commit/342ed69a174c206c1de52a59491b131e0753cfa5"
+          },
+          {
+            "sha": "fd591b6049c2745a2097baab41180fbdb19bdac0",
+            "title": "Release 0.164.0-alpha.11",
+            "message": "Release 0.164.0-alpha.11",
+            "url": "https://github.com/openai/codex/commit/fd591b6049c2745a2097baab41180fbdb19bdac0"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.10",
+          "head": "rust-v0.164.0-alpha.11",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.10...rust-v0.164.0-alpha.11",
+          "status": "diverged",
+          "total": 20,
+          "behind": 1,
+          "complete": true,
+          "fetched": 20
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11.2",
+      "at": "2026-10-22T05:30:13.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.11.2",
+      "text": "rust-v0.163.0-alpha.11.2. Release 0.163.0-alpha.11.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M5GPE9C4E19HE461P8JAMYXD",
+      "at": "2026-10-22T02:42:24.000Z",
+      "url": "https://status.openai.com/incidents/01M5GPE9C4E19HE461P8JAMYXD",
+      "text": "ChatGPT conversion failures in India, Japan and Korea. And Response API errors. We have applied the mitigation and are monitoring the recovery.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "monitoring",
+      "publishedAt": "2026-10-22T02:18:32.000Z"
     }
   ],
   "sources": {
@@ -7291,7 +7480,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-22T01:47:54.588Z",
+      "lastSuccessAt": "2026-10-22T06:40:21.112Z",
       "error": null,
       "count": 150
     },
@@ -7300,7 +7489,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-22T01:47:54.588Z",
+      "lastSuccessAt": "2026-10-22T06:40:21.112Z",
       "error": null,
       "count": 10
     },
@@ -7309,7 +7498,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-22T01:47:54.588Z",
+      "lastSuccessAt": "2026-10-22T06:40:21.112Z",
       "error": null,
       "count": 25
     }
@@ -24311,6 +24500,358 @@
           "behind": 1,
           "complete": true,
           "fetched": 22
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.11:2026-10-22T06:40:21.628Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-22T06:40:21.628Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.11",
+        "at": "2026-10-22T04:31:23.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.11",
+        "text": "0.164.0-alpha.11. Release 0.164.0-alpha.11",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.164.0-alpha.11",
+          "title": "0.164.0-alpha.11",
+          "body": "Release 0.164.0-alpha.11\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-22T06:40:21.630Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.11",
+          "publishedAt": "2026-10-22T04:22:12Z",
+          "commits": [
+            {
+              "sha": "82ef0672e34391ffe1bd61e1185ed6e9d664a64e",
+              "title": "Scope MITM credential substitution to trusted origins and placeholders (#56003)",
+              "message": "Scope MITM credential substitution to trusted origins and placeholders (#56003)\n\n## Why\n\nCredential substitution needs to authorize the destination and the original request before exposing host secrets. Project configuration must not redirect trusted credential policies, and older clients must reject scoped policies rather than silently apply unconditional injection.\n\n## What changed\n\n- Add hook `schemes` and `ports` constraints and an exact whole-header `placeholder` for secret substitution. Require `network.mitm.version = 2` for these options in permission profiles.\n- Restrict placeholder substitution to HTTPS on port 443 and reject missing, mismatched, or duplicate placeholder headers.\n- Reject project changes to trusted MITM definitions and their inheritance chains. Allow self-contained project header-stripping policies only when no trusted MITM policy exists.\n- Reject ambiguous query values, value-constrained headers, and semicolon paths during authorization, and preserve case-sensitive extension methods.\n- Mark resolved secret headers sensitive, reject secret injection into `User-Agent`, restrict substitution headers, and limit secret files to 64 KiB.\n\n## Testing\n\nAdd regression coverage for scoped TOML resolution, legacy-format rejection, unknown fields, project policy restrictions, origin and placeholder denials, ambiguous request matching, secret redaction, and hook application after credential brokerage.\n\nGitOrigin-RevId: 78dc115ab6c88c9a734377626429bc4840731f89",
+              "url": "https://github.com/openai/codex/commit/82ef0672e34391ffe1bd61e1185ed6e9d664a64e"
+            },
+            {
+              "sha": "3206e532d7515c50f22af6dad3a20b9f3c38b639",
+              "title": "Assert shell tool overlap directly in the parallelism test (#56006)",
+              "message": "Assert shell tool overlap directly in the parallelism test (#56006)\n\n## Why\n\nA total-duration assertion does not prove that two shell commands overlap and depends on execution speed.\n\n## What changed\n\nUpdate `shell_tools_run_in_parallel` to wait for both commands to create start markers before releasing them through a shared file. Fail if both commands do not start within five seconds, and verify that each command exits successfully and returns its expected output.\n\nGitOrigin-RevId: ba322157a60951ad5dd2f1b018ddc6007de1de89",
+              "url": "https://github.com/openai/codex/commit/3206e532d7515c50f22af6dad3a20b9f3c38b639"
+            },
+            {
+              "sha": "bc45d61a9a0c5382d5ee342c1bf5c740f9ef1b77",
+              "title": "Pause Tokio time in the reused Guardian session test (#56007)",
+              "message": "Pause Tokio time in the reused Guardian session test (#56007)\n\nPause the Tokio clock before spawning the review in\n`run_review_on_reused_session_waits_for_submitted_turn` so its one-second\ndeadline uses simulated time while the test verifies that stale turn completions\nare ignored.\n\nGitOrigin-RevId: c6712219f894835b576f499eb080ec15a3f09a78",
+              "url": "https://github.com/openai/codex/commit/bc45d61a9a0c5382d5ee342c1bf5c740f9ef1b77"
+            },
+            {
+              "sha": "082900149cc7c0985e15a1d1ce0330a9e81e53b1",
+              "title": "Add a critical-path timing recorder for direct tool calls (#56008)",
+              "message": "Add a critical-path timing recorder for direct tool calls (#56008)\n\n## What changed\n\nAdd the `codex-direct-tool-timing` crate to record tool execution, automated reviews, human waits, and dependency paths. Human waits take precedence over overlapping reviews, and dependency waits with unavailable history are recorded as unknown time.\n\nInvocation guards complete each call once, explicitly or on drop. Separate invocation identities prevent late review or wait guards from affecting calls that reuse an ID; duplicate active IDs disable ambiguous path attribution. Batch timing exposes the last-finishing invocation's path once all calls complete.\n\n## Testing\n\nAdd unit tests for parallel batch completion, duplicate and reused call IDs, cancellation, missing dependency history, overlapping reviews and human waits, and nested wait guards.\n\nGitOrigin-RevId: 8b251f51a0c52342657f2d244524b562a371bd8e",
+              "url": "https://github.com/openai/codex/commit/082900149cc7c0985e15a1d1ce0330a9e81e53b1"
+            },
+            {
+              "sha": "deede7201da27a178c39befa6b4959bb7d451645",
+              "title": "Keep rollout trace terminal sessions distinct when process IDs are reused (#56011)",
+              "message": "Keep rollout trace terminal sessions distinct when process IDs are reused (#56011)\n\n## Why\n\nRuntime process handles are recyclable and thread-local. Using them as terminal session identities can merge separate commands or associate `write_stdin` operations with the wrong exec.\n\n## What changed\n\n- Give each exec a distinct terminal session and track the latest session for each thread-local process handle.\n- Record the exec selected by `write_stdin` at runtime and use it to correct session membership during replay, including when dispatch is delayed until a handle is reused.\n- Fall back to the latest session for the thread and handle when replaying older traces without runtime target events.\n\n## Testing\n\nExtend reducer coverage for process ID reuse across threads and successive execs, stdin session membership, and delayed runtime target resolution.\n\nGitOrigin-RevId: 330c6fd26a4eebdef03ae600a030dc76920e0dd9",
+              "url": "https://github.com/openai/codex/commit/deede7201da27a178c39befa6b4959bb7d451645"
+            },
+            {
+              "sha": "aafd81a7ad3be2d8ddc3439056841af306cbddcc",
+              "title": "Avoid nested CLI startup in the MCP OAuth persistence test (#56018)",
+              "message": "Avoid nested CLI startup in the MCP OAuth persistence test (#56018)\n\nUse `ConfigEditsBuilder` to persist a concurrent MCP server edit during OAuth discovery without launching another CLI process inside the HTTP timeout. Preserve coverage that the concurrent server and issuer-bound callback are saved, and assert that OAuth fails with the expected invalid authorization endpoint error.\n\nGitOrigin-RevId: 41d782f9dbbc96d528e4990171bffd87e95f6e4f",
+              "url": "https://github.com/openai/codex/commit/aafd81a7ad3be2d8ddc3439056841af306cbddcc"
+            },
+            {
+              "sha": "6f34d3d40816dac9d7a6ca94c3e3974b3f40c532",
+              "title": "Allow thread sampling after failed or interrupted turns (#56020)",
+              "message": "Allow thread sampling after failed or interrupted turns (#56020)\n\n## Why\n\n`thread/sample` previously required the latest source turn to have completed successfully, rejecting failed or interrupted turns even when the source was idle.\n\n## What changed\n\nAccept the latest completed, failed, or interrupted turn in both legacy and paginated history modes. Update the protocol documentation and validation error to reflect the accepted statuses, while continuing to reject stale or active sources.\n\n## Testing\n\nExpand integration coverage across all three terminal statuses and both history modes, checking that sampling preserves context and leaves the source unchanged. Also verify that sampling an active source is rejected before interrupting it.\n\nGitOrigin-RevId: a5dfdb2800868ee178eae16b12ee7f6f9515898c",
+              "url": "https://github.com/openai/codex/commit/6f34d3d40816dac9d7a6ca94c3e3974b3f40c532"
+            },
+            {
+              "sha": "233119375db96d7b71acc5b17138c41114385167",
+              "title": "Keep slash command prefixes in editable composer text (#56021)",
+              "message": "Keep slash command prefixes in editable composer text (#56021)\n\n## What changed\n\nKeep the leading `/` in the textarea and render slash commands after the normal composer prompt, so `/model` appears as `› /model`.\n\nTrack the full `/command` token as a text element and remove stale slash-command elements when the draft changes. Update composer tests and snapshots for the new representation.\n\nGitOrigin-RevId: 60119f18b69cec16f4e21839f45132231feb84b4",
+              "url": "https://github.com/openai/codex/commit/233119375db96d7b71acc5b17138c41114385167"
+            },
+            {
+              "sha": "38da85f49e0ab8247d1840f7437ce06fd12d7856",
+              "title": "Preserve config overrides across CLI subcommand boundaries (#56022)",
+              "message": "Preserve config overrides across CLI subcommand boundaries (#56022)\n\n## Why\n\nWhen `-c` or `--config` appears at multiple command levels, Clap retains only the deepest scope's values, dropping earlier overrides.\n\n## What changed\n\nCollect config overrides from each command scope in order while preserving typed child arguments and their existing precedence. Arguments forwarded after `--` remain unchanged.\n\n## Testing\n\nAdd regression coverage for overrides split across nested `mcp add` commands, forwarded `-c` arguments, and validation of an invalid override before `app-server` when another override follows it.\n\nGitOrigin-RevId: 40c64eda866497e2f59491a523c6777a8bfe5d5f",
+              "url": "https://github.com/openai/codex/commit/38da85f49e0ab8247d1840f7437ce06fd12d7856"
+            },
+            {
+              "sha": "d6a5c9d17e8240a5dbd83cae1a3df23ed5aafcea",
+              "title": "Group Bedrock API key entry with other AWS sign-in methods (#56023)",
+              "message": "Group Bedrock API key entry with other AWS sign-in methods (#56023)\n\n## What changed\n\nWhen AWS profiles or environment credentials are detected, move manual Bedrock API key entry under “Other AWS sign-in methods” and update its description to include API keys. Keep API key entry directly available when no credentials are detected.\n\n## Testing\n\nUpdate onboarding method assertions and rendering snapshots to cover the grouped options and API key entry in the other sign-in methods menu.\n\nGitOrigin-RevId: 992ecf7a2e3ac9f2f0eef2ef6534cf9beb88ea8e",
+              "url": "https://github.com/openai/codex/commit/d6a5c9d17e8240a5dbd83cae1a3df23ed5aafcea"
+            },
+            {
+              "sha": "e8bb1b664170a123af4b844a47e6c6e992b52fe2",
+              "title": "Limit decoded HTTP/3 response headers in the TCP tunnel (#56024)",
+              "message": "Limit decoded HTTP/3 response headers in the TCP tunnel (#56024)\n\n## Why\n\nQPACK can expand compact response headers into large decoded field sections. Bound their size before `h3` constructs its capacity-limited `HeaderMap`.\n\n## What changed\n\nSet the HTTP/3 client's maximum field section size to 64 KiB so oversized responses are rejected with `HeaderTooBig`.\n\n## Testing\n\nAdd a regression test that sends QPACK static references around the size limit and a much larger expansion. Verify that oversized responses are rejected and a subsequent valid response succeeds on the same connection.\n\nGitOrigin-RevId: d7c83a7a755dfafae05919ec52542ffce40a1ef4",
+              "url": "https://github.com/openai/codex/commit/e8bb1b664170a123af4b844a47e6c6e992b52fe2"
+            },
+            {
+              "sha": "943c70d8d203c61404744939eb64a1261acd5d97",
+              "title": "Support client Responses API metadata in `thread/sample` (#56031)",
+              "message": "Support client Responses API metadata in `thread/sample` (#56031)\n\n## What changed\n\nAdd optional `responsesapiClientMetadata` to `ThreadSampleParams` and forward it to the sample turn's Responses API metadata. Update the experimental protocol schema.\n\n## Testing\n\nExtend the thread sample integration test to verify that client metadata appears in both the request header and body, preserves the explicit `turn_trigger` when client metadata supplies a conflicting value, and does not carry over to the next parent turn.\n\nGitOrigin-RevId: eb1f80824d476fc6c584a2b35d97e59d51fd4273",
+              "url": "https://github.com/openai/codex/commit/943c70d8d203c61404744939eb64a1261acd5d97"
+            },
+            {
+              "sha": "004c13292f3ef05e51e2e90e5a2dc6b13b651916",
+              "title": "Fix entrypoint lookup in package debug-symbol smoke tests (#56032)",
+              "message": "Fix entrypoint lookup in package debug-symbol smoke tests (#56032)\n\n## Why\n\nRust v0 symbols can mention `codex_code_mode_host` as the instantiating crate of a dependency's generic function, so matching the crate name alone can select the wrong function.\n\n## What changed\n\nDemangle `nm` output and match `codex_code_mode_host::main` exactly, preserving spaces within demangled names. Include local symbols in the Linux lookup by removing `--extern-only`.\n\nGitOrigin-RevId: b4ea4face3fe861966d3643d13db168143bcefa3",
+              "url": "https://github.com/openai/codex/commit/004c13292f3ef05e51e2e90e5a2dc6b13b651916"
+            },
+            {
+              "sha": "8440e76ae6d4875a6f01398e09bd27734da741e7",
+              "title": "Enable the Bedrock setup wizard by default (#56033)",
+              "message": "Enable the Bedrock setup wizard by default (#56033)\n\n## What changed\n\nPromote `bedrock_setup_wizard` to stable and enable it by default for eligible onboarding. Users can still disable it with `features.bedrock_setup_wizard = false`.\n\n## Testing\n\nUpdate onboarding coverage to check the enabled default and explicit opt-out. Remove the explicit opt-in from daemon startup tests so they exercise the default configuration.\n\nGitOrigin-RevId: 5bd911088681a31d34aa444398e6d3f7d1d87955",
+              "url": "https://github.com/openai/codex/commit/8440e76ae6d4875a6f01398e09bd27734da741e7"
+            },
+            {
+              "sha": "09ec2451bf9a6750a19f334e9bd0fd9ebe6494b5",
+              "title": "Add request-scoped OAuth credentials and session lifecycle APIs (#56036)",
+              "message": "Add request-scoped OAuth credentials and session lifecycle APIs (#56036)\n\n## What changed\n\n- Add `OAuthSessionRequest` to pair access tokens with their authorization identity and retain rejected-token recovery across transient failures and retries. New sign-ins receive an identity that survives token refresh.\n- Expose explicit login, logout, and authorization identity lookup, plus a per-manager option to disable automatic browser login while allowing credential reuse and refresh.\n- Move serializable `OAuthSessionConfig` into `codex-model-provider-info`, add an optional `device_authorization_url` field, and share endpoint URL validation through `codex-http-client`.\n- Distinguish permission failures, transient token endpoint failures, and invalid responses using `io::ErrorKind`.\n\n## Testing\n\nAdd coverage for sign-in identity preservation through refresh retries, removal of saved and cached credentials on logout, and suppression of automatic browser login. Extend token endpoint error classification coverage.\n\nGitOrigin-RevId: ae9f72e787171e179fe139a3b840a9f7e1e46506",
+              "url": "https://github.com/openai/codex/commit/09ec2451bf9a6750a19f334e9bd0fd9ebe6494b5"
+            },
+            {
+              "sha": "45179176e52ab890a3cf5ce47e8ab585e7295f7e",
+              "title": "Add a channel-backed cloud app-server client (#56037)",
+              "message": "Add a channel-backed cloud app-server client (#56037)\n\n## What changed\n\n- Add `CloudClient` and integrate it with `AppServerClient` and `AppServerRequestHandle` for requests, notifications, server-request replies, events, and shutdown.\n- Keep retained request and reply handles bound to their cloud backend, with event delivery independent of request completion and a timeout for shutdown.\n- Return no platform or Codex home metadata for cloud clients, and reject TUI filesystem operations for this backend.\n\n## Testing\n\nAdd tests for backend ownership of retained handles, independent event delivery, errors after the command receiver closes, and shutdown timeouts when the worker does not respond.\n\nGitOrigin-RevId: 4cf308dc0ea6fa6e7b14dd4542d93e8030b0162d",
+              "url": "https://github.com/openai/codex/commit/45179176e52ab890a3cf5ce47e8ab585e7295f7e"
+            },
+            {
+              "sha": "0769c6aeeb1a81cec715e496d2486ece6fcef21b",
+              "title": "Enable executor cleanup hooks with V2 capability discovery (#56044)",
+              "message": "Enable executor cleanup hooks with V2 capability discovery (#56044)\n\n## Why\n\nExecutor hooks depended on V1 discovery snapshots, so plugins discovered through V2 could not run their cleanup hooks.\n\n## What changed\n\nPrepare executor hook sources during step setup from either V1 or V2 discovery and capture them in `StepContext` for stop, interrupt, and memory consolidation hooks. Restrict V2 sources to selected plugin installations while preserving plugin enablement, hook admission, MCP routing, and app tool policy checks.\n\n## Testing\n\nAdd unit coverage for V2 hook admission, environment routing, disabled plugins, and failed discovery. Add integration coverage showing that `Stop` and `Interrupt` cleanup hooks run with V2 discovery alone and remain silent when the plugin is disabled.\n\nGitOrigin-RevId: a4c0e9c56bdebcdf22cea63f02f8fb4c5eed358e",
+              "url": "https://github.com/openai/codex/commit/0769c6aeeb1a81cec715e496d2486ece6fcef21b"
+            },
+            {
+              "sha": "2a77e82f09212c9e1bbf02656afca5d8172c5f9e",
+              "title": "Support configured credential providers in remote execution (#56049)",
+              "message": "Support configured credential providers in remote execution (#56049)\n\n## Why\n\nRemote credential masking previously fell back to unmasked execution whenever custom credential providers were configured.\n\n## What changed\n\n- Transport configured provider rules to the executor-local network proxy, where credential values and destination context are resolved.\n- Advertise `credentialMaskingCustomProviders` and negotiate masking support. Keep the warning and unmasked fallback for executors that support only built-in providers.\n- Discard provider rules when masking is disabled and omit their contents from debug output.\n\n## Testing\n\nExtend coverage for capability compatibility, provider configuration round trips, and fallback on older executors. Exercise configured-provider masking in remote request history and verify that masked placeholders are restored to real credentials in upstream request headers.\n\nGitOrigin-RevId: b036f56900b343ddccc17b5293c82bc1f3426237",
+              "url": "https://github.com/openai/codex/commit/2a77e82f09212c9e1bbf02656afca5d8172c5f9e"
+            },
+            {
+              "sha": "342ed69a174c206c1de52a59491b131e0753cfa5",
+              "title": "Require managed configuration from the configured server (#56055)",
+              "message": "Require managed configuration from the configured server (#56055)\n\n## Why\n\nLocal administrators need to require managed configuration from a specific customer-hosted server before a session can start.\n\n## What changed\n\n- Add a local managed `config_server` requirement with an HTTPS base URL and optional OAuth settings. Validate endpoints and derive the bundle route as `codex/config/bundle` beneath the base URL.\n- Replace the entire `config_server` block when a higher-priority requirements layer supplies one, keeping the endpoint and OAuth settings together. Reject this setting in fetched policy.\n- Track the applied server through configuration snapshots, role overrides, and refreshes. Reject session startup and managed refreshes when the applied server does not match the requirement; user refreshes retain the session's managed configuration.\n\n## Testing\n\nAdd coverage for missing, mismatched, and matching server configuration at session startup, whole-block replacement, rejection of server settings in fetched policy, and preservation across role overrides and refreshes.\n\nGitOrigin-RevId: 51e8a1738dabdb117ae858120f6fb09ae2ff1261",
+              "url": "https://github.com/openai/codex/commit/342ed69a174c206c1de52a59491b131e0753cfa5"
+            },
+            {
+              "sha": "fd591b6049c2745a2097baab41180fbdb19bdac0",
+              "title": "Release 0.164.0-alpha.11",
+              "message": "Release 0.164.0-alpha.11",
+              "url": "https://github.com/openai/codex/commit/fd591b6049c2745a2097baab41180fbdb19bdac0"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.164.0-alpha.10",
+            "head": "rust-v0.164.0-alpha.11",
+            "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.10...rust-v0.164.0-alpha.11",
+            "status": "diverged",
+            "total": 20,
+            "behind": 1,
+            "complete": true,
+            "fetched": 20
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11.2:2026-10-22T06:40:21.628Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-22T06:40:21.628Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11.2",
+        "at": "2026-10-22T05:30:13.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.11.2",
+        "text": "rust-v0.163.0-alpha.11.2. Release 0.163.0-alpha.11.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M5GPE9C4E19HE461P8JAMYXD:2026-10-22T06:40:21.628Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-22T06:40:21.628Z",
+      "item": {
+        "id": "openai-status:01M5GPE9C4E19HE461P8JAMYXD",
+        "at": "2026-10-22T02:42:24.000Z",
+        "url": "https://status.openai.com/incidents/01M5GPE9C4E19HE461P8JAMYXD",
+        "text": "ChatGPT conversion failures in India, Japan and Korea. And Response API errors. We have applied the mitigation and are monitoring the recovery.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "monitoring",
+        "publishedAt": "2026-10-22T02:18:32.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.11:2026-10-22T06:40:21.628Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-22T06:40:21.628Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.11",
+        "title": "0.164.0-alpha.11",
+        "body": "Release 0.164.0-alpha.11\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-22T06:40:21.630Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.11",
+        "publishedAt": "2026-10-22T04:22:12Z",
+        "commits": [
+          {
+            "sha": "82ef0672e34391ffe1bd61e1185ed6e9d664a64e",
+            "title": "Scope MITM credential substitution to trusted origins and placeholders (#56003)",
+            "message": "Scope MITM credential substitution to trusted origins and placeholders (#56003)\n\n## Why\n\nCredential substitution needs to authorize the destination and the original request before exposing host secrets. Project configuration must not redirect trusted credential policies, and older clients must reject scoped policies rather than silently apply unconditional injection.\n\n## What changed\n\n- Add hook `schemes` and `ports` constraints and an exact whole-header `placeholder` for secret substitution. Require `network.mitm.version = 2` for these options in permission profiles.\n- Restrict placeholder substitution to HTTPS on port 443 and reject missing, mismatched, or duplicate placeholder headers.\n- Reject project changes to trusted MITM definitions and their inheritance chains. Allow self-contained project header-stripping policies only when no trusted MITM policy exists.\n- Reject ambiguous query values, value-constrained headers, and semicolon paths during authorization, and preserve case-sensitive extension methods.\n- Mark resolved secret headers sensitive, reject secret injection into `User-Agent`, restrict substitution headers, and limit secret files to 64 KiB.\n\n## Testing\n\nAdd regression coverage for scoped TOML resolution, legacy-format rejection, unknown fields, project policy restrictions, origin and placeholder denials, ambiguous request matching, secret redaction, and hook application after credential brokerage.\n\nGitOrigin-RevId: 78dc115ab6c88c9a734377626429bc4840731f89",
+            "url": "https://github.com/openai/codex/commit/82ef0672e34391ffe1bd61e1185ed6e9d664a64e"
+          },
+          {
+            "sha": "3206e532d7515c50f22af6dad3a20b9f3c38b639",
+            "title": "Assert shell tool overlap directly in the parallelism test (#56006)",
+            "message": "Assert shell tool overlap directly in the parallelism test (#56006)\n\n## Why\n\nA total-duration assertion does not prove that two shell commands overlap and depends on execution speed.\n\n## What changed\n\nUpdate `shell_tools_run_in_parallel` to wait for both commands to create start markers before releasing them through a shared file. Fail if both commands do not start within five seconds, and verify that each command exits successfully and returns its expected output.\n\nGitOrigin-RevId: ba322157a60951ad5dd2f1b018ddc6007de1de89",
+            "url": "https://github.com/openai/codex/commit/3206e532d7515c50f22af6dad3a20b9f3c38b639"
+          },
+          {
+            "sha": "bc45d61a9a0c5382d5ee342c1bf5c740f9ef1b77",
+            "title": "Pause Tokio time in the reused Guardian session test (#56007)",
+            "message": "Pause Tokio time in the reused Guardian session test (#56007)\n\nPause the Tokio clock before spawning the review in\n`run_review_on_reused_session_waits_for_submitted_turn` so its one-second\ndeadline uses simulated time while the test verifies that stale turn completions\nare ignored.\n\nGitOrigin-RevId: c6712219f894835b576f499eb080ec15a3f09a78",
+            "url": "https://github.com/openai/codex/commit/bc45d61a9a0c5382d5ee342c1bf5c740f9ef1b77"
+          },
+          {
+            "sha": "082900149cc7c0985e15a1d1ce0330a9e81e53b1",
+            "title": "Add a critical-path timing recorder for direct tool calls (#56008)",
+            "message": "Add a critical-path timing recorder for direct tool calls (#56008)\n\n## What changed\n\nAdd the `codex-direct-tool-timing` crate to record tool execution, automated reviews, human waits, and dependency paths. Human waits take precedence over overlapping reviews, and dependency waits with unavailable history are recorded as unknown time.\n\nInvocation guards complete each call once, explicitly or on drop. Separate invocation identities prevent late review or wait guards from affecting calls that reuse an ID; duplicate active IDs disable ambiguous path attribution. Batch timing exposes the last-finishing invocation's path once all calls complete.\n\n## Testing\n\nAdd unit tests for parallel batch completion, duplicate and reused call IDs, cancellation, missing dependency history, overlapping reviews and human waits, and nested wait guards.\n\nGitOrigin-RevId: 8b251f51a0c52342657f2d244524b562a371bd8e",
+            "url": "https://github.com/openai/codex/commit/082900149cc7c0985e15a1d1ce0330a9e81e53b1"
+          },
+          {
+            "sha": "deede7201da27a178c39befa6b4959bb7d451645",
+            "title": "Keep rollout trace terminal sessions distinct when process IDs are reused (#56011)",
+            "message": "Keep rollout trace terminal sessions distinct when process IDs are reused (#56011)\n\n## Why\n\nRuntime process handles are recyclable and thread-local. Using them as terminal session identities can merge separate commands or associate `write_stdin` operations with the wrong exec.\n\n## What changed\n\n- Give each exec a distinct terminal session and track the latest session for each thread-local process handle.\n- Record the exec selected by `write_stdin` at runtime and use it to correct session membership during replay, including when dispatch is delayed until a handle is reused.\n- Fall back to the latest session for the thread and handle when replaying older traces without runtime target events.\n\n## Testing\n\nExtend reducer coverage for process ID reuse across threads and successive execs, stdin session membership, and delayed runtime target resolution.\n\nGitOrigin-RevId: 330c6fd26a4eebdef03ae600a030dc76920e0dd9",
+            "url": "https://github.com/openai/codex/commit/deede7201da27a178c39befa6b4959bb7d451645"
+          },
+          {
+            "sha": "aafd81a7ad3be2d8ddc3439056841af306cbddcc",
+            "title": "Avoid nested CLI startup in the MCP OAuth persistence test (#56018)",
+            "message": "Avoid nested CLI startup in the MCP OAuth persistence test (#56018)\n\nUse `ConfigEditsBuilder` to persist a concurrent MCP server edit during OAuth discovery without launching another CLI process inside the HTTP timeout. Preserve coverage that the concurrent server and issuer-bound callback are saved, and assert that OAuth fails with the expected invalid authorization endpoint error.\n\nGitOrigin-RevId: 41d782f9dbbc96d528e4990171bffd87e95f6e4f",
+            "url": "https://github.com/openai/codex/commit/aafd81a7ad3be2d8ddc3439056841af306cbddcc"
+          },
+          {
+            "sha": "6f34d3d40816dac9d7a6ca94c3e3974b3f40c532",
+            "title": "Allow thread sampling after failed or interrupted turns (#56020)",
+            "message": "Allow thread sampling after failed or interrupted turns (#56020)\n\n## Why\n\n`thread/sample` previously required the latest source turn to have completed successfully, rejecting failed or interrupted turns even when the source was idle.\n\n## What changed\n\nAccept the latest completed, failed, or interrupted turn in both legacy and paginated history modes. Update the protocol documentation and validation error to reflect the accepted statuses, while continuing to reject stale or active sources.\n\n## Testing\n\nExpand integration coverage across all three terminal statuses and both history modes, checking that sampling preserves context and leaves the source unchanged. Also verify that sampling an active source is rejected before interrupting it.\n\nGitOrigin-RevId: a5dfdb2800868ee178eae16b12ee7f6f9515898c",
+            "url": "https://github.com/openai/codex/commit/6f34d3d40816dac9d7a6ca94c3e3974b3f40c532"
+          },
+          {
+            "sha": "233119375db96d7b71acc5b17138c41114385167",
+            "title": "Keep slash command prefixes in editable composer text (#56021)",
+            "message": "Keep slash command prefixes in editable composer text (#56021)\n\n## What changed\n\nKeep the leading `/` in the textarea and render slash commands after the normal composer prompt, so `/model` appears as `› /model`.\n\nTrack the full `/command` token as a text element and remove stale slash-command elements when the draft changes. Update composer tests and snapshots for the new representation.\n\nGitOrigin-RevId: 60119f18b69cec16f4e21839f45132231feb84b4",
+            "url": "https://github.com/openai/codex/commit/233119375db96d7b71acc5b17138c41114385167"
+          },
+          {
+            "sha": "38da85f49e0ab8247d1840f7437ce06fd12d7856",
+            "title": "Preserve config overrides across CLI subcommand boundaries (#56022)",
+            "message": "Preserve config overrides across CLI subcommand boundaries (#56022)\n\n## Why\n\nWhen `-c` or `--config` appears at multiple command levels, Clap retains only the deepest scope's values, dropping earlier overrides.\n\n## What changed\n\nCollect config overrides from each command scope in order while preserving typed child arguments and their existing precedence. Arguments forwarded after `--` remain unchanged.\n\n## Testing\n\nAdd regression coverage for overrides split across nested `mcp add` commands, forwarded `-c` arguments, and validation of an invalid override before `app-server` when another override follows it.\n\nGitOrigin-RevId: 40c64eda866497e2f59491a523c6777a8bfe5d5f",
+            "url": "https://github.com/openai/codex/commit/38da85f49e0ab8247d1840f7437ce06fd12d7856"
+          },
+          {
+            "sha": "d6a5c9d17e8240a5dbd83cae1a3df23ed5aafcea",
+            "title": "Group Bedrock API key entry with other AWS sign-in methods (#56023)",
+            "message": "Group Bedrock API key entry with other AWS sign-in methods (#56023)\n\n## What changed\n\nWhen AWS profiles or environment credentials are detected, move manual Bedrock API key entry under “Other AWS sign-in methods” and update its description to include API keys. Keep API key entry directly available when no credentials are detected.\n\n## Testing\n\nUpdate onboarding method assertions and rendering snapshots to cover the grouped options and API key entry in the other sign-in methods menu.\n\nGitOrigin-RevId: 992ecf7a2e3ac9f2f0eef2ef6534cf9beb88ea8e",
+            "url": "https://github.com/openai/codex/commit/d6a5c9d17e8240a5dbd83cae1a3df23ed5aafcea"
+          },
+          {
+            "sha": "e8bb1b664170a123af4b844a47e6c6e992b52fe2",
+            "title": "Limit decoded HTTP/3 response headers in the TCP tunnel (#56024)",
+            "message": "Limit decoded HTTP/3 response headers in the TCP tunnel (#56024)\n\n## Why\n\nQPACK can expand compact response headers into large decoded field sections. Bound their size before `h3` constructs its capacity-limited `HeaderMap`.\n\n## What changed\n\nSet the HTTP/3 client's maximum field section size to 64 KiB so oversized responses are rejected with `HeaderTooBig`.\n\n## Testing\n\nAdd a regression test that sends QPACK static references around the size limit and a much larger expansion. Verify that oversized responses are rejected and a subsequent valid response succeeds on the same connection.\n\nGitOrigin-RevId: d7c83a7a755dfafae05919ec52542ffce40a1ef4",
+            "url": "https://github.com/openai/codex/commit/e8bb1b664170a123af4b844a47e6c6e992b52fe2"
+          },
+          {
+            "sha": "943c70d8d203c61404744939eb64a1261acd5d97",
+            "title": "Support client Responses API metadata in `thread/sample` (#56031)",
+            "message": "Support client Responses API metadata in `thread/sample` (#56031)\n\n## What changed\n\nAdd optional `responsesapiClientMetadata` to `ThreadSampleParams` and forward it to the sample turn's Responses API metadata. Update the experimental protocol schema.\n\n## Testing\n\nExtend the thread sample integration test to verify that client metadata appears in both the request header and body, preserves the explicit `turn_trigger` when client metadata supplies a conflicting value, and does not carry over to the next parent turn.\n\nGitOrigin-RevId: eb1f80824d476fc6c584a2b35d97e59d51fd4273",
+            "url": "https://github.com/openai/codex/commit/943c70d8d203c61404744939eb64a1261acd5d97"
+          },
+          {
+            "sha": "004c13292f3ef05e51e2e90e5a2dc6b13b651916",
+            "title": "Fix entrypoint lookup in package debug-symbol smoke tests (#56032)",
+            "message": "Fix entrypoint lookup in package debug-symbol smoke tests (#56032)\n\n## Why\n\nRust v0 symbols can mention `codex_code_mode_host` as the instantiating crate of a dependency's generic function, so matching the crate name alone can select the wrong function.\n\n## What changed\n\nDemangle `nm` output and match `codex_code_mode_host::main` exactly, preserving spaces within demangled names. Include local symbols in the Linux lookup by removing `--extern-only`.\n\nGitOrigin-RevId: b4ea4face3fe861966d3643d13db168143bcefa3",
+            "url": "https://github.com/openai/codex/commit/004c13292f3ef05e51e2e90e5a2dc6b13b651916"
+          },
+          {
+            "sha": "8440e76ae6d4875a6f01398e09bd27734da741e7",
+            "title": "Enable the Bedrock setup wizard by default (#56033)",
+            "message": "Enable the Bedrock setup wizard by default (#56033)\n\n## What changed\n\nPromote `bedrock_setup_wizard` to stable and enable it by default for eligible onboarding. Users can still disable it with `features.bedrock_setup_wizard = false`.\n\n## Testing\n\nUpdate onboarding coverage to check the enabled default and explicit opt-out. Remove the explicit opt-in from daemon startup tests so they exercise the default configuration.\n\nGitOrigin-RevId: 5bd911088681a31d34aa444398e6d3f7d1d87955",
+            "url": "https://github.com/openai/codex/commit/8440e76ae6d4875a6f01398e09bd27734da741e7"
+          },
+          {
+            "sha": "09ec2451bf9a6750a19f334e9bd0fd9ebe6494b5",
+            "title": "Add request-scoped OAuth credentials and session lifecycle APIs (#56036)",
+            "message": "Add request-scoped OAuth credentials and session lifecycle APIs (#56036)\n\n## What changed\n\n- Add `OAuthSessionRequest` to pair access tokens with their authorization identity and retain rejected-token recovery across transient failures and retries. New sign-ins receive an identity that survives token refresh.\n- Expose explicit login, logout, and authorization identity lookup, plus a per-manager option to disable automatic browser login while allowing credential reuse and refresh.\n- Move serializable `OAuthSessionConfig` into `codex-model-provider-info`, add an optional `device_authorization_url` field, and share endpoint URL validation through `codex-http-client`.\n- Distinguish permission failures, transient token endpoint failures, and invalid responses using `io::ErrorKind`.\n\n## Testing\n\nAdd coverage for sign-in identity preservation through refresh retries, removal of saved and cached credentials on logout, and suppression of automatic browser login. Extend token endpoint error classification coverage.\n\nGitOrigin-RevId: ae9f72e787171e179fe139a3b840a9f7e1e46506",
+            "url": "https://github.com/openai/codex/commit/09ec2451bf9a6750a19f334e9bd0fd9ebe6494b5"
+          },
+          {
+            "sha": "45179176e52ab890a3cf5ce47e8ab585e7295f7e",
+            "title": "Add a channel-backed cloud app-server client (#56037)",
+            "message": "Add a channel-backed cloud app-server client (#56037)\n\n## What changed\n\n- Add `CloudClient` and integrate it with `AppServerClient` and `AppServerRequestHandle` for requests, notifications, server-request replies, events, and shutdown.\n- Keep retained request and reply handles bound to their cloud backend, with event delivery independent of request completion and a timeout for shutdown.\n- Return no platform or Codex home metadata for cloud clients, and reject TUI filesystem operations for this backend.\n\n## Testing\n\nAdd tests for backend ownership of retained handles, independent event delivery, errors after the command receiver closes, and shutdown timeouts when the worker does not respond.\n\nGitOrigin-RevId: 4cf308dc0ea6fa6e7b14dd4542d93e8030b0162d",
+            "url": "https://github.com/openai/codex/commit/45179176e52ab890a3cf5ce47e8ab585e7295f7e"
+          },
+          {
+            "sha": "0769c6aeeb1a81cec715e496d2486ece6fcef21b",
+            "title": "Enable executor cleanup hooks with V2 capability discovery (#56044)",
+            "message": "Enable executor cleanup hooks with V2 capability discovery (#56044)\n\n## Why\n\nExecutor hooks depended on V1 discovery snapshots, so plugins discovered through V2 could not run their cleanup hooks.\n\n## What changed\n\nPrepare executor hook sources during step setup from either V1 or V2 discovery and capture them in `StepContext` for stop, interrupt, and memory consolidation hooks. Restrict V2 sources to selected plugin installations while preserving plugin enablement, hook admission, MCP routing, and app tool policy checks.\n\n## Testing\n\nAdd unit coverage for V2 hook admission, environment routing, disabled plugins, and failed discovery. Add integration coverage showing that `Stop` and `Interrupt` cleanup hooks run with V2 discovery alone and remain silent when the plugin is disabled.\n\nGitOrigin-RevId: a4c0e9c56bdebcdf22cea63f02f8fb4c5eed358e",
+            "url": "https://github.com/openai/codex/commit/0769c6aeeb1a81cec715e496d2486ece6fcef21b"
+          },
+          {
+            "sha": "2a77e82f09212c9e1bbf02656afca5d8172c5f9e",
+            "title": "Support configured credential providers in remote execution (#56049)",
+            "message": "Support configured credential providers in remote execution (#56049)\n\n## Why\n\nRemote credential masking previously fell back to unmasked execution whenever custom credential providers were configured.\n\n## What changed\n\n- Transport configured provider rules to the executor-local network proxy, where credential values and destination context are resolved.\n- Advertise `credentialMaskingCustomProviders` and negotiate masking support. Keep the warning and unmasked fallback for executors that support only built-in providers.\n- Discard provider rules when masking is disabled and omit their contents from debug output.\n\n## Testing\n\nExtend coverage for capability compatibility, provider configuration round trips, and fallback on older executors. Exercise configured-provider masking in remote request history and verify that masked placeholders are restored to real credentials in upstream request headers.\n\nGitOrigin-RevId: b036f56900b343ddccc17b5293c82bc1f3426237",
+            "url": "https://github.com/openai/codex/commit/2a77e82f09212c9e1bbf02656afca5d8172c5f9e"
+          },
+          {
+            "sha": "342ed69a174c206c1de52a59491b131e0753cfa5",
+            "title": "Require managed configuration from the configured server (#56055)",
+            "message": "Require managed configuration from the configured server (#56055)\n\n## Why\n\nLocal administrators need to require managed configuration from a specific customer-hosted server before a session can start.\n\n## What changed\n\n- Add a local managed `config_server` requirement with an HTTPS base URL and optional OAuth settings. Validate endpoints and derive the bundle route as `codex/config/bundle` beneath the base URL.\n- Replace the entire `config_server` block when a higher-priority requirements layer supplies one, keeping the endpoint and OAuth settings together. Reject this setting in fetched policy.\n- Track the applied server through configuration snapshots, role overrides, and refreshes. Reject session startup and managed refreshes when the applied server does not match the requirement; user refreshes retain the session's managed configuration.\n\n## Testing\n\nAdd coverage for missing, mismatched, and matching server configuration at session startup, whole-block replacement, rejection of server settings in fetched policy, and preservation across role overrides and refreshes.\n\nGitOrigin-RevId: 51e8a1738dabdb117ae858120f6fb09ae2ff1261",
+            "url": "https://github.com/openai/codex/commit/342ed69a174c206c1de52a59491b131e0753cfa5"
+          },
+          {
+            "sha": "fd591b6049c2745a2097baab41180fbdb19bdac0",
+            "title": "Release 0.164.0-alpha.11",
+            "message": "Release 0.164.0-alpha.11",
+            "url": "https://github.com/openai/codex/commit/fd591b6049c2745a2097baab41180fbdb19bdac0"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.10",
+          "head": "rust-v0.164.0-alpha.11",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.10...rust-v0.164.0-alpha.11",
+          "status": "diverged",
+          "total": 20,
+          "behind": 1,
+          "complete": true,
+          "fetched": 20
         },
         "comparisonError": null
       }
