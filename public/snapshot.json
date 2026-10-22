@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-21T23:27:37.390Z",
+  "generatedAt": "2026-10-22T01:47:55.070Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -7070,9 +7070,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.10",
-      "at": "2026-10-21T22:46:30.000Z",
+      "at": "2026-10-22T00:13:20.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.10",
-      "text": "rust-v0.164.0-alpha.10. Release 0.164.0-alpha.10",
+      "text": "0.164.0-alpha.10. Release 0.164.0-alpha.10",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -7081,7 +7081,162 @@
         "release"
       ],
       "origin": "direct-official",
-      "prerelease": true
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.10",
+        "title": "0.164.0-alpha.10",
+        "body": "Release 0.164.0-alpha.10\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-22T01:47:55.072Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.10",
+        "publishedAt": "2026-10-22T00:04:24Z",
+        "commits": [
+          {
+            "sha": "a6839a481223fb5faab539a9eb2b7174ae29e560",
+            "title": "Skip conversation scoring superseded by newer scores and history (#55913)",
+            "message": "Skip conversation scoring superseded by newer scores and history (#55913)\n\n## Why\n\nA delayed conversation classification can reach execution after a newer request has already published a score and committed history, leaving it with no useful work to contribute.\n\n## What changed\n\nPass the classification's sampling timestamp into conversation requests and check for newer scores and retained history before starting inference. Return `Superseded` only when both have advanced; keep requests that can still contribute either a score or history.\n\n## Testing\n\nAdd regression tests covering supersession of scores and history separately and together, including a classification delayed by permissions. Verify skipped requests send no inference request and preserve cached scores, approvals, and score progress.\n\nGitOrigin-RevId: ef78a59e2010a82ac4f1fb93568a562447187099",
+            "url": "https://github.com/openai/codex/commit/a6839a481223fb5faab539a9eb2b7174ae29e560"
+          },
+          {
+            "sha": "430a16799d90e296fb27b1e94f206023902b7e56",
+            "title": "Preserve thread model settings across resume and revert (#55923)",
+            "message": "Preserve thread model settings across resume and revert (#55923)\n\n## Why\n\nResuming a thread can replace saved model settings with global defaults. A selected service tier can also be lost when the current model does not support it.\n\n## What changed\n\n- Restore saved service tier, reasoning summary, and personality on resume unless the caller explicitly overrides them, respecting thread ownership of settings snapshots.\n- Retain the selected service tier for persistence, settings notifications, and resume comparisons while filtering the effective tier against the current model's capabilities.\n- Carry the runtime model, service tier, and personality into thread revert reconstruction.\n- Persist initial thread settings before user input during MCP startup so an interrupted first turn retains its settings checkpoint.\n\n## Testing\n\nExtend regression coverage for cold resume and explicit overrides, unsupported service tiers, settings preservation during revert, and settings checkpoints before user input when MCP startup is interrupted.\n\nGitOrigin-RevId: e5ec012a5678048c5eedd443e524f38c142bf9fd",
+            "url": "https://github.com/openai/codex/commit/430a16799d90e296fb27b1e94f206023902b7e56"
+          },
+          {
+            "sha": "a3b685331fc700bec554b2fe2a929a65f4fe1548",
+            "title": "Add local diagnostic ZIP exports to the app server (#55940)",
+            "message": "Add local diagnostic ZIP exports to the app server (#55940)\n\n## What changed\n\nAdd a save RPC that accepts the existing report options and an absolute `savePath` on the server host. Save the report, selected attachments, and a manifest without uploading, and return `savedPath`, `threadId`, and `promptHash`. Local exports remain available when uploads are disabled by configuration.\n\nPublish archives atomically without replacing existing files. Bound uncompressed contents to 200 MiB and attachments to 128, preserve duplicate attachment names safely, and fail without publishing a partial ZIP when a selected file cannot be read. Honor `includeLogs` and omit automatic rollouts for untouched threads without materializing them.\n\nUpdate protocol schemas and generated TypeScript and Python types.\n\n## Testing\n\nAdd coverage for local-only saves, disabled uploads, path validation, overwrite protection, log consent, archive budgets, duplicate names, missing files, and rollout selection before materialization and after writer shutdown.\n\nGitOrigin-RevId: 222c0fe7ab923904de9c8a9f12ad27f7a0104875",
+            "url": "https://github.com/openai/codex/commit/a3b685331fc700bec554b2fe2a929a65f4fe1548"
+          },
+          {
+            "sha": "9b39316997fd8bcecdb2007722f52ef858f0dbd8",
+            "title": "Bound remote installed-plugin inventory pagination (#55946)",
+            "message": "Bound remote installed-plugin inventory pagination (#55946)\n\n## Why\n\nInstalled-plugin inventory fetches could keep following pagination cursors\nwithout an overall bound, delaying release of the plugin mutation gate.\n\n## What changed\n\n- Limit each inventory fetch to 60 seconds and 100 pages, and reject repeated\n  pagination cursors.\n- Request 200 items per page for scoped inventory fetches as well as all-scope\n  fetches.\n- Report overall fetch timeouts as `remote_catalog_timeout`.\n\n## Testing\n\nAdd coverage for cursor cycles, completion at the page limit, and overall\ntimeout cancellation after successful pages. Verify that failed pagination\npreserves the cached inventory and plugin files and releases the mutation gate.\n\nGitOrigin-RevId: e8429dd804581041d102defa9d19db02bcb1739b",
+            "url": "https://github.com/openai/codex/commit/9b39316997fd8bcecdb2007722f52ef858f0dbd8"
+          },
+          {
+            "sha": "d685e61e1f63b0222cc51017b175d20c14ecd02d",
+            "title": "Separate retained instruction collection from budget policy (#55954)",
+            "message": "Separate retained instruction collection from budget policy (#55954)\n\n## What changed\n\nRepresent collected fragments with `RetainedInstructionItem`, preserving their content, semantic kind, and source. Assign retention policy when composing context: user instructions, host notices, and framing remain required, while assistant context remains optional at commentary priority.\n\nGitOrigin-RevId: 0080f3abd0d763bd402e78da0ac1b0fa0cd7678d",
+            "url": "https://github.com/openai/codex/commit/d685e61e1f63b0222cc51017b175d20c14ecd02d"
+          },
+          {
+            "sha": "9e12b148918b6189b90ccd33be68f7811adfe81f",
+            "title": "Refresh cloud plugin and skill catalogs after mid-turn auth changes (#55957)",
+            "message": "Refresh cloud plugin and skill catalogs after mid-turn auth changes (#55957)\n\n## Why\n\nAuthentication can change between model steps. Refresh cloud catalogs before the next step so plugin acceptance and skill instructions reflect the current auth scope, including plugins that are no longer available.\n\n## What changed\n\n- Add a `refresh_catalog_for_step` lifecycle hook and rebuild MCP when plugin catalogs change.\n- Reuse successful discovery within a turn and auth scope, serialize concurrent refreshes, and allow retries after failures or cancellation. Limit cloud skill discovery warnings to once per turn.\n- Skip cloud discovery during prewarm and other context-only captures, and check hosted plugins even when no executor roots are selected.\n\n## Testing\n\nAdd regression coverage for mid-turn auth rotation and plugin removal, serialized refreshes and retries, stale discovery results, and prewarm boundaries.\n\nGitOrigin-RevId: 355681e84dc765e8dc1a04608779d95c706c2188",
+            "url": "https://github.com/openai/codex/commit/9e12b148918b6189b90ccd33be68f7811adfe81f"
+          },
+          {
+            "sha": "067249a28329feec4a097f55413894acb4a6378a",
+            "title": "Preserve provider model catalogs when refreshes fail (#55958)",
+            "message": "Preserve provider model catalogs when refreshes fail (#55958)\n\n## Why\n\nA failed provider catalog refresh could discard model metadata and disable tool search on subsequent turns, even after a successful discovery.\n\n## What changed\n\nKeep the last successful catalog, ETag, and original freshness when refreshes fail without an access rejection. Continue invalidating cached catalogs for HTTP `401`/`403`, rejected refresh tokens, and gateway credentials that require login. Distinguish `GatewayLoginRequired` from login in progress so only the former invalidates the catalog.\n\nSuccessful empty responses remain authoritative, and cached catalogs remain scoped to the provider and authentication identity.\n\n## Testing\n\nAdd regression coverage for catalog preservation across refresh errors and restarts, access rejection invalidation, identity isolation, and tool search and instruction stability on the next turn after a failed refresh.\n\nGitOrigin-RevId: 9dd7c73ac2cc1fd49664efd93b839baa94e05c49",
+            "url": "https://github.com/openai/codex/commit/067249a28329feec4a097f55413894acb4a6378a"
+          },
+          {
+            "sha": "57232f111c50e59d748d010048c9e10832ed79d7",
+            "title": "Add managed Desktop workspace storage requirements (#55965)",
+            "message": "Add managed Desktop workspace storage requirements (#55965)\n\n## What changed\n\n- Add `application.storage.default_project_parent` and `application.storage.projectless_workspace_root` requirements for new Desktop workspaces. Require absolute paths and reject unknown storage keys.\n- Apply managed paths to `desktop.defaultProjectParent` and `desktop.projectlessWorkspaceRoot`, overriding local preferences and rejecting writes to managed settings or their containing table while preserving unrelated Desktop settings.\n- Expose storage requirements through `config/requirements/read` and update generated JSON schemas, TypeScript types, and Python models.\n\n## Testing\n\nAdd coverage for storage validation, per-setting layer precedence, config overrides, write protection, and requirements API responses. Adjust daemon shutdown test deadlines and TUI test synchronization, paste handling, and future allocation.\n\nGitOrigin-RevId: 44b93fe69e6a471c3f485cbf5f9c9ebd34ac3234",
+            "url": "https://github.com/openai/codex/commit/57232f111c50e59d748d010048c9e10832ed79d7"
+          },
+          {
+            "sha": "3fd08b540570a5dd9c61d98560a0231f7b43891f",
+            "title": "Back off failed cloud skill and plugin catalog refreshes (#55968)",
+            "message": "Back off failed cloud skill and plugin catalog refreshes (#55968)\n\n## Why\n\nFailed cloud discovery previously retried before each model step. Apply a cooldown across steps and turns to avoid repeated discovery requests while a provider remains unavailable.\n\n## What changed\n\n- Share per-thread retry backoff logic between cloud skill and plugin catalogs, starting at 30 seconds and doubling to a maximum of 5 minutes.\n- Scope cooldowns to authentication and MCP resource generations so account changes and reconnects permit immediate recovery.\n- Clear backoff after successful discovery or configuration resets, while allowing cancelled refreshes to retry immediately.\n\n## Testing\n\nUpdate lifecycle and concurrency tests to cover shared cooldowns, reconnect recovery, and cancellation. Use paused time to verify exponential delays, the 5-minute cap, and backoff across turns.\n\nGitOrigin-RevId: 30dab5ceba51e8ad64c0794c1729719e99f577ce",
+            "url": "https://github.com/openai/codex/commit/3fd08b540570a5dd9c61d98560a0231f7b43891f"
+          },
+          {
+            "sha": "02c6a2d3f1a0b906f53770ad45ef61327509d551",
+            "title": "Drain WebSocket responses on mailbox preemption (#55969)",
+            "message": "Drain WebSocket responses on mailbox preemption (#55969)\n\n## Why\n\nMailbox preemption can discard completed response items and lose the response ID needed for incremental continuation. Buffered tool calls must also wait for queued agent messages to be read.\n\n## What changed\n\n- Gracefully interrupt and drain Responses Lite streams, retaining completed items and the response ID for the next request.\n- Cancel buffered tool calls before dispatch and suppress partial items that may be discarded during the drain.\n- Keep user steering queued until draining finishes. Include pending mail in follow-up requests after disconnects and preserve content-filter recovery guidance.\n\n## Testing\n\nAdd WebSocket regression coverage for buffered completion, interrupts without acknowledgement, buffered tools and partial items, user steering during draining, disconnects, and content-filter recovery.\n\nGitOrigin-RevId: c9d3fb87a81850e5686e07f28103e2ff4378ddec",
+            "url": "https://github.com/openai/codex/commit/02c6a2d3f1a0b906f53770ad45ef61327509d551"
+          },
+          {
+            "sha": "a47d1338c1be494948e9694a91561f66921acb17",
+            "title": "Extract shared message-board code into `codex-message-board` (#55970)",
+            "message": "Extract shared message-board code into `codex-message-board` (#55970)\n\n## What changed\n\nMove the message-board API, types, permissions, storage backends, and tool implementations into the new `codex-message-board` crate. Keep extension registration in `codex-agent-message-board-extension`, and update core and the remote client to use the shared crate directly.\n\nMove the existing board tests with the implementation and add the crate to the Cargo workspace and Bazel build.\n\nGitOrigin-RevId: 33ce527c2bef7f862eba55cb9b32222902ccf4ad",
+            "url": "https://github.com/openai/codex/commit/a47d1338c1be494948e9694a91561f66921acb17"
+          },
+          {
+            "sha": "e41e8821749ca6904b00161c31f097628d3756a9",
+            "title": "Add storage namespaces for local message boards (#55971)",
+            "message": "Add storage namespaces for local message boards (#55971)\n\n## Why\n\nLocal message boards use a fixed database filename. Callers need separate storage for boards that share a session identity.\n\n## What changed\n\n- Add `LocalBoardOptions` with a validated `storage_namespace`, and support it when opening, configuring, and permanently deleting boards.\n- Allow `LocalBoard::with_options` to select storage for its connections.\n- Store custom namespaces in `message_board_<namespace>_1.sqlite`, while preserving `agent_message_board_1.sqlite` for the default namespace.\n- Have the agent message board extension select the same namespace for opening, setup, and deletion.\n\n## Testing\n\nAdd coverage for namespace isolation, reopening saved posts, and avoiding collisions with other runtime databases. Update setup tests to exercise a custom namespace through reopening and deletion.\n\nGitOrigin-RevId: a6ea8d171809625edeedc3a8ac3ee2e1bbf1682a",
+            "url": "https://github.com/openai/codex/commit/e41e8821749ca6904b00161c31f097628d3756a9"
+          },
+          {
+            "sha": "8d06d62e15ebbe1ad42324232b6e8a7e2e432793",
+            "title": "Allow consumers to select message-board tools (#55973)",
+            "message": "Allow consumers to select message-board tools (#55973)\n\n## Why\n\n`message_board_tools` always exposed all nine discussion tools. Consumers need a way to expose a subset, such as `read_thread` and `list_threads`, over the same board.\n\n## What changed\n\nAccept an ordered slice of the new `MessageBoardTool` enum and optional description overrides in `message_board_tools`. Use the enum for schemas and dispatch, and keep the agent extension's existing tool set and order through `MessageBoardTool::DISCUSSION`.\n\n## Testing\n\nExtend the local-board integration test to verify that a reader-only selection exposes exactly the requested tools in the supplied order and reads the existing discussion.\n\nGitOrigin-RevId: 60026d73768330ff4b694c3a9e99480e3ed7af27",
+            "url": "https://github.com/openai/codex/commit/8d06d62e15ebbe1ad42324232b6e8a7e2e432793"
+          },
+          {
+            "sha": "3c4c04b224b55ce0eefca7fb8503b6f128d32b7d",
+            "title": "Add an experimental command to migrate NFS databases to DELETE mode (#55975)",
+            "message": "Add an experimental command to migrate NFS databases to DELETE mode (#55975)\n\n## What changed\n\nAdd `codex migrate-nfs-db` to replace configured SQLite WAL databases in place with validated copies in `DELETE` journal mode, retaining the originals and their sidecar files in backup directories. Stage conversion locally, check database integrity before installation, and support resuming an interrupted replacement.\n\nRequire confirmation and exclusive access, with all Codex instances stopped on every host until migration succeeds. The NFS mount must support cross-client POSIX locks. Reject unsupported file permissions and ACLs, and serialize migrations with a migration lock.\n\nSupport configuration overrides, `--profile`, and `--staging-dir`. Skip the logs database when `log_dir` is explicitly configured and leave databases already in `DELETE` mode unchanged. Reject remote mode.\n\nGitOrigin-RevId: 7b48cc3a713113a3c09a2243e49b54258bef609d",
+            "url": "https://github.com/openai/codex/commit/3c4c04b224b55ce0eefca7fb8503b6f128d32b7d"
+          },
+          {
+            "sha": "17a0e6f63fad13f577ef87b36b4ea37fc06385e9",
+            "title": "Route SQLite logs to an explicitly configured `log_dir` (#55978)",
+            "message": "Route SQLite logs to an explicitly configured `log_dir` (#55978)\n\n## What changed\n\n- Store `logs_2.sqlite` in `log_dir` when explicitly configured, unless a managed `sqlite_home` requirement applies. Keep other databases in `sqlite_home` and preserve the existing SQLite log location when `log_dir` is unset.\n- Initialize and lock the selected log directory only when opening its database, so an unavailable directory does not prevent authentication commands from loading configuration. Share the cleanup lock across configuration clones and allow failed initialization to be retried.\n- Leave existing logs in place. Read legacy logs for diagnostic submissions when the current query returns no logs, attaching them as `codex-logs-legacy.log`. Continue retention cleanup and page reclamation for both locations, with independent maintenance locks and filesystem checks.\n\n## Testing\n\nAdd coverage for configuration routing and managed requirements, deferred initialization and lock lifetimes, authentication with an unavailable log directory, legacy log attachments, and cleanup of current and legacy databases.\n\nGitOrigin-RevId: 48216694596d738eff1b3c5eef6c4e7ada6d0137",
+            "url": "https://github.com/openai/codex/commit/17a0e6f63fad13f577ef87b36b4ea37fc06385e9"
+          },
+          {
+            "sha": "bd5a836567bf4182f327f08ac4af626525705806",
+            "title": "Refresh remote exec-server credentials after unauthorized responses (#55987)",
+            "message": "Refresh remote exec-server credentials after unauthorized responses (#55987)\n\n## Why\n\nRemote registry requests need to recover when credentials are rejected or rotated while `exec-server` is running. Concurrent requests should reuse refreshed credentials rather than refresh the replacement token again.\n\n## What changed\n\n- Add an `AuthProvider` recovery hook and retry registry registration, connection, and harness-key validation once after a `401` when the provider supplies replacement credentials.\n- Use live ChatGPT authentication for remote `exec-server` and guard proactive and unauthorized refreshes so concurrent callers share the completed refresh.\n- Allow executor credentials to retry when the parent has already supplied a valid replacement.\n- Keep connection authentication, refresh, and retry within the original connection deadline.\n\n## Testing\n\nAdd coverage for concurrent refreshes, stored and parent-supplied credential rotation, refresh failures, retry limits, and connection deadlines, plus a CLI integration test for refresh and credential reload in a running executor.\n\nGitOrigin-RevId: 9ed533e410762c7ac8b7c0c30bb93fd20d96778b",
+            "url": "https://github.com/openai/codex/commit/bd5a836567bf4182f327f08ac4af626525705806"
+          },
+          {
+            "sha": "07cc649c658be7018b6913299f12f843b24679f8",
+            "title": "Avoid double-counting retained reasoning in token usage (#55991)",
+            "message": "Avoid double-counting retained reasoning in token usage (#55991)\n\n## Why\n\nResponses Lite includes retained reasoning in its reported token usage even without an `X-Reasoning-Included` header. Adding a separate reasoning estimate can trigger automatic compaction prematurely. Locally recomputed usage also already includes retained reasoning.\n\n## What changed\n\nInitialize reasoning accounting from `use_responses_lite` before each sampling or compaction request, while allowing server events to override it. Mark locally recomputed token usage as including reasoning.\n\n## Testing\n\nUpdate the compaction regression test to verify that Responses Lite usage without the header stays below an 81-token limit at 80 tokens and triggers compaction at 81 tokens.\n\nGitOrigin-RevId: 06f9272cb3c259e927941f1d2a1d7096310ffb2c",
+            "url": "https://github.com/openai/codex/commit/07cc649c658be7018b6913299f12f843b24679f8"
+          },
+          {
+            "sha": "d51e9c935fab31e13f7b576a026ae56fb18603bf",
+            "title": "Preserve per-execution trace context in code-mode stdio callbacks (#55993)",
+            "message": "Preserve per-execution trace context in code-mode stdio callbacks (#55993)\n\n## Why\n\nCallbacks from the shared stdio host need to retain each execution's trace context after it yields, without keeping the execution span open until its background cell closes.\n\n## What changed\n\nCapture a W3C trace-context snapshot for each execution and restore it as the parent of tool callback and notification spans. Instrument delegate invocation and its returned future so the context is available on entry and across awaits.\n\n## Testing\n\nAdd an integration test with overlapping yielded cells completed in reverse order. Cover sampled, unsampled, and untraced callers, trace isolation, callback and notification parentage, and execution spans finishing while callbacks remain blocked.\n\nGitOrigin-RevId: 57924123d2c2f31bcfaf725688d8bba775235fa0",
+            "url": "https://github.com/openai/codex/commit/d51e9c935fab31e13f7b576a026ae56fb18603bf"
+          },
+          {
+            "sha": "d5bc4161b658cff3f2176aa422a52b3a06928214",
+            "title": "Add a Windows proxy authentication tunnel helper (#55994)",
+            "message": "Add a Windows proxy authentication tunnel helper (#55994)\n\n## What changed\n\nExpose `connect_windows_proxy` for callers handling a CONNECT `407` response. Use libcurl with the signed-in Windows user's Negotiate or NTLM credentials, then return the authenticated connection with buffered data preserved.\n\nSupport HTTP and HTTPS proxies, with default or caller-provided TLS configuration. HTTPS proxies requiring authentication tokens bound to their TLS connection are unsupported.\n\nEnable libcurl's NTLM support in Cargo and Bazel builds.\n\n## Testing\n\nAdd a Windows-only test asserting that libcurl provides NTLM, SPNEGO, and SSPI support.\n\nGitOrigin-RevId: 4ed7d2208766404b6125ce2f4b5f91de5616a37f",
+            "url": "https://github.com/openai/codex/commit/d5bc4161b658cff3f2176aa422a52b3a06928214"
+          },
+          {
+            "sha": "f496b09bd141af0a6ec1a7ebf3e5fc557ac795dc",
+            "title": "Retry proxy CONNECT challenges with Windows authentication (#56000)",
+            "message": "Retry proxy CONNECT challenges with Windows authentication (#56000)\n\n## Why\n\nHTTPS requests and WebSocket connections on Windows need to authenticate when a proxy rejects `CONNECT` with status `407`.\n\n## What changed\n\n- Retry proxy challenges through the existing Windows authentication helper, using the signed-in user's Negotiate or NTLM credentials. Treat an origin `407` as a normal HTTP response.\n- Bridge authenticated tunnels to the HTTP client through destination-specific named pipes, retaining redirect checks and TLS backend fallback without caching those tunnels across destinations.\n- Carry explicit CA certificates and client identities into HTTPS proxy TLS configuration, and apply the configured connect timeout when opening authenticated HTTP tunnels.\n\nGitOrigin-RevId: ec7d9168972a7a640350e5348cfca40307390fbf",
+            "url": "https://github.com/openai/codex/commit/f496b09bd141af0a6ec1a7ebf3e5fc557ac795dc"
+          },
+          {
+            "sha": "6203846fb3ef040f62eed9b35bc6629c8e88980a",
+            "title": "Support confidential OAuth clients for enterprise-managed MCP auth (#56001)",
+            "message": "Support confidential OAuth clients for enterprise-managed MCP auth (#56001)\n\n## Why\n\nEnterprise-managed MCP authentication previously required public OAuth clients at both the identity provider and the MCP authorization server, preventing use of registrations that require client secrets.\n\n## What changed\n\n- Accept separate `client_secret` and `token_endpoint_auth_method` settings for the enterprise IdP and MCP server OAuth registration. Support `client_secret_basic` and `client_secret_post`, defaulting to Basic when a secret is configured.\n- Validate the registered method against server metadata and use it for enterprise login and both ID-JAG exchanges.\n- Require a configured `oauth.authorization_server_issuer` for confidential MCP registrations and reject empty secrets or authentication methods without secrets.\n- Require the account OAuth client to match the configured IdP client before reusing an account grant with a provisioned secret; otherwise use dedicated enterprise login.\n\n## Testing\n\nExtend configuration, login, exchange, and app-server lifecycle tests to cover confidential registrations, separate IdP and resource credentials, authentication method validation, and exclusion of client secrets from authorization URLs, stored login grants, and logs.\n\nGitOrigin-RevId: b3be378c2b1bb67e6a3652c648e72fd2e21e956d",
+            "url": "https://github.com/openai/codex/commit/6203846fb3ef040f62eed9b35bc6629c8e88980a"
+          },
+          {
+            "sha": "246178f7839a01a1e3142866c78f8cc248550305",
+            "title": "Release 0.164.0-alpha.10",
+            "message": "Release 0.164.0-alpha.10",
+            "url": "https://github.com/openai/codex/commit/246178f7839a01a1e3142866c78f8cc248550305"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.9",
+          "head": "rust-v0.164.0-alpha.10",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.9...rust-v0.164.0-alpha.10",
+          "status": "diverged",
+          "total": 22,
+          "behind": 1,
+          "complete": true,
+          "fetched": 22
+        },
+        "comparisonError": null
+      }
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.163.0-alpha.11.1",
@@ -7113,6 +7268,21 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-10-21T22:36:29.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/cloudflare-cyber",
+      "at": "2026-10-21T00:00:00.000Z",
+      "url": "https://openai.com/index/cloudflare-cyber",
+      "text": "Cloudflare links vulnerability discovery to defense with OpenAI. Cloudflare uses OpenAI Daybreak to investigate vulnerabilities and propose fixes for review. Its developers use Codex to build faster and improve code quality.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -7121,7 +7291,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-21T23:27:36.859Z",
+      "lastSuccessAt": "2026-10-22T01:47:54.588Z",
       "error": null,
       "count": 150
     },
@@ -7130,7 +7300,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-21T23:27:36.859Z",
+      "lastSuccessAt": "2026-10-22T01:47:54.588Z",
       "error": null,
       "count": 10
     },
@@ -7139,7 +7309,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-21T23:27:36.859Z",
+      "lastSuccessAt": "2026-10-22T01:47:54.588Z",
       "error": null,
       "count": 25
     }
@@ -23789,6 +23959,361 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-10-21T22:36:29.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/cloudflare-cyber:2026-10-22T01:47:55.070Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-22T01:47:55.070Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/cloudflare-cyber",
+        "at": "2026-10-21T00:00:00.000Z",
+        "url": "https://openai.com/index/cloudflare-cyber",
+        "text": "Cloudflare links vulnerability discovery to defense with OpenAI. Cloudflare uses OpenAI Daybreak to investigate vulnerabilities and propose fixes for review. Its developers use Codex to build faster and improve code quality.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.10:2026-10-22T01:47:55.070Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-22T01:47:55.070Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.10",
+        "at": "2026-10-22T00:13:20.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.10",
+        "text": "0.164.0-alpha.10. Release 0.164.0-alpha.10",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.164.0-alpha.10",
+          "title": "0.164.0-alpha.10",
+          "body": "Release 0.164.0-alpha.10\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-22T01:47:55.072Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.10",
+          "publishedAt": "2026-10-22T00:04:24Z",
+          "commits": [
+            {
+              "sha": "a6839a481223fb5faab539a9eb2b7174ae29e560",
+              "title": "Skip conversation scoring superseded by newer scores and history (#55913)",
+              "message": "Skip conversation scoring superseded by newer scores and history (#55913)\n\n## Why\n\nA delayed conversation classification can reach execution after a newer request has already published a score and committed history, leaving it with no useful work to contribute.\n\n## What changed\n\nPass the classification's sampling timestamp into conversation requests and check for newer scores and retained history before starting inference. Return `Superseded` only when both have advanced; keep requests that can still contribute either a score or history.\n\n## Testing\n\nAdd regression tests covering supersession of scores and history separately and together, including a classification delayed by permissions. Verify skipped requests send no inference request and preserve cached scores, approvals, and score progress.\n\nGitOrigin-RevId: ef78a59e2010a82ac4f1fb93568a562447187099",
+              "url": "https://github.com/openai/codex/commit/a6839a481223fb5faab539a9eb2b7174ae29e560"
+            },
+            {
+              "sha": "430a16799d90e296fb27b1e94f206023902b7e56",
+              "title": "Preserve thread model settings across resume and revert (#55923)",
+              "message": "Preserve thread model settings across resume and revert (#55923)\n\n## Why\n\nResuming a thread can replace saved model settings with global defaults. A selected service tier can also be lost when the current model does not support it.\n\n## What changed\n\n- Restore saved service tier, reasoning summary, and personality on resume unless the caller explicitly overrides them, respecting thread ownership of settings snapshots.\n- Retain the selected service tier for persistence, settings notifications, and resume comparisons while filtering the effective tier against the current model's capabilities.\n- Carry the runtime model, service tier, and personality into thread revert reconstruction.\n- Persist initial thread settings before user input during MCP startup so an interrupted first turn retains its settings checkpoint.\n\n## Testing\n\nExtend regression coverage for cold resume and explicit overrides, unsupported service tiers, settings preservation during revert, and settings checkpoints before user input when MCP startup is interrupted.\n\nGitOrigin-RevId: e5ec012a5678048c5eedd443e524f38c142bf9fd",
+              "url": "https://github.com/openai/codex/commit/430a16799d90e296fb27b1e94f206023902b7e56"
+            },
+            {
+              "sha": "a3b685331fc700bec554b2fe2a929a65f4fe1548",
+              "title": "Add local diagnostic ZIP exports to the app server (#55940)",
+              "message": "Add local diagnostic ZIP exports to the app server (#55940)\n\n## What changed\n\nAdd a save RPC that accepts the existing report options and an absolute `savePath` on the server host. Save the report, selected attachments, and a manifest without uploading, and return `savedPath`, `threadId`, and `promptHash`. Local exports remain available when uploads are disabled by configuration.\n\nPublish archives atomically without replacing existing files. Bound uncompressed contents to 200 MiB and attachments to 128, preserve duplicate attachment names safely, and fail without publishing a partial ZIP when a selected file cannot be read. Honor `includeLogs` and omit automatic rollouts for untouched threads without materializing them.\n\nUpdate protocol schemas and generated TypeScript and Python types.\n\n## Testing\n\nAdd coverage for local-only saves, disabled uploads, path validation, overwrite protection, log consent, archive budgets, duplicate names, missing files, and rollout selection before materialization and after writer shutdown.\n\nGitOrigin-RevId: 222c0fe7ab923904de9c8a9f12ad27f7a0104875",
+              "url": "https://github.com/openai/codex/commit/a3b685331fc700bec554b2fe2a929a65f4fe1548"
+            },
+            {
+              "sha": "9b39316997fd8bcecdb2007722f52ef858f0dbd8",
+              "title": "Bound remote installed-plugin inventory pagination (#55946)",
+              "message": "Bound remote installed-plugin inventory pagination (#55946)\n\n## Why\n\nInstalled-plugin inventory fetches could keep following pagination cursors\nwithout an overall bound, delaying release of the plugin mutation gate.\n\n## What changed\n\n- Limit each inventory fetch to 60 seconds and 100 pages, and reject repeated\n  pagination cursors.\n- Request 200 items per page for scoped inventory fetches as well as all-scope\n  fetches.\n- Report overall fetch timeouts as `remote_catalog_timeout`.\n\n## Testing\n\nAdd coverage for cursor cycles, completion at the page limit, and overall\ntimeout cancellation after successful pages. Verify that failed pagination\npreserves the cached inventory and plugin files and releases the mutation gate.\n\nGitOrigin-RevId: e8429dd804581041d102defa9d19db02bcb1739b",
+              "url": "https://github.com/openai/codex/commit/9b39316997fd8bcecdb2007722f52ef858f0dbd8"
+            },
+            {
+              "sha": "d685e61e1f63b0222cc51017b175d20c14ecd02d",
+              "title": "Separate retained instruction collection from budget policy (#55954)",
+              "message": "Separate retained instruction collection from budget policy (#55954)\n\n## What changed\n\nRepresent collected fragments with `RetainedInstructionItem`, preserving their content, semantic kind, and source. Assign retention policy when composing context: user instructions, host notices, and framing remain required, while assistant context remains optional at commentary priority.\n\nGitOrigin-RevId: 0080f3abd0d763bd402e78da0ac1b0fa0cd7678d",
+              "url": "https://github.com/openai/codex/commit/d685e61e1f63b0222cc51017b175d20c14ecd02d"
+            },
+            {
+              "sha": "9e12b148918b6189b90ccd33be68f7811adfe81f",
+              "title": "Refresh cloud plugin and skill catalogs after mid-turn auth changes (#55957)",
+              "message": "Refresh cloud plugin and skill catalogs after mid-turn auth changes (#55957)\n\n## Why\n\nAuthentication can change between model steps. Refresh cloud catalogs before the next step so plugin acceptance and skill instructions reflect the current auth scope, including plugins that are no longer available.\n\n## What changed\n\n- Add a `refresh_catalog_for_step` lifecycle hook and rebuild MCP when plugin catalogs change.\n- Reuse successful discovery within a turn and auth scope, serialize concurrent refreshes, and allow retries after failures or cancellation. Limit cloud skill discovery warnings to once per turn.\n- Skip cloud discovery during prewarm and other context-only captures, and check hosted plugins even when no executor roots are selected.\n\n## Testing\n\nAdd regression coverage for mid-turn auth rotation and plugin removal, serialized refreshes and retries, stale discovery results, and prewarm boundaries.\n\nGitOrigin-RevId: 355681e84dc765e8dc1a04608779d95c706c2188",
+              "url": "https://github.com/openai/codex/commit/9e12b148918b6189b90ccd33be68f7811adfe81f"
+            },
+            {
+              "sha": "067249a28329feec4a097f55413894acb4a6378a",
+              "title": "Preserve provider model catalogs when refreshes fail (#55958)",
+              "message": "Preserve provider model catalogs when refreshes fail (#55958)\n\n## Why\n\nA failed provider catalog refresh could discard model metadata and disable tool search on subsequent turns, even after a successful discovery.\n\n## What changed\n\nKeep the last successful catalog, ETag, and original freshness when refreshes fail without an access rejection. Continue invalidating cached catalogs for HTTP `401`/`403`, rejected refresh tokens, and gateway credentials that require login. Distinguish `GatewayLoginRequired` from login in progress so only the former invalidates the catalog.\n\nSuccessful empty responses remain authoritative, and cached catalogs remain scoped to the provider and authentication identity.\n\n## Testing\n\nAdd regression coverage for catalog preservation across refresh errors and restarts, access rejection invalidation, identity isolation, and tool search and instruction stability on the next turn after a failed refresh.\n\nGitOrigin-RevId: 9dd7c73ac2cc1fd49664efd93b839baa94e05c49",
+              "url": "https://github.com/openai/codex/commit/067249a28329feec4a097f55413894acb4a6378a"
+            },
+            {
+              "sha": "57232f111c50e59d748d010048c9e10832ed79d7",
+              "title": "Add managed Desktop workspace storage requirements (#55965)",
+              "message": "Add managed Desktop workspace storage requirements (#55965)\n\n## What changed\n\n- Add `application.storage.default_project_parent` and `application.storage.projectless_workspace_root` requirements for new Desktop workspaces. Require absolute paths and reject unknown storage keys.\n- Apply managed paths to `desktop.defaultProjectParent` and `desktop.projectlessWorkspaceRoot`, overriding local preferences and rejecting writes to managed settings or their containing table while preserving unrelated Desktop settings.\n- Expose storage requirements through `config/requirements/read` and update generated JSON schemas, TypeScript types, and Python models.\n\n## Testing\n\nAdd coverage for storage validation, per-setting layer precedence, config overrides, write protection, and requirements API responses. Adjust daemon shutdown test deadlines and TUI test synchronization, paste handling, and future allocation.\n\nGitOrigin-RevId: 44b93fe69e6a471c3f485cbf5f9c9ebd34ac3234",
+              "url": "https://github.com/openai/codex/commit/57232f111c50e59d748d010048c9e10832ed79d7"
+            },
+            {
+              "sha": "3fd08b540570a5dd9c61d98560a0231f7b43891f",
+              "title": "Back off failed cloud skill and plugin catalog refreshes (#55968)",
+              "message": "Back off failed cloud skill and plugin catalog refreshes (#55968)\n\n## Why\n\nFailed cloud discovery previously retried before each model step. Apply a cooldown across steps and turns to avoid repeated discovery requests while a provider remains unavailable.\n\n## What changed\n\n- Share per-thread retry backoff logic between cloud skill and plugin catalogs, starting at 30 seconds and doubling to a maximum of 5 minutes.\n- Scope cooldowns to authentication and MCP resource generations so account changes and reconnects permit immediate recovery.\n- Clear backoff after successful discovery or configuration resets, while allowing cancelled refreshes to retry immediately.\n\n## Testing\n\nUpdate lifecycle and concurrency tests to cover shared cooldowns, reconnect recovery, and cancellation. Use paused time to verify exponential delays, the 5-minute cap, and backoff across turns.\n\nGitOrigin-RevId: 30dab5ceba51e8ad64c0794c1729719e99f577ce",
+              "url": "https://github.com/openai/codex/commit/3fd08b540570a5dd9c61d98560a0231f7b43891f"
+            },
+            {
+              "sha": "02c6a2d3f1a0b906f53770ad45ef61327509d551",
+              "title": "Drain WebSocket responses on mailbox preemption (#55969)",
+              "message": "Drain WebSocket responses on mailbox preemption (#55969)\n\n## Why\n\nMailbox preemption can discard completed response items and lose the response ID needed for incremental continuation. Buffered tool calls must also wait for queued agent messages to be read.\n\n## What changed\n\n- Gracefully interrupt and drain Responses Lite streams, retaining completed items and the response ID for the next request.\n- Cancel buffered tool calls before dispatch and suppress partial items that may be discarded during the drain.\n- Keep user steering queued until draining finishes. Include pending mail in follow-up requests after disconnects and preserve content-filter recovery guidance.\n\n## Testing\n\nAdd WebSocket regression coverage for buffered completion, interrupts without acknowledgement, buffered tools and partial items, user steering during draining, disconnects, and content-filter recovery.\n\nGitOrigin-RevId: c9d3fb87a81850e5686e07f28103e2ff4378ddec",
+              "url": "https://github.com/openai/codex/commit/02c6a2d3f1a0b906f53770ad45ef61327509d551"
+            },
+            {
+              "sha": "a47d1338c1be494948e9694a91561f66921acb17",
+              "title": "Extract shared message-board code into `codex-message-board` (#55970)",
+              "message": "Extract shared message-board code into `codex-message-board` (#55970)\n\n## What changed\n\nMove the message-board API, types, permissions, storage backends, and tool implementations into the new `codex-message-board` crate. Keep extension registration in `codex-agent-message-board-extension`, and update core and the remote client to use the shared crate directly.\n\nMove the existing board tests with the implementation and add the crate to the Cargo workspace and Bazel build.\n\nGitOrigin-RevId: 33ce527c2bef7f862eba55cb9b32222902ccf4ad",
+              "url": "https://github.com/openai/codex/commit/a47d1338c1be494948e9694a91561f66921acb17"
+            },
+            {
+              "sha": "e41e8821749ca6904b00161c31f097628d3756a9",
+              "title": "Add storage namespaces for local message boards (#55971)",
+              "message": "Add storage namespaces for local message boards (#55971)\n\n## Why\n\nLocal message boards use a fixed database filename. Callers need separate storage for boards that share a session identity.\n\n## What changed\n\n- Add `LocalBoardOptions` with a validated `storage_namespace`, and support it when opening, configuring, and permanently deleting boards.\n- Allow `LocalBoard::with_options` to select storage for its connections.\n- Store custom namespaces in `message_board_<namespace>_1.sqlite`, while preserving `agent_message_board_1.sqlite` for the default namespace.\n- Have the agent message board extension select the same namespace for opening, setup, and deletion.\n\n## Testing\n\nAdd coverage for namespace isolation, reopening saved posts, and avoiding collisions with other runtime databases. Update setup tests to exercise a custom namespace through reopening and deletion.\n\nGitOrigin-RevId: a6ea8d171809625edeedc3a8ac3ee2e1bbf1682a",
+              "url": "https://github.com/openai/codex/commit/e41e8821749ca6904b00161c31f097628d3756a9"
+            },
+            {
+              "sha": "8d06d62e15ebbe1ad42324232b6e8a7e2e432793",
+              "title": "Allow consumers to select message-board tools (#55973)",
+              "message": "Allow consumers to select message-board tools (#55973)\n\n## Why\n\n`message_board_tools` always exposed all nine discussion tools. Consumers need a way to expose a subset, such as `read_thread` and `list_threads`, over the same board.\n\n## What changed\n\nAccept an ordered slice of the new `MessageBoardTool` enum and optional description overrides in `message_board_tools`. Use the enum for schemas and dispatch, and keep the agent extension's existing tool set and order through `MessageBoardTool::DISCUSSION`.\n\n## Testing\n\nExtend the local-board integration test to verify that a reader-only selection exposes exactly the requested tools in the supplied order and reads the existing discussion.\n\nGitOrigin-RevId: 60026d73768330ff4b694c3a9e99480e3ed7af27",
+              "url": "https://github.com/openai/codex/commit/8d06d62e15ebbe1ad42324232b6e8a7e2e432793"
+            },
+            {
+              "sha": "3c4c04b224b55ce0eefca7fb8503b6f128d32b7d",
+              "title": "Add an experimental command to migrate NFS databases to DELETE mode (#55975)",
+              "message": "Add an experimental command to migrate NFS databases to DELETE mode (#55975)\n\n## What changed\n\nAdd `codex migrate-nfs-db` to replace configured SQLite WAL databases in place with validated copies in `DELETE` journal mode, retaining the originals and their sidecar files in backup directories. Stage conversion locally, check database integrity before installation, and support resuming an interrupted replacement.\n\nRequire confirmation and exclusive access, with all Codex instances stopped on every host until migration succeeds. The NFS mount must support cross-client POSIX locks. Reject unsupported file permissions and ACLs, and serialize migrations with a migration lock.\n\nSupport configuration overrides, `--profile`, and `--staging-dir`. Skip the logs database when `log_dir` is explicitly configured and leave databases already in `DELETE` mode unchanged. Reject remote mode.\n\nGitOrigin-RevId: 7b48cc3a713113a3c09a2243e49b54258bef609d",
+              "url": "https://github.com/openai/codex/commit/3c4c04b224b55ce0eefca7fb8503b6f128d32b7d"
+            },
+            {
+              "sha": "17a0e6f63fad13f577ef87b36b4ea37fc06385e9",
+              "title": "Route SQLite logs to an explicitly configured `log_dir` (#55978)",
+              "message": "Route SQLite logs to an explicitly configured `log_dir` (#55978)\n\n## What changed\n\n- Store `logs_2.sqlite` in `log_dir` when explicitly configured, unless a managed `sqlite_home` requirement applies. Keep other databases in `sqlite_home` and preserve the existing SQLite log location when `log_dir` is unset.\n- Initialize and lock the selected log directory only when opening its database, so an unavailable directory does not prevent authentication commands from loading configuration. Share the cleanup lock across configuration clones and allow failed initialization to be retried.\n- Leave existing logs in place. Read legacy logs for diagnostic submissions when the current query returns no logs, attaching them as `codex-logs-legacy.log`. Continue retention cleanup and page reclamation for both locations, with independent maintenance locks and filesystem checks.\n\n## Testing\n\nAdd coverage for configuration routing and managed requirements, deferred initialization and lock lifetimes, authentication with an unavailable log directory, legacy log attachments, and cleanup of current and legacy databases.\n\nGitOrigin-RevId: 48216694596d738eff1b3c5eef6c4e7ada6d0137",
+              "url": "https://github.com/openai/codex/commit/17a0e6f63fad13f577ef87b36b4ea37fc06385e9"
+            },
+            {
+              "sha": "bd5a836567bf4182f327f08ac4af626525705806",
+              "title": "Refresh remote exec-server credentials after unauthorized responses (#55987)",
+              "message": "Refresh remote exec-server credentials after unauthorized responses (#55987)\n\n## Why\n\nRemote registry requests need to recover when credentials are rejected or rotated while `exec-server` is running. Concurrent requests should reuse refreshed credentials rather than refresh the replacement token again.\n\n## What changed\n\n- Add an `AuthProvider` recovery hook and retry registry registration, connection, and harness-key validation once after a `401` when the provider supplies replacement credentials.\n- Use live ChatGPT authentication for remote `exec-server` and guard proactive and unauthorized refreshes so concurrent callers share the completed refresh.\n- Allow executor credentials to retry when the parent has already supplied a valid replacement.\n- Keep connection authentication, refresh, and retry within the original connection deadline.\n\n## Testing\n\nAdd coverage for concurrent refreshes, stored and parent-supplied credential rotation, refresh failures, retry limits, and connection deadlines, plus a CLI integration test for refresh and credential reload in a running executor.\n\nGitOrigin-RevId: 9ed533e410762c7ac8b7c0c30bb93fd20d96778b",
+              "url": "https://github.com/openai/codex/commit/bd5a836567bf4182f327f08ac4af626525705806"
+            },
+            {
+              "sha": "07cc649c658be7018b6913299f12f843b24679f8",
+              "title": "Avoid double-counting retained reasoning in token usage (#55991)",
+              "message": "Avoid double-counting retained reasoning in token usage (#55991)\n\n## Why\n\nResponses Lite includes retained reasoning in its reported token usage even without an `X-Reasoning-Included` header. Adding a separate reasoning estimate can trigger automatic compaction prematurely. Locally recomputed usage also already includes retained reasoning.\n\n## What changed\n\nInitialize reasoning accounting from `use_responses_lite` before each sampling or compaction request, while allowing server events to override it. Mark locally recomputed token usage as including reasoning.\n\n## Testing\n\nUpdate the compaction regression test to verify that Responses Lite usage without the header stays below an 81-token limit at 80 tokens and triggers compaction at 81 tokens.\n\nGitOrigin-RevId: 06f9272cb3c259e927941f1d2a1d7096310ffb2c",
+              "url": "https://github.com/openai/codex/commit/07cc649c658be7018b6913299f12f843b24679f8"
+            },
+            {
+              "sha": "d51e9c935fab31e13f7b576a026ae56fb18603bf",
+              "title": "Preserve per-execution trace context in code-mode stdio callbacks (#55993)",
+              "message": "Preserve per-execution trace context in code-mode stdio callbacks (#55993)\n\n## Why\n\nCallbacks from the shared stdio host need to retain each execution's trace context after it yields, without keeping the execution span open until its background cell closes.\n\n## What changed\n\nCapture a W3C trace-context snapshot for each execution and restore it as the parent of tool callback and notification spans. Instrument delegate invocation and its returned future so the context is available on entry and across awaits.\n\n## Testing\n\nAdd an integration test with overlapping yielded cells completed in reverse order. Cover sampled, unsampled, and untraced callers, trace isolation, callback and notification parentage, and execution spans finishing while callbacks remain blocked.\n\nGitOrigin-RevId: 57924123d2c2f31bcfaf725688d8bba775235fa0",
+              "url": "https://github.com/openai/codex/commit/d51e9c935fab31e13f7b576a026ae56fb18603bf"
+            },
+            {
+              "sha": "d5bc4161b658cff3f2176aa422a52b3a06928214",
+              "title": "Add a Windows proxy authentication tunnel helper (#55994)",
+              "message": "Add a Windows proxy authentication tunnel helper (#55994)\n\n## What changed\n\nExpose `connect_windows_proxy` for callers handling a CONNECT `407` response. Use libcurl with the signed-in Windows user's Negotiate or NTLM credentials, then return the authenticated connection with buffered data preserved.\n\nSupport HTTP and HTTPS proxies, with default or caller-provided TLS configuration. HTTPS proxies requiring authentication tokens bound to their TLS connection are unsupported.\n\nEnable libcurl's NTLM support in Cargo and Bazel builds.\n\n## Testing\n\nAdd a Windows-only test asserting that libcurl provides NTLM, SPNEGO, and SSPI support.\n\nGitOrigin-RevId: 4ed7d2208766404b6125ce2f4b5f91de5616a37f",
+              "url": "https://github.com/openai/codex/commit/d5bc4161b658cff3f2176aa422a52b3a06928214"
+            },
+            {
+              "sha": "f496b09bd141af0a6ec1a7ebf3e5fc557ac795dc",
+              "title": "Retry proxy CONNECT challenges with Windows authentication (#56000)",
+              "message": "Retry proxy CONNECT challenges with Windows authentication (#56000)\n\n## Why\n\nHTTPS requests and WebSocket connections on Windows need to authenticate when a proxy rejects `CONNECT` with status `407`.\n\n## What changed\n\n- Retry proxy challenges through the existing Windows authentication helper, using the signed-in user's Negotiate or NTLM credentials. Treat an origin `407` as a normal HTTP response.\n- Bridge authenticated tunnels to the HTTP client through destination-specific named pipes, retaining redirect checks and TLS backend fallback without caching those tunnels across destinations.\n- Carry explicit CA certificates and client identities into HTTPS proxy TLS configuration, and apply the configured connect timeout when opening authenticated HTTP tunnels.\n\nGitOrigin-RevId: ec7d9168972a7a640350e5348cfca40307390fbf",
+              "url": "https://github.com/openai/codex/commit/f496b09bd141af0a6ec1a7ebf3e5fc557ac795dc"
+            },
+            {
+              "sha": "6203846fb3ef040f62eed9b35bc6629c8e88980a",
+              "title": "Support confidential OAuth clients for enterprise-managed MCP auth (#56001)",
+              "message": "Support confidential OAuth clients for enterprise-managed MCP auth (#56001)\n\n## Why\n\nEnterprise-managed MCP authentication previously required public OAuth clients at both the identity provider and the MCP authorization server, preventing use of registrations that require client secrets.\n\n## What changed\n\n- Accept separate `client_secret` and `token_endpoint_auth_method` settings for the enterprise IdP and MCP server OAuth registration. Support `client_secret_basic` and `client_secret_post`, defaulting to Basic when a secret is configured.\n- Validate the registered method against server metadata and use it for enterprise login and both ID-JAG exchanges.\n- Require a configured `oauth.authorization_server_issuer` for confidential MCP registrations and reject empty secrets or authentication methods without secrets.\n- Require the account OAuth client to match the configured IdP client before reusing an account grant with a provisioned secret; otherwise use dedicated enterprise login.\n\n## Testing\n\nExtend configuration, login, exchange, and app-server lifecycle tests to cover confidential registrations, separate IdP and resource credentials, authentication method validation, and exclusion of client secrets from authorization URLs, stored login grants, and logs.\n\nGitOrigin-RevId: b3be378c2b1bb67e6a3652c648e72fd2e21e956d",
+              "url": "https://github.com/openai/codex/commit/6203846fb3ef040f62eed9b35bc6629c8e88980a"
+            },
+            {
+              "sha": "246178f7839a01a1e3142866c78f8cc248550305",
+              "title": "Release 0.164.0-alpha.10",
+              "message": "Release 0.164.0-alpha.10",
+              "url": "https://github.com/openai/codex/commit/246178f7839a01a1e3142866c78f8cc248550305"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.164.0-alpha.9",
+            "head": "rust-v0.164.0-alpha.10",
+            "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.9...rust-v0.164.0-alpha.10",
+            "status": "diverged",
+            "total": 22,
+            "behind": 1,
+            "complete": true,
+            "fetched": 22
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.164.0-alpha.10:2026-10-22T01:47:55.070Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-22T01:47:55.070Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.164.0-alpha.10",
+        "title": "0.164.0-alpha.10",
+        "body": "Release 0.164.0-alpha.10\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-22T01:47:55.072Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.164.0-alpha.10",
+        "publishedAt": "2026-10-22T00:04:24Z",
+        "commits": [
+          {
+            "sha": "a6839a481223fb5faab539a9eb2b7174ae29e560",
+            "title": "Skip conversation scoring superseded by newer scores and history (#55913)",
+            "message": "Skip conversation scoring superseded by newer scores and history (#55913)\n\n## Why\n\nA delayed conversation classification can reach execution after a newer request has already published a score and committed history, leaving it with no useful work to contribute.\n\n## What changed\n\nPass the classification's sampling timestamp into conversation requests and check for newer scores and retained history before starting inference. Return `Superseded` only when both have advanced; keep requests that can still contribute either a score or history.\n\n## Testing\n\nAdd regression tests covering supersession of scores and history separately and together, including a classification delayed by permissions. Verify skipped requests send no inference request and preserve cached scores, approvals, and score progress.\n\nGitOrigin-RevId: ef78a59e2010a82ac4f1fb93568a562447187099",
+            "url": "https://github.com/openai/codex/commit/a6839a481223fb5faab539a9eb2b7174ae29e560"
+          },
+          {
+            "sha": "430a16799d90e296fb27b1e94f206023902b7e56",
+            "title": "Preserve thread model settings across resume and revert (#55923)",
+            "message": "Preserve thread model settings across resume and revert (#55923)\n\n## Why\n\nResuming a thread can replace saved model settings with global defaults. A selected service tier can also be lost when the current model does not support it.\n\n## What changed\n\n- Restore saved service tier, reasoning summary, and personality on resume unless the caller explicitly overrides them, respecting thread ownership of settings snapshots.\n- Retain the selected service tier for persistence, settings notifications, and resume comparisons while filtering the effective tier against the current model's capabilities.\n- Carry the runtime model, service tier, and personality into thread revert reconstruction.\n- Persist initial thread settings before user input during MCP startup so an interrupted first turn retains its settings checkpoint.\n\n## Testing\n\nExtend regression coverage for cold resume and explicit overrides, unsupported service tiers, settings preservation during revert, and settings checkpoints before user input when MCP startup is interrupted.\n\nGitOrigin-RevId: e5ec012a5678048c5eedd443e524f38c142bf9fd",
+            "url": "https://github.com/openai/codex/commit/430a16799d90e296fb27b1e94f206023902b7e56"
+          },
+          {
+            "sha": "a3b685331fc700bec554b2fe2a929a65f4fe1548",
+            "title": "Add local diagnostic ZIP exports to the app server (#55940)",
+            "message": "Add local diagnostic ZIP exports to the app server (#55940)\n\n## What changed\n\nAdd a save RPC that accepts the existing report options and an absolute `savePath` on the server host. Save the report, selected attachments, and a manifest without uploading, and return `savedPath`, `threadId`, and `promptHash`. Local exports remain available when uploads are disabled by configuration.\n\nPublish archives atomically without replacing existing files. Bound uncompressed contents to 200 MiB and attachments to 128, preserve duplicate attachment names safely, and fail without publishing a partial ZIP when a selected file cannot be read. Honor `includeLogs` and omit automatic rollouts for untouched threads without materializing them.\n\nUpdate protocol schemas and generated TypeScript and Python types.\n\n## Testing\n\nAdd coverage for local-only saves, disabled uploads, path validation, overwrite protection, log consent, archive budgets, duplicate names, missing files, and rollout selection before materialization and after writer shutdown.\n\nGitOrigin-RevId: 222c0fe7ab923904de9c8a9f12ad27f7a0104875",
+            "url": "https://github.com/openai/codex/commit/a3b685331fc700bec554b2fe2a929a65f4fe1548"
+          },
+          {
+            "sha": "9b39316997fd8bcecdb2007722f52ef858f0dbd8",
+            "title": "Bound remote installed-plugin inventory pagination (#55946)",
+            "message": "Bound remote installed-plugin inventory pagination (#55946)\n\n## Why\n\nInstalled-plugin inventory fetches could keep following pagination cursors\nwithout an overall bound, delaying release of the plugin mutation gate.\n\n## What changed\n\n- Limit each inventory fetch to 60 seconds and 100 pages, and reject repeated\n  pagination cursors.\n- Request 200 items per page for scoped inventory fetches as well as all-scope\n  fetches.\n- Report overall fetch timeouts as `remote_catalog_timeout`.\n\n## Testing\n\nAdd coverage for cursor cycles, completion at the page limit, and overall\ntimeout cancellation after successful pages. Verify that failed pagination\npreserves the cached inventory and plugin files and releases the mutation gate.\n\nGitOrigin-RevId: e8429dd804581041d102defa9d19db02bcb1739b",
+            "url": "https://github.com/openai/codex/commit/9b39316997fd8bcecdb2007722f52ef858f0dbd8"
+          },
+          {
+            "sha": "d685e61e1f63b0222cc51017b175d20c14ecd02d",
+            "title": "Separate retained instruction collection from budget policy (#55954)",
+            "message": "Separate retained instruction collection from budget policy (#55954)\n\n## What changed\n\nRepresent collected fragments with `RetainedInstructionItem`, preserving their content, semantic kind, and source. Assign retention policy when composing context: user instructions, host notices, and framing remain required, while assistant context remains optional at commentary priority.\n\nGitOrigin-RevId: 0080f3abd0d763bd402e78da0ac1b0fa0cd7678d",
+            "url": "https://github.com/openai/codex/commit/d685e61e1f63b0222cc51017b175d20c14ecd02d"
+          },
+          {
+            "sha": "9e12b148918b6189b90ccd33be68f7811adfe81f",
+            "title": "Refresh cloud plugin and skill catalogs after mid-turn auth changes (#55957)",
+            "message": "Refresh cloud plugin and skill catalogs after mid-turn auth changes (#55957)\n\n## Why\n\nAuthentication can change between model steps. Refresh cloud catalogs before the next step so plugin acceptance and skill instructions reflect the current auth scope, including plugins that are no longer available.\n\n## What changed\n\n- Add a `refresh_catalog_for_step` lifecycle hook and rebuild MCP when plugin catalogs change.\n- Reuse successful discovery within a turn and auth scope, serialize concurrent refreshes, and allow retries after failures or cancellation. Limit cloud skill discovery warnings to once per turn.\n- Skip cloud discovery during prewarm and other context-only captures, and check hosted plugins even when no executor roots are selected.\n\n## Testing\n\nAdd regression coverage for mid-turn auth rotation and plugin removal, serialized refreshes and retries, stale discovery results, and prewarm boundaries.\n\nGitOrigin-RevId: 355681e84dc765e8dc1a04608779d95c706c2188",
+            "url": "https://github.com/openai/codex/commit/9e12b148918b6189b90ccd33be68f7811adfe81f"
+          },
+          {
+            "sha": "067249a28329feec4a097f55413894acb4a6378a",
+            "title": "Preserve provider model catalogs when refreshes fail (#55958)",
+            "message": "Preserve provider model catalogs when refreshes fail (#55958)\n\n## Why\n\nA failed provider catalog refresh could discard model metadata and disable tool search on subsequent turns, even after a successful discovery.\n\n## What changed\n\nKeep the last successful catalog, ETag, and original freshness when refreshes fail without an access rejection. Continue invalidating cached catalogs for HTTP `401`/`403`, rejected refresh tokens, and gateway credentials that require login. Distinguish `GatewayLoginRequired` from login in progress so only the former invalidates the catalog.\n\nSuccessful empty responses remain authoritative, and cached catalogs remain scoped to the provider and authentication identity.\n\n## Testing\n\nAdd regression coverage for catalog preservation across refresh errors and restarts, access rejection invalidation, identity isolation, and tool search and instruction stability on the next turn after a failed refresh.\n\nGitOrigin-RevId: 9dd7c73ac2cc1fd49664efd93b839baa94e05c49",
+            "url": "https://github.com/openai/codex/commit/067249a28329feec4a097f55413894acb4a6378a"
+          },
+          {
+            "sha": "57232f111c50e59d748d010048c9e10832ed79d7",
+            "title": "Add managed Desktop workspace storage requirements (#55965)",
+            "message": "Add managed Desktop workspace storage requirements (#55965)\n\n## What changed\n\n- Add `application.storage.default_project_parent` and `application.storage.projectless_workspace_root` requirements for new Desktop workspaces. Require absolute paths and reject unknown storage keys.\n- Apply managed paths to `desktop.defaultProjectParent` and `desktop.projectlessWorkspaceRoot`, overriding local preferences and rejecting writes to managed settings or their containing table while preserving unrelated Desktop settings.\n- Expose storage requirements through `config/requirements/read` and update generated JSON schemas, TypeScript types, and Python models.\n\n## Testing\n\nAdd coverage for storage validation, per-setting layer precedence, config overrides, write protection, and requirements API responses. Adjust daemon shutdown test deadlines and TUI test synchronization, paste handling, and future allocation.\n\nGitOrigin-RevId: 44b93fe69e6a471c3f485cbf5f9c9ebd34ac3234",
+            "url": "https://github.com/openai/codex/commit/57232f111c50e59d748d010048c9e10832ed79d7"
+          },
+          {
+            "sha": "3fd08b540570a5dd9c61d98560a0231f7b43891f",
+            "title": "Back off failed cloud skill and plugin catalog refreshes (#55968)",
+            "message": "Back off failed cloud skill and plugin catalog refreshes (#55968)\n\n## Why\n\nFailed cloud discovery previously retried before each model step. Apply a cooldown across steps and turns to avoid repeated discovery requests while a provider remains unavailable.\n\n## What changed\n\n- Share per-thread retry backoff logic between cloud skill and plugin catalogs, starting at 30 seconds and doubling to a maximum of 5 minutes.\n- Scope cooldowns to authentication and MCP resource generations so account changes and reconnects permit immediate recovery.\n- Clear backoff after successful discovery or configuration resets, while allowing cancelled refreshes to retry immediately.\n\n## Testing\n\nUpdate lifecycle and concurrency tests to cover shared cooldowns, reconnect recovery, and cancellation. Use paused time to verify exponential delays, the 5-minute cap, and backoff across turns.\n\nGitOrigin-RevId: 30dab5ceba51e8ad64c0794c1729719e99f577ce",
+            "url": "https://github.com/openai/codex/commit/3fd08b540570a5dd9c61d98560a0231f7b43891f"
+          },
+          {
+            "sha": "02c6a2d3f1a0b906f53770ad45ef61327509d551",
+            "title": "Drain WebSocket responses on mailbox preemption (#55969)",
+            "message": "Drain WebSocket responses on mailbox preemption (#55969)\n\n## Why\n\nMailbox preemption can discard completed response items and lose the response ID needed for incremental continuation. Buffered tool calls must also wait for queued agent messages to be read.\n\n## What changed\n\n- Gracefully interrupt and drain Responses Lite streams, retaining completed items and the response ID for the next request.\n- Cancel buffered tool calls before dispatch and suppress partial items that may be discarded during the drain.\n- Keep user steering queued until draining finishes. Include pending mail in follow-up requests after disconnects and preserve content-filter recovery guidance.\n\n## Testing\n\nAdd WebSocket regression coverage for buffered completion, interrupts without acknowledgement, buffered tools and partial items, user steering during draining, disconnects, and content-filter recovery.\n\nGitOrigin-RevId: c9d3fb87a81850e5686e07f28103e2ff4378ddec",
+            "url": "https://github.com/openai/codex/commit/02c6a2d3f1a0b906f53770ad45ef61327509d551"
+          },
+          {
+            "sha": "a47d1338c1be494948e9694a91561f66921acb17",
+            "title": "Extract shared message-board code into `codex-message-board` (#55970)",
+            "message": "Extract shared message-board code into `codex-message-board` (#55970)\n\n## What changed\n\nMove the message-board API, types, permissions, storage backends, and tool implementations into the new `codex-message-board` crate. Keep extension registration in `codex-agent-message-board-extension`, and update core and the remote client to use the shared crate directly.\n\nMove the existing board tests with the implementation and add the crate to the Cargo workspace and Bazel build.\n\nGitOrigin-RevId: 33ce527c2bef7f862eba55cb9b32222902ccf4ad",
+            "url": "https://github.com/openai/codex/commit/a47d1338c1be494948e9694a91561f66921acb17"
+          },
+          {
+            "sha": "e41e8821749ca6904b00161c31f097628d3756a9",
+            "title": "Add storage namespaces for local message boards (#55971)",
+            "message": "Add storage namespaces for local message boards (#55971)\n\n## Why\n\nLocal message boards use a fixed database filename. Callers need separate storage for boards that share a session identity.\n\n## What changed\n\n- Add `LocalBoardOptions` with a validated `storage_namespace`, and support it when opening, configuring, and permanently deleting boards.\n- Allow `LocalBoard::with_options` to select storage for its connections.\n- Store custom namespaces in `message_board_<namespace>_1.sqlite`, while preserving `agent_message_board_1.sqlite` for the default namespace.\n- Have the agent message board extension select the same namespace for opening, setup, and deletion.\n\n## Testing\n\nAdd coverage for namespace isolation, reopening saved posts, and avoiding collisions with other runtime databases. Update setup tests to exercise a custom namespace through reopening and deletion.\n\nGitOrigin-RevId: a6ea8d171809625edeedc3a8ac3ee2e1bbf1682a",
+            "url": "https://github.com/openai/codex/commit/e41e8821749ca6904b00161c31f097628d3756a9"
+          },
+          {
+            "sha": "8d06d62e15ebbe1ad42324232b6e8a7e2e432793",
+            "title": "Allow consumers to select message-board tools (#55973)",
+            "message": "Allow consumers to select message-board tools (#55973)\n\n## Why\n\n`message_board_tools` always exposed all nine discussion tools. Consumers need a way to expose a subset, such as `read_thread` and `list_threads`, over the same board.\n\n## What changed\n\nAccept an ordered slice of the new `MessageBoardTool` enum and optional description overrides in `message_board_tools`. Use the enum for schemas and dispatch, and keep the agent extension's existing tool set and order through `MessageBoardTool::DISCUSSION`.\n\n## Testing\n\nExtend the local-board integration test to verify that a reader-only selection exposes exactly the requested tools in the supplied order and reads the existing discussion.\n\nGitOrigin-RevId: 60026d73768330ff4b694c3a9e99480e3ed7af27",
+            "url": "https://github.com/openai/codex/commit/8d06d62e15ebbe1ad42324232b6e8a7e2e432793"
+          },
+          {
+            "sha": "3c4c04b224b55ce0eefca7fb8503b6f128d32b7d",
+            "title": "Add an experimental command to migrate NFS databases to DELETE mode (#55975)",
+            "message": "Add an experimental command to migrate NFS databases to DELETE mode (#55975)\n\n## What changed\n\nAdd `codex migrate-nfs-db` to replace configured SQLite WAL databases in place with validated copies in `DELETE` journal mode, retaining the originals and their sidecar files in backup directories. Stage conversion locally, check database integrity before installation, and support resuming an interrupted replacement.\n\nRequire confirmation and exclusive access, with all Codex instances stopped on every host until migration succeeds. The NFS mount must support cross-client POSIX locks. Reject unsupported file permissions and ACLs, and serialize migrations with a migration lock.\n\nSupport configuration overrides, `--profile`, and `--staging-dir`. Skip the logs database when `log_dir` is explicitly configured and leave databases already in `DELETE` mode unchanged. Reject remote mode.\n\nGitOrigin-RevId: 7b48cc3a713113a3c09a2243e49b54258bef609d",
+            "url": "https://github.com/openai/codex/commit/3c4c04b224b55ce0eefca7fb8503b6f128d32b7d"
+          },
+          {
+            "sha": "17a0e6f63fad13f577ef87b36b4ea37fc06385e9",
+            "title": "Route SQLite logs to an explicitly configured `log_dir` (#55978)",
+            "message": "Route SQLite logs to an explicitly configured `log_dir` (#55978)\n\n## What changed\n\n- Store `logs_2.sqlite` in `log_dir` when explicitly configured, unless a managed `sqlite_home` requirement applies. Keep other databases in `sqlite_home` and preserve the existing SQLite log location when `log_dir` is unset.\n- Initialize and lock the selected log directory only when opening its database, so an unavailable directory does not prevent authentication commands from loading configuration. Share the cleanup lock across configuration clones and allow failed initialization to be retried.\n- Leave existing logs in place. Read legacy logs for diagnostic submissions when the current query returns no logs, attaching them as `codex-logs-legacy.log`. Continue retention cleanup and page reclamation for both locations, with independent maintenance locks and filesystem checks.\n\n## Testing\n\nAdd coverage for configuration routing and managed requirements, deferred initialization and lock lifetimes, authentication with an unavailable log directory, legacy log attachments, and cleanup of current and legacy databases.\n\nGitOrigin-RevId: 48216694596d738eff1b3c5eef6c4e7ada6d0137",
+            "url": "https://github.com/openai/codex/commit/17a0e6f63fad13f577ef87b36b4ea37fc06385e9"
+          },
+          {
+            "sha": "bd5a836567bf4182f327f08ac4af626525705806",
+            "title": "Refresh remote exec-server credentials after unauthorized responses (#55987)",
+            "message": "Refresh remote exec-server credentials after unauthorized responses (#55987)\n\n## Why\n\nRemote registry requests need to recover when credentials are rejected or rotated while `exec-server` is running. Concurrent requests should reuse refreshed credentials rather than refresh the replacement token again.\n\n## What changed\n\n- Add an `AuthProvider` recovery hook and retry registry registration, connection, and harness-key validation once after a `401` when the provider supplies replacement credentials.\n- Use live ChatGPT authentication for remote `exec-server` and guard proactive and unauthorized refreshes so concurrent callers share the completed refresh.\n- Allow executor credentials to retry when the parent has already supplied a valid replacement.\n- Keep connection authentication, refresh, and retry within the original connection deadline.\n\n## Testing\n\nAdd coverage for concurrent refreshes, stored and parent-supplied credential rotation, refresh failures, retry limits, and connection deadlines, plus a CLI integration test for refresh and credential reload in a running executor.\n\nGitOrigin-RevId: 9ed533e410762c7ac8b7c0c30bb93fd20d96778b",
+            "url": "https://github.com/openai/codex/commit/bd5a836567bf4182f327f08ac4af626525705806"
+          },
+          {
+            "sha": "07cc649c658be7018b6913299f12f843b24679f8",
+            "title": "Avoid double-counting retained reasoning in token usage (#55991)",
+            "message": "Avoid double-counting retained reasoning in token usage (#55991)\n\n## Why\n\nResponses Lite includes retained reasoning in its reported token usage even without an `X-Reasoning-Included` header. Adding a separate reasoning estimate can trigger automatic compaction prematurely. Locally recomputed usage also already includes retained reasoning.\n\n## What changed\n\nInitialize reasoning accounting from `use_responses_lite` before each sampling or compaction request, while allowing server events to override it. Mark locally recomputed token usage as including reasoning.\n\n## Testing\n\nUpdate the compaction regression test to verify that Responses Lite usage without the header stays below an 81-token limit at 80 tokens and triggers compaction at 81 tokens.\n\nGitOrigin-RevId: 06f9272cb3c259e927941f1d2a1d7096310ffb2c",
+            "url": "https://github.com/openai/codex/commit/07cc649c658be7018b6913299f12f843b24679f8"
+          },
+          {
+            "sha": "d51e9c935fab31e13f7b576a026ae56fb18603bf",
+            "title": "Preserve per-execution trace context in code-mode stdio callbacks (#55993)",
+            "message": "Preserve per-execution trace context in code-mode stdio callbacks (#55993)\n\n## Why\n\nCallbacks from the shared stdio host need to retain each execution's trace context after it yields, without keeping the execution span open until its background cell closes.\n\n## What changed\n\nCapture a W3C trace-context snapshot for each execution and restore it as the parent of tool callback and notification spans. Instrument delegate invocation and its returned future so the context is available on entry and across awaits.\n\n## Testing\n\nAdd an integration test with overlapping yielded cells completed in reverse order. Cover sampled, unsampled, and untraced callers, trace isolation, callback and notification parentage, and execution spans finishing while callbacks remain blocked.\n\nGitOrigin-RevId: 57924123d2c2f31bcfaf725688d8bba775235fa0",
+            "url": "https://github.com/openai/codex/commit/d51e9c935fab31e13f7b576a026ae56fb18603bf"
+          },
+          {
+            "sha": "d5bc4161b658cff3f2176aa422a52b3a06928214",
+            "title": "Add a Windows proxy authentication tunnel helper (#55994)",
+            "message": "Add a Windows proxy authentication tunnel helper (#55994)\n\n## What changed\n\nExpose `connect_windows_proxy` for callers handling a CONNECT `407` response. Use libcurl with the signed-in Windows user's Negotiate or NTLM credentials, then return the authenticated connection with buffered data preserved.\n\nSupport HTTP and HTTPS proxies, with default or caller-provided TLS configuration. HTTPS proxies requiring authentication tokens bound to their TLS connection are unsupported.\n\nEnable libcurl's NTLM support in Cargo and Bazel builds.\n\n## Testing\n\nAdd a Windows-only test asserting that libcurl provides NTLM, SPNEGO, and SSPI support.\n\nGitOrigin-RevId: 4ed7d2208766404b6125ce2f4b5f91de5616a37f",
+            "url": "https://github.com/openai/codex/commit/d5bc4161b658cff3f2176aa422a52b3a06928214"
+          },
+          {
+            "sha": "f496b09bd141af0a6ec1a7ebf3e5fc557ac795dc",
+            "title": "Retry proxy CONNECT challenges with Windows authentication (#56000)",
+            "message": "Retry proxy CONNECT challenges with Windows authentication (#56000)\n\n## Why\n\nHTTPS requests and WebSocket connections on Windows need to authenticate when a proxy rejects `CONNECT` with status `407`.\n\n## What changed\n\n- Retry proxy challenges through the existing Windows authentication helper, using the signed-in user's Negotiate or NTLM credentials. Treat an origin `407` as a normal HTTP response.\n- Bridge authenticated tunnels to the HTTP client through destination-specific named pipes, retaining redirect checks and TLS backend fallback without caching those tunnels across destinations.\n- Carry explicit CA certificates and client identities into HTTPS proxy TLS configuration, and apply the configured connect timeout when opening authenticated HTTP tunnels.\n\nGitOrigin-RevId: ec7d9168972a7a640350e5348cfca40307390fbf",
+            "url": "https://github.com/openai/codex/commit/f496b09bd141af0a6ec1a7ebf3e5fc557ac795dc"
+          },
+          {
+            "sha": "6203846fb3ef040f62eed9b35bc6629c8e88980a",
+            "title": "Support confidential OAuth clients for enterprise-managed MCP auth (#56001)",
+            "message": "Support confidential OAuth clients for enterprise-managed MCP auth (#56001)\n\n## Why\n\nEnterprise-managed MCP authentication previously required public OAuth clients at both the identity provider and the MCP authorization server, preventing use of registrations that require client secrets.\n\n## What changed\n\n- Accept separate `client_secret` and `token_endpoint_auth_method` settings for the enterprise IdP and MCP server OAuth registration. Support `client_secret_basic` and `client_secret_post`, defaulting to Basic when a secret is configured.\n- Validate the registered method against server metadata and use it for enterprise login and both ID-JAG exchanges.\n- Require a configured `oauth.authorization_server_issuer` for confidential MCP registrations and reject empty secrets or authentication methods without secrets.\n- Require the account OAuth client to match the configured IdP client before reusing an account grant with a provisioned secret; otherwise use dedicated enterprise login.\n\n## Testing\n\nExtend configuration, login, exchange, and app-server lifecycle tests to cover confidential registrations, separate IdP and resource credentials, authentication method validation, and exclusion of client secrets from authorization URLs, stored login grants, and logs.\n\nGitOrigin-RevId: b3be378c2b1bb67e6a3652c648e72fd2e21e956d",
+            "url": "https://github.com/openai/codex/commit/6203846fb3ef040f62eed9b35bc6629c8e88980a"
+          },
+          {
+            "sha": "246178f7839a01a1e3142866c78f8cc248550305",
+            "title": "Release 0.164.0-alpha.10",
+            "message": "Release 0.164.0-alpha.10",
+            "url": "https://github.com/openai/codex/commit/246178f7839a01a1e3142866c78f8cc248550305"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.164.0-alpha.9",
+          "head": "rust-v0.164.0-alpha.10",
+          "url": "https://github.com/openai/codex/compare/rust-v0.164.0-alpha.9...rust-v0.164.0-alpha.10",
+          "status": "diverged",
+          "total": 22,
+          "behind": 1,
+          "complete": true,
+          "fetched": 22
+        },
+        "comparisonError": null
+      }
     }
   ],
   "releaseRequests": {
@@ -23803,8 +24328,7 @@
       "rust-v0.163.0-alpha.9": 1791905643313,
       "rust-v0.163.0-alpha.12": 1791989875953,
       "rust-v0.163.0-alpha.13": 1792077183213,
-      "rust-v0.164.0-alpha.1": 1792161392449,
-      "rust-v0.164.0-alpha.10": 1792626157392
+      "rust-v0.164.0-alpha.1": 1792161392449
     }
   }
 }
