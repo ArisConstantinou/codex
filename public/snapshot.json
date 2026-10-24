@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-24T18:44:46.608Z",
+  "generatedAt": "2026-10-24T21:15:22.104Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -8231,7 +8231,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-24T18:44:45.641Z",
+      "lastSuccessAt": "2026-10-24T21:15:21.153Z",
       "error": null,
       "count": 150
     },
@@ -8240,7 +8240,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-24T18:44:45.641Z",
+      "lastSuccessAt": "2026-10-24T21:15:21.153Z",
       "error": null,
       "count": 10
     },
@@ -8249,7 +8249,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-24T18:44:45.641Z",
+      "lastSuccessAt": "2026-10-24T21:15:21.153Z",
       "error": null,
       "count": 25
     }
@@ -30120,7 +30120,7 @@
     }
   ],
   "releaseRequests": {
-    "blockedUntil": 1792857412000,
+    "blockedUntil": 1792877058000,
     "retryByTag": {
       "rust-v0.162.0-alpha.17": 1791321037742,
       "rust-v0.163.0-alpha.1": 1791488791542,
@@ -30131,7 +30131,8 @@
       "rust-v0.163.0-alpha.9": 1791905643313,
       "rust-v0.163.0-alpha.12": 1791989875953,
       "rust-v0.163.0-alpha.13": 1792077183213,
-      "rust-v0.164.0-alpha.1": 1792161392449
+      "rust-v0.164.0-alpha.1": 1792161392449,
+      "rust-v0.165.0-alpha.1": 1792877058000
     }
   }
 }
