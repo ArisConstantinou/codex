@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-26T10:59:47.864Z",
+  "generatedAt": "2026-10-26T17:18:03.514Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -8223,6 +8223,36 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-10-23T21:30:25.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/fanatics-streamline-fan-experience",
+      "at": "2026-10-26T07:00:00.000Z",
+      "url": "https://openai.com/index/fanatics-streamline-fan-experience",
+      "text": "How Fanatics and OpenAI streamline the fan experience. Fanatics uses OpenAI to help fans complete their game-day outfits with Shop the Look. Testing across roughly 30,000 MLB products showed 10% higher engagement.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.165.0-alpha.2",
+      "at": "2026-10-26T15:40:14.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.165.0-alpha.2",
+      "text": "rust-v0.165.0-alpha.2. Release 0.165.0-alpha.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -8231,7 +8261,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-26T10:59:46.385Z",
+      "lastSuccessAt": "2026-10-26T17:18:02.718Z",
       "error": null,
       "count": 150
     },
@@ -8240,7 +8270,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-26T10:59:46.385Z",
+      "lastSuccessAt": "2026-10-26T17:18:02.718Z",
       "error": null,
       "count": 10
     },
@@ -8249,7 +8279,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-26T10:59:46.385Z",
+      "lastSuccessAt": "2026-10-26T17:18:02.718Z",
       "error": null,
       "count": 25
     }
@@ -34477,6 +34507,46 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/fanatics-streamline-fan-experience:2026-10-26T17:18:03.514Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-26T17:18:03.514Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/fanatics-streamline-fan-experience",
+        "at": "2026-10-26T07:00:00.000Z",
+        "url": "https://openai.com/index/fanatics-streamline-fan-experience",
+        "text": "How Fanatics and OpenAI streamline the fan experience. Fanatics uses OpenAI to help fans complete their game-day outfits with Shop the Look. Testing across roughly 30,000 MLB products showed 10% higher engagement.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.165.0-alpha.2:2026-10-26T17:18:03.514Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-26T17:18:03.514Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.165.0-alpha.2",
+        "at": "2026-10-26T15:40:14.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.165.0-alpha.2",
+        "text": "rust-v0.165.0-alpha.2. Release 0.165.0-alpha.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
@@ -34491,7 +34561,8 @@
       "rust-v0.163.0-alpha.9": 1791905643313,
       "rust-v0.163.0-alpha.12": 1791989875953,
       "rust-v0.163.0-alpha.13": 1792077183213,
-      "rust-v0.164.0-alpha.1": 1792161392449
+      "rust-v0.164.0-alpha.1": 1792161392449,
+      "rust-v0.165.0-alpha.2": 1793035983518
     }
   }
 }
