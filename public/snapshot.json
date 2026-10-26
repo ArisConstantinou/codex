@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-26T17:18:03.514Z",
+  "generatedAt": "2026-10-26T21:41:27.891Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -8253,6 +8253,82 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "openai-news:https://openai.com/index/chatgpt-expanding-world-of-work",
+      "at": "2026-10-26T10:00:00.000Z",
+      "url": "https://openai.com/index/chatgpt-expanding-world-of-work",
+      "text": "ChatGPT’s expanding world of work. Explore OpenAI Signals data on 165 work activities across nearly 100 countries, revealing how people use ChatGPT for work and how usage changes over time.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/openai-cut-incident-investigation",
+      "at": "2026-10-26T07:00:00.000Z",
+      "url": "https://openai.com/index/openai-cut-incident-investigation",
+      "text": "How Ultrafast cut incident investigation from hours to minutes at OpenAI. See how OpenAI engineers use Codex Ultrafast to investigate incidents in minutes. Explore faster security analysis, code refactoring, and daily workflows.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-terra",
+      "at": "2026-10-26T00:00:00.000Z",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra",
+      "text": "Introducing GPT-6.1 Terra. Bringing fast and capable computer use to everyone",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.165.0-alpha.3",
+      "at": "2026-10-26T19:53:24.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.165.0-alpha.3",
+      "text": "rust-v0.165.0-alpha.3. Release 0.165.0-alpha.3",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M5WPZTT0385GMEV1353ZC4AM",
+      "at": "2026-10-26T19:21:04.000Z",
+      "url": "https://status.openai.com/incidents/01M5WPZTT0385GMEV1353ZC4AM",
+      "text": "Elevated error rates for Ads POST requests. All impacted services have now fully recovered.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-26T18:19:00.000Z"
     }
   ],
   "sources": {
@@ -8261,7 +8337,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-26T17:18:02.718Z",
+      "lastSuccessAt": "2026-10-26T21:41:26.828Z",
       "error": null,
       "count": 150
     },
@@ -8270,7 +8346,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-26T17:18:02.718Z",
+      "lastSuccessAt": "2026-10-26T21:41:26.828Z",
       "error": null,
       "count": 10
     },
@@ -8279,7 +8355,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-26T17:18:02.718Z",
+      "lastSuccessAt": "2026-10-26T21:41:26.828Z",
       "error": null,
       "count": 25
     }
@@ -34547,6 +34623,107 @@
         "origin": "direct-official",
         "prerelease": true
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/chatgpt-expanding-world-of-work:2026-10-26T21:41:27.891Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-26T21:41:27.891Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/chatgpt-expanding-world-of-work",
+        "at": "2026-10-26T10:00:00.000Z",
+        "url": "https://openai.com/index/chatgpt-expanding-world-of-work",
+        "text": "ChatGPT’s expanding world of work. Explore OpenAI Signals data on 165 work activities across nearly 100 countries, revealing how people use ChatGPT for work and how usage changes over time.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/openai-cut-incident-investigation:2026-10-26T21:41:27.891Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-26T21:41:27.891Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/openai-cut-incident-investigation",
+        "at": "2026-10-26T07:00:00.000Z",
+        "url": "https://openai.com/index/openai-cut-incident-investigation",
+        "text": "How Ultrafast cut incident investigation from hours to minutes at OpenAI. See how OpenAI engineers use Codex Ultrafast to investigate incidents in minutes. Explore faster security analysis, code refactoring, and daily workflows.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-terra:2026-10-26T21:41:27.891Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-26T21:41:27.891Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-gpt-6-1-terra",
+        "at": "2026-10-26T00:00:00.000Z",
+        "url": "https://openai.com/index/introducing-gpt-6-1-terra",
+        "text": "Introducing GPT-6.1 Terra. Bringing fast and capable computer use to everyone",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.165.0-alpha.3:2026-10-26T21:41:27.891Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-26T21:41:27.891Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.165.0-alpha.3",
+        "at": "2026-10-26T19:53:24.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.165.0-alpha.3",
+        "text": "rust-v0.165.0-alpha.3. Release 0.165.0-alpha.3",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M5WPZTT0385GMEV1353ZC4AM:2026-10-26T21:41:27.891Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-26T21:41:27.891Z",
+      "item": {
+        "id": "openai-status:01M5WPZTT0385GMEV1353ZC4AM",
+        "at": "2026-10-26T19:21:04.000Z",
+        "url": "https://status.openai.com/incidents/01M5WPZTT0385GMEV1353ZC4AM",
+        "text": "Elevated error rates for Ads POST requests. All impacted services have now fully recovered.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-26T18:19:00.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -34562,7 +34739,8 @@
       "rust-v0.163.0-alpha.12": 1791989875953,
       "rust-v0.163.0-alpha.13": 1792077183213,
       "rust-v0.164.0-alpha.1": 1792161392449,
-      "rust-v0.165.0-alpha.2": 1793035983518
+      "rust-v0.165.0-alpha.2": 1793035983518,
+      "rust-v0.165.0-alpha.3": 1793051787896
     }
   }
 }
