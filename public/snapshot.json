@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-27T12:27:05.190Z",
+  "generatedAt": "2026-10-27T18:13:39.178Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -9803,9 +9803,9 @@
     },
     {
       "id": "openai-status:01M5Y60NQGGN514EB3943V94EN",
-      "at": "2026-10-27T08:21:10.000Z",
+      "at": "2026-10-27T13:54:35.000Z",
       "url": "https://status.openai.com/incidents/01M5Y60NQGGN514EB3943V94EN",
-      "text": "Elevated error rates for most hosted Code Reviews and Security Reviews on private GitHub repositories. We’ve applied a mitigation and are monitoring the affected services to confirm recovery.",
+      "text": "Elevated error rates for most hosted Code Reviews and Security Reviews on private GitHub repositories. The issue is now resolved.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -9814,8 +9814,69 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "monitoring",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-10-27T08:00:50.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/oracle-apps-in-chatgpt",
+      "at": "2026-10-27T07:00:00.000Z",
+      "url": "https://openai.com/index/oracle-apps-in-chatgpt",
+      "text": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT. OpenAI and Oracle are expanding their partnership to bring business applications and AI agents into ChatGPT and power new Oracle offerings.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/anima",
+      "at": "2026-10-23T00:00:00.000Z",
+      "url": "https://openai.com/index/anima",
+      "text": "Anima helps clinics cut call waits by 75% with GPT-6 and GPT-Live. Anima expands what care teams can do with OpenAI models, giving them more capacity to respond to patients.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.3",
+      "at": "2026-10-27T17:33:57.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.3",
+      "text": "rust-v0.166.0-alpha.3. Release 0.166.0-alpha.3",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M5YY4A3TQETEQ53DVSK8SW10",
+      "at": "2026-10-27T16:20:06.000Z",
+      "url": "https://status.openai.com/incidents/01M5YY4A3TQETEQ53DVSK8SW10",
+      "text": "6.1 Sol Degraded Model Performance. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-27T15:02:15.000Z"
     }
   ],
   "sources": {
@@ -9824,7 +9885,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-27T12:27:04.211Z",
+      "lastSuccessAt": "2026-10-27T18:13:38.337Z",
       "error": null,
       "count": 150
     },
@@ -9833,7 +9894,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-27T12:27:04.211Z",
+      "lastSuccessAt": "2026-10-27T18:13:38.337Z",
       "error": null,
       "count": 10
     },
@@ -9842,7 +9903,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-27T12:27:04.211Z",
+      "lastSuccessAt": "2026-10-27T18:13:38.337Z",
       "error": null,
       "count": 25
     }
@@ -39154,6 +39215,108 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/oracle-apps-in-chatgpt:2026-10-27T18:13:39.178Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-27T18:13:39.178Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/oracle-apps-in-chatgpt",
+        "at": "2026-10-27T07:00:00.000Z",
+        "url": "https://openai.com/index/oracle-apps-in-chatgpt",
+        "text": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT. OpenAI and Oracle are expanding their partnership to bring business applications and AI agents into ChatGPT and power new Oracle offerings.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/anima:2026-10-27T18:13:39.178Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-27T18:13:39.178Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/anima",
+        "at": "2026-10-23T00:00:00.000Z",
+        "url": "https://openai.com/index/anima",
+        "text": "Anima helps clinics cut call waits by 75% with GPT-6 and GPT-Live. Anima expands what care teams can do with OpenAI models, giving them more capacity to respond to patients.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.3:2026-10-27T18:13:39.178Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-27T18:13:39.178Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.3",
+        "at": "2026-10-27T17:33:57.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.3",
+        "text": "rust-v0.166.0-alpha.3. Release 0.166.0-alpha.3",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M5YY4A3TQETEQ53DVSK8SW10:2026-10-27T18:13:39.178Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-27T18:13:39.178Z",
+      "item": {
+        "id": "openai-status:01M5YY4A3TQETEQ53DVSK8SW10",
+        "at": "2026-10-27T16:20:06.000Z",
+        "url": "https://status.openai.com/incidents/01M5YY4A3TQETEQ53DVSK8SW10",
+        "text": "6.1 Sol Degraded Model Performance. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-27T15:02:15.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M5Y60NQGGN514EB3943V94EN:2026-10-27T18:13:39.178Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-27T18:13:39.178Z",
+      "item": {
+        "id": "openai-status:01M5Y60NQGGN514EB3943V94EN",
+        "at": "2026-10-27T13:54:35.000Z",
+        "url": "https://status.openai.com/incidents/01M5Y60NQGGN514EB3943V94EN",
+        "text": "Elevated error rates for most hosted Code Reviews and Security Reviews on private GitHub repositories. The issue is now resolved.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-27T08:00:50.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -39170,7 +39333,8 @@
       "rust-v0.163.0-alpha.13": 1792077183213,
       "rust-v0.164.0-alpha.1": 1792161392449,
       "rust-v0.165.0-alpha.2": 1793035983518,
-      "rust-v0.165.0-alpha.3": 1793051787896
+      "rust-v0.165.0-alpha.3": 1793051787896,
+      "rust-v0.166.0-alpha.3": 1793125719184
     }
   }
 }
