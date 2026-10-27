@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-27T06:12:19.200Z",
+  "generatedAt": "2026-10-27T12:27:05.190Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -9642,6 +9642,180 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.2",
+      "at": "2026-10-27T12:03:16.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.2",
+      "text": "0.166.0-alpha.2. Release 0.166.0-alpha.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.166.0-alpha.2",
+        "title": "0.166.0-alpha.2",
+        "body": "Release 0.166.0-alpha.2\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-27T12:27:05.194Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.2",
+        "publishedAt": "2026-10-27T11:54:48Z",
+        "commits": [
+          {
+            "sha": "9526f8d0d076f950ccc108d03c53b2df22289b2d",
+            "title": "Default gateway OAuth delivery to Authorization bearer tokens (#57313)",
+            "message": "Default gateway OAuth delivery to Authorization bearer tokens (#57313)\n\n## What changed\n\nAllow omitting `gateway_oauth.delivery` to send the gateway token as `Authorization: Bearer …`. Custom headers and cookies remain available when a provider also needs its own credentials.\n\nReject conflicting provider authentication and duplicate delivery headers with actionable errors. For gateway bearer delivery, require `model_catalog_url` to share the scheme, host, and port of `base_url`. Consistently reject request header collisions across auth application methods.\n\n## Testing\n\nAdd coverage for omitted delivery, provider credential conflicts, and model catalog origin validation. Update inference tests to verify gateway-only authentication while signed in and combined ChatGPT and gateway credentials in separate headers.\n\nGitOrigin-RevId: 8564d3998511b3f6c55f3b65a01ed9056a90417e",
+            "url": "https://github.com/openai/codex/commit/9526f8d0d076f950ccc108d03c53b2df22289b2d"
+          },
+          {
+            "sha": "95cafae96c517628ce9dd1ed0ddb976b33bba221",
+            "title": "Format all Rust sources and clean up repository checks (#57314)",
+            "message": "Format all Rust sources and clean up repository checks (#57314)\n\n## Why\n\nRust formatting should include source files that Cargo cannot discover, while keeping command lines within Windows limits.\n\n## What changed\n\n- Update `scripts/format.py` to discover tracked and non-ignored untracked Rust files with Git and invoke `rustfmt` in batches of 64 files. Use the workspace configuration and skip recursive child-module formatting.\n- Pass `SystemDrive` and `LOCALAPPDATA` to Windows Bazel tests.\n- Extend the spelling allowlist, remove a manifest feature exception, and clean up an unused import, an empty MCP scenario module, and its snapshot.\n\nGitOrigin-RevId: c0d625fda9290ead6a63919325d65f7352abfa40",
+            "url": "https://github.com/openai/codex/commit/95cafae96c517628ce9dd1ed0ddb976b33bba221"
+          },
+          {
+            "sha": "b01148de595719a05092dcbd5e0a252bb4349378",
+            "title": "Keep failed subagents from marking tasks as needing attention (#57315)",
+            "message": "Keep failed subagents from marking tasks as needing attention (#57315)\n\n## Why\n\nA subagent failure ends its work without requiring user action, but the agent command center treated it as needing attention and promoted its parent task into the `Needs you` group.\n\n## What changed\n\nClassify failed subagents as inactive when computing task groups and selecting details. Recognize subagents by either a parent thread or a subagent session source, including background workers without a parent.\n\nKeep approval and user-input requests from descendants actionable, even beneath a failed agent. Show these requests as `Needs input` rather than `Error` when the displayed task is a failed subagent. Errors in non-subagent tasks continue to require attention.\n\n## Testing\n\nAdd and update regression tests and a snapshot covering stable ordering after subagent failures, idle parents staying ready, failed background workers, and pending requests beneath failed agents.\n\nGitOrigin-RevId: 1a06d5d00c08bb77c9ed36aadffd5e0514f0b2c6",
+            "url": "https://github.com/openai/codex/commit/b01148de595719a05092dcbd5e0a252bb4349378"
+          },
+          {
+            "sha": "ce7adb6a31f2909a48afa538c2cdb7a6254a0e4b",
+            "title": "Add opt-in concise hints for explicitly selected plugins (#57317)",
+            "message": "Add opt-in concise hints for explicitly selected plugins (#57317)\n\n## What changed\n\nAdd the `features.simplified_selection_hints` flag, disabled by default. When enabled, replace detailed plugin capability instructions with a concise developer message identifying the selected plugin and directing the model to use its available skills and tools.\n\nContinue omitting hints for plugins without available capabilities and bounding hint length. Preserve the existing detailed instructions when the flag is disabled.\n\n## Testing\n\nCover plugin refresh in an existing thread with the flag enabled and disabled. Verify that explicit skill prompts precede the simplified plugin hint and that the hint uses the developer role.\n\nGitOrigin-RevId: 64fc3347bd49fffe675f343a4733ced1b4e5e88c",
+            "url": "https://github.com/openai/codex/commit/ce7adb6a31f2909a48afa538c2cdb7a6254a0e4b"
+          },
+          {
+            "sha": "c587d6e54cb1e4013bf0cf9ea769edde48a23a1e",
+            "title": "Add model catalog fields for granular approval templates (#57325)",
+            "message": "Add model catalog fields for granular approval templates (#57325)\n\n## What changed\n\nAdd optional `approvals.granular` catalog fields for the policy introduction and prompted and rejected category lists. Preserve template strings verbatim in `GranularApprovalMessages`, leaving validation and rendering to consumers.\n\nDocument the 500-byte template limit, required `{{ policy }}` and `{{ categories }}` markers, and fallback rules.\n\n## Testing\n\nExtend serialization tests to cover null, empty, and populated granular templates, and verify their preservation through model responses and base instruction overrides.\n\nGitOrigin-RevId: ce32e41a9b37e2e7c45ac9b079708a640c99326c",
+            "url": "https://github.com/openai/codex/commit/c587d6e54cb1e4013bf0cf9ea769edde48a23a1e"
+          },
+          {
+            "sha": "b7f7e7f7e85a1c63e520f27cac42b836f242d9f7",
+            "title": "Separate TUI session resume preparation from activation (#57342)",
+            "message": "Separate TUI session resume preparation from activation (#57342)\n\n## What changed\n\nSplit saved-thread resume into preparation and activation. Preparation resolves configuration and attaches to the destination thread before activation replaces the displayed conversation.\n\nKeep stored-backend configuration and local settings separate from active settings during preparation, while retaining the existing eager settings refresh for active-backend resumes. Use the destination backend for working-directory, permission, and directory-trust checks.\n\nCarry the backend identity in the prepared result and reject activation through a different backend before changing the active conversation or composer.\n\n## Testing\n\nExtend coverage for preserving active settings and composer drafts during preparation, rejecting activation through another backend, applying destination remote-permission checks, and retaining active-backend settings refresh behavior.\n\nGitOrigin-RevId: 7171f1abcf4bdd62793c21232a8b895bb809cf70",
+            "url": "https://github.com/openai/codex/commit/b7f7e7f7e85a1c63e520f27cac42b836f242d9f7"
+          },
+          {
+            "sha": "9510f36df2c9f0133d0fd4f271224aec14d86cd0",
+            "title": "Preserve child signal failures in the npm wrapper (#57352)",
+            "message": "Preserve child signal failures in the npm wrapper (#57352)\n\n## Why\n\nThe npm wrapper can exit successfully after its native child is terminated by a signal if Node ignores the re-emitted signal or a forwarding handler intercepts it.\n\n## What changed\n\nSet a fallback exit status of `128 + signal number` and remove listeners for the terminating signal before re-emitting it, preserving signal termination where supported.\n\n## Testing\n\nAdd a non-Windows integration test using a built Codex binary to cover numeric argument-error exits, forwarded `SIGHUP` termination, and the fallback exit status for `SIGXFSZ`, which Node ignores by default.\n\nGitOrigin-RevId: cad18a47aa50fd78517c367f8d8aae83bbbf7843",
+            "url": "https://github.com/openai/codex/commit/9510f36df2c9f0133d0fd4f271224aec14d86cd0"
+          },
+          {
+            "sha": "3f74ff28fa09530bd5bcfcbfcbb86553636dde94",
+            "title": "Avoid object-identity preflight for MXC path grants (#57353)",
+            "message": "Avoid object-identity preflight for MXC path grants (#57353)\n\n## Why\n\nMXC's `normalize_object_conflicts` can reject otherwise usable Windows policies when a network share does not support `FileIdInfo` or a protected deny path cannot be opened for metadata.\n\n## What changed\n\nRemove object-conflict normalization before and after volume-root expansion. Send explicit path grants directly to BaseContainer, which enforces path and symlink/junction alias precedence.\n\nDocument the resulting limitations:\n\n- Hard-link names retain independent permissions, so an allowed name can access the same file through a less restrictive grant.\n- Volume roots expand using their declared access without first reconciling aliases. A writable root can therefore generate more-specific writable grants that override a read-only root alias.\n\nGitOrigin-RevId: de0b2d7b5b98eaa358a97156c02e9f7f85860335",
+            "url": "https://github.com/openai/codex/commit/3f74ff28fa09530bd5bcfcbfcbb86553636dde94"
+          },
+          {
+            "sha": "f69b8d203d0499ff27899d2f30586f8c747b91ae",
+            "title": "Report when NFS database migration finds no databases (#57357)",
+            "message": "Report when NFS database migration finds no databases (#57357)\n\n## Why\n\n`codex migrate-nfs-db` reported a successful migration when the database directory existed but contained no databases.\n\n## What changed\n\nCount databases that were migrated or already use DELETE journal mode. If none are found, print `No databases found.` instead of the migration success message.\n\n## Testing\n\nExtend the CLI integration test to cover an empty directory, a failure on a corrupt logs database after an earlier conversion, and a successful rerun that recognizes the converted database as already in DELETE mode.\n\nGitOrigin-RevId: 16b109645925164f3af5d35a909417872cfa004f",
+            "url": "https://github.com/openai/codex/commit/f69b8d203d0499ff27899d2f30586f8c747b91ae"
+          },
+          {
+            "sha": "adfcac1a427ac70f6a1eabb85f836eb85341f995",
+            "title": "Serialize session index mutations across processes (#57358)",
+            "message": "Serialize session index mutations across processes (#57358)\n\n## Why\n\nThe process-local mutex cannot coordinate session name appends and removals from multiple Codex processes sharing the same home directory.\n\n## What changed\n\n- Guard index mutations with a persistent `session_index.jsonl.lock` file, retaining the lock until the blocking worker finishes even if its caller is cancelled.\n- Return a timeout error after 30 seconds of lock contention without modifying the index.\n- Rewrite removals through a unique temporary file while preserving index permissions, and skip removal when the index is absent.\n\n## Testing\n\nUpdate regression tests to check lock retention after cancellation, timeout without writing, successful writes after contention clears, and removal with a missing home directory. Retain coverage for cancelled queued updates preserving the next write.\n\nGitOrigin-RevId: 5231c9ff85c6b34de5ee92931d119b6f46bd583b",
+            "url": "https://github.com/openai/codex/commit/adfcac1a427ac70f6a1eabb85f836eb85341f995"
+          },
+          {
+            "sha": "ff2346f33f851bd4e90c8e42ae60abcc7e7f293b",
+            "title": "Bound waits for the thread writer coordination lock (#57360)",
+            "message": "Bound waits for the thread writer coordination lock (#57360)\n\n## Why\n\nContention on the writer coordination lock can block writer cleanup indefinitely, preventing idle threads from unloading.\n\n## What changed\n\nRetry coordination lock acquisition every 50 ms and return `io::ErrorKind::TimedOut` after 30 seconds of contention. This lets cleanup release writer ownership and idle unloading finish even while another process holds coordination.\n\n## Testing\n\nExtend writer lock coverage to check the timeout error. Update the idle unload regression test to verify that the thread closes while coordination remains locked and can resume with its persisted turn after the lock is released.\n\nGitOrigin-RevId: 513117fdaf3890283e7acdd149ce9abb66075b63",
+            "url": "https://github.com/openai/codex/commit/ff2346f33f851bd4e90c8e42ae60abcc7e7f293b"
+          },
+          {
+            "sha": "118aae2a5f4865dd247b6cec2cd5d9c197892778",
+            "title": "Explain safety policy blocks with turn-scoped recourse in the TUI (#57363)",
+            "message": "Explain safety policy blocks with turn-scoped recourse in the TUI (#57363)\n\n## What changed\n\n- Handle `TurnModerationMetadata` for the active turn, showing a temporary block notice while an explanation is pending.\n- Validate safety recourse metadata and render topic-specific explanations with safer ways to continue for biological and cybersecurity policy blocks. Apply the explanation only when the terminal policy error matches its domain; otherwise retain the existing error handling.\n- Queue input while recourse is pending and preserve prepared images when queued messages are submitted.\n\n## Testing\n\nAdd an integration test covering biological and cybersecurity blocks, the loading notice, and fallback for a mismatched policy error, plus a snapshot of the cybersecurity explanation. Extend queued-image coverage to verify submission succeeds after the original image file is removed.\n\nGitOrigin-RevId: dd9ca57cf3b2d842e3deb8aff5d7c3c73a92e14d",
+            "url": "https://github.com/openai/codex/commit/118aae2a5f4865dd247b6cec2cd5d9c197892778"
+          },
+          {
+            "sha": "6c0db39b940a136b1e77145c8c7f01f3acfa80db",
+            "title": "Offer safer rewrites after safety blocks in the TUI (#57365)",
+            "message": "Offer safer rewrites after safety blocks in the TUI (#57365)\n\n## What changed\n\n- Show selectable safer follow-ups alongside safety-block explanations, with an option to enable Daybreak when disabled.\n- Submit the selected rewrite in a verified fork before the blocked turn, preserving the original chat's draft and current model settings. Mark the new turn with `safety_recourse_follow_up`.\n- Filter suggestions that could invoke commands, skills, apps, or plugins, and suppress recourse for unsupported servers and non-primary threads.\n\n## Testing\n\nExtend coverage for fork history, draft preservation, model selection, turn metadata, suggestion filtering, and the Daybreak picker.\n\nGitOrigin-RevId: 49052df6301b6bfbba07262d40b007dcf97bb7c9",
+            "url": "https://github.com/openai/codex/commit/6c0db39b940a136b1e77145c8c7f01f3acfa80db"
+          },
+          {
+            "sha": "155dde7ff60b178ec4ba7154b2e48c6071eb5001",
+            "title": "Show the selected ChatGPT workspace in `/status` (#57366)",
+            "message": "Show the selected ChatGPT workspace in `/status` (#57366)\n\n## What changed\n\n- Return the selected workspace's display name as `workspaceName` in ChatGPT account responses, caching it alongside workspace routing and updating generated schemas and bindings.\n- Display a `ChatGPT workspace` row with the name and account ID, falling back to the ID when the name is unavailable or invalid. Refresh workspace details with account identity updates and hide the row for providers that do not use ChatGPT authentication.\n\n## Testing\n\nUpdate account-response tests to cover workspace names and null values, add workspace details to the status snapshot, and verify that switching to a custom API-key provider hides the workspace row.\n\nGitOrigin-RevId: 4b30ab8a39e1fa7ad1ba7367c5295544be8f6001",
+            "url": "https://github.com/openai/codex/commit/155dde7ff60b178ec4ba7154b2e48c6071eb5001"
+          },
+          {
+            "sha": "2cab11ca40aad193382348a7bda46da2fc47596a",
+            "title": "Pin the Rust toolchain to 1.95.0 (#57373)",
+            "message": "Pin the Rust toolchain to 1.95.0 (#57373)\n\n## What changed\n\n- Replace Rust `1.99.1` pins with `1.95.0` across Cargo, Bazel, CI, release workflows, and Windows setup, and update the Bazel lockfile.\n- Adjust Rust APIs, borrowing, and lint-related code for the pinned toolchain, and box MCP tool dispatch to bound compiler async-layout query depth.\n- Update the halfwidth sound mark snapshot and allow optional symbol hash suffixes in the code mode host package smoke test.\n\nGitOrigin-RevId: 75460c3d0465dc601811e619bce373a4f7ff2912",
+            "url": "https://github.com/openai/codex/commit/2cab11ca40aad193382348a7bda46da2fc47596a"
+          },
+          {
+            "sha": "d30fe145fc4f0f55e115bb92723dc35ddc23c18f",
+            "title": "Drain pending terminal reports before returning to the shell (#57391)",
+            "message": "Drain pending terminal reports before returning to the shell (#57391)\n\n## Why\n\nTerminal reports still in flight when Codex exits can leak into the parent shell's input.\n\n## What changed\n\nPause terminal event polling during shutdown and flush pending input before restoring normal terminal input mode. On Unix, use a primary device attributes (DA1) reply to wait for outstanding reports after disabling reporting, with a two-second timeout when startup detected DA1 support. During panic unwinding, flush queued input without locking the event reader.\n\n## Testing\n\nExtend PTY tests to cover mouse-report bursts with a split DA1 reply, clean shell input after exit, and queued input cleanup during panic unwinding.\n\nGitOrigin-RevId: 304859b654fb2b2c8882e6cac4cb6522fe05475c",
+            "url": "https://github.com/openai/codex/commit/d30fe145fc4f0f55e115bb92723dc35ddc23c18f"
+          },
+          {
+            "sha": "d0f33fab36b9f324e68c40b5865abc0223daf3bc",
+            "title": "Render integral limits and parenthesized matrices in TUI math (#57393)",
+            "message": "Render integral limits and parenthesized matrices in TUI math (#57393)\n\n## What changed\n\n- Stack integral limits above and below the integral in top-level display math, while keeping compact limits in lists and blockquotes.\n- Render `pmatrix` environments with centered cells and scalable Unicode parentheses, aligning surrounding math to the matrix midpoint.\n- Require spatial layouts, including single-row matrices, to fit the available width; preserve the source when they cannot fit or appear in nested Markdown.\n\n## Testing\n\nAdd snapshots for integral limits and matrices, narrow-width fallback assertions, and rejection tests for ragged matrices and mismatched environment endings.\n\nGitOrigin-RevId: 73b589c4422568b90d15f55bf7c9dddec0dccc97",
+            "url": "https://github.com/openai/codex/commit/d0f33fab36b9f324e68c40b5865abc0223daf3bc"
+          },
+          {
+            "sha": "6fe77fc12346591b8037a8704640e40196b19044",
+            "title": "Add experimental GCP account setup to the app server (#57394)",
+            "message": "Add experimental GCP account setup to the app server (#57394)\n\n## What changed\n\n- Add `account/gcp/setup` to configure the built-in Vertex AI provider with a project, optional location (defaulting to `global`), and optional credential file. Omitting the file clears the active user override and uses Application Default Credentials.\n- Validate configuration and obtain an access token before saving, return structured credential failure reasons, and reload the model catalog on the next `model/list` request.\n- Share configuration previews and version-checked writes with Bedrock setup to reject conflicting settings and concurrent configuration changes.\n\n## Testing\n\nAdd tests for credential selection and ADC fallback, catalog refresh, invalid credentials, policy and endpoint conflicts, cancellation when network permission is revoked, and configuration version conflicts.\n\nGitOrigin-RevId: 6f411a85893f8da49581427451e0180529955b16",
+            "url": "https://github.com/openai/codex/commit/6fe77fc12346591b8037a8704640e40196b19044"
+          },
+          {
+            "sha": "124e4e5bfad4c84162d28d06a02ba28b2cd23c4a",
+            "title": "Make thread item timestamps optional in TypeScript exports (#57420)",
+            "message": "Make thread item timestamps optional in TypeScript exports (#57420)\n\n## Why\n\nOlder servers can omit thread item timestamps. The TypeScript contract should accept those responses while still allowing explicit `null` values.\n\n## What changed\n\nMark `ThreadItem.startedAtMs` and `ThreadItem.completedAtMs` as optional nullable fields. Update the generated TypeScript and precomputed stable and experimental exports, and allow these fields in the optional-nullable export check.\n\nGitOrigin-RevId: 186be7aa45a3e7c65f133b1e320809a9912ff1f3",
+            "url": "https://github.com/openai/codex/commit/124e4e5bfad4c84162d28d06a02ba28b2cd23c4a"
+          },
+          {
+            "sha": "53924300d72d20acec497fe4d11f50bd1e6eceb0",
+            "title": "Release 0.166.0-alpha.2",
+            "message": "Release 0.166.0-alpha.2",
+            "url": "https://github.com/openai/codex/commit/53924300d72d20acec497fe4d11f50bd1e6eceb0"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.166.0-alpha.1",
+          "head": "rust-v0.166.0-alpha.2",
+          "url": "https://github.com/openai/codex/compare/rust-v0.166.0-alpha.1...rust-v0.166.0-alpha.2",
+          "status": "diverged",
+          "total": 20,
+          "behind": 1,
+          "complete": true,
+          "fetched": 20
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-status:01M5Y60NQGGN514EB3943V94EN",
+      "at": "2026-10-27T08:21:10.000Z",
+      "url": "https://status.openai.com/incidents/01M5Y60NQGGN514EB3943V94EN",
+      "text": "Elevated error rates for most hosted Code Reviews and Security Reviews on private GitHub repositories. We’ve applied a mitigation and are monitoring the affected services to confirm recovery.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "monitoring",
+      "publishedAt": "2026-10-27T08:00:50.000Z"
     }
   ],
   "sources": {
@@ -9650,7 +9824,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-27T06:12:18.455Z",
+      "lastSuccessAt": "2026-10-27T12:27:04.211Z",
       "error": null,
       "count": 150
     },
@@ -9659,7 +9833,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-27T06:12:18.455Z",
+      "lastSuccessAt": "2026-10-27T12:27:04.211Z",
       "error": null,
       "count": 10
     },
@@ -9668,7 +9842,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-27T06:12:18.455Z",
+      "lastSuccessAt": "2026-10-27T12:27:04.211Z",
       "error": null,
       "count": 25
     }
@@ -38645,6 +38819,338 @@
           "behind": 1,
           "complete": true,
           "fetched": 200
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.2:2026-10-27T12:27:05.190Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-27T12:27:05.190Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.2",
+        "at": "2026-10-27T12:03:16.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.2",
+        "text": "0.166.0-alpha.2. Release 0.166.0-alpha.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.166.0-alpha.2",
+          "title": "0.166.0-alpha.2",
+          "body": "Release 0.166.0-alpha.2\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-27T12:27:05.194Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.2",
+          "publishedAt": "2026-10-27T11:54:48Z",
+          "commits": [
+            {
+              "sha": "9526f8d0d076f950ccc108d03c53b2df22289b2d",
+              "title": "Default gateway OAuth delivery to Authorization bearer tokens (#57313)",
+              "message": "Default gateway OAuth delivery to Authorization bearer tokens (#57313)\n\n## What changed\n\nAllow omitting `gateway_oauth.delivery` to send the gateway token as `Authorization: Bearer …`. Custom headers and cookies remain available when a provider also needs its own credentials.\n\nReject conflicting provider authentication and duplicate delivery headers with actionable errors. For gateway bearer delivery, require `model_catalog_url` to share the scheme, host, and port of `base_url`. Consistently reject request header collisions across auth application methods.\n\n## Testing\n\nAdd coverage for omitted delivery, provider credential conflicts, and model catalog origin validation. Update inference tests to verify gateway-only authentication while signed in and combined ChatGPT and gateway credentials in separate headers.\n\nGitOrigin-RevId: 8564d3998511b3f6c55f3b65a01ed9056a90417e",
+              "url": "https://github.com/openai/codex/commit/9526f8d0d076f950ccc108d03c53b2df22289b2d"
+            },
+            {
+              "sha": "95cafae96c517628ce9dd1ed0ddb976b33bba221",
+              "title": "Format all Rust sources and clean up repository checks (#57314)",
+              "message": "Format all Rust sources and clean up repository checks (#57314)\n\n## Why\n\nRust formatting should include source files that Cargo cannot discover, while keeping command lines within Windows limits.\n\n## What changed\n\n- Update `scripts/format.py` to discover tracked and non-ignored untracked Rust files with Git and invoke `rustfmt` in batches of 64 files. Use the workspace configuration and skip recursive child-module formatting.\n- Pass `SystemDrive` and `LOCALAPPDATA` to Windows Bazel tests.\n- Extend the spelling allowlist, remove a manifest feature exception, and clean up an unused import, an empty MCP scenario module, and its snapshot.\n\nGitOrigin-RevId: c0d625fda9290ead6a63919325d65f7352abfa40",
+              "url": "https://github.com/openai/codex/commit/95cafae96c517628ce9dd1ed0ddb976b33bba221"
+            },
+            {
+              "sha": "b01148de595719a05092dcbd5e0a252bb4349378",
+              "title": "Keep failed subagents from marking tasks as needing attention (#57315)",
+              "message": "Keep failed subagents from marking tasks as needing attention (#57315)\n\n## Why\n\nA subagent failure ends its work without requiring user action, but the agent command center treated it as needing attention and promoted its parent task into the `Needs you` group.\n\n## What changed\n\nClassify failed subagents as inactive when computing task groups and selecting details. Recognize subagents by either a parent thread or a subagent session source, including background workers without a parent.\n\nKeep approval and user-input requests from descendants actionable, even beneath a failed agent. Show these requests as `Needs input` rather than `Error` when the displayed task is a failed subagent. Errors in non-subagent tasks continue to require attention.\n\n## Testing\n\nAdd and update regression tests and a snapshot covering stable ordering after subagent failures, idle parents staying ready, failed background workers, and pending requests beneath failed agents.\n\nGitOrigin-RevId: 1a06d5d00c08bb77c9ed36aadffd5e0514f0b2c6",
+              "url": "https://github.com/openai/codex/commit/b01148de595719a05092dcbd5e0a252bb4349378"
+            },
+            {
+              "sha": "ce7adb6a31f2909a48afa538c2cdb7a6254a0e4b",
+              "title": "Add opt-in concise hints for explicitly selected plugins (#57317)",
+              "message": "Add opt-in concise hints for explicitly selected plugins (#57317)\n\n## What changed\n\nAdd the `features.simplified_selection_hints` flag, disabled by default. When enabled, replace detailed plugin capability instructions with a concise developer message identifying the selected plugin and directing the model to use its available skills and tools.\n\nContinue omitting hints for plugins without available capabilities and bounding hint length. Preserve the existing detailed instructions when the flag is disabled.\n\n## Testing\n\nCover plugin refresh in an existing thread with the flag enabled and disabled. Verify that explicit skill prompts precede the simplified plugin hint and that the hint uses the developer role.\n\nGitOrigin-RevId: 64fc3347bd49fffe675f343a4733ced1b4e5e88c",
+              "url": "https://github.com/openai/codex/commit/ce7adb6a31f2909a48afa538c2cdb7a6254a0e4b"
+            },
+            {
+              "sha": "c587d6e54cb1e4013bf0cf9ea769edde48a23a1e",
+              "title": "Add model catalog fields for granular approval templates (#57325)",
+              "message": "Add model catalog fields for granular approval templates (#57325)\n\n## What changed\n\nAdd optional `approvals.granular` catalog fields for the policy introduction and prompted and rejected category lists. Preserve template strings verbatim in `GranularApprovalMessages`, leaving validation and rendering to consumers.\n\nDocument the 500-byte template limit, required `{{ policy }}` and `{{ categories }}` markers, and fallback rules.\n\n## Testing\n\nExtend serialization tests to cover null, empty, and populated granular templates, and verify their preservation through model responses and base instruction overrides.\n\nGitOrigin-RevId: ce32e41a9b37e2e7c45ac9b079708a640c99326c",
+              "url": "https://github.com/openai/codex/commit/c587d6e54cb1e4013bf0cf9ea769edde48a23a1e"
+            },
+            {
+              "sha": "b7f7e7f7e85a1c63e520f27cac42b836f242d9f7",
+              "title": "Separate TUI session resume preparation from activation (#57342)",
+              "message": "Separate TUI session resume preparation from activation (#57342)\n\n## What changed\n\nSplit saved-thread resume into preparation and activation. Preparation resolves configuration and attaches to the destination thread before activation replaces the displayed conversation.\n\nKeep stored-backend configuration and local settings separate from active settings during preparation, while retaining the existing eager settings refresh for active-backend resumes. Use the destination backend for working-directory, permission, and directory-trust checks.\n\nCarry the backend identity in the prepared result and reject activation through a different backend before changing the active conversation or composer.\n\n## Testing\n\nExtend coverage for preserving active settings and composer drafts during preparation, rejecting activation through another backend, applying destination remote-permission checks, and retaining active-backend settings refresh behavior.\n\nGitOrigin-RevId: 7171f1abcf4bdd62793c21232a8b895bb809cf70",
+              "url": "https://github.com/openai/codex/commit/b7f7e7f7e85a1c63e520f27cac42b836f242d9f7"
+            },
+            {
+              "sha": "9510f36df2c9f0133d0fd4f271224aec14d86cd0",
+              "title": "Preserve child signal failures in the npm wrapper (#57352)",
+              "message": "Preserve child signal failures in the npm wrapper (#57352)\n\n## Why\n\nThe npm wrapper can exit successfully after its native child is terminated by a signal if Node ignores the re-emitted signal or a forwarding handler intercepts it.\n\n## What changed\n\nSet a fallback exit status of `128 + signal number` and remove listeners for the terminating signal before re-emitting it, preserving signal termination where supported.\n\n## Testing\n\nAdd a non-Windows integration test using a built Codex binary to cover numeric argument-error exits, forwarded `SIGHUP` termination, and the fallback exit status for `SIGXFSZ`, which Node ignores by default.\n\nGitOrigin-RevId: cad18a47aa50fd78517c367f8d8aae83bbbf7843",
+              "url": "https://github.com/openai/codex/commit/9510f36df2c9f0133d0fd4f271224aec14d86cd0"
+            },
+            {
+              "sha": "3f74ff28fa09530bd5bcfcbfcbb86553636dde94",
+              "title": "Avoid object-identity preflight for MXC path grants (#57353)",
+              "message": "Avoid object-identity preflight for MXC path grants (#57353)\n\n## Why\n\nMXC's `normalize_object_conflicts` can reject otherwise usable Windows policies when a network share does not support `FileIdInfo` or a protected deny path cannot be opened for metadata.\n\n## What changed\n\nRemove object-conflict normalization before and after volume-root expansion. Send explicit path grants directly to BaseContainer, which enforces path and symlink/junction alias precedence.\n\nDocument the resulting limitations:\n\n- Hard-link names retain independent permissions, so an allowed name can access the same file through a less restrictive grant.\n- Volume roots expand using their declared access without first reconciling aliases. A writable root can therefore generate more-specific writable grants that override a read-only root alias.\n\nGitOrigin-RevId: de0b2d7b5b98eaa358a97156c02e9f7f85860335",
+              "url": "https://github.com/openai/codex/commit/3f74ff28fa09530bd5bcfcbfcbb86553636dde94"
+            },
+            {
+              "sha": "f69b8d203d0499ff27899d2f30586f8c747b91ae",
+              "title": "Report when NFS database migration finds no databases (#57357)",
+              "message": "Report when NFS database migration finds no databases (#57357)\n\n## Why\n\n`codex migrate-nfs-db` reported a successful migration when the database directory existed but contained no databases.\n\n## What changed\n\nCount databases that were migrated or already use DELETE journal mode. If none are found, print `No databases found.` instead of the migration success message.\n\n## Testing\n\nExtend the CLI integration test to cover an empty directory, a failure on a corrupt logs database after an earlier conversion, and a successful rerun that recognizes the converted database as already in DELETE mode.\n\nGitOrigin-RevId: 16b109645925164f3af5d35a909417872cfa004f",
+              "url": "https://github.com/openai/codex/commit/f69b8d203d0499ff27899d2f30586f8c747b91ae"
+            },
+            {
+              "sha": "adfcac1a427ac70f6a1eabb85f836eb85341f995",
+              "title": "Serialize session index mutations across processes (#57358)",
+              "message": "Serialize session index mutations across processes (#57358)\n\n## Why\n\nThe process-local mutex cannot coordinate session name appends and removals from multiple Codex processes sharing the same home directory.\n\n## What changed\n\n- Guard index mutations with a persistent `session_index.jsonl.lock` file, retaining the lock until the blocking worker finishes even if its caller is cancelled.\n- Return a timeout error after 30 seconds of lock contention without modifying the index.\n- Rewrite removals through a unique temporary file while preserving index permissions, and skip removal when the index is absent.\n\n## Testing\n\nUpdate regression tests to check lock retention after cancellation, timeout without writing, successful writes after contention clears, and removal with a missing home directory. Retain coverage for cancelled queued updates preserving the next write.\n\nGitOrigin-RevId: 5231c9ff85c6b34de5ee92931d119b6f46bd583b",
+              "url": "https://github.com/openai/codex/commit/adfcac1a427ac70f6a1eabb85f836eb85341f995"
+            },
+            {
+              "sha": "ff2346f33f851bd4e90c8e42ae60abcc7e7f293b",
+              "title": "Bound waits for the thread writer coordination lock (#57360)",
+              "message": "Bound waits for the thread writer coordination lock (#57360)\n\n## Why\n\nContention on the writer coordination lock can block writer cleanup indefinitely, preventing idle threads from unloading.\n\n## What changed\n\nRetry coordination lock acquisition every 50 ms and return `io::ErrorKind::TimedOut` after 30 seconds of contention. This lets cleanup release writer ownership and idle unloading finish even while another process holds coordination.\n\n## Testing\n\nExtend writer lock coverage to check the timeout error. Update the idle unload regression test to verify that the thread closes while coordination remains locked and can resume with its persisted turn after the lock is released.\n\nGitOrigin-RevId: 513117fdaf3890283e7acdd149ce9abb66075b63",
+              "url": "https://github.com/openai/codex/commit/ff2346f33f851bd4e90c8e42ae60abcc7e7f293b"
+            },
+            {
+              "sha": "118aae2a5f4865dd247b6cec2cd5d9c197892778",
+              "title": "Explain safety policy blocks with turn-scoped recourse in the TUI (#57363)",
+              "message": "Explain safety policy blocks with turn-scoped recourse in the TUI (#57363)\n\n## What changed\n\n- Handle `TurnModerationMetadata` for the active turn, showing a temporary block notice while an explanation is pending.\n- Validate safety recourse metadata and render topic-specific explanations with safer ways to continue for biological and cybersecurity policy blocks. Apply the explanation only when the terminal policy error matches its domain; otherwise retain the existing error handling.\n- Queue input while recourse is pending and preserve prepared images when queued messages are submitted.\n\n## Testing\n\nAdd an integration test covering biological and cybersecurity blocks, the loading notice, and fallback for a mismatched policy error, plus a snapshot of the cybersecurity explanation. Extend queued-image coverage to verify submission succeeds after the original image file is removed.\n\nGitOrigin-RevId: dd9ca57cf3b2d842e3deb8aff5d7c3c73a92e14d",
+              "url": "https://github.com/openai/codex/commit/118aae2a5f4865dd247b6cec2cd5d9c197892778"
+            },
+            {
+              "sha": "6c0db39b940a136b1e77145c8c7f01f3acfa80db",
+              "title": "Offer safer rewrites after safety blocks in the TUI (#57365)",
+              "message": "Offer safer rewrites after safety blocks in the TUI (#57365)\n\n## What changed\n\n- Show selectable safer follow-ups alongside safety-block explanations, with an option to enable Daybreak when disabled.\n- Submit the selected rewrite in a verified fork before the blocked turn, preserving the original chat's draft and current model settings. Mark the new turn with `safety_recourse_follow_up`.\n- Filter suggestions that could invoke commands, skills, apps, or plugins, and suppress recourse for unsupported servers and non-primary threads.\n\n## Testing\n\nExtend coverage for fork history, draft preservation, model selection, turn metadata, suggestion filtering, and the Daybreak picker.\n\nGitOrigin-RevId: 49052df6301b6bfbba07262d40b007dcf97bb7c9",
+              "url": "https://github.com/openai/codex/commit/6c0db39b940a136b1e77145c8c7f01f3acfa80db"
+            },
+            {
+              "sha": "155dde7ff60b178ec4ba7154b2e48c6071eb5001",
+              "title": "Show the selected ChatGPT workspace in `/status` (#57366)",
+              "message": "Show the selected ChatGPT workspace in `/status` (#57366)\n\n## What changed\n\n- Return the selected workspace's display name as `workspaceName` in ChatGPT account responses, caching it alongside workspace routing and updating generated schemas and bindings.\n- Display a `ChatGPT workspace` row with the name and account ID, falling back to the ID when the name is unavailable or invalid. Refresh workspace details with account identity updates and hide the row for providers that do not use ChatGPT authentication.\n\n## Testing\n\nUpdate account-response tests to cover workspace names and null values, add workspace details to the status snapshot, and verify that switching to a custom API-key provider hides the workspace row.\n\nGitOrigin-RevId: 4b30ab8a39e1fa7ad1ba7367c5295544be8f6001",
+              "url": "https://github.com/openai/codex/commit/155dde7ff60b178ec4ba7154b2e48c6071eb5001"
+            },
+            {
+              "sha": "2cab11ca40aad193382348a7bda46da2fc47596a",
+              "title": "Pin the Rust toolchain to 1.95.0 (#57373)",
+              "message": "Pin the Rust toolchain to 1.95.0 (#57373)\n\n## What changed\n\n- Replace Rust `1.99.1` pins with `1.95.0` across Cargo, Bazel, CI, release workflows, and Windows setup, and update the Bazel lockfile.\n- Adjust Rust APIs, borrowing, and lint-related code for the pinned toolchain, and box MCP tool dispatch to bound compiler async-layout query depth.\n- Update the halfwidth sound mark snapshot and allow optional symbol hash suffixes in the code mode host package smoke test.\n\nGitOrigin-RevId: 75460c3d0465dc601811e619bce373a4f7ff2912",
+              "url": "https://github.com/openai/codex/commit/2cab11ca40aad193382348a7bda46da2fc47596a"
+            },
+            {
+              "sha": "d30fe145fc4f0f55e115bb92723dc35ddc23c18f",
+              "title": "Drain pending terminal reports before returning to the shell (#57391)",
+              "message": "Drain pending terminal reports before returning to the shell (#57391)\n\n## Why\n\nTerminal reports still in flight when Codex exits can leak into the parent shell's input.\n\n## What changed\n\nPause terminal event polling during shutdown and flush pending input before restoring normal terminal input mode. On Unix, use a primary device attributes (DA1) reply to wait for outstanding reports after disabling reporting, with a two-second timeout when startup detected DA1 support. During panic unwinding, flush queued input without locking the event reader.\n\n## Testing\n\nExtend PTY tests to cover mouse-report bursts with a split DA1 reply, clean shell input after exit, and queued input cleanup during panic unwinding.\n\nGitOrigin-RevId: 304859b654fb2b2c8882e6cac4cb6522fe05475c",
+              "url": "https://github.com/openai/codex/commit/d30fe145fc4f0f55e115bb92723dc35ddc23c18f"
+            },
+            {
+              "sha": "d0f33fab36b9f324e68c40b5865abc0223daf3bc",
+              "title": "Render integral limits and parenthesized matrices in TUI math (#57393)",
+              "message": "Render integral limits and parenthesized matrices in TUI math (#57393)\n\n## What changed\n\n- Stack integral limits above and below the integral in top-level display math, while keeping compact limits in lists and blockquotes.\n- Render `pmatrix` environments with centered cells and scalable Unicode parentheses, aligning surrounding math to the matrix midpoint.\n- Require spatial layouts, including single-row matrices, to fit the available width; preserve the source when they cannot fit or appear in nested Markdown.\n\n## Testing\n\nAdd snapshots for integral limits and matrices, narrow-width fallback assertions, and rejection tests for ragged matrices and mismatched environment endings.\n\nGitOrigin-RevId: 73b589c4422568b90d15f55bf7c9dddec0dccc97",
+              "url": "https://github.com/openai/codex/commit/d0f33fab36b9f324e68c40b5865abc0223daf3bc"
+            },
+            {
+              "sha": "6fe77fc12346591b8037a8704640e40196b19044",
+              "title": "Add experimental GCP account setup to the app server (#57394)",
+              "message": "Add experimental GCP account setup to the app server (#57394)\n\n## What changed\n\n- Add `account/gcp/setup` to configure the built-in Vertex AI provider with a project, optional location (defaulting to `global`), and optional credential file. Omitting the file clears the active user override and uses Application Default Credentials.\n- Validate configuration and obtain an access token before saving, return structured credential failure reasons, and reload the model catalog on the next `model/list` request.\n- Share configuration previews and version-checked writes with Bedrock setup to reject conflicting settings and concurrent configuration changes.\n\n## Testing\n\nAdd tests for credential selection and ADC fallback, catalog refresh, invalid credentials, policy and endpoint conflicts, cancellation when network permission is revoked, and configuration version conflicts.\n\nGitOrigin-RevId: 6f411a85893f8da49581427451e0180529955b16",
+              "url": "https://github.com/openai/codex/commit/6fe77fc12346591b8037a8704640e40196b19044"
+            },
+            {
+              "sha": "124e4e5bfad4c84162d28d06a02ba28b2cd23c4a",
+              "title": "Make thread item timestamps optional in TypeScript exports (#57420)",
+              "message": "Make thread item timestamps optional in TypeScript exports (#57420)\n\n## Why\n\nOlder servers can omit thread item timestamps. The TypeScript contract should accept those responses while still allowing explicit `null` values.\n\n## What changed\n\nMark `ThreadItem.startedAtMs` and `ThreadItem.completedAtMs` as optional nullable fields. Update the generated TypeScript and precomputed stable and experimental exports, and allow these fields in the optional-nullable export check.\n\nGitOrigin-RevId: 186be7aa45a3e7c65f133b1e320809a9912ff1f3",
+              "url": "https://github.com/openai/codex/commit/124e4e5bfad4c84162d28d06a02ba28b2cd23c4a"
+            },
+            {
+              "sha": "53924300d72d20acec497fe4d11f50bd1e6eceb0",
+              "title": "Release 0.166.0-alpha.2",
+              "message": "Release 0.166.0-alpha.2",
+              "url": "https://github.com/openai/codex/commit/53924300d72d20acec497fe4d11f50bd1e6eceb0"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.166.0-alpha.1",
+            "head": "rust-v0.166.0-alpha.2",
+            "url": "https://github.com/openai/codex/compare/rust-v0.166.0-alpha.1...rust-v0.166.0-alpha.2",
+            "status": "diverged",
+            "total": 20,
+            "behind": 1,
+            "complete": true,
+            "fetched": 20
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "openai-status:01M5Y60NQGGN514EB3943V94EN:2026-10-27T12:27:05.190Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-27T12:27:05.190Z",
+      "item": {
+        "id": "openai-status:01M5Y60NQGGN514EB3943V94EN",
+        "at": "2026-10-27T08:21:10.000Z",
+        "url": "https://status.openai.com/incidents/01M5Y60NQGGN514EB3943V94EN",
+        "text": "Elevated error rates for most hosted Code Reviews and Security Reviews on private GitHub repositories. We’ve applied a mitigation and are monitoring the affected services to confirm recovery.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "monitoring",
+        "publishedAt": "2026-10-27T08:00:50.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.2:2026-10-27T12:27:05.190Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-27T12:27:05.190Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.166.0-alpha.2",
+        "title": "0.166.0-alpha.2",
+        "body": "Release 0.166.0-alpha.2\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-27T12:27:05.194Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.2",
+        "publishedAt": "2026-10-27T11:54:48Z",
+        "commits": [
+          {
+            "sha": "9526f8d0d076f950ccc108d03c53b2df22289b2d",
+            "title": "Default gateway OAuth delivery to Authorization bearer tokens (#57313)",
+            "message": "Default gateway OAuth delivery to Authorization bearer tokens (#57313)\n\n## What changed\n\nAllow omitting `gateway_oauth.delivery` to send the gateway token as `Authorization: Bearer …`. Custom headers and cookies remain available when a provider also needs its own credentials.\n\nReject conflicting provider authentication and duplicate delivery headers with actionable errors. For gateway bearer delivery, require `model_catalog_url` to share the scheme, host, and port of `base_url`. Consistently reject request header collisions across auth application methods.\n\n## Testing\n\nAdd coverage for omitted delivery, provider credential conflicts, and model catalog origin validation. Update inference tests to verify gateway-only authentication while signed in and combined ChatGPT and gateway credentials in separate headers.\n\nGitOrigin-RevId: 8564d3998511b3f6c55f3b65a01ed9056a90417e",
+            "url": "https://github.com/openai/codex/commit/9526f8d0d076f950ccc108d03c53b2df22289b2d"
+          },
+          {
+            "sha": "95cafae96c517628ce9dd1ed0ddb976b33bba221",
+            "title": "Format all Rust sources and clean up repository checks (#57314)",
+            "message": "Format all Rust sources and clean up repository checks (#57314)\n\n## Why\n\nRust formatting should include source files that Cargo cannot discover, while keeping command lines within Windows limits.\n\n## What changed\n\n- Update `scripts/format.py` to discover tracked and non-ignored untracked Rust files with Git and invoke `rustfmt` in batches of 64 files. Use the workspace configuration and skip recursive child-module formatting.\n- Pass `SystemDrive` and `LOCALAPPDATA` to Windows Bazel tests.\n- Extend the spelling allowlist, remove a manifest feature exception, and clean up an unused import, an empty MCP scenario module, and its snapshot.\n\nGitOrigin-RevId: c0d625fda9290ead6a63919325d65f7352abfa40",
+            "url": "https://github.com/openai/codex/commit/95cafae96c517628ce9dd1ed0ddb976b33bba221"
+          },
+          {
+            "sha": "b01148de595719a05092dcbd5e0a252bb4349378",
+            "title": "Keep failed subagents from marking tasks as needing attention (#57315)",
+            "message": "Keep failed subagents from marking tasks as needing attention (#57315)\n\n## Why\n\nA subagent failure ends its work without requiring user action, but the agent command center treated it as needing attention and promoted its parent task into the `Needs you` group.\n\n## What changed\n\nClassify failed subagents as inactive when computing task groups and selecting details. Recognize subagents by either a parent thread or a subagent session source, including background workers without a parent.\n\nKeep approval and user-input requests from descendants actionable, even beneath a failed agent. Show these requests as `Needs input` rather than `Error` when the displayed task is a failed subagent. Errors in non-subagent tasks continue to require attention.\n\n## Testing\n\nAdd and update regression tests and a snapshot covering stable ordering after subagent failures, idle parents staying ready, failed background workers, and pending requests beneath failed agents.\n\nGitOrigin-RevId: 1a06d5d00c08bb77c9ed36aadffd5e0514f0b2c6",
+            "url": "https://github.com/openai/codex/commit/b01148de595719a05092dcbd5e0a252bb4349378"
+          },
+          {
+            "sha": "ce7adb6a31f2909a48afa538c2cdb7a6254a0e4b",
+            "title": "Add opt-in concise hints for explicitly selected plugins (#57317)",
+            "message": "Add opt-in concise hints for explicitly selected plugins (#57317)\n\n## What changed\n\nAdd the `features.simplified_selection_hints` flag, disabled by default. When enabled, replace detailed plugin capability instructions with a concise developer message identifying the selected plugin and directing the model to use its available skills and tools.\n\nContinue omitting hints for plugins without available capabilities and bounding hint length. Preserve the existing detailed instructions when the flag is disabled.\n\n## Testing\n\nCover plugin refresh in an existing thread with the flag enabled and disabled. Verify that explicit skill prompts precede the simplified plugin hint and that the hint uses the developer role.\n\nGitOrigin-RevId: 64fc3347bd49fffe675f343a4733ced1b4e5e88c",
+            "url": "https://github.com/openai/codex/commit/ce7adb6a31f2909a48afa538c2cdb7a6254a0e4b"
+          },
+          {
+            "sha": "c587d6e54cb1e4013bf0cf9ea769edde48a23a1e",
+            "title": "Add model catalog fields for granular approval templates (#57325)",
+            "message": "Add model catalog fields for granular approval templates (#57325)\n\n## What changed\n\nAdd optional `approvals.granular` catalog fields for the policy introduction and prompted and rejected category lists. Preserve template strings verbatim in `GranularApprovalMessages`, leaving validation and rendering to consumers.\n\nDocument the 500-byte template limit, required `{{ policy }}` and `{{ categories }}` markers, and fallback rules.\n\n## Testing\n\nExtend serialization tests to cover null, empty, and populated granular templates, and verify their preservation through model responses and base instruction overrides.\n\nGitOrigin-RevId: ce32e41a9b37e2e7c45ac9b079708a640c99326c",
+            "url": "https://github.com/openai/codex/commit/c587d6e54cb1e4013bf0cf9ea769edde48a23a1e"
+          },
+          {
+            "sha": "b7f7e7f7e85a1c63e520f27cac42b836f242d9f7",
+            "title": "Separate TUI session resume preparation from activation (#57342)",
+            "message": "Separate TUI session resume preparation from activation (#57342)\n\n## What changed\n\nSplit saved-thread resume into preparation and activation. Preparation resolves configuration and attaches to the destination thread before activation replaces the displayed conversation.\n\nKeep stored-backend configuration and local settings separate from active settings during preparation, while retaining the existing eager settings refresh for active-backend resumes. Use the destination backend for working-directory, permission, and directory-trust checks.\n\nCarry the backend identity in the prepared result and reject activation through a different backend before changing the active conversation or composer.\n\n## Testing\n\nExtend coverage for preserving active settings and composer drafts during preparation, rejecting activation through another backend, applying destination remote-permission checks, and retaining active-backend settings refresh behavior.\n\nGitOrigin-RevId: 7171f1abcf4bdd62793c21232a8b895bb809cf70",
+            "url": "https://github.com/openai/codex/commit/b7f7e7f7e85a1c63e520f27cac42b836f242d9f7"
+          },
+          {
+            "sha": "9510f36df2c9f0133d0fd4f271224aec14d86cd0",
+            "title": "Preserve child signal failures in the npm wrapper (#57352)",
+            "message": "Preserve child signal failures in the npm wrapper (#57352)\n\n## Why\n\nThe npm wrapper can exit successfully after its native child is terminated by a signal if Node ignores the re-emitted signal or a forwarding handler intercepts it.\n\n## What changed\n\nSet a fallback exit status of `128 + signal number` and remove listeners for the terminating signal before re-emitting it, preserving signal termination where supported.\n\n## Testing\n\nAdd a non-Windows integration test using a built Codex binary to cover numeric argument-error exits, forwarded `SIGHUP` termination, and the fallback exit status for `SIGXFSZ`, which Node ignores by default.\n\nGitOrigin-RevId: cad18a47aa50fd78517c367f8d8aae83bbbf7843",
+            "url": "https://github.com/openai/codex/commit/9510f36df2c9f0133d0fd4f271224aec14d86cd0"
+          },
+          {
+            "sha": "3f74ff28fa09530bd5bcfcbfcbb86553636dde94",
+            "title": "Avoid object-identity preflight for MXC path grants (#57353)",
+            "message": "Avoid object-identity preflight for MXC path grants (#57353)\n\n## Why\n\nMXC's `normalize_object_conflicts` can reject otherwise usable Windows policies when a network share does not support `FileIdInfo` or a protected deny path cannot be opened for metadata.\n\n## What changed\n\nRemove object-conflict normalization before and after volume-root expansion. Send explicit path grants directly to BaseContainer, which enforces path and symlink/junction alias precedence.\n\nDocument the resulting limitations:\n\n- Hard-link names retain independent permissions, so an allowed name can access the same file through a less restrictive grant.\n- Volume roots expand using their declared access without first reconciling aliases. A writable root can therefore generate more-specific writable grants that override a read-only root alias.\n\nGitOrigin-RevId: de0b2d7b5b98eaa358a97156c02e9f7f85860335",
+            "url": "https://github.com/openai/codex/commit/3f74ff28fa09530bd5bcfcbfcbb86553636dde94"
+          },
+          {
+            "sha": "f69b8d203d0499ff27899d2f30586f8c747b91ae",
+            "title": "Report when NFS database migration finds no databases (#57357)",
+            "message": "Report when NFS database migration finds no databases (#57357)\n\n## Why\n\n`codex migrate-nfs-db` reported a successful migration when the database directory existed but contained no databases.\n\n## What changed\n\nCount databases that were migrated or already use DELETE journal mode. If none are found, print `No databases found.` instead of the migration success message.\n\n## Testing\n\nExtend the CLI integration test to cover an empty directory, a failure on a corrupt logs database after an earlier conversion, and a successful rerun that recognizes the converted database as already in DELETE mode.\n\nGitOrigin-RevId: 16b109645925164f3af5d35a909417872cfa004f",
+            "url": "https://github.com/openai/codex/commit/f69b8d203d0499ff27899d2f30586f8c747b91ae"
+          },
+          {
+            "sha": "adfcac1a427ac70f6a1eabb85f836eb85341f995",
+            "title": "Serialize session index mutations across processes (#57358)",
+            "message": "Serialize session index mutations across processes (#57358)\n\n## Why\n\nThe process-local mutex cannot coordinate session name appends and removals from multiple Codex processes sharing the same home directory.\n\n## What changed\n\n- Guard index mutations with a persistent `session_index.jsonl.lock` file, retaining the lock until the blocking worker finishes even if its caller is cancelled.\n- Return a timeout error after 30 seconds of lock contention without modifying the index.\n- Rewrite removals through a unique temporary file while preserving index permissions, and skip removal when the index is absent.\n\n## Testing\n\nUpdate regression tests to check lock retention after cancellation, timeout without writing, successful writes after contention clears, and removal with a missing home directory. Retain coverage for cancelled queued updates preserving the next write.\n\nGitOrigin-RevId: 5231c9ff85c6b34de5ee92931d119b6f46bd583b",
+            "url": "https://github.com/openai/codex/commit/adfcac1a427ac70f6a1eabb85f836eb85341f995"
+          },
+          {
+            "sha": "ff2346f33f851bd4e90c8e42ae60abcc7e7f293b",
+            "title": "Bound waits for the thread writer coordination lock (#57360)",
+            "message": "Bound waits for the thread writer coordination lock (#57360)\n\n## Why\n\nContention on the writer coordination lock can block writer cleanup indefinitely, preventing idle threads from unloading.\n\n## What changed\n\nRetry coordination lock acquisition every 50 ms and return `io::ErrorKind::TimedOut` after 30 seconds of contention. This lets cleanup release writer ownership and idle unloading finish even while another process holds coordination.\n\n## Testing\n\nExtend writer lock coverage to check the timeout error. Update the idle unload regression test to verify that the thread closes while coordination remains locked and can resume with its persisted turn after the lock is released.\n\nGitOrigin-RevId: 513117fdaf3890283e7acdd149ce9abb66075b63",
+            "url": "https://github.com/openai/codex/commit/ff2346f33f851bd4e90c8e42ae60abcc7e7f293b"
+          },
+          {
+            "sha": "118aae2a5f4865dd247b6cec2cd5d9c197892778",
+            "title": "Explain safety policy blocks with turn-scoped recourse in the TUI (#57363)",
+            "message": "Explain safety policy blocks with turn-scoped recourse in the TUI (#57363)\n\n## What changed\n\n- Handle `TurnModerationMetadata` for the active turn, showing a temporary block notice while an explanation is pending.\n- Validate safety recourse metadata and render topic-specific explanations with safer ways to continue for biological and cybersecurity policy blocks. Apply the explanation only when the terminal policy error matches its domain; otherwise retain the existing error handling.\n- Queue input while recourse is pending and preserve prepared images when queued messages are submitted.\n\n## Testing\n\nAdd an integration test covering biological and cybersecurity blocks, the loading notice, and fallback for a mismatched policy error, plus a snapshot of the cybersecurity explanation. Extend queued-image coverage to verify submission succeeds after the original image file is removed.\n\nGitOrigin-RevId: dd9ca57cf3b2d842e3deb8aff5d7c3c73a92e14d",
+            "url": "https://github.com/openai/codex/commit/118aae2a5f4865dd247b6cec2cd5d9c197892778"
+          },
+          {
+            "sha": "6c0db39b940a136b1e77145c8c7f01f3acfa80db",
+            "title": "Offer safer rewrites after safety blocks in the TUI (#57365)",
+            "message": "Offer safer rewrites after safety blocks in the TUI (#57365)\n\n## What changed\n\n- Show selectable safer follow-ups alongside safety-block explanations, with an option to enable Daybreak when disabled.\n- Submit the selected rewrite in a verified fork before the blocked turn, preserving the original chat's draft and current model settings. Mark the new turn with `safety_recourse_follow_up`.\n- Filter suggestions that could invoke commands, skills, apps, or plugins, and suppress recourse for unsupported servers and non-primary threads.\n\n## Testing\n\nExtend coverage for fork history, draft preservation, model selection, turn metadata, suggestion filtering, and the Daybreak picker.\n\nGitOrigin-RevId: 49052df6301b6bfbba07262d40b007dcf97bb7c9",
+            "url": "https://github.com/openai/codex/commit/6c0db39b940a136b1e77145c8c7f01f3acfa80db"
+          },
+          {
+            "sha": "155dde7ff60b178ec4ba7154b2e48c6071eb5001",
+            "title": "Show the selected ChatGPT workspace in `/status` (#57366)",
+            "message": "Show the selected ChatGPT workspace in `/status` (#57366)\n\n## What changed\n\n- Return the selected workspace's display name as `workspaceName` in ChatGPT account responses, caching it alongside workspace routing and updating generated schemas and bindings.\n- Display a `ChatGPT workspace` row with the name and account ID, falling back to the ID when the name is unavailable or invalid. Refresh workspace details with account identity updates and hide the row for providers that do not use ChatGPT authentication.\n\n## Testing\n\nUpdate account-response tests to cover workspace names and null values, add workspace details to the status snapshot, and verify that switching to a custom API-key provider hides the workspace row.\n\nGitOrigin-RevId: 4b30ab8a39e1fa7ad1ba7367c5295544be8f6001",
+            "url": "https://github.com/openai/codex/commit/155dde7ff60b178ec4ba7154b2e48c6071eb5001"
+          },
+          {
+            "sha": "2cab11ca40aad193382348a7bda46da2fc47596a",
+            "title": "Pin the Rust toolchain to 1.95.0 (#57373)",
+            "message": "Pin the Rust toolchain to 1.95.0 (#57373)\n\n## What changed\n\n- Replace Rust `1.99.1` pins with `1.95.0` across Cargo, Bazel, CI, release workflows, and Windows setup, and update the Bazel lockfile.\n- Adjust Rust APIs, borrowing, and lint-related code for the pinned toolchain, and box MCP tool dispatch to bound compiler async-layout query depth.\n- Update the halfwidth sound mark snapshot and allow optional symbol hash suffixes in the code mode host package smoke test.\n\nGitOrigin-RevId: 75460c3d0465dc601811e619bce373a4f7ff2912",
+            "url": "https://github.com/openai/codex/commit/2cab11ca40aad193382348a7bda46da2fc47596a"
+          },
+          {
+            "sha": "d30fe145fc4f0f55e115bb92723dc35ddc23c18f",
+            "title": "Drain pending terminal reports before returning to the shell (#57391)",
+            "message": "Drain pending terminal reports before returning to the shell (#57391)\n\n## Why\n\nTerminal reports still in flight when Codex exits can leak into the parent shell's input.\n\n## What changed\n\nPause terminal event polling during shutdown and flush pending input before restoring normal terminal input mode. On Unix, use a primary device attributes (DA1) reply to wait for outstanding reports after disabling reporting, with a two-second timeout when startup detected DA1 support. During panic unwinding, flush queued input without locking the event reader.\n\n## Testing\n\nExtend PTY tests to cover mouse-report bursts with a split DA1 reply, clean shell input after exit, and queued input cleanup during panic unwinding.\n\nGitOrigin-RevId: 304859b654fb2b2c8882e6cac4cb6522fe05475c",
+            "url": "https://github.com/openai/codex/commit/d30fe145fc4f0f55e115bb92723dc35ddc23c18f"
+          },
+          {
+            "sha": "d0f33fab36b9f324e68c40b5865abc0223daf3bc",
+            "title": "Render integral limits and parenthesized matrices in TUI math (#57393)",
+            "message": "Render integral limits and parenthesized matrices in TUI math (#57393)\n\n## What changed\n\n- Stack integral limits above and below the integral in top-level display math, while keeping compact limits in lists and blockquotes.\n- Render `pmatrix` environments with centered cells and scalable Unicode parentheses, aligning surrounding math to the matrix midpoint.\n- Require spatial layouts, including single-row matrices, to fit the available width; preserve the source when they cannot fit or appear in nested Markdown.\n\n## Testing\n\nAdd snapshots for integral limits and matrices, narrow-width fallback assertions, and rejection tests for ragged matrices and mismatched environment endings.\n\nGitOrigin-RevId: 73b589c4422568b90d15f55bf7c9dddec0dccc97",
+            "url": "https://github.com/openai/codex/commit/d0f33fab36b9f324e68c40b5865abc0223daf3bc"
+          },
+          {
+            "sha": "6fe77fc12346591b8037a8704640e40196b19044",
+            "title": "Add experimental GCP account setup to the app server (#57394)",
+            "message": "Add experimental GCP account setup to the app server (#57394)\n\n## What changed\n\n- Add `account/gcp/setup` to configure the built-in Vertex AI provider with a project, optional location (defaulting to `global`), and optional credential file. Omitting the file clears the active user override and uses Application Default Credentials.\n- Validate configuration and obtain an access token before saving, return structured credential failure reasons, and reload the model catalog on the next `model/list` request.\n- Share configuration previews and version-checked writes with Bedrock setup to reject conflicting settings and concurrent configuration changes.\n\n## Testing\n\nAdd tests for credential selection and ADC fallback, catalog refresh, invalid credentials, policy and endpoint conflicts, cancellation when network permission is revoked, and configuration version conflicts.\n\nGitOrigin-RevId: 6f411a85893f8da49581427451e0180529955b16",
+            "url": "https://github.com/openai/codex/commit/6fe77fc12346591b8037a8704640e40196b19044"
+          },
+          {
+            "sha": "124e4e5bfad4c84162d28d06a02ba28b2cd23c4a",
+            "title": "Make thread item timestamps optional in TypeScript exports (#57420)",
+            "message": "Make thread item timestamps optional in TypeScript exports (#57420)\n\n## Why\n\nOlder servers can omit thread item timestamps. The TypeScript contract should accept those responses while still allowing explicit `null` values.\n\n## What changed\n\nMark `ThreadItem.startedAtMs` and `ThreadItem.completedAtMs` as optional nullable fields. Update the generated TypeScript and precomputed stable and experimental exports, and allow these fields in the optional-nullable export check.\n\nGitOrigin-RevId: 186be7aa45a3e7c65f133b1e320809a9912ff1f3",
+            "url": "https://github.com/openai/codex/commit/124e4e5bfad4c84162d28d06a02ba28b2cd23c4a"
+          },
+          {
+            "sha": "53924300d72d20acec497fe4d11f50bd1e6eceb0",
+            "title": "Release 0.166.0-alpha.2",
+            "message": "Release 0.166.0-alpha.2",
+            "url": "https://github.com/openai/codex/commit/53924300d72d20acec497fe4d11f50bd1e6eceb0"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.166.0-alpha.1",
+          "head": "rust-v0.166.0-alpha.2",
+          "url": "https://github.com/openai/codex/compare/rust-v0.166.0-alpha.1...rust-v0.166.0-alpha.2",
+          "status": "diverged",
+          "total": 20,
+          "behind": 1,
+          "complete": true,
+          "fetched": 20
         },
         "comparisonError": null
       }
