@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-28T07:33:09.896Z",
+  "generatedAt": "2026-10-28T14:27:34.371Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -10156,7 +10156,7 @@
         "title": "0.166.0-alpha.5",
         "body": "Release 0.166.0-alpha.5\n\n",
         "authored": false,
-        "fetchedAt": "2026-10-28T07:33:09.900Z",
+        "fetchedAt": "2026-10-28T14:27:34.376Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.5",
         "publishedAt": "2026-10-28T04:43:10Z",
         "commits": [
@@ -10239,6 +10239,21 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/legora-agentic-operating-system-for-legal-work",
+      "at": "2026-10-28T09:30:00.000Z",
+      "url": "https://openai.com/index/legora-agentic-operating-system-for-legal-work",
+      "text": "Legora is building the agentic operating system for legal work. See how Legora uses OpenAI models, ChatGPT, and Codex to accelerate legal workflows, expand contract analysis, and free lawyers to focus on higher-value work.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -10247,7 +10262,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-28T07:33:09.216Z",
+      "lastSuccessAt": "2026-10-28T14:27:33.570Z",
       "error": null,
       "count": 150
     },
@@ -10256,7 +10271,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-28T07:33:09.216Z",
+      "lastSuccessAt": "2026-10-28T14:27:33.570Z",
       "error": null,
       "count": 10
     },
@@ -10265,7 +10280,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-28T07:33:09.216Z",
+      "lastSuccessAt": "2026-10-28T14:27:33.570Z",
       "error": null,
       "count": 25
     }
@@ -40286,6 +40301,120 @@
         "body": "Release 0.166.0-alpha.5\n\n",
         "authored": false,
         "fetchedAt": "2026-10-28T07:33:09.900Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.5",
+        "publishedAt": "2026-10-28T04:43:10Z",
+        "commits": [
+          {
+            "sha": "b538d2b340aee571fa1a81989cafb41f9d35b013",
+            "title": "Preserve WebSocket probe evidence and redact diagnostic details (#57597)",
+            "message": "Preserve WebSocket probe evidence and redact diagnostic details (#57597)\n\n## Why\n\nHandshake probes can lose upgrade evidence when a subsequent read fails, and diagnostic output can expose URLs, server error messages, and close reasons containing sensitive values.\n\n## What changed\n\n- Retain successful upgrade status and allowlisted tracking headers, including on post-upgrade read failures.\n- Return structured probe errors that distinguish typed TLS failures from failures with an unknown stage while preserving the underlying API error.\n- Recognize empty close frames as immediate closes with code `1005`.\n- Redact wire values from probe debug output and doctor error details, and remove URLs and raw errors from connection logs.\n\n## Testing\n\nAdd local TLS and WebSocket fixtures covering certificate rejection, ordinary I/O failures, successful and rejected upgrades, immediate closes, malformed frames, header retention, and redaction. Add doctor output snapshots and error-detail redaction assertions.\n\nGitOrigin-RevId: 1ee53720a7a752043943170d8e4da205ec4e55f3",
+            "url": "https://github.com/openai/codex/commit/b538d2b340aee571fa1a81989cafb41f9d35b013"
+          },
+          {
+            "sha": "28cade4f5a7a41fe628791128ccff444a0996b5c",
+            "title": "Cache empty remote skill discovery with filesystem watches (#57598)",
+            "message": "Cache empty remote skill discovery with filesystem watches (#57598)\n\n## Why\n\nRepeated repository skill discovery performs remote metadata requests even when no `.agents/skills` directories exist. Reuse verified empty results to avoid those round trips while watching for changes that require a new scan.\n\n## What changed\n\n- Add the Linux executor capability `fs_watch_missing`, the `fs/watchMissing` request, and `fs/missingChanged` notifications.\n- Register watches in the background and reuse empty results only after the executor acknowledges coverage. Key reuse by filesystem, working directory, and project root markers.\n- Invalidate observations on relevant filesystem or mount changes, watch supersession, or connection loss. Clear cached observations on forced reloads and cache resets.\n- Retain live discovery while registration is pending or watching is unsupported, unavailable, or cannot verify the observation.\n\n## Testing\n\nAdd tests for empty-result reuse and invalidation, skill directory creation before watch acknowledgement, unsupported executors, idle WebSocket notifications, reconnection, case aliases, and bind mounts and unmounts. Include an ignored manual latency comparison for repeated empty remote scans.\n\nGitOrigin-RevId: 3ad499decefb184a99c068afa01d0dcdd8605c7f",
+            "url": "https://github.com/openai/codex/commit/28cade4f5a7a41fe628791128ccff444a0996b5c"
+          },
+          {
+            "sha": "e8e6a922c0008bc08bacc69dd2ce9b6c3c12944c",
+            "title": "Support catalog headings for saved command-prefix notices (#57599)",
+            "message": "Support catalog headings for saved command-prefix notices (#57599)\n\n## What changed\n\n- Add `permissions.approved_command_prefix_saved` to model messages and use valid plain-text headings in saved-prefix notices, with or without full permissions instructions. Reject empty, oversized, control-character, and markup-like headings.\n- Keep `Approved command prefix saved:` as the leading marker for older clients and recognize saved-prefix content kinds when trimming rolled-back context.\n- Shut down analytics test exporters asynchronously and serialize workspace-switching tests that share authentication environment state.\n\n## Testing\n\nExtend coverage for heading validation, sparse wire values, single-notice emission, rollback with and without metadata, and saved-prefix behavior across model switches.\n\nGitOrigin-RevId: a70175deca64a6339abac2fa69af970f470e3f4f",
+            "url": "https://github.com/openai/codex/commit/e8e6a922c0008bc08bacc69dd2ce9b6c3c12944c"
+          },
+          {
+            "sha": "939f5decb26456169c42bec12aac88dcdedc4b9a",
+            "title": "Add `codex doctor --network-only` for focused network diagnostics (#57606)",
+            "message": "Add `codex doctor --network-only` for focused network diagnostics (#57606)\n\n## What changed\n\nLimit `--network-only` reports to effective configuration, network environment, provider HTTP reachability, and Responses WebSocket checks, skipping unrelated diagnostics such as database and MCP scans. Preserve configuration warnings and report configuration load timing.\n\nIf configuration loading fails, report the redacted configuration error and stop without probing guessed network targets.\n\n## Testing\n\nAdd integration tests for check selection, recoverable configuration warnings, and configuration failures that send no probe requests or expose configuration values. Add snapshots for human-readable success and failure reports.\n\nGitOrigin-RevId: 997616b6802813df751725f9538541c65bad7d71",
+            "url": "https://github.com/openai/codex/commit/939f5decb26456169c42bec12aac88dcdedc4b9a"
+          },
+          {
+            "sha": "9cce575134198f863fd4ef1bc4335b039f4e8e45",
+            "title": "Share runtime authentication with model providers and catalogs (#57607)",
+            "message": "Share runtime authentication with model providers and catalogs (#57607)\n\n## Why\n\nModel catalog refreshes need to use the same registered actor and credential owner as model requests when runtime authentication is enabled.\n\n## What changed\n\n- Add `ProviderAuthContext` to carry credentials and optional runtime authentication into model providers and catalog clients.\n- Select runtime authentication independently for inference and catalog destinations. Reject unsupported OpenAI origins while preserving provider authentication for other destinations.\n- Include API organization and project selectors in runtime registration. Reuse registered runtimes across projects within an organization and replace them when the organization changes.\n- Preserve transport restrictions and account bindings, and strip sensitive headers on cross-origin redirects.\n- Apply the catalog timeout to authentication and fetching while allowing credential refresh and registration to finish safely.\n\n## Testing\n\nAdd coverage for runtime-authenticated catalogs, provider isolation, resource selection, gateway authentication, cross-origin redirects, and timeout recovery that preserves registration and refreshed tokens.\n\nGitOrigin-RevId: c14f1a02159031ea0af1f9b26ea890f8dca7d6ad",
+            "url": "https://github.com/openai/codex/commit/9cce575134198f863fd4ef1bc4335b039f4e8e45"
+          },
+          {
+            "sha": "c0e88f3c04219aaa032aaf4b20a8c3284cc81449",
+            "title": "Disable terminal status sequences on older VTE backends (#57612)",
+            "message": "Disable terminal status sequences on older VTE backends (#57612)\n\n## Why\n\nVTE versions before 0.54 lack the parser that safely ignores unknown OSC sequences. Terminal status reporting needs to account for the VTE backend even when the terminal identifies itself as GNOME Terminal or another application.\n\n## What changed\n\n- Track VTE backend versions independently of terminal application identity.\n- Disable `OSC 7501` and `OSC 21337` status reporting when the detected VTE version is below 0.54. Preserve existing behavior for newer or unknown versions.\n- Prefer `VTE_VERSION` over the terminal application version, treating empty or malformed values as unknown.\n\n## Testing\n\nAdd regression tests for GNOME identity with VTE metadata, version precedence, and status protocol selection around the VTE 0.54 boundary, including unknown versions.\n\nGitOrigin-RevId: 1aa57901d1b1457f9971c07cb51ec4554915ae3b",
+            "url": "https://github.com/openai/codex/commit/c0e88f3c04219aaa032aaf4b20a8c3284cc81449"
+          },
+          {
+            "sha": "68b67f0ff4f8d53d2c582e059b2c3b589f21ac93",
+            "title": "Preserve rollout tracing across sub-agent reloads (#57615)",
+            "message": "Preserve rollout tracing across sub-agent reloads (#57615)\n\n## Why\n\nReloading an evicted sub-agent disabled its rollout tracing, leaving later turns out of the trace. Replacement Code Mode sessions could also reuse cell IDs from earlier sessions.\n\n## What changed\n\n- Reattach reloaded children to the root rollout trace and emit `ThreadResumed` without duplicating `ThreadStarted`.\n- Reopen existing threads during replay, preserving their identity and history while clearing stale runtime cell and terminal process mappings.\n- Allocate Code Mode cell generations across sessions for both gRPC and stdio hosts to prevent ID reuse after reload.\n- Record an aborted trace when session startup fails before the session loop begins.\n\n## Testing\n\nAdd regression coverage for child eviction and reload, including a failed reload, continued inference tracing, distinct cell IDs, and preserved mail and follow-up context. Extend replay tests for history preservation and reused runtime handles, and host tests for cell IDs across session replacement and reconnection.\n\nGitOrigin-RevId: 6c146c04b5cda9295afb7d973c0d5474b363a822",
+            "url": "https://github.com/openai/codex/commit/68b67f0ff4f8d53d2c582e059b2c3b589f21ac93"
+          },
+          {
+            "sha": "04e365c698b94651b6ea7e3b3af5c1dd697bd30c",
+            "title": "Release sampling prompts after stream setup (#57618)",
+            "message": "Release sampling prompts after stream setup (#57618)\n\n## Why\n\nLegacy notifications only need user text, but retaining the full sampling input keeps image and audio payloads alive while the response streams.\n\n## What changed\n\nExtract notification text from the first request attempt only when `notify` is configured, and retain those strings across retries. Consume and drop the prompt after setting up the response stream, excluding attachments and media wrapper labels from notification text.\n\n## Testing\n\nExtend the notification integration test to verify that `input-messages` contains only user text while the model request still includes image and audio attachments.\n\nGitOrigin-RevId: af4653c0e7ac2bf7006f5ae5a82a3e724c30c734",
+            "url": "https://github.com/openai/codex/commit/04e365c698b94651b6ea7e3b3af5c1dd697bd30c"
+          },
+          {
+            "sha": "4aa14ea373302831b9b0b998dc6596d0e087b182",
+            "title": "Show Bedrock setup for explicitly configured OpenAI providers (#57626)",
+            "message": "Show Bedrock setup for explicitly configured OpenAI providers (#57626)\n\n## Why\n\nSetting `model_provider = \"openai\"` hid the Amazon Bedrock setup option during onboarding, even though leaving the provider implicit allowed it.\n\n## What changed\n\nAllow the Bedrock setup wizard when the effective provider is `openai`, whether selected explicitly or by default. Preserve the existing feature, authentication, login-method, and embedded app-server requirements.\n\n## Testing\n\nUpdate onboarding tests to cover explicit OpenAI configuration, continued exclusion of custom providers, and the Bedrock sign-in option with configuration loaded from `config.toml`.\n\nGitOrigin-RevId: 73ca1b43c3be6b098a56ac72f7831e5547947a66",
+            "url": "https://github.com/openai/codex/commit/4aa14ea373302831b9b0b998dc6596d0e087b182"
+          },
+          {
+            "sha": "7ac6081623928adead75caa2882e307444edad82",
+            "title": "Stop shipping `codex-exec-server` in release artifacts (#57628)",
+            "message": "Stop shipping `codex-exec-server` in release artifacts (#57628)\n\n## What changed\n\n- Remove the standalone executor from CLI and app-server packages, release binary lists, and Bazel runtime archives.\n- Remove the package builder's `--exec-server-bin` option and `execServer` metadata, along with executor-specific installer checks, signing configuration, and package smoke tests.\n- Keep the standalone executor available to build from source.\n\nGitOrigin-RevId: ada4c92c092e3c7a3067129913e99f4606f7adc8",
+            "url": "https://github.com/openai/codex/commit/7ac6081623928adead75caa2882e307444edad82"
+          },
+          {
+            "sha": "968641d65c10cfa302ce1d87cf060a0e83c413e6",
+            "title": "Release 0.166.0-alpha.5",
+            "message": "Release 0.166.0-alpha.5",
+            "url": "https://github.com/openai/codex/commit/968641d65c10cfa302ce1d87cf060a0e83c413e6"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.166.0-alpha.4",
+          "head": "rust-v0.166.0-alpha.5",
+          "url": "https://github.com/openai/codex/compare/rust-v0.166.0-alpha.4...rust-v0.166.0-alpha.5",
+          "status": "diverged",
+          "total": 11,
+          "behind": 1,
+          "complete": true,
+          "fetched": 11
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/legora-agentic-operating-system-for-legal-work:2026-10-28T14:27:34.371Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-28T14:27:34.371Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/legora-agentic-operating-system-for-legal-work",
+        "at": "2026-10-28T09:30:00.000Z",
+        "url": "https://openai.com/index/legora-agentic-operating-system-for-legal-work",
+        "text": "Legora is building the agentic operating system for legal work. See how Legora uses OpenAI models, ChatGPT, and Codex to accelerate legal workflows, expand contract analysis, and free lawyers to focus on higher-value work.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.5:2026-10-28T14:27:34.371Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-28T14:27:34.371Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.166.0-alpha.5",
+        "title": "0.166.0-alpha.5",
+        "body": "Release 0.166.0-alpha.5\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-28T14:27:34.376Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.5",
         "publishedAt": "2026-10-28T04:43:10Z",
         "commits": [
