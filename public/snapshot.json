@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-27T22:25:08.729Z",
+  "generatedAt": "2026-10-28T01:38:58.280Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -9920,6 +9920,221 @@
         "comparison": null,
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/retell-ai",
+      "at": "2026-10-27T15:00:00.000Z",
+      "url": "https://openai.com/index/retell-ai",
+      "text": "Retell uses OpenAI models to help power 100M monthly calls. GPT-6 Astra tops Retell’s voice agent benchmark, while Codex helps it reach a $1.6M annual revenue run rate per employee.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/grupo-boticario",
+      "at": "2026-10-16T00:00:00.000Z",
+      "url": "https://openai.com/index/grupo-boticario",
+      "text": "How Grupo Boticário uses AI to strengthen human connections. Almost 50 years after starting in a compounding pharmacy in Paraná, the group operates a proprietary agent platform that autonomously resolves up to 80% of resellers’ operational requests—enabling the sales force to take on an advisory role.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/localiza-generative-ai",
+      "at": "2026-10-16T00:00:00.000Z",
+      "url": "https://openai.com/index/localiza-generative-ai",
+      "text": "How Localiza reorganized work around generative AI. See how Localiza uses ChatGPT Enterprise, the OpenAI API, Codex, and 60+ specialized agents to reorganize work and build AI-native mobility experiences.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.4",
+      "at": "2026-10-28T01:28:14.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.4",
+      "text": "0.166.0-alpha.4. Release 0.166.0-alpha.4",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.166.0-alpha.4",
+        "title": "0.166.0-alpha.4",
+        "body": "Release 0.166.0-alpha.4\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-28T01:38:58.283Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.4",
+        "publishedAt": "2026-10-28T01:22:03Z",
+        "commits": [
+          {
+            "sha": "4d3ed3f3b47d39f8fe0b60df74a20f528b6fc618",
+            "title": "Release empty PID probe locks explicitly on Unix (#57533)",
+            "message": "Release empty PID probe locks explicitly on Unix (#57533)\n\n## Why\n\nA concurrent fork can inherit a PID reservation probe's file descriptor and keep its lock held after the probe closes it, making a stale reservation appear active.\n\n## What changed\n\nAdd a drop guard that explicitly unlocks empty PID reservation probes on Unix, including when inspection fails or is cancelled.\n\n## Testing\n\nExtend the duplicated-handle regression test to cover empty PID files, read errors, and cancellation alongside missing PID files. Verify that cancellation occurs while the lock is held and that subsequent status checks do not report an active reservation.\n\nGitOrigin-RevId: 793569c9bcaca02900662a66c33aa48f2bebfd5e",
+            "url": "https://github.com/openai/codex/commit/4d3ed3f3b47d39f8fe0b60df74a20f528b6fc618"
+          },
+          {
+            "sha": "e3149ddb11e24edea64999030f218447336667ed",
+            "title": "Preserve host-assigned user input IDs in Responses messages (#57538)",
+            "message": "Preserve host-assigned user input IDs in Responses messages (#57538)\n\n## What changed\n\nAdd optional `TurnInputRequest.user_item_uuid` and carry it through turn starts and steering to the recorded user message. When supplied, use `msg_input_<uuid>` as the Responses item ID; inputs without a UUID retain generated IDs. Raw response items ignore this field.\n\nAdd `ResponseItemId` helpers to construct and recognize the reserved `msg_input_` namespace.\n\n## Testing\n\nAdd regression coverage for steered inputs with identical text and client IDs, checking that each supplied UUID survives recording and UI item IDs remain distinct. Add a scenario test verifying that the assigned ID reaches Responses and persists in subsequent request history alongside an identical ordinary prompt.\n\nGitOrigin-RevId: 440e306bfdaa7facb69b21930c5244a83db2fdae",
+            "url": "https://github.com/openai/codex/commit/e3149ddb11e24edea64999030f218447336667ed"
+          },
+          {
+            "sha": "aa854dabf54e1dd6c2bda80653944b4f2c0672d7",
+            "title": "Add model-gated literature search to standalone web search (#57542)",
+            "message": "Add model-gated literature search to standalone web search (#57542)\n\n## What changed\n\nExpose `literature_search_query` in standalone `web.run` when the active model lists it in `experimental_supported_tools`. Support query text, domain filters, and recency filters, and reject literature search calls for models without the capability.\n\nPass the active model information to extensions for each step and report literature queries as search actions in web search events.\n\n## Testing\n\nAdd coverage for capability rejection, model-dependent schema exposure, app-server round trips with a turn-level model override, and a scenario that searches for a paper and opens the returned reference.\n\nGitOrigin-RevId: 87ef1fadd80ca7bfc2a7642c4e443f9b9f2e0e00",
+            "url": "https://github.com/openai/codex/commit/aa854dabf54e1dd6c2bda80653944b4f2c0672d7"
+          },
+          {
+            "sha": "0d6838318fae7f3aa374da6f1fd789af2de1a10f",
+            "title": "Expose and persist image generation IDs (#57552)",
+            "message": "Expose and persist image generation IDs (#57552)\n\n## What changed\n\nExpose the backend-provided `generationId` on image-generation items and preserve it through legacy completion events, thread history reconstruction, and rollout migration. Default missing IDs to `None` for older history.\n\nUpdate the generated JSON schemas, TypeScript types, and Python models to include the nullable field.\n\n## Testing\n\nExtend coverage for ID serialization round trips, completed-item notifications, persisted and resumed history, and legacy rollout migration.\n\nGitOrigin-RevId: a7f06faa7ac6833417b257a535d2901c03b79135",
+            "url": "https://github.com/openai/codex/commit/0d6838318fae7f3aa374da6f1fd789af2de1a10f"
+          },
+          {
+            "sha": "f088e0c4ffdfab3a7d4480c14855a9db00450384",
+            "title": "Allow replacing dynamic tools between model steps (#57553)",
+            "message": "Allow replacing dynamic tools between model steps (#57553)\n\n## What changed\n\nAdd `CodexThread::replace_dynamic_tools` to replace the tool catalog without starting a turn. Updates apply to subsequent model steps and future turns while preserving in-flight calls; an empty list clears the catalog.\n\nRequire host opt-in through `allow_persistent_dynamic_tool_updates` for persistent threads. Persist replacements before publishing them, restore the latest catalog on resume, and preserve replacements and explicit clears through compaction. Keep explicit resume overrides separate from the persisted catalog.\n\n## Testing\n\nAdd coverage for pending calls during replacement, replacement and clearing across restart, compaction recovery, resume overrides, submission ordering after caller cancellation, host opt-in, and persistence failures.\n\nGitOrigin-RevId: fd2634906895a9b72ae7892ddd9435dced45eccb",
+            "url": "https://github.com/openai/codex/commit/f088e0c4ffdfab3a7d4480c14855a9db00450384"
+          },
+          {
+            "sha": "33d306d457a4632b22bebf214e0c25d91f90f6e8",
+            "title": "Keep submitted prompts shaded when terminal colors are unavailable (#57554)",
+            "message": "Keep submitted prompts shaded when terminal colors are unavailable (#57554)\n\n## Why\n\nTerminals that do not answer the default-color probe lose the background shading on submitted prompts.\n\n## What changed\n\nUse an ANSI `DarkGray` background as a fallback. Keep the default text foreground when the background's RGB value is unknown, and preserve the red voice marker in terminal history and transcript selections.\n\n## Testing\n\nAdd regression coverage for prompt shading without a terminal palette, voice marker colors under both history wrapping policies, and spoken-prompt selection contrast in compact and detailed transcripts.\n\nGitOrigin-RevId: b8217a2ee1d37a2ea4a011faa75427c881202b82",
+            "url": "https://github.com/openai/codex/commit/33d306d457a4632b22bebf214e0c25d91f90f6e8"
+          },
+          {
+            "sha": "d93071fae87f73ba1d251ebb3808773f18f0b77a",
+            "title": "Avoid retaining unneeded output items in HTTP response streams (#57563)",
+            "message": "Avoid retaining unneeded output items in HTTP response streams (#57563)\n\n## Why\n\nHTTP response streams retained copies of completed output items even when inference tracing was disabled, keeping their payloads alive until the response completed.\n\n## What changed\n\nCollect completed output items only when inference tracing or WebSocket last-response bookkeeping needs them. Make the last-response sender optional and create its channel only for WebSocket requests.\n\n## Testing\n\nAdd a regression test that verifies an untraced HTTP stream releases a completed item's shared payload after delivery, while the response remains open. Update existing tracing and WebSocket bookkeeping tests for the optional sender.\n\nGitOrigin-RevId: 7695534c6d00f3002005324c43c23bf733f01804",
+            "url": "https://github.com/openai/codex/commit/d93071fae87f73ba1d251ebb3808773f18f0b77a"
+          },
+          {
+            "sha": "fab1a5754558ec90f27efa9b3bc4a1159802bc03",
+            "title": "Preserve rich composer content in Vim registers (#57564)",
+            "message": "Preserve rich composer content in Vim registers (#57564)\n\n## What changed\n\n- Retain mention targets, image paths, and collapsed paste contents when copying or deleting into the register. Pasting creates fresh element identities and image/paste labels.\n- Preserve rich register contents across draft clears and composer replacement.\n- Capture `Ctrl+Y` register contents for dot-repeat, restore exact mention bindings through undo/redo, and keep pasted rich objects atomic in Replace mode.\n\n## Testing\n\nAdd composer tests and snapshots for repeated rich pastes, register handoff, undo/redo, Replace-mode Backspace, and selection replacement. Add a test ensuring register contents are omitted from debug output.\n\nGitOrigin-RevId: d543d21fd542492af49cce01c2a673e6d3d01664",
+            "url": "https://github.com/openai/codex/commit/fab1a5754558ec90f27efa9b3bc4a1159802bc03"
+          },
+          {
+            "sha": "f00c70f5d0e1715bbbcba99b0cc6e629bf83a4f1",
+            "title": "Allow catalog URL overrides for the built-in OpenAI provider (#57567)",
+            "message": "Allow catalog URL overrides for the built-in OpenAI provider (#57567)\n\n## What changed\n\nAllow `model_catalog_url` under `[model_providers.openai]` while preserving the built-in provider's identity, authentication, and inference routing through `openai_base_url`. Reject other non-default overrides and require an HTTPS catalog URL on an allowed ChatGPT host, without embedded credentials.\n\nApply the same catalog override merging when checking managed provider requirements for existing threads, preserving each thread's inference endpoint even if user defaults change.\n\nDocument the required Codex catalog format, credential forwarding, and existing discovery and access restrictions.\n\n## Testing\n\nAdd coverage for allowed and rejected catalog destinations, preservation of built-in provider settings, and managed requirement changes. Add integration coverage for API key and ChatGPT authentication that verifies separate catalog and inference routing.\n\nGitOrigin-RevId: 4d91ada518ebd2a09cbf6ded0ddf4b11c92b77dd",
+            "url": "https://github.com/openai/codex/commit/f00c70f5d0e1715bbbcba99b0cc6e629bf83a4f1"
+          },
+          {
+            "sha": "02bc25c89fa08013356cc1bb4c4307d531fe57cc",
+            "title": "Configure memory consolidation service tiers independently (#57568)",
+            "message": "Configure memory consolidation service tiers independently (#57568)\n\n## Why\n\nMemory consolidation inherits the session's service tier. Give background consolidation its own setting, defaulting to Standard.\n\n## What changed\n\nAdd `memories.consolidation_service_tier` with a default of `\"default\"` and apply it to the consolidation agent. Normalize recognized tier aliases, including `\"fast\"` to `\"priority\"`, and expose the setting in the configuration schema.\n\n## Testing\n\nAdd coverage for configuration parsing and alias normalization, Standard consolidation despite an Ultrafast session tier, and an explicit `\"flex\"` consolidation override.\n\nGitOrigin-RevId: 58031ad56196152d212531d56e7fe9813f83317e",
+            "url": "https://github.com/openai/codex/commit/02bc25c89fa08013356cc1bb4c4307d531fe57cc"
+          },
+          {
+            "sha": "6562117a81a9457c9d67a4d15b884bf80e7805f7",
+            "title": "Preserve process output and control replies under backpressure (#57569)",
+            "message": "Preserve process output and control replies under backpressure (#57569)\n\n## Why\n\nSlow consumers can lose process output or block control replies when the in-process event queue fills. Descendants can also keep output streams open after the child exits, leaving clients unable to tell whether captured output is complete.\n\n## What changed\n\n- Require delivery of `process/outputDelta` and `process/exited` notifications, while allowing process request replies to proceed when event delivery is blocked.\n- Exclude time spent delivering output to slow clients from the post-exit drain budget, and drain queued bytes after the deadline closes a stream.\n- Keep draining after an output byte cap is reached so the child can finish writing; abort each stream's reader when its drain deadline expires.\n- Add optional `outputDrainTimedOut` to `process/exited` and generated bindings. Report incomplete output separately from the child's exit code, treating a fully captured requested byte cap as complete.\n- Deliver the exit notification before moving Windows console cleanup to a blocking task.\n\n## Testing\n\nAdd regression coverage for full event queues, stalled consumers issuing process control requests, slow output delivery, inherited pipes, output caps, Windows console descendants, and compatibility with exit notifications that omit `outputDrainTimedOut`.\n\nGitOrigin-RevId: 04cfeea5daa7c2b833cdec3f1fff7efeb4d1a86e",
+            "url": "https://github.com/openai/codex/commit/6562117a81a9457c9d67a4d15b884bf80e7805f7"
+          },
+          {
+            "sha": "d03a6e1a6a54dfdbf2fe05763ae54f528e63f70e",
+            "title": "Support Apps tool catalogs without shared snapshots (#57572)",
+            "message": "Support Apps tool catalogs without shared snapshots (#57572)\n\n## What changed\n\n- Add `ConnectorRuntimeManager::without_shared_snapshot()` to keep connector catalogs local to each client and disable disk caching.\n- Use the thread's own Apps discovery when snapshot sharing is disabled, preserving its catalog across turns.\n- Expose `apps_tools_from_mcp_client()` to read a ready, unshared Apps client's tools without starting or waiting for discovery.\n\n## Testing\n\nExtend coverage for shared-cache eligibility and verify that an unshared thread waits for its own Apps discovery and uses its own tools on successive model requests, even when a peer finishes discovery first.\n\nGitOrigin-RevId: d57ddacaede047e67c09d378c86c1aa3577ca56f",
+            "url": "https://github.com/openai/codex/commit/d03a6e1a6a54dfdbf2fe05763ae54f528e63f70e"
+          },
+          {
+            "sha": "83747ccc71420e5442bd970ac39160fac90de362",
+            "title": "Add filesystem-free classification of intercepted patch commands (#57573)",
+            "message": "Add filesystem-free classification of intercepted patch commands (#57573)\n\n## What changed\n\nAdd `MaybeApplyPatch::intercepts_command` to identify commands intercepted by exec without reading patch target files. Recognize explicit patch invocations, malformed patch bodies in those invocations, and implicit raw patches. Share implicit-patch detection with verified parsing, preserving its rejection of implicit invocations.\n\n## Testing\n\nAdd a unit test covering explicit, implicit, and malformed patches, plus an unrelated `echo apply_patch` command, without a filesystem.\n\nGitOrigin-RevId: 0bc9f63ca049094a2b17689f4f5585798792fe02",
+            "url": "https://github.com/openai/codex/commit/83747ccc71420e5442bd970ac39160fac90de362"
+          },
+          {
+            "sha": "e343a12d5cb69ad3fc988fa2feed83b1a9610cbe",
+            "title": "Refactor HTTP client construction and request execution (#57575)",
+            "message": "Refactor HTTP client construction and request execution (#57575)\n\n## What changed\n\nConstruct the direct transport explicitly in `HttpClient::new` and reuse `without_request_logging` in `new_without_request_logging`.\n\nBind awaited request results before matching them in transport execution and the Windows proxy retry path.\n\nGitOrigin-RevId: 58b2524491db80ff4d7a954868c1e030a1643a9d",
+            "url": "https://github.com/openai/codex/commit/e343a12d5cb69ad3fc988fa2feed83b1a9610cbe"
+          },
+          {
+            "sha": "133c11db436b89fe93ddfed56e00a46319abc864",
+            "title": "Allow model catalogs to customize approval instruction headings (#57581)",
+            "message": "Allow model catalogs to customize approval instruction headings (#57581)\n\n## What changed\n\nAdd optional `request_permissions` and `auto_review_suffix` fields to catalog approval messages. Use them to customize the permission tool heading and introduce automatic review guidance while preserving the bundled instruction bodies and existing policy gates. Accept `request_permissions_tool` as a deserialization alias.\n\nLimit headings to 500 UTF-8 bytes on a single line and fall back to bundled text for missing or invalid values. Complete catalog approval messages retain precedence.\n\n## Testing\n\nAdd coverage for heading validation, serialization aliases, policy gates, fallback behavior, and complete-message precedence. Integration tests verify that model switches append the selected model's headings without rewriting history or repeating unchanged instructions.\n\nGitOrigin-RevId: 3311591a464cc086783fe25271a352dd5a229790",
+            "url": "https://github.com/openai/codex/commit/133c11db436b89fe93ddfed56e00a46319abc864"
+          },
+          {
+            "sha": "5078420b01eb8a4d2bc62e887d00068123fd52ec",
+            "title": "Preserve output boundaries through token truncation (#57584)",
+            "message": "Preserve output boundaries through token truncation (#57584)\n\n## What changed\n\nAdd `OutputBoundary` and token-budget formatting APIs that map item indices and UTF-8 text offsets to their positions after truncation. Normalize input positions, remap boundaries within omitted text, and keep end boundaries before generated omission notices.\n\nUnify code mode output formatting: merge text-only output for truncation with a warning, and budget mixed text and audio in input order while preserving images and encrypted content. Accept owned output items to reuse allocations and move retained media without cloning.\n\n## Testing\n\nAdd coverage for boundary normalization and remapping, UTF-8 offsets, zero and nonzero budgets, owned and borrowed output equivalence, and allocation reuse.\n\nGitOrigin-RevId: 598407caa88b5a1f84130c4bc2273b85ab02f7f2",
+            "url": "https://github.com/openai/codex/commit/5078420b01eb8a4d2bc62e887d00068123fd52ec"
+          },
+          {
+            "sha": "cb66dbecf21a057177d1c117dc21badcb2d7150d",
+            "title": "Replace unavailable image references in model requests (#57585)",
+            "message": "Replace unavailable image references in model requests (#57585)\n\n## Why\n\nImage files can become unavailable between turns. Model requests should reflect their current availability while preserving the original references in saved history.\n\n## What changed\n\n- Add opt-in availability checks through `AttachmentStore::is_resolvable`, retaining references by default and on backend or access errors.\n- Check distinct file IDs concurrently for each prepared request and replace confirmed-missing images with `[image unavailable]` in messages and tool outputs.\n- Apply the same handling to compaction requests, with background image checks running outside the session lock without delaying foreground turn completion.\n\n## Testing\n\nAdd unit tests and multi-turn scenarios covering placeholders, preserved history and annotations, concurrent deduplicated checks, backend errors, and nonblocking background compaction.\n\nGitOrigin-RevId: ec98c7014c6e6b5063d87b943d2cd66a9ce7c1e3",
+            "url": "https://github.com/openai/codex/commit/cb66dbecf21a057177d1c117dc21badcb2d7150d"
+          },
+          {
+            "sha": "37f199dab1d80dc25d899fa83557de892610bc4b",
+            "title": "Add host-reserved V2 child creation APIs (#57586)",
+            "message": "Add host-reserved V2 child creation APIs (#57586)\n\n## What changed\n\n- Add `CodexThread::create_child` to create an idle child from a live tool invocation using a host-reserved thread ID and controller.\n- Add `prepare_child` and `ThreadManager::create_prepared_child` to capture inherited settings and fresh or forked history, then start the child on another manager even after the parent shuts down. Reject detached preparation when live bindings cannot be transferred.\n- Add opt-in `HostToolInvocationLookup` to track live calls and reject duplicate active call IDs within a turn. Revoke invocation access when dispatch ends and clean up provisional children when startup fails or is cancelled.\n\n## Testing\n\nAdd tests for invocation lifetime and call ID reservation, inherited policy and live bindings, detached startup with fresh and full history, and cancellation cleanup.\n\nGitOrigin-RevId: 71f17ecb4cd7636517e675df59289a8e8c7105b8",
+            "url": "https://github.com/openai/codex/commit/37f199dab1d80dc25d899fa83557de892610bc4b"
+          },
+          {
+            "sha": "a9ea49e78b89bf0d566cc4b3e6819a7ac5d34263",
+            "title": "Add a standalone `codex-exec-server` executable (#57589)",
+            "message": "Add a standalone `codex-exec-server` executable (#57589)\n\n## What changed\n\nExtract executor startup into `codex-exec-server-cli`, shared by `codex exec-server` and the new standalone binary. Preserve executor arguments, authentication, configuration overrides, and sandbox helper dispatch across both entry points.\n\nBuild the standalone binary with `cargo build -p codex-exec-server-cli --bin codex-exec-server` and run it with `codex-exec-server --listen stdio`.\n\n## Testing\n\nAdd standalone CLI parsing and help coverage, plus an integration test for version reporting, stdio initialization, filesystem reads, process execution, and sandbox helper re-execution when supported.\n\nGitOrigin-RevId: ab3a81c6b91b6f45e4d72d8add2e01af8372e97f",
+            "url": "https://github.com/openai/codex/commit/a9ea49e78b89bf0d566cc4b3e6819a7ac5d34263"
+          },
+          {
+            "sha": "cf2c04b325e1929732727e7776243226fbbe19bc",
+            "title": "Ship `codex-exec-server` in CLI and app-server packages (#57590)",
+            "message": "Ship `codex-exec-server` in CLI and app-server packages (#57590)\n\n## What changed\n\n- Build and bundle the standalone executor in `bin/` for both package variants, and advertise its path through `execServer` in `codex-package.json`.\n- Include the executor in Cargo and Bazel release packaging, macOS signing and notarization, and Windows signing verification. Preserve prebuilt signed binaries during packaging.\n- Make installers detect a missing advertised executor while continuing to accept older packages without it.\n\n## Testing\n\nAdd coverage for executor archive contents and executable permissions, signed binary preservation, and macOS entitlement verification. Add package smoke tests for initialization, version reporting, filesystem and process sandbox enforcement, and startup error parity with `codex exec-server`.\n\nGitOrigin-RevId: 5c0027fc19f16cf9c2a5bb52dbd065a9776bc2af",
+            "url": "https://github.com/openai/codex/commit/cf2c04b325e1929732727e7776243226fbbe19bc"
+          },
+          {
+            "sha": "c8091aeeeea42169ac2c9342af1a6487f991dea9",
+            "title": "Remove empty local staging routing files (#57593)",
+            "message": "Remove empty local staging routing files (#57593)\n\nGitOrigin-RevId: 1bcab52db8803f167be921be94b12e77aa9eece3",
+            "url": "https://github.com/openai/codex/commit/c8091aeeeea42169ac2c9342af1a6487f991dea9"
+          },
+          {
+            "sha": "39b977220090125d7d643c04decf3e53bc02a519",
+            "title": "Release 0.166.0-alpha.4",
+            "message": "Release 0.166.0-alpha.4",
+            "url": "https://github.com/openai/codex/commit/39b977220090125d7d643c04decf3e53bc02a519"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.166.0-alpha.3",
+          "head": "rust-v0.166.0-alpha.4",
+          "url": "https://github.com/openai/codex/compare/rust-v0.166.0-alpha.3...rust-v0.166.0-alpha.4",
+          "status": "diverged",
+          "total": 22,
+          "behind": 1,
+          "complete": true,
+          "fetched": 22
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -9928,7 +10143,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-27T22:25:07.778Z",
+      "lastSuccessAt": "2026-10-28T01:38:57.419Z",
       "error": null,
       "count": 150
     },
@@ -9937,7 +10152,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-27T22:25:07.778Z",
+      "lastSuccessAt": "2026-10-28T01:38:57.419Z",
       "error": null,
       "count": 10
     },
@@ -9946,7 +10161,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-27T22:25:07.778Z",
+      "lastSuccessAt": "2026-10-28T01:38:57.419Z",
       "error": null,
       "count": 25
     }
@@ -39449,6 +39664,401 @@
         "publishedAt": "2026-10-27T20:09:38Z",
         "commits": [],
         "comparison": null,
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/retell-ai:2026-10-28T01:38:58.280Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-28T01:38:58.280Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/retell-ai",
+        "at": "2026-10-27T15:00:00.000Z",
+        "url": "https://openai.com/index/retell-ai",
+        "text": "Retell uses OpenAI models to help power 100M monthly calls. GPT-6 Astra tops Retell’s voice agent benchmark, while Codex helps it reach a $1.6M annual revenue run rate per employee.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/grupo-boticario:2026-10-28T01:38:58.280Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-28T01:38:58.280Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/grupo-boticario",
+        "at": "2026-10-16T00:00:00.000Z",
+        "url": "https://openai.com/index/grupo-boticario",
+        "text": "How Grupo Boticário uses AI to strengthen human connections. Almost 50 years after starting in a compounding pharmacy in Paraná, the group operates a proprietary agent platform that autonomously resolves up to 80% of resellers’ operational requests—enabling the sales force to take on an advisory role.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/localiza-generative-ai:2026-10-28T01:38:58.280Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-28T01:38:58.280Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/localiza-generative-ai",
+        "at": "2026-10-16T00:00:00.000Z",
+        "url": "https://openai.com/index/localiza-generative-ai",
+        "text": "How Localiza reorganized work around generative AI. See how Localiza uses ChatGPT Enterprise, the OpenAI API, Codex, and 60+ specialized agents to reorganize work and build AI-native mobility experiences.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.4:2026-10-28T01:38:58.280Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-28T01:38:58.280Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.4",
+        "at": "2026-10-28T01:28:14.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.4",
+        "text": "0.166.0-alpha.4. Release 0.166.0-alpha.4",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.166.0-alpha.4",
+          "title": "0.166.0-alpha.4",
+          "body": "Release 0.166.0-alpha.4\n\n",
+          "authored": false,
+          "fetchedAt": "2026-10-28T01:38:58.283Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.4",
+          "publishedAt": "2026-10-28T01:22:03Z",
+          "commits": [
+            {
+              "sha": "4d3ed3f3b47d39f8fe0b60df74a20f528b6fc618",
+              "title": "Release empty PID probe locks explicitly on Unix (#57533)",
+              "message": "Release empty PID probe locks explicitly on Unix (#57533)\n\n## Why\n\nA concurrent fork can inherit a PID reservation probe's file descriptor and keep its lock held after the probe closes it, making a stale reservation appear active.\n\n## What changed\n\nAdd a drop guard that explicitly unlocks empty PID reservation probes on Unix, including when inspection fails or is cancelled.\n\n## Testing\n\nExtend the duplicated-handle regression test to cover empty PID files, read errors, and cancellation alongside missing PID files. Verify that cancellation occurs while the lock is held and that subsequent status checks do not report an active reservation.\n\nGitOrigin-RevId: 793569c9bcaca02900662a66c33aa48f2bebfd5e",
+              "url": "https://github.com/openai/codex/commit/4d3ed3f3b47d39f8fe0b60df74a20f528b6fc618"
+            },
+            {
+              "sha": "e3149ddb11e24edea64999030f218447336667ed",
+              "title": "Preserve host-assigned user input IDs in Responses messages (#57538)",
+              "message": "Preserve host-assigned user input IDs in Responses messages (#57538)\n\n## What changed\n\nAdd optional `TurnInputRequest.user_item_uuid` and carry it through turn starts and steering to the recorded user message. When supplied, use `msg_input_<uuid>` as the Responses item ID; inputs without a UUID retain generated IDs. Raw response items ignore this field.\n\nAdd `ResponseItemId` helpers to construct and recognize the reserved `msg_input_` namespace.\n\n## Testing\n\nAdd regression coverage for steered inputs with identical text and client IDs, checking that each supplied UUID survives recording and UI item IDs remain distinct. Add a scenario test verifying that the assigned ID reaches Responses and persists in subsequent request history alongside an identical ordinary prompt.\n\nGitOrigin-RevId: 440e306bfdaa7facb69b21930c5244a83db2fdae",
+              "url": "https://github.com/openai/codex/commit/e3149ddb11e24edea64999030f218447336667ed"
+            },
+            {
+              "sha": "aa854dabf54e1dd6c2bda80653944b4f2c0672d7",
+              "title": "Add model-gated literature search to standalone web search (#57542)",
+              "message": "Add model-gated literature search to standalone web search (#57542)\n\n## What changed\n\nExpose `literature_search_query` in standalone `web.run` when the active model lists it in `experimental_supported_tools`. Support query text, domain filters, and recency filters, and reject literature search calls for models without the capability.\n\nPass the active model information to extensions for each step and report literature queries as search actions in web search events.\n\n## Testing\n\nAdd coverage for capability rejection, model-dependent schema exposure, app-server round trips with a turn-level model override, and a scenario that searches for a paper and opens the returned reference.\n\nGitOrigin-RevId: 87ef1fadd80ca7bfc2a7642c4e443f9b9f2e0e00",
+              "url": "https://github.com/openai/codex/commit/aa854dabf54e1dd6c2bda80653944b4f2c0672d7"
+            },
+            {
+              "sha": "0d6838318fae7f3aa374da6f1fd789af2de1a10f",
+              "title": "Expose and persist image generation IDs (#57552)",
+              "message": "Expose and persist image generation IDs (#57552)\n\n## What changed\n\nExpose the backend-provided `generationId` on image-generation items and preserve it through legacy completion events, thread history reconstruction, and rollout migration. Default missing IDs to `None` for older history.\n\nUpdate the generated JSON schemas, TypeScript types, and Python models to include the nullable field.\n\n## Testing\n\nExtend coverage for ID serialization round trips, completed-item notifications, persisted and resumed history, and legacy rollout migration.\n\nGitOrigin-RevId: a7f06faa7ac6833417b257a535d2901c03b79135",
+              "url": "https://github.com/openai/codex/commit/0d6838318fae7f3aa374da6f1fd789af2de1a10f"
+            },
+            {
+              "sha": "f088e0c4ffdfab3a7d4480c14855a9db00450384",
+              "title": "Allow replacing dynamic tools between model steps (#57553)",
+              "message": "Allow replacing dynamic tools between model steps (#57553)\n\n## What changed\n\nAdd `CodexThread::replace_dynamic_tools` to replace the tool catalog without starting a turn. Updates apply to subsequent model steps and future turns while preserving in-flight calls; an empty list clears the catalog.\n\nRequire host opt-in through `allow_persistent_dynamic_tool_updates` for persistent threads. Persist replacements before publishing them, restore the latest catalog on resume, and preserve replacements and explicit clears through compaction. Keep explicit resume overrides separate from the persisted catalog.\n\n## Testing\n\nAdd coverage for pending calls during replacement, replacement and clearing across restart, compaction recovery, resume overrides, submission ordering after caller cancellation, host opt-in, and persistence failures.\n\nGitOrigin-RevId: fd2634906895a9b72ae7892ddd9435dced45eccb",
+              "url": "https://github.com/openai/codex/commit/f088e0c4ffdfab3a7d4480c14855a9db00450384"
+            },
+            {
+              "sha": "33d306d457a4632b22bebf214e0c25d91f90f6e8",
+              "title": "Keep submitted prompts shaded when terminal colors are unavailable (#57554)",
+              "message": "Keep submitted prompts shaded when terminal colors are unavailable (#57554)\n\n## Why\n\nTerminals that do not answer the default-color probe lose the background shading on submitted prompts.\n\n## What changed\n\nUse an ANSI `DarkGray` background as a fallback. Keep the default text foreground when the background's RGB value is unknown, and preserve the red voice marker in terminal history and transcript selections.\n\n## Testing\n\nAdd regression coverage for prompt shading without a terminal palette, voice marker colors under both history wrapping policies, and spoken-prompt selection contrast in compact and detailed transcripts.\n\nGitOrigin-RevId: b8217a2ee1d37a2ea4a011faa75427c881202b82",
+              "url": "https://github.com/openai/codex/commit/33d306d457a4632b22bebf214e0c25d91f90f6e8"
+            },
+            {
+              "sha": "d93071fae87f73ba1d251ebb3808773f18f0b77a",
+              "title": "Avoid retaining unneeded output items in HTTP response streams (#57563)",
+              "message": "Avoid retaining unneeded output items in HTTP response streams (#57563)\n\n## Why\n\nHTTP response streams retained copies of completed output items even when inference tracing was disabled, keeping their payloads alive until the response completed.\n\n## What changed\n\nCollect completed output items only when inference tracing or WebSocket last-response bookkeeping needs them. Make the last-response sender optional and create its channel only for WebSocket requests.\n\n## Testing\n\nAdd a regression test that verifies an untraced HTTP stream releases a completed item's shared payload after delivery, while the response remains open. Update existing tracing and WebSocket bookkeeping tests for the optional sender.\n\nGitOrigin-RevId: 7695534c6d00f3002005324c43c23bf733f01804",
+              "url": "https://github.com/openai/codex/commit/d93071fae87f73ba1d251ebb3808773f18f0b77a"
+            },
+            {
+              "sha": "fab1a5754558ec90f27efa9b3bc4a1159802bc03",
+              "title": "Preserve rich composer content in Vim registers (#57564)",
+              "message": "Preserve rich composer content in Vim registers (#57564)\n\n## What changed\n\n- Retain mention targets, image paths, and collapsed paste contents when copying or deleting into the register. Pasting creates fresh element identities and image/paste labels.\n- Preserve rich register contents across draft clears and composer replacement.\n- Capture `Ctrl+Y` register contents for dot-repeat, restore exact mention bindings through undo/redo, and keep pasted rich objects atomic in Replace mode.\n\n## Testing\n\nAdd composer tests and snapshots for repeated rich pastes, register handoff, undo/redo, Replace-mode Backspace, and selection replacement. Add a test ensuring register contents are omitted from debug output.\n\nGitOrigin-RevId: d543d21fd542492af49cce01c2a673e6d3d01664",
+              "url": "https://github.com/openai/codex/commit/fab1a5754558ec90f27efa9b3bc4a1159802bc03"
+            },
+            {
+              "sha": "f00c70f5d0e1715bbbcba99b0cc6e629bf83a4f1",
+              "title": "Allow catalog URL overrides for the built-in OpenAI provider (#57567)",
+              "message": "Allow catalog URL overrides for the built-in OpenAI provider (#57567)\n\n## What changed\n\nAllow `model_catalog_url` under `[model_providers.openai]` while preserving the built-in provider's identity, authentication, and inference routing through `openai_base_url`. Reject other non-default overrides and require an HTTPS catalog URL on an allowed ChatGPT host, without embedded credentials.\n\nApply the same catalog override merging when checking managed provider requirements for existing threads, preserving each thread's inference endpoint even if user defaults change.\n\nDocument the required Codex catalog format, credential forwarding, and existing discovery and access restrictions.\n\n## Testing\n\nAdd coverage for allowed and rejected catalog destinations, preservation of built-in provider settings, and managed requirement changes. Add integration coverage for API key and ChatGPT authentication that verifies separate catalog and inference routing.\n\nGitOrigin-RevId: 4d91ada518ebd2a09cbf6ded0ddf4b11c92b77dd",
+              "url": "https://github.com/openai/codex/commit/f00c70f5d0e1715bbbcba99b0cc6e629bf83a4f1"
+            },
+            {
+              "sha": "02bc25c89fa08013356cc1bb4c4307d531fe57cc",
+              "title": "Configure memory consolidation service tiers independently (#57568)",
+              "message": "Configure memory consolidation service tiers independently (#57568)\n\n## Why\n\nMemory consolidation inherits the session's service tier. Give background consolidation its own setting, defaulting to Standard.\n\n## What changed\n\nAdd `memories.consolidation_service_tier` with a default of `\"default\"` and apply it to the consolidation agent. Normalize recognized tier aliases, including `\"fast\"` to `\"priority\"`, and expose the setting in the configuration schema.\n\n## Testing\n\nAdd coverage for configuration parsing and alias normalization, Standard consolidation despite an Ultrafast session tier, and an explicit `\"flex\"` consolidation override.\n\nGitOrigin-RevId: 58031ad56196152d212531d56e7fe9813f83317e",
+              "url": "https://github.com/openai/codex/commit/02bc25c89fa08013356cc1bb4c4307d531fe57cc"
+            },
+            {
+              "sha": "6562117a81a9457c9d67a4d15b884bf80e7805f7",
+              "title": "Preserve process output and control replies under backpressure (#57569)",
+              "message": "Preserve process output and control replies under backpressure (#57569)\n\n## Why\n\nSlow consumers can lose process output or block control replies when the in-process event queue fills. Descendants can also keep output streams open after the child exits, leaving clients unable to tell whether captured output is complete.\n\n## What changed\n\n- Require delivery of `process/outputDelta` and `process/exited` notifications, while allowing process request replies to proceed when event delivery is blocked.\n- Exclude time spent delivering output to slow clients from the post-exit drain budget, and drain queued bytes after the deadline closes a stream.\n- Keep draining after an output byte cap is reached so the child can finish writing; abort each stream's reader when its drain deadline expires.\n- Add optional `outputDrainTimedOut` to `process/exited` and generated bindings. Report incomplete output separately from the child's exit code, treating a fully captured requested byte cap as complete.\n- Deliver the exit notification before moving Windows console cleanup to a blocking task.\n\n## Testing\n\nAdd regression coverage for full event queues, stalled consumers issuing process control requests, slow output delivery, inherited pipes, output caps, Windows console descendants, and compatibility with exit notifications that omit `outputDrainTimedOut`.\n\nGitOrigin-RevId: 04cfeea5daa7c2b833cdec3f1fff7efeb4d1a86e",
+              "url": "https://github.com/openai/codex/commit/6562117a81a9457c9d67a4d15b884bf80e7805f7"
+            },
+            {
+              "sha": "d03a6e1a6a54dfdbf2fe05763ae54f528e63f70e",
+              "title": "Support Apps tool catalogs without shared snapshots (#57572)",
+              "message": "Support Apps tool catalogs without shared snapshots (#57572)\n\n## What changed\n\n- Add `ConnectorRuntimeManager::without_shared_snapshot()` to keep connector catalogs local to each client and disable disk caching.\n- Use the thread's own Apps discovery when snapshot sharing is disabled, preserving its catalog across turns.\n- Expose `apps_tools_from_mcp_client()` to read a ready, unshared Apps client's tools without starting or waiting for discovery.\n\n## Testing\n\nExtend coverage for shared-cache eligibility and verify that an unshared thread waits for its own Apps discovery and uses its own tools on successive model requests, even when a peer finishes discovery first.\n\nGitOrigin-RevId: d57ddacaede047e67c09d378c86c1aa3577ca56f",
+              "url": "https://github.com/openai/codex/commit/d03a6e1a6a54dfdbf2fe05763ae54f528e63f70e"
+            },
+            {
+              "sha": "83747ccc71420e5442bd970ac39160fac90de362",
+              "title": "Add filesystem-free classification of intercepted patch commands (#57573)",
+              "message": "Add filesystem-free classification of intercepted patch commands (#57573)\n\n## What changed\n\nAdd `MaybeApplyPatch::intercepts_command` to identify commands intercepted by exec without reading patch target files. Recognize explicit patch invocations, malformed patch bodies in those invocations, and implicit raw patches. Share implicit-patch detection with verified parsing, preserving its rejection of implicit invocations.\n\n## Testing\n\nAdd a unit test covering explicit, implicit, and malformed patches, plus an unrelated `echo apply_patch` command, without a filesystem.\n\nGitOrigin-RevId: 0bc9f63ca049094a2b17689f4f5585798792fe02",
+              "url": "https://github.com/openai/codex/commit/83747ccc71420e5442bd970ac39160fac90de362"
+            },
+            {
+              "sha": "e343a12d5cb69ad3fc988fa2feed83b1a9610cbe",
+              "title": "Refactor HTTP client construction and request execution (#57575)",
+              "message": "Refactor HTTP client construction and request execution (#57575)\n\n## What changed\n\nConstruct the direct transport explicitly in `HttpClient::new` and reuse `without_request_logging` in `new_without_request_logging`.\n\nBind awaited request results before matching them in transport execution and the Windows proxy retry path.\n\nGitOrigin-RevId: 58b2524491db80ff4d7a954868c1e030a1643a9d",
+              "url": "https://github.com/openai/codex/commit/e343a12d5cb69ad3fc988fa2feed83b1a9610cbe"
+            },
+            {
+              "sha": "133c11db436b89fe93ddfed56e00a46319abc864",
+              "title": "Allow model catalogs to customize approval instruction headings (#57581)",
+              "message": "Allow model catalogs to customize approval instruction headings (#57581)\n\n## What changed\n\nAdd optional `request_permissions` and `auto_review_suffix` fields to catalog approval messages. Use them to customize the permission tool heading and introduce automatic review guidance while preserving the bundled instruction bodies and existing policy gates. Accept `request_permissions_tool` as a deserialization alias.\n\nLimit headings to 500 UTF-8 bytes on a single line and fall back to bundled text for missing or invalid values. Complete catalog approval messages retain precedence.\n\n## Testing\n\nAdd coverage for heading validation, serialization aliases, policy gates, fallback behavior, and complete-message precedence. Integration tests verify that model switches append the selected model's headings without rewriting history or repeating unchanged instructions.\n\nGitOrigin-RevId: 3311591a464cc086783fe25271a352dd5a229790",
+              "url": "https://github.com/openai/codex/commit/133c11db436b89fe93ddfed56e00a46319abc864"
+            },
+            {
+              "sha": "5078420b01eb8a4d2bc62e887d00068123fd52ec",
+              "title": "Preserve output boundaries through token truncation (#57584)",
+              "message": "Preserve output boundaries through token truncation (#57584)\n\n## What changed\n\nAdd `OutputBoundary` and token-budget formatting APIs that map item indices and UTF-8 text offsets to their positions after truncation. Normalize input positions, remap boundaries within omitted text, and keep end boundaries before generated omission notices.\n\nUnify code mode output formatting: merge text-only output for truncation with a warning, and budget mixed text and audio in input order while preserving images and encrypted content. Accept owned output items to reuse allocations and move retained media without cloning.\n\n## Testing\n\nAdd coverage for boundary normalization and remapping, UTF-8 offsets, zero and nonzero budgets, owned and borrowed output equivalence, and allocation reuse.\n\nGitOrigin-RevId: 598407caa88b5a1f84130c4bc2273b85ab02f7f2",
+              "url": "https://github.com/openai/codex/commit/5078420b01eb8a4d2bc62e887d00068123fd52ec"
+            },
+            {
+              "sha": "cb66dbecf21a057177d1c117dc21badcb2d7150d",
+              "title": "Replace unavailable image references in model requests (#57585)",
+              "message": "Replace unavailable image references in model requests (#57585)\n\n## Why\n\nImage files can become unavailable between turns. Model requests should reflect their current availability while preserving the original references in saved history.\n\n## What changed\n\n- Add opt-in availability checks through `AttachmentStore::is_resolvable`, retaining references by default and on backend or access errors.\n- Check distinct file IDs concurrently for each prepared request and replace confirmed-missing images with `[image unavailable]` in messages and tool outputs.\n- Apply the same handling to compaction requests, with background image checks running outside the session lock without delaying foreground turn completion.\n\n## Testing\n\nAdd unit tests and multi-turn scenarios covering placeholders, preserved history and annotations, concurrent deduplicated checks, backend errors, and nonblocking background compaction.\n\nGitOrigin-RevId: ec98c7014c6e6b5063d87b943d2cd66a9ce7c1e3",
+              "url": "https://github.com/openai/codex/commit/cb66dbecf21a057177d1c117dc21badcb2d7150d"
+            },
+            {
+              "sha": "37f199dab1d80dc25d899fa83557de892610bc4b",
+              "title": "Add host-reserved V2 child creation APIs (#57586)",
+              "message": "Add host-reserved V2 child creation APIs (#57586)\n\n## What changed\n\n- Add `CodexThread::create_child` to create an idle child from a live tool invocation using a host-reserved thread ID and controller.\n- Add `prepare_child` and `ThreadManager::create_prepared_child` to capture inherited settings and fresh or forked history, then start the child on another manager even after the parent shuts down. Reject detached preparation when live bindings cannot be transferred.\n- Add opt-in `HostToolInvocationLookup` to track live calls and reject duplicate active call IDs within a turn. Revoke invocation access when dispatch ends and clean up provisional children when startup fails or is cancelled.\n\n## Testing\n\nAdd tests for invocation lifetime and call ID reservation, inherited policy and live bindings, detached startup with fresh and full history, and cancellation cleanup.\n\nGitOrigin-RevId: 71f17ecb4cd7636517e675df59289a8e8c7105b8",
+              "url": "https://github.com/openai/codex/commit/37f199dab1d80dc25d899fa83557de892610bc4b"
+            },
+            {
+              "sha": "a9ea49e78b89bf0d566cc4b3e6819a7ac5d34263",
+              "title": "Add a standalone `codex-exec-server` executable (#57589)",
+              "message": "Add a standalone `codex-exec-server` executable (#57589)\n\n## What changed\n\nExtract executor startup into `codex-exec-server-cli`, shared by `codex exec-server` and the new standalone binary. Preserve executor arguments, authentication, configuration overrides, and sandbox helper dispatch across both entry points.\n\nBuild the standalone binary with `cargo build -p codex-exec-server-cli --bin codex-exec-server` and run it with `codex-exec-server --listen stdio`.\n\n## Testing\n\nAdd standalone CLI parsing and help coverage, plus an integration test for version reporting, stdio initialization, filesystem reads, process execution, and sandbox helper re-execution when supported.\n\nGitOrigin-RevId: ab3a81c6b91b6f45e4d72d8add2e01af8372e97f",
+              "url": "https://github.com/openai/codex/commit/a9ea49e78b89bf0d566cc4b3e6819a7ac5d34263"
+            },
+            {
+              "sha": "cf2c04b325e1929732727e7776243226fbbe19bc",
+              "title": "Ship `codex-exec-server` in CLI and app-server packages (#57590)",
+              "message": "Ship `codex-exec-server` in CLI and app-server packages (#57590)\n\n## What changed\n\n- Build and bundle the standalone executor in `bin/` for both package variants, and advertise its path through `execServer` in `codex-package.json`.\n- Include the executor in Cargo and Bazel release packaging, macOS signing and notarization, and Windows signing verification. Preserve prebuilt signed binaries during packaging.\n- Make installers detect a missing advertised executor while continuing to accept older packages without it.\n\n## Testing\n\nAdd coverage for executor archive contents and executable permissions, signed binary preservation, and macOS entitlement verification. Add package smoke tests for initialization, version reporting, filesystem and process sandbox enforcement, and startup error parity with `codex exec-server`.\n\nGitOrigin-RevId: 5c0027fc19f16cf9c2a5bb52dbd065a9776bc2af",
+              "url": "https://github.com/openai/codex/commit/cf2c04b325e1929732727e7776243226fbbe19bc"
+            },
+            {
+              "sha": "c8091aeeeea42169ac2c9342af1a6487f991dea9",
+              "title": "Remove empty local staging routing files (#57593)",
+              "message": "Remove empty local staging routing files (#57593)\n\nGitOrigin-RevId: 1bcab52db8803f167be921be94b12e77aa9eece3",
+              "url": "https://github.com/openai/codex/commit/c8091aeeeea42169ac2c9342af1a6487f991dea9"
+            },
+            {
+              "sha": "39b977220090125d7d643c04decf3e53bc02a519",
+              "title": "Release 0.166.0-alpha.4",
+              "message": "Release 0.166.0-alpha.4",
+              "url": "https://github.com/openai/codex/commit/39b977220090125d7d643c04decf3e53bc02a519"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.166.0-alpha.3",
+            "head": "rust-v0.166.0-alpha.4",
+            "url": "https://github.com/openai/codex/compare/rust-v0.166.0-alpha.3...rust-v0.166.0-alpha.4",
+            "status": "diverged",
+            "total": 22,
+            "behind": 1,
+            "complete": true,
+            "fetched": 22
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.4:2026-10-28T01:38:58.280Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-28T01:38:58.280Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.166.0-alpha.4",
+        "title": "0.166.0-alpha.4",
+        "body": "Release 0.166.0-alpha.4\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-28T01:38:58.283Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.4",
+        "publishedAt": "2026-10-28T01:22:03Z",
+        "commits": [
+          {
+            "sha": "4d3ed3f3b47d39f8fe0b60df74a20f528b6fc618",
+            "title": "Release empty PID probe locks explicitly on Unix (#57533)",
+            "message": "Release empty PID probe locks explicitly on Unix (#57533)\n\n## Why\n\nA concurrent fork can inherit a PID reservation probe's file descriptor and keep its lock held after the probe closes it, making a stale reservation appear active.\n\n## What changed\n\nAdd a drop guard that explicitly unlocks empty PID reservation probes on Unix, including when inspection fails or is cancelled.\n\n## Testing\n\nExtend the duplicated-handle regression test to cover empty PID files, read errors, and cancellation alongside missing PID files. Verify that cancellation occurs while the lock is held and that subsequent status checks do not report an active reservation.\n\nGitOrigin-RevId: 793569c9bcaca02900662a66c33aa48f2bebfd5e",
+            "url": "https://github.com/openai/codex/commit/4d3ed3f3b47d39f8fe0b60df74a20f528b6fc618"
+          },
+          {
+            "sha": "e3149ddb11e24edea64999030f218447336667ed",
+            "title": "Preserve host-assigned user input IDs in Responses messages (#57538)",
+            "message": "Preserve host-assigned user input IDs in Responses messages (#57538)\n\n## What changed\n\nAdd optional `TurnInputRequest.user_item_uuid` and carry it through turn starts and steering to the recorded user message. When supplied, use `msg_input_<uuid>` as the Responses item ID; inputs without a UUID retain generated IDs. Raw response items ignore this field.\n\nAdd `ResponseItemId` helpers to construct and recognize the reserved `msg_input_` namespace.\n\n## Testing\n\nAdd regression coverage for steered inputs with identical text and client IDs, checking that each supplied UUID survives recording and UI item IDs remain distinct. Add a scenario test verifying that the assigned ID reaches Responses and persists in subsequent request history alongside an identical ordinary prompt.\n\nGitOrigin-RevId: 440e306bfdaa7facb69b21930c5244a83db2fdae",
+            "url": "https://github.com/openai/codex/commit/e3149ddb11e24edea64999030f218447336667ed"
+          },
+          {
+            "sha": "aa854dabf54e1dd6c2bda80653944b4f2c0672d7",
+            "title": "Add model-gated literature search to standalone web search (#57542)",
+            "message": "Add model-gated literature search to standalone web search (#57542)\n\n## What changed\n\nExpose `literature_search_query` in standalone `web.run` when the active model lists it in `experimental_supported_tools`. Support query text, domain filters, and recency filters, and reject literature search calls for models without the capability.\n\nPass the active model information to extensions for each step and report literature queries as search actions in web search events.\n\n## Testing\n\nAdd coverage for capability rejection, model-dependent schema exposure, app-server round trips with a turn-level model override, and a scenario that searches for a paper and opens the returned reference.\n\nGitOrigin-RevId: 87ef1fadd80ca7bfc2a7642c4e443f9b9f2e0e00",
+            "url": "https://github.com/openai/codex/commit/aa854dabf54e1dd6c2bda80653944b4f2c0672d7"
+          },
+          {
+            "sha": "0d6838318fae7f3aa374da6f1fd789af2de1a10f",
+            "title": "Expose and persist image generation IDs (#57552)",
+            "message": "Expose and persist image generation IDs (#57552)\n\n## What changed\n\nExpose the backend-provided `generationId` on image-generation items and preserve it through legacy completion events, thread history reconstruction, and rollout migration. Default missing IDs to `None` for older history.\n\nUpdate the generated JSON schemas, TypeScript types, and Python models to include the nullable field.\n\n## Testing\n\nExtend coverage for ID serialization round trips, completed-item notifications, persisted and resumed history, and legacy rollout migration.\n\nGitOrigin-RevId: a7f06faa7ac6833417b257a535d2901c03b79135",
+            "url": "https://github.com/openai/codex/commit/0d6838318fae7f3aa374da6f1fd789af2de1a10f"
+          },
+          {
+            "sha": "f088e0c4ffdfab3a7d4480c14855a9db00450384",
+            "title": "Allow replacing dynamic tools between model steps (#57553)",
+            "message": "Allow replacing dynamic tools between model steps (#57553)\n\n## What changed\n\nAdd `CodexThread::replace_dynamic_tools` to replace the tool catalog without starting a turn. Updates apply to subsequent model steps and future turns while preserving in-flight calls; an empty list clears the catalog.\n\nRequire host opt-in through `allow_persistent_dynamic_tool_updates` for persistent threads. Persist replacements before publishing them, restore the latest catalog on resume, and preserve replacements and explicit clears through compaction. Keep explicit resume overrides separate from the persisted catalog.\n\n## Testing\n\nAdd coverage for pending calls during replacement, replacement and clearing across restart, compaction recovery, resume overrides, submission ordering after caller cancellation, host opt-in, and persistence failures.\n\nGitOrigin-RevId: fd2634906895a9b72ae7892ddd9435dced45eccb",
+            "url": "https://github.com/openai/codex/commit/f088e0c4ffdfab3a7d4480c14855a9db00450384"
+          },
+          {
+            "sha": "33d306d457a4632b22bebf214e0c25d91f90f6e8",
+            "title": "Keep submitted prompts shaded when terminal colors are unavailable (#57554)",
+            "message": "Keep submitted prompts shaded when terminal colors are unavailable (#57554)\n\n## Why\n\nTerminals that do not answer the default-color probe lose the background shading on submitted prompts.\n\n## What changed\n\nUse an ANSI `DarkGray` background as a fallback. Keep the default text foreground when the background's RGB value is unknown, and preserve the red voice marker in terminal history and transcript selections.\n\n## Testing\n\nAdd regression coverage for prompt shading without a terminal palette, voice marker colors under both history wrapping policies, and spoken-prompt selection contrast in compact and detailed transcripts.\n\nGitOrigin-RevId: b8217a2ee1d37a2ea4a011faa75427c881202b82",
+            "url": "https://github.com/openai/codex/commit/33d306d457a4632b22bebf214e0c25d91f90f6e8"
+          },
+          {
+            "sha": "d93071fae87f73ba1d251ebb3808773f18f0b77a",
+            "title": "Avoid retaining unneeded output items in HTTP response streams (#57563)",
+            "message": "Avoid retaining unneeded output items in HTTP response streams (#57563)\n\n## Why\n\nHTTP response streams retained copies of completed output items even when inference tracing was disabled, keeping their payloads alive until the response completed.\n\n## What changed\n\nCollect completed output items only when inference tracing or WebSocket last-response bookkeeping needs them. Make the last-response sender optional and create its channel only for WebSocket requests.\n\n## Testing\n\nAdd a regression test that verifies an untraced HTTP stream releases a completed item's shared payload after delivery, while the response remains open. Update existing tracing and WebSocket bookkeeping tests for the optional sender.\n\nGitOrigin-RevId: 7695534c6d00f3002005324c43c23bf733f01804",
+            "url": "https://github.com/openai/codex/commit/d93071fae87f73ba1d251ebb3808773f18f0b77a"
+          },
+          {
+            "sha": "fab1a5754558ec90f27efa9b3bc4a1159802bc03",
+            "title": "Preserve rich composer content in Vim registers (#57564)",
+            "message": "Preserve rich composer content in Vim registers (#57564)\n\n## What changed\n\n- Retain mention targets, image paths, and collapsed paste contents when copying or deleting into the register. Pasting creates fresh element identities and image/paste labels.\n- Preserve rich register contents across draft clears and composer replacement.\n- Capture `Ctrl+Y` register contents for dot-repeat, restore exact mention bindings through undo/redo, and keep pasted rich objects atomic in Replace mode.\n\n## Testing\n\nAdd composer tests and snapshots for repeated rich pastes, register handoff, undo/redo, Replace-mode Backspace, and selection replacement. Add a test ensuring register contents are omitted from debug output.\n\nGitOrigin-RevId: d543d21fd542492af49cce01c2a673e6d3d01664",
+            "url": "https://github.com/openai/codex/commit/fab1a5754558ec90f27efa9b3bc4a1159802bc03"
+          },
+          {
+            "sha": "f00c70f5d0e1715bbbcba99b0cc6e629bf83a4f1",
+            "title": "Allow catalog URL overrides for the built-in OpenAI provider (#57567)",
+            "message": "Allow catalog URL overrides for the built-in OpenAI provider (#57567)\n\n## What changed\n\nAllow `model_catalog_url` under `[model_providers.openai]` while preserving the built-in provider's identity, authentication, and inference routing through `openai_base_url`. Reject other non-default overrides and require an HTTPS catalog URL on an allowed ChatGPT host, without embedded credentials.\n\nApply the same catalog override merging when checking managed provider requirements for existing threads, preserving each thread's inference endpoint even if user defaults change.\n\nDocument the required Codex catalog format, credential forwarding, and existing discovery and access restrictions.\n\n## Testing\n\nAdd coverage for allowed and rejected catalog destinations, preservation of built-in provider settings, and managed requirement changes. Add integration coverage for API key and ChatGPT authentication that verifies separate catalog and inference routing.\n\nGitOrigin-RevId: 4d91ada518ebd2a09cbf6ded0ddf4b11c92b77dd",
+            "url": "https://github.com/openai/codex/commit/f00c70f5d0e1715bbbcba99b0cc6e629bf83a4f1"
+          },
+          {
+            "sha": "02bc25c89fa08013356cc1bb4c4307d531fe57cc",
+            "title": "Configure memory consolidation service tiers independently (#57568)",
+            "message": "Configure memory consolidation service tiers independently (#57568)\n\n## Why\n\nMemory consolidation inherits the session's service tier. Give background consolidation its own setting, defaulting to Standard.\n\n## What changed\n\nAdd `memories.consolidation_service_tier` with a default of `\"default\"` and apply it to the consolidation agent. Normalize recognized tier aliases, including `\"fast\"` to `\"priority\"`, and expose the setting in the configuration schema.\n\n## Testing\n\nAdd coverage for configuration parsing and alias normalization, Standard consolidation despite an Ultrafast session tier, and an explicit `\"flex\"` consolidation override.\n\nGitOrigin-RevId: 58031ad56196152d212531d56e7fe9813f83317e",
+            "url": "https://github.com/openai/codex/commit/02bc25c89fa08013356cc1bb4c4307d531fe57cc"
+          },
+          {
+            "sha": "6562117a81a9457c9d67a4d15b884bf80e7805f7",
+            "title": "Preserve process output and control replies under backpressure (#57569)",
+            "message": "Preserve process output and control replies under backpressure (#57569)\n\n## Why\n\nSlow consumers can lose process output or block control replies when the in-process event queue fills. Descendants can also keep output streams open after the child exits, leaving clients unable to tell whether captured output is complete.\n\n## What changed\n\n- Require delivery of `process/outputDelta` and `process/exited` notifications, while allowing process request replies to proceed when event delivery is blocked.\n- Exclude time spent delivering output to slow clients from the post-exit drain budget, and drain queued bytes after the deadline closes a stream.\n- Keep draining after an output byte cap is reached so the child can finish writing; abort each stream's reader when its drain deadline expires.\n- Add optional `outputDrainTimedOut` to `process/exited` and generated bindings. Report incomplete output separately from the child's exit code, treating a fully captured requested byte cap as complete.\n- Deliver the exit notification before moving Windows console cleanup to a blocking task.\n\n## Testing\n\nAdd regression coverage for full event queues, stalled consumers issuing process control requests, slow output delivery, inherited pipes, output caps, Windows console descendants, and compatibility with exit notifications that omit `outputDrainTimedOut`.\n\nGitOrigin-RevId: 04cfeea5daa7c2b833cdec3f1fff7efeb4d1a86e",
+            "url": "https://github.com/openai/codex/commit/6562117a81a9457c9d67a4d15b884bf80e7805f7"
+          },
+          {
+            "sha": "d03a6e1a6a54dfdbf2fe05763ae54f528e63f70e",
+            "title": "Support Apps tool catalogs without shared snapshots (#57572)",
+            "message": "Support Apps tool catalogs without shared snapshots (#57572)\n\n## What changed\n\n- Add `ConnectorRuntimeManager::without_shared_snapshot()` to keep connector catalogs local to each client and disable disk caching.\n- Use the thread's own Apps discovery when snapshot sharing is disabled, preserving its catalog across turns.\n- Expose `apps_tools_from_mcp_client()` to read a ready, unshared Apps client's tools without starting or waiting for discovery.\n\n## Testing\n\nExtend coverage for shared-cache eligibility and verify that an unshared thread waits for its own Apps discovery and uses its own tools on successive model requests, even when a peer finishes discovery first.\n\nGitOrigin-RevId: d57ddacaede047e67c09d378c86c1aa3577ca56f",
+            "url": "https://github.com/openai/codex/commit/d03a6e1a6a54dfdbf2fe05763ae54f528e63f70e"
+          },
+          {
+            "sha": "83747ccc71420e5442bd970ac39160fac90de362",
+            "title": "Add filesystem-free classification of intercepted patch commands (#57573)",
+            "message": "Add filesystem-free classification of intercepted patch commands (#57573)\n\n## What changed\n\nAdd `MaybeApplyPatch::intercepts_command` to identify commands intercepted by exec without reading patch target files. Recognize explicit patch invocations, malformed patch bodies in those invocations, and implicit raw patches. Share implicit-patch detection with verified parsing, preserving its rejection of implicit invocations.\n\n## Testing\n\nAdd a unit test covering explicit, implicit, and malformed patches, plus an unrelated `echo apply_patch` command, without a filesystem.\n\nGitOrigin-RevId: 0bc9f63ca049094a2b17689f4f5585798792fe02",
+            "url": "https://github.com/openai/codex/commit/83747ccc71420e5442bd970ac39160fac90de362"
+          },
+          {
+            "sha": "e343a12d5cb69ad3fc988fa2feed83b1a9610cbe",
+            "title": "Refactor HTTP client construction and request execution (#57575)",
+            "message": "Refactor HTTP client construction and request execution (#57575)\n\n## What changed\n\nConstruct the direct transport explicitly in `HttpClient::new` and reuse `without_request_logging` in `new_without_request_logging`.\n\nBind awaited request results before matching them in transport execution and the Windows proxy retry path.\n\nGitOrigin-RevId: 58b2524491db80ff4d7a954868c1e030a1643a9d",
+            "url": "https://github.com/openai/codex/commit/e343a12d5cb69ad3fc988fa2feed83b1a9610cbe"
+          },
+          {
+            "sha": "133c11db436b89fe93ddfed56e00a46319abc864",
+            "title": "Allow model catalogs to customize approval instruction headings (#57581)",
+            "message": "Allow model catalogs to customize approval instruction headings (#57581)\n\n## What changed\n\nAdd optional `request_permissions` and `auto_review_suffix` fields to catalog approval messages. Use them to customize the permission tool heading and introduce automatic review guidance while preserving the bundled instruction bodies and existing policy gates. Accept `request_permissions_tool` as a deserialization alias.\n\nLimit headings to 500 UTF-8 bytes on a single line and fall back to bundled text for missing or invalid values. Complete catalog approval messages retain precedence.\n\n## Testing\n\nAdd coverage for heading validation, serialization aliases, policy gates, fallback behavior, and complete-message precedence. Integration tests verify that model switches append the selected model's headings without rewriting history or repeating unchanged instructions.\n\nGitOrigin-RevId: 3311591a464cc086783fe25271a352dd5a229790",
+            "url": "https://github.com/openai/codex/commit/133c11db436b89fe93ddfed56e00a46319abc864"
+          },
+          {
+            "sha": "5078420b01eb8a4d2bc62e887d00068123fd52ec",
+            "title": "Preserve output boundaries through token truncation (#57584)",
+            "message": "Preserve output boundaries through token truncation (#57584)\n\n## What changed\n\nAdd `OutputBoundary` and token-budget formatting APIs that map item indices and UTF-8 text offsets to their positions after truncation. Normalize input positions, remap boundaries within omitted text, and keep end boundaries before generated omission notices.\n\nUnify code mode output formatting: merge text-only output for truncation with a warning, and budget mixed text and audio in input order while preserving images and encrypted content. Accept owned output items to reuse allocations and move retained media without cloning.\n\n## Testing\n\nAdd coverage for boundary normalization and remapping, UTF-8 offsets, zero and nonzero budgets, owned and borrowed output equivalence, and allocation reuse.\n\nGitOrigin-RevId: 598407caa88b5a1f84130c4bc2273b85ab02f7f2",
+            "url": "https://github.com/openai/codex/commit/5078420b01eb8a4d2bc62e887d00068123fd52ec"
+          },
+          {
+            "sha": "cb66dbecf21a057177d1c117dc21badcb2d7150d",
+            "title": "Replace unavailable image references in model requests (#57585)",
+            "message": "Replace unavailable image references in model requests (#57585)\n\n## Why\n\nImage files can become unavailable between turns. Model requests should reflect their current availability while preserving the original references in saved history.\n\n## What changed\n\n- Add opt-in availability checks through `AttachmentStore::is_resolvable`, retaining references by default and on backend or access errors.\n- Check distinct file IDs concurrently for each prepared request and replace confirmed-missing images with `[image unavailable]` in messages and tool outputs.\n- Apply the same handling to compaction requests, with background image checks running outside the session lock without delaying foreground turn completion.\n\n## Testing\n\nAdd unit tests and multi-turn scenarios covering placeholders, preserved history and annotations, concurrent deduplicated checks, backend errors, and nonblocking background compaction.\n\nGitOrigin-RevId: ec98c7014c6e6b5063d87b943d2cd66a9ce7c1e3",
+            "url": "https://github.com/openai/codex/commit/cb66dbecf21a057177d1c117dc21badcb2d7150d"
+          },
+          {
+            "sha": "37f199dab1d80dc25d899fa83557de892610bc4b",
+            "title": "Add host-reserved V2 child creation APIs (#57586)",
+            "message": "Add host-reserved V2 child creation APIs (#57586)\n\n## What changed\n\n- Add `CodexThread::create_child` to create an idle child from a live tool invocation using a host-reserved thread ID and controller.\n- Add `prepare_child` and `ThreadManager::create_prepared_child` to capture inherited settings and fresh or forked history, then start the child on another manager even after the parent shuts down. Reject detached preparation when live bindings cannot be transferred.\n- Add opt-in `HostToolInvocationLookup` to track live calls and reject duplicate active call IDs within a turn. Revoke invocation access when dispatch ends and clean up provisional children when startup fails or is cancelled.\n\n## Testing\n\nAdd tests for invocation lifetime and call ID reservation, inherited policy and live bindings, detached startup with fresh and full history, and cancellation cleanup.\n\nGitOrigin-RevId: 71f17ecb4cd7636517e675df59289a8e8c7105b8",
+            "url": "https://github.com/openai/codex/commit/37f199dab1d80dc25d899fa83557de892610bc4b"
+          },
+          {
+            "sha": "a9ea49e78b89bf0d566cc4b3e6819a7ac5d34263",
+            "title": "Add a standalone `codex-exec-server` executable (#57589)",
+            "message": "Add a standalone `codex-exec-server` executable (#57589)\n\n## What changed\n\nExtract executor startup into `codex-exec-server-cli`, shared by `codex exec-server` and the new standalone binary. Preserve executor arguments, authentication, configuration overrides, and sandbox helper dispatch across both entry points.\n\nBuild the standalone binary with `cargo build -p codex-exec-server-cli --bin codex-exec-server` and run it with `codex-exec-server --listen stdio`.\n\n## Testing\n\nAdd standalone CLI parsing and help coverage, plus an integration test for version reporting, stdio initialization, filesystem reads, process execution, and sandbox helper re-execution when supported.\n\nGitOrigin-RevId: ab3a81c6b91b6f45e4d72d8add2e01af8372e97f",
+            "url": "https://github.com/openai/codex/commit/a9ea49e78b89bf0d566cc4b3e6819a7ac5d34263"
+          },
+          {
+            "sha": "cf2c04b325e1929732727e7776243226fbbe19bc",
+            "title": "Ship `codex-exec-server` in CLI and app-server packages (#57590)",
+            "message": "Ship `codex-exec-server` in CLI and app-server packages (#57590)\n\n## What changed\n\n- Build and bundle the standalone executor in `bin/` for both package variants, and advertise its path through `execServer` in `codex-package.json`.\n- Include the executor in Cargo and Bazel release packaging, macOS signing and notarization, and Windows signing verification. Preserve prebuilt signed binaries during packaging.\n- Make installers detect a missing advertised executor while continuing to accept older packages without it.\n\n## Testing\n\nAdd coverage for executor archive contents and executable permissions, signed binary preservation, and macOS entitlement verification. Add package smoke tests for initialization, version reporting, filesystem and process sandbox enforcement, and startup error parity with `codex exec-server`.\n\nGitOrigin-RevId: 5c0027fc19f16cf9c2a5bb52dbd065a9776bc2af",
+            "url": "https://github.com/openai/codex/commit/cf2c04b325e1929732727e7776243226fbbe19bc"
+          },
+          {
+            "sha": "c8091aeeeea42169ac2c9342af1a6487f991dea9",
+            "title": "Remove empty local staging routing files (#57593)",
+            "message": "Remove empty local staging routing files (#57593)\n\nGitOrigin-RevId: 1bcab52db8803f167be921be94b12e77aa9eece3",
+            "url": "https://github.com/openai/codex/commit/c8091aeeeea42169ac2c9342af1a6487f991dea9"
+          },
+          {
+            "sha": "39b977220090125d7d643c04decf3e53bc02a519",
+            "title": "Release 0.166.0-alpha.4",
+            "message": "Release 0.166.0-alpha.4",
+            "url": "https://github.com/openai/codex/commit/39b977220090125d7d643c04decf3e53bc02a519"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.166.0-alpha.3",
+          "head": "rust-v0.166.0-alpha.4",
+          "url": "https://github.com/openai/codex/compare/rust-v0.166.0-alpha.3...rust-v0.166.0-alpha.4",
+          "status": "diverged",
+          "total": 22,
+          "behind": 1,
+          "complete": true,
+          "fetched": 22
+        },
         "comparisonError": null
       }
     }
