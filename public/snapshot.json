@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-29T09:49:46.495Z",
+  "generatedAt": "2026-10-29T16:28:42.683Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -10335,7 +10335,7 @@
         "title": "0.166.0-alpha.6",
         "body": "Release 0.166.0-alpha.6\n\n",
         "authored": false,
-        "fetchedAt": "2026-10-29T09:49:46.501Z",
+        "fetchedAt": "2026-10-29T16:28:42.689Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.6",
         "publishedAt": "2026-10-29T01:41:25Z",
         "commits": [
@@ -10636,7 +10636,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-29T09:49:45.692Z",
+      "lastSuccessAt": "2026-10-29T16:28:42.196Z",
       "error": null,
       "count": 150
     },
@@ -10645,7 +10645,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-29T09:49:45.692Z",
+      "lastSuccessAt": "2026-10-29T16:28:42.196Z",
       "error": null,
       "count": 10
     },
@@ -10654,7 +10654,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-29T09:49:45.692Z",
+      "lastSuccessAt": "2026-10-29T16:28:42.196Z",
       "error": null,
       "count": 25
     }
@@ -41700,6 +41700,310 @@
         "body": "Release 0.166.0-alpha.6\n\n",
         "authored": false,
         "fetchedAt": "2026-10-29T09:49:46.501Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.6",
+        "publishedAt": "2026-10-29T01:41:25Z",
+        "commits": [
+          {
+            "sha": "6ba3a84680236c621b93e0b8dc140687a37f41fc",
+            "title": "Restore spawned descendants when unarchiving a thread (#57635)",
+            "message": "Restore spawned descendants when unarchiving a thread (#57635)\n\n## Why\n\nArchiving a thread also archives its spawned descendants, but unarchiving it previously restored only the parent.\n\n## What changed\n\n- Restore archived spawned descendants when handling `thread/unarchive`, including descendants archived independently of the parent. Skip active descendants and continue past descendant restoration failures; fall back to restoring only the parent if descendant discovery fails.\n- Emit `thread/unarchived` for each successfully restored thread. Hold the thread-list mutation permit through archive and unarchive responses and notifications to preserve ordering with other list mutations.\n- Add `ThreadStore::unarchive_threads` and share rollout discovery across the subtree in the local store.\n\n## Testing\n\nExtend coverage for subtree restoration, independently archived children, descendant restoration failures, and failed descendant discovery. Store tests cover skipping active descendants and restoring archived descendants without hydrating their metadata.\n\nGitOrigin-RevId: c54ca099c92bcb2df5e595fa252d7fad7c018760",
+            "url": "https://github.com/openai/codex/commit/6ba3a84680236c621b93e0b8dc140687a37f41fc"
+          },
+          {
+            "sha": "424916ee94204587dc4412539442a91b01727fe9",
+            "title": "Add OpenTelemetry requirement types to the app-server protocol (#57638)",
+            "message": "Add OpenTelemetry requirement types to the app-server protocol (#57638)\n\n## What changed\n\nAdd optional `otel` requirements to `ConfigRequirements`, with types for logging controls, tool-result byte limits, environment, and telemetry exporters, including OTLP HTTP/gRPC headers and TLS settings.\n\nUpdate the JSON schemas, precomputed exports, and generated TypeScript and Python bindings. The app-server requirements mapper currently returns `otel: None`.\n\nGitOrigin-RevId: f73edc22efe1ab7fddf51419267daa6cf9fd34c5",
+            "url": "https://github.com/openai/codex/commit/424916ee94204587dc4412539442a91b01727fe9"
+          },
+          {
+            "sha": "d63fe536ee2bf4ea7d18d81e0e1be17543bf5b5b",
+            "title": "Generate Rust bindings that match Bazel-built V8 archives (#57644)",
+            "message": "Generate Rust bindings that match Bazel-built V8 archives (#57644)\n\n## Why\n\nPre-generated bindings can disagree with native V8 layouts, including CppGC member storage and the inline typed-array size. Source archives need bindings generated with the same headers, defines, and target configuration.\n\n## What changed\n\n- Generate bindings through Bazel using the archive's C++ compilation metadata, and include them in Darwin and Linux release pairs and source builds.\n- Select native Windows MSVC archives and matching bindings together with `--//:rusty_v8_from_source=true`, and generate target-specific Windows GNU bindings.\n- Pin a corrected `rusty_v8` revision for Cargo and Bazel, and track native Windows LLVM tools and resources as action inputs so pin changes invalidate cached actions.\n- Run release and canary Cargo smoke tests with explicit target triples, required Linux linkers, and `--include-ignored`.\n\n## Testing\n\nAdd `codex-v8-poc` coverage for CppGC member size, alignment, tracing, and weak references; typed-array contents and backing-store promotion; and microtask queues across garbage collection and context reassignment. Enable the otherwise ignored CppGC ABI checks for Bazel source builds and staged release smoke tests.\n\nGitOrigin-RevId: 9edfa057a0ef2e323543bb8132c070d336ded1b2",
+            "url": "https://github.com/openai/codex/commit/d63fe536ee2bf4ea7d18d81e0e1be17543bf5b5b"
+          },
+          {
+            "sha": "727283cea5ba30e8cf8bbac6b68a03a4d91cf1b7",
+            "title": "Support managed OpenTelemetry configuration requirements (#57649)",
+            "message": "Support managed OpenTelemetry configuration requirements (#57649)\n\n## What changed\n\n- Allow `requirements.toml` to manage OpenTelemetry logging flags, tool-result byte limits, environment, and log, trace, and metrics exporters.\n- Apply higher-priority managed values over user configuration, replacing exporters atomically and warning when configured values conflict. Preserve unmanaged settings, including `span_attributes` and `tracestate`.\n- Expose managed `otel` settings through `configRequirements/read`, apply them in `config/read` without ordinary field origins, and reject configuration writes that overlap managed fields.\n- Distinguish omitted tool-result limits from explicit values while preserving the runtime default.\n\n## Testing\n\nAdd coverage for requirement precedence, relative TLS paths, override warnings, managed write protection, effective configuration reads, and exporter serialization through the app-server API.\n\nGitOrigin-RevId: 6a3343563bd3acb53a366ea6723684e3d0a4a01d",
+            "url": "https://github.com/openai/codex/commit/727283cea5ba30e8cf8bbac6b68a03a4d91cf1b7"
+          },
+          {
+            "sha": "bea47c06dfac12ecce362090418e12a6faeedbf9",
+            "title": "Redact OTEL exporter headers in app-server config responses (#57654)",
+            "message": "Redact OTEL exporter headers in app-server config responses (#57654)\n\n## Why\n\nOTEL exporter headers can contain credentials. Configuration responses exposed these values in effective config, source layers, managed requirements, and write-override metadata.\n\n## What changed\n\nReplace header values with `[redacted]` across these responses for log, trace, and metrics exporters while preserving header names. Keep the original values available to runtime exporters, and redact them in debug output. Update protocol schemas and generated client documentation to describe the redacted values.\n\n## Testing\n\nAdd coverage for effective config and source-layer redaction, managed requirements, and single and batch write-override metadata, including header names containing dots. Extend telemetry integration coverage to verify that runtime requests still carry the configured header value.\n\nGitOrigin-RevId: ad24e8b91e615bd36c03c4c0ca205ac64bbd8cbf",
+            "url": "https://github.com/openai/codex/commit/bea47c06dfac12ecce362090418e12a6faeedbf9"
+          },
+          {
+            "sha": "0736b26422266631c8df55c465fafc6a7fbf7dd3",
+            "title": "Fix trace exporter activation after account switches (#57657)",
+            "message": "Fix trace exporter activation after account switches (#57657)\n\n## Why\n\nWhen the app server started with tracing disabled, its subscriber lacked the trace bridge needed to export spans after an account switch enabled tracing. Disabling tracing also left the previous global tracer provider installed.\n\n## What changed\n\n- Always install the reloadable trace layer so account switches can enable trace export without restarting the app server.\n- Replace the global tracer provider with a no-op provider when trace export is disabled, including when all telemetry exporters are disabled.\n\n## Testing\n\nAdd an app-server regression test that starts with tracing disabled, enables a requirements-managed trace exporter on account switch, and verifies export with the parent trace ID preserved. Add a provider unit test verifying that disabling telemetry stops new spans from recording.\n\nGitOrigin-RevId: 3561b748a06e6d7c819f82d9db5889dafd124ad8",
+            "url": "https://github.com/openai/codex/commit/0736b26422266631c8df55c465fafc6a7fbf7dd3"
+          },
+          {
+            "sha": "154e8736a51224e12b2d990753622a2cd8118f54",
+            "title": "Support managed OpenTelemetry metadata and PEM client identities (#57658)",
+            "message": "Support managed OpenTelemetry metadata and PEM client identities (#57658)\n\n## Why\n\nManaged OpenTelemetry requirements could not specify span attributes or tracestate metadata.\n\n## What changed\n\n- Accept `otel.span_attributes` and `otel.tracestate` in requirements, merge them by attribute or member field, and expose them through app-server configuration and requirements reads.\n- Protect required entries and their ancestors from configuration writes while preserving unmanaged sibling values and their origins. For example, requiring `otel.tracestate.vendor.tenant` leaves `vendor.region` writable. Empty metadata maps impose no requirements.\n- Select Rustls when configuring an OTLP HTTP client certificate and private key so PEM client identities are accepted.\n\n## Testing\n\nAdd coverage for metadata precedence, effective configuration, field-level write protection, and preservation of unmanaged values. Add blocking and asynchronous HTTP client construction tests using generated PEM certificates and keys.\n\nGitOrigin-RevId: ada6000cc5e575b9a33451ec4aa58b6686dc20f7",
+            "url": "https://github.com/openai/codex/commit/154e8736a51224e12b2d990753622a2cd8118f54"
+          },
+          {
+            "sha": "26ad281fd1ca712e4f0c7920a6273cf18c961b8a",
+            "title": "Remove detached delivery from `review/start` (#57667)",
+            "message": "Remove detached delivery from `review/start` (#57667)\n\n## What changed\n\n`review/start` now supports only inline reviews on the supplied thread and returns that thread's id as `reviewThreadId`. Clients can omit `delivery`, send `null`, or specify `\"inline\"`; `\"detached\"` is no longer supported.\n\nFor a separate review thread, call `thread/start` followed by `review/start`. To preserve conversation history with custom review instructions, use `thread/fork` followed by `turn/start`.\n\nRemove detached review execution and its app-server dependency on `codex-agent-extension`, and update the protocol schemas and generated clients. Preserve `ReviewDelivery.inline` as a Python enum member.\n\n## Testing\n\nAdd a Python regression test verifying that inline review delivery parses as `ReviewDelivery.inline` and round-trips to the original JSON.\n\nGitOrigin-RevId: ed16c5271c3315ae3afcb3ee78883ed421394b4d",
+            "url": "https://github.com/openai/codex/commit/26ad281fd1ca712e4f0c7920a6273cf18c961b8a"
+          },
+          {
+            "sha": "f021168bde5357009fceb0477835ad90bd54c17c",
+            "title": "Wait for turn profiles before asserting sampling counts in trace tests (#57692)",
+            "message": "Wait for turn profiles before asserting sampling counts in trace tests (#57692)\n\n## Why\n\n`ShutdownComplete` can arrive before detached task cleanup records and exports `codex.turn_profile` events, causing the turn phase trace test to read incomplete profile counts.\n\n## What changed\n\nPoll exported spans until the expected number of profiles is available, with a 10-second timeout, before asserting sampling request and retry counts for reply and interrupt cases.\n\nGitOrigin-RevId: 43cdcdde71bbcd16ed2e6c8b2accaa2a5de03001",
+            "url": "https://github.com/openai/codex/commit/f021168bde5357009fceb0477835ad90bd54c17c"
+          },
+          {
+            "sha": "d09a5cd8cfbbdaeb956c1de5ac1a9d733ef475bd",
+            "title": "Move Guardian review state into the reviewer extension (#57697)",
+            "message": "Move Guardian review state into the reviewer extension (#57697)\n\n## What changed\n\nMove review state, fork history, checkpoint recovery bookkeeping, and Node REPL evidence admission into `codex-guardian-reviewer`. Expose helpers for session initialization and snapshot publication, and update core to delegate to them while preserving the existing review logic.\n\nGitOrigin-RevId: 56d6a0124301a3c70908614d4bc3bfe970ac1c85",
+            "url": "https://github.com/openai/codex/commit/d09a5cd8cfbbdaeb956c1de5ac1a9d733ef475bd"
+          },
+          {
+            "sha": "13b0217567d310bd1c295f12539422a2bc224480",
+            "title": "Move Guardian context policy and prompts into the reviewer extension (#57698)",
+            "message": "Move Guardian context policy and prompts into the reviewer extension (#57698)\n\n## What changed\n\nMove `GuardianContextMode`, parent compaction checkpoint policy, and reviewer instruction assembly into `codex-guardian-reviewer`. Export the conversation-history prompt and follow-up reminder from the same crate, and update core to use these shared definitions.\n\nKeep session-specific authorization version lookup in core while preserving existing context selection, checkpoint validation, and prompt behavior.\n\nGitOrigin-RevId: a4cadb6c8ad95e756467316b7d8658e8cd527b24",
+            "url": "https://github.com/openai/codex/commit/13b0217567d310bd1c295f12539422a2bc224480"
+          },
+          {
+            "sha": "e6de6a2423f9a723c098db3d17ea6c71e93bfcf2",
+            "title": "Move Guardian review evidence into the reviewer extension (#57702)",
+            "message": "Move Guardian review evidence into the reviewer extension (#57702)\n\n## What changed\n\nMove review evidence storage, authorization snapshots, sender exchange selection,\nand bounded Node REPL evidence into `codex-guardian-reviewer`. Update core to\ncall or re-export these APIs while retaining host-specific context rendering and\ncapture-mode selection.\n\nMove the existing Node REPL evidence and text truncation tests alongside their\nimplementations in the reviewer crate.\n\nGitOrigin-RevId: d851cd353cf9f31eb47ce13f43f6f935dc2f5d93",
+            "url": "https://github.com/openai/codex/commit/e6de6a2423f9a723c098db3d17ea6c71e93bfcf2"
+          },
+          {
+            "sha": "e742db9f7ba98e63e502b310857d49d047888518",
+            "title": "Preserve parent routing affinity for Guardian reviews (#57710)",
+            "message": "Preserve parent routing affinity for Guardian reviews (#57710)\n\n## Why\n\nShared routing cookies can change after a parent connection is established. Guardian reviews need the routing affinity captured with their parent response so unrelated traffic does not replace that hint.\n\n## What changed\n\n- Capture `__oailb` and `__cflb` cookies from successful ChatGPT WebSocket handshakes and pair them with the parent response ID.\n- Retain the snapshot throughout a review and its retries, and apply it only to Guardian requests with the matching parent response. Reconnect cached reviewer sockets when the parent affinity changes.\n- Preserve cookie expiry and restrict reuse to the original secure origin and endpoint path. Replace routing cookies while retaining unrelated cookies, and keep the captured affinity out of prompts, history, and serialized metadata.\n\n## Testing\n\nAdd coverage for cookie scope, expiry, duplicate rejection, and merging; replaying a captured pin after shared cookies change or are deleted; and retaining the matching parent snapshot through compaction without exposing cookies in review prompts or metadata.\n\nGitOrigin-RevId: d180679e6265b612a3617f20ca1f5dec89e73aa8",
+            "url": "https://github.com/openai/codex/commit/e742db9f7ba98e63e502b310857d49d047888518"
+          },
+          {
+            "sha": "5d5e5c507def46c4e53b30441cf8198c8663c9d2",
+            "title": "Move `ReviewAction` into the Guardian reviewer crate (#57720)",
+            "message": "Move `ReviewAction` into the Guardian reviewer crate (#57720)\n\n## What changed\n\nExport `ReviewAction` and its conversion from `GuardianApprovalRequest` from\n`codex-guardian-reviewer`. Keep host-specific approval preparation and environment\nvalidation in core as standalone functions, and update callers accordingly.\n\n## Testing\n\nMove the `write_stdin` serialization and tool-call provenance test into the\nreviewer crate, preserving coverage for input, Windows working directories, and\nsandbox permission modes.\n\nGitOrigin-RevId: 9a1caf9bbb67ba017e4950a2da9ef2543b013007",
+            "url": "https://github.com/openai/codex/commit/5d5e5c507def46c4e53b30441cf8198c8663c9d2"
+          },
+          {
+            "sha": "6f8bf683cee83ed4d580a2e106b587d8451db936",
+            "title": "Disable optimization for the on-demand Bazel schema generator (#57723)",
+            "message": "Disable optimization for the on-demand Bazel schema generator (#57723)\n\n## Why\n\nThe short-lived schema exporter sits on the critical path of application builds. Optimizing its full test harness adds unnecessary compilation work.\n\n## What changed\n\nCompile `schema-generator-on-demand` with `-Copt-level=0` and keep debug assertions disabled with `-Cdebug-assertions=no`, preserving exec-mode assertion behavior.\n\nGitOrigin-RevId: ef1b3a80d9484e1656349ed0d2cc2d63e5e17624",
+            "url": "https://github.com/openai/codex/commit/6f8bf683cee83ed4d580a2e106b587d8451db936"
+          },
+          {
+            "sha": "5fd36fc5502136160a28a6bebec3590b0df9179a",
+            "title": "Remove `free_guardian` configuration from Guardian tests (#57729)",
+            "message": "Remove `free_guardian` configuration from Guardian tests (#57729)\n\nRemove `[features.guardianv2].free_guardian` setup and test parameters\nfrom the Guardian review suite, along with redundant opt-in cases.\nRetain coverage for authentication-dependent requests, HTTP fallback,\nand session prewarming and reuse without explicitly setting the flag.\n\nGitOrigin-RevId: ba1f985ae2f7f0e0b0c8b32cb47ac9993cbb43f2",
+            "url": "https://github.com/openai/codex/commit/5fd36fc5502136160a28a6bebec3590b0df9179a"
+          },
+          {
+            "sha": "6c839b3694167f73a4f66bba098576fe4281b18f",
+            "title": "Separate test-only Rust sources from Bazel library and binary inputs (#57741)",
+            "message": "Separate test-only Rust sources from Bazel library and binary inputs (#57741)\n\n## What changed\n\nAdd `unit_test_srcs` to `codex_rust_crate` to exclude test-only modules from library and binary sources while making them available to unit tests through `compile_data`.\n\nConfigure `codex-core` and `codex-tui` to use this option for their test modules and support files.\n\nGitOrigin-RevId: 437b5ddb75e66a96f3c5cb9b309cb0e2608ba169",
+            "url": "https://github.com/openai/codex/commit/6c839b3694167f73a4f66bba098576fe4281b18f"
+          },
+          {
+            "sha": "29e3c61b482bf7f3f03c1fa8954fda68408a3780",
+            "title": "Avoid recompiling Bazel integration tests for runtime fixture changes (#57742)",
+            "message": "Avoid recompiling Bazel integration tests for runtime fixture changes (#57742)\n\n## Why\n\nRuntime fixtures and snapshots should not invalidate integration-test compilation.\n\n## What changed\n\nLimit integration-test `compile_data` to Rust modules and explicitly declared embedded resources, while keeping all test files available as runtime data. Declare the embedded patch fixture in `exec` and PEM fixtures in `http-client` through `integration_compile_data_extra`.\n\nGitOrigin-RevId: 7d76809f9a7defdc40c90dc74d393e84e2c376b8",
+            "url": "https://github.com/openai/codex/commit/29e3c61b482bf7f3f03c1fa8954fda68408a3780"
+          },
+          {
+            "sha": "ce2d47bdc4dd2513d5b3567090593b07b0fdfa0a",
+            "title": "Move Guardian MCP elicitation helpers into the reviewer crate (#57743)",
+            "message": "Move Guardian MCP elicitation helpers into the reviewer crate (#57743)\n\n## What changed\n\nExtract MCP approval elicitation parsing and review-decision response conversion from `core/src/session/mcp.rs` into `codex-guardian-reviewer`. Export the helpers and `GuardianElicitationReview` for the session code to use, while keeping session lookup, provenance checks, and approval enforcement in the host.\n\n## Testing\n\nMove the existing elicitation tests into the reviewer crate, retaining coverage for request construction, opt-in requirements, unsupported forms, decision mapping, and model-specific timeout instructions.\n\nGitOrigin-RevId: fb745fa0e49a29f015bbda16c14b5fc2b12278b9",
+            "url": "https://github.com/openai/codex/commit/ce2d47bdc4dd2513d5b3567090593b07b0fdfa0a"
+          },
+          {
+            "sha": "fc916a22b57e9d7b17988f044a54794d2222ae2c",
+            "title": "Expose Guardian assessments in response streams (#57757)",
+            "message": "Expose Guardian assessments in response streams (#57757)\n\n## What changed\n\nDecode `response.metadata` Guardian assessments into typed `GuardianAssessment` events over SSE and WebSocket, carrying `response_id`, `item_id`, and `requires_review`. Ignore assessments with missing, empty, or incorrectly typed required fields while preserving independent delivery of other metadata.\n\nExpose the assessment type to request-scoped extension interceptors. Keep assessments out of conversation history; they do not authorize tool execution.\n\n## Testing\n\nAdd SSE coverage for assessment ordering, malformed metadata, and mixed metadata delivery. Extend model request tests to cover SSE and WebSocket interceptor delivery and exclusion from subsequent model input.\n\nGitOrigin-RevId: 282b8817ee97346d76b40bcb412eef023df60ff1",
+            "url": "https://github.com/openai/codex/commit/fc916a22b57e9d7b17988f044a54794d2222ae2c"
+          },
+          {
+            "sha": "7c11b8074dbdbab2a3afedf30df7c55f0c6907d8",
+            "title": "Include terminal launch commands in Guardian stdin reviews (#57758)",
+            "message": "Include terminal launch commands in Guardian stdin reviews (#57758)\n\n## Why\n\nGuardian's `write_stdin` approval requests lacked the command used to launch the receiving terminal, leaving reviews without that context.\n\n## What changed\n\n- Carry `original_command` from the terminal's launch command into the approval request and Guardian action JSON. This describes the original launch, not the terminal's current state.\n- Exclude `original_command` from the 8,000-byte stdin approval size check so launch context does not consume the budget for input, permission details, and the approval reason. Launch context remains subject to Guardian's normal request budget.\n\n## Testing\n\nExtend serialization coverage to check `original_command` and the strict stdin review integration test to verify that a launch command longer than 8,000 bytes reaches Guardian intact.\n\nGitOrigin-RevId: cc765a6bf80d080baf94c959eafa6227b2889e1f",
+            "url": "https://github.com/openai/codex/commit/7c11b8074dbdbab2a3afedf30df7c55f0c6907d8"
+          },
+          {
+            "sha": "5c0e42161ee26af222eb3e9853f9c898706b375b",
+            "title": "Respect model catalog origins when selecting Guardian reviewers (#57770)",
+            "message": "Respect model catalog origins when selecting Guardian reviewers (#57770)\n\n## Why\n\nA bundled reviewer entry does not establish that a custom gateway offers that model. Guardian should fall back to the parent model when the reviewer is neither advertised by the provider nor explicitly configured.\n\n## What changed\n\nTrack model metadata origins as `Bundled`, `Provider`, or `ExplicitConfig`, including across catalog merges and cache reloads. Exclude bundled entries from Guardian reviewer selection unless `auto_review_model_override` is set. Continue selecting reviewers from provider and explicitly configured catalogs.\n\n## Testing\n\nAdd coverage for gateway reviewer selection with each catalog origin, plus origin tracking across cache reloads, empty provider responses, and authentication changes.\n\nGitOrigin-RevId: f8bf865d406e56ee0ade90087b55f2e33b98181e",
+            "url": "https://github.com/openai/codex/commit/5c0e42161ee26af222eb3e9853f9c898706b375b"
+          },
+          {
+            "sha": "1cc3cf8060c5f1dbd4e3a4d75e1a77b523e0c1ad",
+            "title": "Skip non-regular files when detecting pasted image paths (#57774)",
+            "message": "Skip non-regular files when detecting pasted image paths (#57774)\n\n## Why\n\nProbing a pasted serial device or FIFO path for image dimensions can block the TUI input loop.\n\n## What changed\n\nOnly probe regular files for image dimensions, leaving pasted device and FIFO paths as literal text.\n\n## Testing\n\nAdd a Unix regression test that pastes a FIFO path and verifies it remains editable with Backspace.\n\nGitOrigin-RevId: c9ae3479f8b14920232e75fe6d2cee86c3300bda",
+            "url": "https://github.com/openai/codex/commit/1cc3cf8060c5f1dbd4e3a4d75e1a77b523e0c1ad"
+          },
+          {
+            "sha": "5fdb50af9518cf39c134e3df0bdfec2be8f09b42",
+            "title": "Restrict code-mode host replacement to session admission (#57782)",
+            "message": "Restrict code-mode host replacement to session admission (#57782)\n\n## Why\n\nAutomatic gRPC reconnection could spawn a replacement host while dispatching an RPC for an existing session. Host loss must remain visible so recovery can report lost state without replaying execution or completed external effects.\n\n## What changed\n\n- Bind each local host channel to one child process and allow only `OpenSession` to replace a dead host.\n- Add caller-owned transport support to `GrpcCodeModeSessionProvider` and map local transport failures to `Unavailable` so initial connection failures use the existing bounded admission retries.\n\n## Testing\n\nAdd regression coverage for child exit during initial connection and between channel selection and dispatch, concurrent session recovery, and child reaping after teardown. An integration test kills the host after a command completes and verifies that recovery reports the reset, clears stored state, and leaves the command's external effect unchanged.\n\nIncrease the remote MCP stalled-handshake test's initialization timeout and mock response delay to let requests reach the server on loaded CI workers.\n\nGitOrigin-RevId: 4ffd810e4cfcfb7a56e606816aa867bc206a09b6",
+            "url": "https://github.com/openai/codex/commit/5fdb50af9518cf39c134e3df0bdfec2be8f09b42"
+          },
+          {
+            "sha": "c8bd6c1da9782bb92cf300a8768f87232b2d5631",
+            "title": "Exclude unrelated network shares from MXC default reads (#57783)",
+            "message": "Exclude unrelated network shares from MXC default reads (#57783)\n\nDefault read access on Windows now excludes network shares unless they contain\nthe policy or command working directory. Skip object-identity probes and\nimplicit read enumeration for unrelated shares while preserving explicit\nread/write grants.\n\nGitOrigin-RevId: 869bacd578989f5348a449277ffbea795494f487",
+            "url": "https://github.com/openai/codex/commit/c8bd6c1da9782bb92cf300a8768f87232b2d5631"
+          },
+          {
+            "sha": "575cc5351efff4380396c0d76f0e93886e4c1806",
+            "title": "Fix app-server thread listener startup and shutdown races (#57787)",
+            "message": "Fix app-server thread listener startup and shutdown races (#57787)\n\n## Why\n\nA thread runtime can shut down while listener setup is awaiting I/O, and a cold resume can start before the previous listener forwards `ShutdownComplete`. Listener replacement must preserve those buffered terminal events.\n\n## What changed\n\n- Coordinate listener installation and connection subscriptions with pending unloads, and reject closing or replaced runtimes.\n- Allow a newly created runtime that has already shut down to drain its queued events, while enforcing one event reader per runtime.\n- Track shutdown draining with a shared watch channel so cold resume and runtime replacement wait for terminal events to be processed.\n- Serialize idle unloading with goal edits and cold resume, and recheck thread state after acquiring the lock.\n\nGitOrigin-RevId: d05e348b0a81bddb2defa963d0cfd3fde08dbd03",
+            "url": "https://github.com/openai/codex/commit/575cc5351efff4380396c0d76f0e93886e4c1806"
+          },
+          {
+            "sha": "7f4d53e928d16ccbb47c00f0fdc39f6f16782437",
+            "title": "Release app-server thread runtimes after shutdown (#57788)",
+            "message": "Release app-server thread runtimes after shutdown (#57788)\n\n## Why\n\nWaiting for the event channel to close after `ShutdownComplete` retains the thread runtime because the thread owns its event sender. Remaining subscribers still need late notifications after shutdown.\n\n## What changed\n\n- Release runtime references after `ShutdownComplete` while keeping the listener command queue available for ordered notifications and late request resolutions.\n- Preserve other subscribers when a client unsubscribes or disconnects from an unloaded thread, and serialize terminal cleanup with cold resumes.\n- Return the thread-closing error when `thread/resume` encounters a terminated runtime or a listener that cannot complete the request.\n- Close the status watch when removing a thread so a later load gets a fresh watch.\n\n## Testing\n\nAdd regression coverage for listeners attached before and after shutdown, verifying runtime release, preservation of remaining subscribers, late notification delivery, and rejection of resumes against a terminated runtime. Add a test that removing and reloading a thread closes the old status watch.\n\nGitOrigin-RevId: 6dda8f83a0fbe06c9a713e9801356753a0de172e",
+            "url": "https://github.com/openai/codex/commit/7f4d53e928d16ccbb47c00f0fdc39f6f16782437"
+          },
+          {
+            "sha": "84bef6ea8c747f01216df126bbb40fbc12a8adb1",
+            "title": "Refresh the model catalog once when Guardian's default reviewer is missing (#57789)",
+            "message": "Refresh the model catalog once when Guardian's default reviewer is missing (#57789)\n\n## Why\n\nWhen `codex-auto-review` is missing from the model catalog, Guardian falls back to the parent model. Refresh the catalog before accepting that fallback so reviews and checkpoint compatibility checks can use the default reviewer when it becomes available.\n\n## What changed\n\n- Share one refresh attempt per parent session, preserving it across cancelled waiters and retaining the parent fallback if recovery fails.\n- Respect explicit reviewer overrides and custom catalogs, and skip recovery for basic sessions.\n- Resolve reviewers from the in-memory catalog so a failed disk cache write does not discard a recovered reviewer.\n- Apply review deadlines and cancellation to configuration setup, and avoid reviewer resolution during history replay unless checkpoint compatibility requires it.\n\n## Testing\n\nAdd coverage for recovery, failed fetches and cache writes, overrides and custom catalogs, checkpoint compatibility, cancelled prewarming, review deadlines, and interruption.\n\nGitOrigin-RevId: 87ae285713afde518a12bc2daba006a043b13bc5",
+            "url": "https://github.com/openai/codex/commit/84bef6ea8c747f01216df126bbb40fbc12a8adb1"
+          },
+          {
+            "sha": "c6fce1caceaae6c4b2896e5c5ae456b5be3bf501",
+            "title": "Centralize synchronous Guardian prompt preparation (#57790)",
+            "message": "Centralize synchronous Guardian prompt preparation (#57790)\n\n## What changed\n\n- Separate evidence collection from prompt preparation and pass reviewer history, model limits, and image preparation policy through shared `guardian-context` APIs.\n- Detect captured images before composition and measure reviewer history tokens only when images and a valid context window require it.\n- Share instruction and native-message delivery filtering across budget checks, including restoration of retained evidence after history changes.\n\nGitOrigin-RevId: 65ef53cf0bc22e1bde9abfb7a9ffce65cfab6f1c",
+            "url": "https://github.com/openai/codex/commit/c6fce1caceaae6c4b2896e5c5ae456b5be3bf501"
+          },
+          {
+            "sha": "22aec5f2b01a6d4d9e43f8ffad40cfaf41583494",
+            "title": "Extend GitHub release read retries and add jitter (#57796)",
+            "message": "Extend GitHub release read retries and add jitter (#57796)\n\nIncrease GitHub release reads for contract runners from three to five\nattempts, with base retry delays of 2, 5, 15, and 45 seconds. Add random\njitter of up to half the base delay before each retry.\n\nGitOrigin-RevId: 9d66ab21a7f7646a9f737e65c08284e82f39991b",
+            "url": "https://github.com/openai/codex/commit/22aec5f2b01a6d4d9e43f8ffad40cfaf41583494"
+          },
+          {
+            "sha": "c92700d2993707ee16eb63b35a1cdd7fcc563f69",
+            "title": "Backfill exec completion items through paginated history (#57800)",
+            "message": "Backfill exec completion items through paginated history (#57800)\n\n## Why\n\n`codex exec` recovers turn items at completion because item notifications can be dropped under backpressure. This recovery needs to respect the thread's history mode.\n\n## What changed\n\nFor paginated threads, fetch every page from `thread/items/list`, scoped to the completed turn. Preserve items already present in the completion notification when merging the recovered history, and stop recovery if a cursor repeats. Keep `thread/read` recovery for other history modes.\n\n## Testing\n\nAdd regression coverage for recovering a final answer across multiple item pages and for a failed fork recovering only its own turn.\n\nGitOrigin-RevId: f005ca2cf9d8313bbbf32ed4c228ebb5e51428a2",
+            "url": "https://github.com/openai/codex/commit/c92700d2993707ee16eb63b35a1cdd7fcc563f69"
+          },
+          {
+            "sha": "ef186f812ae447283776a2968fe1f8083e0d8ce7",
+            "title": "Detach realtime sideband observers without ending the session (#57817)",
+            "message": "Detach realtime sideband observers without ending the session (#57817)\n\n## Why\n\nStopping a sideband observer should close its WebSocket while preserving the frontend-owned realtime session. The existing frameless session close also sends `session.close`, so observer shutdown needs a transport-only close.\n\n## What changed\n\n- Add `close_transport()` to send a normal WebSocket close without `session.close`.\n- Close the sideband transport on cancellation or when the call becomes inactive, including an existing connection awaiting adoption by the input task. Bound the close attempt to five seconds.\n- Thread an optional sideband base URL through realtime start processing and allow nested thread ID fields in request serialization scopes.\n\n## Testing\n\nAdd WebSocket and core conversation regression tests covering observer detachment for both realtime parsers and conversation versions. Verify that explicit frameless session close still sends `session.close`.\n\nGitOrigin-RevId: 874a8980b0fcd45058e976b00c0d968f5b4b2404",
+            "url": "https://github.com/openai/codex/commit/ef186f812ae447283776a2968fe1f8083e0d8ce7"
+          },
+          {
+            "sha": "f37aa4b1c202236f16099cbed191355f9165303b",
+            "title": "Reduce unnecessary work in configuration processing (#57818)",
+            "message": "Reduce unnecessary work in configuration processing (#57818)\n\n## What changed\n\n- Skip path resolution for empty TOML tables and apply resolved values in place, preserving unknown keys and omitting defaults introduced by deserialization.\n- Avoid scanning project trust entries after an exact lookup misses on non-Windows platforms. On Windows, select the smallest case-insensitive matching key without allocating and sorting a list.\n- Only build the effective configuration for credential-origin filtering when credential origins are present.\n\nGitOrigin-RevId: 77f1b24ffc4ec49c686331c318c5452fd0de170e",
+            "url": "https://github.com/openai/codex/commit/f37aa4b1c202236f16099cbed191355f9165303b"
+          },
+          {
+            "sha": "7f60546e85efb3146cb4eb4d27deeb43ff43025e",
+            "title": "Load up to eight plugins concurrently (#57819)",
+            "message": "Load up to eight plugins concurrently (#57819)\n\n## What changed\n\nOverlap independent plugin filesystem and skill loads with a concurrency limit of eight. Consume results in configured-name order to preserve duplicate MCP server precedence and startup hook warning order.\n\n## Testing\n\nAdd a regression test with ten plugins that verifies skill loads overlap within the concurrency limit, results match sequential loading, and MCP precedence and hook warnings are preserved.\n\nGitOrigin-RevId: 6ce8a05954fad157d8559abe9fd2dc684692cf3e",
+            "url": "https://github.com/openai/codex/commit/7f60546e85efb3146cb4eb4d27deeb43ff43025e"
+          },
+          {
+            "sha": "78a3185ecba7ca3422f14589aeac97059649f60f",
+            "title": "Improve TUI reconnect recovery and offline exit handling (#57820)",
+            "message": "Improve TUI reconnect recovery and offline exit handling (#57820)\n\n## What changed\n\n- Allow `/quit` and `/exit` while offline, exiting without waiting for server shutdown.\n- Retry `thread/resume` when the server reports `serverShuttingDown` instead of treating the conversation as unavailable.\n- Report which reconnect stage timed out, including waiting for server shutdown, without exposing transport errors that may contain endpoint credentials.\n\n## Testing\n\nExtend regression coverage for offline quit commands and stage-specific timeout messages. Update the reconnect integration test to exercise a draining server and verify that local approval and sandbox settings are preserved.\n\nGitOrigin-RevId: 4f6ed33db809f56ea09fc9423f3ffe28f22b7cc5",
+            "url": "https://github.com/openai/codex/commit/78a3185ecba7ca3422f14589aeac97059649f60f"
+          },
+          {
+            "sha": "e6c5a837995581da973a3e6e9cbb7fcd2d99f4ce",
+            "title": "Include directly attached threads in diagnostic uploads (#57824)",
+            "message": "Include directly attached threads in diagnostic uploads (#57824)\n\n## What changed\n\nWhen a diagnostic upload includes logs, include saved threads attached directly to the reported thread in the existing bounded thread selection alongside spawned descendants. Query attached threads from the state database, including archived threads, so their rollouts, logs, and retained review failures can be collected. Log a warning and continue if the lookup fails.\n\n## Testing\n\nExtend the upload integration test to verify that the rollout archive includes the reported and directly attached threads, excludes unrelated threads, and is omitted when logs are disabled.\n\nGitOrigin-RevId: 1bcd2794938339fb4b1c433c3731f507601cd8a4",
+            "url": "https://github.com/openai/codex/commit/e6c5a837995581da973a3e6e9cbb7fcd2d99f4ce"
+          },
+          {
+            "sha": "2f47f9779282e6b273ad14bd29bec4561627083e",
+            "title": "Update CI setup to use `meta/install-dotslash` (#57825)",
+            "message": "Update CI setup to use `meta/install-dotslash` (#57825)\n\nGitOrigin-RevId: f41342a7f09ca7e2047feffca9cad0cb261058a7",
+            "url": "https://github.com/openai/codex/commit/2f47f9779282e6b273ad14bd29bec4561627083e"
+          },
+          {
+            "sha": "ab190cdfdf3f9796a27232b4e206c106462cbf3b",
+            "title": "Build V8 from source by default in Bazel (#57832)",
+            "message": "Build V8 from source by default in Bazel (#57832)\n\n## Why\n\nSource-built V8 archives and generated Rust bindings must agree on their ABI, including in debug builds. Linux platform selection must also distinguish GNU and musl when using LLVM platforms.\n\n## What changed\n\n- Always select source-built V8 archives and matching bindings for Bazel consumers, removing the `rusty_v8_from_source` flag.\n- Use LLVM's libc-aware Linux selectors for archives, bindings, headers, and bindgen targets.\n- Keep `V8_ENABLE_CHECKS` undefined in debug builds to match Rust's `HandleScope` layout, and set `V8_LOGGING_LEVEL=2` for debug verification.\n- Include compiler-rt builtins in the ARM64 GNU/Linux archive to provide `__clear_cache`.\n- Set the Intel macOS minimum version for `codex-code-mode-host` releases to 10.13 for V8's aligned allocation support.\n\n## Testing\n\nAlways include the existing ignored CppGC ABI checks in Bazel `v8-poc` unit tests and remove their exclusion from Bazel CI.\n\nGitOrigin-RevId: f698a47502154cdfb80febed02e4465d9f2d1e0c",
+            "url": "https://github.com/openai/codex/commit/ab190cdfdf3f9796a27232b4e206c106462cbf3b"
+          },
+          {
+            "sha": "3da7de59b6411caa96b56856ac87370518ac1653",
+            "title": "Add isolated Guardian assessments for prepared actions (#57834)",
+            "message": "Add isolated Guardian assessments for prepared actions (#57834)\n\n## What changed\n\nAdd `ReviewInput` to bundle an approval request with its captured parent history and review context. Its `assess_isolated` method runs a fresh reviewer without publishing a live approval, honors deadlines and cancellation, and returns a `GuardianAssessment` or review error.\n\nShare review parameter construction with the live review path and extract assessment parsing and error conversion into `GuardianReviewSessionOutcome::into_assessment`.\n\n## Testing\n\nAdd a mock-backed test that verifies the isolated assessment is returned and the reviewer receives the captured history without instructions added after capture.\n\nGitOrigin-RevId: 10dd5fddf5fc58bfab124f5962a6b7f45d435c83",
+            "url": "https://github.com/openai/codex/commit/3da7de59b6411caa96b56856ac87370518ac1653"
+          },
+          {
+            "sha": "55503b23d4cfcef7ad2dd0acf409143832ec01d2",
+            "title": "Limit concurrent image availability checks to eight (#57835)",
+            "message": "Limit concurrent image availability checks to eight (#57835)\n\nReplace `join_all` with a buffered stream in `replace_unresolvable_image_files` so at most eight distinct image file IDs are checked concurrently. Collect unavailable IDs as checks complete before replacing their image content with placeholders.\n\nGitOrigin-RevId: 2a9ed8742fbb6157c99c69a15f212df3ed88810c",
+            "url": "https://github.com/openai/codex/commit/55503b23d4cfcef7ad2dd0acf409143832ec01d2"
+          },
+          {
+            "sha": "d359945843dbb73b89204b1f793f7737ba39f821",
+            "title": "Declare the image generation result type in code mode (#57836)",
+            "message": "Declare the image generation result type in code mode (#57836)\n\n## What changed\n\nAdd an output schema for `image_gen.imagegen` so its code-mode declaration returns `Promise<{ image_url: string; output_hint?: string; }>`. Direct API tool serialization remains unchanged.\n\n## Testing\n\nAdd coverage for the generated return type and unchanged direct API serialization, assert the full declaration in the app-server integration test, and verify that code-mode results omit oversized output hints.\n\nGitOrigin-RevId: b3cee52a6b68c881f0c7507e791cc0fe86ca0d24",
+            "url": "https://github.com/openai/codex/commit/d359945843dbb73b89204b1f793f7737ba39f821"
+          },
+          {
+            "sha": "b91f2515f5719446dad5402036ac59f43a4c407a",
+            "title": "Ship the standalone executor in release packages (#57837)",
+            "message": "Ship the standalone executor in release packages (#57837)\n\n## What changed\n\n- Include `codex-exec-server` in canonical CLI and app-server packages and advertise its path through `execServer` in `codex-package.json`.\n- Build and sign the executor in release workflows, preserve signed prebuilt inputs, and verify packaged signatures. Use empty entitlements for the macOS executor.\n- Have installers check for the executor when package metadata advertises it, while continuing to accept older packages.\n- Omit the standalone executor and its manifest entry from npm packages to stay within npm's package size limit. Keep `codex exec-server` and its runtime helpers available.\n\n## Testing\n\nAdd package smoke tests for executor initialization, version reporting, filesystem and process sandbox enforcement, and invalid-argument/configuration parity with `codex exec-server`. Extend archive, npm staging, and macOS signing tests to cover executor contents, executable permissions, preserved bytes, and entitlement verification.\n\nGitOrigin-RevId: bc741fe7faa6fe631d076de18d448c55247c23c7",
+            "url": "https://github.com/openai/codex/commit/b91f2515f5719446dad5402036ac59f43a4c407a"
+          },
+          {
+            "sha": "c62e9df39f3bc2e1eae124a79075e9bc5555fe1a",
+            "title": "Preserve reasoning token accounting across resume and fork (#57839)",
+            "message": "Preserve reasoning token accounting across resume and fork (#57839)\n\n## Why\n\nResuming or forking a thread loses the session flag indicating that reported token usage already includes retained reasoning. Counting that reasoning again can trigger automatic compaction too early.\n\n## What changed\n\nPersist `last_usage_includes_reasoning` with `TokenUsageInfo` and use it when estimating context usage. Record the flag with completed sampling and compaction usage, and mark local estimates as including reasoning. Older records without the field retain the existing accounting behavior.\n\n## Testing\n\nAdd coverage for saved inclusive, exclusive, and legacy token counts. Extend the encrypted-reasoning compaction test to verify the compaction threshold for live, forked, and cold-resumed threads.\n\nGitOrigin-RevId: 9f22262a693111ec0406dce11804eb4844ad8983",
+            "url": "https://github.com/openai/codex/commit/c62e9df39f3bc2e1eae124a79075e9bc5555fe1a"
+          },
+          {
+            "sha": "7ce5fa7bdc1e816cc1306f93dba7dc7bede3a3de",
+            "title": "Validate thread providers before resume and input (#57840)",
+            "message": "Validate thread providers before resume and input (#57840)\n\n## Why\n\nExisting chats retain their provider configuration when the selected provider changes. Reject resume and input until the configured provider matches the chat, while keeping history readable and allowing recovery after configuration is restored.\n\n## What changed\n\n- Validate saved providers before applying resume overrides, preserving the provider when only model or reasoning settings change.\n- Check the current provider selection, including profiles and launch overrides, before accepting input. Reject input when configuration cannot be loaded.\n- Return structured `ModelProviderError` data for provider mismatches, missing definitions, and policy conflicts, with generated JSON Schema, TypeScript, and Python types.\n\n## Testing\n\nAdd coverage for override bypass prevention, provider restoration, readable history after rejection, and blocked requests sending no inference traffic. Verify schema fields and Python round trips match the error wire format.\n\nGitOrigin-RevId: 051f97c3815c547d8411c71b770df30eae969f68",
+            "url": "https://github.com/openai/codex/commit/7ce5fa7bdc1e816cc1306f93dba7dc7bede3a3de"
+          },
+          {
+            "sha": "d373d649673ca8a5bca71f54be0ae47dbd79b466",
+            "title": "Add optional process metrics sampling for code-mode hosts (#57841)",
+            "message": "Add optional process metrics sampling for code-mode hosts (#57841)\n\n## What changed\n\n- Add `GetProcessMetrics` and provider sampling APIs for process ID, start time, cumulative CPU time, and resident memory, exposed through `ThreadManager` without creating a thread or session.\n- Distinguish unsupported collection, a locally absent host, and sampling failures. Process-owned providers never start or replace a host when sampling.\n- Bound gRPC sampling to one second without retries or explicit connection resets. Run optional collectors on a detached worker with at most one collection in flight, so stalled collection cannot block the HTTP/2 driver or runtime shutdown.\n\n## Testing\n\nAdd coverage for snapshots, collector errors and panics, deadlines, overload, and shutdown with a stuck collector. Extend lifecycle tests to check that sampling preserves session state and keepalive behavior without starting or restarting local hosts.\n\nGitOrigin-RevId: eeafe275891d0464636f28a29345a87aed1a12dc",
+            "url": "https://github.com/openai/codex/commit/d373d649673ca8a5bca71f54be0ae47dbd79b466"
+          },
+          {
+            "sha": "4f093f2748667f3b0e6a07e3d4055121cbd3ce64",
+            "title": "Release 0.166.0-alpha.6",
+            "message": "Release 0.166.0-alpha.6",
+            "url": "https://github.com/openai/codex/commit/4f093f2748667f3b0e6a07e3d4055121cbd3ce64"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.166.0-alpha.5",
+          "head": "rust-v0.166.0-alpha.6",
+          "url": "https://github.com/openai/codex/compare/rust-v0.166.0-alpha.5...rust-v0.166.0-alpha.6",
+          "status": "diverged",
+          "total": 46,
+          "behind": 1,
+          "complete": true,
+          "fetched": 46
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.166.0-alpha.6:2026-10-29T16:28:42.683Z",
+      "kind": "release-notes-saved",
+      "at": "2026-10-29T16:28:42.683Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.166.0-alpha.6",
+        "title": "0.166.0-alpha.6",
+        "body": "Release 0.166.0-alpha.6\n\n",
+        "authored": false,
+        "fetchedAt": "2026-10-29T16:28:42.689Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.6",
         "publishedAt": "2026-10-29T01:41:25Z",
         "commits": [
