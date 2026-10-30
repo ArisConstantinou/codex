@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-30T07:19:28.853Z",
+  "generatedAt": "2026-10-30T19:39:43.242Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -10701,6 +10701,83 @@
         "comparison": null,
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/helping-websites-express-ai-training-preferences",
+      "at": "2026-10-30T09:30:00.000Z",
+      "url": "https://openai.com/index/helping-websites-express-ai-training-preferences",
+      "text": "Making it easier for websites to express AI training preferences. OpenAI will honor a shared robots.txt signal to help website operators communicate their AI training preferences to participating providers.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/community-safety-report-and-new-protections-for-teens",
+      "at": "2026-10-30T09:00:00.000Z",
+      "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
+      "text": "Community safety report and new protections for teens. OpenAI is strengthening violence prevention in ChatGPT with expanded safeguards, earlier interventions, and a new commitment to public safety reporting.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/credit-saison",
+      "at": "2026-10-29T00:00:00.000Z",
+      "url": "https://openai.com/index/credit-saison",
+      "text": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot. Credit Saison’s ChatGPT Enterprise pilot delivered 954% ROI. See how leaders and employees helped turn the results into companywide adoption.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-status:01M6754SR14HCQ3E9FX426E2N7",
+      "at": "2026-10-30T19:38:47.000Z",
+      "url": "https://status.openai.com/incidents/01M6754SR14HCQ3E9FX426E2N7",
+      "text": "Elevated errors with search in Dots, ChatGPT Work, and certain ChatGPT thinking experiences. We’re aware of issues affecting search in Dots, ChatGPT Work, and some ChatGPT thinking experiences.\n\nWe’re investigating and will share updates here.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "investigating",
+      "publishedAt": "2026-10-30T19:38:47.000Z"
+    },
+    {
+      "id": "openai-status:01M66KSDH67V5BQ73PE8AD2W8S",
+      "at": "2026-10-30T18:36:55.000Z",
+      "url": "https://status.openai.com/incidents/01M66KSDH67V5BQ73PE8AD2W8S",
+      "text": "Elevated errors for GPT Image 2 API image edits. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-10-30T14:35:28.000Z"
     }
   ],
   "sources": {
@@ -10709,7 +10786,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-10-30T07:19:27.630Z",
+      "lastSuccessAt": "2026-10-30T19:39:42.215Z",
       "error": null,
       "count": 150
     },
@@ -10718,7 +10795,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-10-30T07:19:27.630Z",
+      "lastSuccessAt": "2026-10-30T19:39:42.215Z",
       "error": null,
       "count": 10
     },
@@ -10727,7 +10804,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-10-30T07:19:27.630Z",
+      "lastSuccessAt": "2026-10-30T19:39:42.215Z",
       "error": null,
       "count": 25
     }
@@ -42479,6 +42556,108 @@
         "commits": [],
         "comparison": null,
         "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/helping-websites-express-ai-training-preferences:2026-10-30T19:39:43.242Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-30T19:39:43.242Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/helping-websites-express-ai-training-preferences",
+        "at": "2026-10-30T09:30:00.000Z",
+        "url": "https://openai.com/index/helping-websites-express-ai-training-preferences",
+        "text": "Making it easier for websites to express AI training preferences. OpenAI will honor a shared robots.txt signal to help website operators communicate their AI training preferences to participating providers.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/community-safety-report-and-new-protections-for-teens:2026-10-30T19:39:43.242Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-30T19:39:43.242Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/community-safety-report-and-new-protections-for-teens",
+        "at": "2026-10-30T09:00:00.000Z",
+        "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
+        "text": "Community safety report and new protections for teens. OpenAI is strengthening violence prevention in ChatGPT with expanded safeguards, earlier interventions, and a new commitment to public safety reporting.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/credit-saison:2026-10-30T19:39:43.242Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-30T19:39:43.242Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/credit-saison",
+        "at": "2026-10-29T00:00:00.000Z",
+        "url": "https://openai.com/index/credit-saison",
+        "text": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot. Credit Saison’s ChatGPT Enterprise pilot delivered 954% ROI. See how leaders and employees helped turn the results into companywide adoption.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-status:01M6754SR14HCQ3E9FX426E2N7:2026-10-30T19:39:43.242Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-30T19:39:43.242Z",
+      "item": {
+        "id": "openai-status:01M6754SR14HCQ3E9FX426E2N7",
+        "at": "2026-10-30T19:38:47.000Z",
+        "url": "https://status.openai.com/incidents/01M6754SR14HCQ3E9FX426E2N7",
+        "text": "Elevated errors with search in Dots, ChatGPT Work, and certain ChatGPT thinking experiences. We’re aware of issues affecting search in Dots, ChatGPT Work, and some ChatGPT thinking experiences.\n\nWe’re investigating and will share updates here.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "investigating",
+        "publishedAt": "2026-10-30T19:38:47.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M66KSDH67V5BQ73PE8AD2W8S:2026-10-30T19:39:43.242Z",
+      "kind": "official-item-observed",
+      "at": "2026-10-30T19:39:43.242Z",
+      "item": {
+        "id": "openai-status:01M66KSDH67V5BQ73PE8AD2W8S",
+        "at": "2026-10-30T18:36:55.000Z",
+        "url": "https://status.openai.com/incidents/01M66KSDH67V5BQ73PE8AD2W8S",
+        "text": "Elevated errors for GPT Image 2 API image edits. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-10-30T14:35:28.000Z"
       }
     }
   ],
