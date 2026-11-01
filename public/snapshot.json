@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-01T19:34:40.283Z",
+  "generatedAt": "2026-11-01T23:02:24.093Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -10948,6 +10948,62 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.3",
+      "at": "2026-11-01T22:30:00.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.3",
+      "text": "0.167.0-alpha.3. Release 0.167.0-alpha.3",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.167.0-alpha.3",
+        "title": "0.167.0-alpha.3",
+        "body": "Release 0.167.0-alpha.3\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-01T23:02:24.097Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.3",
+        "publishedAt": "2026-11-01T22:26:17Z",
+        "commits": [
+          {
+            "sha": "fe16bc0a97d9ffe548b3afddb96ca6ae261f0d81",
+            "title": "Release superseded assistant text from live paginated history (#58751)",
+            "message": "Release superseded assistant text from live paginated history (#58751)\n\n## Why\n\nLive paginated history retains completed assistant text even when summaries only need the latest message. Release older text for threads with persisted history while preserving full resume responses.\n\n## What changed\n\n- Evict superseded assistant text from live turn state while preserving corrected items and the latest assistant message.\n- Restore evicted text for full resume responses from prepared history pages, fetching remaining items by ID in bounded batches. Return an error if saved text is missing.\n- Only load the active turn when it belongs in the requested initial page, and use the item ID index for targeted history reads.\n\n## Testing\n\nAdd reducer coverage for text eviction and corrected messages. Extend running-thread resume coverage to compare full and summary items with live notifications, exercise restoration when the prepared page lacks the active turn, and check missing-text errors.\n\nGitOrigin-RevId: 3229c0cea820f117dc6331312f1e6056a8d1d52c",
+            "url": "https://github.com/openai/codex/commit/fe16bc0a97d9ffe548b3afddb96ca6ae261f0d81"
+          },
+          {
+            "sha": "cb1bc0ae4ed996c67a6e118bf79a7435f0d3f0d2",
+            "title": "Remove Bazel outputs from DotSlash release configs (#58757)",
+            "message": "Remove Bazel outputs from DotSlash release configs (#58757)\n\n## Why\n\nThe DotSlash configs require Bazel assets that are absent from the Cargo-only release asset fixture for `0.167.0-alpha.2`.\n\n## What changed\n\nRemove the Bazel outputs for Codex, the Windows command runner and sandbox setup, and provisioned macOS packages from the release configs.\n\n## Testing\n\nAdd regression tests using the release asset fixture to verify that every configured output has a matching asset and that missing Codex and provisioned macOS package assets are detected.\n\nGitOrigin-RevId: ed10a56717e0a7c6c566087b64621bd3ff042412",
+            "url": "https://github.com/openai/codex/commit/cb1bc0ae4ed996c67a6e118bf79a7435f0d3f0d2"
+          },
+          {
+            "sha": "5978db4733a25260f5abec7c4b3046e8902e14f8",
+            "title": "Release 0.167.0-alpha.3",
+            "message": "Release 0.167.0-alpha.3",
+            "url": "https://github.com/openai/codex/commit/5978db4733a25260f5abec7c4b3046e8902e14f8"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.167.0-alpha.2",
+          "head": "rust-v0.167.0-alpha.3",
+          "url": "https://github.com/openai/codex/compare/rust-v0.167.0-alpha.2...rust-v0.167.0-alpha.3",
+          "status": "diverged",
+          "total": 3,
+          "behind": 1,
+          "complete": true,
+          "fetched": 3
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -10956,7 +11012,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-01T19:34:39.553Z",
+      "lastSuccessAt": "2026-11-01T23:02:23.354Z",
       "error": null,
       "count": 150
     },
@@ -10965,7 +11021,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-01T19:34:39.553Z",
+      "lastSuccessAt": "2026-11-01T23:02:23.354Z",
       "error": null,
       "count": 10
     },
@@ -10974,7 +11030,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-01T19:34:39.553Z",
+      "lastSuccessAt": "2026-11-01T23:02:23.354Z",
       "error": null,
       "count": 25
     }
@@ -43162,6 +43218,113 @@
           "behind": 1,
           "complete": true,
           "fetched": 17
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.3:2026-11-01T23:02:24.093Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-01T23:02:24.093Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.3",
+        "at": "2026-11-01T22:30:00.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.3",
+        "text": "0.167.0-alpha.3. Release 0.167.0-alpha.3",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.167.0-alpha.3",
+          "title": "0.167.0-alpha.3",
+          "body": "Release 0.167.0-alpha.3\n\n",
+          "authored": false,
+          "fetchedAt": "2026-11-01T23:02:24.097Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.3",
+          "publishedAt": "2026-11-01T22:26:17Z",
+          "commits": [
+            {
+              "sha": "fe16bc0a97d9ffe548b3afddb96ca6ae261f0d81",
+              "title": "Release superseded assistant text from live paginated history (#58751)",
+              "message": "Release superseded assistant text from live paginated history (#58751)\n\n## Why\n\nLive paginated history retains completed assistant text even when summaries only need the latest message. Release older text for threads with persisted history while preserving full resume responses.\n\n## What changed\n\n- Evict superseded assistant text from live turn state while preserving corrected items and the latest assistant message.\n- Restore evicted text for full resume responses from prepared history pages, fetching remaining items by ID in bounded batches. Return an error if saved text is missing.\n- Only load the active turn when it belongs in the requested initial page, and use the item ID index for targeted history reads.\n\n## Testing\n\nAdd reducer coverage for text eviction and corrected messages. Extend running-thread resume coverage to compare full and summary items with live notifications, exercise restoration when the prepared page lacks the active turn, and check missing-text errors.\n\nGitOrigin-RevId: 3229c0cea820f117dc6331312f1e6056a8d1d52c",
+              "url": "https://github.com/openai/codex/commit/fe16bc0a97d9ffe548b3afddb96ca6ae261f0d81"
+            },
+            {
+              "sha": "cb1bc0ae4ed996c67a6e118bf79a7435f0d3f0d2",
+              "title": "Remove Bazel outputs from DotSlash release configs (#58757)",
+              "message": "Remove Bazel outputs from DotSlash release configs (#58757)\n\n## Why\n\nThe DotSlash configs require Bazel assets that are absent from the Cargo-only release asset fixture for `0.167.0-alpha.2`.\n\n## What changed\n\nRemove the Bazel outputs for Codex, the Windows command runner and sandbox setup, and provisioned macOS packages from the release configs.\n\n## Testing\n\nAdd regression tests using the release asset fixture to verify that every configured output has a matching asset and that missing Codex and provisioned macOS package assets are detected.\n\nGitOrigin-RevId: ed10a56717e0a7c6c566087b64621bd3ff042412",
+              "url": "https://github.com/openai/codex/commit/cb1bc0ae4ed996c67a6e118bf79a7435f0d3f0d2"
+            },
+            {
+              "sha": "5978db4733a25260f5abec7c4b3046e8902e14f8",
+              "title": "Release 0.167.0-alpha.3",
+              "message": "Release 0.167.0-alpha.3",
+              "url": "https://github.com/openai/codex/commit/5978db4733a25260f5abec7c4b3046e8902e14f8"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.167.0-alpha.2",
+            "head": "rust-v0.167.0-alpha.3",
+            "url": "https://github.com/openai/codex/compare/rust-v0.167.0-alpha.2...rust-v0.167.0-alpha.3",
+            "status": "diverged",
+            "total": 3,
+            "behind": 1,
+            "complete": true,
+            "fetched": 3
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.3:2026-11-01T23:02:24.093Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-01T23:02:24.093Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.167.0-alpha.3",
+        "title": "0.167.0-alpha.3",
+        "body": "Release 0.167.0-alpha.3\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-01T23:02:24.097Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.3",
+        "publishedAt": "2026-11-01T22:26:17Z",
+        "commits": [
+          {
+            "sha": "fe16bc0a97d9ffe548b3afddb96ca6ae261f0d81",
+            "title": "Release superseded assistant text from live paginated history (#58751)",
+            "message": "Release superseded assistant text from live paginated history (#58751)\n\n## Why\n\nLive paginated history retains completed assistant text even when summaries only need the latest message. Release older text for threads with persisted history while preserving full resume responses.\n\n## What changed\n\n- Evict superseded assistant text from live turn state while preserving corrected items and the latest assistant message.\n- Restore evicted text for full resume responses from prepared history pages, fetching remaining items by ID in bounded batches. Return an error if saved text is missing.\n- Only load the active turn when it belongs in the requested initial page, and use the item ID index for targeted history reads.\n\n## Testing\n\nAdd reducer coverage for text eviction and corrected messages. Extend running-thread resume coverage to compare full and summary items with live notifications, exercise restoration when the prepared page lacks the active turn, and check missing-text errors.\n\nGitOrigin-RevId: 3229c0cea820f117dc6331312f1e6056a8d1d52c",
+            "url": "https://github.com/openai/codex/commit/fe16bc0a97d9ffe548b3afddb96ca6ae261f0d81"
+          },
+          {
+            "sha": "cb1bc0ae4ed996c67a6e118bf79a7435f0d3f0d2",
+            "title": "Remove Bazel outputs from DotSlash release configs (#58757)",
+            "message": "Remove Bazel outputs from DotSlash release configs (#58757)\n\n## Why\n\nThe DotSlash configs require Bazel assets that are absent from the Cargo-only release asset fixture for `0.167.0-alpha.2`.\n\n## What changed\n\nRemove the Bazel outputs for Codex, the Windows command runner and sandbox setup, and provisioned macOS packages from the release configs.\n\n## Testing\n\nAdd regression tests using the release asset fixture to verify that every configured output has a matching asset and that missing Codex and provisioned macOS package assets are detected.\n\nGitOrigin-RevId: ed10a56717e0a7c6c566087b64621bd3ff042412",
+            "url": "https://github.com/openai/codex/commit/cb1bc0ae4ed996c67a6e118bf79a7435f0d3f0d2"
+          },
+          {
+            "sha": "5978db4733a25260f5abec7c4b3046e8902e14f8",
+            "title": "Release 0.167.0-alpha.3",
+            "message": "Release 0.167.0-alpha.3",
+            "url": "https://github.com/openai/codex/commit/5978db4733a25260f5abec7c4b3046e8902e14f8"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.167.0-alpha.2",
+          "head": "rust-v0.167.0-alpha.3",
+          "url": "https://github.com/openai/codex/compare/rust-v0.167.0-alpha.2...rust-v0.167.0-alpha.3",
+          "status": "diverged",
+          "total": 3,
+          "behind": 1,
+          "complete": true,
+          "fetched": 3
         },
         "comparisonError": null
       }
