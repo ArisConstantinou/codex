@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-01T15:02:24.303Z",
+  "generatedAt": "2026-11-01T19:34:40.283Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -10808,6 +10808,146 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.2",
+      "at": "2026-11-01T19:05:03.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.2",
+      "text": "0.167.0-alpha.2. Release 0.167.0-alpha.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.167.0-alpha.2",
+        "title": "0.167.0-alpha.2",
+        "body": "Release 0.167.0-alpha.2\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-01T19:34:40.289Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.2",
+        "publishedAt": "2026-11-01T19:00:13Z",
+        "commits": [
+          {
+            "sha": "22fbf8de8ec18144c770dc94bf1efbebc08688b3",
+            "title": "Preserve Apps usage instructions in model catalog messages (#58441)",
+            "message": "Preserve Apps usage instructions in model catalog messages (#58441)\n\n## What changed\n\nAdd optional `ModelMessages.apps` and `AppsMessages.usage_instructions` fields to carry model catalog wording without runtime interpretation. Missing or null values become `None`, and strings retain their exact contents, including empty strings, whitespace, and template-like text.\n\n## Testing\n\nAdd serialization coverage for nullable and literal Apps values, and extend existing tests to verify Apps messages survive model response round trips and base instruction overrides.\n\nGitOrigin-RevId: 49b516656255e07b91f8f4679e2acb8e1b03f9e1",
+            "url": "https://github.com/openai/codex/commit/22fbf8de8ec18144c770dc94bf1efbebc08688b3"
+          },
+          {
+            "sha": "2f452e74b2dfd7e927f90d8b1d573beae521b9c8",
+            "title": "Cap Guardian context entries before elastic allocation (#58444)",
+            "message": "Cap Guardian context entries before elastic allocation (#58444)\n\n## What changed\n\n- Add `prepare_elastic_entries` to cap required and optional supporting text before allocating whole optional entries. Measure rendered content, including JSON escaping, metadata, and framing, while preserving truncation markers.\n- Keep exact planned-action JSON, images, audio, and opaque native payloads whole. Mark shortened sources incomplete and record truncation sizes.\n- Expose token estimation and synchronous delivery preparation on `PreparedElasticContext` so deduplication uses the capped representations.\n\n## Testing\n\nAdd tests for required and optional entry caps, transcript metadata preservation, unchanged short entries and opaque payloads, and exact action preservation with rejection when the request budget cannot accommodate the action.\n\nGitOrigin-RevId: 23008fb03d15d501e5d602f0584f70b473c2c2e8",
+            "url": "https://github.com/openai/codex/commit/2f452e74b2dfd7e927f90d8b1d573beae521b9c8"
+          },
+          {
+            "sha": "a795f961be68383738e56ac396742b3e8451696a",
+            "title": "Make viewed image paths clickable in the TUI (#58446)",
+            "message": "Make viewed image paths clickable in the TUI (#58446)\n\n## What changed\n\n- Add terminal file hyperlinks to viewed image filenames and transcript paths, including older history loaded through pagination.\n- Enable links only for local workspaces outside SSH sessions. Require a local regular file with a recognized image extension on both the original and resolved paths, and reject Windows reparse points.\n- Preserve links when summaries are truncated or transcript paths wrap.\n\n## Testing\n\nAdd coverage for local versus remote workspace links and for hyperlink destinations and column ranges in compact and expanded image rows.\n\nGitOrigin-RevId: a7dff255c280ad4e609644e6f5ef5e130d9a55fb",
+            "url": "https://github.com/openai/codex/commit/a795f961be68383738e56ac396742b3e8451696a"
+          },
+          {
+            "sha": "26cc28631406375d55d2915c5730d42a016847b3",
+            "title": "Add elastic budgeting for Guardian context preparation (#58454)",
+            "message": "Add elastic budgeting for Guardian context preparation (#58454)\n\n## What changed\n\nIntroduce `ContextBudgeting::Elastic` to prepare captured root conversation and Node REPL evidence without the fixed per-section request caps. Elastic preparation preserves message text and candidates for later allocation while retaining storage omission notices and legacy source deduplication.\n\nKeep `ContextBudgeting::Fixed` as the default and use it at existing call sites.\n\n## Testing\n\nAdd tests covering elastic root message preservation and legacy source deduplication, plus REPL text, images, and omission counts in text-only and multimodal modes.\n\nGitOrigin-RevId: ce4fae9d725694456525a413fb511166df6f5e2c",
+            "url": "https://github.com/openai/codex/commit/26cc28631406375d55d2915c5730d42a016847b3"
+          },
+          {
+            "sha": "7656a23b8d404447f6eb0b4b947f45e5e139e49e",
+            "title": "Preserve incomplete response output in failed inference traces (#58456)",
+            "message": "Preserve incomplete response output in failed inference traces (#58456)\n\n## Why\n\nWhen a response fails with incomplete output, attempted tool calls can appear only in the terminal response payload. Failed inference traces previously omitted those items, losing evidence of the attempted call.\n\n## What changed\n\nRetain output items marked `incomplete` on `ResponseIncompleteError` and include recognized items in failed inference traces, deduplicating by item ID. Keep these items out of streamed output, tool dispatch, and the continuation cache, and omit their payloads from the error's debug representation.\n\n## Testing\n\nAdd tests for retaining only incomplete output from terminal responses and recording attempted calls in failed traces without streaming them or creating tool calls. Cover unknown response item types being skipped.\n\nGitOrigin-RevId: 594f6a37a5af543694f19fcffe0c164cb2addb36",
+            "url": "https://github.com/openai/codex/commit/7656a23b8d404447f6eb0b4b947f45e5e139e49e"
+          },
+          {
+            "sha": "1da2aefe001b333340fe8b012b18b072c49cc743",
+            "title": "Enable cross-backend session switching in the TUI (#58457)",
+            "message": "Enable cross-backend session switching in the TUI (#58457)\n\n## Why\n\nThe session picker can list conversations from multiple backends, but selecting a conversation owned by another backend was rejected.\n\n## What changed\n\n- Resume selected conversations through their owning backend, preparing the destination before replacing the current conversation. Preserve drafts and restore the destination's settings, account state, model catalog, and workspace services.\n- Block backend switches during an active turn and retain the current conversation when destination preparation fails.\n- Queue background backend requests until that backend is displayed, removing requests that are resolved or disconnected. Isolate background events from the displayed conversation while continuing to deliver notifications to a background voice session.\n- Track backend ownership for thread detachment, startup results, and reconnect attempts.\n- Remove the `yaml-rust` advisory exception from `codex-rs/deny.toml`.\n\n## Testing\n\nAdd regression coverage for backend handoff errors, detaching through the source connection, clearing stale provider errors, deferred request delivery and cleanup, and voice-session closure on a background backend.\n\nGitOrigin-RevId: 1bba84f16831af1d5295c1404f48803ce0608d3d",
+            "url": "https://github.com/openai/codex/commit/1da2aefe001b333340fe8b012b18b072c49cc743"
+          },
+          {
+            "sha": "67f0994b532b8740f14b5b738af7b7b2a915b1d6",
+            "title": "Tighten Bazel CI snapshot handling and OTLP test cleanup (#58459)",
+            "message": "Tighten Bazel CI snapshot handling and OTLP test cleanup (#58459)\n\n## Why\n\nFailed snapshot assertions should print their diffs without leaving `.snap.new` files after a passing retry. The OTLP loopback collector should stop once exporter shutdown completes instead of waiting for its deadline.\n\n## What changed\n\n- Set `INSTA_UPDATE=no` for Bazel CI tests, including the local configuration used when no BuildBuddy API key is available.\n- Initialize the OTLP provider before starting the collector's deadline in the Tokio bounded-shutdown test.\n- Signal the collector to stop after shutdown and join its thread before propagating any shutdown error.\n\nGitOrigin-RevId: 55b050822ec923894c9edbc8f039f35f693a4b7e",
+            "url": "https://github.com/openai/codex/commit/67f0994b532b8740f14b5b738af7b7b2a915b1d6"
+          },
+          {
+            "sha": "456ae93b6326306f9efd34b2d6b6321d3caa5e07",
+            "title": "Extract fresh session adoption from TUI session startup (#58713)",
+            "message": "Extract fresh session adoption from TUI session startup (#58713)\n\n## What changed\n\nBundle the started thread, configuration, and local settings in\n`PreparedFreshSession`, and move session activation into `adopt_fresh_session`.\nThe helper preserves input state, switches threads, applies settings, names the\nsession, and attaches the chat widget with a caller-supplied presentation.\n\n`start_fresh_session` delegates to the helper with\n`ThreadAttachPresentation::Fresh`, preserving its existing behavior.\n\nGitOrigin-RevId: c4fdb6b5024a024f6baa48610e62a8e6628de30a",
+            "url": "https://github.com/openai/codex/commit/456ae93b6326306f9efd34b2d6b6321d3caa5e07"
+          },
+          {
+            "sha": "f7f1f0196c710238eb586b02110247a030644a6e",
+            "title": "Sort agent center tasks by recency within status groups (#58714)",
+            "message": "Sort agent center tasks by recency within status groups (#58714)\n\n## What changed\n\nKeep unpinned tasks ordered by descending update time within each status group as tasks arrive, change status, or refresh. Clearing a search or status filter also reflects timestamp changes to hidden tasks.\n\nKeep pinned tasks at the top of their respective status groups in pin order, and mark their titles with 📌 instead of placing them in a separate Pinned group when grouping by status.\n\n## Testing\n\nUpdate ordering tests and snapshots to cover arrivals, status transitions, rediscovered tasks, filters, pins, and adjacent selection after hiding tasks.\n\nGitOrigin-RevId: 2f3320a17b1932294f421dd28af848f0e0be45ef",
+            "url": "https://github.com/openai/codex/commit/f7f1f0196c710238eb586b02110247a030644a6e"
+          },
+          {
+            "sha": "5e07d1f694972c0caa62c2e7d4108fa47695d2c7",
+            "title": "Support OSC 52 clipboard forwarding through GNU screen (#58716)",
+            "message": "Support OSC 52 clipboard forwarding through GNU screen (#58716)\n\n## What changed\n\nDetect GNU screen via `STY` when `TMUX` is absent and wrap OSC 52 clipboard sequences in DCS passthrough strings. Split the sequence into 252-byte chunks to stay below screen's older 256-byte string limit while forwarding one continuous OSC 52 sequence to the outer terminal.\n\nPrepare the terminal sequence in the clipboard worker and retain it for deferred delivery.\n\n## Testing\n\nAdd coverage for short text and a longer Unicode payload, checking that each passthrough chunk stays below the limit and that reassembling the chunks reproduces the complete OSC 52 sequence.\n\nGitOrigin-RevId: 1a042ed4fed817179e98459f4f4b2b847b160721",
+            "url": "https://github.com/openai/codex/commit/5e07d1f694972c0caa62c2e7d4108fa47695d2c7"
+          },
+          {
+            "sha": "231c8abd2f4f7e3e14aa3e54bcf8136435e6f2f3",
+            "title": "Make Bazel checks advisory and pause Bazel release artifacts (#58717)",
+            "message": "Make Bazel checks advisory and pause Bazel release artifacts (#58717)\n\n## Why\n\nThe BuildBuddy key is revoked. Temporarily keep Bazel-dependent checks from blocking CI and release only Cargo artifacts.\n\n## What changed\n\n- Remove Bazel from the `blocking-ci` required dependencies.\n- Make the Bazel-backed argument comment lint and SDK jobs advisory, and stop requiring the lint job to succeed in the Rust CI results check.\n- Restrict release build and packaging matrices to Cargo, including Windows and provisioned macOS packages, and exclude Bazel binaries and symbols from release artifact downloads.\n\nGitOrigin-RevId: 2c0d23471bbd0ab2eb4d90d318b518d0b33db97f",
+            "url": "https://github.com/openai/codex/commit/231c8abd2f4f7e3e14aa3e54bcf8136435e6f2f3"
+          },
+          {
+            "sha": "8c811e8d93839103b5185d1f6324ebd2671adff1",
+            "title": "Support rendering TUI conversations within an inset area (#58718)",
+            "message": "Support rendering TUI conversations within an inset area (#58718)\n\n## What changed\n\nSplit conversation rendering into preparation, painting, and post-draw steps. Use the supplied conversation bounds for transcript wrapping, composer layout, suggestion overlays, cursor placement, and the empty-state animation.\n\nPreserve surrounding text and image placements during input-triggered redraws. Keep centered dialogs relative to the full viewport and restore neighboring content when they close.\n\n## Testing\n\nExtend regression tests and add a snapshot for conversations rendered at an offset, covering selection, link hit testing, cursor placement, scroll preservation, neighboring images, and dialog dismissal.\n\nGitOrigin-RevId: 0dbca3f8d1064f2d58856c3bc77a4dab1c099cdd",
+            "url": "https://github.com/openai/codex/commit/8c811e8d93839103b5185d1f6324ebd2671adff1"
+          },
+          {
+            "sha": "e02a32cd51ab40b503e2e6eac42b47585851134d",
+            "title": "Wire native voice dependencies into full Rust CI (#58719)",
+            "message": "Wire native voice dependencies into full Rust CI (#58719)\n\n## What changed\n\n- Build native voice SDK and runtime artifacts with Bazel for Linux GNU, macOS, and Windows on x64 and ARM64, then configure Cargo jobs to consume them. Keep musl builds in a separate job without these inputs.\n- Validate artifact receipts against the target, source commit, and source manifest; verify SDK file hashes and relocate pkg-config metadata. Package the runtime and plugins with nextest archives and restore `CODEX_TEST_VOICE_RUNTIME` when running shards.\n- Prepare native Windows voice tools for argument-comment linting and install ARM64 DotSlash on Windows ARM64. Reduce archive disk usage, bound Linux ARM64 build concurrency, and correct the JUnit artifact path.\n- Recognize TLS errors wrapped directly in `io::Error`. Make TLS fallback fixtures select the native backend explicitly, allow the MCP test server's non-loopback address, and isolate skill-root tests from ancestor Git markers. Install `git` in remote test containers and filter MCP discovery assertions to POST requests.\n\n## Testing\n\nAdd tests for relocated voice inputs, Windows ARM64 import libraries with host-native pkgconf, and rejection of mismatched receipts or corrupt SDK files. Extend untrusted-certificate coverage to an explicitly selected rustls backend.\n\nGitOrigin-RevId: da3ff690b94906edc1f8f60a3c7feda1bf66134a",
+            "url": "https://github.com/openai/codex/commit/e02a32cd51ab40b503e2e6eac42b47585851134d"
+          },
+          {
+            "sha": "181b4a853d396f009a3a02b9c36eb393e6acbe75",
+            "title": "Prioritize pending approvals in the subagent picker (#58720)",
+            "message": "Prioritize pending approvals in the subagent picker (#58720)\n\n## What changed\n\n- Group threads needing approval first in `/subagents`, mark them with `(needs approval)`, and initially select the first waiting thread.\n- Refresh the open picker and approval notice as requests and agent metadata change, preserving the selected thread when rows move.\n- Use consistent agent labels across the picker and approval notice, preferring agent paths and using UUID suffixes to distinguish unnamed agents.\n- Track approval requests that arrive before thread metadata and refresh pending approvals after reconnecting.\n\n## Testing\n\nExtend the picker test and snapshots to cover approvals arriving while the picker is open, agent paths arriving later, and selection staying on the same thread after reordering.\n\nGitOrigin-RevId: b7dd943d151ce98d1978f7c6b9f5e16903b9075b",
+            "url": "https://github.com/openai/codex/commit/181b4a853d396f009a3a02b9c36eb393e6acbe75"
+          },
+          {
+            "sha": "54201ea65a3501d09a87c776376a0c16aa39db70",
+            "title": "Add naming and navigation helpers for TUI backend sessions (#58722)",
+            "message": "Add naming and navigation helpers for TUI backend sessions (#58722)\n\n## What changed\n\nAdd `BackendSessions` helpers to name the displayed listening backend, find the first listening backend, and cycle through listening backends in registration order. Cycling wraps around, skips closed streams, and excludes the current backend. Display names use `Local` for the initial session and `Backend N` for additional sessions; a closed displayed stream has no name.\n\n## Testing\n\nExtend backend session tests to cover cycling with a single backend, wraparound across three backends, and skipping a closed stream.\n\nGitOrigin-RevId: e8f3fcc38a178b6b91d385d65d899fdd042062c5",
+            "url": "https://github.com/openai/codex/commit/54201ea65a3501d09a87c776376a0c16aa39db70"
+          },
+          {
+            "sha": "4b4a5cf25aa5b064c866218b405c848745fd280f",
+            "title": "Use local Bazel for voice release builds (#58727)",
+            "message": "Use local Bazel for voice release builds (#58727)\n\n## Why\n\nBuildBuddy credentials are unavailable for voice release builds.\n\n## What changed\n\nSet `BUILDBUDDY_API_KEY` to an empty string in the Linux, macOS, and Windows voice release build steps so the Bazel wrappers use their local configuration.\n\nGitOrigin-RevId: 69e47d6b6077fbb74b5895eacbe587766345b7ec",
+            "url": "https://github.com/openai/codex/commit/4b4a5cf25aa5b064c866218b405c848745fd280f"
+          },
+          {
+            "sha": "81ce93bb29427520f2ed07ed434e054bb188ea8e",
+            "title": "Release 0.167.0-alpha.2",
+            "message": "Release 0.167.0-alpha.2",
+            "url": "https://github.com/openai/codex/commit/81ce93bb29427520f2ed07ed434e054bb188ea8e"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.167.0-alpha.1",
+          "head": "rust-v0.167.0-alpha.2",
+          "url": "https://github.com/openai/codex/compare/rust-v0.167.0-alpha.1...rust-v0.167.0-alpha.2",
+          "status": "diverged",
+          "total": 17,
+          "behind": 1,
+          "complete": true,
+          "fetched": 17
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -10816,7 +10956,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-01T15:02:23.512Z",
+      "lastSuccessAt": "2026-11-01T19:34:39.553Z",
       "error": null,
       "count": 150
     },
@@ -10825,7 +10965,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-01T15:02:23.512Z",
+      "lastSuccessAt": "2026-11-01T19:34:39.553Z",
       "error": null,
       "count": 10
     },
@@ -10834,7 +10974,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-01T15:02:23.512Z",
+      "lastSuccessAt": "2026-11-01T19:34:39.553Z",
       "error": null,
       "count": 25
     }
@@ -42749,6 +42889,281 @@
         "origin": "direct-official",
         "serviceStatus": "resolved",
         "publishedAt": "2026-10-30T19:38:47.000Z"
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.2:2026-11-01T19:34:40.283Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-01T19:34:40.283Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.2",
+        "at": "2026-11-01T19:05:03.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.2",
+        "text": "0.167.0-alpha.2. Release 0.167.0-alpha.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.167.0-alpha.2",
+          "title": "0.167.0-alpha.2",
+          "body": "Release 0.167.0-alpha.2\n\n",
+          "authored": false,
+          "fetchedAt": "2026-11-01T19:34:40.289Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.2",
+          "publishedAt": "2026-11-01T19:00:13Z",
+          "commits": [
+            {
+              "sha": "22fbf8de8ec18144c770dc94bf1efbebc08688b3",
+              "title": "Preserve Apps usage instructions in model catalog messages (#58441)",
+              "message": "Preserve Apps usage instructions in model catalog messages (#58441)\n\n## What changed\n\nAdd optional `ModelMessages.apps` and `AppsMessages.usage_instructions` fields to carry model catalog wording without runtime interpretation. Missing or null values become `None`, and strings retain their exact contents, including empty strings, whitespace, and template-like text.\n\n## Testing\n\nAdd serialization coverage for nullable and literal Apps values, and extend existing tests to verify Apps messages survive model response round trips and base instruction overrides.\n\nGitOrigin-RevId: 49b516656255e07b91f8f4679e2acb8e1b03f9e1",
+              "url": "https://github.com/openai/codex/commit/22fbf8de8ec18144c770dc94bf1efbebc08688b3"
+            },
+            {
+              "sha": "2f452e74b2dfd7e927f90d8b1d573beae521b9c8",
+              "title": "Cap Guardian context entries before elastic allocation (#58444)",
+              "message": "Cap Guardian context entries before elastic allocation (#58444)\n\n## What changed\n\n- Add `prepare_elastic_entries` to cap required and optional supporting text before allocating whole optional entries. Measure rendered content, including JSON escaping, metadata, and framing, while preserving truncation markers.\n- Keep exact planned-action JSON, images, audio, and opaque native payloads whole. Mark shortened sources incomplete and record truncation sizes.\n- Expose token estimation and synchronous delivery preparation on `PreparedElasticContext` so deduplication uses the capped representations.\n\n## Testing\n\nAdd tests for required and optional entry caps, transcript metadata preservation, unchanged short entries and opaque payloads, and exact action preservation with rejection when the request budget cannot accommodate the action.\n\nGitOrigin-RevId: 23008fb03d15d501e5d602f0584f70b473c2c2e8",
+              "url": "https://github.com/openai/codex/commit/2f452e74b2dfd7e927f90d8b1d573beae521b9c8"
+            },
+            {
+              "sha": "a795f961be68383738e56ac396742b3e8451696a",
+              "title": "Make viewed image paths clickable in the TUI (#58446)",
+              "message": "Make viewed image paths clickable in the TUI (#58446)\n\n## What changed\n\n- Add terminal file hyperlinks to viewed image filenames and transcript paths, including older history loaded through pagination.\n- Enable links only for local workspaces outside SSH sessions. Require a local regular file with a recognized image extension on both the original and resolved paths, and reject Windows reparse points.\n- Preserve links when summaries are truncated or transcript paths wrap.\n\n## Testing\n\nAdd coverage for local versus remote workspace links and for hyperlink destinations and column ranges in compact and expanded image rows.\n\nGitOrigin-RevId: a7dff255c280ad4e609644e6f5ef5e130d9a55fb",
+              "url": "https://github.com/openai/codex/commit/a795f961be68383738e56ac396742b3e8451696a"
+            },
+            {
+              "sha": "26cc28631406375d55d2915c5730d42a016847b3",
+              "title": "Add elastic budgeting for Guardian context preparation (#58454)",
+              "message": "Add elastic budgeting for Guardian context preparation (#58454)\n\n## What changed\n\nIntroduce `ContextBudgeting::Elastic` to prepare captured root conversation and Node REPL evidence without the fixed per-section request caps. Elastic preparation preserves message text and candidates for later allocation while retaining storage omission notices and legacy source deduplication.\n\nKeep `ContextBudgeting::Fixed` as the default and use it at existing call sites.\n\n## Testing\n\nAdd tests covering elastic root message preservation and legacy source deduplication, plus REPL text, images, and omission counts in text-only and multimodal modes.\n\nGitOrigin-RevId: ce4fae9d725694456525a413fb511166df6f5e2c",
+              "url": "https://github.com/openai/codex/commit/26cc28631406375d55d2915c5730d42a016847b3"
+            },
+            {
+              "sha": "7656a23b8d404447f6eb0b4b947f45e5e139e49e",
+              "title": "Preserve incomplete response output in failed inference traces (#58456)",
+              "message": "Preserve incomplete response output in failed inference traces (#58456)\n\n## Why\n\nWhen a response fails with incomplete output, attempted tool calls can appear only in the terminal response payload. Failed inference traces previously omitted those items, losing evidence of the attempted call.\n\n## What changed\n\nRetain output items marked `incomplete` on `ResponseIncompleteError` and include recognized items in failed inference traces, deduplicating by item ID. Keep these items out of streamed output, tool dispatch, and the continuation cache, and omit their payloads from the error's debug representation.\n\n## Testing\n\nAdd tests for retaining only incomplete output from terminal responses and recording attempted calls in failed traces without streaming them or creating tool calls. Cover unknown response item types being skipped.\n\nGitOrigin-RevId: 594f6a37a5af543694f19fcffe0c164cb2addb36",
+              "url": "https://github.com/openai/codex/commit/7656a23b8d404447f6eb0b4b947f45e5e139e49e"
+            },
+            {
+              "sha": "1da2aefe001b333340fe8b012b18b072c49cc743",
+              "title": "Enable cross-backend session switching in the TUI (#58457)",
+              "message": "Enable cross-backend session switching in the TUI (#58457)\n\n## Why\n\nThe session picker can list conversations from multiple backends, but selecting a conversation owned by another backend was rejected.\n\n## What changed\n\n- Resume selected conversations through their owning backend, preparing the destination before replacing the current conversation. Preserve drafts and restore the destination's settings, account state, model catalog, and workspace services.\n- Block backend switches during an active turn and retain the current conversation when destination preparation fails.\n- Queue background backend requests until that backend is displayed, removing requests that are resolved or disconnected. Isolate background events from the displayed conversation while continuing to deliver notifications to a background voice session.\n- Track backend ownership for thread detachment, startup results, and reconnect attempts.\n- Remove the `yaml-rust` advisory exception from `codex-rs/deny.toml`.\n\n## Testing\n\nAdd regression coverage for backend handoff errors, detaching through the source connection, clearing stale provider errors, deferred request delivery and cleanup, and voice-session closure on a background backend.\n\nGitOrigin-RevId: 1bba84f16831af1d5295c1404f48803ce0608d3d",
+              "url": "https://github.com/openai/codex/commit/1da2aefe001b333340fe8b012b18b072c49cc743"
+            },
+            {
+              "sha": "67f0994b532b8740f14b5b738af7b7b2a915b1d6",
+              "title": "Tighten Bazel CI snapshot handling and OTLP test cleanup (#58459)",
+              "message": "Tighten Bazel CI snapshot handling and OTLP test cleanup (#58459)\n\n## Why\n\nFailed snapshot assertions should print their diffs without leaving `.snap.new` files after a passing retry. The OTLP loopback collector should stop once exporter shutdown completes instead of waiting for its deadline.\n\n## What changed\n\n- Set `INSTA_UPDATE=no` for Bazel CI tests, including the local configuration used when no BuildBuddy API key is available.\n- Initialize the OTLP provider before starting the collector's deadline in the Tokio bounded-shutdown test.\n- Signal the collector to stop after shutdown and join its thread before propagating any shutdown error.\n\nGitOrigin-RevId: 55b050822ec923894c9edbc8f039f35f693a4b7e",
+              "url": "https://github.com/openai/codex/commit/67f0994b532b8740f14b5b738af7b7b2a915b1d6"
+            },
+            {
+              "sha": "456ae93b6326306f9efd34b2d6b6321d3caa5e07",
+              "title": "Extract fresh session adoption from TUI session startup (#58713)",
+              "message": "Extract fresh session adoption from TUI session startup (#58713)\n\n## What changed\n\nBundle the started thread, configuration, and local settings in\n`PreparedFreshSession`, and move session activation into `adopt_fresh_session`.\nThe helper preserves input state, switches threads, applies settings, names the\nsession, and attaches the chat widget with a caller-supplied presentation.\n\n`start_fresh_session` delegates to the helper with\n`ThreadAttachPresentation::Fresh`, preserving its existing behavior.\n\nGitOrigin-RevId: c4fdb6b5024a024f6baa48610e62a8e6628de30a",
+              "url": "https://github.com/openai/codex/commit/456ae93b6326306f9efd34b2d6b6321d3caa5e07"
+            },
+            {
+              "sha": "f7f1f0196c710238eb586b02110247a030644a6e",
+              "title": "Sort agent center tasks by recency within status groups (#58714)",
+              "message": "Sort agent center tasks by recency within status groups (#58714)\n\n## What changed\n\nKeep unpinned tasks ordered by descending update time within each status group as tasks arrive, change status, or refresh. Clearing a search or status filter also reflects timestamp changes to hidden tasks.\n\nKeep pinned tasks at the top of their respective status groups in pin order, and mark their titles with 📌 instead of placing them in a separate Pinned group when grouping by status.\n\n## Testing\n\nUpdate ordering tests and snapshots to cover arrivals, status transitions, rediscovered tasks, filters, pins, and adjacent selection after hiding tasks.\n\nGitOrigin-RevId: 2f3320a17b1932294f421dd28af848f0e0be45ef",
+              "url": "https://github.com/openai/codex/commit/f7f1f0196c710238eb586b02110247a030644a6e"
+            },
+            {
+              "sha": "5e07d1f694972c0caa62c2e7d4108fa47695d2c7",
+              "title": "Support OSC 52 clipboard forwarding through GNU screen (#58716)",
+              "message": "Support OSC 52 clipboard forwarding through GNU screen (#58716)\n\n## What changed\n\nDetect GNU screen via `STY` when `TMUX` is absent and wrap OSC 52 clipboard sequences in DCS passthrough strings. Split the sequence into 252-byte chunks to stay below screen's older 256-byte string limit while forwarding one continuous OSC 52 sequence to the outer terminal.\n\nPrepare the terminal sequence in the clipboard worker and retain it for deferred delivery.\n\n## Testing\n\nAdd coverage for short text and a longer Unicode payload, checking that each passthrough chunk stays below the limit and that reassembling the chunks reproduces the complete OSC 52 sequence.\n\nGitOrigin-RevId: 1a042ed4fed817179e98459f4f4b2b847b160721",
+              "url": "https://github.com/openai/codex/commit/5e07d1f694972c0caa62c2e7d4108fa47695d2c7"
+            },
+            {
+              "sha": "231c8abd2f4f7e3e14aa3e54bcf8136435e6f2f3",
+              "title": "Make Bazel checks advisory and pause Bazel release artifacts (#58717)",
+              "message": "Make Bazel checks advisory and pause Bazel release artifacts (#58717)\n\n## Why\n\nThe BuildBuddy key is revoked. Temporarily keep Bazel-dependent checks from blocking CI and release only Cargo artifacts.\n\n## What changed\n\n- Remove Bazel from the `blocking-ci` required dependencies.\n- Make the Bazel-backed argument comment lint and SDK jobs advisory, and stop requiring the lint job to succeed in the Rust CI results check.\n- Restrict release build and packaging matrices to Cargo, including Windows and provisioned macOS packages, and exclude Bazel binaries and symbols from release artifact downloads.\n\nGitOrigin-RevId: 2c0d23471bbd0ab2eb4d90d318b518d0b33db97f",
+              "url": "https://github.com/openai/codex/commit/231c8abd2f4f7e3e14aa3e54bcf8136435e6f2f3"
+            },
+            {
+              "sha": "8c811e8d93839103b5185d1f6324ebd2671adff1",
+              "title": "Support rendering TUI conversations within an inset area (#58718)",
+              "message": "Support rendering TUI conversations within an inset area (#58718)\n\n## What changed\n\nSplit conversation rendering into preparation, painting, and post-draw steps. Use the supplied conversation bounds for transcript wrapping, composer layout, suggestion overlays, cursor placement, and the empty-state animation.\n\nPreserve surrounding text and image placements during input-triggered redraws. Keep centered dialogs relative to the full viewport and restore neighboring content when they close.\n\n## Testing\n\nExtend regression tests and add a snapshot for conversations rendered at an offset, covering selection, link hit testing, cursor placement, scroll preservation, neighboring images, and dialog dismissal.\n\nGitOrigin-RevId: 0dbca3f8d1064f2d58856c3bc77a4dab1c099cdd",
+              "url": "https://github.com/openai/codex/commit/8c811e8d93839103b5185d1f6324ebd2671adff1"
+            },
+            {
+              "sha": "e02a32cd51ab40b503e2e6eac42b47585851134d",
+              "title": "Wire native voice dependencies into full Rust CI (#58719)",
+              "message": "Wire native voice dependencies into full Rust CI (#58719)\n\n## What changed\n\n- Build native voice SDK and runtime artifacts with Bazel for Linux GNU, macOS, and Windows on x64 and ARM64, then configure Cargo jobs to consume them. Keep musl builds in a separate job without these inputs.\n- Validate artifact receipts against the target, source commit, and source manifest; verify SDK file hashes and relocate pkg-config metadata. Package the runtime and plugins with nextest archives and restore `CODEX_TEST_VOICE_RUNTIME` when running shards.\n- Prepare native Windows voice tools for argument-comment linting and install ARM64 DotSlash on Windows ARM64. Reduce archive disk usage, bound Linux ARM64 build concurrency, and correct the JUnit artifact path.\n- Recognize TLS errors wrapped directly in `io::Error`. Make TLS fallback fixtures select the native backend explicitly, allow the MCP test server's non-loopback address, and isolate skill-root tests from ancestor Git markers. Install `git` in remote test containers and filter MCP discovery assertions to POST requests.\n\n## Testing\n\nAdd tests for relocated voice inputs, Windows ARM64 import libraries with host-native pkgconf, and rejection of mismatched receipts or corrupt SDK files. Extend untrusted-certificate coverage to an explicitly selected rustls backend.\n\nGitOrigin-RevId: da3ff690b94906edc1f8f60a3c7feda1bf66134a",
+              "url": "https://github.com/openai/codex/commit/e02a32cd51ab40b503e2e6eac42b47585851134d"
+            },
+            {
+              "sha": "181b4a853d396f009a3a02b9c36eb393e6acbe75",
+              "title": "Prioritize pending approvals in the subagent picker (#58720)",
+              "message": "Prioritize pending approvals in the subagent picker (#58720)\n\n## What changed\n\n- Group threads needing approval first in `/subagents`, mark them with `(needs approval)`, and initially select the first waiting thread.\n- Refresh the open picker and approval notice as requests and agent metadata change, preserving the selected thread when rows move.\n- Use consistent agent labels across the picker and approval notice, preferring agent paths and using UUID suffixes to distinguish unnamed agents.\n- Track approval requests that arrive before thread metadata and refresh pending approvals after reconnecting.\n\n## Testing\n\nExtend the picker test and snapshots to cover approvals arriving while the picker is open, agent paths arriving later, and selection staying on the same thread after reordering.\n\nGitOrigin-RevId: b7dd943d151ce98d1978f7c6b9f5e16903b9075b",
+              "url": "https://github.com/openai/codex/commit/181b4a853d396f009a3a02b9c36eb393e6acbe75"
+            },
+            {
+              "sha": "54201ea65a3501d09a87c776376a0c16aa39db70",
+              "title": "Add naming and navigation helpers for TUI backend sessions (#58722)",
+              "message": "Add naming and navigation helpers for TUI backend sessions (#58722)\n\n## What changed\n\nAdd `BackendSessions` helpers to name the displayed listening backend, find the first listening backend, and cycle through listening backends in registration order. Cycling wraps around, skips closed streams, and excludes the current backend. Display names use `Local` for the initial session and `Backend N` for additional sessions; a closed displayed stream has no name.\n\n## Testing\n\nExtend backend session tests to cover cycling with a single backend, wraparound across three backends, and skipping a closed stream.\n\nGitOrigin-RevId: e8f3fcc38a178b6b91d385d65d899fdd042062c5",
+              "url": "https://github.com/openai/codex/commit/54201ea65a3501d09a87c776376a0c16aa39db70"
+            },
+            {
+              "sha": "4b4a5cf25aa5b064c866218b405c848745fd280f",
+              "title": "Use local Bazel for voice release builds (#58727)",
+              "message": "Use local Bazel for voice release builds (#58727)\n\n## Why\n\nBuildBuddy credentials are unavailable for voice release builds.\n\n## What changed\n\nSet `BUILDBUDDY_API_KEY` to an empty string in the Linux, macOS, and Windows voice release build steps so the Bazel wrappers use their local configuration.\n\nGitOrigin-RevId: 69e47d6b6077fbb74b5895eacbe587766345b7ec",
+              "url": "https://github.com/openai/codex/commit/4b4a5cf25aa5b064c866218b405c848745fd280f"
+            },
+            {
+              "sha": "81ce93bb29427520f2ed07ed434e054bb188ea8e",
+              "title": "Release 0.167.0-alpha.2",
+              "message": "Release 0.167.0-alpha.2",
+              "url": "https://github.com/openai/codex/commit/81ce93bb29427520f2ed07ed434e054bb188ea8e"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.167.0-alpha.1",
+            "head": "rust-v0.167.0-alpha.2",
+            "url": "https://github.com/openai/codex/compare/rust-v0.167.0-alpha.1...rust-v0.167.0-alpha.2",
+            "status": "diverged",
+            "total": 17,
+            "behind": 1,
+            "complete": true,
+            "fetched": 17
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.2:2026-11-01T19:34:40.283Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-01T19:34:40.283Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.167.0-alpha.2",
+        "title": "0.167.0-alpha.2",
+        "body": "Release 0.167.0-alpha.2\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-01T19:34:40.289Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.2",
+        "publishedAt": "2026-11-01T19:00:13Z",
+        "commits": [
+          {
+            "sha": "22fbf8de8ec18144c770dc94bf1efbebc08688b3",
+            "title": "Preserve Apps usage instructions in model catalog messages (#58441)",
+            "message": "Preserve Apps usage instructions in model catalog messages (#58441)\n\n## What changed\n\nAdd optional `ModelMessages.apps` and `AppsMessages.usage_instructions` fields to carry model catalog wording without runtime interpretation. Missing or null values become `None`, and strings retain their exact contents, including empty strings, whitespace, and template-like text.\n\n## Testing\n\nAdd serialization coverage for nullable and literal Apps values, and extend existing tests to verify Apps messages survive model response round trips and base instruction overrides.\n\nGitOrigin-RevId: 49b516656255e07b91f8f4679e2acb8e1b03f9e1",
+            "url": "https://github.com/openai/codex/commit/22fbf8de8ec18144c770dc94bf1efbebc08688b3"
+          },
+          {
+            "sha": "2f452e74b2dfd7e927f90d8b1d573beae521b9c8",
+            "title": "Cap Guardian context entries before elastic allocation (#58444)",
+            "message": "Cap Guardian context entries before elastic allocation (#58444)\n\n## What changed\n\n- Add `prepare_elastic_entries` to cap required and optional supporting text before allocating whole optional entries. Measure rendered content, including JSON escaping, metadata, and framing, while preserving truncation markers.\n- Keep exact planned-action JSON, images, audio, and opaque native payloads whole. Mark shortened sources incomplete and record truncation sizes.\n- Expose token estimation and synchronous delivery preparation on `PreparedElasticContext` so deduplication uses the capped representations.\n\n## Testing\n\nAdd tests for required and optional entry caps, transcript metadata preservation, unchanged short entries and opaque payloads, and exact action preservation with rejection when the request budget cannot accommodate the action.\n\nGitOrigin-RevId: 23008fb03d15d501e5d602f0584f70b473c2c2e8",
+            "url": "https://github.com/openai/codex/commit/2f452e74b2dfd7e927f90d8b1d573beae521b9c8"
+          },
+          {
+            "sha": "a795f961be68383738e56ac396742b3e8451696a",
+            "title": "Make viewed image paths clickable in the TUI (#58446)",
+            "message": "Make viewed image paths clickable in the TUI (#58446)\n\n## What changed\n\n- Add terminal file hyperlinks to viewed image filenames and transcript paths, including older history loaded through pagination.\n- Enable links only for local workspaces outside SSH sessions. Require a local regular file with a recognized image extension on both the original and resolved paths, and reject Windows reparse points.\n- Preserve links when summaries are truncated or transcript paths wrap.\n\n## Testing\n\nAdd coverage for local versus remote workspace links and for hyperlink destinations and column ranges in compact and expanded image rows.\n\nGitOrigin-RevId: a7dff255c280ad4e609644e6f5ef5e130d9a55fb",
+            "url": "https://github.com/openai/codex/commit/a795f961be68383738e56ac396742b3e8451696a"
+          },
+          {
+            "sha": "26cc28631406375d55d2915c5730d42a016847b3",
+            "title": "Add elastic budgeting for Guardian context preparation (#58454)",
+            "message": "Add elastic budgeting for Guardian context preparation (#58454)\n\n## What changed\n\nIntroduce `ContextBudgeting::Elastic` to prepare captured root conversation and Node REPL evidence without the fixed per-section request caps. Elastic preparation preserves message text and candidates for later allocation while retaining storage omission notices and legacy source deduplication.\n\nKeep `ContextBudgeting::Fixed` as the default and use it at existing call sites.\n\n## Testing\n\nAdd tests covering elastic root message preservation and legacy source deduplication, plus REPL text, images, and omission counts in text-only and multimodal modes.\n\nGitOrigin-RevId: ce4fae9d725694456525a413fb511166df6f5e2c",
+            "url": "https://github.com/openai/codex/commit/26cc28631406375d55d2915c5730d42a016847b3"
+          },
+          {
+            "sha": "7656a23b8d404447f6eb0b4b947f45e5e139e49e",
+            "title": "Preserve incomplete response output in failed inference traces (#58456)",
+            "message": "Preserve incomplete response output in failed inference traces (#58456)\n\n## Why\n\nWhen a response fails with incomplete output, attempted tool calls can appear only in the terminal response payload. Failed inference traces previously omitted those items, losing evidence of the attempted call.\n\n## What changed\n\nRetain output items marked `incomplete` on `ResponseIncompleteError` and include recognized items in failed inference traces, deduplicating by item ID. Keep these items out of streamed output, tool dispatch, and the continuation cache, and omit their payloads from the error's debug representation.\n\n## Testing\n\nAdd tests for retaining only incomplete output from terminal responses and recording attempted calls in failed traces without streaming them or creating tool calls. Cover unknown response item types being skipped.\n\nGitOrigin-RevId: 594f6a37a5af543694f19fcffe0c164cb2addb36",
+            "url": "https://github.com/openai/codex/commit/7656a23b8d404447f6eb0b4b947f45e5e139e49e"
+          },
+          {
+            "sha": "1da2aefe001b333340fe8b012b18b072c49cc743",
+            "title": "Enable cross-backend session switching in the TUI (#58457)",
+            "message": "Enable cross-backend session switching in the TUI (#58457)\n\n## Why\n\nThe session picker can list conversations from multiple backends, but selecting a conversation owned by another backend was rejected.\n\n## What changed\n\n- Resume selected conversations through their owning backend, preparing the destination before replacing the current conversation. Preserve drafts and restore the destination's settings, account state, model catalog, and workspace services.\n- Block backend switches during an active turn and retain the current conversation when destination preparation fails.\n- Queue background backend requests until that backend is displayed, removing requests that are resolved or disconnected. Isolate background events from the displayed conversation while continuing to deliver notifications to a background voice session.\n- Track backend ownership for thread detachment, startup results, and reconnect attempts.\n- Remove the `yaml-rust` advisory exception from `codex-rs/deny.toml`.\n\n## Testing\n\nAdd regression coverage for backend handoff errors, detaching through the source connection, clearing stale provider errors, deferred request delivery and cleanup, and voice-session closure on a background backend.\n\nGitOrigin-RevId: 1bba84f16831af1d5295c1404f48803ce0608d3d",
+            "url": "https://github.com/openai/codex/commit/1da2aefe001b333340fe8b012b18b072c49cc743"
+          },
+          {
+            "sha": "67f0994b532b8740f14b5b738af7b7b2a915b1d6",
+            "title": "Tighten Bazel CI snapshot handling and OTLP test cleanup (#58459)",
+            "message": "Tighten Bazel CI snapshot handling and OTLP test cleanup (#58459)\n\n## Why\n\nFailed snapshot assertions should print their diffs without leaving `.snap.new` files after a passing retry. The OTLP loopback collector should stop once exporter shutdown completes instead of waiting for its deadline.\n\n## What changed\n\n- Set `INSTA_UPDATE=no` for Bazel CI tests, including the local configuration used when no BuildBuddy API key is available.\n- Initialize the OTLP provider before starting the collector's deadline in the Tokio bounded-shutdown test.\n- Signal the collector to stop after shutdown and join its thread before propagating any shutdown error.\n\nGitOrigin-RevId: 55b050822ec923894c9edbc8f039f35f693a4b7e",
+            "url": "https://github.com/openai/codex/commit/67f0994b532b8740f14b5b738af7b7b2a915b1d6"
+          },
+          {
+            "sha": "456ae93b6326306f9efd34b2d6b6321d3caa5e07",
+            "title": "Extract fresh session adoption from TUI session startup (#58713)",
+            "message": "Extract fresh session adoption from TUI session startup (#58713)\n\n## What changed\n\nBundle the started thread, configuration, and local settings in\n`PreparedFreshSession`, and move session activation into `adopt_fresh_session`.\nThe helper preserves input state, switches threads, applies settings, names the\nsession, and attaches the chat widget with a caller-supplied presentation.\n\n`start_fresh_session` delegates to the helper with\n`ThreadAttachPresentation::Fresh`, preserving its existing behavior.\n\nGitOrigin-RevId: c4fdb6b5024a024f6baa48610e62a8e6628de30a",
+            "url": "https://github.com/openai/codex/commit/456ae93b6326306f9efd34b2d6b6321d3caa5e07"
+          },
+          {
+            "sha": "f7f1f0196c710238eb586b02110247a030644a6e",
+            "title": "Sort agent center tasks by recency within status groups (#58714)",
+            "message": "Sort agent center tasks by recency within status groups (#58714)\n\n## What changed\n\nKeep unpinned tasks ordered by descending update time within each status group as tasks arrive, change status, or refresh. Clearing a search or status filter also reflects timestamp changes to hidden tasks.\n\nKeep pinned tasks at the top of their respective status groups in pin order, and mark their titles with 📌 instead of placing them in a separate Pinned group when grouping by status.\n\n## Testing\n\nUpdate ordering tests and snapshots to cover arrivals, status transitions, rediscovered tasks, filters, pins, and adjacent selection after hiding tasks.\n\nGitOrigin-RevId: 2f3320a17b1932294f421dd28af848f0e0be45ef",
+            "url": "https://github.com/openai/codex/commit/f7f1f0196c710238eb586b02110247a030644a6e"
+          },
+          {
+            "sha": "5e07d1f694972c0caa62c2e7d4108fa47695d2c7",
+            "title": "Support OSC 52 clipboard forwarding through GNU screen (#58716)",
+            "message": "Support OSC 52 clipboard forwarding through GNU screen (#58716)\n\n## What changed\n\nDetect GNU screen via `STY` when `TMUX` is absent and wrap OSC 52 clipboard sequences in DCS passthrough strings. Split the sequence into 252-byte chunks to stay below screen's older 256-byte string limit while forwarding one continuous OSC 52 sequence to the outer terminal.\n\nPrepare the terminal sequence in the clipboard worker and retain it for deferred delivery.\n\n## Testing\n\nAdd coverage for short text and a longer Unicode payload, checking that each passthrough chunk stays below the limit and that reassembling the chunks reproduces the complete OSC 52 sequence.\n\nGitOrigin-RevId: 1a042ed4fed817179e98459f4f4b2b847b160721",
+            "url": "https://github.com/openai/codex/commit/5e07d1f694972c0caa62c2e7d4108fa47695d2c7"
+          },
+          {
+            "sha": "231c8abd2f4f7e3e14aa3e54bcf8136435e6f2f3",
+            "title": "Make Bazel checks advisory and pause Bazel release artifacts (#58717)",
+            "message": "Make Bazel checks advisory and pause Bazel release artifacts (#58717)\n\n## Why\n\nThe BuildBuddy key is revoked. Temporarily keep Bazel-dependent checks from blocking CI and release only Cargo artifacts.\n\n## What changed\n\n- Remove Bazel from the `blocking-ci` required dependencies.\n- Make the Bazel-backed argument comment lint and SDK jobs advisory, and stop requiring the lint job to succeed in the Rust CI results check.\n- Restrict release build and packaging matrices to Cargo, including Windows and provisioned macOS packages, and exclude Bazel binaries and symbols from release artifact downloads.\n\nGitOrigin-RevId: 2c0d23471bbd0ab2eb4d90d318b518d0b33db97f",
+            "url": "https://github.com/openai/codex/commit/231c8abd2f4f7e3e14aa3e54bcf8136435e6f2f3"
+          },
+          {
+            "sha": "8c811e8d93839103b5185d1f6324ebd2671adff1",
+            "title": "Support rendering TUI conversations within an inset area (#58718)",
+            "message": "Support rendering TUI conversations within an inset area (#58718)\n\n## What changed\n\nSplit conversation rendering into preparation, painting, and post-draw steps. Use the supplied conversation bounds for transcript wrapping, composer layout, suggestion overlays, cursor placement, and the empty-state animation.\n\nPreserve surrounding text and image placements during input-triggered redraws. Keep centered dialogs relative to the full viewport and restore neighboring content when they close.\n\n## Testing\n\nExtend regression tests and add a snapshot for conversations rendered at an offset, covering selection, link hit testing, cursor placement, scroll preservation, neighboring images, and dialog dismissal.\n\nGitOrigin-RevId: 0dbca3f8d1064f2d58856c3bc77a4dab1c099cdd",
+            "url": "https://github.com/openai/codex/commit/8c811e8d93839103b5185d1f6324ebd2671adff1"
+          },
+          {
+            "sha": "e02a32cd51ab40b503e2e6eac42b47585851134d",
+            "title": "Wire native voice dependencies into full Rust CI (#58719)",
+            "message": "Wire native voice dependencies into full Rust CI (#58719)\n\n## What changed\n\n- Build native voice SDK and runtime artifacts with Bazel for Linux GNU, macOS, and Windows on x64 and ARM64, then configure Cargo jobs to consume them. Keep musl builds in a separate job without these inputs.\n- Validate artifact receipts against the target, source commit, and source manifest; verify SDK file hashes and relocate pkg-config metadata. Package the runtime and plugins with nextest archives and restore `CODEX_TEST_VOICE_RUNTIME` when running shards.\n- Prepare native Windows voice tools for argument-comment linting and install ARM64 DotSlash on Windows ARM64. Reduce archive disk usage, bound Linux ARM64 build concurrency, and correct the JUnit artifact path.\n- Recognize TLS errors wrapped directly in `io::Error`. Make TLS fallback fixtures select the native backend explicitly, allow the MCP test server's non-loopback address, and isolate skill-root tests from ancestor Git markers. Install `git` in remote test containers and filter MCP discovery assertions to POST requests.\n\n## Testing\n\nAdd tests for relocated voice inputs, Windows ARM64 import libraries with host-native pkgconf, and rejection of mismatched receipts or corrupt SDK files. Extend untrusted-certificate coverage to an explicitly selected rustls backend.\n\nGitOrigin-RevId: da3ff690b94906edc1f8f60a3c7feda1bf66134a",
+            "url": "https://github.com/openai/codex/commit/e02a32cd51ab40b503e2e6eac42b47585851134d"
+          },
+          {
+            "sha": "181b4a853d396f009a3a02b9c36eb393e6acbe75",
+            "title": "Prioritize pending approvals in the subagent picker (#58720)",
+            "message": "Prioritize pending approvals in the subagent picker (#58720)\n\n## What changed\n\n- Group threads needing approval first in `/subagents`, mark them with `(needs approval)`, and initially select the first waiting thread.\n- Refresh the open picker and approval notice as requests and agent metadata change, preserving the selected thread when rows move.\n- Use consistent agent labels across the picker and approval notice, preferring agent paths and using UUID suffixes to distinguish unnamed agents.\n- Track approval requests that arrive before thread metadata and refresh pending approvals after reconnecting.\n\n## Testing\n\nExtend the picker test and snapshots to cover approvals arriving while the picker is open, agent paths arriving later, and selection staying on the same thread after reordering.\n\nGitOrigin-RevId: b7dd943d151ce98d1978f7c6b9f5e16903b9075b",
+            "url": "https://github.com/openai/codex/commit/181b4a853d396f009a3a02b9c36eb393e6acbe75"
+          },
+          {
+            "sha": "54201ea65a3501d09a87c776376a0c16aa39db70",
+            "title": "Add naming and navigation helpers for TUI backend sessions (#58722)",
+            "message": "Add naming and navigation helpers for TUI backend sessions (#58722)\n\n## What changed\n\nAdd `BackendSessions` helpers to name the displayed listening backend, find the first listening backend, and cycle through listening backends in registration order. Cycling wraps around, skips closed streams, and excludes the current backend. Display names use `Local` for the initial session and `Backend N` for additional sessions; a closed displayed stream has no name.\n\n## Testing\n\nExtend backend session tests to cover cycling with a single backend, wraparound across three backends, and skipping a closed stream.\n\nGitOrigin-RevId: e8f3fcc38a178b6b91d385d65d899fdd042062c5",
+            "url": "https://github.com/openai/codex/commit/54201ea65a3501d09a87c776376a0c16aa39db70"
+          },
+          {
+            "sha": "4b4a5cf25aa5b064c866218b405c848745fd280f",
+            "title": "Use local Bazel for voice release builds (#58727)",
+            "message": "Use local Bazel for voice release builds (#58727)\n\n## Why\n\nBuildBuddy credentials are unavailable for voice release builds.\n\n## What changed\n\nSet `BUILDBUDDY_API_KEY` to an empty string in the Linux, macOS, and Windows voice release build steps so the Bazel wrappers use their local configuration.\n\nGitOrigin-RevId: 69e47d6b6077fbb74b5895eacbe587766345b7ec",
+            "url": "https://github.com/openai/codex/commit/4b4a5cf25aa5b064c866218b405c848745fd280f"
+          },
+          {
+            "sha": "81ce93bb29427520f2ed07ed434e054bb188ea8e",
+            "title": "Release 0.167.0-alpha.2",
+            "message": "Release 0.167.0-alpha.2",
+            "url": "https://github.com/openai/codex/commit/81ce93bb29427520f2ed07ed434e054bb188ea8e"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.167.0-alpha.1",
+          "head": "rust-v0.167.0-alpha.2",
+          "url": "https://github.com/openai/codex/compare/rust-v0.167.0-alpha.1...rust-v0.167.0-alpha.2",
+          "status": "diverged",
+          "total": 17,
+          "behind": 1,
+          "complete": true,
+          "fetched": 17
+        },
+        "comparisonError": null
       }
     }
   ],
