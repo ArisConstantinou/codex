@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-03T22:35:13.027Z",
+  "generatedAt": "2026-11-04T02:40:59.626Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -11640,6 +11640,51 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.168.0-alpha.1",
+      "at": "2026-11-04T00:44:59.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.168.0-alpha.1",
+      "text": "rust-v0.168.0-alpha.1. Release 0.168.0-alpha.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.5",
+      "at": "2026-11-04T00:45:00.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.5",
+      "text": "rust-v0.167.0-alpha.5. Release 0.167.0-alpha.5",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/libcap-v2.75",
+      "at": "2026-11-03T23:04:31.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/libcap-v2.75",
+      "text": "libcap 2.75 source archive. Mirror of the unmodified libcap 2.75 source archive used to build Bubblewrap for Codex's Linux musl packages. Upstream archive SHA-256 for libcap-2.75.tar.xz is de4e7e064c9ba451d5234dd46e897d7c71c96a9ebf9a0c445bc04f4742d83632 .",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -11648,7 +11693,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-03T22:35:12.397Z",
+      "lastSuccessAt": "2026-11-04T02:40:58.605Z",
       "error": null,
       "count": 150
     },
@@ -11657,7 +11702,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-03T22:35:12.397Z",
+      "lastSuccessAt": "2026-11-04T02:40:58.605Z",
       "error": null,
       "count": 10
     },
@@ -11666,7 +11711,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-03T22:35:12.397Z",
+      "lastSuccessAt": "2026-11-04T02:40:58.605Z",
       "error": null,
       "count": 25
     }
@@ -47034,6 +47079,66 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.168.0-alpha.1:2026-11-04T02:40:59.626Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-04T02:40:59.626Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.168.0-alpha.1",
+        "at": "2026-11-04T00:44:59.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.168.0-alpha.1",
+        "text": "rust-v0.168.0-alpha.1. Release 0.168.0-alpha.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.5:2026-11-04T02:40:59.626Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-04T02:40:59.626Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.5",
+        "at": "2026-11-04T00:45:00.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.5",
+        "text": "rust-v0.167.0-alpha.5. Release 0.167.0-alpha.5",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/libcap-v2.75:2026-11-04T02:40:59.626Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-04T02:40:59.626Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/libcap-v2.75",
+        "at": "2026-11-03T23:04:31.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/libcap-v2.75",
+        "text": "libcap 2.75 source archive. Mirror of the unmodified libcap 2.75 source archive used to build Bubblewrap for Codex's Linux musl packages. Upstream archive SHA-256 for libcap-2.75.tar.xz is de4e7e064c9ba451d5234dd46e897d7c71c96a9ebf9a0c445bc04f4742d83632 .",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
     }
   ],
   "releaseRequests": {
@@ -47052,7 +47157,8 @@
       "rust-v0.165.0-alpha.2": 1793035983518,
       "rust-v0.165.0-alpha.3": 1793051787896,
       "rust-v0.166.0-alpha.3": 1793125719184,
-      "rust-v0.167.0-alpha.1": 1793546244308
+      "rust-v0.167.0-alpha.1": 1793546244308,
+      "rust-v0.167.0-alpha.5": 1793760959630
     }
   }
 }
