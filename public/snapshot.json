@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-05T03:42:51.431Z",
+  "generatedAt": "2026-11-05T11:38:29.556Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -13756,6 +13756,51 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+      "at": "2026-11-05T02:00:00.000Z",
+      "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+      "text": "Setting a new standard for responsible AI infrastructure. OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.168.0-alpha.4",
+      "at": "2026-11-05T11:20:13.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.168.0-alpha.4",
+      "text": "rust-v0.168.0-alpha.4. Release 0.168.0-alpha.4",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.3.2",
+      "at": "2026-11-05T06:26:50.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.3.2",
+      "text": "rust-v0.167.0-alpha.3.2. Release 0.167.0-alpha.3.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -13764,7 +13809,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-05T03:42:51.072Z",
+      "lastSuccessAt": "2026-11-05T11:38:29.025Z",
       "error": null,
       "count": 150
     },
@@ -13773,7 +13818,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-05T03:42:51.072Z",
+      "lastSuccessAt": "2026-11-05T11:38:29.025Z",
       "error": null,
       "count": 10
     },
@@ -13782,7 +13827,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-05T03:42:51.072Z",
+      "lastSuccessAt": "2026-11-05T11:38:29.025Z",
       "error": null,
       "count": 25
     }
@@ -54897,6 +54942,66 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/setting-new-standard-responsible-ai-infrastructure:2026-11-05T11:38:29.556Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-05T11:38:29.556Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+        "at": "2026-11-05T02:00:00.000Z",
+        "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+        "text": "Setting a new standard for responsible AI infrastructure. OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.168.0-alpha.4:2026-11-05T11:38:29.556Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-05T11:38:29.556Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.168.0-alpha.4",
+        "at": "2026-11-05T11:20:13.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.168.0-alpha.4",
+        "text": "rust-v0.168.0-alpha.4. Release 0.168.0-alpha.4",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.3.2:2026-11-05T11:38:29.556Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-05T11:38:29.556Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.3.2",
+        "at": "2026-11-05T06:26:50.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.3.2",
+        "text": "rust-v0.167.0-alpha.3.2. Release 0.167.0-alpha.3.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
@@ -54916,7 +55021,8 @@
       "rust-v0.165.0-alpha.3": 1793051787896,
       "rust-v0.166.0-alpha.3": 1793125719184,
       "rust-v0.167.0-alpha.1": 1793546244308,
-      "rust-v0.167.0-alpha.5": 1793760959630
+      "rust-v0.167.0-alpha.5": 1793760959630,
+      "rust-v0.168.0-alpha.4": 1793879609564
     }
   }
 }
