@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-06T00:09:42.595Z",
+  "generatedAt": "2026-11-06T07:00:11.408Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -13849,9 +13849,9 @@
     },
     {
       "id": "openai-status:01M6P50GPP1V98EF8MJ9SH393R",
-      "at": "2026-11-05T17:05:56.000Z",
+      "at": "2026-11-06T04:31:37.000Z",
       "url": "https://status.openai.com/incidents/01M6P50GPP1V98EF8MJ9SH393R",
-      "text": "ChatGPT Work and Dots Errors. We’ve applied a mitigation and are monitoring the affected services to confirm recovery.",
+      "text": "ChatGPT Work and Dots Errors. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -13860,7 +13860,7 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "monitoring",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-11-05T15:25:03.000Z"
     },
     {
@@ -13910,9 +13910,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0",
-      "at": "2026-11-05T23:31:20.000Z",
+      "at": "2026-11-06T01:42:19.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0",
-      "text": "rust-v0.167.0. Release 0.167.0",
+      "text": "0.167.0. New Features Open the agent command center with codex agents --no-daemon . The command center and session picker now mark unread results ( #58238 , #58239 , #58263 , #58264 ). Switch between connected backends from the terminal session picker and keep your drafts when switching ( #58280 , #58457 ). Preview local image attachments while composing on supported terminals, and open viewed local images from clickable transcript paths ( #58261 , #58446 ). Find API key and cloud provider options under “Sign in another way.” Enable gcp_setup_wizard to set up Google Cloud Vertex AI with Application Default Credentials or a credential file ( #57857 , #58427 ). Opt into macOS or Windows system proxy settings from /experimental ( #58157 ). Expand patch details directly in the transcript while an approval prompt is open ( #58281 ). Bug Fixes Saved chats stay visible after you switch model providers. If a chat can’t resume, you can read its transcript and prepare an editable prompt to continue in a new chat ( #58202 ). Ctrl+L clears the terminal display while keeping earlier messages available through Ctrl+T ( #58266 ). Deleting text that exposes a leading ! keeps an ordinary draft in chat mode ( #58412 ). Network approval prompts close when their requests end. Concurrent requests to the same endpoint prompt one at a time ( #58350 , #58351 ). Long realtime V3 conversations save completed speech to chat history as the transcript grows ( #58221 ). Automatic context compaction now accounts for retained output from failed responses and responses with missing token usage data ( #58404 ). Documentation The app-server README covers managed network constraints under [permissions.network] and prompt-user command rules that require fresh human approval ( #58045 , #58182 ). The openai-docs skill recommends the documented replacement when migrating away from a deprecated model ( #58134 ). Chores DotSlash manifests now reference the Cargo packages shipped with the release ( #58717 , #58757 ). Linux musl builds use fewer allocator arenas to reduce idle memory after conversations unload ( #58399 ). Changelog Full Changelog: rust-v0.166.0...rust-v0.167.0 #57848 Add bounded Code Mode output collection and rendering @seanh-oai #57850 Wire bounded output collection into the code mode runtime @seanh-oai #57855 Load TUI plugin mentions from installed plugins @zamoshchin-openai #57857 Add Google Cloud Vertex AI setup to TUI onboarding @alexsong-oai #57859 Extend the provider OAuth sign-in timeout to ten minutes @smurching-oai #57861 Skip resource template discovery for hosted Apps @khong-oai #57862 Keep resume picker pagination moving across backends @bc-openai #57864 Allow upstream interruption when canceling Responses Lite turns @liame-oai #57866 Retry transient environment startup failures on the next turn @pansul47-oai #57870 Enable server-side output truncation for Code Mode sessions @seanh-oai #57876 Reuse the cached runtime keymap for default configuration @bc-openai #57883 Preserve status-line hyperlinks through footer layout and animations @joesavona #57970 Add an experimental UI tree renderer for the status line @joesavona #57974 Apply session plugin overrides during MCP config refresh @TAFOYA-OAI #57978 Add per-chat leases for shared MCP connections @charliemarsh-oai #57985 Skip read-only volume-root expansion in the MXC sandbox @iceweasel-oai #58013 Fix argument comment lint tests after rust-clippy branch rename @seanh-oai #58025 Add trace-safe diagnostics for Noise relay request progress @apanasenko-oai #58028 Add direct Guardian review of recorded exec calls @swastik-oai #58034 Add an option to disable successful SSE delta logs @jif-oai #58040 Preserve native tool-call evidence through Guardian review @ioanbudea-OAI #58045 Add managed command checkpoints requiring fresh human approval @jif-oai #58057 Initialize native_call in agent host test fixtures @jif-oai #58071 Share the Guardian context delivery token limit @ioanbudea-OAI #58075 Use serving assessments for adaptive Guardian review @jif-oai #58083 Use a dedicated binary for Bazel schema generation @jif-oai #58091 Update default models for memory extraction and consolidation @jif-oai #58110 Ignore RUSTSEC-2026-0418 for the Windows-only libz-sys dependency @swastik-oai #58119 Add experimental Guardian review for injected thread commands @swastik-oai #58121 Centralize provider request preparation auth checks @sgarg-oai #58122 Add an incremental exec tools feature flag @akira-oai #58123 Add validated elastic section budget configuration for Guardian @ioanbudea-OAI #58125 Support negotiated server-side truncation in Code Mode clients @seanh-oai #58127 Honor the tooltip preference for TUI startup help @imac-oai #58129 Persist subagent relationships before creating child storage @radai-oai #58130 Support pasted search text in the skills toggle view @xma-oai #58134 Prefer documented replacements for deprecation-driven model migrations @kkahadze-oai #58140 Route standalone web search through the thread's workspace context @sgarg-oai #58144 Record additional context counts, sizes, and truncation metrics @akira-oai #58147 Return standalone web search failures to the model @sgarg-oai #58157 Expose system proxy support as an experimental setting @abhinav-oai #58159 Add a feature flag for code-mode host output truncation @seanh-oai #58161 Include tool names and annotation hints in MCP approval metadata @brisebois-oai #58165 Keep remote plugin bundle URLs out of diagnostics @mzeng-openai #58166 Make rollout recording failures and completion explicit @cassirer-openai #58168 Create missing parent directories for MXC deny paths on Windows @iceweasel-oai #58171 Stabilize cancellation and tracing tests @aakash-oai #58172 Validate trace completion records and payload UTF-8 during replay @cassirer-openai #58182 Support managed network requirements under permissions.network @viyatb-oai #58189 Use turn-scoped permissions for standalone web search @sayan-oai #58190 Allow provide",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -13922,6 +13922,66 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/australian-universities-ai-native-graduates",
+      "at": "2026-11-05T17:00:00.000Z",
+      "url": "https://openai.com/index/australian-universities-ai-native-graduates",
+      "text": "Australian universities are creating AI-native graduates. Australian universities are expanding access to ChatGPT and bringing AI into teaching and learning to prepare students for an AI-enabled workforce.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/cultfit-builds-with-codex",
+      "at": "2026-11-05T20:00:00.000Z",
+      "url": "https://openai.com/index/cultfit-builds-with-codex",
+      "text": "Cult.fit builds operational muscle with Codex. Cult.fit is using Codex to help teams across functions build tools, move faster, and change how work gets done.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/franklin-templeton",
+      "at": "2026-11-05T00:00:00.000Z",
+      "url": "https://openai.com/index/franklin-templeton",
+      "text": "Franklin Templeton uses OpenAI to support investment research. Starting with equity research, Franklin Templeton is developing AI workflows to help portfolio managers compare research views and examine investment risks.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.1",
+      "at": "2026-11-06T03:02:33.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.1",
+      "text": "rust-v0.169.0-alpha.1. Release 0.169.0-alpha.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -13930,7 +13990,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-06T00:09:41.956Z",
+      "lastSuccessAt": "2026-11-06T07:00:10.884Z",
       "error": null,
       "count": 150
     },
@@ -13939,7 +13999,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-06T00:09:41.956Z",
+      "lastSuccessAt": "2026-11-06T07:00:10.884Z",
       "error": null,
       "count": 10
     },
@@ -13948,7 +14008,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-06T00:09:41.956Z",
+      "lastSuccessAt": "2026-11-06T07:00:10.884Z",
       "error": null,
       "count": 25
     }
@@ -55324,6 +55384,127 @@
         "origin": "direct-official",
         "prerelease": false
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/australian-universities-ai-native-graduates:2026-11-06T07:00:11.408Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-06T07:00:11.408Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/australian-universities-ai-native-graduates",
+        "at": "2026-11-05T17:00:00.000Z",
+        "url": "https://openai.com/index/australian-universities-ai-native-graduates",
+        "text": "Australian universities are creating AI-native graduates. Australian universities are expanding access to ChatGPT and bringing AI into teaching and learning to prepare students for an AI-enabled workforce.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/cultfit-builds-with-codex:2026-11-06T07:00:11.408Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-06T07:00:11.408Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/cultfit-builds-with-codex",
+        "at": "2026-11-05T20:00:00.000Z",
+        "url": "https://openai.com/index/cultfit-builds-with-codex",
+        "text": "Cult.fit builds operational muscle with Codex. Cult.fit is using Codex to help teams across functions build tools, move faster, and change how work gets done.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/franklin-templeton:2026-11-06T07:00:11.408Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-06T07:00:11.408Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/franklin-templeton",
+        "at": "2026-11-05T00:00:00.000Z",
+        "url": "https://openai.com/index/franklin-templeton",
+        "text": "Franklin Templeton uses OpenAI to support investment research. Starting with equity research, Franklin Templeton is developing AI workflows to help portfolio managers compare research views and examine investment risks.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.1:2026-11-06T07:00:11.408Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-06T07:00:11.408Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.1",
+        "at": "2026-11-06T03:02:33.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.1",
+        "text": "rust-v0.169.0-alpha.1. Release 0.169.0-alpha.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0:2026-11-06T07:00:11.408Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-06T07:00:11.408Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0",
+        "at": "2026-11-06T01:42:19.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0",
+        "text": "0.167.0. New Features Open the agent command center with codex agents --no-daemon . The command center and session picker now mark unread results ( #58238 , #58239 , #58263 , #58264 ). Switch between connected backends from the terminal session picker and keep your drafts when switching ( #58280 , #58457 ). Preview local image attachments while composing on supported terminals, and open viewed local images from clickable transcript paths ( #58261 , #58446 ). Find API key and cloud provider options under “Sign in another way.” Enable gcp_setup_wizard to set up Google Cloud Vertex AI with Application Default Credentials or a credential file ( #57857 , #58427 ). Opt into macOS or Windows system proxy settings from /experimental ( #58157 ). Expand patch details directly in the transcript while an approval prompt is open ( #58281 ). Bug Fixes Saved chats stay visible after you switch model providers. If a chat can’t resume, you can read its transcript and prepare an editable prompt to continue in a new chat ( #58202 ). Ctrl+L clears the terminal display while keeping earlier messages available through Ctrl+T ( #58266 ). Deleting text that exposes a leading ! keeps an ordinary draft in chat mode ( #58412 ). Network approval prompts close when their requests end. Concurrent requests to the same endpoint prompt one at a time ( #58350 , #58351 ). Long realtime V3 conversations save completed speech to chat history as the transcript grows ( #58221 ). Automatic context compaction now accounts for retained output from failed responses and responses with missing token usage data ( #58404 ). Documentation The app-server README covers managed network constraints under [permissions.network] and prompt-user command rules that require fresh human approval ( #58045 , #58182 ). The openai-docs skill recommends the documented replacement when migrating away from a deprecated model ( #58134 ). Chores DotSlash manifests now reference the Cargo packages shipped with the release ( #58717 , #58757 ). Linux musl builds use fewer allocator arenas to reduce idle memory after conversations unload ( #58399 ). Changelog Full Changelog: rust-v0.166.0...rust-v0.167.0 #57848 Add bounded Code Mode output collection and rendering @seanh-oai #57850 Wire bounded output collection into the code mode runtime @seanh-oai #57855 Load TUI plugin mentions from installed plugins @zamoshchin-openai #57857 Add Google Cloud Vertex AI setup to TUI onboarding @alexsong-oai #57859 Extend the provider OAuth sign-in timeout to ten minutes @smurching-oai #57861 Skip resource template discovery for hosted Apps @khong-oai #57862 Keep resume picker pagination moving across backends @bc-openai #57864 Allow upstream interruption when canceling Responses Lite turns @liame-oai #57866 Retry transient environment startup failures on the next turn @pansul47-oai #57870 Enable server-side output truncation for Code Mode sessions @seanh-oai #57876 Reuse the cached runtime keymap for default configuration @bc-openai #57883 Preserve status-line hyperlinks through footer layout and animations @joesavona #57970 Add an experimental UI tree renderer for the status line @joesavona #57974 Apply session plugin overrides during MCP config refresh @TAFOYA-OAI #57978 Add per-chat leases for shared MCP connections @charliemarsh-oai #57985 Skip read-only volume-root expansion in the MXC sandbox @iceweasel-oai #58013 Fix argument comment lint tests after rust-clippy branch rename @seanh-oai #58025 Add trace-safe diagnostics for Noise relay request progress @apanasenko-oai #58028 Add direct Guardian review of recorded exec calls @swastik-oai #58034 Add an option to disable successful SSE delta logs @jif-oai #58040 Preserve native tool-call evidence through Guardian review @ioanbudea-OAI #58045 Add managed command checkpoints requiring fresh human approval @jif-oai #58057 Initialize native_call in agent host test fixtures @jif-oai #58071 Share the Guardian context delivery token limit @ioanbudea-OAI #58075 Use serving assessments for adaptive Guardian review @jif-oai #58083 Use a dedicated binary for Bazel schema generation @jif-oai #58091 Update default models for memory extraction and consolidation @jif-oai #58110 Ignore RUSTSEC-2026-0418 for the Windows-only libz-sys dependency @swastik-oai #58119 Add experimental Guardian review for injected thread commands @swastik-oai #58121 Centralize provider request preparation auth checks @sgarg-oai #58122 Add an incremental exec tools feature flag @akira-oai #58123 Add validated elastic section budget configuration for Guardian @ioanbudea-OAI #58125 Support negotiated server-side truncation in Code Mode clients @seanh-oai #58127 Honor the tooltip preference for TUI startup help @imac-oai #58129 Persist subagent relationships before creating child storage @radai-oai #58130 Support pasted search text in the skills toggle view @xma-oai #58134 Prefer documented replacements for deprecation-driven model migrations @kkahadze-oai #58140 Route standalone web search through the thread's workspace context @sgarg-oai #58144 Record additional context counts, sizes, and truncation metrics @akira-oai #58147 Return standalone web search failures to the model @sgarg-oai #58157 Expose system proxy support as an experimental setting @abhinav-oai #58159 Add a feature flag for code-mode host output truncation @seanh-oai #58161 Include tool names and annotation hints in MCP approval metadata @brisebois-oai #58165 Keep remote plugin bundle URLs out of diagnostics @mzeng-openai #58166 Make rollout recording failures and completion explicit @cassirer-openai #58168 Create missing parent directories for MXC deny paths on Windows @iceweasel-oai #58171 Stabilize cancellation and tracing tests @aakash-oai #58172 Validate trace completion records and payload UTF-8 during replay @cassirer-openai #58182 Support managed network requirements under permissions.network @viyatb-oai #58189 Use turn-scoped permissions for standalone web search @sayan-oai #58190 Allow provide",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-status:01M6P50GPP1V98EF8MJ9SH393R:2026-11-06T07:00:11.408Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-06T07:00:11.408Z",
+      "item": {
+        "id": "openai-status:01M6P50GPP1V98EF8MJ9SH393R",
+        "at": "2026-11-06T04:31:37.000Z",
+        "url": "https://status.openai.com/incidents/01M6P50GPP1V98EF8MJ9SH393R",
+        "text": "ChatGPT Work and Dots Errors. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-05T15:25:03.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -55346,7 +55527,8 @@
       "rust-v0.167.0-alpha.5": 1793760959630,
       "rust-v0.168.0-alpha.4": 1793879609564,
       "rust-v0.168.0-alpha.6": 1793906362456,
-      "rust-v0.167.0": 1793924682600
+      "rust-v0.167.0": 1793924682600,
+      "rust-v0.169.0-alpha.1": 1793949311413
     }
   }
 }
