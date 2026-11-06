@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-06T14:57:32.372Z",
+  "generatedAt": "2026-11-06T20:50:11.645Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -13982,6 +13982,67 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "openai-news:https://openai.com/index/partnering-with-hacktron",
+      "at": "2026-11-06T08:00:00.000Z",
+      "url": "https://openai.com/index/partnering-with-hacktron",
+      "text": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems. OpenAI is partnering with Hacktron to find vulnerabilities, test connections with third-party services, and strengthen defenses with frontier AI.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
+      "at": "2026-11-06T00:00:00.000Z",
+      "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
+      "text": "Measuring how AI agents handle everyday wet-lab science. OpenAI introduces BioBasicsBench, a 100-task benchmark measuring how well AI agents interpret raw experimental data and handle everyday wet-lab science.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.2",
+      "at": "2026-11-06T20:28:33.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.2",
+      "text": "rust-v0.169.0-alpha.2. Release 0.169.0-alpha.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M6S2FV5TZWQ753NHRB7BF5K7",
+      "at": "2026-11-06T18:50:47.000Z",
+      "url": "https://status.openai.com/incidents/01M6S2FV5TZWQ753NHRB7BF5K7",
+      "text": "Elevated error rates with Brex Cards and U.S. business Mastercards. Investigating — We’re seeing payment declines on some U.S. business Mastercards, including some Brex cards. For API customers, this can prevent automatic recharges and one-time credit purchases. If your prepaid balance runs out, your API requests may fail.\n\nIf you use one of these cards, we recommend adding a card from a different issuer before your next payment, even if you haven’t seen a decline. If an API credit purchase has already failed, use the new card to retry the purchase.\n\nWe’re working with our payment partners and will share updates here.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "identified",
+      "publishedAt": "2026-11-06T18:38:43.000Z"
     }
   ],
   "sources": {
@@ -13990,7 +14051,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-06T14:57:31.762Z",
+      "lastSuccessAt": "2026-11-06T20:50:10.744Z",
       "error": null,
       "count": 150
     },
@@ -13999,7 +14060,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-06T14:57:31.762Z",
+      "lastSuccessAt": "2026-11-06T20:50:10.744Z",
       "error": null,
       "count": 10
     },
@@ -14008,7 +14069,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-06T14:57:31.762Z",
+      "lastSuccessAt": "2026-11-06T20:50:10.744Z",
       "error": null,
       "count": 25
     }
@@ -55505,6 +55566,87 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-11-05T15:25:03.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/partnering-with-hacktron:2026-11-06T20:50:11.645Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-06T20:50:11.645Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/partnering-with-hacktron",
+        "at": "2026-11-06T08:00:00.000Z",
+        "url": "https://openai.com/index/partnering-with-hacktron",
+        "text": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems. OpenAI is partnering with Hacktron to find vulnerabilities, test connections with third-party services, and strengthen defenses with frontier AI.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science:2026-11-06T20:50:11.645Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-06T20:50:11.645Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
+        "at": "2026-11-06T00:00:00.000Z",
+        "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
+        "text": "Measuring how AI agents handle everyday wet-lab science. OpenAI introduces BioBasicsBench, a 100-task benchmark measuring how well AI agents interpret raw experimental data and handle everyday wet-lab science.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.2:2026-11-06T20:50:11.645Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-06T20:50:11.645Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.2",
+        "at": "2026-11-06T20:28:33.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.2",
+        "text": "rust-v0.169.0-alpha.2. Release 0.169.0-alpha.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M6S2FV5TZWQ753NHRB7BF5K7:2026-11-06T20:50:11.645Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-06T20:50:11.645Z",
+      "item": {
+        "id": "openai-status:01M6S2FV5TZWQ753NHRB7BF5K7",
+        "at": "2026-11-06T18:50:47.000Z",
+        "url": "https://status.openai.com/incidents/01M6S2FV5TZWQ753NHRB7BF5K7",
+        "text": "Elevated error rates with Brex Cards and U.S. business Mastercards. Investigating — We’re seeing payment declines on some U.S. business Mastercards, including some Brex cards. For API customers, this can prevent automatic recharges and one-time credit purchases. If your prepaid balance runs out, your API requests may fail.\n\nIf you use one of these cards, we recommend adding a card from a different issuer before your next payment, even if you haven’t seen a decline. If an API credit purchase has already failed, use the new card to retry the purchase.\n\nWe’re working with our payment partners and will share updates here.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "identified",
+        "publishedAt": "2026-11-06T18:38:43.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -55528,7 +55670,8 @@
       "rust-v0.168.0-alpha.4": 1793879609564,
       "rust-v0.168.0-alpha.6": 1793906362456,
       "rust-v0.167.0": 1793924682600,
-      "rust-v0.169.0-alpha.1": 1793977952377
+      "rust-v0.169.0-alpha.1": 1793977952377,
+      "rust-v0.169.0-alpha.2": 1793999111648
     }
   }
 }
