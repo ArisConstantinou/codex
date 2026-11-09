@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-09T02:07:54.864Z",
+  "generatedAt": "2026-11-09T09:56:39.070Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -14690,6 +14690,36 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-11-08T15:11:15.000Z"
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.5",
+      "at": "2026-11-09T07:29:29.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.5",
+      "text": "rust-v0.169.0-alpha.5. Release 0.169.0-alpha.5",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.4",
+      "at": "2026-11-09T05:37:54.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.4",
+      "text": "rust-v0.169.0-alpha.4. Release 0.169.0-alpha.4",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -14698,7 +14728,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-09T02:07:54.132Z",
+      "lastSuccessAt": "2026-11-09T09:56:38.622Z",
       "error": null,
       "count": 150
     },
@@ -14707,7 +14737,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-09T02:07:54.132Z",
+      "lastSuccessAt": "2026-11-09T09:56:38.622Z",
       "error": null,
       "count": 10
     },
@@ -14716,7 +14746,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-09T02:07:54.132Z",
+      "lastSuccessAt": "2026-11-09T09:56:38.622Z",
       "error": null,
       "count": 25
     }
@@ -60717,6 +60747,46 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.5:2026-11-09T09:56:39.070Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-09T09:56:39.070Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.5",
+        "at": "2026-11-09T07:29:29.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.5",
+        "text": "rust-v0.169.0-alpha.5. Release 0.169.0-alpha.5",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.4:2026-11-09T09:56:39.070Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-09T09:56:39.070Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.4",
+        "at": "2026-11-09T05:37:54.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.4",
+        "text": "rust-v0.169.0-alpha.4. Release 0.169.0-alpha.4",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
@@ -60740,7 +60810,8 @@
       "rust-v0.168.0-alpha.4": 1793879609564,
       "rust-v0.168.0-alpha.6": 1793906362456,
       "rust-v0.167.0": 1793924682600,
-      "rust-v0.169.0-alpha.1": 1793977952377
+      "rust-v0.169.0-alpha.1": 1793977952377,
+      "rust-v0.169.0-alpha.5": 1794219099073
     }
   }
 }
