@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-10T18:38:25.190Z",
+  "generatedAt": "2026-11-10T23:46:37.191Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -14951,9 +14951,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.9",
-      "at": "2026-11-10T16:52:11.000Z",
+      "at": "2026-11-10T22:13:52.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.9",
-      "text": "rust-v0.169.0-alpha.9. Release 0.169.0-alpha.9",
+      "text": "0.169.0-alpha.9. Release 0.169.0-alpha.9",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -14966,9 +14966,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.1",
-      "at": "2026-11-10T18:02:26.000Z",
+      "at": "2026-11-10T21:33:57.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.1",
-      "text": "rust-v0.167.1. Release 0.167.1",
+      "text": "0.167.1. Changelog Full Changelog: rust-v0.167.0...rust-v0.167.1",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -14978,6 +14978,36 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.10",
+      "at": "2026-11-10T22:29:00.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.10",
+      "text": "rust-v0.169.0-alpha.10. Release 0.169.0-alpha.10",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.2",
+      "at": "2026-11-10T19:42:33.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.2",
+      "text": "rust-v0.167.0-alpha.4.2. Release 0.167.0-alpha.4.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -14986,7 +15016,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-10T18:38:24.736Z",
+      "lastSuccessAt": "2026-11-10T23:46:36.833Z",
       "error": null,
       "count": 150
     },
@@ -14995,7 +15025,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-10T18:38:24.736Z",
+      "lastSuccessAt": "2026-11-10T23:46:36.833Z",
       "error": null,
       "count": 10
     },
@@ -15004,7 +15034,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-10T18:38:24.736Z",
+      "lastSuccessAt": "2026-11-10T23:46:36.833Z",
       "error": null,
       "count": 25
     }
@@ -61449,6 +61479,86 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-11-06T18:38:43.000Z"
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.10:2026-11-10T23:46:37.191Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T23:46:37.191Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.10",
+        "at": "2026-11-10T22:29:00.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.10",
+        "text": "rust-v0.169.0-alpha.10. Release 0.169.0-alpha.10",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.9:2026-11-10T23:46:37.191Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T23:46:37.191Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.9",
+        "at": "2026-11-10T22:13:52.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.9",
+        "text": "0.169.0-alpha.9. Release 0.169.0-alpha.9",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.1:2026-11-10T23:46:37.191Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T23:46:37.191Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.1",
+        "at": "2026-11-10T21:33:57.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.1",
+        "text": "0.167.1. Changelog Full Changelog: rust-v0.167.0...rust-v0.167.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.2:2026-11-10T23:46:37.191Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T23:46:37.191Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.2",
+        "at": "2026-11-10T19:42:33.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.2",
+        "text": "rust-v0.167.0-alpha.4.2. Release 0.167.0-alpha.4.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
@@ -61476,7 +61586,8 @@
       "rust-v0.169.0-alpha.5": 1794219099073,
       "rust-v0.169.0-alpha.7": 1794257673420,
       "rust-v0.169.0-alpha.8": 1794309378484,
-      "rust-v0.167.1": 1794336805193
+      "rust-v0.167.1": 1794336805193,
+      "rust-v0.169.0-alpha.10": 1794355297194
     }
   }
 }
