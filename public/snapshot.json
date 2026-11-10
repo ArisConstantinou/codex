@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-10T11:01:18.479Z",
+  "generatedAt": "2026-11-10T18:38:25.190Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -14251,9 +14251,9 @@
     },
     {
       "id": "openai-status:01M6S2FV5TZWQ753NHRB7BF5K7",
-      "at": "2026-11-07T01:29:31.000Z",
+      "at": "2026-11-10T16:06:18.000Z",
       "url": "https://status.openai.com/incidents/01M6S2FV5TZWQ753NHRB7BF5K7",
-      "text": "Elevated error rates with some U.S. business Mastercards. We’ve applied a mitigation and are monitoring the affected services to confirm recovery.",
+      "text": "Elevated error rates with some U.S. business Mastercards. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -14262,7 +14262,7 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "monitoring",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-11-06T18:38:43.000Z"
     },
     {
@@ -14877,7 +14877,7 @@
       "id": "openai-news:https://openai.com/index/closing-ai-guidance-gap-education",
       "at": "2026-11-10T09:00:00.000Z",
       "url": "https://openai.com/index/closing-ai-guidance-gap-education",
-      "text": "Closing the AI guidance gap in education. Lessons from OpenAI’s EMEA education partnerships and new ThinkYoung research. Supporting teachers, AI literacy and independent learning.",
+      "text": "Closing the AI guidance gap in education. New ThinkYoung research and lessons from OpenAI’s EMEA education partnerships on supporting teachers, AI literacy, and independent learning.",
       "kind": "release",
       "status": "post",
       "author": "OpenAI News",
@@ -14903,6 +14903,81 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-11-10T04:42:21.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
+      "at": "2026-11-10T12:00:00.000Z",
+      "url": "https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
+      "text": "Helping caregivers use AI in everyday life. OpenAI Academy is bringing free, hands-on ChatGPT workshops to caregivers in five U.S. cities, helping them build practical AI skills for everyday life.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-businesses-chatgpt",
+      "at": "2026-11-10T10:00:00.000Z",
+      "url": "https://openai.com/index/introducing-businesses-chatgpt",
+      "text": "Introducing Businesses in ChatGPT. Manage your business information, get insights about how your business shows up, and turn interest into action in ChatGPT.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/ai-effect-on-freelance-work",
+      "at": "2026-11-10T07:00:00.000Z",
+      "url": "https://openai.com/index/ai-effect-on-freelance-work",
+      "text": "Work at the Frontier: AI’s effect on freelance work. New research from OpenAI and Upwork finds shifting demand for freelance work, new skill combinations, and larger budgets and more hours for AI-related projects.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.9",
+      "at": "2026-11-10T16:52:11.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.9",
+      "text": "rust-v0.169.0-alpha.9. Release 0.169.0-alpha.9",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.1",
+      "at": "2026-11-10T18:02:26.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.1",
+      "text": "rust-v0.167.1. Release 0.167.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -14911,7 +14986,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-10T11:01:17.928Z",
+      "lastSuccessAt": "2026-11-10T18:38:24.736Z",
       "error": null,
       "count": 150
     },
@@ -14920,7 +14995,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-10T11:01:17.928Z",
+      "lastSuccessAt": "2026-11-10T18:38:24.736Z",
       "error": null,
       "count": 10
     },
@@ -14929,7 +15004,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-10T11:01:17.928Z",
+      "lastSuccessAt": "2026-11-10T18:38:24.736Z",
       "error": null,
       "count": 25
     }
@@ -61233,6 +61308,147 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-11-10T04:42:21.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/helping-caregivers-use-ai-in-everyday-life:2026-11-10T18:38:25.190Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T18:38:25.190Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
+        "at": "2026-11-10T12:00:00.000Z",
+        "url": "https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
+        "text": "Helping caregivers use AI in everyday life. OpenAI Academy is bringing free, hands-on ChatGPT workshops to caregivers in five U.S. cities, helping them build practical AI skills for everyday life.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-businesses-chatgpt:2026-11-10T18:38:25.190Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T18:38:25.190Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-businesses-chatgpt",
+        "at": "2026-11-10T10:00:00.000Z",
+        "url": "https://openai.com/index/introducing-businesses-chatgpt",
+        "text": "Introducing Businesses in ChatGPT. Manage your business information, get insights about how your business shows up, and turn interest into action in ChatGPT.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/closing-ai-guidance-gap-education:2026-11-10T18:38:25.190Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T18:38:25.190Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/closing-ai-guidance-gap-education",
+        "at": "2026-11-10T09:00:00.000Z",
+        "url": "https://openai.com/index/closing-ai-guidance-gap-education",
+        "text": "Closing the AI guidance gap in education. New ThinkYoung research and lessons from OpenAI’s EMEA education partnerships on supporting teachers, AI literacy, and independent learning.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/ai-effect-on-freelance-work:2026-11-10T18:38:25.190Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T18:38:25.190Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/ai-effect-on-freelance-work",
+        "at": "2026-11-10T07:00:00.000Z",
+        "url": "https://openai.com/index/ai-effect-on-freelance-work",
+        "text": "Work at the Frontier: AI’s effect on freelance work. New research from OpenAI and Upwork finds shifting demand for freelance work, new skill combinations, and larger budgets and more hours for AI-related projects.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.9:2026-11-10T18:38:25.190Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T18:38:25.190Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.9",
+        "at": "2026-11-10T16:52:11.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.9",
+        "text": "rust-v0.169.0-alpha.9. Release 0.169.0-alpha.9",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.1:2026-11-10T18:38:25.190Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T18:38:25.190Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.1",
+        "at": "2026-11-10T18:02:26.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.1",
+        "text": "rust-v0.167.1. Release 0.167.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-status:01M6S2FV5TZWQ753NHRB7BF5K7:2026-11-10T18:38:25.190Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T18:38:25.190Z",
+      "item": {
+        "id": "openai-status:01M6S2FV5TZWQ753NHRB7BF5K7",
+        "at": "2026-11-10T16:06:18.000Z",
+        "url": "https://status.openai.com/incidents/01M6S2FV5TZWQ753NHRB7BF5K7",
+        "text": "Elevated error rates with some U.S. business Mastercards. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-06T18:38:43.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -61259,7 +61475,8 @@
       "rust-v0.169.0-alpha.1": 1793977952377,
       "rust-v0.169.0-alpha.5": 1794219099073,
       "rust-v0.169.0-alpha.7": 1794257673420,
-      "rust-v0.169.0-alpha.8": 1794309378484
+      "rust-v0.169.0-alpha.8": 1794309378484,
+      "rust-v0.167.1": 1794336805193
     }
   }
 }
