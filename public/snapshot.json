@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-09T20:39:33.416Z",
+  "generatedAt": "2026-11-10T02:59:06.633Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -14753,9 +14753,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.7",
-      "at": "2026-11-09T20:06:55.000Z",
+      "at": "2026-11-09T22:01:36.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.7",
-      "text": "rust-v0.169.0-alpha.7. Release 0.169.0-alpha.7",
+      "text": "0.169.0-alpha.7. Release 0.169.0-alpha.7",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -14796,6 +14796,82 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-11-09T18:16:30.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/control-room",
+      "at": "2026-11-09T13:00:00.000Z",
+      "url": "https://openai.com/index/control-room",
+      "text": "Control Room: A central system to track and stop model workloads across our research infrastructure. Learn how OpenAI’s Control Room tracks model workloads across our research infrastructure and can rapidly stop them when safety or security concerns arise.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/coderabbit-codex-daybreak",
+      "at": "2026-11-09T08:00:00.000Z",
+      "url": "https://openai.com/index/coderabbit-codex-daybreak",
+      "text": "CodeRabbit scales agentic software development and ships 20x more. CodeRabbit uses OpenAI models to govern and trust AI-generated code and Codex to ship 20 times more software with the same engineering team.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.8",
+      "at": "2026-11-09T23:51:39.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.8",
+      "text": "rust-v0.169.0-alpha.8. Release 0.169.0-alpha.8",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.1",
+      "at": "2026-11-09T23:49:13.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.1",
+      "text": "0.167.0-alpha.4.1. Release 0.167.0-alpha.4.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M7193DWYRFWQM5W6E3VZ7TM7",
+      "at": "2026-11-09T23:50:46.000Z",
+      "url": "https://status.openai.com/incidents/01M7193DWYRFWQM5W6E3VZ7TM7",
+      "text": "Elevated Errors On API. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-11-09T23:08:12.000Z"
     }
   ],
   "sources": {
@@ -14804,7 +14880,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-09T20:39:33.013Z",
+      "lastSuccessAt": "2026-11-10T02:59:06.249Z",
       "error": null,
       "count": 150
     },
@@ -14813,7 +14889,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-09T20:39:33.013Z",
+      "lastSuccessAt": "2026-11-10T02:59:06.249Z",
       "error": null,
       "count": 10
     },
@@ -14822,7 +14898,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-09T20:39:33.013Z",
+      "lastSuccessAt": "2026-11-10T02:59:06.249Z",
       "error": null,
       "count": 25
     }
@@ -60964,6 +61040,127 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-11-09T18:16:30.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/control-room:2026-11-10T02:59:06.633Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T02:59:06.633Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/control-room",
+        "at": "2026-11-09T13:00:00.000Z",
+        "url": "https://openai.com/index/control-room",
+        "text": "Control Room: A central system to track and stop model workloads across our research infrastructure. Learn how OpenAI’s Control Room tracks model workloads across our research infrastructure and can rapidly stop them when safety or security concerns arise.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/coderabbit-codex-daybreak:2026-11-10T02:59:06.633Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T02:59:06.633Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/coderabbit-codex-daybreak",
+        "at": "2026-11-09T08:00:00.000Z",
+        "url": "https://openai.com/index/coderabbit-codex-daybreak",
+        "text": "CodeRabbit scales agentic software development and ships 20x more. CodeRabbit uses OpenAI models to govern and trust AI-generated code and Codex to ship 20 times more software with the same engineering team.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.8:2026-11-10T02:59:06.633Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T02:59:06.633Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.8",
+        "at": "2026-11-09T23:51:39.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.8",
+        "text": "rust-v0.169.0-alpha.8. Release 0.169.0-alpha.8",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.7:2026-11-10T02:59:06.633Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T02:59:06.633Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.7",
+        "at": "2026-11-09T22:01:36.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.7",
+        "text": "0.169.0-alpha.7. Release 0.169.0-alpha.7",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.1:2026-11-10T02:59:06.633Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T02:59:06.633Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.1",
+        "at": "2026-11-09T23:49:13.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.1",
+        "text": "0.167.0-alpha.4.1. Release 0.167.0-alpha.4.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M7193DWYRFWQM5W6E3VZ7TM7:2026-11-10T02:59:06.633Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T02:59:06.633Z",
+      "item": {
+        "id": "openai-status:01M7193DWYRFWQM5W6E3VZ7TM7",
+        "at": "2026-11-09T23:50:46.000Z",
+        "url": "https://status.openai.com/incidents/01M7193DWYRFWQM5W6E3VZ7TM7",
+        "text": "Elevated Errors On API. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-09T23:08:12.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -60989,7 +61186,8 @@
       "rust-v0.167.0": 1793924682600,
       "rust-v0.169.0-alpha.1": 1793977952377,
       "rust-v0.169.0-alpha.5": 1794219099073,
-      "rust-v0.169.0-alpha.7": 1794257673420
+      "rust-v0.169.0-alpha.7": 1794257673420,
+      "rust-v0.169.0-alpha.8": 1794280446636
     }
   }
 }
