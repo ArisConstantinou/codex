@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-10T02:59:06.633Z",
+  "generatedAt": "2026-11-10T11:01:18.479Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -14872,6 +14872,37 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-11-09T23:08:12.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/closing-ai-guidance-gap-education",
+      "at": "2026-11-10T09:00:00.000Z",
+      "url": "https://openai.com/index/closing-ai-guidance-gap-education",
+      "text": "Closing the AI guidance gap in education. Lessons from OpenAI’s EMEA education partnerships and new ThinkYoung research. Supporting teachers, AI literacy and independent learning.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-status:01M71W79MAGEXEX93QTVTBYJ4K",
+      "at": "2026-11-10T07:02:33.000Z",
+      "url": "https://status.openai.com/incidents/01M71W79MAGEXEX93QTVTBYJ4K",
+      "text": "Incorrect cost data in Costs API exports. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-11-10T04:42:21.000Z"
     }
   ],
   "sources": {
@@ -14880,7 +14911,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-10T02:59:06.249Z",
+      "lastSuccessAt": "2026-11-10T11:01:17.928Z",
       "error": null,
       "count": 150
     },
@@ -14889,7 +14920,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-10T02:59:06.249Z",
+      "lastSuccessAt": "2026-11-10T11:01:17.928Z",
       "error": null,
       "count": 10
     },
@@ -14898,7 +14929,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-10T02:59:06.249Z",
+      "lastSuccessAt": "2026-11-10T11:01:17.928Z",
       "error": null,
       "count": 25
     }
@@ -61161,6 +61192,47 @@
         "serviceStatus": "resolved",
         "publishedAt": "2026-11-09T23:08:12.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/closing-ai-guidance-gap-education:2026-11-10T11:01:18.479Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T11:01:18.479Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/closing-ai-guidance-gap-education",
+        "at": "2026-11-10T09:00:00.000Z",
+        "url": "https://openai.com/index/closing-ai-guidance-gap-education",
+        "text": "Closing the AI guidance gap in education. Lessons from OpenAI’s EMEA education partnerships and new ThinkYoung research. Supporting teachers, AI literacy and independent learning.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-status:01M71W79MAGEXEX93QTVTBYJ4K:2026-11-10T11:01:18.479Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-10T11:01:18.479Z",
+      "item": {
+        "id": "openai-status:01M71W79MAGEXEX93QTVTBYJ4K",
+        "at": "2026-11-10T07:02:33.000Z",
+        "url": "https://status.openai.com/incidents/01M71W79MAGEXEX93QTVTBYJ4K",
+        "text": "Incorrect cost data in Costs API exports. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-10T04:42:21.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -61187,7 +61259,7 @@
       "rust-v0.169.0-alpha.1": 1793977952377,
       "rust-v0.169.0-alpha.5": 1794219099073,
       "rust-v0.169.0-alpha.7": 1794257673420,
-      "rust-v0.169.0-alpha.8": 1794280446636
+      "rust-v0.169.0-alpha.8": 1794309378484
     }
   }
 }
