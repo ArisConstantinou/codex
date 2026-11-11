@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-11T11:13:32.263Z",
+  "generatedAt": "2026-11-11T18:45:24.002Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -15238,6 +15238,36 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/jiostar-vijay-seshadri",
+      "at": "2026-11-11T00:00:00.000Z",
+      "url": "https://openai.com/index/jiostar-vijay-seshadri",
+      "text": "JioStar’s chief architect on AI discovery at 500M-user scale. JioStar’s Vijay Seshadri explains AI discovery at 500M-user scale. Read his lessons on evals, guardrails, and taking AI into production.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.1",
+      "at": "2026-11-11T16:21:33.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.1",
+      "text": "rust-v0.170.0-alpha.1. Release 0.170.0-alpha.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -15246,7 +15276,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-11T11:13:31.824Z",
+      "lastSuccessAt": "2026-11-11T18:45:23.601Z",
       "error": null,
       "count": 150
     },
@@ -15255,7 +15285,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-11T11:13:31.824Z",
+      "lastSuccessAt": "2026-11-11T18:45:23.601Z",
       "error": null,
       "count": 10
     },
@@ -15264,7 +15294,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-11T11:13:31.824Z",
+      "lastSuccessAt": "2026-11-11T18:45:23.601Z",
       "error": null,
       "count": 25
     }
@@ -62244,6 +62274,46 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/jiostar-vijay-seshadri:2026-11-11T18:45:24.002Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-11T18:45:24.002Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/jiostar-vijay-seshadri",
+        "at": "2026-11-11T00:00:00.000Z",
+        "url": "https://openai.com/index/jiostar-vijay-seshadri",
+        "text": "JioStar’s chief architect on AI discovery at 500M-user scale. JioStar’s Vijay Seshadri explains AI discovery at 500M-user scale. Read his lessons on evals, guardrails, and taking AI into production.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.1:2026-11-11T18:45:24.002Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-11T18:45:24.002Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.1",
+        "at": "2026-11-11T16:21:33.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.1",
+        "text": "rust-v0.170.0-alpha.1. Release 0.170.0-alpha.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
@@ -62272,7 +62342,8 @@
       "rust-v0.169.0-alpha.7": 1794257673420,
       "rust-v0.169.0-alpha.8": 1794309378484,
       "rust-v0.167.1": 1794336805193,
-      "rust-v0.169.0-alpha.10": 1794367528549
+      "rust-v0.169.0-alpha.10": 1794367528549,
+      "rust-v0.170.0-alpha.1": 1794423624005
     }
   }
 }
