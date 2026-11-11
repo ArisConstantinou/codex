@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-11T03:10:28.544Z",
+  "generatedAt": "2026-11-11T11:13:32.263Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -14981,9 +14981,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.10",
-      "at": "2026-11-10T22:29:00.000Z",
+      "at": "2026-11-11T03:38:15.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.10",
-      "text": "rust-v0.169.0-alpha.10. Release 0.169.0-alpha.10",
+      "text": "0.169.0-alpha.10. Release 0.169.0-alpha.10",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -15023,6 +15023,221 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/chatgpt-plus-for-veterans",
+      "at": "2026-11-11T08:00:00.000Z",
+      "url": "https://openai.com/index/chatgpt-plus-for-veterans",
+      "text": "ChatGPT Plus for veterans and servicemembers. More than 20,000 veterans and transitioning service members have claimed a free year of ChatGPT Plus. See how they use it to prepare for civilian careers.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/singapore-airlines-travel-work",
+      "at": "2026-11-10T08:00:00.000Z",
+      "url": "https://openai.com/index/singapore-airlines-travel-work",
+      "text": "Singapore Airlines elevates travel & work with OpenAI technology. Discover how Singapore Airlines uses OpenAI models and API to enhance customer support, travel discovery, and employee productivity, doubling CSAT for its Kris chatbot.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/cogent-security",
+      "at": "2026-11-10T00:00:00.000Z",
+      "url": "https://openai.com/index/cogent-security",
+      "text": "Cogent and OpenAI build cyber defense factories for enterprises. Cogent combines OpenAI models with enterprise context to help automatically remediate vulnerabilities with agents.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.11",
+      "at": "2026-11-11T10:17:38.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.11",
+      "text": "0.169.0-alpha.11. Release 0.169.0-alpha.11",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.169.0-alpha.11",
+        "title": "0.169.0-alpha.11",
+        "body": "Release 0.169.0-alpha.11\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-11T11:13:32.267Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.11",
+        "publishedAt": "2026-11-11T10:11:06Z",
+        "commits": [
+          {
+            "sha": "ad3d3521eddcee24cd6ce0d335d597544578c5e1",
+            "title": "Avoid redundant reads and screen clears when switching side chats (#60675)",
+            "message": "Avoid redundant reads and screen clears when switching side chats (#60675)\n\n## Why\n\nA live parent thread continues receiving lifecycle notifications while its side chat has focus, so returning to it does not need another liveness read.\n\n## What changed\n\n- Skip the parent liveness read when returning from a side chat while the parent is still attached and online. Keep the read when reattachment is needed.\n- Stop scheduling a deferred screen clear when handling a transcript reset that preserves the screen.\n\n## Testing\n\nAdd regression coverage for parent `thread/read` requests with and without reattachment, and assert that side-chat navigation leaves no deferred screen clear.\n\nGitOrigin-RevId: a07f161ec86b0ae51250c5a0156402d328c42bdf",
+            "url": "https://github.com/openai/codex/commit/ad3d3521eddcee24cd6ce0d335d597544578c5e1"
+          },
+          {
+            "sha": "8a7a723dcd670fed88c4a7363b397e3303faf26d",
+            "title": "Keep TUI status content separate from composer hints (#60680)",
+            "message": "Keep TUI status content separate from composer hints (#60680)\n\n## Why\n\nComposer hints could replace configured status content, and mode indicators and warnings reduced the width available to status extensions.\n\n## What changed\n\n- Give enabled status content a dedicated area below the composer in both inline and fullscreen layouts, preserving it during transient hint states.\n- Keep shortcuts, queue hints, mode indicators, and warnings in the hint row.\n- Measure extension status content at the full available width, allowing up to four rows while yielding space to the composer when height is limited.\n- Suppress composer hints behind centered dialogs.\n\n## Testing\n\nUpdate layout assertions and snapshots for status persistence, extension resizing and clipping, warning placement, and reasoning-effort transitions.\n\nGitOrigin-RevId: f11c2e4fb53c35b69c2fbdbe80cef31bb28faca4",
+            "url": "https://github.com/openai/codex/commit/8a7a723dcd670fed88c4a7363b397e3303faf26d"
+          },
+          {
+            "sha": "192e2ef3ce9710418f59d7bc42d6b2e52d486416",
+            "title": "Prioritize draft space when allocating composer footer rows (#60681)",
+            "message": "Prioritize draft space when allocating composer footer rows (#60681)\n\n## Why\n\nStatus content and footer hints need to fit within the composer's height budget while preserving room for editing and active search controls.\n\n## What changed\n\n- Share row allocation between composer measurement and rendering. Cap status and hints at two rows in inline scrollback, and scale the fullscreen cap from two to four rows with the available budget.\n- Reserve space for active footer controls, give suggestions and image previews priority over additional status rows, and avoid reserving an empty hints row when status is enabled.\n- Keep textarea row counts and scroll offsets as `usize`, saturating only the terminal height so very tall drafts remain scrollable with a visible caret.\n\n## Testing\n\nAdd layout and snapshot coverage for constrained height budgets, status and hints, image previews, slash suggestions, and transcript search cursors. Add a regression test for rendering a draft beyond the `u16` row limit.\n\nGitOrigin-RevId: 20fb0384ffc976dfd12e648004763feff0597dda",
+            "url": "https://github.com/openai/codex/commit/192e2ef3ce9710418f59d7bc42d6b2e52d486416"
+          },
+          {
+            "sha": "65dbdb5f03489b3394383ae802bc751a6d65e955",
+            "title": "Wrap built-in TUI status lines within the footer row budget (#60682)",
+            "message": "Wrap built-in TUI status lines within the footer row budget (#60682)\n\n## Why\n\nLong built-in status lines were truncated to a single row even when the footer had room for more content.\n\n## What changed\n\n- Wrap status text to the available width and row budget, preserving styles and hyperlink targets across rows.\n- Show an unlinked ellipsis when content exceeds the available space.\n- Refresh wrapped content when the status text, agent label, or width changes.\n- Keep reasoning-effort transitions on one row and restore wrapping after the final animation frame.\n\n## Testing\n\nAdd coverage for wrapping and hyperlink boundaries across footer layouts, content and agent-label updates, resizing, and wrapping restoration after an effort transition. Update transcript and startup snapshots for multiline status text.\n\nGitOrigin-RevId: 30e0795c473efd62fc4d0dca4deb6029b625a9e8",
+            "url": "https://github.com/openai/codex/commit/65dbdb5f03489b3394383ae802bc751a6d65e955"
+          },
+          {
+            "sha": "87b7bdbf2efb9cb6fb15d821ef535061012c0138",
+            "title": "Fit composer footer hints to available terminal space (#60683)",
+            "message": "Fit composer footer hints to available terminal space (#60683)\n\n## Why\n\nNarrow composer footers can clip hints or crowd out mode indicators and actions.\n\n## What changed\n\nUse a shared layout for navigation, actions, mode indicators, context, and warnings. Shorten or drop whole labels in priority order instead of clipping them. Add a second row when input modes and queue or active side-conversation actions fit separately but not together, keeping navigation and modes above actions.\n\n## Testing\n\nAdd coverage for fullscreen and scrollback layouts, narrow Plan mode hints, active side-conversation actions, oversized goal indicators, and warning hit areas.\n\nGitOrigin-RevId: 849a53d45ef1b36b40c52282e329b48ec7d7d12e",
+            "url": "https://github.com/openai/codex/commit/87b7bdbf2efb9cb6fb15d821ef535061012c0138"
+          },
+          {
+            "sha": "ac54a05173d090b9fdfa181ea49b92f45aff2681",
+            "title": "Add a Signer Service backend for macOS notarization (#60695)",
+            "message": "Add a Signer Service backend for macOS notarization (#60695)\n\n## What changed\n\nAllow `APPLE_NOTARIZATION_BACKEND=signer-service` to sign Apple notarization JWTs through `grpcurl`, using GitHub OIDC authentication. Validate the returned signing key and algorithm, and redact transport and signing failure details.\n\nKeep Azure Key Vault as the default backend and skip its configuration requirements when Signer Service is selected.\n\n## Testing\n\nAdd coverage for JWT refresh with fresh OIDC tokens and for the binary wrapper running without Azure configuration. All six notarization tests pass.\n\nGitOrigin-RevId: e38ea90e94639d87c11ab075c999d85b61b37c17",
+            "url": "https://github.com/openai/codex/commit/ac54a05173d090b9fdfa181ea49b92f45aff2681"
+          },
+          {
+            "sha": "4dd5f1e70b544967b76ebacda08b9ad28a7ab5bb",
+            "title": "Limit MCP product attribution to configured REPL-backed calls (#60697)",
+            "message": "Limit MCP product attribution to configured REPL-backed calls (#60697)\n\n## Why\n\nMCP request metadata could forward a client-supplied `product_sku` to unrelated servers and connectors.\n\n## What changed\n\nRemove `product_sku` from turn metadata before forwarding it. For Node REPL-backed servers and the browser connector, populate it from the turn's `apps_mcp_product_sku` configuration, mapping unrecognized values to `other` and omitting empty or missing values.\n\n## Testing\n\nAdd regression coverage for configured REPL and browser attribution, unrelated servers and connectors, unrecognized or absent configuration, and spoofed client metadata.\n\nGitOrigin-RevId: bc24062526048ea1c1621099e609053cf167602f",
+            "url": "https://github.com/openai/codex/commit/4dd5f1e70b544967b76ebacda08b9ad28a7ab5bb"
+          },
+          {
+            "sha": "83e3d63ba1b928d9f73d52480473694f84aa5a18",
+            "title": "Finalize aborted turns and ignore unrelated late aborts (#60700)",
+            "message": "Finalize aborted turns and ignore unrelated late aborts (#60700)\n\n## Why\n\nAn aborted turn could remain active, and a late abort for an unknown turn could interrupt a different turn with an explicit ID.\n\n## What changed\n\nFinalize the active turn after applying an abort. Only fall back to the active turn when the abort lacks a turn ID or the active turn has a generated ID.\n\n## Testing\n\nExtend regression coverage to verify that a late abort preserves a review turn's ID and completed status, and that repeating `turn/interrupt` returns `no active turn to interrupt`.\n\nGitOrigin-RevId: 73072dda7879bd50b1013f4a0bbf1b68546f2619",
+            "url": "https://github.com/openai/codex/commit/83e3d63ba1b928d9f73d52480473694f84aa5a18"
+          },
+          {
+            "sha": "fe8e540a80f17716bf2a3007f06e8a602192c704",
+            "title": "Centralize permission config selection and legacy translation (#60702)",
+            "message": "Centralize permission config selection and legacy translation (#60702)\n\n## What changed\n\nMove permission selection into `codex-config` with a shared `PermissionConfig` representation for legacy sandbox settings and named profiles. Resolve selectors using config layer precedence while preserving explicit session profile selection and sandbox mode overrides.\n\nShare legacy permission translation between config derivation and core loading, preserving merged workspace roots, network access, temporary-directory exclusions, and platform sandbox availability without modifying source layers or field origins.\n\n## Testing\n\nAdd coverage for mixed selector precedence, merged legacy settings, unchanged source metadata, and the Windows read-only fallback. Extend the managed preferences loader test to verify settings merged across layers and the absence of an active named profile for legacy permissions.\n\nGitOrigin-RevId: a435be7af38424ac33711e6a7557f52b9b672577",
+            "url": "https://github.com/openai/codex/commit/fe8e540a80f17716bf2a3007f06e8a602192c704"
+          },
+          {
+            "sha": "5228d94a27b7f84cae4854acbb5ea3b3e90dfeaf",
+            "title": "Canonicalize Windows sandbox homes and migrate saved junction paths (#60708)",
+            "message": "Canonicalize Windows sandbox homes and migrate saved junction paths (#60708)\n\n## What changed\n\n- Canonicalize home paths before sending sandbox provisioning and desktop registration requests.\n- Resolve saved junction paths when restoring the sandbox owner, holding the setup lock and pinning target directories while validating existing sandbox accounts. Skip migration for retiring runtimes.\n- Persist the resolved home and clear desktop home ownership so uninstall cannot delete a historical junction's target.\n\n## Testing\n\nAdd a Windows junction test verifying that a saved alias resolves to its physical target and an already canonical path needs no migration.\n\nGitOrigin-RevId: 9bac672273694e5a0353fec72a6bcba120e57255",
+            "url": "https://github.com/openai/codex/commit/5228d94a27b7f84cae4854acbb5ea3b3e90dfeaf"
+          },
+          {
+            "sha": "fe2f18520864ddbee86cdd4b103a9fefffe9c6a2",
+            "title": "Gate plugin recommendation cache warming on feature flags (#60721)",
+            "message": "Gate plugin recommendation cache warming on feature flags (#60721)\n\n## Why\n\nBackground plugin cache refreshes fetched recommendations even when plugin recommendations were disabled.\n\n## What changed\n\nPass the effective recommendation feature state into `PluginsConfigInput` and skip recommendation cache warming unless apps, plugins, and either `tool_suggest` or `recommended_plugins` are enabled. Installed-plugin cache refreshes continue independently.\n\nDisable `tool_suggest` and `recommended_plugins` by default in core and app-server test helpers, with explicit overrides for recommendation tests.\n\n## Testing\n\nUpdate cache-warming and external-login recommendation tests to opt in explicitly. Update config RPC assertions to verify the test helpers' session flag overrides.\n\nGitOrigin-RevId: dc04e2847c94e2b15842fcd95cc0cf1f104e1fac",
+            "url": "https://github.com/openai/codex/commit/fe2f18520864ddbee86cdd4b103a9fefffe9c6a2"
+          },
+          {
+            "sha": "36ed546b77e91a61d52d482ab82e687a15fa30be",
+            "title": "Apply session app overrides during MCP config refresh (#60730)",
+            "message": "Apply session app overrides during MCP config refresh (#60730)\n\n## Why\n\nMCP config refreshes previously retained session app overrides, leaving connector approval changes unapplied in existing sessions.\n\n## What changed\n\n- Refresh explicit session `apps` overrides alongside `plugins`, allowing updated link approval settings to take effect on the next turn.\n- Preserve overrides for omitted sections and restore inheritance when a section is an empty table.\n- Validate app overrides and the effective app configuration, rejecting refreshes that expose invalid inherited settings.\n\n## Testing\n\nAdd coverage for independent and combined app/plugin updates, clearing overrides, and rejecting invalid inherited app settings. Add an integration test verifying that changing a link's approval mode from `approve` to `prompt` requests approval before executing the next turn's tool call.\n\nGitOrigin-RevId: 3fa36744a9ccd9e735e4cda7f061ccff1cf2a269",
+            "url": "https://github.com/openai/codex/commit/36ed546b77e91a61d52d482ab82e687a15fa30be"
+          },
+          {
+            "sha": "ce6f7d9503dea36c90af9d264b20aa60448b0530",
+            "title": "Allow model-facing ID sequences to resume from allocated IDs (#60732)",
+            "message": "Allow model-facing ID sequences to resume from allocated IDs (#60732)\n\n## Why\n\nResuming an ID sequence from a persisted ID requires its allocation position before shuffling. Previously, IDs stored only their salt and shuffled value.\n\n## What changed\n\n- Store the allocation `ordinal` in `ModelFacingId`, expose `salt()` and `ordinal()`, and derive `JsonSchema`.\n- Add `ModelFacingIdGenerator::starting_at()` and `next_ordinal()` so callers can resume with the original seed and salt at the next allocation position without a generator snapshot.\n\n## Testing\n\nUpdate serialization coverage for the allocation fields and add a test that resumes from a serialized ID across the three-digit pool boundary, matching the uninterrupted sequence.\n\nGitOrigin-RevId: 6cbb725c0bd08356c0dc5458021b9bf58a489522",
+            "url": "https://github.com/openai/codex/commit/ce6f7d9503dea36c90af9d264b20aa60448b0530"
+          },
+          {
+            "sha": "9018f3a3b021082ef186ddd6503c0b4fd7a26260",
+            "title": "Preserve file-backed audio in tool outputs (#60735)",
+            "message": "Preserve file-backed audio in tool outputs (#60735)\n\n## Why\n\nConverting message content to tool output previously reduced file-backed audio to a text file ID, losing its audio type.\n\n## What changed\n\n- Allow `input_audio` tool output items to carry either `audio_url` or `file_id`, preserving both forms during content conversion.\n- Account for file-backed tool audio in history estimates and output truncation, and prepare only inline audio data.\n- Reject uploaded audio in raw function and custom tool output injection, extending the existing requirement to submit uploaded audio through typed turn input.\n- Regenerate app-server schemas and TypeScript/Python types while preserving the Python inline audio class name.\n\n## Testing\n\nAdd coverage for tool audio wire-format round trips, repeated file audio sharing text and audio output budgets, and rejection of raw uploaded audio injection across messages and tool outputs. Extend Python SDK coverage for the inline tool audio shape.\n\nGitOrigin-RevId: f4704466e6151662d2c8b8dc3f5ca2ab2f5710a2",
+            "url": "https://github.com/openai/codex/commit/9018f3a3b021082ef186ddd6503c0b4fd7a26260"
+          },
+          {
+            "sha": "9752e0e0bdb28aa2d21169078a6c4ae3ea9615d2",
+            "title": "Add a Git credential helper for existing Codex logins (#60746)",
+            "message": "Add a Git credential helper for existing Codex logins (#60746)\n\n## What changed\n\nAdd the hidden `codex git-credential` command to supply an existing file-backed ChatGPT login as an ephemeral Bearer credential through Git's `authtype` protocol.\n\nRestrict credentials to HTTPS requests under `backend-api/codex/sites/git/` on `chatgpt.com` or `chatgpt-staging.com`, matching the configured origin. Check managed workspace policy and reject expired or changed logins before returning credentials. Ignore repository configuration when selecting authentication settings.\n\nThe helper does not refresh tokens or modify the saved login; `store` and `erase` are no-ops. Return `quit=true` when authentication is unavailable or fails so Git does not fall back to prompting.\n\n## Testing\n\nAdd coverage for capability advertisement before login, reading only the first credential record, and declining personal access tokens without an authentication API lookup.\n\nGitOrigin-RevId: 2f96af1eeb7d05e3d893367137103a7adbc02742",
+            "url": "https://github.com/openai/codex/commit/9752e0e0bdb28aa2d21169078a6c4ae3ea9615d2"
+          },
+          {
+            "sha": "c320b5c69e74755a6efd4075ff01d4524ad6a4bf",
+            "title": "Label seed arguments in the model-facing ID recovery test (#60748)",
+            "message": "Label seed arguments in the model-facing ID recovery test (#60748)\n\nGitOrigin-RevId: 6cf0c880995afbd51376801b4d80c0db41bc24d8",
+            "url": "https://github.com/openai/codex/commit/c320b5c69e74755a6efd4075ff01d4524ad6a4bf"
+          },
+          {
+            "sha": "d9a32c178951695f365faa36a39d542e06a96e4f",
+            "title": "Capture saved Daybreak preferences for native helpers (#60749)",
+            "message": "Capture saved Daybreak preferences for native helpers (#60749)\n\n## What changed\n\nAdd the disabled-by-default `daybreak_program_propagation` feature to capture a parent's saved Daybreak choice when spawning native helpers. Retain the choice and account identity for helper turns and nested spawns, while preserving explicit `cyber_access_program` overrides. A helper's own saved preference takes precedence on later turns.\n\nRead pending metadata before persisted metadata so preferences survive thread materialization, with stored choices taking precedence. Share this resolution logic with `thread/read` and support refreshing the feature through user configuration.\n\n## Testing\n\nAdd coverage for saved and pending preferences, unset choices, explicit overrides, failed metadata reads, nested spawns, parent unloading, feature withdrawal, and preference changes between helper turns.\n\nGitOrigin-RevId: b3b349da8cb3d48154cddf058890587385efcda2",
+            "url": "https://github.com/openai/codex/commit/d9a32c178951695f365faa36a39d542e06a96e4f"
+          },
+          {
+            "sha": "2b60119af8072af8e842b271f5272e82378cd0f9",
+            "title": "Add snapshot coverage for history and notes tool contracts (#60753)",
+            "message": "Add snapshot coverage for history and notes tool contracts (#60753)\n\n## What changed\n\nAdd a `bundled_tool_contracts` test that snapshots the serialized default tool specifications for all nine history and notes actions. Include the snapshot files in Bazel test data.\n\nGitOrigin-RevId: dc82dcd48a002ca69bf5fac5280731823fc7f241",
+            "url": "https://github.com/openai/codex/commit/2b60119af8072af8e842b271f5272e82378cd0f9"
+          },
+          {
+            "sha": "4f8205c8084168d264083b4113ac00490484555f",
+            "title": "Use typed context window IDs throughout thread persistence (#60757)",
+            "message": "Use typed context window IDs throughout thread persistence (#60757)\n\n## What changed\n\nCarry `ContextWindowId` through session metadata, compaction checkpoints, rollout recording, and thread creation instead of converting IDs to strings. Add deserialization and JSON schema support while preserving the serialized string format and legacy numeric compaction IDs.\n\nValidate deserialized IDs as UUIDv7 values before restoring context windows, preserving the existing handling of unsupported IDs.\n\nGitOrigin-RevId: fda329d0654f438171a955c9f75550817c32c047",
+            "url": "https://github.com/openai/codex/commit/4f8205c8084168d264083b4113ac00490484555f"
+          },
+          {
+            "sha": "95dcd1e8378021080bf380e42587ef891f611897",
+            "title": "Fix Unicode caseless matching in thread search (#60759)",
+            "message": "Fix Unicode caseless matching in thread search (#60759)\n\n## Why\n\nLowercasing alone misses caseless matches such as Greek sigma variants and `ss` matching `ß` in `thread/searchOccurrences`.\n\n## What changed\n\nUse Unicode default case folding after lowercasing both search terms and text. Map folded matches back to source character boundaries so snippets highlight the original text correctly, including characters that expand during folding.\n\n## Testing\n\nExtend the app-server search integration test to cover sigma variants, `ss` matching `ß`, newer Unicode case mappings, and UTF-16 match ranges in text containing an emoji.\n\nGitOrigin-RevId: 6c4937d475daf51d3cd7784b48f5f4a8ce5fa82a",
+            "url": "https://github.com/openai/codex/commit/95dcd1e8378021080bf380e42587ef891f611897"
+          },
+          {
+            "sha": "3a89580f08c985e99b9cc99df53c67fb8482ef93",
+            "title": "Hand off approved plans through attachments in fresh sessions (#60763)",
+            "message": "Hand off approved plans through attachments in fresh sessions (#60763)\n\n## What changed\n\nMake “Yes, clear context and implement” save the approved plan as an app-server attachment and submit a short prompt referencing it. Add the experimental `thread/prepareApprovedPlan` request to verify that the fresh thread's executor can read the file and that its contents match the approved plan.\n\nIf the attachment cannot be written or read, inject the complete plan as `proposed_plan` tool output within the model's context and truncation limits. If the complete plan cannot fit, report an error and keep the current session. Clear the UI and switch threads only after plan preparation succeeds.\n\n## Testing\n\nAdd TUI tests covering a large plan read from its attachment, complete fallback context when attachment writes or reads fail, and preservation of the original session when the fallback is too large. Snapshot the fresh thread's initial request.\n\nGitOrigin-RevId: b717f30359256994c6efb3f4fe7f87aabe8936af",
+            "url": "https://github.com/openai/codex/commit/3a89580f08c985e99b9cc99df53c67fb8482ef93"
+          },
+          {
+            "sha": "4ca5e9756092085ab0e250a8e69598d226446a94",
+            "title": "Release 0.169.0-alpha.11",
+            "message": "Release 0.169.0-alpha.11",
+            "url": "https://github.com/openai/codex/commit/4ca5e9756092085ab0e250a8e69598d226446a94"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.169.0-alpha.10",
+          "head": "rust-v0.169.0-alpha.11",
+          "url": "https://github.com/openai/codex/compare/rust-v0.169.0-alpha.10...rust-v0.169.0-alpha.11",
+          "status": "diverged",
+          "total": 22,
+          "behind": 1,
+          "complete": true,
+          "fetched": 22
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -15031,7 +15246,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-11T03:10:27.994Z",
+      "lastSuccessAt": "2026-11-11T11:13:31.824Z",
       "error": null,
       "count": 150
     },
@@ -15040,7 +15255,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-11T03:10:27.994Z",
+      "lastSuccessAt": "2026-11-11T11:13:31.824Z",
       "error": null,
       "count": 10
     },
@@ -15049,7 +15264,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-11T03:10:27.994Z",
+      "lastSuccessAt": "2026-11-11T11:13:31.824Z",
       "error": null,
       "count": 25
     }
@@ -61613,6 +61828,421 @@
         ],
         "origin": "direct-official",
         "prerelease": true
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/chatgpt-plus-for-veterans:2026-11-11T11:13:32.263Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-11T11:13:32.263Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/chatgpt-plus-for-veterans",
+        "at": "2026-11-11T08:00:00.000Z",
+        "url": "https://openai.com/index/chatgpt-plus-for-veterans",
+        "text": "ChatGPT Plus for veterans and servicemembers. More than 20,000 veterans and transitioning service members have claimed a free year of ChatGPT Plus. See how they use it to prepare for civilian careers.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/singapore-airlines-travel-work:2026-11-11T11:13:32.263Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-11T11:13:32.263Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/singapore-airlines-travel-work",
+        "at": "2026-11-10T08:00:00.000Z",
+        "url": "https://openai.com/index/singapore-airlines-travel-work",
+        "text": "Singapore Airlines elevates travel & work with OpenAI technology. Discover how Singapore Airlines uses OpenAI models and API to enhance customer support, travel discovery, and employee productivity, doubling CSAT for its Kris chatbot.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/cogent-security:2026-11-11T11:13:32.263Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-11T11:13:32.263Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/cogent-security",
+        "at": "2026-11-10T00:00:00.000Z",
+        "url": "https://openai.com/index/cogent-security",
+        "text": "Cogent and OpenAI build cyber defense factories for enterprises. Cogent combines OpenAI models with enterprise context to help automatically remediate vulnerabilities with agents.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.11:2026-11-11T11:13:32.263Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-11T11:13:32.263Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.11",
+        "at": "2026-11-11T10:17:38.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.11",
+        "text": "0.169.0-alpha.11. Release 0.169.0-alpha.11",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.169.0-alpha.11",
+          "title": "0.169.0-alpha.11",
+          "body": "Release 0.169.0-alpha.11\n\n",
+          "authored": false,
+          "fetchedAt": "2026-11-11T11:13:32.267Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.11",
+          "publishedAt": "2026-11-11T10:11:06Z",
+          "commits": [
+            {
+              "sha": "ad3d3521eddcee24cd6ce0d335d597544578c5e1",
+              "title": "Avoid redundant reads and screen clears when switching side chats (#60675)",
+              "message": "Avoid redundant reads and screen clears when switching side chats (#60675)\n\n## Why\n\nA live parent thread continues receiving lifecycle notifications while its side chat has focus, so returning to it does not need another liveness read.\n\n## What changed\n\n- Skip the parent liveness read when returning from a side chat while the parent is still attached and online. Keep the read when reattachment is needed.\n- Stop scheduling a deferred screen clear when handling a transcript reset that preserves the screen.\n\n## Testing\n\nAdd regression coverage for parent `thread/read` requests with and without reattachment, and assert that side-chat navigation leaves no deferred screen clear.\n\nGitOrigin-RevId: a07f161ec86b0ae51250c5a0156402d328c42bdf",
+              "url": "https://github.com/openai/codex/commit/ad3d3521eddcee24cd6ce0d335d597544578c5e1"
+            },
+            {
+              "sha": "8a7a723dcd670fed88c4a7363b397e3303faf26d",
+              "title": "Keep TUI status content separate from composer hints (#60680)",
+              "message": "Keep TUI status content separate from composer hints (#60680)\n\n## Why\n\nComposer hints could replace configured status content, and mode indicators and warnings reduced the width available to status extensions.\n\n## What changed\n\n- Give enabled status content a dedicated area below the composer in both inline and fullscreen layouts, preserving it during transient hint states.\n- Keep shortcuts, queue hints, mode indicators, and warnings in the hint row.\n- Measure extension status content at the full available width, allowing up to four rows while yielding space to the composer when height is limited.\n- Suppress composer hints behind centered dialogs.\n\n## Testing\n\nUpdate layout assertions and snapshots for status persistence, extension resizing and clipping, warning placement, and reasoning-effort transitions.\n\nGitOrigin-RevId: f11c2e4fb53c35b69c2fbdbe80cef31bb28faca4",
+              "url": "https://github.com/openai/codex/commit/8a7a723dcd670fed88c4a7363b397e3303faf26d"
+            },
+            {
+              "sha": "192e2ef3ce9710418f59d7bc42d6b2e52d486416",
+              "title": "Prioritize draft space when allocating composer footer rows (#60681)",
+              "message": "Prioritize draft space when allocating composer footer rows (#60681)\n\n## Why\n\nStatus content and footer hints need to fit within the composer's height budget while preserving room for editing and active search controls.\n\n## What changed\n\n- Share row allocation between composer measurement and rendering. Cap status and hints at two rows in inline scrollback, and scale the fullscreen cap from two to four rows with the available budget.\n- Reserve space for active footer controls, give suggestions and image previews priority over additional status rows, and avoid reserving an empty hints row when status is enabled.\n- Keep textarea row counts and scroll offsets as `usize`, saturating only the terminal height so very tall drafts remain scrollable with a visible caret.\n\n## Testing\n\nAdd layout and snapshot coverage for constrained height budgets, status and hints, image previews, slash suggestions, and transcript search cursors. Add a regression test for rendering a draft beyond the `u16` row limit.\n\nGitOrigin-RevId: 20fb0384ffc976dfd12e648004763feff0597dda",
+              "url": "https://github.com/openai/codex/commit/192e2ef3ce9710418f59d7bc42d6b2e52d486416"
+            },
+            {
+              "sha": "65dbdb5f03489b3394383ae802bc751a6d65e955",
+              "title": "Wrap built-in TUI status lines within the footer row budget (#60682)",
+              "message": "Wrap built-in TUI status lines within the footer row budget (#60682)\n\n## Why\n\nLong built-in status lines were truncated to a single row even when the footer had room for more content.\n\n## What changed\n\n- Wrap status text to the available width and row budget, preserving styles and hyperlink targets across rows.\n- Show an unlinked ellipsis when content exceeds the available space.\n- Refresh wrapped content when the status text, agent label, or width changes.\n- Keep reasoning-effort transitions on one row and restore wrapping after the final animation frame.\n\n## Testing\n\nAdd coverage for wrapping and hyperlink boundaries across footer layouts, content and agent-label updates, resizing, and wrapping restoration after an effort transition. Update transcript and startup snapshots for multiline status text.\n\nGitOrigin-RevId: 30e0795c473efd62fc4d0dca4deb6029b625a9e8",
+              "url": "https://github.com/openai/codex/commit/65dbdb5f03489b3394383ae802bc751a6d65e955"
+            },
+            {
+              "sha": "87b7bdbf2efb9cb6fb15d821ef535061012c0138",
+              "title": "Fit composer footer hints to available terminal space (#60683)",
+              "message": "Fit composer footer hints to available terminal space (#60683)\n\n## Why\n\nNarrow composer footers can clip hints or crowd out mode indicators and actions.\n\n## What changed\n\nUse a shared layout for navigation, actions, mode indicators, context, and warnings. Shorten or drop whole labels in priority order instead of clipping them. Add a second row when input modes and queue or active side-conversation actions fit separately but not together, keeping navigation and modes above actions.\n\n## Testing\n\nAdd coverage for fullscreen and scrollback layouts, narrow Plan mode hints, active side-conversation actions, oversized goal indicators, and warning hit areas.\n\nGitOrigin-RevId: 849a53d45ef1b36b40c52282e329b48ec7d7d12e",
+              "url": "https://github.com/openai/codex/commit/87b7bdbf2efb9cb6fb15d821ef535061012c0138"
+            },
+            {
+              "sha": "ac54a05173d090b9fdfa181ea49b92f45aff2681",
+              "title": "Add a Signer Service backend for macOS notarization (#60695)",
+              "message": "Add a Signer Service backend for macOS notarization (#60695)\n\n## What changed\n\nAllow `APPLE_NOTARIZATION_BACKEND=signer-service` to sign Apple notarization JWTs through `grpcurl`, using GitHub OIDC authentication. Validate the returned signing key and algorithm, and redact transport and signing failure details.\n\nKeep Azure Key Vault as the default backend and skip its configuration requirements when Signer Service is selected.\n\n## Testing\n\nAdd coverage for JWT refresh with fresh OIDC tokens and for the binary wrapper running without Azure configuration. All six notarization tests pass.\n\nGitOrigin-RevId: e38ea90e94639d87c11ab075c999d85b61b37c17",
+              "url": "https://github.com/openai/codex/commit/ac54a05173d090b9fdfa181ea49b92f45aff2681"
+            },
+            {
+              "sha": "4dd5f1e70b544967b76ebacda08b9ad28a7ab5bb",
+              "title": "Limit MCP product attribution to configured REPL-backed calls (#60697)",
+              "message": "Limit MCP product attribution to configured REPL-backed calls (#60697)\n\n## Why\n\nMCP request metadata could forward a client-supplied `product_sku` to unrelated servers and connectors.\n\n## What changed\n\nRemove `product_sku` from turn metadata before forwarding it. For Node REPL-backed servers and the browser connector, populate it from the turn's `apps_mcp_product_sku` configuration, mapping unrecognized values to `other` and omitting empty or missing values.\n\n## Testing\n\nAdd regression coverage for configured REPL and browser attribution, unrelated servers and connectors, unrecognized or absent configuration, and spoofed client metadata.\n\nGitOrigin-RevId: bc24062526048ea1c1621099e609053cf167602f",
+              "url": "https://github.com/openai/codex/commit/4dd5f1e70b544967b76ebacda08b9ad28a7ab5bb"
+            },
+            {
+              "sha": "83e3d63ba1b928d9f73d52480473694f84aa5a18",
+              "title": "Finalize aborted turns and ignore unrelated late aborts (#60700)",
+              "message": "Finalize aborted turns and ignore unrelated late aborts (#60700)\n\n## Why\n\nAn aborted turn could remain active, and a late abort for an unknown turn could interrupt a different turn with an explicit ID.\n\n## What changed\n\nFinalize the active turn after applying an abort. Only fall back to the active turn when the abort lacks a turn ID or the active turn has a generated ID.\n\n## Testing\n\nExtend regression coverage to verify that a late abort preserves a review turn's ID and completed status, and that repeating `turn/interrupt` returns `no active turn to interrupt`.\n\nGitOrigin-RevId: 73072dda7879bd50b1013f4a0bbf1b68546f2619",
+              "url": "https://github.com/openai/codex/commit/83e3d63ba1b928d9f73d52480473694f84aa5a18"
+            },
+            {
+              "sha": "fe8e540a80f17716bf2a3007f06e8a602192c704",
+              "title": "Centralize permission config selection and legacy translation (#60702)",
+              "message": "Centralize permission config selection and legacy translation (#60702)\n\n## What changed\n\nMove permission selection into `codex-config` with a shared `PermissionConfig` representation for legacy sandbox settings and named profiles. Resolve selectors using config layer precedence while preserving explicit session profile selection and sandbox mode overrides.\n\nShare legacy permission translation between config derivation and core loading, preserving merged workspace roots, network access, temporary-directory exclusions, and platform sandbox availability without modifying source layers or field origins.\n\n## Testing\n\nAdd coverage for mixed selector precedence, merged legacy settings, unchanged source metadata, and the Windows read-only fallback. Extend the managed preferences loader test to verify settings merged across layers and the absence of an active named profile for legacy permissions.\n\nGitOrigin-RevId: a435be7af38424ac33711e6a7557f52b9b672577",
+              "url": "https://github.com/openai/codex/commit/fe8e540a80f17716bf2a3007f06e8a602192c704"
+            },
+            {
+              "sha": "5228d94a27b7f84cae4854acbb5ea3b3e90dfeaf",
+              "title": "Canonicalize Windows sandbox homes and migrate saved junction paths (#60708)",
+              "message": "Canonicalize Windows sandbox homes and migrate saved junction paths (#60708)\n\n## What changed\n\n- Canonicalize home paths before sending sandbox provisioning and desktop registration requests.\n- Resolve saved junction paths when restoring the sandbox owner, holding the setup lock and pinning target directories while validating existing sandbox accounts. Skip migration for retiring runtimes.\n- Persist the resolved home and clear desktop home ownership so uninstall cannot delete a historical junction's target.\n\n## Testing\n\nAdd a Windows junction test verifying that a saved alias resolves to its physical target and an already canonical path needs no migration.\n\nGitOrigin-RevId: 9bac672273694e5a0353fec72a6bcba120e57255",
+              "url": "https://github.com/openai/codex/commit/5228d94a27b7f84cae4854acbb5ea3b3e90dfeaf"
+            },
+            {
+              "sha": "fe2f18520864ddbee86cdd4b103a9fefffe9c6a2",
+              "title": "Gate plugin recommendation cache warming on feature flags (#60721)",
+              "message": "Gate plugin recommendation cache warming on feature flags (#60721)\n\n## Why\n\nBackground plugin cache refreshes fetched recommendations even when plugin recommendations were disabled.\n\n## What changed\n\nPass the effective recommendation feature state into `PluginsConfigInput` and skip recommendation cache warming unless apps, plugins, and either `tool_suggest` or `recommended_plugins` are enabled. Installed-plugin cache refreshes continue independently.\n\nDisable `tool_suggest` and `recommended_plugins` by default in core and app-server test helpers, with explicit overrides for recommendation tests.\n\n## Testing\n\nUpdate cache-warming and external-login recommendation tests to opt in explicitly. Update config RPC assertions to verify the test helpers' session flag overrides.\n\nGitOrigin-RevId: dc04e2847c94e2b15842fcd95cc0cf1f104e1fac",
+              "url": "https://github.com/openai/codex/commit/fe2f18520864ddbee86cdd4b103a9fefffe9c6a2"
+            },
+            {
+              "sha": "36ed546b77e91a61d52d482ab82e687a15fa30be",
+              "title": "Apply session app overrides during MCP config refresh (#60730)",
+              "message": "Apply session app overrides during MCP config refresh (#60730)\n\n## Why\n\nMCP config refreshes previously retained session app overrides, leaving connector approval changes unapplied in existing sessions.\n\n## What changed\n\n- Refresh explicit session `apps` overrides alongside `plugins`, allowing updated link approval settings to take effect on the next turn.\n- Preserve overrides for omitted sections and restore inheritance when a section is an empty table.\n- Validate app overrides and the effective app configuration, rejecting refreshes that expose invalid inherited settings.\n\n## Testing\n\nAdd coverage for independent and combined app/plugin updates, clearing overrides, and rejecting invalid inherited app settings. Add an integration test verifying that changing a link's approval mode from `approve` to `prompt` requests approval before executing the next turn's tool call.\n\nGitOrigin-RevId: 3fa36744a9ccd9e735e4cda7f061ccff1cf2a269",
+              "url": "https://github.com/openai/codex/commit/36ed546b77e91a61d52d482ab82e687a15fa30be"
+            },
+            {
+              "sha": "ce6f7d9503dea36c90af9d264b20aa60448b0530",
+              "title": "Allow model-facing ID sequences to resume from allocated IDs (#60732)",
+              "message": "Allow model-facing ID sequences to resume from allocated IDs (#60732)\n\n## Why\n\nResuming an ID sequence from a persisted ID requires its allocation position before shuffling. Previously, IDs stored only their salt and shuffled value.\n\n## What changed\n\n- Store the allocation `ordinal` in `ModelFacingId`, expose `salt()` and `ordinal()`, and derive `JsonSchema`.\n- Add `ModelFacingIdGenerator::starting_at()` and `next_ordinal()` so callers can resume with the original seed and salt at the next allocation position without a generator snapshot.\n\n## Testing\n\nUpdate serialization coverage for the allocation fields and add a test that resumes from a serialized ID across the three-digit pool boundary, matching the uninterrupted sequence.\n\nGitOrigin-RevId: 6cbb725c0bd08356c0dc5458021b9bf58a489522",
+              "url": "https://github.com/openai/codex/commit/ce6f7d9503dea36c90af9d264b20aa60448b0530"
+            },
+            {
+              "sha": "9018f3a3b021082ef186ddd6503c0b4fd7a26260",
+              "title": "Preserve file-backed audio in tool outputs (#60735)",
+              "message": "Preserve file-backed audio in tool outputs (#60735)\n\n## Why\n\nConverting message content to tool output previously reduced file-backed audio to a text file ID, losing its audio type.\n\n## What changed\n\n- Allow `input_audio` tool output items to carry either `audio_url` or `file_id`, preserving both forms during content conversion.\n- Account for file-backed tool audio in history estimates and output truncation, and prepare only inline audio data.\n- Reject uploaded audio in raw function and custom tool output injection, extending the existing requirement to submit uploaded audio through typed turn input.\n- Regenerate app-server schemas and TypeScript/Python types while preserving the Python inline audio class name.\n\n## Testing\n\nAdd coverage for tool audio wire-format round trips, repeated file audio sharing text and audio output budgets, and rejection of raw uploaded audio injection across messages and tool outputs. Extend Python SDK coverage for the inline tool audio shape.\n\nGitOrigin-RevId: f4704466e6151662d2c8b8dc3f5ca2ab2f5710a2",
+              "url": "https://github.com/openai/codex/commit/9018f3a3b021082ef186ddd6503c0b4fd7a26260"
+            },
+            {
+              "sha": "9752e0e0bdb28aa2d21169078a6c4ae3ea9615d2",
+              "title": "Add a Git credential helper for existing Codex logins (#60746)",
+              "message": "Add a Git credential helper for existing Codex logins (#60746)\n\n## What changed\n\nAdd the hidden `codex git-credential` command to supply an existing file-backed ChatGPT login as an ephemeral Bearer credential through Git's `authtype` protocol.\n\nRestrict credentials to HTTPS requests under `backend-api/codex/sites/git/` on `chatgpt.com` or `chatgpt-staging.com`, matching the configured origin. Check managed workspace policy and reject expired or changed logins before returning credentials. Ignore repository configuration when selecting authentication settings.\n\nThe helper does not refresh tokens or modify the saved login; `store` and `erase` are no-ops. Return `quit=true` when authentication is unavailable or fails so Git does not fall back to prompting.\n\n## Testing\n\nAdd coverage for capability advertisement before login, reading only the first credential record, and declining personal access tokens without an authentication API lookup.\n\nGitOrigin-RevId: 2f96af1eeb7d05e3d893367137103a7adbc02742",
+              "url": "https://github.com/openai/codex/commit/9752e0e0bdb28aa2d21169078a6c4ae3ea9615d2"
+            },
+            {
+              "sha": "c320b5c69e74755a6efd4075ff01d4524ad6a4bf",
+              "title": "Label seed arguments in the model-facing ID recovery test (#60748)",
+              "message": "Label seed arguments in the model-facing ID recovery test (#60748)\n\nGitOrigin-RevId: 6cf0c880995afbd51376801b4d80c0db41bc24d8",
+              "url": "https://github.com/openai/codex/commit/c320b5c69e74755a6efd4075ff01d4524ad6a4bf"
+            },
+            {
+              "sha": "d9a32c178951695f365faa36a39d542e06a96e4f",
+              "title": "Capture saved Daybreak preferences for native helpers (#60749)",
+              "message": "Capture saved Daybreak preferences for native helpers (#60749)\n\n## What changed\n\nAdd the disabled-by-default `daybreak_program_propagation` feature to capture a parent's saved Daybreak choice when spawning native helpers. Retain the choice and account identity for helper turns and nested spawns, while preserving explicit `cyber_access_program` overrides. A helper's own saved preference takes precedence on later turns.\n\nRead pending metadata before persisted metadata so preferences survive thread materialization, with stored choices taking precedence. Share this resolution logic with `thread/read` and support refreshing the feature through user configuration.\n\n## Testing\n\nAdd coverage for saved and pending preferences, unset choices, explicit overrides, failed metadata reads, nested spawns, parent unloading, feature withdrawal, and preference changes between helper turns.\n\nGitOrigin-RevId: b3b349da8cb3d48154cddf058890587385efcda2",
+              "url": "https://github.com/openai/codex/commit/d9a32c178951695f365faa36a39d542e06a96e4f"
+            },
+            {
+              "sha": "2b60119af8072af8e842b271f5272e82378cd0f9",
+              "title": "Add snapshot coverage for history and notes tool contracts (#60753)",
+              "message": "Add snapshot coverage for history and notes tool contracts (#60753)\n\n## What changed\n\nAdd a `bundled_tool_contracts` test that snapshots the serialized default tool specifications for all nine history and notes actions. Include the snapshot files in Bazel test data.\n\nGitOrigin-RevId: dc82dcd48a002ca69bf5fac5280731823fc7f241",
+              "url": "https://github.com/openai/codex/commit/2b60119af8072af8e842b271f5272e82378cd0f9"
+            },
+            {
+              "sha": "4f8205c8084168d264083b4113ac00490484555f",
+              "title": "Use typed context window IDs throughout thread persistence (#60757)",
+              "message": "Use typed context window IDs throughout thread persistence (#60757)\n\n## What changed\n\nCarry `ContextWindowId` through session metadata, compaction checkpoints, rollout recording, and thread creation instead of converting IDs to strings. Add deserialization and JSON schema support while preserving the serialized string format and legacy numeric compaction IDs.\n\nValidate deserialized IDs as UUIDv7 values before restoring context windows, preserving the existing handling of unsupported IDs.\n\nGitOrigin-RevId: fda329d0654f438171a955c9f75550817c32c047",
+              "url": "https://github.com/openai/codex/commit/4f8205c8084168d264083b4113ac00490484555f"
+            },
+            {
+              "sha": "95dcd1e8378021080bf380e42587ef891f611897",
+              "title": "Fix Unicode caseless matching in thread search (#60759)",
+              "message": "Fix Unicode caseless matching in thread search (#60759)\n\n## Why\n\nLowercasing alone misses caseless matches such as Greek sigma variants and `ss` matching `ß` in `thread/searchOccurrences`.\n\n## What changed\n\nUse Unicode default case folding after lowercasing both search terms and text. Map folded matches back to source character boundaries so snippets highlight the original text correctly, including characters that expand during folding.\n\n## Testing\n\nExtend the app-server search integration test to cover sigma variants, `ss` matching `ß`, newer Unicode case mappings, and UTF-16 match ranges in text containing an emoji.\n\nGitOrigin-RevId: 6c4937d475daf51d3cd7784b48f5f4a8ce5fa82a",
+              "url": "https://github.com/openai/codex/commit/95dcd1e8378021080bf380e42587ef891f611897"
+            },
+            {
+              "sha": "3a89580f08c985e99b9cc99df53c67fb8482ef93",
+              "title": "Hand off approved plans through attachments in fresh sessions (#60763)",
+              "message": "Hand off approved plans through attachments in fresh sessions (#60763)\n\n## What changed\n\nMake “Yes, clear context and implement” save the approved plan as an app-server attachment and submit a short prompt referencing it. Add the experimental `thread/prepareApprovedPlan` request to verify that the fresh thread's executor can read the file and that its contents match the approved plan.\n\nIf the attachment cannot be written or read, inject the complete plan as `proposed_plan` tool output within the model's context and truncation limits. If the complete plan cannot fit, report an error and keep the current session. Clear the UI and switch threads only after plan preparation succeeds.\n\n## Testing\n\nAdd TUI tests covering a large plan read from its attachment, complete fallback context when attachment writes or reads fail, and preservation of the original session when the fallback is too large. Snapshot the fresh thread's initial request.\n\nGitOrigin-RevId: b717f30359256994c6efb3f4fe7f87aabe8936af",
+              "url": "https://github.com/openai/codex/commit/3a89580f08c985e99b9cc99df53c67fb8482ef93"
+            },
+            {
+              "sha": "4ca5e9756092085ab0e250a8e69598d226446a94",
+              "title": "Release 0.169.0-alpha.11",
+              "message": "Release 0.169.0-alpha.11",
+              "url": "https://github.com/openai/codex/commit/4ca5e9756092085ab0e250a8e69598d226446a94"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.169.0-alpha.10",
+            "head": "rust-v0.169.0-alpha.11",
+            "url": "https://github.com/openai/codex/compare/rust-v0.169.0-alpha.10...rust-v0.169.0-alpha.11",
+            "status": "diverged",
+            "total": 22,
+            "behind": 1,
+            "complete": true,
+            "fetched": 22
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.10:2026-11-11T11:13:32.263Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-11T11:13:32.263Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.10",
+        "at": "2026-11-11T03:38:15.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.10",
+        "text": "0.169.0-alpha.10. Release 0.169.0-alpha.10",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.11:2026-11-11T11:13:32.263Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-11T11:13:32.263Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.169.0-alpha.11",
+        "title": "0.169.0-alpha.11",
+        "body": "Release 0.169.0-alpha.11\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-11T11:13:32.267Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.11",
+        "publishedAt": "2026-11-11T10:11:06Z",
+        "commits": [
+          {
+            "sha": "ad3d3521eddcee24cd6ce0d335d597544578c5e1",
+            "title": "Avoid redundant reads and screen clears when switching side chats (#60675)",
+            "message": "Avoid redundant reads and screen clears when switching side chats (#60675)\n\n## Why\n\nA live parent thread continues receiving lifecycle notifications while its side chat has focus, so returning to it does not need another liveness read.\n\n## What changed\n\n- Skip the parent liveness read when returning from a side chat while the parent is still attached and online. Keep the read when reattachment is needed.\n- Stop scheduling a deferred screen clear when handling a transcript reset that preserves the screen.\n\n## Testing\n\nAdd regression coverage for parent `thread/read` requests with and without reattachment, and assert that side-chat navigation leaves no deferred screen clear.\n\nGitOrigin-RevId: a07f161ec86b0ae51250c5a0156402d328c42bdf",
+            "url": "https://github.com/openai/codex/commit/ad3d3521eddcee24cd6ce0d335d597544578c5e1"
+          },
+          {
+            "sha": "8a7a723dcd670fed88c4a7363b397e3303faf26d",
+            "title": "Keep TUI status content separate from composer hints (#60680)",
+            "message": "Keep TUI status content separate from composer hints (#60680)\n\n## Why\n\nComposer hints could replace configured status content, and mode indicators and warnings reduced the width available to status extensions.\n\n## What changed\n\n- Give enabled status content a dedicated area below the composer in both inline and fullscreen layouts, preserving it during transient hint states.\n- Keep shortcuts, queue hints, mode indicators, and warnings in the hint row.\n- Measure extension status content at the full available width, allowing up to four rows while yielding space to the composer when height is limited.\n- Suppress composer hints behind centered dialogs.\n\n## Testing\n\nUpdate layout assertions and snapshots for status persistence, extension resizing and clipping, warning placement, and reasoning-effort transitions.\n\nGitOrigin-RevId: f11c2e4fb53c35b69c2fbdbe80cef31bb28faca4",
+            "url": "https://github.com/openai/codex/commit/8a7a723dcd670fed88c4a7363b397e3303faf26d"
+          },
+          {
+            "sha": "192e2ef3ce9710418f59d7bc42d6b2e52d486416",
+            "title": "Prioritize draft space when allocating composer footer rows (#60681)",
+            "message": "Prioritize draft space when allocating composer footer rows (#60681)\n\n## Why\n\nStatus content and footer hints need to fit within the composer's height budget while preserving room for editing and active search controls.\n\n## What changed\n\n- Share row allocation between composer measurement and rendering. Cap status and hints at two rows in inline scrollback, and scale the fullscreen cap from two to four rows with the available budget.\n- Reserve space for active footer controls, give suggestions and image previews priority over additional status rows, and avoid reserving an empty hints row when status is enabled.\n- Keep textarea row counts and scroll offsets as `usize`, saturating only the terminal height so very tall drafts remain scrollable with a visible caret.\n\n## Testing\n\nAdd layout and snapshot coverage for constrained height budgets, status and hints, image previews, slash suggestions, and transcript search cursors. Add a regression test for rendering a draft beyond the `u16` row limit.\n\nGitOrigin-RevId: 20fb0384ffc976dfd12e648004763feff0597dda",
+            "url": "https://github.com/openai/codex/commit/192e2ef3ce9710418f59d7bc42d6b2e52d486416"
+          },
+          {
+            "sha": "65dbdb5f03489b3394383ae802bc751a6d65e955",
+            "title": "Wrap built-in TUI status lines within the footer row budget (#60682)",
+            "message": "Wrap built-in TUI status lines within the footer row budget (#60682)\n\n## Why\n\nLong built-in status lines were truncated to a single row even when the footer had room for more content.\n\n## What changed\n\n- Wrap status text to the available width and row budget, preserving styles and hyperlink targets across rows.\n- Show an unlinked ellipsis when content exceeds the available space.\n- Refresh wrapped content when the status text, agent label, or width changes.\n- Keep reasoning-effort transitions on one row and restore wrapping after the final animation frame.\n\n## Testing\n\nAdd coverage for wrapping and hyperlink boundaries across footer layouts, content and agent-label updates, resizing, and wrapping restoration after an effort transition. Update transcript and startup snapshots for multiline status text.\n\nGitOrigin-RevId: 30e0795c473efd62fc4d0dca4deb6029b625a9e8",
+            "url": "https://github.com/openai/codex/commit/65dbdb5f03489b3394383ae802bc751a6d65e955"
+          },
+          {
+            "sha": "87b7bdbf2efb9cb6fb15d821ef535061012c0138",
+            "title": "Fit composer footer hints to available terminal space (#60683)",
+            "message": "Fit composer footer hints to available terminal space (#60683)\n\n## Why\n\nNarrow composer footers can clip hints or crowd out mode indicators and actions.\n\n## What changed\n\nUse a shared layout for navigation, actions, mode indicators, context, and warnings. Shorten or drop whole labels in priority order instead of clipping them. Add a second row when input modes and queue or active side-conversation actions fit separately but not together, keeping navigation and modes above actions.\n\n## Testing\n\nAdd coverage for fullscreen and scrollback layouts, narrow Plan mode hints, active side-conversation actions, oversized goal indicators, and warning hit areas.\n\nGitOrigin-RevId: 849a53d45ef1b36b40c52282e329b48ec7d7d12e",
+            "url": "https://github.com/openai/codex/commit/87b7bdbf2efb9cb6fb15d821ef535061012c0138"
+          },
+          {
+            "sha": "ac54a05173d090b9fdfa181ea49b92f45aff2681",
+            "title": "Add a Signer Service backend for macOS notarization (#60695)",
+            "message": "Add a Signer Service backend for macOS notarization (#60695)\n\n## What changed\n\nAllow `APPLE_NOTARIZATION_BACKEND=signer-service` to sign Apple notarization JWTs through `grpcurl`, using GitHub OIDC authentication. Validate the returned signing key and algorithm, and redact transport and signing failure details.\n\nKeep Azure Key Vault as the default backend and skip its configuration requirements when Signer Service is selected.\n\n## Testing\n\nAdd coverage for JWT refresh with fresh OIDC tokens and for the binary wrapper running without Azure configuration. All six notarization tests pass.\n\nGitOrigin-RevId: e38ea90e94639d87c11ab075c999d85b61b37c17",
+            "url": "https://github.com/openai/codex/commit/ac54a05173d090b9fdfa181ea49b92f45aff2681"
+          },
+          {
+            "sha": "4dd5f1e70b544967b76ebacda08b9ad28a7ab5bb",
+            "title": "Limit MCP product attribution to configured REPL-backed calls (#60697)",
+            "message": "Limit MCP product attribution to configured REPL-backed calls (#60697)\n\n## Why\n\nMCP request metadata could forward a client-supplied `product_sku` to unrelated servers and connectors.\n\n## What changed\n\nRemove `product_sku` from turn metadata before forwarding it. For Node REPL-backed servers and the browser connector, populate it from the turn's `apps_mcp_product_sku` configuration, mapping unrecognized values to `other` and omitting empty or missing values.\n\n## Testing\n\nAdd regression coverage for configured REPL and browser attribution, unrelated servers and connectors, unrecognized or absent configuration, and spoofed client metadata.\n\nGitOrigin-RevId: bc24062526048ea1c1621099e609053cf167602f",
+            "url": "https://github.com/openai/codex/commit/4dd5f1e70b544967b76ebacda08b9ad28a7ab5bb"
+          },
+          {
+            "sha": "83e3d63ba1b928d9f73d52480473694f84aa5a18",
+            "title": "Finalize aborted turns and ignore unrelated late aborts (#60700)",
+            "message": "Finalize aborted turns and ignore unrelated late aborts (#60700)\n\n## Why\n\nAn aborted turn could remain active, and a late abort for an unknown turn could interrupt a different turn with an explicit ID.\n\n## What changed\n\nFinalize the active turn after applying an abort. Only fall back to the active turn when the abort lacks a turn ID or the active turn has a generated ID.\n\n## Testing\n\nExtend regression coverage to verify that a late abort preserves a review turn's ID and completed status, and that repeating `turn/interrupt` returns `no active turn to interrupt`.\n\nGitOrigin-RevId: 73072dda7879bd50b1013f4a0bbf1b68546f2619",
+            "url": "https://github.com/openai/codex/commit/83e3d63ba1b928d9f73d52480473694f84aa5a18"
+          },
+          {
+            "sha": "fe8e540a80f17716bf2a3007f06e8a602192c704",
+            "title": "Centralize permission config selection and legacy translation (#60702)",
+            "message": "Centralize permission config selection and legacy translation (#60702)\n\n## What changed\n\nMove permission selection into `codex-config` with a shared `PermissionConfig` representation for legacy sandbox settings and named profiles. Resolve selectors using config layer precedence while preserving explicit session profile selection and sandbox mode overrides.\n\nShare legacy permission translation between config derivation and core loading, preserving merged workspace roots, network access, temporary-directory exclusions, and platform sandbox availability without modifying source layers or field origins.\n\n## Testing\n\nAdd coverage for mixed selector precedence, merged legacy settings, unchanged source metadata, and the Windows read-only fallback. Extend the managed preferences loader test to verify settings merged across layers and the absence of an active named profile for legacy permissions.\n\nGitOrigin-RevId: a435be7af38424ac33711e6a7557f52b9b672577",
+            "url": "https://github.com/openai/codex/commit/fe8e540a80f17716bf2a3007f06e8a602192c704"
+          },
+          {
+            "sha": "5228d94a27b7f84cae4854acbb5ea3b3e90dfeaf",
+            "title": "Canonicalize Windows sandbox homes and migrate saved junction paths (#60708)",
+            "message": "Canonicalize Windows sandbox homes and migrate saved junction paths (#60708)\n\n## What changed\n\n- Canonicalize home paths before sending sandbox provisioning and desktop registration requests.\n- Resolve saved junction paths when restoring the sandbox owner, holding the setup lock and pinning target directories while validating existing sandbox accounts. Skip migration for retiring runtimes.\n- Persist the resolved home and clear desktop home ownership so uninstall cannot delete a historical junction's target.\n\n## Testing\n\nAdd a Windows junction test verifying that a saved alias resolves to its physical target and an already canonical path needs no migration.\n\nGitOrigin-RevId: 9bac672273694e5a0353fec72a6bcba120e57255",
+            "url": "https://github.com/openai/codex/commit/5228d94a27b7f84cae4854acbb5ea3b3e90dfeaf"
+          },
+          {
+            "sha": "fe2f18520864ddbee86cdd4b103a9fefffe9c6a2",
+            "title": "Gate plugin recommendation cache warming on feature flags (#60721)",
+            "message": "Gate plugin recommendation cache warming on feature flags (#60721)\n\n## Why\n\nBackground plugin cache refreshes fetched recommendations even when plugin recommendations were disabled.\n\n## What changed\n\nPass the effective recommendation feature state into `PluginsConfigInput` and skip recommendation cache warming unless apps, plugins, and either `tool_suggest` or `recommended_plugins` are enabled. Installed-plugin cache refreshes continue independently.\n\nDisable `tool_suggest` and `recommended_plugins` by default in core and app-server test helpers, with explicit overrides for recommendation tests.\n\n## Testing\n\nUpdate cache-warming and external-login recommendation tests to opt in explicitly. Update config RPC assertions to verify the test helpers' session flag overrides.\n\nGitOrigin-RevId: dc04e2847c94e2b15842fcd95cc0cf1f104e1fac",
+            "url": "https://github.com/openai/codex/commit/fe2f18520864ddbee86cdd4b103a9fefffe9c6a2"
+          },
+          {
+            "sha": "36ed546b77e91a61d52d482ab82e687a15fa30be",
+            "title": "Apply session app overrides during MCP config refresh (#60730)",
+            "message": "Apply session app overrides during MCP config refresh (#60730)\n\n## Why\n\nMCP config refreshes previously retained session app overrides, leaving connector approval changes unapplied in existing sessions.\n\n## What changed\n\n- Refresh explicit session `apps` overrides alongside `plugins`, allowing updated link approval settings to take effect on the next turn.\n- Preserve overrides for omitted sections and restore inheritance when a section is an empty table.\n- Validate app overrides and the effective app configuration, rejecting refreshes that expose invalid inherited settings.\n\n## Testing\n\nAdd coverage for independent and combined app/plugin updates, clearing overrides, and rejecting invalid inherited app settings. Add an integration test verifying that changing a link's approval mode from `approve` to `prompt` requests approval before executing the next turn's tool call.\n\nGitOrigin-RevId: 3fa36744a9ccd9e735e4cda7f061ccff1cf2a269",
+            "url": "https://github.com/openai/codex/commit/36ed546b77e91a61d52d482ab82e687a15fa30be"
+          },
+          {
+            "sha": "ce6f7d9503dea36c90af9d264b20aa60448b0530",
+            "title": "Allow model-facing ID sequences to resume from allocated IDs (#60732)",
+            "message": "Allow model-facing ID sequences to resume from allocated IDs (#60732)\n\n## Why\n\nResuming an ID sequence from a persisted ID requires its allocation position before shuffling. Previously, IDs stored only their salt and shuffled value.\n\n## What changed\n\n- Store the allocation `ordinal` in `ModelFacingId`, expose `salt()` and `ordinal()`, and derive `JsonSchema`.\n- Add `ModelFacingIdGenerator::starting_at()` and `next_ordinal()` so callers can resume with the original seed and salt at the next allocation position without a generator snapshot.\n\n## Testing\n\nUpdate serialization coverage for the allocation fields and add a test that resumes from a serialized ID across the three-digit pool boundary, matching the uninterrupted sequence.\n\nGitOrigin-RevId: 6cbb725c0bd08356c0dc5458021b9bf58a489522",
+            "url": "https://github.com/openai/codex/commit/ce6f7d9503dea36c90af9d264b20aa60448b0530"
+          },
+          {
+            "sha": "9018f3a3b021082ef186ddd6503c0b4fd7a26260",
+            "title": "Preserve file-backed audio in tool outputs (#60735)",
+            "message": "Preserve file-backed audio in tool outputs (#60735)\n\n## Why\n\nConverting message content to tool output previously reduced file-backed audio to a text file ID, losing its audio type.\n\n## What changed\n\n- Allow `input_audio` tool output items to carry either `audio_url` or `file_id`, preserving both forms during content conversion.\n- Account for file-backed tool audio in history estimates and output truncation, and prepare only inline audio data.\n- Reject uploaded audio in raw function and custom tool output injection, extending the existing requirement to submit uploaded audio through typed turn input.\n- Regenerate app-server schemas and TypeScript/Python types while preserving the Python inline audio class name.\n\n## Testing\n\nAdd coverage for tool audio wire-format round trips, repeated file audio sharing text and audio output budgets, and rejection of raw uploaded audio injection across messages and tool outputs. Extend Python SDK coverage for the inline tool audio shape.\n\nGitOrigin-RevId: f4704466e6151662d2c8b8dc3f5ca2ab2f5710a2",
+            "url": "https://github.com/openai/codex/commit/9018f3a3b021082ef186ddd6503c0b4fd7a26260"
+          },
+          {
+            "sha": "9752e0e0bdb28aa2d21169078a6c4ae3ea9615d2",
+            "title": "Add a Git credential helper for existing Codex logins (#60746)",
+            "message": "Add a Git credential helper for existing Codex logins (#60746)\n\n## What changed\n\nAdd the hidden `codex git-credential` command to supply an existing file-backed ChatGPT login as an ephemeral Bearer credential through Git's `authtype` protocol.\n\nRestrict credentials to HTTPS requests under `backend-api/codex/sites/git/` on `chatgpt.com` or `chatgpt-staging.com`, matching the configured origin. Check managed workspace policy and reject expired or changed logins before returning credentials. Ignore repository configuration when selecting authentication settings.\n\nThe helper does not refresh tokens or modify the saved login; `store` and `erase` are no-ops. Return `quit=true` when authentication is unavailable or fails so Git does not fall back to prompting.\n\n## Testing\n\nAdd coverage for capability advertisement before login, reading only the first credential record, and declining personal access tokens without an authentication API lookup.\n\nGitOrigin-RevId: 2f96af1eeb7d05e3d893367137103a7adbc02742",
+            "url": "https://github.com/openai/codex/commit/9752e0e0bdb28aa2d21169078a6c4ae3ea9615d2"
+          },
+          {
+            "sha": "c320b5c69e74755a6efd4075ff01d4524ad6a4bf",
+            "title": "Label seed arguments in the model-facing ID recovery test (#60748)",
+            "message": "Label seed arguments in the model-facing ID recovery test (#60748)\n\nGitOrigin-RevId: 6cf0c880995afbd51376801b4d80c0db41bc24d8",
+            "url": "https://github.com/openai/codex/commit/c320b5c69e74755a6efd4075ff01d4524ad6a4bf"
+          },
+          {
+            "sha": "d9a32c178951695f365faa36a39d542e06a96e4f",
+            "title": "Capture saved Daybreak preferences for native helpers (#60749)",
+            "message": "Capture saved Daybreak preferences for native helpers (#60749)\n\n## What changed\n\nAdd the disabled-by-default `daybreak_program_propagation` feature to capture a parent's saved Daybreak choice when spawning native helpers. Retain the choice and account identity for helper turns and nested spawns, while preserving explicit `cyber_access_program` overrides. A helper's own saved preference takes precedence on later turns.\n\nRead pending metadata before persisted metadata so preferences survive thread materialization, with stored choices taking precedence. Share this resolution logic with `thread/read` and support refreshing the feature through user configuration.\n\n## Testing\n\nAdd coverage for saved and pending preferences, unset choices, explicit overrides, failed metadata reads, nested spawns, parent unloading, feature withdrawal, and preference changes between helper turns.\n\nGitOrigin-RevId: b3b349da8cb3d48154cddf058890587385efcda2",
+            "url": "https://github.com/openai/codex/commit/d9a32c178951695f365faa36a39d542e06a96e4f"
+          },
+          {
+            "sha": "2b60119af8072af8e842b271f5272e82378cd0f9",
+            "title": "Add snapshot coverage for history and notes tool contracts (#60753)",
+            "message": "Add snapshot coverage for history and notes tool contracts (#60753)\n\n## What changed\n\nAdd a `bundled_tool_contracts` test that snapshots the serialized default tool specifications for all nine history and notes actions. Include the snapshot files in Bazel test data.\n\nGitOrigin-RevId: dc82dcd48a002ca69bf5fac5280731823fc7f241",
+            "url": "https://github.com/openai/codex/commit/2b60119af8072af8e842b271f5272e82378cd0f9"
+          },
+          {
+            "sha": "4f8205c8084168d264083b4113ac00490484555f",
+            "title": "Use typed context window IDs throughout thread persistence (#60757)",
+            "message": "Use typed context window IDs throughout thread persistence (#60757)\n\n## What changed\n\nCarry `ContextWindowId` through session metadata, compaction checkpoints, rollout recording, and thread creation instead of converting IDs to strings. Add deserialization and JSON schema support while preserving the serialized string format and legacy numeric compaction IDs.\n\nValidate deserialized IDs as UUIDv7 values before restoring context windows, preserving the existing handling of unsupported IDs.\n\nGitOrigin-RevId: fda329d0654f438171a955c9f75550817c32c047",
+            "url": "https://github.com/openai/codex/commit/4f8205c8084168d264083b4113ac00490484555f"
+          },
+          {
+            "sha": "95dcd1e8378021080bf380e42587ef891f611897",
+            "title": "Fix Unicode caseless matching in thread search (#60759)",
+            "message": "Fix Unicode caseless matching in thread search (#60759)\n\n## Why\n\nLowercasing alone misses caseless matches such as Greek sigma variants and `ss` matching `ß` in `thread/searchOccurrences`.\n\n## What changed\n\nUse Unicode default case folding after lowercasing both search terms and text. Map folded matches back to source character boundaries so snippets highlight the original text correctly, including characters that expand during folding.\n\n## Testing\n\nExtend the app-server search integration test to cover sigma variants, `ss` matching `ß`, newer Unicode case mappings, and UTF-16 match ranges in text containing an emoji.\n\nGitOrigin-RevId: 6c4937d475daf51d3cd7784b48f5f4a8ce5fa82a",
+            "url": "https://github.com/openai/codex/commit/95dcd1e8378021080bf380e42587ef891f611897"
+          },
+          {
+            "sha": "3a89580f08c985e99b9cc99df53c67fb8482ef93",
+            "title": "Hand off approved plans through attachments in fresh sessions (#60763)",
+            "message": "Hand off approved plans through attachments in fresh sessions (#60763)\n\n## What changed\n\nMake “Yes, clear context and implement” save the approved plan as an app-server attachment and submit a short prompt referencing it. Add the experimental `thread/prepareApprovedPlan` request to verify that the fresh thread's executor can read the file and that its contents match the approved plan.\n\nIf the attachment cannot be written or read, inject the complete plan as `proposed_plan` tool output within the model's context and truncation limits. If the complete plan cannot fit, report an error and keep the current session. Clear the UI and switch threads only after plan preparation succeeds.\n\n## Testing\n\nAdd TUI tests covering a large plan read from its attachment, complete fallback context when attachment writes or reads fail, and preservation of the original session when the fallback is too large. Snapshot the fresh thread's initial request.\n\nGitOrigin-RevId: b717f30359256994c6efb3f4fe7f87aabe8936af",
+            "url": "https://github.com/openai/codex/commit/3a89580f08c985e99b9cc99df53c67fb8482ef93"
+          },
+          {
+            "sha": "4ca5e9756092085ab0e250a8e69598d226446a94",
+            "title": "Release 0.169.0-alpha.11",
+            "message": "Release 0.169.0-alpha.11",
+            "url": "https://github.com/openai/codex/commit/4ca5e9756092085ab0e250a8e69598d226446a94"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.169.0-alpha.10",
+          "head": "rust-v0.169.0-alpha.11",
+          "url": "https://github.com/openai/codex/compare/rust-v0.169.0-alpha.10...rust-v0.169.0-alpha.11",
+          "status": "diverged",
+          "total": 22,
+          "behind": 1,
+          "complete": true,
+          "fetched": 22
+        },
+        "comparisonError": null
       }
     }
   ],
