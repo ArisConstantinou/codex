@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-10T23:46:37.191Z",
+  "generatedAt": "2026-11-11T03:10:28.544Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -14996,9 +14996,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.2",
-      "at": "2026-11-10T19:42:33.000Z",
+      "at": "2026-11-11T01:34:42.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.2",
-      "text": "rust-v0.167.0-alpha.4.2. Release 0.167.0-alpha.4.2",
+      "text": "0.167.0-alpha.4.2. Release 0.167.0-alpha.4.2",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -15008,6 +15008,21 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "openai-news:https://openai.com/index/gilbert-tobin-sam-nickless",
+      "at": "2026-11-12T00:00:00.000Z",
+      "url": "https://openai.com/index/gilbert-tobin-sam-nickless",
+      "text": "Gilbert + Tobin rethinks the business of law with AI. A conversation with Sam Nickless, Partner and Chief Executive Officer at Gilbert + Tobin.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -15016,7 +15031,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-10T23:46:36.833Z",
+      "lastSuccessAt": "2026-11-11T03:10:27.994Z",
       "error": null,
       "count": 150
     },
@@ -15025,7 +15040,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-10T23:46:36.833Z",
+      "lastSuccessAt": "2026-11-11T03:10:27.994Z",
       "error": null,
       "count": 10
     },
@@ -15034,7 +15049,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-10T23:46:36.833Z",
+      "lastSuccessAt": "2026-11-11T03:10:27.994Z",
       "error": null,
       "count": 25
     }
@@ -61559,6 +61574,46 @@
         "origin": "direct-official",
         "prerelease": true
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/gilbert-tobin-sam-nickless:2026-11-11T03:10:28.544Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-11T03:10:28.544Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/gilbert-tobin-sam-nickless",
+        "at": "2026-11-12T00:00:00.000Z",
+        "url": "https://openai.com/index/gilbert-tobin-sam-nickless",
+        "text": "Gilbert + Tobin rethinks the business of law with AI. A conversation with Sam Nickless, Partner and Chief Executive Officer at Gilbert + Tobin.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.2:2026-11-11T03:10:28.544Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-11T03:10:28.544Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.2",
+        "at": "2026-11-11T01:34:42.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.2",
+        "text": "0.167.0-alpha.4.2. Release 0.167.0-alpha.4.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
@@ -61587,7 +61642,7 @@
       "rust-v0.169.0-alpha.7": 1794257673420,
       "rust-v0.169.0-alpha.8": 1794309378484,
       "rust-v0.167.1": 1794336805193,
-      "rust-v0.169.0-alpha.10": 1794355297194
+      "rust-v0.169.0-alpha.10": 1794367528549
     }
   }
 }
