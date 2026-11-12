@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-12T16:54:17.774Z",
+  "generatedAt": "2026-11-12T22:41:20.071Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -15537,6 +15537,82 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-11-12T08:52:35.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/amplitude",
+      "at": "2026-11-12T20:00:00.000Z",
+      "url": "https://openai.com/index/amplitude",
+      "text": "How Amplitude ships product improvements in 1–2 days with OpenAI. Built primarily on OpenAI models, Amplitude’s proactive product agent, Wave, identifies what to build, helps teams ship changes with coding agents, and measures the impact.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.4",
+      "at": "2026-11-12T19:55:18.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4",
+      "text": "rust-v0.170.0-alpha.4. Release 0.170.0-alpha.4",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.3",
+      "at": "2026-11-12T19:37:30.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.3",
+      "text": "0.170.0-alpha.3. Release 0.170.0-alpha.3",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.168.0",
+      "at": "2026-11-12T21:29:07.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.168.0",
+      "text": "rust-v0.168.0. Release 0.168.0",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-status:01M78GAT3AK9P9W8Z230KHFVE8",
+      "at": "2026-11-12T18:29:14.000Z",
+      "url": "https://status.openai.com/incidents/01M78GAT3AK9P9W8Z230KHFVE8",
+      "text": "Elevated errors affecting the Microsoft 365 connector. We’re investigating an issue with Microsoft connectors where new connections may be broken and tools are not working as expected. We’ll share an update when we know more.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "investigating",
+      "publishedAt": "2026-11-12T18:29:14.000Z"
     }
   ],
   "sources": {
@@ -15545,7 +15621,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-12T16:54:17.300Z",
+      "lastSuccessAt": "2026-11-12T22:41:19.571Z",
       "error": null,
       "count": 150
     },
@@ -15554,7 +15630,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-12T16:54:17.300Z",
+      "lastSuccessAt": "2026-11-12T22:41:19.571Z",
       "error": null,
       "count": 10
     },
@@ -15563,7 +15639,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-12T16:54:17.300Z",
+      "lastSuccessAt": "2026-11-12T22:41:19.571Z",
       "error": null,
       "count": 25
     }
@@ -63230,6 +63306,107 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/amplitude:2026-11-12T22:41:20.071Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T22:41:20.071Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/amplitude",
+        "at": "2026-11-12T20:00:00.000Z",
+        "url": "https://openai.com/index/amplitude",
+        "text": "How Amplitude ships product improvements in 1–2 days with OpenAI. Built primarily on OpenAI models, Amplitude’s proactive product agent, Wave, identifies what to build, helps teams ship changes with coding agents, and measures the impact.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.4:2026-11-12T22:41:20.071Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T22:41:20.071Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.4",
+        "at": "2026-11-12T19:55:18.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4",
+        "text": "rust-v0.170.0-alpha.4. Release 0.170.0-alpha.4",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.3:2026-11-12T22:41:20.071Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T22:41:20.071Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.3",
+        "at": "2026-11-12T19:37:30.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.3",
+        "text": "0.170.0-alpha.3. Release 0.170.0-alpha.3",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.168.0:2026-11-12T22:41:20.071Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T22:41:20.071Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.168.0",
+        "at": "2026-11-12T21:29:07.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.168.0",
+        "text": "rust-v0.168.0. Release 0.168.0",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-status:01M78GAT3AK9P9W8Z230KHFVE8:2026-11-12T22:41:20.071Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T22:41:20.071Z",
+      "item": {
+        "id": "openai-status:01M78GAT3AK9P9W8Z230KHFVE8",
+        "at": "2026-11-12T18:29:14.000Z",
+        "url": "https://status.openai.com/incidents/01M78GAT3AK9P9W8Z230KHFVE8",
+        "text": "Elevated errors affecting the Microsoft 365 connector. We’re investigating an issue with Microsoft connectors where new connections may be broken and tools are not working as expected. We’ll share an update when we know more.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "investigating",
+        "publishedAt": "2026-11-12T18:29:14.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -63259,7 +63436,8 @@
       "rust-v0.169.0-alpha.8": 1794309378484,
       "rust-v0.167.1": 1794336805193,
       "rust-v0.169.0-alpha.10": 1794367528549,
-      "rust-v0.170.0-alpha.1": 1794423624005
+      "rust-v0.170.0-alpha.1": 1794423624005,
+      "rust-v0.168.0": 1794524180075
     }
   }
 }
