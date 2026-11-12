@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-12T08:14:37.943Z",
+  "generatedAt": "2026-11-12T16:54:17.774Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -15289,7 +15289,7 @@
         "title": "0.170.0-alpha.2",
         "body": "Release 0.170.0-alpha.2\n\n",
         "authored": false,
-        "fetchedAt": "2026-11-12T08:14:37.946Z",
+        "fetchedAt": "2026-11-12T16:54:17.778Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.2",
         "publishedAt": "2026-11-12T01:30:28Z",
         "commits": [
@@ -15462,9 +15462,9 @@
     },
     {
       "id": "openai-status:01M76CW2D7FM7K7F8NJ4W0G08N",
-      "at": "2026-11-11T22:50:17.000Z",
+      "at": "2026-11-12T08:32:37.000Z",
       "url": "https://status.openai.com/incidents/01M76CW2D7FM7K7F8NJ4W0G08N",
-      "text": "Unable to start new Workspace Agent runs. We are investigating an issue preventing users from starting new Workspace Agent runs. We will share another update as more information becomes available.",
+      "text": "Unable to start new Workspace Agent runs. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -15473,7 +15473,7 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "investigating",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-11-11T22:50:17.000Z"
     },
     {
@@ -15491,6 +15491,52 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-11-11T20:43:51.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/holidays-extras-codex",
+      "at": "2026-11-12T09:30:00.000Z",
+      "url": "https://openai.com/business/customer-stories/holidays-extras-codex",
+      "text": "Holiday Extras is rethinking what it can build with Codex. With Codex, Holiday Extras is turning customer expertise into better apps, higher booking conversion and new possibilities for growth.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/children-first-declaration",
+      "at": "2026-11-12T00:00:00.000Z",
+      "url": "https://openai.com/index/children-first-declaration",
+      "text": "Supporting research on AI and children’s safety. OpenAI commits $2 million to research on AI and children’s safety. The work supports shared tools to measure risks and opportunities for young people.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-status:01M77FAXVFV338GY7G9VRENRS5",
+      "at": "2026-11-12T09:25:12.000Z",
+      "url": "https://status.openai.com/incidents/01M77FAXVFV338GY7G9VRENRS5",
+      "text": "GPT-image-2.5 and 2.6 Sunburst & Flare High error rate. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-11-12T08:52:35.000Z"
     }
   ],
   "sources": {
@@ -15499,7 +15545,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-12T08:14:37.444Z",
+      "lastSuccessAt": "2026-11-12T16:54:17.300Z",
       "error": null,
       "count": 150
     },
@@ -15508,7 +15554,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-12T08:14:37.444Z",
+      "lastSuccessAt": "2026-11-12T16:54:17.300Z",
       "error": null,
       "count": 10
     },
@@ -15517,7 +15563,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-12T08:14:37.444Z",
+      "lastSuccessAt": "2026-11-12T16:54:17.300Z",
       "error": null,
       "count": 25
     }
@@ -62842,6 +62888,224 @@
         "body": "Release 0.170.0-alpha.2\n\n",
         "authored": false,
         "fetchedAt": "2026-11-12T08:14:37.946Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.2",
+        "publishedAt": "2026-11-12T01:30:28Z",
+        "commits": [
+          {
+            "sha": "9e6d1c5278b6e65059f7e5f610561a3f4be0aa0d",
+            "title": "Preserve retained assistant revisions across rollout replay (#60839)",
+            "message": "Preserve retained assistant revisions across rollout replay (#60839)\n\n## Why\n\nReplaying delivered assistant messages allocates new retained-source revisions instead of preserving those captured in live history.\n\n## What changed\n\n- Capture retained sources when recording assistant deliveries, persist them in rollout metadata, and reuse their revisions during replay.\n- Add optional `next_item_ordinal` compaction metadata and a `next_model_id_ordinals` helper to recover item and window allocation positions from checkpoints and subsequent records. Ignore allocation metadata that refers to other threads.\n\n## Testing\n\nExtend tests to compare live and replayed delivery sources, preserve revisions through an older reader's rewrite, and verify ordinal recovery from checkpoints and subsequent local items.\n\nGitOrigin-RevId: cfdeebe8e13b1700b34b9c98696880a90a99ace5",
+            "url": "https://github.com/openai/codex/commit/9e6d1c5278b6e65059f7e5f610561a3f4be0aa0d"
+          },
+          {
+            "sha": "bc3ccba6e1cbf466c29240edb8d1d0fa81638ad7",
+            "title": "Fall back to HTTP immediately for oversized WebSocket requests (#60840)",
+            "message": "Fall back to HTTP immediately for oversized WebSocket requests (#60840)\n\n## Why\n\nA WebSocket close with code `1009` before any text arrives indicates that the request exceeds the peer's message size limit. Retrying the request over another WebSocket does not address that limit.\n\n## What changed\n\n- Classify these early size rejections as requiring HTTP fallback and switch transports without exhausting WebSocket retries, including during prewarming.\n- Preserve ordinary stream retry behavior for size closes after any text frame and for other close codes.\n\n## Testing\n\nAdd integration coverage for early size rejections during generation and prewarming, size closes after metadata, rate limits, or response creation, and ordinary closes.\n\nGitOrigin-RevId: 4550d289bb414fec1faae2a195bcc635d394117b",
+            "url": "https://github.com/openai/codex/commit/bc3ccba6e1cbf466c29240edb8d1d0fa81638ad7"
+          },
+          {
+            "sha": "ed7ca22bb60ad0e7dbfd3d71687debf6ece91a6b",
+            "title": "Honor advertised WebSocket message size limits (#60841)",
+            "message": "Honor advertised WebSocket message size limits (#60841)\n\n## Why\n\nRequests that exceed the server's advertised WebSocket message size limit can fall back to HTTP without first uploading the oversized message.\n\n## What changed\n\nRead `x-codex-websocket-max-message-bytes` from the handshake response and check the serialized request's byte length before sending. Route oversized requests through the existing HTTP fallback. Ignore missing or invalid limits, and remove the close-code-specific wording from the size-limit error.\n\n## Testing\n\nAdd a fallback test that advertises a one-byte limit and verifies zero WebSocket generation requests and one HTTP request.\n\nGitOrigin-RevId: 03b42012ca77d6b046e937fef8e6335d855a1c10",
+            "url": "https://github.com/openai/codex/commit/ed7ca22bb60ad0e7dbfd3d71687debf6ece91a6b"
+          },
+          {
+            "sha": "54b90f98a5724b688bf78793de5c21aca29ecec2",
+            "title": "Make TUI thread titles resilient to generation failures (#60842)",
+            "message": "Make TUI thread titles resilient to generation failures (#60842)\n\n## Why\n\nThreads need a visible title while automatic generation is pending or fails. Hidden title-generation requests must also stay out of the foreground conversation, including during skill installation prompts.\n\n## What changed\n\n- Immediately display a Markdown-stripped, single-line excerpt of the first message, capped at 60 characters. Replace it with the generated title, or save the excerpt if generation fails or returns an invalid title.\n- Give title threads explicit read-only permissions and request the `never` approval policy, subject to managed policy constraints. Keep blocking input requests on the hidden thread until timeout.\n- Interrupt timed-out temporary structured turns before detaching them.\n\n## Testing\n\nAdd coverage for provisional title replacement, fallback persistence, managed permission and approval policies, and hidden input requests. Add a terminal integration test that verifies title generation after choosing “Continue anyway” on a skill installation prompt.\n\nGitOrigin-RevId: f408f3061e5e7f0d9d6bc1f2f9674303e9e68400",
+            "url": "https://github.com/openai/codex/commit/54b90f98a5724b688bf78793de5c21aca29ecec2"
+          },
+          {
+            "sha": "ec51be0772c9d6fcc3613a73864f465155b6d439",
+            "title": "Deduplicate file search results from overlapping roots (#60845)",
+            "message": "Deduplicate file search results from overlapping roots (#60845)\n\n## Why\n\nRepeated or nested search roots can cause the same path to consume multiple result slots and inflate the total match count.\n\n## What changed\n\nSkip duplicate walk roots and deduplicate paths within overlapping subtrees before sending them to the matcher. Keep separate walks for nested roots so their ignore rules can still expose different entries.\n\n## Testing\n\nAdd a regression test covering repeated parent and child roots in both orders, verifying that two distinct matching files fill a two-result limit and produce a total match count of two.\n\nGitOrigin-RevId: 86483e572cb3d4dd69ec335fc2d27916301e1332",
+            "url": "https://github.com/openai/codex/commit/ec51be0772c9d6fcc3613a73864f465155b6d439"
+          },
+          {
+            "sha": "367c67560251322c2836e5e0b719cea5e2bb74cb",
+            "title": "Fix thread search snippets for whitespace-containing queries (#60846)",
+            "message": "Fix thread search snippets for whitespace-containing queries (#60846)\n\n## Why\n\nNormalizing whitespace before matching prevents thread search from producing snippets for queries containing repeated spaces, newlines, or tabs.\n\n## What changed\n\nMatch against the original conversation text and select the surrounding excerpt before normalizing whitespace for display.\n\n## Testing\n\nExtend `thread_search_matches_json_escaped_content` to cover repeated spaces, newlines, and tabs alongside quotes and backslashes, and assert that the returned snippet has normalized whitespace.\n\nGitOrigin-RevId: fffdcc8d246e7603a52c32bb5239b9873f8179fc",
+            "url": "https://github.com/openai/codex/commit/367c67560251322c2836e5e0b719cea5e2bb74cb"
+          },
+          {
+            "sha": "b117b2d6fe4434a368412d4fd526c8bc333404dc",
+            "title": "Enable incremental tool declarations by default for GCP (#60848)",
+            "message": "Enable incremental tool declarations by default for GCP (#60848)\n\n## What changed\n\n- Add the stable `incremental_tools_legacy_gcp` feature, enabled by default, to control incremental tool declarations on regular GCP Responses independently of Amazon Bedrock.\n- Mark `incremental_tools_legacy` stable and keep it disabled by default for Amazon Bedrock.\n- Expose the new flag in the configuration schema.\n\n## Testing\n\nUpdate integration coverage for GCP defaults and opt-out, independent provider flags, and incremental tool declarations during remote compaction.\n\nGitOrigin-RevId: 7acf085789d44122fd2a5da97932a8b9e93e240e",
+            "url": "https://github.com/openai/codex/commit/b117b2d6fe4434a368412d4fd526c8bc333404dc"
+          },
+          {
+            "sha": "392ced7d3a9160fd35d40c606359869215f50522",
+            "title": "Protect MCP OAuth persistence from stale credential writes (#60849)",
+            "message": "Protect MCP OAuth persistence from stale credential writes (#60849)\n\n## Why\n\nA pending token refresh must not overwrite a newer login or recreate credentials after logout. Legacy file entries also need to retain their stored identity across refreshes.\n\n## What changed\n\n- Lock and revalidate stored credentials before persisting changed authorization-manager credentials, requiring authorization again if storage has changed.\n- Update file-backed refreshes only when the matched entry still contains the expected credentials, preserving its key, server name, and ownership. Compare only fields the file format can persist.\n- Remove matching legacy file entries when saving login credentials or deleting credentials, while preserving unrelated entries and profile-scoped enterprise credentials' separate local entries.\n\n## Testing\n\nAdd regression coverage for newer logins and logout during pending persistence, repeated refreshes of legacy and escaped-name entries, and cleanup that preserves unrelated credentials. Update guard-retention and telemetry assertions for the validation path.\n\nGitOrigin-RevId: 3d7c603950afcff72f0bcd943edae5ecfbcb5bd2",
+            "url": "https://github.com/openai/codex/commit/392ced7d3a9160fd35d40c606359869215f50522"
+          },
+          {
+            "sha": "3a45bbba3cae5b73ed17615ae2bfcb682cf5ecfd",
+            "title": "Wait for the in-process initialization handshake to finish (#60871)",
+            "message": "Wait for the in-process initialization handshake to finish (#60871)\n\n## Why\n\nAn immediate request after `start` could compete with the pending `initialized`\nnotification for channel capacity and fail with `WouldBlock`.\n\n## What changed\n\nWait for an acknowledgment that `initialized` has been processed before returning\nfrom `start`. Shut down the runtime if sending the notification or receiving its\nacknowledgment fails. Ordinary notifications remain fire-and-forget.\n\n## Testing\n\nRequire the first request after startup to succeed without retries with channel\ncapacities of zero (clamped to one) and one.\n\nGitOrigin-RevId: 119a9a4375109f6b85aee0a9a4f8398a69269567",
+            "url": "https://github.com/openai/codex/commit/3a45bbba3cae5b73ed17615ae2bfcb682cf5ecfd"
+          },
+          {
+            "sha": "f096185f3a2369f19971ccc6e5b2fb6030904648",
+            "title": "Fix Windows atomic writes and refresh build maintenance (#60872)",
+            "message": "Fix Windows atomic writes and refresh build maintenance (#60872)\n\n## What changed\n\n- Use `std::fs::rename` for atomic file replacement to support overlapping readers on Windows, retaining temporary-file cleanup if publication fails.\n- Replace PowerShell fixtures in legacy sandbox capture and ConPTY lifecycle tests with native subprocesses. Keep child markers and output in writable workspaces, prevent inherited capture handles, and use asynchronous waits in ConPTY tests.\n- Update the Bazel `rules_rs` Linux zlib package pins and mirrors.\n- Temporarily exempt four `hickory-proto` advisories in `cargo-audit` and `cargo-deny`, with removal tied to upgrading Rust to 1.96+ and Rama to use `hickory-proto` 0.26.2 or later.\n\nGitOrigin-RevId: 23d10a023014cc16c100480d1e8bfc2ec87085e3",
+            "url": "https://github.com/openai/codex/commit/f096185f3a2369f19971ccc6e5b2fb6030904648"
+          },
+          {
+            "sha": "d27e7c1a8d1b10fa9db9d83afb51f277ff6002f9",
+            "title": "Stabilize tracing in the cancellation timing test (#60882)",
+            "message": "Stabilize tracing in the cancellation timing test (#60882)\n\nKeep a `NoSubscriber` dispatch alive while the cancellation-before-admission\ntest runs so untraced parallel workers registering the callsite do not\ninterfere with timing log capture.\n\nGitOrigin-RevId: 11bc60e3e4633d3ccf426823aeb271875affa39a",
+            "url": "https://github.com/openai/codex/commit/d27e7c1a8d1b10fa9db9d83afb51f277ff6002f9"
+          },
+          {
+            "sha": "14e039906c927fb54e30c54e947eb7123e386815",
+            "title": "Use the Responses API for issue label suggestions (#60897)",
+            "message": "Use the Responses API for issue label suggestions (#60897)\n\n## What changed\n\nReplace the issue labeler's Codex action with a Python script that calls the Responses API with tools disabled and a strict JSON schema. Preserve the label catalog while validating one issue type, an optional product, and known area labels before applying them.\n\nRetry transient API failures and timeouts, honor `Retry-After`, and reject redirects. Pass validated labels directly to `gh issue edit`, surface label application failures, and allow trigger-label cleanup after suggestion failures.\n\nGitOrigin-RevId: 2bfe301468808b4d15aa8b5fe8ddd98c1ed844c6",
+            "url": "https://github.com/openai/codex/commit/14e039906c927fb54e30c54e947eb7123e386815"
+          },
+          {
+            "sha": "9248df5978cfc7186b3311eec932c006615adf29",
+            "title": "Include bundled bubblewrap in the root metadata test fixture (#60898)",
+            "message": "Include bundled bubblewrap in the root metadata test fixture (#60898)\n\n## Why\n\nThe root metadata test copies the sandbox executable into an isolated root, which also needs access to the bundled bubblewrap fallback.\n\n## What changed\n\nCopy the discovered bundled binary into the fixture's `codex-resources/bwrap`. Allow the system binary as a fallback when `CODEX_BWRAP_SHA256` is absent or all zeros; require a matching bundle for digest-verified builds.\n\nGitOrigin-RevId: 6d61fa212d8ecfd05f482a219dfc4f1c5911e08c",
+            "url": "https://github.com/openai/codex/commit/9248df5978cfc7186b3311eec932c006615adf29"
+          },
+          {
+            "sha": "8a4b226ad5d69978d62cf0c5a20c41420431a93e",
+            "title": "Version answer display instructions and restrict unsupported payloads (#60904)",
+            "message": "Version answer display instructions and restrict unsupported payloads (#60904)\n\n## What changed\n\n- Replace free-form `AgentMessageDisplay` actions with a version `1` contract using `show`, `hide`, and `block` modes, with typed annotations, replacements, block reasons, and trusted-contact handling.\n- Discard invalid or unsupported display instructions and set `moderated` to `true` when reading moderation data in Rust and the Python SDK.\n- Update generated JSON schemas, TypeScript types, and Python SDK models to match the contract.\n\n## Testing\n\nAdd coverage for display variants, tolerance of extra fields, and unsupported-version or unknown-mode fallback. Update the final-answer moderation test and add Python coverage for thread history and item notifications.\n\nGitOrigin-RevId: ec64070002da67e8e377dccb3728806ac8b290e7",
+            "url": "https://github.com/openai/codex/commit/8a4b226ad5d69978d62cf0c5a20c41420431a93e"
+          },
+          {
+            "sha": "561f0f5cf0f29c62bd3233c54dc21fcaf4a61c33",
+            "title": "Keep same-named MCP servers separate across environments (#60905)",
+            "message": "Keep same-named MCP servers separate across environments (#60905)\n\n## Why\n\nMCP servers discovered on different executors can share a name. Resolving them by name alone exposes only one server and prevents tools and resources from being addressed independently.\n\n## What changed\n\n- Add the disabled-by-default `multi_environment_mcp` feature to expose environment-scoped servers, including multiple installations of the same plugin.\n- Carry exact `McpServerKey` identities through catalogs, connections, tool calls, resources, and approval tracking. Give environment-scoped tools stable namespaces derived from their environment.\n- Include `environment_id` in scoped resource listings and accept it in resource requests. Require it for environment-owned servers when multiple environments are selected.\n- Preserve server ownership through hooks and use the owning environment's permissions for scoped elicitation review.\n\n## Testing\n\nAdd coverage for same-named servers across environments, independent calls and approvals, resource selection, plugin discovery, and rejection of hook changes to the tool environment.\n\nGitOrigin-RevId: 5593372b06a15c16aa3220faa3b19f5d3b20e67e",
+            "url": "https://github.com/openai/codex/commit/561f0f5cf0f29c62bd3233c54dc21fcaf4a61c33"
+          },
+          {
+            "sha": "c95b72ed6f00348c6da5ab95b740398094023ce8",
+            "title": "Reserve Guardian context budget for selected Code Mode exec results (#60914)",
+            "message": "Reserve Guardian context budget for selected Code Mode exec results (#60914)\n\n## What changed\n\nAdd `transcript_selected_exec_results` to synchronous Guardian elastic budgeting so selected Code Mode `exec` outputs can receive a separate token reservation and entry cap from ordinary tool evidence.\n\nConfigure selection with `nested_tool_names`. Match results against the host-recorded inventory of completed nested tool calls, including normalized tool names, even when the original `exec` call has left review history. Leave the new section's reservation at zero when omitted.\n\n## Testing\n\nAdd coverage for recorded-inventory matching and results whose calls are missing from history. Extend the elastic budgeting scenario to verify that selected output is retained while ordinary tool output is capped.\n\nGitOrigin-RevId: 6a8de250e36b18f2acfdab993c83c254f101ce87",
+            "url": "https://github.com/openai/codex/commit/c95b72ed6f00348c6da5ab95b740398094023ce8"
+          },
+          {
+            "sha": "27294165dc163ce67bcb7fd68a7ac745fe20d517",
+            "title": "Preserve Command Center task ownership across backend switches (#60929)",
+            "message": "Preserve Command Center task ownership across backend switches (#60929)\n\n## Why\n\nCommand Center retains tasks across backend switches. Opening a retained task must use its owning backend, and restoring its draft must account for history or settings that changed while another backend was displayed.\n\n## What changed\n\n- Track each thread's first observed backend, reject conflicting ownership, and switch to the owning backend when opening a retained task. Require users to open tasks on other backends before running task actions.\n- Keep discovery cursors, initialization, and pins per backend. Scope refreshes and usage requests to their owner, and handle background archive and delete notifications without consuming the displayed backend's pagination budget.\n- Verify cached blank sessions are still idle and have no turns before reusing them, with a history-read fallback for older servers. Otherwise, resume saved history and preserve current server collaboration settings when restoring drafts.\n- Use only interactive task-list pages for cloud discovery, which does not support the additional source filters.\n\n## Testing\n\nAdd regression coverage for ownership conflicts, action routing, pins across backends, background removals, usage isolation, cloud discovery, and draft restoration with blank or populated history, including older-server fallbacks.\n\nGitOrigin-RevId: 0d0913ec38dc16a839823008a4a84aa46ad8e6c6",
+            "url": "https://github.com/openai/codex/commit/27294165dc163ce67bcb7fd68a7ac745fe20d517"
+          },
+          {
+            "sha": "1d787b3c4eca3050e7fa27c90927aae0d3ab4eda",
+            "title": "Release 0.170.0-alpha.2",
+            "message": "Release 0.170.0-alpha.2",
+            "url": "https://github.com/openai/codex/commit/1d787b3c4eca3050e7fa27c90927aae0d3ab4eda"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.170.0-alpha.1",
+          "head": "rust-v0.170.0-alpha.2",
+          "url": "https://github.com/openai/codex/compare/rust-v0.170.0-alpha.1...rust-v0.170.0-alpha.2",
+          "status": "diverged",
+          "total": 18,
+          "behind": 1,
+          "complete": true,
+          "fetched": 18
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/holidays-extras-codex:2026-11-12T16:54:17.774Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T16:54:17.774Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/customer-stories/holidays-extras-codex",
+        "at": "2026-11-12T09:30:00.000Z",
+        "url": "https://openai.com/business/customer-stories/holidays-extras-codex",
+        "text": "Holiday Extras is rethinking what it can build with Codex. With Codex, Holiday Extras is turning customer expertise into better apps, higher booking conversion and new possibilities for growth.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/children-first-declaration:2026-11-12T16:54:17.774Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T16:54:17.774Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/children-first-declaration",
+        "at": "2026-11-12T00:00:00.000Z",
+        "url": "https://openai.com/index/children-first-declaration",
+        "text": "Supporting research on AI and children’s safety. OpenAI commits $2 million to research on AI and children’s safety. The work supports shared tools to measure risks and opportunities for young people.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-status:01M77FAXVFV338GY7G9VRENRS5:2026-11-12T16:54:17.774Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T16:54:17.774Z",
+      "item": {
+        "id": "openai-status:01M77FAXVFV338GY7G9VRENRS5",
+        "at": "2026-11-12T09:25:12.000Z",
+        "url": "https://status.openai.com/incidents/01M77FAXVFV338GY7G9VRENRS5",
+        "text": "GPT-image-2.5 and 2.6 Sunburst & Flare High error rate. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-12T08:52:35.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M76CW2D7FM7K7F8NJ4W0G08N:2026-11-12T16:54:17.774Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T16:54:17.774Z",
+      "item": {
+        "id": "openai-status:01M76CW2D7FM7K7F8NJ4W0G08N",
+        "at": "2026-11-12T08:32:37.000Z",
+        "url": "https://status.openai.com/incidents/01M76CW2D7FM7K7F8NJ4W0G08N",
+        "text": "Unable to start new Workspace Agent runs. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-11T22:50:17.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.2:2026-11-12T16:54:17.774Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-12T16:54:17.774Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.170.0-alpha.2",
+        "title": "0.170.0-alpha.2",
+        "body": "Release 0.170.0-alpha.2\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-12T16:54:17.778Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.2",
         "publishedAt": "2026-11-12T01:30:28Z",
         "commits": [
