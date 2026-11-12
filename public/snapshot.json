@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-11T18:45:24.002Z",
+  "generatedAt": "2026-11-12T01:04:37.546Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -15256,9 +15256,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.1",
-      "at": "2026-11-11T16:21:33.000Z",
+      "at": "2026-11-11T20:09:52.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.1",
-      "text": "rust-v0.170.0-alpha.1. Release 0.170.0-alpha.1",
+      "text": "0.170.0-alpha.1. Release 0.170.0-alpha.1",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -15268,6 +15268,98 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.2",
+      "at": "2026-11-12T00:10:26.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.2",
+      "text": "rust-v0.170.0-alpha.2. Release 0.170.0-alpha.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.11.1",
+      "at": "2026-11-11T22:27:26.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.11.1",
+      "text": "0.169.0-alpha.11.1. Release 0.169.0-alpha.11.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.2",
+      "at": "2026-11-11T22:46:17.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.2",
+      "text": "0.167.2. New Features Codex now sends tool updates incrementally by default on Google Cloud Vertex AI. To opt out, set incremental_tools_legacy_gcp = false under [features] in config.toml . ( #60617 , #60848 ) Changelog Full Changelog: rust-v0.167.1...rust-v0.167.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.3",
+      "at": "2026-11-11T23:59:38.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.3",
+      "text": "0.167.0-alpha.4.3. Release 0.167.0-alpha.4.3",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M76CW2D7FM7K7F8NJ4W0G08N",
+      "at": "2026-11-11T22:50:17.000Z",
+      "url": "https://status.openai.com/incidents/01M76CW2D7FM7K7F8NJ4W0G08N",
+      "text": "Unable to start new Workspace Agent runs. We are investigating an issue preventing users from starting new Workspace Agent runs. We will share another update as more information becomes available.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "investigating",
+      "publishedAt": "2026-11-11T22:50:17.000Z"
+    },
+    {
+      "id": "openai-status:01M765MJQK7F85SC82RMTYN0V3",
+      "at": "2026-11-11T20:52:40.000Z",
+      "url": "https://status.openai.com/incidents/01M765MJQK7F85SC82RMTYN0V3",
+      "text": "Elevated errors affecting logins, sign-ups, and ChatGPT features. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-11-11T20:43:51.000Z"
     }
   ],
   "sources": {
@@ -15276,7 +15368,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-11T18:45:23.601Z",
+      "lastSuccessAt": "2026-11-12T01:04:37.071Z",
       "error": null,
       "count": 150
     },
@@ -15285,7 +15377,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-11T18:45:23.601Z",
+      "lastSuccessAt": "2026-11-12T01:04:37.071Z",
       "error": null,
       "count": 10
     },
@@ -15294,7 +15386,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-11T18:45:23.601Z",
+      "lastSuccessAt": "2026-11-12T01:04:37.071Z",
       "error": null,
       "count": 25
     }
@@ -62314,6 +62406,148 @@
         "origin": "direct-official",
         "prerelease": true
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.2:2026-11-12T01:04:37.546Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T01:04:37.546Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.2",
+        "at": "2026-11-12T00:10:26.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.2",
+        "text": "rust-v0.170.0-alpha.2. Release 0.170.0-alpha.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.1:2026-11-12T01:04:37.546Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T01:04:37.546Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.1",
+        "at": "2026-11-11T20:09:52.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.1",
+        "text": "0.170.0-alpha.1. Release 0.170.0-alpha.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.11.1:2026-11-12T01:04:37.546Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T01:04:37.546Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.0-alpha.11.1",
+        "at": "2026-11-11T22:27:26.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.11.1",
+        "text": "0.169.0-alpha.11.1. Release 0.169.0-alpha.11.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.2:2026-11-12T01:04:37.546Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T01:04:37.546Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.2",
+        "at": "2026-11-11T22:46:17.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.2",
+        "text": "0.167.2. New Features Codex now sends tool updates incrementally by default on Google Cloud Vertex AI. To opt out, set incremental_tools_legacy_gcp = false under [features] in config.toml . ( #60617 , #60848 ) Changelog Full Changelog: rust-v0.167.1...rust-v0.167.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.3:2026-11-12T01:04:37.546Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T01:04:37.546Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.167.0-alpha.4.3",
+        "at": "2026-11-11T23:59:38.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.3",
+        "text": "0.167.0-alpha.4.3. Release 0.167.0-alpha.4.3",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M76CW2D7FM7K7F8NJ4W0G08N:2026-11-12T01:04:37.546Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T01:04:37.546Z",
+      "item": {
+        "id": "openai-status:01M76CW2D7FM7K7F8NJ4W0G08N",
+        "at": "2026-11-11T22:50:17.000Z",
+        "url": "https://status.openai.com/incidents/01M76CW2D7FM7K7F8NJ4W0G08N",
+        "text": "Unable to start new Workspace Agent runs. We are investigating an issue preventing users from starting new Workspace Agent runs. We will share another update as more information becomes available.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "investigating",
+        "publishedAt": "2026-11-11T22:50:17.000Z"
+      }
+    },
+    {
+      "id": "openai-status:01M765MJQK7F85SC82RMTYN0V3:2026-11-12T01:04:37.546Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-12T01:04:37.546Z",
+      "item": {
+        "id": "openai-status:01M765MJQK7F85SC82RMTYN0V3",
+        "at": "2026-11-11T20:52:40.000Z",
+        "url": "https://status.openai.com/incidents/01M765MJQK7F85SC82RMTYN0V3",
+        "text": "Elevated errors affecting logins, sign-ups, and ChatGPT features. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-11T20:43:51.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -62343,7 +62577,8 @@
       "rust-v0.169.0-alpha.8": 1794309378484,
       "rust-v0.167.1": 1794336805193,
       "rust-v0.169.0-alpha.10": 1794367528549,
-      "rust-v0.170.0-alpha.1": 1794423624005
+      "rust-v0.170.0-alpha.1": 1794423624005,
+      "rust-v0.170.0-alpha.2": 1794446377548
     }
   }
 }
