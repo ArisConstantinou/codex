@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-12T22:41:20.071Z",
+  "generatedAt": "2026-11-13T02:58:42.164Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -15555,9 +15555,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.4",
-      "at": "2026-11-12T19:55:18.000Z",
+      "at": "2026-11-12T23:03:38.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4",
-      "text": "rust-v0.170.0-alpha.4. Release 0.170.0-alpha.4",
+      "text": "0.170.0-alpha.4. Release 0.170.0-alpha.4",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -15613,6 +15613,51 @@
       "origin": "direct-official",
       "serviceStatus": "investigating",
       "publishedAt": "2026-11-12T18:29:14.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/amplitude",
+      "at": "2026-11-12T20:00:00.000Z",
+      "url": "https://openai.com/business/customer-stories/amplitude",
+      "text": "How Amplitude ships product improvements in 1–2 days with OpenAI. Built primarily on OpenAI models, Amplitude’s proactive product agent, Wave, identifies what to build, helps teams ship changes with coding agents, and measures the impact.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/gondola",
+      "at": "2026-11-12T12:00:00.000Z",
+      "url": "https://openai.com/business/customer-stories/gondola",
+      "text": "Gondola doubles revenue as its team builds more with Codex. Gondola helps creatives get credit and get hired, with Codex raising its lead engineer’s output by 50% and ChatGPT simplifying daily work.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.1",
+      "at": "2026-11-12T23:23:26.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.1",
+      "text": "rust-v0.171.0-alpha.1. Release 0.171.0-alpha.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -15621,7 +15666,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-12T22:41:19.571Z",
+      "lastSuccessAt": "2026-11-13T02:58:41.615Z",
       "error": null,
       "count": 150
     },
@@ -15630,7 +15675,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-12T22:41:19.571Z",
+      "lastSuccessAt": "2026-11-13T02:58:41.615Z",
       "error": null,
       "count": 10
     },
@@ -15639,7 +15684,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-12T22:41:19.571Z",
+      "lastSuccessAt": "2026-11-13T02:58:41.615Z",
       "error": null,
       "count": 25
     }
@@ -63407,6 +63452,86 @@
         "serviceStatus": "investigating",
         "publishedAt": "2026-11-12T18:29:14.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/amplitude:2026-11-13T02:58:42.164Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-13T02:58:42.164Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/customer-stories/amplitude",
+        "at": "2026-11-12T20:00:00.000Z",
+        "url": "https://openai.com/business/customer-stories/amplitude",
+        "text": "How Amplitude ships product improvements in 1–2 days with OpenAI. Built primarily on OpenAI models, Amplitude’s proactive product agent, Wave, identifies what to build, helps teams ship changes with coding agents, and measures the impact.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/gondola:2026-11-13T02:58:42.164Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-13T02:58:42.164Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/customer-stories/gondola",
+        "at": "2026-11-12T12:00:00.000Z",
+        "url": "https://openai.com/business/customer-stories/gondola",
+        "text": "Gondola doubles revenue as its team builds more with Codex. Gondola helps creatives get credit and get hired, with Codex raising its lead engineer’s output by 50% and ChatGPT simplifying daily work.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.1:2026-11-13T02:58:42.164Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-13T02:58:42.164Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.1",
+        "at": "2026-11-12T23:23:26.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.1",
+        "text": "rust-v0.171.0-alpha.1. Release 0.171.0-alpha.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.4:2026-11-13T02:58:42.164Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-13T02:58:42.164Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.4",
+        "at": "2026-11-12T23:03:38.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4",
+        "text": "0.170.0-alpha.4. Release 0.170.0-alpha.4",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
@@ -63437,7 +63562,8 @@
       "rust-v0.167.1": 1794336805193,
       "rust-v0.169.0-alpha.10": 1794367528549,
       "rust-v0.170.0-alpha.1": 1794423624005,
-      "rust-v0.168.0": 1794524180075
+      "rust-v0.168.0": 1794524180075,
+      "rust-v0.171.0-alpha.1": 1794539622166
     }
   }
 }
