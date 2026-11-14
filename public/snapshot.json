@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-13T23:42:32.640Z",
+  "generatedAt": "2026-11-14T03:38:15.615Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -15600,9 +15600,9 @@
     },
     {
       "id": "openai-status:01M78GAT3AK9P9W8Z230KHFVE8",
-      "at": "2026-11-13T16:20:45.000Z",
+      "at": "2026-11-14T00:18:13.000Z",
       "url": "https://status.openai.com/incidents/01M78GAT3AK9P9W8Z230KHFVE8",
-      "text": "Elevated errors affecting the Microsoft 365 connector. We’re seeing signs of recovery for the Microsoft 365 connector and are continuing to monitor the affected services to confirm recovery.",
+      "text": "Elevated errors affecting the Microsoft 365 connector. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -15611,7 +15611,7 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "monitoring",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-11-12T18:29:14.000Z"
     },
     {
@@ -15781,9 +15781,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.5",
-      "at": "2026-11-13T21:36:19.000Z",
+      "at": "2026-11-14T01:25:03.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.5",
-      "text": "rust-v0.171.0-alpha.5. Release 0.171.0-alpha.5",
+      "text": "0.171.0-alpha.5. Release 0.171.0-alpha.5",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -15792,7 +15792,213 @@
         "release"
       ],
       "origin": "direct-official",
-      "prerelease": true
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.171.0-alpha.5",
+        "title": "0.171.0-alpha.5",
+        "body": "Release 0.171.0-alpha.5\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-14T03:38:15.618Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.5",
+        "publishedAt": "2026-11-14T01:20:37Z",
+        "commits": [
+          {
+            "sha": "c79dfb1d9cc531e0b091b802edd44665edee9b81",
+            "title": "Centralize managed network proxy startup (#61337)",
+            "message": "Centralize managed network proxy startup (#61337)\n\n## What changed\n\nAdd `NetworkProxy::start_managed` and use it in core and exec-server to share proxy construction, startup, and error context. Keep approval-policy selection in core and pass the active decider and blocked-request observer to the shared helper.\n\n## Testing\n\nExpand session coverage for a full-access to workspace-write profile change: verify decider calls with approvals enabled, approvals disabled, and a final managed allowlist, and verify blocked-request notifications in each case.\n\nGitOrigin-RevId: 97abdaa9af698166f46d74e0f231ec557d346200",
+            "url": "https://github.com/openai/codex/commit/c79dfb1d9cc531e0b091b802edd44665edee9b81"
+          },
+          {
+            "sha": "9d12d007b278af2320a2c9c237d275c26f4b7686",
+            "title": "Record host-confirmed Code Mode wait targets in rollout traces (#61338)",
+            "message": "Record host-confirmed Code Mode wait targets in rollout traces (#61338)\n\n## Why\n\nInferring wait targets from request arguments can abort trace replay on malformed arguments and link waits to cells the host never resolved.\n\n## What changed\n\nRecord an explicit `CodeCellWaitTargetResolved` event when the host confirms a live cell, and expose its runtime handle as `resolved_wait_runtime_cell_id` on the tool call. Build cell wait links from these observations, preserving links while cell source is pending and preventing late confirmations from linking to recycled handles after thread resume.\n\nOlder traces no longer infer wait links from request arguments, so an empty `wait_tool_call_ids` list does not establish that nobody waited on a cell.\n\n## Testing\n\nExtend dispatch and replay tests to cover live, missing, and invalid wait targets, pending cell source, legacy traces, and runtime handle reuse across threads and resume.\n\nGitOrigin-RevId: 0f13b291c197c5487258b6ce36276cf1f19e2b6d",
+            "url": "https://github.com/openai/codex/commit/9d12d007b278af2320a2c9c237d275c26f4b7686"
+          },
+          {
+            "sha": "a4b69a0ae98944569ea3acc67dffec8c45a78d35",
+            "title": "Add session-scoped stores for stable model-facing IDs (#61339)",
+            "message": "Add session-scoped stores for stable model-facing IDs (#61339)\n\n## What changed\n\n- Add `SessionModelIdStore` with SQLite and in-memory implementations for looking up and assigning aliases by session, namespace, and external key.\n- Commit SQLite assignments before returning them, and recheck under a write transaction so concurrent writers reuse the same alias.\n- Support snapshotting and initializing alias maps from generator state and ordered keys, and remove mappings when their thread is deleted.\n- Expose alias stores through `ThreadStore` and add distinct types for registered environment IDs and model-facing `env` aliases.\n\n## Testing\n\nAdd a test using two SQLite runtime instances to verify that concurrent assignments return the same alias, different keys receive different aliases, and lookups and snapshots preserve the assignments.\n\nGitOrigin-RevId: 2668f605251ca76d4891f70f94bfb4151ba8142c",
+            "url": "https://github.com/openai/codex/commit/a4b69a0ae98944569ea3acc67dffec8c45a78d35"
+          },
+          {
+            "sha": "7844815bd75f8e20ffe3e9f031d261e2956a981c",
+            "title": "Add opt-in prompt image sanitization (#61341)",
+            "message": "Add opt-in prompt image sanitization (#61341)\n\n## What changed\n\n- Add the disabled-by-default `safe_image_decoder` feature to decode and re-encode prompt images without source metadata, with byte and decoded-pixel limits.\n- Apply JPEG orientation and supported ICC color conversion to sRGB, emitting PNG for PNG/GIF inputs and JPEG for JPEG/WebP inputs.\n- Use the selected decoder for image preparation, `view_image` validation, and MCP image validation. Include the decoder in image cache keys.\n- Preserve original inline images in history metadata so resume and fork can regenerate prepared images without repeated JPEG encoding changing their bytes.\n\n## Testing\n\nAdd regression tests for identical JPEG replay after history serialization and for preventing legacy cache entries from bypassing sanitization.\n\nGitOrigin-RevId: 718cd83d0a233e2eb8efd1a64c14d8944e44c350",
+            "url": "https://github.com/openai/codex/commit/7844815bd75f8e20ffe3e9f031d261e2956a981c"
+          },
+          {
+            "sha": "61c106ed66c0c5b4880cff07eddffd53e1df299e",
+            "title": "Cancel abandoned cloud thread list requests (#61342)",
+            "message": "Cancel abandoned cloud thread list requests (#61342)\n\n## Why\n\nAn in-flight `ThreadList` request can block the cloud worker from processing subsequent requests even after its caller drops it.\n\n## What changed\n\nSkip queued `ThreadList` requests whose response receiver is closed, and cancel in-flight list handling when the receiver closes. Thread listing has no conversation state to commit, so the worker can safely move on to the next command.\n\n## Testing\n\nAdd a regression test that holds a list RPC open, drops the caller's request, and verifies that a subsequent `GetAccount` request completes before the list RPC is released.\n\nGitOrigin-RevId: 7c74e3305d58b85224d9882ea7e24b1ae791ec52",
+            "url": "https://github.com/openai/codex/commit/61c106ed66c0c5b4880cff07eddffd53e1df299e"
+          },
+          {
+            "sha": "d17887a8d1a7d3e800fb9fb4cb9dd419c147910b",
+            "title": "Title saved side chats from their first direct input (#61343)",
+            "message": "Title saved side chats from their first direct input (#61343)\n\n## Why\n\nSaved side chats can inherit their parent's name, leaving them labeled for the parent conversation rather than their own question.\n\n## What changed\n\nGenerate an automatic title from the first successfully submitted direct text input in a newly saved side chat. Allow the generated title to replace the inherited name while preserving manual renames and leaving the parent title unchanged. Image-only first inputs retain the `[Image]` label without generating a title from inherited conversation text.\n\n## Testing\n\nAdd regression coverage for saved side chat labels from text and image-only inputs, inherited-name replacement, manual rename preservation after switching threads, and retaining title eligibility when turn submission fails.\n\nGitOrigin-RevId: 97f08dee8cc3280f1128aca23f27960235e00e86",
+            "url": "https://github.com/openai/codex/commit/d17887a8d1a7d3e800fb9fb4cb9dd419c147910b"
+          },
+          {
+            "sha": "c33002259e28db9e87807cedebfb25299d95a2c6",
+            "title": "Add per-item retention policies for injected history (#61344)",
+            "message": "Add per-item retention policies for injected history (#61344)\n\n## What changed\n\nAllow `thread/inject_items` to accept wrapped items with `retention: \"default\"` or `retention: \"always\"`, while preserving support for raw response items. Persist explicit policies separately from legacy client-authored metadata.\n\nCarry explicitly retained items through local and remote compaction, context-window changes, and child-agent creation, subject to retention budgets. Preserve history order and keep retained tool exchanges together; require matching calls and outputs to be adjacent in the injection request and both marked `always`.\n\nUpdate Quinn dependencies and record exceptions for additional Hickory DNSSEC advisories where DNSSEC is disabled.\n\n## Testing\n\nUpdate injection tests for explicit retention metadata and extend the compaction scenario to cover a retained tool exchange across repeated compaction and restart.\n\nGitOrigin-RevId: 1195a4ed62dc162a62e58bc2ad733262fbabea27",
+            "url": "https://github.com/openai/codex/commit/c33002259e28db9e87807cedebfb25299d95a2c6"
+          },
+          {
+            "sha": "a655b50de9d06e9d50eb13087f9def8f103d97b5",
+            "title": "Add opt-in elastic budgeting for asynchronous Guardian requests (#61345)",
+            "message": "Add opt-in elastic budgeting for asynchronous Guardian requests (#61345)\n\n## What changed\n\n- Add `async_elastic_budgeting` and `async_elastic_sections` under `[features.guardianv2]`, independently of synchronous budgeting and disabled by default.\n- Apply section limits and elastic allocation to new classifier evidence after accounting for setup and retained conversation history. Preserve the configured elastic policy when applying model defaults.\n- Keep permission context whole during elastic allocation and record truncation observations when image preparation rejects an image.\n\n## Testing\n\nAdd coverage for configuration validation, fixed and elastic conversation budgeting, retained history and cursor preservation, and complete classifier requests that retain evidence beyond the fixed entry limit.\n\nGitOrigin-RevId: 2955f0482f7c3e18325e296fc2ccb6592ffcb73a",
+            "url": "https://github.com/openai/codex/commit/a655b50de9d06e9d50eb13087f9def8f103d97b5"
+          },
+          {
+            "sha": "6919e2cd8ee5d07ab2d983e497772a8ecbf60ce1",
+            "title": "Apply elastic entry caps to Guardian classifier evidence (#61346)",
+            "message": "Apply elastic entry caps to Guardian classifier evidence (#61346)\n\n## Why\n\nTrusted classifier evidence needs to fit configured entry limits while preserving complete records and metadata that reflects only delivered reviews.\n\n## What changed\n\nApply elastic caps before rendering trusted tools, trusted skills, and previous reviews into developer messages. Omit oversized tool attestations and review fragments whole, retain only complete skill paths that fit, and record omissions for the request's omission notice. Keep review IDs aligned with retained fragments and preserve fixed-budget behavior.\n\n## Testing\n\nAdd coverage for whole-record omissions, retained review IDs, and omission notices. Exercise orchestrator connector evidence with both fixed budgeting and an elastic tool entry cap.\n\nGitOrigin-RevId: 729db452026f93b59765a3936730b9b6dddfcf9a",
+            "url": "https://github.com/openai/codex/commit/6919e2cd8ee5d07ab2d983e497772a8ecbf60ce1"
+          },
+          {
+            "sha": "76cf0f45ec44e488297cd27e1b1a951f02c31bfe",
+            "title": "Reserve item ID overhead before elastic context allocation (#61347)",
+            "message": "Reserve item ID overhead before elastic context allocation (#61347)\n\n## Why\n\nElastic request allocation did not account for item IDs added after evidence selection. Their token cost could push the completed request over its input limit instead of allowing optional evidence to be dropped.\n\n## What changed\n\nReserve IDs for the possible new request items before allocating evidence, including their JSON escaping and field overhead in the global request budget. Assign the same reserved IDs to the selected items while preserving existing IDs and committed history.\n\n## Testing\n\nAdd coverage for escaped IDs and native tool call outputs, and a regression test with long IDs that verifies optional images are omitted while committed history and new transcript text are retained within budget. Update budget boundary tests to distinguish fixed rejection from elastic evidence reduction.\n\nGitOrigin-RevId: 621d6d83e3cc95efb9eef4976dff9b7799a6e7c8",
+            "url": "https://github.com/openai/codex/commit/76cf0f45ec44e488297cd27e1b1a951f02c31bfe"
+          },
+          {
+            "sha": "d87330d91e2309aea3b82286961340181d145ab4",
+            "title": "Add managed CA defaults for Deno and Google Cloud SDK (#61349)",
+            "message": "Add managed CA defaults for Deno and Google Cloud SDK (#61349)\n\n## What changed\n\nSet `DENO_CERT` and `CLOUDSDK_CORE_CUSTOM_CA_CERTS_FILE` to the managed proxy CA bundle when unset, preserving explicit values, including empty strings. Keep these client settings separate from the CA roots imported into the proxy trust bundle.\n\nPreserve shell startup overrides when replaying snapshots, regenerate managed CA defaults instead of capturing them, and allow sandboxed processes to read the managed bundle referenced by these variables.\n\n## Testing\n\nExtend regression coverage for default CA settings, explicit overrides, trust-root selection, shell snapshots, and restricted sandbox access to the generated CA bundle.\n\nGitOrigin-RevId: 2761706b54e0bb230c37bd4c515204c6eba0c650",
+            "url": "https://github.com/openai/codex/commit/d87330d91e2309aea3b82286961340181d145ab4"
+          },
+          {
+            "sha": "f8580db4725c6a51a5ee2de0980a8b8b0659e143",
+            "title": "Reflect accepted cloud model selections in TUI status (#61350)",
+            "message": "Reflect accepted cloud model selections in TUI status (#61350)\n\n## Why\n\nAfter a cloud model selection was accepted for future turns, status displays still showed the session's serving model and reasoning effort. A reasoning-only `/model` command also resolved against that model instead of the accepted selection.\n\n## What changed\n\n- Show the accepted model's display name and reasoning effort in the status line, terminal title, and `/status`.\n- Resolve reasoning-only `/model` commands against the selected model.\n- Share the session-only model change confirmation between cloud and local selections, including reasoning effort and service tier when present.\n\n## Testing\n\nExtend cloud model admission coverage to check accepted selections in status output, reasoning-only commands, and unchanged status before acceptance and after session metadata clears the selection.\n\nGitOrigin-RevId: cc50c2b0a98e884138ad2c2339c79c28ee3d346a",
+            "url": "https://github.com/openai/codex/commit/f8580db4725c6a51a5ee2de0980a8b8b0659e143"
+          },
+          {
+            "sha": "a60197d6a06b026f7afb72e7f7469ea8ec95683e",
+            "title": "Expose canonical network proxy policy patterns (#61351)",
+            "message": "Expose canonical network proxy policy patterns (#61351)\n\n## What changed\n\nAdd `canonical_allow_pattern`, `canonical_deny_pattern`, and\n`canonical_review_pattern` to validate and normalize selectors for policy\ncomparisons using the domain matcher's syntax.\n\nTreat `?*.example.com` and `*.example.com` as equivalent comparison keys.\nCanonicalize unscoped IPv6 addresses for deny and review rules, and preserve\nwildcard ports on local allow rules so they remain distinguishable from explicit\nlocal grants. Deny rules continue to reject global wildcards.\n\nShare pattern validation with the matcher and local-literal classification with\nruntime policy checks.\n\n## Testing\n\nAdd a regression test covering equivalent subdomain selectors, local wildcard\nports, and differing IPv6 comparison keys for grants and restrictions.\n\nGitOrigin-RevId: c72262ae9f625765d5351e9da403be1f87042a47",
+            "url": "https://github.com/openai/codex/commit/a60197d6a06b026f7afb72e7f7469ea8ec95683e"
+          },
+          {
+            "sha": "4ccf87254a1bbeb24e59261f66f39e3bc4b64453",
+            "title": "Mark the TUI workspace as stable and enable it by default (#61352)",
+            "message": "Mark the TUI workspace as stable and enable it by default (#61352)\n\nGitOrigin-RevId: ca0634b16855f1c9f0bec73e73a1bda211d90d24",
+            "url": "https://github.com/openai/codex/commit/4ccf87254a1bbeb24e59261f66f39e3bc4b64453"
+          },
+          {
+            "sha": "2bad26e03f9f38f228d5d99d6a1a3ea1442cd9e7",
+            "title": "Centralize TUI read-only view checks (#61353)",
+            "message": "Centralize TUI read-only view checks (#61353)\n\n## What changed\n\nAdd `ChatWidget::is_read_only_view()` and use it for read-only guards across input handling, navigation, transcript rendering, and session restoration. The new helper delegates to `is_external_writer_view()`, preserving existing behavior.\n\nGitOrigin-RevId: c8fd66526f502d79be306a19ee261e79c5abcd57",
+            "url": "https://github.com/openai/codex/commit/2bad26e03f9f38f228d5d99d6a1a3ea1442cd9e7"
+          },
+          {
+            "sha": "60fb26f6ba50a118045eb0089814b366bb5296a8",
+            "title": "Avoid rewriting unchanged Guardian channel descriptions (#61354)",
+            "message": "Avoid rewriting unchanged Guardian channel descriptions (#61354)\n\n## What changed\n\nAllow the Guardian housekeeper to route evidence to existing channels without repeating their descriptions. Request descriptions only for new destinations or changed descriptions, and skip channel updates when a returned description matches the catalog.\n\nNew destinations still require descriptions, and description updates remain limited to routed channels.\n\n## Testing\n\nExtend housekeeping tests to cover omitted and repeated descriptions without extra channel writes, preserved descriptions, and rejection of missing new-channel descriptions or updates to unrouted channels before any writes.\n\nGitOrigin-RevId: 3ab00fc17263d68d15e68f9d17ab31fc6f43f551",
+            "url": "https://github.com/openai/codex/commit/60fb26f6ba50a118045eb0089814b366bb5296a8"
+          },
+          {
+            "sha": "76a8ca3914ec86807340367e8ba41e2f207e722a",
+            "title": "Upgrade Bazel rules_rs to 0.2.3 (#61355)",
+            "message": "Upgrade Bazel rules_rs to 0.2.3 (#61355)\n\n## What changed\n\n- Use the `rules_rs` 0.2.3 registry release instead of an archive override, and upgrade `platforms` to 1.1.0.\n- Disable root crate alias targets and migrate explicit dependencies to package labels such as `@crates//tokio`. Disable root crate data for the argument comment linter's crate repository.\n- Refresh the retained `rules_rs` patches, remove the zlib snapshot URL backport, and drop extra dependency declarations from `exec-server` and `v8-poc`.\n\nGitOrigin-RevId: c354413a19b45964104457063c613028f5325bc0",
+            "url": "https://github.com/openai/codex/commit/76a8ca3914ec86807340367e8ba41e2f207e722a"
+          },
+          {
+            "sha": "ae12a9d645774982fe9deda590dc1f237d249d1d",
+            "title": "Add deferred MCP reprojection for the next regular turn (#61356)",
+            "message": "Add deferred MCP reprojection for the next regular turn (#61356)\n\n## What changed\n\nAdd `CodexThread::reproject_mcp_on_next_turn()` to request an MCP reprojection after `TurnStarted` and before tools are bound. Repeated requests coalesce, and idle reconciliation or prewarming leaves the request pending until the next regular turn.\n\n## Testing\n\nAdd coverage for deferred requests surviving prewarm and idle reconciliation, coalescing into one reprojection, and exposing refreshed tools in the turn's first model request. Verify that discovery starts after `TurnStarted`.\n\nGitOrigin-RevId: 260b2381013291a47eb9a7f736c129de76c5897f",
+            "url": "https://github.com/openai/codex/commit/ae12a9d645774982fe9deda590dc1f237d249d1d"
+          },
+          {
+            "sha": "3f2603f2a261f7cb8a479dcae274bfe7ad5c7155",
+            "title": "Clarify removal scope for profile MCP servers (#61357)",
+            "message": "Clarify removal scope for profile MCP servers (#61357)\n\n## Why\n\n`codex mcp get` suggests `codex mcp remove` for servers defined in the active profile, but that command only edits the global config.\n\n## What changed\n\nFor servers defined in the active profile, replace the removal hint with the profile settings file path and an explanation of the command's scope. Keep the removal hint for servers inherited from the global config.\n\n## Testing\n\nAdd CLI coverage for profile-only servers, profile overrides of global servers, and inherited global servers.\n\nGitOrigin-RevId: 454df034f7e74b10f96983a9f13821d5ababfde7",
+            "url": "https://github.com/openai/codex/commit/3f2603f2a261f7cb8a479dcae274bfe7ad5c7155"
+          },
+          {
+            "sha": "dd8cee982245a4e1aa181127ab712acc0db9f989",
+            "title": "Add structured error kinds for exec-server process starts (#61358)",
+            "message": "Add structured error kinds for exec-server process starts (#61358)\n\n## What changed\n\nAttach a tagged `ProcessStartErrorData` value to JSON-RPC errors for not-found, permission-denied, and other spawn failures, unavailable sandboxes, and sandbox preparation failures.\n\nRecord the error code and structured error kind for failed `process/start` responses in the `codex.exec_server.response_received` tracing event.\n\nGitOrigin-RevId: 556d0068e469ea25e95108262826a77a66b7d83b",
+            "url": "https://github.com/openai/codex/commit/dd8cee982245a4e1aa181127ab712acc0db9f989"
+          },
+          {
+            "sha": "4413deac572eb5d4cdb49295794cbe30f8622935",
+            "title": "Resolve queued attachment paths against the thread working directory (#61359)",
+            "message": "Resolve queued attachment paths against the thread working directory (#61359)\n\n## Why\n\nRelative attachment paths in queued submissions should refer to files in the thread's working directory, even when the app server runs from a different directory.\n\n## What changed\n\nResolve relative `LocalImage` and `LocalAudio` paths against the loaded thread's current working directory or the stored working directory for an unloaded thread when adding or updating queued submissions. Preserve absolute paths and reject relative paths that cannot be resolved to an absolute path.\n\n## Testing\n\nAdd a regression test for queue add and update with different images sharing the same filename in the thread and server working directories. Verify that the relative path selects the thread's image and that explicit absolute paths retain their meaning.\n\nGitOrigin-RevId: 3c1a48693c031f1c650650a9b3a7059fb962ba5c",
+            "url": "https://github.com/openai/codex/commit/4413deac572eb5d4cdb49295794cbe30f8622935"
+          },
+          {
+            "sha": "6d99161bced769f68a60e3c37e5dd4fc6fbad44c",
+            "title": "Limit MCP status discovery to the requested page (#61365)",
+            "message": "Limit MCP status discovery to the requested page (#61365)\n\n## Why\n\nPaginated MCP server status requests previously discovered all configured servers before selecting the response page, causing unnecessary connections to servers outside that page.\n\n## What changed\n\nSelect and deduplicate server identities before discovery, then collect status only for servers on the requested page. Include thread runtime statuses when selecting pages and preserve separate entries for same-named servers in different environments. Empty pages skip discovery.\n\n## Testing\n\nAdd coverage that counts MCP initialization requests across successive pages and an empty final page. Extend environment inventory coverage to verify that pagination preserves each registration's identity, authentication status, and tools.\n\nGitOrigin-RevId: 0c9c9ca6c8016147eb9a12b53ffe533ac3334444",
+            "url": "https://github.com/openai/codex/commit/6d99161bced769f68a60e3c37e5dd4fc6fbad44c"
+          },
+          {
+            "sha": "400a1e1e82bc558bd52df2c603829e894385bf67",
+            "title": "Use native permission profiles for diagnostics and sandbox checks (#61369)",
+            "message": "Use native permission profiles for diagnostics and sandbox checks (#61369)\n\n## What changed\n\n- Derive sampling diagnostic and rollout trace labels directly from permission profiles instead of constructing legacy sandbox policies. Rename the trace metadata field from `sandbox_policy` to `permissions_profile`.\n- Extract `with_workspace_write_cwd` to share default workspace metadata protections between legacy policy conversion and the TUI's sandbox-mode compatibility check. Build the check's workspace-write profile from filesystem and network permissions directly.\n\n## Testing\n\nAdd a regression test confirming that the sandbox-mode compatibility check accepts standard workspace metadata protections and rejects a profile with an additional writable `.git` root.\n\nGitOrigin-RevId: f20d23afd80dff6347865df3d6a94d6f5e90e1e0",
+            "url": "https://github.com/openai/codex/commit/400a1e1e82bc558bd52df2c603829e894385bf67"
+          },
+          {
+            "sha": "ba3071a66dfaff1e2d4b2dc12a33c559469d614c",
+            "title": "Remove BuildBuddy presets from the checked-in Bazel configuration (#61370)",
+            "message": "Remove BuildBuddy presets from the checked-in Bazel configuration (#61370)\n\nRemove the BuildBuddy cache, build event upload, downloader, and remote execution\npresets from `.bazelrc`, while retaining the shared remote execution policy for\ncallers that supply their own executor.\n\nUpdate the Bazel documentation and Windows V8 cross-build instructions to remove\nreferences to the deleted presets. Ordinary local `bazel` and `just` invocations\ncontinue to run locally.\n\nGitOrigin-RevId: bb0428a2aa4eac83d7a1b55d4e56a793f9b115bc",
+            "url": "https://github.com/openai/codex/commit/ba3071a66dfaff1e2d4b2dc12a33c559469d614c"
+          },
+          {
+            "sha": "9e48702b3a41fcd11ad03194af219449d08cc5bd",
+            "title": "Add opt-in signer-service support for macOS releases (#61371)",
+            "message": "Add opt-in signer-service support for macOS releases (#61371)\n\n## What changed\n\nWire signer-service settings from repository variables into the PKCS11 setup action for macOS binary, DMG, and provisioned bundle releases. Keep the feature disabled by default; Azure continues to supply tools, certificates, and notarization.\n\nRequire signing mode, a pinned certificate, GitHub OIDC, and valid endpoint, purpose, and key ID inputs when enabled. Reject pre-supplied OIDC tokens and providers missing signer-service support markers, then export the signer-service backend configuration.\n\nGitOrigin-RevId: d6c9f2f65512892b286e4bbeb271633e23a96a24",
+            "url": "https://github.com/openai/codex/commit/9e48702b3a41fcd11ad03194af219449d08cc5bd"
+          },
+          {
+            "sha": "7194b2177643f3c639cfc5b29f6398c545b0e7e2",
+            "title": "Add opt-in transparent TCP routing for Linux sandboxes (#61372)",
+            "message": "Add opt-in transparent TCP routing for Linux sandboxes (#61372)\n\n## Why\n\nNative TCP clients need to reach managed network destinations without implementing proxy support themselves.\n\n## What changed\n\n- Add `--transparent-tcp` to the Linux sandbox command, using a bundled TCP stack, private TUN interface, and DNS stub to route native IPv4 and IPv6 connections through the attributed managed SOCKS proxy.\n- Preserve original hostnames for proxy policy checks and cancel pending approval connections when their native sockets close.\n- Expose `--linux-sandbox-transparent-tcp` and `--tcp-upstream-proxy` on `codex exec-server` for transparent routing and a mandatory HTTP CONNECT next hop without direct fallback.\n- Require private network and PID namespaces, private procfs, system `bwrap`, and access to `/dev/net/tun`; reject incompatible launcher options and untrusted proxy ports.\n\n## Testing\n\nAdd integration coverage for native hostname and IPv6 connections, SOCKS attribution, pending connection cancellation, policy denials, and filesystem and host-loopback isolation. Extend launcher and executor tests for option validation and managed-policy propagation.\n\nGitOrigin-RevId: 96bd7726e5369efceb65320face56aa85ae3deb8",
+            "url": "https://github.com/openai/codex/commit/7194b2177643f3c639cfc5b29f6398c545b0e7e2"
+          },
+          {
+            "sha": "a46c5be77eac0dc856f677a099a6a7702edd578b",
+            "title": "Delegate installed plugin recommendation filtering to the endpoint (#61374)",
+            "message": "Delegate installed plugin recommendation filtering to the endpoint (#61374)\n\n## What changed\n\nRequest plugin suggestions with `includeInstalled=false` and use the endpoint results without filtering against loaded plugins or the local installed-plugin cache. Retain disabled-tool and client eligibility filtering, and remove plugin loading that was only needed for recommendation filtering.\n\n## Testing\n\nUpdate tests to verify the query parameter and confirm that endpoint recommendations survive local installed-cache filtering while disabled tools remain excluded.\n\nGitOrigin-RevId: a1b199f9ac8da7dae40abe46b6ccfaf1d8230a5c",
+            "url": "https://github.com/openai/codex/commit/a46c5be77eac0dc856f677a099a6a7702edd578b"
+          },
+          {
+            "sha": "466da69cf6b72983f0d28c498c7cdb8d9bf2d114",
+            "title": "Release 0.171.0-alpha.5",
+            "message": "Release 0.171.0-alpha.5",
+            "url": "https://github.com/openai/codex/commit/466da69cf6b72983f0d28c498c7cdb8d9bf2d114"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.171.0-alpha.4",
+          "head": "rust-v0.171.0-alpha.5",
+          "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.4...rust-v0.171.0-alpha.5",
+          "status": "diverged",
+          "total": 28,
+          "behind": 1,
+          "complete": true,
+          "fetched": 28
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/shield",
+      "at": "2026-11-13T08:00:00.000Z",
+      "url": "https://openai.com/business/customer-stories/shield",
+      "text": "Shield helps technicians hand off legacy portal work with OpenAI. Shield uses OpenAI to help IT technicians hand off work in legacy portals. Its Forge agents navigate systems so technicians can focus on issues needing their judgment.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -15801,7 +16007,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-13T23:42:31.881Z",
+      "lastSuccessAt": "2026-11-14T03:38:14.732Z",
       "error": null,
       "count": 150
     },
@@ -15810,7 +16016,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-13T23:42:31.881Z",
+      "lastSuccessAt": "2026-11-14T03:38:14.732Z",
       "error": null,
       "count": 10
     },
@@ -15819,7 +16025,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-13T23:42:31.881Z",
+      "lastSuccessAt": "2026-11-14T03:38:14.732Z",
       "error": null,
       "count": 25
     }
@@ -63962,6 +64168,454 @@
         "serviceStatus": "monitoring",
         "publishedAt": "2026-11-13T16:10:07.000Z"
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/shield:2026-11-14T03:38:15.615Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-14T03:38:15.615Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/customer-stories/shield",
+        "at": "2026-11-13T08:00:00.000Z",
+        "url": "https://openai.com/business/customer-stories/shield",
+        "text": "Shield helps technicians hand off legacy portal work with OpenAI. Shield uses OpenAI to help IT technicians hand off work in legacy portals. Its Forge agents navigate systems so technicians can focus on issues needing their judgment.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.5:2026-11-14T03:38:15.615Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-14T03:38:15.615Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.5",
+        "at": "2026-11-14T01:25:03.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.5",
+        "text": "0.171.0-alpha.5. Release 0.171.0-alpha.5",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.171.0-alpha.5",
+          "title": "0.171.0-alpha.5",
+          "body": "Release 0.171.0-alpha.5\n\n",
+          "authored": false,
+          "fetchedAt": "2026-11-14T03:38:15.618Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.5",
+          "publishedAt": "2026-11-14T01:20:37Z",
+          "commits": [
+            {
+              "sha": "c79dfb1d9cc531e0b091b802edd44665edee9b81",
+              "title": "Centralize managed network proxy startup (#61337)",
+              "message": "Centralize managed network proxy startup (#61337)\n\n## What changed\n\nAdd `NetworkProxy::start_managed` and use it in core and exec-server to share proxy construction, startup, and error context. Keep approval-policy selection in core and pass the active decider and blocked-request observer to the shared helper.\n\n## Testing\n\nExpand session coverage for a full-access to workspace-write profile change: verify decider calls with approvals enabled, approvals disabled, and a final managed allowlist, and verify blocked-request notifications in each case.\n\nGitOrigin-RevId: 97abdaa9af698166f46d74e0f231ec557d346200",
+              "url": "https://github.com/openai/codex/commit/c79dfb1d9cc531e0b091b802edd44665edee9b81"
+            },
+            {
+              "sha": "9d12d007b278af2320a2c9c237d275c26f4b7686",
+              "title": "Record host-confirmed Code Mode wait targets in rollout traces (#61338)",
+              "message": "Record host-confirmed Code Mode wait targets in rollout traces (#61338)\n\n## Why\n\nInferring wait targets from request arguments can abort trace replay on malformed arguments and link waits to cells the host never resolved.\n\n## What changed\n\nRecord an explicit `CodeCellWaitTargetResolved` event when the host confirms a live cell, and expose its runtime handle as `resolved_wait_runtime_cell_id` on the tool call. Build cell wait links from these observations, preserving links while cell source is pending and preventing late confirmations from linking to recycled handles after thread resume.\n\nOlder traces no longer infer wait links from request arguments, so an empty `wait_tool_call_ids` list does not establish that nobody waited on a cell.\n\n## Testing\n\nExtend dispatch and replay tests to cover live, missing, and invalid wait targets, pending cell source, legacy traces, and runtime handle reuse across threads and resume.\n\nGitOrigin-RevId: 0f13b291c197c5487258b6ce36276cf1f19e2b6d",
+              "url": "https://github.com/openai/codex/commit/9d12d007b278af2320a2c9c237d275c26f4b7686"
+            },
+            {
+              "sha": "a4b69a0ae98944569ea3acc67dffec8c45a78d35",
+              "title": "Add session-scoped stores for stable model-facing IDs (#61339)",
+              "message": "Add session-scoped stores for stable model-facing IDs (#61339)\n\n## What changed\n\n- Add `SessionModelIdStore` with SQLite and in-memory implementations for looking up and assigning aliases by session, namespace, and external key.\n- Commit SQLite assignments before returning them, and recheck under a write transaction so concurrent writers reuse the same alias.\n- Support snapshotting and initializing alias maps from generator state and ordered keys, and remove mappings when their thread is deleted.\n- Expose alias stores through `ThreadStore` and add distinct types for registered environment IDs and model-facing `env` aliases.\n\n## Testing\n\nAdd a test using two SQLite runtime instances to verify that concurrent assignments return the same alias, different keys receive different aliases, and lookups and snapshots preserve the assignments.\n\nGitOrigin-RevId: 2668f605251ca76d4891f70f94bfb4151ba8142c",
+              "url": "https://github.com/openai/codex/commit/a4b69a0ae98944569ea3acc67dffec8c45a78d35"
+            },
+            {
+              "sha": "7844815bd75f8e20ffe3e9f031d261e2956a981c",
+              "title": "Add opt-in prompt image sanitization (#61341)",
+              "message": "Add opt-in prompt image sanitization (#61341)\n\n## What changed\n\n- Add the disabled-by-default `safe_image_decoder` feature to decode and re-encode prompt images without source metadata, with byte and decoded-pixel limits.\n- Apply JPEG orientation and supported ICC color conversion to sRGB, emitting PNG for PNG/GIF inputs and JPEG for JPEG/WebP inputs.\n- Use the selected decoder for image preparation, `view_image` validation, and MCP image validation. Include the decoder in image cache keys.\n- Preserve original inline images in history metadata so resume and fork can regenerate prepared images without repeated JPEG encoding changing their bytes.\n\n## Testing\n\nAdd regression tests for identical JPEG replay after history serialization and for preventing legacy cache entries from bypassing sanitization.\n\nGitOrigin-RevId: 718cd83d0a233e2eb8efd1a64c14d8944e44c350",
+              "url": "https://github.com/openai/codex/commit/7844815bd75f8e20ffe3e9f031d261e2956a981c"
+            },
+            {
+              "sha": "61c106ed66c0c5b4880cff07eddffd53e1df299e",
+              "title": "Cancel abandoned cloud thread list requests (#61342)",
+              "message": "Cancel abandoned cloud thread list requests (#61342)\n\n## Why\n\nAn in-flight `ThreadList` request can block the cloud worker from processing subsequent requests even after its caller drops it.\n\n## What changed\n\nSkip queued `ThreadList` requests whose response receiver is closed, and cancel in-flight list handling when the receiver closes. Thread listing has no conversation state to commit, so the worker can safely move on to the next command.\n\n## Testing\n\nAdd a regression test that holds a list RPC open, drops the caller's request, and verifies that a subsequent `GetAccount` request completes before the list RPC is released.\n\nGitOrigin-RevId: 7c74e3305d58b85224d9882ea7e24b1ae791ec52",
+              "url": "https://github.com/openai/codex/commit/61c106ed66c0c5b4880cff07eddffd53e1df299e"
+            },
+            {
+              "sha": "d17887a8d1a7d3e800fb9fb4cb9dd419c147910b",
+              "title": "Title saved side chats from their first direct input (#61343)",
+              "message": "Title saved side chats from their first direct input (#61343)\n\n## Why\n\nSaved side chats can inherit their parent's name, leaving them labeled for the parent conversation rather than their own question.\n\n## What changed\n\nGenerate an automatic title from the first successfully submitted direct text input in a newly saved side chat. Allow the generated title to replace the inherited name while preserving manual renames and leaving the parent title unchanged. Image-only first inputs retain the `[Image]` label without generating a title from inherited conversation text.\n\n## Testing\n\nAdd regression coverage for saved side chat labels from text and image-only inputs, inherited-name replacement, manual rename preservation after switching threads, and retaining title eligibility when turn submission fails.\n\nGitOrigin-RevId: 97f08dee8cc3280f1128aca23f27960235e00e86",
+              "url": "https://github.com/openai/codex/commit/d17887a8d1a7d3e800fb9fb4cb9dd419c147910b"
+            },
+            {
+              "sha": "c33002259e28db9e87807cedebfb25299d95a2c6",
+              "title": "Add per-item retention policies for injected history (#61344)",
+              "message": "Add per-item retention policies for injected history (#61344)\n\n## What changed\n\nAllow `thread/inject_items` to accept wrapped items with `retention: \"default\"` or `retention: \"always\"`, while preserving support for raw response items. Persist explicit policies separately from legacy client-authored metadata.\n\nCarry explicitly retained items through local and remote compaction, context-window changes, and child-agent creation, subject to retention budgets. Preserve history order and keep retained tool exchanges together; require matching calls and outputs to be adjacent in the injection request and both marked `always`.\n\nUpdate Quinn dependencies and record exceptions for additional Hickory DNSSEC advisories where DNSSEC is disabled.\n\n## Testing\n\nUpdate injection tests for explicit retention metadata and extend the compaction scenario to cover a retained tool exchange across repeated compaction and restart.\n\nGitOrigin-RevId: 1195a4ed62dc162a62e58bc2ad733262fbabea27",
+              "url": "https://github.com/openai/codex/commit/c33002259e28db9e87807cedebfb25299d95a2c6"
+            },
+            {
+              "sha": "a655b50de9d06e9d50eb13087f9def8f103d97b5",
+              "title": "Add opt-in elastic budgeting for asynchronous Guardian requests (#61345)",
+              "message": "Add opt-in elastic budgeting for asynchronous Guardian requests (#61345)\n\n## What changed\n\n- Add `async_elastic_budgeting` and `async_elastic_sections` under `[features.guardianv2]`, independently of synchronous budgeting and disabled by default.\n- Apply section limits and elastic allocation to new classifier evidence after accounting for setup and retained conversation history. Preserve the configured elastic policy when applying model defaults.\n- Keep permission context whole during elastic allocation and record truncation observations when image preparation rejects an image.\n\n## Testing\n\nAdd coverage for configuration validation, fixed and elastic conversation budgeting, retained history and cursor preservation, and complete classifier requests that retain evidence beyond the fixed entry limit.\n\nGitOrigin-RevId: 2955f0482f7c3e18325e296fc2ccb6592ffcb73a",
+              "url": "https://github.com/openai/codex/commit/a655b50de9d06e9d50eb13087f9def8f103d97b5"
+            },
+            {
+              "sha": "6919e2cd8ee5d07ab2d983e497772a8ecbf60ce1",
+              "title": "Apply elastic entry caps to Guardian classifier evidence (#61346)",
+              "message": "Apply elastic entry caps to Guardian classifier evidence (#61346)\n\n## Why\n\nTrusted classifier evidence needs to fit configured entry limits while preserving complete records and metadata that reflects only delivered reviews.\n\n## What changed\n\nApply elastic caps before rendering trusted tools, trusted skills, and previous reviews into developer messages. Omit oversized tool attestations and review fragments whole, retain only complete skill paths that fit, and record omissions for the request's omission notice. Keep review IDs aligned with retained fragments and preserve fixed-budget behavior.\n\n## Testing\n\nAdd coverage for whole-record omissions, retained review IDs, and omission notices. Exercise orchestrator connector evidence with both fixed budgeting and an elastic tool entry cap.\n\nGitOrigin-RevId: 729db452026f93b59765a3936730b9b6dddfcf9a",
+              "url": "https://github.com/openai/codex/commit/6919e2cd8ee5d07ab2d983e497772a8ecbf60ce1"
+            },
+            {
+              "sha": "76cf0f45ec44e488297cd27e1b1a951f02c31bfe",
+              "title": "Reserve item ID overhead before elastic context allocation (#61347)",
+              "message": "Reserve item ID overhead before elastic context allocation (#61347)\n\n## Why\n\nElastic request allocation did not account for item IDs added after evidence selection. Their token cost could push the completed request over its input limit instead of allowing optional evidence to be dropped.\n\n## What changed\n\nReserve IDs for the possible new request items before allocating evidence, including their JSON escaping and field overhead in the global request budget. Assign the same reserved IDs to the selected items while preserving existing IDs and committed history.\n\n## Testing\n\nAdd coverage for escaped IDs and native tool call outputs, and a regression test with long IDs that verifies optional images are omitted while committed history and new transcript text are retained within budget. Update budget boundary tests to distinguish fixed rejection from elastic evidence reduction.\n\nGitOrigin-RevId: 621d6d83e3cc95efb9eef4976dff9b7799a6e7c8",
+              "url": "https://github.com/openai/codex/commit/76cf0f45ec44e488297cd27e1b1a951f02c31bfe"
+            },
+            {
+              "sha": "d87330d91e2309aea3b82286961340181d145ab4",
+              "title": "Add managed CA defaults for Deno and Google Cloud SDK (#61349)",
+              "message": "Add managed CA defaults for Deno and Google Cloud SDK (#61349)\n\n## What changed\n\nSet `DENO_CERT` and `CLOUDSDK_CORE_CUSTOM_CA_CERTS_FILE` to the managed proxy CA bundle when unset, preserving explicit values, including empty strings. Keep these client settings separate from the CA roots imported into the proxy trust bundle.\n\nPreserve shell startup overrides when replaying snapshots, regenerate managed CA defaults instead of capturing them, and allow sandboxed processes to read the managed bundle referenced by these variables.\n\n## Testing\n\nExtend regression coverage for default CA settings, explicit overrides, trust-root selection, shell snapshots, and restricted sandbox access to the generated CA bundle.\n\nGitOrigin-RevId: 2761706b54e0bb230c37bd4c515204c6eba0c650",
+              "url": "https://github.com/openai/codex/commit/d87330d91e2309aea3b82286961340181d145ab4"
+            },
+            {
+              "sha": "f8580db4725c6a51a5ee2de0980a8b8b0659e143",
+              "title": "Reflect accepted cloud model selections in TUI status (#61350)",
+              "message": "Reflect accepted cloud model selections in TUI status (#61350)\n\n## Why\n\nAfter a cloud model selection was accepted for future turns, status displays still showed the session's serving model and reasoning effort. A reasoning-only `/model` command also resolved against that model instead of the accepted selection.\n\n## What changed\n\n- Show the accepted model's display name and reasoning effort in the status line, terminal title, and `/status`.\n- Resolve reasoning-only `/model` commands against the selected model.\n- Share the session-only model change confirmation between cloud and local selections, including reasoning effort and service tier when present.\n\n## Testing\n\nExtend cloud model admission coverage to check accepted selections in status output, reasoning-only commands, and unchanged status before acceptance and after session metadata clears the selection.\n\nGitOrigin-RevId: cc50c2b0a98e884138ad2c2339c79c28ee3d346a",
+              "url": "https://github.com/openai/codex/commit/f8580db4725c6a51a5ee2de0980a8b8b0659e143"
+            },
+            {
+              "sha": "a60197d6a06b026f7afb72e7f7469ea8ec95683e",
+              "title": "Expose canonical network proxy policy patterns (#61351)",
+              "message": "Expose canonical network proxy policy patterns (#61351)\n\n## What changed\n\nAdd `canonical_allow_pattern`, `canonical_deny_pattern`, and\n`canonical_review_pattern` to validate and normalize selectors for policy\ncomparisons using the domain matcher's syntax.\n\nTreat `?*.example.com` and `*.example.com` as equivalent comparison keys.\nCanonicalize unscoped IPv6 addresses for deny and review rules, and preserve\nwildcard ports on local allow rules so they remain distinguishable from explicit\nlocal grants. Deny rules continue to reject global wildcards.\n\nShare pattern validation with the matcher and local-literal classification with\nruntime policy checks.\n\n## Testing\n\nAdd a regression test covering equivalent subdomain selectors, local wildcard\nports, and differing IPv6 comparison keys for grants and restrictions.\n\nGitOrigin-RevId: c72262ae9f625765d5351e9da403be1f87042a47",
+              "url": "https://github.com/openai/codex/commit/a60197d6a06b026f7afb72e7f7469ea8ec95683e"
+            },
+            {
+              "sha": "4ccf87254a1bbeb24e59261f66f39e3bc4b64453",
+              "title": "Mark the TUI workspace as stable and enable it by default (#61352)",
+              "message": "Mark the TUI workspace as stable and enable it by default (#61352)\n\nGitOrigin-RevId: ca0634b16855f1c9f0bec73e73a1bda211d90d24",
+              "url": "https://github.com/openai/codex/commit/4ccf87254a1bbeb24e59261f66f39e3bc4b64453"
+            },
+            {
+              "sha": "2bad26e03f9f38f228d5d99d6a1a3ea1442cd9e7",
+              "title": "Centralize TUI read-only view checks (#61353)",
+              "message": "Centralize TUI read-only view checks (#61353)\n\n## What changed\n\nAdd `ChatWidget::is_read_only_view()` and use it for read-only guards across input handling, navigation, transcript rendering, and session restoration. The new helper delegates to `is_external_writer_view()`, preserving existing behavior.\n\nGitOrigin-RevId: c8fd66526f502d79be306a19ee261e79c5abcd57",
+              "url": "https://github.com/openai/codex/commit/2bad26e03f9f38f228d5d99d6a1a3ea1442cd9e7"
+            },
+            {
+              "sha": "60fb26f6ba50a118045eb0089814b366bb5296a8",
+              "title": "Avoid rewriting unchanged Guardian channel descriptions (#61354)",
+              "message": "Avoid rewriting unchanged Guardian channel descriptions (#61354)\n\n## What changed\n\nAllow the Guardian housekeeper to route evidence to existing channels without repeating their descriptions. Request descriptions only for new destinations or changed descriptions, and skip channel updates when a returned description matches the catalog.\n\nNew destinations still require descriptions, and description updates remain limited to routed channels.\n\n## Testing\n\nExtend housekeeping tests to cover omitted and repeated descriptions without extra channel writes, preserved descriptions, and rejection of missing new-channel descriptions or updates to unrouted channels before any writes.\n\nGitOrigin-RevId: 3ab00fc17263d68d15e68f9d17ab31fc6f43f551",
+              "url": "https://github.com/openai/codex/commit/60fb26f6ba50a118045eb0089814b366bb5296a8"
+            },
+            {
+              "sha": "76a8ca3914ec86807340367e8ba41e2f207e722a",
+              "title": "Upgrade Bazel rules_rs to 0.2.3 (#61355)",
+              "message": "Upgrade Bazel rules_rs to 0.2.3 (#61355)\n\n## What changed\n\n- Use the `rules_rs` 0.2.3 registry release instead of an archive override, and upgrade `platforms` to 1.1.0.\n- Disable root crate alias targets and migrate explicit dependencies to package labels such as `@crates//tokio`. Disable root crate data for the argument comment linter's crate repository.\n- Refresh the retained `rules_rs` patches, remove the zlib snapshot URL backport, and drop extra dependency declarations from `exec-server` and `v8-poc`.\n\nGitOrigin-RevId: c354413a19b45964104457063c613028f5325bc0",
+              "url": "https://github.com/openai/codex/commit/76a8ca3914ec86807340367e8ba41e2f207e722a"
+            },
+            {
+              "sha": "ae12a9d645774982fe9deda590dc1f237d249d1d",
+              "title": "Add deferred MCP reprojection for the next regular turn (#61356)",
+              "message": "Add deferred MCP reprojection for the next regular turn (#61356)\n\n## What changed\n\nAdd `CodexThread::reproject_mcp_on_next_turn()` to request an MCP reprojection after `TurnStarted` and before tools are bound. Repeated requests coalesce, and idle reconciliation or prewarming leaves the request pending until the next regular turn.\n\n## Testing\n\nAdd coverage for deferred requests surviving prewarm and idle reconciliation, coalescing into one reprojection, and exposing refreshed tools in the turn's first model request. Verify that discovery starts after `TurnStarted`.\n\nGitOrigin-RevId: 260b2381013291a47eb9a7f736c129de76c5897f",
+              "url": "https://github.com/openai/codex/commit/ae12a9d645774982fe9deda590dc1f237d249d1d"
+            },
+            {
+              "sha": "3f2603f2a261f7cb8a479dcae274bfe7ad5c7155",
+              "title": "Clarify removal scope for profile MCP servers (#61357)",
+              "message": "Clarify removal scope for profile MCP servers (#61357)\n\n## Why\n\n`codex mcp get` suggests `codex mcp remove` for servers defined in the active profile, but that command only edits the global config.\n\n## What changed\n\nFor servers defined in the active profile, replace the removal hint with the profile settings file path and an explanation of the command's scope. Keep the removal hint for servers inherited from the global config.\n\n## Testing\n\nAdd CLI coverage for profile-only servers, profile overrides of global servers, and inherited global servers.\n\nGitOrigin-RevId: 454df034f7e74b10f96983a9f13821d5ababfde7",
+              "url": "https://github.com/openai/codex/commit/3f2603f2a261f7cb8a479dcae274bfe7ad5c7155"
+            },
+            {
+              "sha": "dd8cee982245a4e1aa181127ab712acc0db9f989",
+              "title": "Add structured error kinds for exec-server process starts (#61358)",
+              "message": "Add structured error kinds for exec-server process starts (#61358)\n\n## What changed\n\nAttach a tagged `ProcessStartErrorData` value to JSON-RPC errors for not-found, permission-denied, and other spawn failures, unavailable sandboxes, and sandbox preparation failures.\n\nRecord the error code and structured error kind for failed `process/start` responses in the `codex.exec_server.response_received` tracing event.\n\nGitOrigin-RevId: 556d0068e469ea25e95108262826a77a66b7d83b",
+              "url": "https://github.com/openai/codex/commit/dd8cee982245a4e1aa181127ab712acc0db9f989"
+            },
+            {
+              "sha": "4413deac572eb5d4cdb49295794cbe30f8622935",
+              "title": "Resolve queued attachment paths against the thread working directory (#61359)",
+              "message": "Resolve queued attachment paths against the thread working directory (#61359)\n\n## Why\n\nRelative attachment paths in queued submissions should refer to files in the thread's working directory, even when the app server runs from a different directory.\n\n## What changed\n\nResolve relative `LocalImage` and `LocalAudio` paths against the loaded thread's current working directory or the stored working directory for an unloaded thread when adding or updating queued submissions. Preserve absolute paths and reject relative paths that cannot be resolved to an absolute path.\n\n## Testing\n\nAdd a regression test for queue add and update with different images sharing the same filename in the thread and server working directories. Verify that the relative path selects the thread's image and that explicit absolute paths retain their meaning.\n\nGitOrigin-RevId: 3c1a48693c031f1c650650a9b3a7059fb962ba5c",
+              "url": "https://github.com/openai/codex/commit/4413deac572eb5d4cdb49295794cbe30f8622935"
+            },
+            {
+              "sha": "6d99161bced769f68a60e3c37e5dd4fc6fbad44c",
+              "title": "Limit MCP status discovery to the requested page (#61365)",
+              "message": "Limit MCP status discovery to the requested page (#61365)\n\n## Why\n\nPaginated MCP server status requests previously discovered all configured servers before selecting the response page, causing unnecessary connections to servers outside that page.\n\n## What changed\n\nSelect and deduplicate server identities before discovery, then collect status only for servers on the requested page. Include thread runtime statuses when selecting pages and preserve separate entries for same-named servers in different environments. Empty pages skip discovery.\n\n## Testing\n\nAdd coverage that counts MCP initialization requests across successive pages and an empty final page. Extend environment inventory coverage to verify that pagination preserves each registration's identity, authentication status, and tools.\n\nGitOrigin-RevId: 0c9c9ca6c8016147eb9a12b53ffe533ac3334444",
+              "url": "https://github.com/openai/codex/commit/6d99161bced769f68a60e3c37e5dd4fc6fbad44c"
+            },
+            {
+              "sha": "400a1e1e82bc558bd52df2c603829e894385bf67",
+              "title": "Use native permission profiles for diagnostics and sandbox checks (#61369)",
+              "message": "Use native permission profiles for diagnostics and sandbox checks (#61369)\n\n## What changed\n\n- Derive sampling diagnostic and rollout trace labels directly from permission profiles instead of constructing legacy sandbox policies. Rename the trace metadata field from `sandbox_policy` to `permissions_profile`.\n- Extract `with_workspace_write_cwd` to share default workspace metadata protections between legacy policy conversion and the TUI's sandbox-mode compatibility check. Build the check's workspace-write profile from filesystem and network permissions directly.\n\n## Testing\n\nAdd a regression test confirming that the sandbox-mode compatibility check accepts standard workspace metadata protections and rejects a profile with an additional writable `.git` root.\n\nGitOrigin-RevId: f20d23afd80dff6347865df3d6a94d6f5e90e1e0",
+              "url": "https://github.com/openai/codex/commit/400a1e1e82bc558bd52df2c603829e894385bf67"
+            },
+            {
+              "sha": "ba3071a66dfaff1e2d4b2dc12a33c559469d614c",
+              "title": "Remove BuildBuddy presets from the checked-in Bazel configuration (#61370)",
+              "message": "Remove BuildBuddy presets from the checked-in Bazel configuration (#61370)\n\nRemove the BuildBuddy cache, build event upload, downloader, and remote execution\npresets from `.bazelrc`, while retaining the shared remote execution policy for\ncallers that supply their own executor.\n\nUpdate the Bazel documentation and Windows V8 cross-build instructions to remove\nreferences to the deleted presets. Ordinary local `bazel` and `just` invocations\ncontinue to run locally.\n\nGitOrigin-RevId: bb0428a2aa4eac83d7a1b55d4e56a793f9b115bc",
+              "url": "https://github.com/openai/codex/commit/ba3071a66dfaff1e2d4b2dc12a33c559469d614c"
+            },
+            {
+              "sha": "9e48702b3a41fcd11ad03194af219449d08cc5bd",
+              "title": "Add opt-in signer-service support for macOS releases (#61371)",
+              "message": "Add opt-in signer-service support for macOS releases (#61371)\n\n## What changed\n\nWire signer-service settings from repository variables into the PKCS11 setup action for macOS binary, DMG, and provisioned bundle releases. Keep the feature disabled by default; Azure continues to supply tools, certificates, and notarization.\n\nRequire signing mode, a pinned certificate, GitHub OIDC, and valid endpoint, purpose, and key ID inputs when enabled. Reject pre-supplied OIDC tokens and providers missing signer-service support markers, then export the signer-service backend configuration.\n\nGitOrigin-RevId: d6c9f2f65512892b286e4bbeb271633e23a96a24",
+              "url": "https://github.com/openai/codex/commit/9e48702b3a41fcd11ad03194af219449d08cc5bd"
+            },
+            {
+              "sha": "7194b2177643f3c639cfc5b29f6398c545b0e7e2",
+              "title": "Add opt-in transparent TCP routing for Linux sandboxes (#61372)",
+              "message": "Add opt-in transparent TCP routing for Linux sandboxes (#61372)\n\n## Why\n\nNative TCP clients need to reach managed network destinations without implementing proxy support themselves.\n\n## What changed\n\n- Add `--transparent-tcp` to the Linux sandbox command, using a bundled TCP stack, private TUN interface, and DNS stub to route native IPv4 and IPv6 connections through the attributed managed SOCKS proxy.\n- Preserve original hostnames for proxy policy checks and cancel pending approval connections when their native sockets close.\n- Expose `--linux-sandbox-transparent-tcp` and `--tcp-upstream-proxy` on `codex exec-server` for transparent routing and a mandatory HTTP CONNECT next hop without direct fallback.\n- Require private network and PID namespaces, private procfs, system `bwrap`, and access to `/dev/net/tun`; reject incompatible launcher options and untrusted proxy ports.\n\n## Testing\n\nAdd integration coverage for native hostname and IPv6 connections, SOCKS attribution, pending connection cancellation, policy denials, and filesystem and host-loopback isolation. Extend launcher and executor tests for option validation and managed-policy propagation.\n\nGitOrigin-RevId: 96bd7726e5369efceb65320face56aa85ae3deb8",
+              "url": "https://github.com/openai/codex/commit/7194b2177643f3c639cfc5b29f6398c545b0e7e2"
+            },
+            {
+              "sha": "a46c5be77eac0dc856f677a099a6a7702edd578b",
+              "title": "Delegate installed plugin recommendation filtering to the endpoint (#61374)",
+              "message": "Delegate installed plugin recommendation filtering to the endpoint (#61374)\n\n## What changed\n\nRequest plugin suggestions with `includeInstalled=false` and use the endpoint results without filtering against loaded plugins or the local installed-plugin cache. Retain disabled-tool and client eligibility filtering, and remove plugin loading that was only needed for recommendation filtering.\n\n## Testing\n\nUpdate tests to verify the query parameter and confirm that endpoint recommendations survive local installed-cache filtering while disabled tools remain excluded.\n\nGitOrigin-RevId: a1b199f9ac8da7dae40abe46b6ccfaf1d8230a5c",
+              "url": "https://github.com/openai/codex/commit/a46c5be77eac0dc856f677a099a6a7702edd578b"
+            },
+            {
+              "sha": "466da69cf6b72983f0d28c498c7cdb8d9bf2d114",
+              "title": "Release 0.171.0-alpha.5",
+              "message": "Release 0.171.0-alpha.5",
+              "url": "https://github.com/openai/codex/commit/466da69cf6b72983f0d28c498c7cdb8d9bf2d114"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.171.0-alpha.4",
+            "head": "rust-v0.171.0-alpha.5",
+            "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.4...rust-v0.171.0-alpha.5",
+            "status": "diverged",
+            "total": 28,
+            "behind": 1,
+            "complete": true,
+            "fetched": 28
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "openai-status:01M78GAT3AK9P9W8Z230KHFVE8:2026-11-14T03:38:15.615Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-14T03:38:15.615Z",
+      "item": {
+        "id": "openai-status:01M78GAT3AK9P9W8Z230KHFVE8",
+        "at": "2026-11-14T00:18:13.000Z",
+        "url": "https://status.openai.com/incidents/01M78GAT3AK9P9W8Z230KHFVE8",
+        "text": "Elevated errors affecting the Microsoft 365 connector. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-12T18:29:14.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.5:2026-11-14T03:38:15.615Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-14T03:38:15.615Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.171.0-alpha.5",
+        "title": "0.171.0-alpha.5",
+        "body": "Release 0.171.0-alpha.5\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-14T03:38:15.618Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.5",
+        "publishedAt": "2026-11-14T01:20:37Z",
+        "commits": [
+          {
+            "sha": "c79dfb1d9cc531e0b091b802edd44665edee9b81",
+            "title": "Centralize managed network proxy startup (#61337)",
+            "message": "Centralize managed network proxy startup (#61337)\n\n## What changed\n\nAdd `NetworkProxy::start_managed` and use it in core and exec-server to share proxy construction, startup, and error context. Keep approval-policy selection in core and pass the active decider and blocked-request observer to the shared helper.\n\n## Testing\n\nExpand session coverage for a full-access to workspace-write profile change: verify decider calls with approvals enabled, approvals disabled, and a final managed allowlist, and verify blocked-request notifications in each case.\n\nGitOrigin-RevId: 97abdaa9af698166f46d74e0f231ec557d346200",
+            "url": "https://github.com/openai/codex/commit/c79dfb1d9cc531e0b091b802edd44665edee9b81"
+          },
+          {
+            "sha": "9d12d007b278af2320a2c9c237d275c26f4b7686",
+            "title": "Record host-confirmed Code Mode wait targets in rollout traces (#61338)",
+            "message": "Record host-confirmed Code Mode wait targets in rollout traces (#61338)\n\n## Why\n\nInferring wait targets from request arguments can abort trace replay on malformed arguments and link waits to cells the host never resolved.\n\n## What changed\n\nRecord an explicit `CodeCellWaitTargetResolved` event when the host confirms a live cell, and expose its runtime handle as `resolved_wait_runtime_cell_id` on the tool call. Build cell wait links from these observations, preserving links while cell source is pending and preventing late confirmations from linking to recycled handles after thread resume.\n\nOlder traces no longer infer wait links from request arguments, so an empty `wait_tool_call_ids` list does not establish that nobody waited on a cell.\n\n## Testing\n\nExtend dispatch and replay tests to cover live, missing, and invalid wait targets, pending cell source, legacy traces, and runtime handle reuse across threads and resume.\n\nGitOrigin-RevId: 0f13b291c197c5487258b6ce36276cf1f19e2b6d",
+            "url": "https://github.com/openai/codex/commit/9d12d007b278af2320a2c9c237d275c26f4b7686"
+          },
+          {
+            "sha": "a4b69a0ae98944569ea3acc67dffec8c45a78d35",
+            "title": "Add session-scoped stores for stable model-facing IDs (#61339)",
+            "message": "Add session-scoped stores for stable model-facing IDs (#61339)\n\n## What changed\n\n- Add `SessionModelIdStore` with SQLite and in-memory implementations for looking up and assigning aliases by session, namespace, and external key.\n- Commit SQLite assignments before returning them, and recheck under a write transaction so concurrent writers reuse the same alias.\n- Support snapshotting and initializing alias maps from generator state and ordered keys, and remove mappings when their thread is deleted.\n- Expose alias stores through `ThreadStore` and add distinct types for registered environment IDs and model-facing `env` aliases.\n\n## Testing\n\nAdd a test using two SQLite runtime instances to verify that concurrent assignments return the same alias, different keys receive different aliases, and lookups and snapshots preserve the assignments.\n\nGitOrigin-RevId: 2668f605251ca76d4891f70f94bfb4151ba8142c",
+            "url": "https://github.com/openai/codex/commit/a4b69a0ae98944569ea3acc67dffec8c45a78d35"
+          },
+          {
+            "sha": "7844815bd75f8e20ffe3e9f031d261e2956a981c",
+            "title": "Add opt-in prompt image sanitization (#61341)",
+            "message": "Add opt-in prompt image sanitization (#61341)\n\n## What changed\n\n- Add the disabled-by-default `safe_image_decoder` feature to decode and re-encode prompt images without source metadata, with byte and decoded-pixel limits.\n- Apply JPEG orientation and supported ICC color conversion to sRGB, emitting PNG for PNG/GIF inputs and JPEG for JPEG/WebP inputs.\n- Use the selected decoder for image preparation, `view_image` validation, and MCP image validation. Include the decoder in image cache keys.\n- Preserve original inline images in history metadata so resume and fork can regenerate prepared images without repeated JPEG encoding changing their bytes.\n\n## Testing\n\nAdd regression tests for identical JPEG replay after history serialization and for preventing legacy cache entries from bypassing sanitization.\n\nGitOrigin-RevId: 718cd83d0a233e2eb8efd1a64c14d8944e44c350",
+            "url": "https://github.com/openai/codex/commit/7844815bd75f8e20ffe3e9f031d261e2956a981c"
+          },
+          {
+            "sha": "61c106ed66c0c5b4880cff07eddffd53e1df299e",
+            "title": "Cancel abandoned cloud thread list requests (#61342)",
+            "message": "Cancel abandoned cloud thread list requests (#61342)\n\n## Why\n\nAn in-flight `ThreadList` request can block the cloud worker from processing subsequent requests even after its caller drops it.\n\n## What changed\n\nSkip queued `ThreadList` requests whose response receiver is closed, and cancel in-flight list handling when the receiver closes. Thread listing has no conversation state to commit, so the worker can safely move on to the next command.\n\n## Testing\n\nAdd a regression test that holds a list RPC open, drops the caller's request, and verifies that a subsequent `GetAccount` request completes before the list RPC is released.\n\nGitOrigin-RevId: 7c74e3305d58b85224d9882ea7e24b1ae791ec52",
+            "url": "https://github.com/openai/codex/commit/61c106ed66c0c5b4880cff07eddffd53e1df299e"
+          },
+          {
+            "sha": "d17887a8d1a7d3e800fb9fb4cb9dd419c147910b",
+            "title": "Title saved side chats from their first direct input (#61343)",
+            "message": "Title saved side chats from their first direct input (#61343)\n\n## Why\n\nSaved side chats can inherit their parent's name, leaving them labeled for the parent conversation rather than their own question.\n\n## What changed\n\nGenerate an automatic title from the first successfully submitted direct text input in a newly saved side chat. Allow the generated title to replace the inherited name while preserving manual renames and leaving the parent title unchanged. Image-only first inputs retain the `[Image]` label without generating a title from inherited conversation text.\n\n## Testing\n\nAdd regression coverage for saved side chat labels from text and image-only inputs, inherited-name replacement, manual rename preservation after switching threads, and retaining title eligibility when turn submission fails.\n\nGitOrigin-RevId: 97f08dee8cc3280f1128aca23f27960235e00e86",
+            "url": "https://github.com/openai/codex/commit/d17887a8d1a7d3e800fb9fb4cb9dd419c147910b"
+          },
+          {
+            "sha": "c33002259e28db9e87807cedebfb25299d95a2c6",
+            "title": "Add per-item retention policies for injected history (#61344)",
+            "message": "Add per-item retention policies for injected history (#61344)\n\n## What changed\n\nAllow `thread/inject_items` to accept wrapped items with `retention: \"default\"` or `retention: \"always\"`, while preserving support for raw response items. Persist explicit policies separately from legacy client-authored metadata.\n\nCarry explicitly retained items through local and remote compaction, context-window changes, and child-agent creation, subject to retention budgets. Preserve history order and keep retained tool exchanges together; require matching calls and outputs to be adjacent in the injection request and both marked `always`.\n\nUpdate Quinn dependencies and record exceptions for additional Hickory DNSSEC advisories where DNSSEC is disabled.\n\n## Testing\n\nUpdate injection tests for explicit retention metadata and extend the compaction scenario to cover a retained tool exchange across repeated compaction and restart.\n\nGitOrigin-RevId: 1195a4ed62dc162a62e58bc2ad733262fbabea27",
+            "url": "https://github.com/openai/codex/commit/c33002259e28db9e87807cedebfb25299d95a2c6"
+          },
+          {
+            "sha": "a655b50de9d06e9d50eb13087f9def8f103d97b5",
+            "title": "Add opt-in elastic budgeting for asynchronous Guardian requests (#61345)",
+            "message": "Add opt-in elastic budgeting for asynchronous Guardian requests (#61345)\n\n## What changed\n\n- Add `async_elastic_budgeting` and `async_elastic_sections` under `[features.guardianv2]`, independently of synchronous budgeting and disabled by default.\n- Apply section limits and elastic allocation to new classifier evidence after accounting for setup and retained conversation history. Preserve the configured elastic policy when applying model defaults.\n- Keep permission context whole during elastic allocation and record truncation observations when image preparation rejects an image.\n\n## Testing\n\nAdd coverage for configuration validation, fixed and elastic conversation budgeting, retained history and cursor preservation, and complete classifier requests that retain evidence beyond the fixed entry limit.\n\nGitOrigin-RevId: 2955f0482f7c3e18325e296fc2ccb6592ffcb73a",
+            "url": "https://github.com/openai/codex/commit/a655b50de9d06e9d50eb13087f9def8f103d97b5"
+          },
+          {
+            "sha": "6919e2cd8ee5d07ab2d983e497772a8ecbf60ce1",
+            "title": "Apply elastic entry caps to Guardian classifier evidence (#61346)",
+            "message": "Apply elastic entry caps to Guardian classifier evidence (#61346)\n\n## Why\n\nTrusted classifier evidence needs to fit configured entry limits while preserving complete records and metadata that reflects only delivered reviews.\n\n## What changed\n\nApply elastic caps before rendering trusted tools, trusted skills, and previous reviews into developer messages. Omit oversized tool attestations and review fragments whole, retain only complete skill paths that fit, and record omissions for the request's omission notice. Keep review IDs aligned with retained fragments and preserve fixed-budget behavior.\n\n## Testing\n\nAdd coverage for whole-record omissions, retained review IDs, and omission notices. Exercise orchestrator connector evidence with both fixed budgeting and an elastic tool entry cap.\n\nGitOrigin-RevId: 729db452026f93b59765a3936730b9b6dddfcf9a",
+            "url": "https://github.com/openai/codex/commit/6919e2cd8ee5d07ab2d983e497772a8ecbf60ce1"
+          },
+          {
+            "sha": "76cf0f45ec44e488297cd27e1b1a951f02c31bfe",
+            "title": "Reserve item ID overhead before elastic context allocation (#61347)",
+            "message": "Reserve item ID overhead before elastic context allocation (#61347)\n\n## Why\n\nElastic request allocation did not account for item IDs added after evidence selection. Their token cost could push the completed request over its input limit instead of allowing optional evidence to be dropped.\n\n## What changed\n\nReserve IDs for the possible new request items before allocating evidence, including their JSON escaping and field overhead in the global request budget. Assign the same reserved IDs to the selected items while preserving existing IDs and committed history.\n\n## Testing\n\nAdd coverage for escaped IDs and native tool call outputs, and a regression test with long IDs that verifies optional images are omitted while committed history and new transcript text are retained within budget. Update budget boundary tests to distinguish fixed rejection from elastic evidence reduction.\n\nGitOrigin-RevId: 621d6d83e3cc95efb9eef4976dff9b7799a6e7c8",
+            "url": "https://github.com/openai/codex/commit/76cf0f45ec44e488297cd27e1b1a951f02c31bfe"
+          },
+          {
+            "sha": "d87330d91e2309aea3b82286961340181d145ab4",
+            "title": "Add managed CA defaults for Deno and Google Cloud SDK (#61349)",
+            "message": "Add managed CA defaults for Deno and Google Cloud SDK (#61349)\n\n## What changed\n\nSet `DENO_CERT` and `CLOUDSDK_CORE_CUSTOM_CA_CERTS_FILE` to the managed proxy CA bundle when unset, preserving explicit values, including empty strings. Keep these client settings separate from the CA roots imported into the proxy trust bundle.\n\nPreserve shell startup overrides when replaying snapshots, regenerate managed CA defaults instead of capturing them, and allow sandboxed processes to read the managed bundle referenced by these variables.\n\n## Testing\n\nExtend regression coverage for default CA settings, explicit overrides, trust-root selection, shell snapshots, and restricted sandbox access to the generated CA bundle.\n\nGitOrigin-RevId: 2761706b54e0bb230c37bd4c515204c6eba0c650",
+            "url": "https://github.com/openai/codex/commit/d87330d91e2309aea3b82286961340181d145ab4"
+          },
+          {
+            "sha": "f8580db4725c6a51a5ee2de0980a8b8b0659e143",
+            "title": "Reflect accepted cloud model selections in TUI status (#61350)",
+            "message": "Reflect accepted cloud model selections in TUI status (#61350)\n\n## Why\n\nAfter a cloud model selection was accepted for future turns, status displays still showed the session's serving model and reasoning effort. A reasoning-only `/model` command also resolved against that model instead of the accepted selection.\n\n## What changed\n\n- Show the accepted model's display name and reasoning effort in the status line, terminal title, and `/status`.\n- Resolve reasoning-only `/model` commands against the selected model.\n- Share the session-only model change confirmation between cloud and local selections, including reasoning effort and service tier when present.\n\n## Testing\n\nExtend cloud model admission coverage to check accepted selections in status output, reasoning-only commands, and unchanged status before acceptance and after session metadata clears the selection.\n\nGitOrigin-RevId: cc50c2b0a98e884138ad2c2339c79c28ee3d346a",
+            "url": "https://github.com/openai/codex/commit/f8580db4725c6a51a5ee2de0980a8b8b0659e143"
+          },
+          {
+            "sha": "a60197d6a06b026f7afb72e7f7469ea8ec95683e",
+            "title": "Expose canonical network proxy policy patterns (#61351)",
+            "message": "Expose canonical network proxy policy patterns (#61351)\n\n## What changed\n\nAdd `canonical_allow_pattern`, `canonical_deny_pattern`, and\n`canonical_review_pattern` to validate and normalize selectors for policy\ncomparisons using the domain matcher's syntax.\n\nTreat `?*.example.com` and `*.example.com` as equivalent comparison keys.\nCanonicalize unscoped IPv6 addresses for deny and review rules, and preserve\nwildcard ports on local allow rules so they remain distinguishable from explicit\nlocal grants. Deny rules continue to reject global wildcards.\n\nShare pattern validation with the matcher and local-literal classification with\nruntime policy checks.\n\n## Testing\n\nAdd a regression test covering equivalent subdomain selectors, local wildcard\nports, and differing IPv6 comparison keys for grants and restrictions.\n\nGitOrigin-RevId: c72262ae9f625765d5351e9da403be1f87042a47",
+            "url": "https://github.com/openai/codex/commit/a60197d6a06b026f7afb72e7f7469ea8ec95683e"
+          },
+          {
+            "sha": "4ccf87254a1bbeb24e59261f66f39e3bc4b64453",
+            "title": "Mark the TUI workspace as stable and enable it by default (#61352)",
+            "message": "Mark the TUI workspace as stable and enable it by default (#61352)\n\nGitOrigin-RevId: ca0634b16855f1c9f0bec73e73a1bda211d90d24",
+            "url": "https://github.com/openai/codex/commit/4ccf87254a1bbeb24e59261f66f39e3bc4b64453"
+          },
+          {
+            "sha": "2bad26e03f9f38f228d5d99d6a1a3ea1442cd9e7",
+            "title": "Centralize TUI read-only view checks (#61353)",
+            "message": "Centralize TUI read-only view checks (#61353)\n\n## What changed\n\nAdd `ChatWidget::is_read_only_view()` and use it for read-only guards across input handling, navigation, transcript rendering, and session restoration. The new helper delegates to `is_external_writer_view()`, preserving existing behavior.\n\nGitOrigin-RevId: c8fd66526f502d79be306a19ee261e79c5abcd57",
+            "url": "https://github.com/openai/codex/commit/2bad26e03f9f38f228d5d99d6a1a3ea1442cd9e7"
+          },
+          {
+            "sha": "60fb26f6ba50a118045eb0089814b366bb5296a8",
+            "title": "Avoid rewriting unchanged Guardian channel descriptions (#61354)",
+            "message": "Avoid rewriting unchanged Guardian channel descriptions (#61354)\n\n## What changed\n\nAllow the Guardian housekeeper to route evidence to existing channels without repeating their descriptions. Request descriptions only for new destinations or changed descriptions, and skip channel updates when a returned description matches the catalog.\n\nNew destinations still require descriptions, and description updates remain limited to routed channels.\n\n## Testing\n\nExtend housekeeping tests to cover omitted and repeated descriptions without extra channel writes, preserved descriptions, and rejection of missing new-channel descriptions or updates to unrouted channels before any writes.\n\nGitOrigin-RevId: 3ab00fc17263d68d15e68f9d17ab31fc6f43f551",
+            "url": "https://github.com/openai/codex/commit/60fb26f6ba50a118045eb0089814b366bb5296a8"
+          },
+          {
+            "sha": "76a8ca3914ec86807340367e8ba41e2f207e722a",
+            "title": "Upgrade Bazel rules_rs to 0.2.3 (#61355)",
+            "message": "Upgrade Bazel rules_rs to 0.2.3 (#61355)\n\n## What changed\n\n- Use the `rules_rs` 0.2.3 registry release instead of an archive override, and upgrade `platforms` to 1.1.0.\n- Disable root crate alias targets and migrate explicit dependencies to package labels such as `@crates//tokio`. Disable root crate data for the argument comment linter's crate repository.\n- Refresh the retained `rules_rs` patches, remove the zlib snapshot URL backport, and drop extra dependency declarations from `exec-server` and `v8-poc`.\n\nGitOrigin-RevId: c354413a19b45964104457063c613028f5325bc0",
+            "url": "https://github.com/openai/codex/commit/76a8ca3914ec86807340367e8ba41e2f207e722a"
+          },
+          {
+            "sha": "ae12a9d645774982fe9deda590dc1f237d249d1d",
+            "title": "Add deferred MCP reprojection for the next regular turn (#61356)",
+            "message": "Add deferred MCP reprojection for the next regular turn (#61356)\n\n## What changed\n\nAdd `CodexThread::reproject_mcp_on_next_turn()` to request an MCP reprojection after `TurnStarted` and before tools are bound. Repeated requests coalesce, and idle reconciliation or prewarming leaves the request pending until the next regular turn.\n\n## Testing\n\nAdd coverage for deferred requests surviving prewarm and idle reconciliation, coalescing into one reprojection, and exposing refreshed tools in the turn's first model request. Verify that discovery starts after `TurnStarted`.\n\nGitOrigin-RevId: 260b2381013291a47eb9a7f736c129de76c5897f",
+            "url": "https://github.com/openai/codex/commit/ae12a9d645774982fe9deda590dc1f237d249d1d"
+          },
+          {
+            "sha": "3f2603f2a261f7cb8a479dcae274bfe7ad5c7155",
+            "title": "Clarify removal scope for profile MCP servers (#61357)",
+            "message": "Clarify removal scope for profile MCP servers (#61357)\n\n## Why\n\n`codex mcp get` suggests `codex mcp remove` for servers defined in the active profile, but that command only edits the global config.\n\n## What changed\n\nFor servers defined in the active profile, replace the removal hint with the profile settings file path and an explanation of the command's scope. Keep the removal hint for servers inherited from the global config.\n\n## Testing\n\nAdd CLI coverage for profile-only servers, profile overrides of global servers, and inherited global servers.\n\nGitOrigin-RevId: 454df034f7e74b10f96983a9f13821d5ababfde7",
+            "url": "https://github.com/openai/codex/commit/3f2603f2a261f7cb8a479dcae274bfe7ad5c7155"
+          },
+          {
+            "sha": "dd8cee982245a4e1aa181127ab712acc0db9f989",
+            "title": "Add structured error kinds for exec-server process starts (#61358)",
+            "message": "Add structured error kinds for exec-server process starts (#61358)\n\n## What changed\n\nAttach a tagged `ProcessStartErrorData` value to JSON-RPC errors for not-found, permission-denied, and other spawn failures, unavailable sandboxes, and sandbox preparation failures.\n\nRecord the error code and structured error kind for failed `process/start` responses in the `codex.exec_server.response_received` tracing event.\n\nGitOrigin-RevId: 556d0068e469ea25e95108262826a77a66b7d83b",
+            "url": "https://github.com/openai/codex/commit/dd8cee982245a4e1aa181127ab712acc0db9f989"
+          },
+          {
+            "sha": "4413deac572eb5d4cdb49295794cbe30f8622935",
+            "title": "Resolve queued attachment paths against the thread working directory (#61359)",
+            "message": "Resolve queued attachment paths against the thread working directory (#61359)\n\n## Why\n\nRelative attachment paths in queued submissions should refer to files in the thread's working directory, even when the app server runs from a different directory.\n\n## What changed\n\nResolve relative `LocalImage` and `LocalAudio` paths against the loaded thread's current working directory or the stored working directory for an unloaded thread when adding or updating queued submissions. Preserve absolute paths and reject relative paths that cannot be resolved to an absolute path.\n\n## Testing\n\nAdd a regression test for queue add and update with different images sharing the same filename in the thread and server working directories. Verify that the relative path selects the thread's image and that explicit absolute paths retain their meaning.\n\nGitOrigin-RevId: 3c1a48693c031f1c650650a9b3a7059fb962ba5c",
+            "url": "https://github.com/openai/codex/commit/4413deac572eb5d4cdb49295794cbe30f8622935"
+          },
+          {
+            "sha": "6d99161bced769f68a60e3c37e5dd4fc6fbad44c",
+            "title": "Limit MCP status discovery to the requested page (#61365)",
+            "message": "Limit MCP status discovery to the requested page (#61365)\n\n## Why\n\nPaginated MCP server status requests previously discovered all configured servers before selecting the response page, causing unnecessary connections to servers outside that page.\n\n## What changed\n\nSelect and deduplicate server identities before discovery, then collect status only for servers on the requested page. Include thread runtime statuses when selecting pages and preserve separate entries for same-named servers in different environments. Empty pages skip discovery.\n\n## Testing\n\nAdd coverage that counts MCP initialization requests across successive pages and an empty final page. Extend environment inventory coverage to verify that pagination preserves each registration's identity, authentication status, and tools.\n\nGitOrigin-RevId: 0c9c9ca6c8016147eb9a12b53ffe533ac3334444",
+            "url": "https://github.com/openai/codex/commit/6d99161bced769f68a60e3c37e5dd4fc6fbad44c"
+          },
+          {
+            "sha": "400a1e1e82bc558bd52df2c603829e894385bf67",
+            "title": "Use native permission profiles for diagnostics and sandbox checks (#61369)",
+            "message": "Use native permission profiles for diagnostics and sandbox checks (#61369)\n\n## What changed\n\n- Derive sampling diagnostic and rollout trace labels directly from permission profiles instead of constructing legacy sandbox policies. Rename the trace metadata field from `sandbox_policy` to `permissions_profile`.\n- Extract `with_workspace_write_cwd` to share default workspace metadata protections between legacy policy conversion and the TUI's sandbox-mode compatibility check. Build the check's workspace-write profile from filesystem and network permissions directly.\n\n## Testing\n\nAdd a regression test confirming that the sandbox-mode compatibility check accepts standard workspace metadata protections and rejects a profile with an additional writable `.git` root.\n\nGitOrigin-RevId: f20d23afd80dff6347865df3d6a94d6f5e90e1e0",
+            "url": "https://github.com/openai/codex/commit/400a1e1e82bc558bd52df2c603829e894385bf67"
+          },
+          {
+            "sha": "ba3071a66dfaff1e2d4b2dc12a33c559469d614c",
+            "title": "Remove BuildBuddy presets from the checked-in Bazel configuration (#61370)",
+            "message": "Remove BuildBuddy presets from the checked-in Bazel configuration (#61370)\n\nRemove the BuildBuddy cache, build event upload, downloader, and remote execution\npresets from `.bazelrc`, while retaining the shared remote execution policy for\ncallers that supply their own executor.\n\nUpdate the Bazel documentation and Windows V8 cross-build instructions to remove\nreferences to the deleted presets. Ordinary local `bazel` and `just` invocations\ncontinue to run locally.\n\nGitOrigin-RevId: bb0428a2aa4eac83d7a1b55d4e56a793f9b115bc",
+            "url": "https://github.com/openai/codex/commit/ba3071a66dfaff1e2d4b2dc12a33c559469d614c"
+          },
+          {
+            "sha": "9e48702b3a41fcd11ad03194af219449d08cc5bd",
+            "title": "Add opt-in signer-service support for macOS releases (#61371)",
+            "message": "Add opt-in signer-service support for macOS releases (#61371)\n\n## What changed\n\nWire signer-service settings from repository variables into the PKCS11 setup action for macOS binary, DMG, and provisioned bundle releases. Keep the feature disabled by default; Azure continues to supply tools, certificates, and notarization.\n\nRequire signing mode, a pinned certificate, GitHub OIDC, and valid endpoint, purpose, and key ID inputs when enabled. Reject pre-supplied OIDC tokens and providers missing signer-service support markers, then export the signer-service backend configuration.\n\nGitOrigin-RevId: d6c9f2f65512892b286e4bbeb271633e23a96a24",
+            "url": "https://github.com/openai/codex/commit/9e48702b3a41fcd11ad03194af219449d08cc5bd"
+          },
+          {
+            "sha": "7194b2177643f3c639cfc5b29f6398c545b0e7e2",
+            "title": "Add opt-in transparent TCP routing for Linux sandboxes (#61372)",
+            "message": "Add opt-in transparent TCP routing for Linux sandboxes (#61372)\n\n## Why\n\nNative TCP clients need to reach managed network destinations without implementing proxy support themselves.\n\n## What changed\n\n- Add `--transparent-tcp` to the Linux sandbox command, using a bundled TCP stack, private TUN interface, and DNS stub to route native IPv4 and IPv6 connections through the attributed managed SOCKS proxy.\n- Preserve original hostnames for proxy policy checks and cancel pending approval connections when their native sockets close.\n- Expose `--linux-sandbox-transparent-tcp` and `--tcp-upstream-proxy` on `codex exec-server` for transparent routing and a mandatory HTTP CONNECT next hop without direct fallback.\n- Require private network and PID namespaces, private procfs, system `bwrap`, and access to `/dev/net/tun`; reject incompatible launcher options and untrusted proxy ports.\n\n## Testing\n\nAdd integration coverage for native hostname and IPv6 connections, SOCKS attribution, pending connection cancellation, policy denials, and filesystem and host-loopback isolation. Extend launcher and executor tests for option validation and managed-policy propagation.\n\nGitOrigin-RevId: 96bd7726e5369efceb65320face56aa85ae3deb8",
+            "url": "https://github.com/openai/codex/commit/7194b2177643f3c639cfc5b29f6398c545b0e7e2"
+          },
+          {
+            "sha": "a46c5be77eac0dc856f677a099a6a7702edd578b",
+            "title": "Delegate installed plugin recommendation filtering to the endpoint (#61374)",
+            "message": "Delegate installed plugin recommendation filtering to the endpoint (#61374)\n\n## What changed\n\nRequest plugin suggestions with `includeInstalled=false` and use the endpoint results without filtering against loaded plugins or the local installed-plugin cache. Retain disabled-tool and client eligibility filtering, and remove plugin loading that was only needed for recommendation filtering.\n\n## Testing\n\nUpdate tests to verify the query parameter and confirm that endpoint recommendations survive local installed-cache filtering while disabled tools remain excluded.\n\nGitOrigin-RevId: a1b199f9ac8da7dae40abe46b6ccfaf1d8230a5c",
+            "url": "https://github.com/openai/codex/commit/a46c5be77eac0dc856f677a099a6a7702edd578b"
+          },
+          {
+            "sha": "466da69cf6b72983f0d28c498c7cdb8d9bf2d114",
+            "title": "Release 0.171.0-alpha.5",
+            "message": "Release 0.171.0-alpha.5",
+            "url": "https://github.com/openai/codex/commit/466da69cf6b72983f0d28c498c7cdb8d9bf2d114"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.171.0-alpha.4",
+          "head": "rust-v0.171.0-alpha.5",
+          "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.4...rust-v0.171.0-alpha.5",
+          "status": "diverged",
+          "total": 28,
+          "behind": 1,
+          "complete": true,
+          "fetched": 28
+        },
+        "comparisonError": null
+      }
     }
   ],
   "releaseRequests": {
@@ -63994,8 +64648,7 @@
       "rust-v0.170.0-alpha.1": 1794423624005,
       "rust-v0.168.0": 1794524180075,
       "rust-v0.171.0-alpha.1": 1794539622166,
-      "rust-v0.171.0-alpha.4": 1794594675767,
-      "rust-v0.171.0-alpha.5": 1794614252642
+      "rust-v0.171.0-alpha.4": 1794594675767
     }
   }
 }
