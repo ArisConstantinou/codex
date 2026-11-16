@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-16T06:54:50.360Z",
+  "generatedAt": "2026-11-16T16:56:56.578Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -16601,6 +16601,305 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/lvmh-media-division-partnership",
+      "at": "2026-11-16T09:00:00.000Z",
+      "url": "https://openai.com/index/lvmh-media-division-partnership",
+      "text": "LVMH’s Media Division announces strategic partnership with OpenAI. LVMH’s Media Division and OpenAI announce a partnership to support journalism with AI and make its publications more accessible through ChatGPT.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/advancing-computer-use-for-healthcare-teams",
+      "at": "2026-11-16T06:00:00.000Z",
+      "url": "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
+      "text": "Advancing computer-use agents for healthcare teams",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
+      "at": "2026-11-16T06:00:00.000Z",
+      "url": "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
+      "text": "More ways to move care forward with ChatGPT for Healthcare. Introducing computer-use agents, improved clinical answers, and new healthcare plugins that work across healthcare software to get real work done.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/the-kings-trust-and-openai",
+      "at": "2026-11-16T00:00:00.000Z",
+      "url": "https://openai.com/index/the-kings-trust-and-openai",
+      "text": "The King’s Trust and OpenAI launch £1m partnership. The King’s Trust and OpenAI launch a £1m partnership to help up to 25,000 young people across the UK build practical AI skills for work.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/our-first-phase-of-embedded-assessments",
+      "at": "2026-11-13T08:00:00.000Z",
+      "url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
+      "text": "Our first phase of embedded assessments. OpenAI begins embedded assessments with Apollo Research, METR, and Transluce, and Goodfire to independently evaluate model alignment, safeguards, and monitoring systems.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.8",
+      "at": "2026-11-16T16:30:40.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.8",
+      "text": "0.171.0-alpha.8. Release 0.171.0-alpha.8",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.171.0-alpha.8",
+        "title": "0.171.0-alpha.8",
+        "body": "Release 0.171.0-alpha.8\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-16T16:56:56.581Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.8",
+        "publishedAt": "2026-11-16T16:25:46Z",
+        "commits": [
+          {
+            "sha": "598df2d0158544c3b9ce199d3d7ca9db5621af55",
+            "title": "Refactor exec to use the shared app-server client (#61706)",
+            "message": "Refactor exec to use the shared app-server client (#61706)\n\n## What changed\n\n- Use `AppServerClient` throughout exec and extract turn completion into `finish_turn`, including handling for server and thread-stream disconnections.\n- Move remote address parsing and auth-token resolution into `codex-app-server-client`, with re-exports from the TUI.\n- Allow human-readable exec output to be initialized without a local `Config`.\n\n## Testing\n\nMove remote address and auth-token tests into `codex-app-server-client`, retaining coverage for WebSocket and Unix socket addresses, invalid addresses, and missing, empty, or whitespace-padded tokens.\n\nGitOrigin-RevId: 465b17a1c03392a7d4e7700d83ce67c2cf5ef021",
+            "url": "https://github.com/openai/codex/commit/598df2d0158544c3b9ce199d3d7ca9db5621af55"
+          },
+          {
+            "sha": "e51c551fb406486afb7ef5c3d43387f1be3c09e8",
+            "title": "Support remote app servers in `codex exec` (#61707)",
+            "message": "Support remote app servers in `codex exec` (#61707)\n\n## What changed\n\nAllow `codex exec --remote <ADDR>` to run a noninteractive turn using an existing app server's configuration and credentials. Support starting a new thread or resuming one by UUID, with human-readable or JSON output and optional bearer-token authentication through `--remote-auth-token-env`.\n\nAccept remote options before or after `exec`, and reject conflicting endpoints. Reject unsupported agent configuration overrides and active threads, and report an error if the server disconnects before the turn completes.\n\n## Testing\n\nExtend CLI integration coverage for remote execution and resume using server authentication, JSON completion events, human-readable thread IDs, and conflicting endpoints. Add a snapshot for `--remote` help text.\n\nGitOrigin-RevId: d4c3b16fb80eb6e8c523aff92110eaa878cbd3ee",
+            "url": "https://github.com/openai/codex/commit/e51c551fb406486afb7ef5c3d43387f1be3c09e8"
+          },
+          {
+            "sha": "b048d4a95cacdccd40425d94d4b5a313df5ed5f5",
+            "title": "Avoid legacy transcript reads in the agents overview (#61709)",
+            "message": "Avoid legacy transcript reads in the agents overview (#61709)\n\n## Why\n\nListing even one turn of a legacy thread replays its entire rollout. Overview refreshes should avoid that work just to populate previews.\n\n## What changed\n\n- Fetch saved prompt and reply previews only for threads with paginated history.\n- Update legacy prompt previews from user-message notifications and preserve them across refreshes and reverts.\n- Retain the latest observed reply preview when a thread closes.\n\n## Testing\n\nExtend overview tests to reject legacy turn-list requests, verify paginated previews, preserve live prompts across stale refreshes and reverts, and retain reply previews after thread closure.\n\nGitOrigin-RevId: 85130adda155c5ea93c5a5c2b3f89a945170ba51",
+            "url": "https://github.com/openai/codex/commit/b048d4a95cacdccd40425d94d4b5a313df5ed5f5"
+          },
+          {
+            "sha": "96e0673f6ec42bd7f48c9182cea477a8fa0e8949",
+            "title": "Enable slash-command completion for unavailable threads (#61710)",
+            "message": "Enable slash-command completion for unavailable threads (#61710)\n\n## Why\n\nRestricted input dismissed the slash-command popup when a thread was unavailable, preventing users from selecting recovery commands from partial input.\n\n## What changed\n\nKeep the command popup available while editing an unavailable thread's draft. Allow navigation, Tab completion, and submission of eligible recovery and local commands, including with custom submit keys. For example, typing `/sub` and pressing Enter selects `/subagents`.\n\nContinue to reject commands unavailable in this state and invalid command arguments. Preserve Vim escape and search behavior without reopening the popup during search.\n\n## Testing\n\nAdd regression tests and a popup snapshot covering highlighted recovery completion, blocked commands, custom submit keys, and Vim escape and search behavior.\n\nGitOrigin-RevId: 38021db8cdcd9f7ec7c62cfa0efd8819bf8057da",
+            "url": "https://github.com/openai/codex/commit/96e0673f6ec42bd7f48c9182cea477a8fa0e8949"
+          },
+          {
+            "sha": "58d5d3a0404bdd4e5d6af0f90a729068eb30396a",
+            "title": "Open Windows desktop sessions through the registered URL handler (#61711)",
+            "message": "Open Windows desktop sessions through the registered URL handler (#61711)\n\n## What changed\n\nLaunch desktop session URLs with PowerShell's `Start-Process` instead of resolving and starting the packaged executable directly. Restrict the installed `OpenAI.Codex` package check to the two supported publisher IDs and select the first match.\n\nGitOrigin-RevId: 350029a2101ff048de52fa9f9444e4b5dbdcc12e",
+            "url": "https://github.com/openai/codex/commit/58d5d3a0404bdd4e5d6af0f90a729068eb30396a"
+          },
+          {
+            "sha": "aea4c6ee4b652d84b416731b11c2b8299d767209",
+            "title": "Restore raw mode after returning from external editors (#61713)",
+            "message": "Restore raw mode after returning from external editors (#61713)\n\n## Why\n\nAn editor's suspend/resume cycle can change terminal settings while crossterm still considers raw mode enabled, preventing Codex from restoring raw mode on return.\n\n## What changed\n\nOn Unix, clear crossterm's raw-mode cache before reapplying TUI terminal modes after an external program exits.\n\n## Testing\n\nExtend the external-editor PTY test to simulate an editor restoring canonical mode with `stty sane` and verify that canonical input and echo are disabled after returning to Codex.\n\nGitOrigin-RevId: 4ae151deaf073bddf5a1c7fdfb5a1b5f4a480375",
+            "url": "https://github.com/openai/codex/commit/aea4c6ee4b652d84b416731b11c2b8299d767209"
+          },
+          {
+            "sha": "09c711b783cf19f5ed60b6e26fcf4ef269acae00",
+            "title": "Use `clip.exe` for single-line ASCII clipboard copies in WSL (#61724)",
+            "message": "Use `clip.exe` for single-line ASCII clipboard copies in WSL (#61724)\n\n## Why\n\nSingle-line ASCII copies can use the lightweight Windows clipboard writer without starting PowerShell.\n\n## What changed\n\n- Try `clip.exe` for printable ASCII text and tabs, falling back to PowerShell if it is unavailable or fails. Bound discovery and execution by short deadlines.\n- Keep PowerShell for Unicode, multiline text, and other control characters. Pad even-length ASCII input with a trailing NUL to prevent `clip.exe` from interpreting it as UTF-16.\n- Preserve precedence and command compatibility for installed Linux `powershell.exe` adapters, and defer Windows PowerShell discovery until needed.\n\n## Testing\n\nExtend WSL clipboard tests to cover input eligibility and padding, adapter precedence, and expired deadlines.\n\nGitOrigin-RevId: 69b66ec1243452d0a4df119563321f38d177bea9",
+            "url": "https://github.com/openai/codex/commit/09c711b783cf19f5ed60b6e26fcf4ef269acae00"
+          },
+          {
+            "sha": "e649c6d74c92c638658af8f08290a1ea81d6872f",
+            "title": "Fix Unicode grapheme highlighting in history search (#61725)",
+            "message": "Fix Unicode grapheme highlighting in history search (#61725)\n\n## Why\n\nCtrl+R history search highlights need to cover whole grapheme clusters so that matches on combining marks highlight the visible character.\n\n## What changed\n\n- Map case-insensitive matches to grapheme boundaries and deduplicate identical highlight ranges.\n- Segment the separately rendered `!` bash prompt independently from the textarea so a prompt-only match does not highlight the command body.\n\n## Testing\n\nExtend match-range tests for repeated combining marks and rendering coverage for combining-mark matches and prompt-only matches.\n\nGitOrigin-RevId: d8f5c5ebb06b1130153b3cfbc8631342a57cfa1c",
+            "url": "https://github.com/openai/codex/commit/e649c6d74c92c638658af8f08290a1ea81d6872f"
+          },
+          {
+            "sha": "eff3036bf41b4b00bb5d34c6ec0ca3a1ff131baa",
+            "title": "Preserve graphemes in mention search match highlighting (#61726)",
+            "message": "Preserve graphemes in mention search match highlighting (#61726)\n\n## Why\n\nSplitting fuzzy matches into individual Unicode scalars can break multi-codepoint emoji when mention results are truncated.\n\n## What changed\n\nRender highlighted names and parent paths as whole grapheme clusters, using scalar match indices for names and grapheme match indices for paths. Bold the entire grapheme when any part matches.\n\n## Testing\n\nAdd a regression test covering truncated plugin names and file paths containing `👩‍💻`, checking both rendered text and bold match styling.\n\nGitOrigin-RevId: 516d6668a9a22f79483adb0c576ed190b4f4a784",
+            "url": "https://github.com/openai/codex/commit/eff3036bf41b4b00bb5d34c6ec0ca3a1ff131baa"
+          },
+          {
+            "sha": "ca0bbbdf0c83cb64f2fb48cf0d5ffbc3d4409ab9",
+            "title": "Optimize default and attached thread listings with targeted indexes (#61727)",
+            "message": "Optimize default and attached thread listings with targeted indexes (#61727)\n\n## Why\n\nDefault thread listings should stay in timestamp order without scanning subagent threads. Attached-thread listings should use both parent and archive filters even without planner statistics.\n\n## What changed\n\n- Add partial indexes for visible interactive threads sorted by creation, update, or recency timestamps.\n- Use literal source predicates for default interactive listings so SQLite can select the partial indexes.\n- Extend the attached-parent index to include archive status.\n\n## Testing\n\nAdd a query-plan test verifying that the default sidebar listing uses the interactive update-time index. Extend app-server coverage to include `chatgpt` custom-source threads in default interactive listings.\n\nGitOrigin-RevId: 5844622b7af629cad71e15ec95a8960739d6d447",
+            "url": "https://github.com/openai/codex/commit/ca0bbbdf0c83cb64f2fb48cf0d5ffbc3d4409ab9"
+          },
+          {
+            "sha": "eb53da6c3ab0787f22707fcdc7f26ffd7316055e",
+            "title": "Fix thread listing migration numbering and test setup (#61730)",
+            "message": "Fix thread listing migration numbering and test setup (#61730)\n\n## Why\n\nThe thread listing index migration shares version `0063` with the session model IDs migration, and the sidebar query-plan test omits the required `included_thread_ids` field.\n\n## What changed\n\n- Renumber the thread listing index migration to `0064`.\n- Set `included_thread_ids` to `None` in the sidebar query-plan test.\n\nGitOrigin-RevId: 2c4c4ed52dd412fbf379ddbd2ed77324fba3b1ca",
+            "url": "https://github.com/openai/codex/commit/eb53da6c3ab0787f22707fcdc7f26ffd7316055e"
+          },
+          {
+            "sha": "540eb31ece8b5fea95062795183fc00a05340c85",
+            "title": "Keep bidirectional TUI headers stable during shimmer (#61731)",
+            "message": "Keep bidirectional TUI headers stable during shimmer (#61731)\n\n## Why\n\nPer-grapheme color updates can break native terminal bidirectional rendering in thinking and reasoning headers.\n\n## What changed\n\nRender text containing strong right-to-left characters or Arabic numbers as a single, static dimmed span in both shimmer implementations. Preserve logical text order and use one-second clock updates for these status headers when progress animation is disabled.\n\n## Testing\n\nAdd snapshot coverage for Hebrew, Arabic, mixed-direction text, and Arabic numbers, checking that headers remain unchanged during the shimmer sweep. Add scheduling tests for static headers and active progress animation.\n\nGitOrigin-RevId: 911abc50f00db597ae4dcfca9941e9f63547c2f9",
+            "url": "https://github.com/openai/codex/commit/540eb31ece8b5fea95062795183fc00a05340c85"
+          },
+          {
+            "sha": "ac2c4a339c15d96c9cd32b242ef487d48d27961b",
+            "title": "Preserve agent message phases in the cloud backend (#61737)",
+            "message": "Preserve agent message phases in the cloud backend (#61737)\n\n## Why\n\nCloud agent messages lost their phase when converted to app-server thread items, leaving consumers unable to distinguish commentary, final answers, and partial answers.\n\n## What changed\n\nDecode the optional phase from cloud agent messages, expose it through `ItemSummary::AgentMessage`, and map it to the corresponding app-server `MessagePhase`. Leave the phase unset for missing or unrecognized values.\n\n## Testing\n\nExtend item lifecycle and completed-reply tests to verify that a final-answer phase survives decoding and conversion. Retain history coverage for messages without a phase.\n\nGitOrigin-RevId: b7661386758685e0f3c07b53935ff7fd7ba35f7d",
+            "url": "https://github.com/openai/codex/commit/ac2c4a339c15d96c9cd32b242ef487d48d27961b"
+          },
+          {
+            "sha": "f1ebc7b372bc837b7c6386113e867256d7cc7036",
+            "title": "Reuse matching thread inventories for lightweight MCP status pages (#61738)",
+            "message": "Reuse matching thread inventories for lightweight MCP status pages (#61738)\n\n## What changed\n\nReuse connected thread tool inventories for paginated `ToolsAndAuthOnly` status requests when registrations, client settings, permissions, environments, and authentication match. Restrict reuse to connections with fixed credentials; discover remaining servers separately and preserve enterprise-managed servers' admitted thread connections.\n\nBind status configuration to the same environment and permission inputs used by the thread runtime, and limit authentication-failure inspection to the requested servers.\n\n## Testing\n\nExtend status tests to cover fixed-credential reuse, fresh discovery for stored OAuth authority, full resource discovery, and inventories for dormant threads without starting their runtime connections. Verify that paginated lightweight results keep same-named servers in different environments separate.\n\nGitOrigin-RevId: eaca6365fb2a739eaad76eefdc62ec9f796b1024",
+            "url": "https://github.com/openai/codex/commit/f1ebc7b372bc837b7c6386113e867256d7cc7036"
+          },
+          {
+            "sha": "630c0d75abbe74784a35673926868cc4133ef6fa",
+            "title": "Mark cloud threads with a cloud icon in the TUI (#61742)",
+            "message": "Mark cloud threads with a cloud icon in the TUI (#61742)\n\n## What changed\n\nPrefix cloud thread labels with `☁︎` in resume and fork pickers, the agents overview and task details, task mention suggestions, side chat tabs and chooser, status lines, and terminal titles. Keep the marker separate from thread names, search text, and identity, and account for its width when truncating labels.\n\nTrack cloud backend identity independently of live connections so thread labels retain their marker after a disconnect.\n\n## Testing\n\nExtend rendering tests and snapshots to cover cloud and local labels, narrow layouts, side chat tabs and chooser, and terminal title fallbacks and truncation.\n\nGitOrigin-RevId: ea8189ebcc5e35d2d2ef95d6a4a87ca23b5e3b8f",
+            "url": "https://github.com/openai/codex/commit/630c0d75abbe74784a35673926868cc4133ef6fa"
+          },
+          {
+            "sha": "5a6bbd29a45d81c69395c12f0d6fa5b31747aaa6",
+            "title": "Clarify shell-specific login guidance for `exec_command` (#61744)",
+            "message": "Clarify shell-specific login guidance for `exec_command` (#61744)\n\n## Why\n\nThe `login` description claimed a fixed default and described Unix shell flags for every shell. In PowerShell, disabling login startup skips profiles, which can make profile-defined commands unavailable.\n\n## What changed\n\nDescribe omitted `login` values as inheriting the setting. When a turn environment reports PowerShell, explain that `login: false` skips profiles and advise keeping profiles enabled for commands that depend on them, including unattended commands.\n\n## Testing\n\nAdd coverage for shell-specific descriptions, remote environment readiness, and exact normalization of PowerShell wording in portable tool snapshots. Update prompt-prefix compatibility checks and affected snapshots.\n\nGitOrigin-RevId: f6cb29c6c32921241cbd1be0c31f985c5ae274f9",
+            "url": "https://github.com/openai/codex/commit/5a6bbd29a45d81c69395c12f0d6fa5b31747aaa6"
+          },
+          {
+            "sha": "710bee73a89385aaf2afb41d885edf82473d941f",
+            "title": "Refactor history and notes tool registration (#61747)",
+            "message": "Refactor history and notes tool registration (#61747)\n\n## What changed\n\nSplit tool construction into `history_tools` and `notes_tools`, with\n`history_notes_tools` combining both. Each builder accepts an optional backend\nand reads its catalog messages directly from the step's `ExtensionData`.\n\nExtract a shared contributor registration helper and simplify the HTTP-backed\nextension to use these helpers. Update the bundled tool contract snapshot test\nto use the revised builder signature.\n\nGitOrigin-RevId: c9804b457ffc5d3634d7e58973a9f0f5028ca6e9",
+            "url": "https://github.com/openai/codex/commit/710bee73a89385aaf2afb41d885edf82473d941f"
+          },
+          {
+            "sha": "0184dfa6a48f0110dd9c6835522492908e5abcf3",
+            "title": "Fix the missing label style in the mention truncation test (#61762)",
+            "message": "Fix the missing label style in the mention truncation test (#61762)\n\nInitialize the file result with `ThreadLabelStyle::Plain` in\n`fuzzy_matches_preserve_graphemes_when_truncated` so the test supplies the\nrequired `SearchResult` field.\n\nGitOrigin-RevId: c1dbfc3b4d094511b2f480020d8365813f2d89d5",
+            "url": "https://github.com/openai/codex/commit/0184dfa6a48f0110dd9c6835522492908e5abcf3"
+          },
+          {
+            "sha": "98e1584a082234ae716a3cc69d4c6f2d3631cf2d",
+            "title": "Simplify history and notes tool registration (#61764)",
+            "message": "Simplify history and notes tool registration (#61764)\n\nGenerate `history_notes_tools` directly from `register_tools!`, removing the\nseparate per-namespace registration helpers and building a single executor\nvector. Preserve tool order, catalog overrides, and empty results when no\nbackend is available.\n\nGitOrigin-RevId: f13a056af4e26b7510b2cc138c69c935be5a5c2d",
+            "url": "https://github.com/openai/codex/commit/98e1584a082234ae716a3cc69d4c6f2d3631cf2d"
+          },
+          {
+            "sha": "75fc67e8f4284a669eebd90ab6bc9ef7697e876e",
+            "title": "Remove numeric positions from project responses (#61771)",
+            "message": "Remove numeric positions from project responses (#61771)\n\n## What changed\n\nRemove `position` from app-server `Project` responses, the thread-store project model, and generated schemas and SDK types.\n\nDocument that clients should use the returned project order and that `beforeProjectId` places a moved project before another project, or appends it when omitted or null.\n\nGitOrigin-RevId: 5de481e13f524c03260b7fed5c74874f051d6f30",
+            "url": "https://github.com/openai/codex/commit/75fc67e8f4284a669eebd90ab6bc9ef7697e876e"
+          },
+          {
+            "sha": "776bd46f03a30df0caf3c37cd2fbbc70d4b7d7b4",
+            "title": "Centralize permission profile compatibility helpers in protocol (#61784)",
+            "message": "Centralize permission profile compatibility helpers in protocol (#61784)\n\n## What changed\n\nMove legacy sandbox policy conversion into `codex-protocol` and add a shared helper for resolving compatibility writable roots. Re-export the policy helper from `codex-sandboxing` and use the writable-roots helper in both Windows sandbox backends, preserving the existing workspace-write fallback.\n\n## Testing\n\nAdd a regression test confirming that an output-only permission profile retains the fallback's output and working-directory writable roots, including protected `.git` and `.codex` subpaths.\n\nGitOrigin-RevId: a40474eb74544f34f7eea8135a7eb1b57706dbc2",
+            "url": "https://github.com/openai/codex/commit/776bd46f03a30df0caf3c37cd2fbbc70d4b7d7b4"
+          },
+          {
+            "sha": "95946faafcd8f068e28610e8ae6a4c03060c1448",
+            "title": "Strengthen workspace-write configuration tests (#61785)",
+            "message": "Strengthen workspace-write configuration tests (#61785)\n\n## What changed\n\n- Exercise an explicit `PermissionProfile` in the additional writable roots test on non-Windows platforms, while preserving Windows coverage of the default read-only fallback.\n- Assert that enabling memories preserves write access to the working directory on non-Windows platforms.\n\nGitOrigin-RevId: ae25690a56825b47ca38e42fece1fdd7a42b48a4",
+            "url": "https://github.com/openai/codex/commit/95946faafcd8f068e28610e8ae6a4c03060c1448"
+          },
+          {
+            "sha": "cd1805370610e71eae7819b4ed28b90679a53f0e",
+            "title": "Add lifecycle-managed Guardian housekeeping (#61795)",
+            "message": "Add lifecycle-managed Guardian housekeeping (#61795)\n\n## What changed\n\n- Add an `install` entry point that registers thread and turn lifecycle hooks for Guardian housekeeping. Coalesce user-message and turn-end wakes into one worker per eligible root thread, flushing history before routing durable evidence in order.\n- Run the housekeeper in an isolated, ephemeral model thread with no tools. Cancel and join its tracked tasks on root shutdown, waiting for accepted evidence appends to finish.\n- Give each routing batch a 90-second deadline, make channel listing and updates cancellable, and redact model response content from JSON parsing errors.\n\n## Testing\n\nExtend housekeeping tests to cover stalled channel creation, redacted model errors, and shutdown waiting for an accepted evidence append without leaving a persisted housekeeper rollout.\n\nGitOrigin-RevId: 519b539c0613c964bac7b18eb84e684f5e105640",
+            "url": "https://github.com/openai/codex/commit/cd1805370610e71eae7819b4ed28b90679a53f0e"
+          },
+          {
+            "sha": "9544f09e7b880f373532b4fb5ca98313d2450d4f",
+            "title": "Wire Guardian V3 housekeeping into the app server (#61797)",
+            "message": "Wire Guardian V3 housekeeping into the app server (#61797)\n\n## What changed\n\n- Install Guardian V3 with a local message-board host when the server enables `features.guardianv3.enabled`, independently of thread overrides.\n- Clear inherited user, thread, and project instructions from Guardian V3 private threads and skip repository instruction discovery.\n\n## Testing\n\nAdd integration coverage for routing the first live message while the actor is still sampling, for both new and resumed threads. Verify that resumed history is skipped, `AGENTS.md` reaches only the actor, and thread overrides cannot enable or disable server-level housekeeping.\n\nGitOrigin-RevId: 3f3ae1be404c9e17b73eea12c95f5a95c96052cf",
+            "url": "https://github.com/openai/codex/commit/9544f09e7b880f373532b4fb5ca98313d2450d4f"
+          },
+          {
+            "sha": "5630d58680af22b71dc0d435049d2a16ec9dace4",
+            "title": "Add a dedicated Guardian v3 housekeeper inference client (#61798)",
+            "message": "Add a dedicated Guardian v3 housekeeper inference client (#61798)\n\n## What changed\n\nAdd a tool-free Responses sampler with persistent conversation history and whole-batch eviction to stay within the model's input budget. Parse completed routing replies and retain their output through an explicit commit step.\n\nAdd WebSocket connection reuse, HTTP fallback, bounded retries, authentication recovery, account-change checks, and cancellation of unfinished responses.\n\nRegister the new modules without connecting them to the existing housekeeper routing flow yet.\n\nGitOrigin-RevId: 2a0ff557a521763ab984249ec6594ae7ce09d59e",
+            "url": "https://github.com/openai/codex/commit/5630d58680af22b71dc0d435049d2a16ec9dace4"
+          },
+          {
+            "sha": "0370e34fe89585a3eb898e2dc21460b48abd1f83",
+            "title": "Route Guardian housekeeping through its dedicated sampler (#61799)",
+            "message": "Route Guardian housekeeping through its dedicated sampler (#61799)\n\n## What changed\n\nUse `HousekeeperSampler` for evidence routing instead of starting a separate review-session thread. The housekeeper now owns a tool-free model conversation, retains completed routing batches, and evicts whole batches under context-window pressure.\n\nCommit sampled history only after all board writes succeed and the evidence cursor advances. Stop the worker after a routing error or an interrupted routing future. Cancel routing when the account changes while allowing accepted appends to finish before shutdown.\n\n## Testing\n\nExtend housekeeping integration coverage for retained history, whole-batch eviction, transient retries, retry exhaustion with `Retry-After`, HTTP fallback, credential renewal, command-token rotation, and shutdown waiting for accepted evidence appends.\n\nGitOrigin-RevId: 316ab1b90529e2a5874e617855d38c41f232872a",
+            "url": "https://github.com/openai/codex/commit/0370e34fe89585a3eb898e2dc21460b48abd1f83"
+          },
+          {
+            "sha": "4fc37acc87fd9eacbc7fd6bf099a4acbdd2252cc",
+            "title": "Clarify managed human command checkpoint stability (#61800)",
+            "message": "Clarify managed human command checkpoint stability (#61800)\n\nDocument managed `prompt-user` command checkpoints as stable in the interactive\nCodex CLI, while keeping app-server integration marked experimental. Clarify\nthat each matching command requires a fresh human decision, even with automatic\nreview enabled, and that session or persistent approvals cannot satisfy it.\n\nGitOrigin-RevId: 98c36d00294bd97ab937f32940dfb24310ecbc32",
+            "url": "https://github.com/openai/codex/commit/4fc37acc87fd9eacbc7fd6bf099a4acbdd2252cc"
+          },
+          {
+            "sha": "662a634e88fcc809d77da393d75572c3d814cb27",
+            "title": "Preserve active turn approvals when an earlier turn finishes late (#61801)",
+            "message": "Preserve active turn approvals when an earlier turn finishes late (#61801)\n\n## Why\n\nA turn's terminal event can arrive after the next turn has started, cancelling the newer turn's pending approval requests and incorrectly changing the thread's active status.\n\n## What changed\n\nTrack the latest started turn in the app server. Only let completion or abort events for that turn cancel pending server requests and update thread watch status, preserving the existing behavior when no started turn is recorded.\n\n## Testing\n\nAdd a regression test that delays one turn's completion until the next turn requests command approval, then verifies that the thread remains waiting on approval and the approval can still be accepted to execute the command.\n\nGitOrigin-RevId: 521f4fb74728b3e70572839b2e73d2d2b2735f35",
+            "url": "https://github.com/openai/codex/commit/662a634e88fcc809d77da393d75572c3d814cb27"
+          },
+          {
+            "sha": "2309bae1ae7a6dcab6dd0ade0fd37a7491b1de01",
+            "title": "Isolate app-server turn metadata by turn ID (#61817)",
+            "message": "Isolate app-server turn metadata by turn ID (#61817)\n\n## Why\n\nA turn can complete after the next turn has started. Sharing one turn summary lets late completion events consume the next turn's metadata and clear its command tracking.\n\n## What changed\n\nTrack turn summaries and command start times by turn ID so errors, timestamps, final agent messages, and command lifecycle notifications stay associated with the correct turn. Read and remove only the completing turn's state, and clear tracked state when listeners are replaced or removed.\n\nInitialize summaries for inline reviews that can finish before their delegate emits `TurnStarted`.\n\n## Testing\n\nExtend regression coverage to check that overlapping turns retain their own errors, completed turns include start timestamps, and the next turn's approved command emits one start and one completion notification despite a late completion from the previous turn.\n\nGitOrigin-RevId: 91f022d885c67c7d8982091c72325f1d701569a6",
+            "url": "https://github.com/openai/codex/commit/2309bae1ae7a6dcab6dd0ade0fd37a7491b1de01"
+          },
+          {
+            "sha": "e5839cbc591df02408d5009e287887c7d57a9167",
+            "title": "Preserve aggregate turn diffs across steering (#61820)",
+            "message": "Preserve aggregate turn diffs across steering (#61820)\n\n## Why\n\nA steer can restart sampling within the same turn. Recreating the diff tracker loses earlier edits, and changing the working directory can change the meaning of relative diff paths.\n\n## What changed\n\nKeep the diff tracker for the lifetime of the turn and retain each environment's first display root. Refresh cached diff headers when new environments are added. Emit the final aggregate `TurnDiff` before `TurnComplete` instead of at sampling completion.\n\n## Testing\n\nExtend regression coverage for steering during the final flush, with and without additional patches and with a changed working directory. Check final diff ordering across continued sampling and header updates when adding an environment.\n\nGitOrigin-RevId: fbd1ebef072d8486a324190c9125fc1446510802",
+            "url": "https://github.com/openai/codex/commit/e5839cbc591df02408d5009e287887c7d57a9167"
+          },
+          {
+            "sha": "cd712429464ac7b96ba278e2ee5c5289489a5244",
+            "title": "Release 0.171.0-alpha.8",
+            "message": "Release 0.171.0-alpha.8",
+            "url": "https://github.com/openai/codex/commit/cd712429464ac7b96ba278e2ee5c5289489a5244"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.171.0-alpha.7",
+          "head": "rust-v0.171.0-alpha.8",
+          "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.7...rust-v0.171.0-alpha.8",
+          "status": "diverged",
+          "total": 31,
+          "behind": 1,
+          "complete": true,
+          "fetched": 31
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -16609,7 +16908,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-16T06:54:49.465Z",
+      "lastSuccessAt": "2026-11-16T16:56:55.756Z",
       "error": null,
       "count": 150
     },
@@ -16618,7 +16917,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-16T06:54:49.465Z",
+      "lastSuccessAt": "2026-11-16T16:56:55.756Z",
       "error": null,
       "count": 10
     },
@@ -16627,7 +16926,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-16T06:54:49.465Z",
+      "lastSuccessAt": "2026-11-16T16:56:55.756Z",
       "error": null,
       "count": 25
     }
@@ -67666,6 +67965,549 @@
           "behind": 1,
           "complete": true,
           "fetched": 7
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/lvmh-media-division-partnership:2026-11-16T16:56:56.578Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-16T16:56:56.578Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/lvmh-media-division-partnership",
+        "at": "2026-11-16T09:00:00.000Z",
+        "url": "https://openai.com/index/lvmh-media-division-partnership",
+        "text": "LVMH’s Media Division announces strategic partnership with OpenAI. LVMH’s Media Division and OpenAI announce a partnership to support journalism with AI and make its publications more accessible through ChatGPT.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/advancing-computer-use-for-healthcare-teams:2026-11-16T16:56:56.578Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-16T16:56:56.578Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/advancing-computer-use-for-healthcare-teams",
+        "at": "2026-11-16T06:00:00.000Z",
+        "url": "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
+        "text": "Advancing computer-use agents for healthcare teams",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare:2026-11-16T16:56:56.578Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-16T16:56:56.578Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
+        "at": "2026-11-16T06:00:00.000Z",
+        "url": "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
+        "text": "More ways to move care forward with ChatGPT for Healthcare. Introducing computer-use agents, improved clinical answers, and new healthcare plugins that work across healthcare software to get real work done.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/the-kings-trust-and-openai:2026-11-16T16:56:56.578Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-16T16:56:56.578Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/the-kings-trust-and-openai",
+        "at": "2026-11-16T00:00:00.000Z",
+        "url": "https://openai.com/index/the-kings-trust-and-openai",
+        "text": "The King’s Trust and OpenAI launch £1m partnership. The King’s Trust and OpenAI launch a £1m partnership to help up to 25,000 young people across the UK build practical AI skills for work.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/our-first-phase-of-embedded-assessments:2026-11-16T16:56:56.578Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-16T16:56:56.578Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/our-first-phase-of-embedded-assessments",
+        "at": "2026-11-13T08:00:00.000Z",
+        "url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
+        "text": "Our first phase of embedded assessments. OpenAI begins embedded assessments with Apollo Research, METR, and Transluce, and Goodfire to independently evaluate model alignment, safeguards, and monitoring systems.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.8:2026-11-16T16:56:56.578Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-16T16:56:56.578Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.8",
+        "at": "2026-11-16T16:30:40.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.8",
+        "text": "0.171.0-alpha.8. Release 0.171.0-alpha.8",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.171.0-alpha.8",
+          "title": "0.171.0-alpha.8",
+          "body": "Release 0.171.0-alpha.8\n\n",
+          "authored": false,
+          "fetchedAt": "2026-11-16T16:56:56.581Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.8",
+          "publishedAt": "2026-11-16T16:25:46Z",
+          "commits": [
+            {
+              "sha": "598df2d0158544c3b9ce199d3d7ca9db5621af55",
+              "title": "Refactor exec to use the shared app-server client (#61706)",
+              "message": "Refactor exec to use the shared app-server client (#61706)\n\n## What changed\n\n- Use `AppServerClient` throughout exec and extract turn completion into `finish_turn`, including handling for server and thread-stream disconnections.\n- Move remote address parsing and auth-token resolution into `codex-app-server-client`, with re-exports from the TUI.\n- Allow human-readable exec output to be initialized without a local `Config`.\n\n## Testing\n\nMove remote address and auth-token tests into `codex-app-server-client`, retaining coverage for WebSocket and Unix socket addresses, invalid addresses, and missing, empty, or whitespace-padded tokens.\n\nGitOrigin-RevId: 465b17a1c03392a7d4e7700d83ce67c2cf5ef021",
+              "url": "https://github.com/openai/codex/commit/598df2d0158544c3b9ce199d3d7ca9db5621af55"
+            },
+            {
+              "sha": "e51c551fb406486afb7ef5c3d43387f1be3c09e8",
+              "title": "Support remote app servers in `codex exec` (#61707)",
+              "message": "Support remote app servers in `codex exec` (#61707)\n\n## What changed\n\nAllow `codex exec --remote <ADDR>` to run a noninteractive turn using an existing app server's configuration and credentials. Support starting a new thread or resuming one by UUID, with human-readable or JSON output and optional bearer-token authentication through `--remote-auth-token-env`.\n\nAccept remote options before or after `exec`, and reject conflicting endpoints. Reject unsupported agent configuration overrides and active threads, and report an error if the server disconnects before the turn completes.\n\n## Testing\n\nExtend CLI integration coverage for remote execution and resume using server authentication, JSON completion events, human-readable thread IDs, and conflicting endpoints. Add a snapshot for `--remote` help text.\n\nGitOrigin-RevId: d4c3b16fb80eb6e8c523aff92110eaa878cbd3ee",
+              "url": "https://github.com/openai/codex/commit/e51c551fb406486afb7ef5c3d43387f1be3c09e8"
+            },
+            {
+              "sha": "b048d4a95cacdccd40425d94d4b5a313df5ed5f5",
+              "title": "Avoid legacy transcript reads in the agents overview (#61709)",
+              "message": "Avoid legacy transcript reads in the agents overview (#61709)\n\n## Why\n\nListing even one turn of a legacy thread replays its entire rollout. Overview refreshes should avoid that work just to populate previews.\n\n## What changed\n\n- Fetch saved prompt and reply previews only for threads with paginated history.\n- Update legacy prompt previews from user-message notifications and preserve them across refreshes and reverts.\n- Retain the latest observed reply preview when a thread closes.\n\n## Testing\n\nExtend overview tests to reject legacy turn-list requests, verify paginated previews, preserve live prompts across stale refreshes and reverts, and retain reply previews after thread closure.\n\nGitOrigin-RevId: 85130adda155c5ea93c5a5c2b3f89a945170ba51",
+              "url": "https://github.com/openai/codex/commit/b048d4a95cacdccd40425d94d4b5a313df5ed5f5"
+            },
+            {
+              "sha": "96e0673f6ec42bd7f48c9182cea477a8fa0e8949",
+              "title": "Enable slash-command completion for unavailable threads (#61710)",
+              "message": "Enable slash-command completion for unavailable threads (#61710)\n\n## Why\n\nRestricted input dismissed the slash-command popup when a thread was unavailable, preventing users from selecting recovery commands from partial input.\n\n## What changed\n\nKeep the command popup available while editing an unavailable thread's draft. Allow navigation, Tab completion, and submission of eligible recovery and local commands, including with custom submit keys. For example, typing `/sub` and pressing Enter selects `/subagents`.\n\nContinue to reject commands unavailable in this state and invalid command arguments. Preserve Vim escape and search behavior without reopening the popup during search.\n\n## Testing\n\nAdd regression tests and a popup snapshot covering highlighted recovery completion, blocked commands, custom submit keys, and Vim escape and search behavior.\n\nGitOrigin-RevId: 38021db8cdcd9f7ec7c62cfa0efd8819bf8057da",
+              "url": "https://github.com/openai/codex/commit/96e0673f6ec42bd7f48c9182cea477a8fa0e8949"
+            },
+            {
+              "sha": "58d5d3a0404bdd4e5d6af0f90a729068eb30396a",
+              "title": "Open Windows desktop sessions through the registered URL handler (#61711)",
+              "message": "Open Windows desktop sessions through the registered URL handler (#61711)\n\n## What changed\n\nLaunch desktop session URLs with PowerShell's `Start-Process` instead of resolving and starting the packaged executable directly. Restrict the installed `OpenAI.Codex` package check to the two supported publisher IDs and select the first match.\n\nGitOrigin-RevId: 350029a2101ff048de52fa9f9444e4b5dbdcc12e",
+              "url": "https://github.com/openai/codex/commit/58d5d3a0404bdd4e5d6af0f90a729068eb30396a"
+            },
+            {
+              "sha": "aea4c6ee4b652d84b416731b11c2b8299d767209",
+              "title": "Restore raw mode after returning from external editors (#61713)",
+              "message": "Restore raw mode after returning from external editors (#61713)\n\n## Why\n\nAn editor's suspend/resume cycle can change terminal settings while crossterm still considers raw mode enabled, preventing Codex from restoring raw mode on return.\n\n## What changed\n\nOn Unix, clear crossterm's raw-mode cache before reapplying TUI terminal modes after an external program exits.\n\n## Testing\n\nExtend the external-editor PTY test to simulate an editor restoring canonical mode with `stty sane` and verify that canonical input and echo are disabled after returning to Codex.\n\nGitOrigin-RevId: 4ae151deaf073bddf5a1c7fdfb5a1b5f4a480375",
+              "url": "https://github.com/openai/codex/commit/aea4c6ee4b652d84b416731b11c2b8299d767209"
+            },
+            {
+              "sha": "09c711b783cf19f5ed60b6e26fcf4ef269acae00",
+              "title": "Use `clip.exe` for single-line ASCII clipboard copies in WSL (#61724)",
+              "message": "Use `clip.exe` for single-line ASCII clipboard copies in WSL (#61724)\n\n## Why\n\nSingle-line ASCII copies can use the lightweight Windows clipboard writer without starting PowerShell.\n\n## What changed\n\n- Try `clip.exe` for printable ASCII text and tabs, falling back to PowerShell if it is unavailable or fails. Bound discovery and execution by short deadlines.\n- Keep PowerShell for Unicode, multiline text, and other control characters. Pad even-length ASCII input with a trailing NUL to prevent `clip.exe` from interpreting it as UTF-16.\n- Preserve precedence and command compatibility for installed Linux `powershell.exe` adapters, and defer Windows PowerShell discovery until needed.\n\n## Testing\n\nExtend WSL clipboard tests to cover input eligibility and padding, adapter precedence, and expired deadlines.\n\nGitOrigin-RevId: 69b66ec1243452d0a4df119563321f38d177bea9",
+              "url": "https://github.com/openai/codex/commit/09c711b783cf19f5ed60b6e26fcf4ef269acae00"
+            },
+            {
+              "sha": "e649c6d74c92c638658af8f08290a1ea81d6872f",
+              "title": "Fix Unicode grapheme highlighting in history search (#61725)",
+              "message": "Fix Unicode grapheme highlighting in history search (#61725)\n\n## Why\n\nCtrl+R history search highlights need to cover whole grapheme clusters so that matches on combining marks highlight the visible character.\n\n## What changed\n\n- Map case-insensitive matches to grapheme boundaries and deduplicate identical highlight ranges.\n- Segment the separately rendered `!` bash prompt independently from the textarea so a prompt-only match does not highlight the command body.\n\n## Testing\n\nExtend match-range tests for repeated combining marks and rendering coverage for combining-mark matches and prompt-only matches.\n\nGitOrigin-RevId: d8f5c5ebb06b1130153b3cfbc8631342a57cfa1c",
+              "url": "https://github.com/openai/codex/commit/e649c6d74c92c638658af8f08290a1ea81d6872f"
+            },
+            {
+              "sha": "eff3036bf41b4b00bb5d34c6ec0ca3a1ff131baa",
+              "title": "Preserve graphemes in mention search match highlighting (#61726)",
+              "message": "Preserve graphemes in mention search match highlighting (#61726)\n\n## Why\n\nSplitting fuzzy matches into individual Unicode scalars can break multi-codepoint emoji when mention results are truncated.\n\n## What changed\n\nRender highlighted names and parent paths as whole grapheme clusters, using scalar match indices for names and grapheme match indices for paths. Bold the entire grapheme when any part matches.\n\n## Testing\n\nAdd a regression test covering truncated plugin names and file paths containing `👩‍💻`, checking both rendered text and bold match styling.\n\nGitOrigin-RevId: 516d6668a9a22f79483adb0c576ed190b4f4a784",
+              "url": "https://github.com/openai/codex/commit/eff3036bf41b4b00bb5d34c6ec0ca3a1ff131baa"
+            },
+            {
+              "sha": "ca0bbbdf0c83cb64f2fb48cf0d5ffbc3d4409ab9",
+              "title": "Optimize default and attached thread listings with targeted indexes (#61727)",
+              "message": "Optimize default and attached thread listings with targeted indexes (#61727)\n\n## Why\n\nDefault thread listings should stay in timestamp order without scanning subagent threads. Attached-thread listings should use both parent and archive filters even without planner statistics.\n\n## What changed\n\n- Add partial indexes for visible interactive threads sorted by creation, update, or recency timestamps.\n- Use literal source predicates for default interactive listings so SQLite can select the partial indexes.\n- Extend the attached-parent index to include archive status.\n\n## Testing\n\nAdd a query-plan test verifying that the default sidebar listing uses the interactive update-time index. Extend app-server coverage to include `chatgpt` custom-source threads in default interactive listings.\n\nGitOrigin-RevId: 5844622b7af629cad71e15ec95a8960739d6d447",
+              "url": "https://github.com/openai/codex/commit/ca0bbbdf0c83cb64f2fb48cf0d5ffbc3d4409ab9"
+            },
+            {
+              "sha": "eb53da6c3ab0787f22707fcdc7f26ffd7316055e",
+              "title": "Fix thread listing migration numbering and test setup (#61730)",
+              "message": "Fix thread listing migration numbering and test setup (#61730)\n\n## Why\n\nThe thread listing index migration shares version `0063` with the session model IDs migration, and the sidebar query-plan test omits the required `included_thread_ids` field.\n\n## What changed\n\n- Renumber the thread listing index migration to `0064`.\n- Set `included_thread_ids` to `None` in the sidebar query-plan test.\n\nGitOrigin-RevId: 2c4c4ed52dd412fbf379ddbd2ed77324fba3b1ca",
+              "url": "https://github.com/openai/codex/commit/eb53da6c3ab0787f22707fcdc7f26ffd7316055e"
+            },
+            {
+              "sha": "540eb31ece8b5fea95062795183fc00a05340c85",
+              "title": "Keep bidirectional TUI headers stable during shimmer (#61731)",
+              "message": "Keep bidirectional TUI headers stable during shimmer (#61731)\n\n## Why\n\nPer-grapheme color updates can break native terminal bidirectional rendering in thinking and reasoning headers.\n\n## What changed\n\nRender text containing strong right-to-left characters or Arabic numbers as a single, static dimmed span in both shimmer implementations. Preserve logical text order and use one-second clock updates for these status headers when progress animation is disabled.\n\n## Testing\n\nAdd snapshot coverage for Hebrew, Arabic, mixed-direction text, and Arabic numbers, checking that headers remain unchanged during the shimmer sweep. Add scheduling tests for static headers and active progress animation.\n\nGitOrigin-RevId: 911abc50f00db597ae4dcfca9941e9f63547c2f9",
+              "url": "https://github.com/openai/codex/commit/540eb31ece8b5fea95062795183fc00a05340c85"
+            },
+            {
+              "sha": "ac2c4a339c15d96c9cd32b242ef487d48d27961b",
+              "title": "Preserve agent message phases in the cloud backend (#61737)",
+              "message": "Preserve agent message phases in the cloud backend (#61737)\n\n## Why\n\nCloud agent messages lost their phase when converted to app-server thread items, leaving consumers unable to distinguish commentary, final answers, and partial answers.\n\n## What changed\n\nDecode the optional phase from cloud agent messages, expose it through `ItemSummary::AgentMessage`, and map it to the corresponding app-server `MessagePhase`. Leave the phase unset for missing or unrecognized values.\n\n## Testing\n\nExtend item lifecycle and completed-reply tests to verify that a final-answer phase survives decoding and conversion. Retain history coverage for messages without a phase.\n\nGitOrigin-RevId: b7661386758685e0f3c07b53935ff7fd7ba35f7d",
+              "url": "https://github.com/openai/codex/commit/ac2c4a339c15d96c9cd32b242ef487d48d27961b"
+            },
+            {
+              "sha": "f1ebc7b372bc837b7c6386113e867256d7cc7036",
+              "title": "Reuse matching thread inventories for lightweight MCP status pages (#61738)",
+              "message": "Reuse matching thread inventories for lightweight MCP status pages (#61738)\n\n## What changed\n\nReuse connected thread tool inventories for paginated `ToolsAndAuthOnly` status requests when registrations, client settings, permissions, environments, and authentication match. Restrict reuse to connections with fixed credentials; discover remaining servers separately and preserve enterprise-managed servers' admitted thread connections.\n\nBind status configuration to the same environment and permission inputs used by the thread runtime, and limit authentication-failure inspection to the requested servers.\n\n## Testing\n\nExtend status tests to cover fixed-credential reuse, fresh discovery for stored OAuth authority, full resource discovery, and inventories for dormant threads without starting their runtime connections. Verify that paginated lightweight results keep same-named servers in different environments separate.\n\nGitOrigin-RevId: eaca6365fb2a739eaad76eefdc62ec9f796b1024",
+              "url": "https://github.com/openai/codex/commit/f1ebc7b372bc837b7c6386113e867256d7cc7036"
+            },
+            {
+              "sha": "630c0d75abbe74784a35673926868cc4133ef6fa",
+              "title": "Mark cloud threads with a cloud icon in the TUI (#61742)",
+              "message": "Mark cloud threads with a cloud icon in the TUI (#61742)\n\n## What changed\n\nPrefix cloud thread labels with `☁︎` in resume and fork pickers, the agents overview and task details, task mention suggestions, side chat tabs and chooser, status lines, and terminal titles. Keep the marker separate from thread names, search text, and identity, and account for its width when truncating labels.\n\nTrack cloud backend identity independently of live connections so thread labels retain their marker after a disconnect.\n\n## Testing\n\nExtend rendering tests and snapshots to cover cloud and local labels, narrow layouts, side chat tabs and chooser, and terminal title fallbacks and truncation.\n\nGitOrigin-RevId: ea8189ebcc5e35d2d2ef95d6a4a87ca23b5e3b8f",
+              "url": "https://github.com/openai/codex/commit/630c0d75abbe74784a35673926868cc4133ef6fa"
+            },
+            {
+              "sha": "5a6bbd29a45d81c69395c12f0d6fa5b31747aaa6",
+              "title": "Clarify shell-specific login guidance for `exec_command` (#61744)",
+              "message": "Clarify shell-specific login guidance for `exec_command` (#61744)\n\n## Why\n\nThe `login` description claimed a fixed default and described Unix shell flags for every shell. In PowerShell, disabling login startup skips profiles, which can make profile-defined commands unavailable.\n\n## What changed\n\nDescribe omitted `login` values as inheriting the setting. When a turn environment reports PowerShell, explain that `login: false` skips profiles and advise keeping profiles enabled for commands that depend on them, including unattended commands.\n\n## Testing\n\nAdd coverage for shell-specific descriptions, remote environment readiness, and exact normalization of PowerShell wording in portable tool snapshots. Update prompt-prefix compatibility checks and affected snapshots.\n\nGitOrigin-RevId: f6cb29c6c32921241cbd1be0c31f985c5ae274f9",
+              "url": "https://github.com/openai/codex/commit/5a6bbd29a45d81c69395c12f0d6fa5b31747aaa6"
+            },
+            {
+              "sha": "710bee73a89385aaf2afb41d885edf82473d941f",
+              "title": "Refactor history and notes tool registration (#61747)",
+              "message": "Refactor history and notes tool registration (#61747)\n\n## What changed\n\nSplit tool construction into `history_tools` and `notes_tools`, with\n`history_notes_tools` combining both. Each builder accepts an optional backend\nand reads its catalog messages directly from the step's `ExtensionData`.\n\nExtract a shared contributor registration helper and simplify the HTTP-backed\nextension to use these helpers. Update the bundled tool contract snapshot test\nto use the revised builder signature.\n\nGitOrigin-RevId: c9804b457ffc5d3634d7e58973a9f0f5028ca6e9",
+              "url": "https://github.com/openai/codex/commit/710bee73a89385aaf2afb41d885edf82473d941f"
+            },
+            {
+              "sha": "0184dfa6a48f0110dd9c6835522492908e5abcf3",
+              "title": "Fix the missing label style in the mention truncation test (#61762)",
+              "message": "Fix the missing label style in the mention truncation test (#61762)\n\nInitialize the file result with `ThreadLabelStyle::Plain` in\n`fuzzy_matches_preserve_graphemes_when_truncated` so the test supplies the\nrequired `SearchResult` field.\n\nGitOrigin-RevId: c1dbfc3b4d094511b2f480020d8365813f2d89d5",
+              "url": "https://github.com/openai/codex/commit/0184dfa6a48f0110dd9c6835522492908e5abcf3"
+            },
+            {
+              "sha": "98e1584a082234ae716a3cc69d4c6f2d3631cf2d",
+              "title": "Simplify history and notes tool registration (#61764)",
+              "message": "Simplify history and notes tool registration (#61764)\n\nGenerate `history_notes_tools` directly from `register_tools!`, removing the\nseparate per-namespace registration helpers and building a single executor\nvector. Preserve tool order, catalog overrides, and empty results when no\nbackend is available.\n\nGitOrigin-RevId: f13a056af4e26b7510b2cc138c69c935be5a5c2d",
+              "url": "https://github.com/openai/codex/commit/98e1584a082234ae716a3cc69d4c6f2d3631cf2d"
+            },
+            {
+              "sha": "75fc67e8f4284a669eebd90ab6bc9ef7697e876e",
+              "title": "Remove numeric positions from project responses (#61771)",
+              "message": "Remove numeric positions from project responses (#61771)\n\n## What changed\n\nRemove `position` from app-server `Project` responses, the thread-store project model, and generated schemas and SDK types.\n\nDocument that clients should use the returned project order and that `beforeProjectId` places a moved project before another project, or appends it when omitted or null.\n\nGitOrigin-RevId: 5de481e13f524c03260b7fed5c74874f051d6f30",
+              "url": "https://github.com/openai/codex/commit/75fc67e8f4284a669eebd90ab6bc9ef7697e876e"
+            },
+            {
+              "sha": "776bd46f03a30df0caf3c37cd2fbbc70d4b7d7b4",
+              "title": "Centralize permission profile compatibility helpers in protocol (#61784)",
+              "message": "Centralize permission profile compatibility helpers in protocol (#61784)\n\n## What changed\n\nMove legacy sandbox policy conversion into `codex-protocol` and add a shared helper for resolving compatibility writable roots. Re-export the policy helper from `codex-sandboxing` and use the writable-roots helper in both Windows sandbox backends, preserving the existing workspace-write fallback.\n\n## Testing\n\nAdd a regression test confirming that an output-only permission profile retains the fallback's output and working-directory writable roots, including protected `.git` and `.codex` subpaths.\n\nGitOrigin-RevId: a40474eb74544f34f7eea8135a7eb1b57706dbc2",
+              "url": "https://github.com/openai/codex/commit/776bd46f03a30df0caf3c37cd2fbbc70d4b7d7b4"
+            },
+            {
+              "sha": "95946faafcd8f068e28610e8ae6a4c03060c1448",
+              "title": "Strengthen workspace-write configuration tests (#61785)",
+              "message": "Strengthen workspace-write configuration tests (#61785)\n\n## What changed\n\n- Exercise an explicit `PermissionProfile` in the additional writable roots test on non-Windows platforms, while preserving Windows coverage of the default read-only fallback.\n- Assert that enabling memories preserves write access to the working directory on non-Windows platforms.\n\nGitOrigin-RevId: ae25690a56825b47ca38e42fece1fdd7a42b48a4",
+              "url": "https://github.com/openai/codex/commit/95946faafcd8f068e28610e8ae6a4c03060c1448"
+            },
+            {
+              "sha": "cd1805370610e71eae7819b4ed28b90679a53f0e",
+              "title": "Add lifecycle-managed Guardian housekeeping (#61795)",
+              "message": "Add lifecycle-managed Guardian housekeeping (#61795)\n\n## What changed\n\n- Add an `install` entry point that registers thread and turn lifecycle hooks for Guardian housekeeping. Coalesce user-message and turn-end wakes into one worker per eligible root thread, flushing history before routing durable evidence in order.\n- Run the housekeeper in an isolated, ephemeral model thread with no tools. Cancel and join its tracked tasks on root shutdown, waiting for accepted evidence appends to finish.\n- Give each routing batch a 90-second deadline, make channel listing and updates cancellable, and redact model response content from JSON parsing errors.\n\n## Testing\n\nExtend housekeeping tests to cover stalled channel creation, redacted model errors, and shutdown waiting for an accepted evidence append without leaving a persisted housekeeper rollout.\n\nGitOrigin-RevId: 519b539c0613c964bac7b18eb84e684f5e105640",
+              "url": "https://github.com/openai/codex/commit/cd1805370610e71eae7819b4ed28b90679a53f0e"
+            },
+            {
+              "sha": "9544f09e7b880f373532b4fb5ca98313d2450d4f",
+              "title": "Wire Guardian V3 housekeeping into the app server (#61797)",
+              "message": "Wire Guardian V3 housekeeping into the app server (#61797)\n\n## What changed\n\n- Install Guardian V3 with a local message-board host when the server enables `features.guardianv3.enabled`, independently of thread overrides.\n- Clear inherited user, thread, and project instructions from Guardian V3 private threads and skip repository instruction discovery.\n\n## Testing\n\nAdd integration coverage for routing the first live message while the actor is still sampling, for both new and resumed threads. Verify that resumed history is skipped, `AGENTS.md` reaches only the actor, and thread overrides cannot enable or disable server-level housekeeping.\n\nGitOrigin-RevId: 3f3ae1be404c9e17b73eea12c95f5a95c96052cf",
+              "url": "https://github.com/openai/codex/commit/9544f09e7b880f373532b4fb5ca98313d2450d4f"
+            },
+            {
+              "sha": "5630d58680af22b71dc0d435049d2a16ec9dace4",
+              "title": "Add a dedicated Guardian v3 housekeeper inference client (#61798)",
+              "message": "Add a dedicated Guardian v3 housekeeper inference client (#61798)\n\n## What changed\n\nAdd a tool-free Responses sampler with persistent conversation history and whole-batch eviction to stay within the model's input budget. Parse completed routing replies and retain their output through an explicit commit step.\n\nAdd WebSocket connection reuse, HTTP fallback, bounded retries, authentication recovery, account-change checks, and cancellation of unfinished responses.\n\nRegister the new modules without connecting them to the existing housekeeper routing flow yet.\n\nGitOrigin-RevId: 2a0ff557a521763ab984249ec6594ae7ce09d59e",
+              "url": "https://github.com/openai/codex/commit/5630d58680af22b71dc0d435049d2a16ec9dace4"
+            },
+            {
+              "sha": "0370e34fe89585a3eb898e2dc21460b48abd1f83",
+              "title": "Route Guardian housekeeping through its dedicated sampler (#61799)",
+              "message": "Route Guardian housekeeping through its dedicated sampler (#61799)\n\n## What changed\n\nUse `HousekeeperSampler` for evidence routing instead of starting a separate review-session thread. The housekeeper now owns a tool-free model conversation, retains completed routing batches, and evicts whole batches under context-window pressure.\n\nCommit sampled history only after all board writes succeed and the evidence cursor advances. Stop the worker after a routing error or an interrupted routing future. Cancel routing when the account changes while allowing accepted appends to finish before shutdown.\n\n## Testing\n\nExtend housekeeping integration coverage for retained history, whole-batch eviction, transient retries, retry exhaustion with `Retry-After`, HTTP fallback, credential renewal, command-token rotation, and shutdown waiting for accepted evidence appends.\n\nGitOrigin-RevId: 316ab1b90529e2a5874e617855d38c41f232872a",
+              "url": "https://github.com/openai/codex/commit/0370e34fe89585a3eb898e2dc21460b48abd1f83"
+            },
+            {
+              "sha": "4fc37acc87fd9eacbc7fd6bf099a4acbdd2252cc",
+              "title": "Clarify managed human command checkpoint stability (#61800)",
+              "message": "Clarify managed human command checkpoint stability (#61800)\n\nDocument managed `prompt-user` command checkpoints as stable in the interactive\nCodex CLI, while keeping app-server integration marked experimental. Clarify\nthat each matching command requires a fresh human decision, even with automatic\nreview enabled, and that session or persistent approvals cannot satisfy it.\n\nGitOrigin-RevId: 98c36d00294bd97ab937f32940dfb24310ecbc32",
+              "url": "https://github.com/openai/codex/commit/4fc37acc87fd9eacbc7fd6bf099a4acbdd2252cc"
+            },
+            {
+              "sha": "662a634e88fcc809d77da393d75572c3d814cb27",
+              "title": "Preserve active turn approvals when an earlier turn finishes late (#61801)",
+              "message": "Preserve active turn approvals when an earlier turn finishes late (#61801)\n\n## Why\n\nA turn's terminal event can arrive after the next turn has started, cancelling the newer turn's pending approval requests and incorrectly changing the thread's active status.\n\n## What changed\n\nTrack the latest started turn in the app server. Only let completion or abort events for that turn cancel pending server requests and update thread watch status, preserving the existing behavior when no started turn is recorded.\n\n## Testing\n\nAdd a regression test that delays one turn's completion until the next turn requests command approval, then verifies that the thread remains waiting on approval and the approval can still be accepted to execute the command.\n\nGitOrigin-RevId: 521f4fb74728b3e70572839b2e73d2d2b2735f35",
+              "url": "https://github.com/openai/codex/commit/662a634e88fcc809d77da393d75572c3d814cb27"
+            },
+            {
+              "sha": "2309bae1ae7a6dcab6dd0ade0fd37a7491b1de01",
+              "title": "Isolate app-server turn metadata by turn ID (#61817)",
+              "message": "Isolate app-server turn metadata by turn ID (#61817)\n\n## Why\n\nA turn can complete after the next turn has started. Sharing one turn summary lets late completion events consume the next turn's metadata and clear its command tracking.\n\n## What changed\n\nTrack turn summaries and command start times by turn ID so errors, timestamps, final agent messages, and command lifecycle notifications stay associated with the correct turn. Read and remove only the completing turn's state, and clear tracked state when listeners are replaced or removed.\n\nInitialize summaries for inline reviews that can finish before their delegate emits `TurnStarted`.\n\n## Testing\n\nExtend regression coverage to check that overlapping turns retain their own errors, completed turns include start timestamps, and the next turn's approved command emits one start and one completion notification despite a late completion from the previous turn.\n\nGitOrigin-RevId: 91f022d885c67c7d8982091c72325f1d701569a6",
+              "url": "https://github.com/openai/codex/commit/2309bae1ae7a6dcab6dd0ade0fd37a7491b1de01"
+            },
+            {
+              "sha": "e5839cbc591df02408d5009e287887c7d57a9167",
+              "title": "Preserve aggregate turn diffs across steering (#61820)",
+              "message": "Preserve aggregate turn diffs across steering (#61820)\n\n## Why\n\nA steer can restart sampling within the same turn. Recreating the diff tracker loses earlier edits, and changing the working directory can change the meaning of relative diff paths.\n\n## What changed\n\nKeep the diff tracker for the lifetime of the turn and retain each environment's first display root. Refresh cached diff headers when new environments are added. Emit the final aggregate `TurnDiff` before `TurnComplete` instead of at sampling completion.\n\n## Testing\n\nExtend regression coverage for steering during the final flush, with and without additional patches and with a changed working directory. Check final diff ordering across continued sampling and header updates when adding an environment.\n\nGitOrigin-RevId: fbd1ebef072d8486a324190c9125fc1446510802",
+              "url": "https://github.com/openai/codex/commit/e5839cbc591df02408d5009e287887c7d57a9167"
+            },
+            {
+              "sha": "cd712429464ac7b96ba278e2ee5c5289489a5244",
+              "title": "Release 0.171.0-alpha.8",
+              "message": "Release 0.171.0-alpha.8",
+              "url": "https://github.com/openai/codex/commit/cd712429464ac7b96ba278e2ee5c5289489a5244"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.171.0-alpha.7",
+            "head": "rust-v0.171.0-alpha.8",
+            "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.7...rust-v0.171.0-alpha.8",
+            "status": "diverged",
+            "total": 31,
+            "behind": 1,
+            "complete": true,
+            "fetched": 31
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.8:2026-11-16T16:56:56.578Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-16T16:56:56.578Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.171.0-alpha.8",
+        "title": "0.171.0-alpha.8",
+        "body": "Release 0.171.0-alpha.8\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-16T16:56:56.581Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.8",
+        "publishedAt": "2026-11-16T16:25:46Z",
+        "commits": [
+          {
+            "sha": "598df2d0158544c3b9ce199d3d7ca9db5621af55",
+            "title": "Refactor exec to use the shared app-server client (#61706)",
+            "message": "Refactor exec to use the shared app-server client (#61706)\n\n## What changed\n\n- Use `AppServerClient` throughout exec and extract turn completion into `finish_turn`, including handling for server and thread-stream disconnections.\n- Move remote address parsing and auth-token resolution into `codex-app-server-client`, with re-exports from the TUI.\n- Allow human-readable exec output to be initialized without a local `Config`.\n\n## Testing\n\nMove remote address and auth-token tests into `codex-app-server-client`, retaining coverage for WebSocket and Unix socket addresses, invalid addresses, and missing, empty, or whitespace-padded tokens.\n\nGitOrigin-RevId: 465b17a1c03392a7d4e7700d83ce67c2cf5ef021",
+            "url": "https://github.com/openai/codex/commit/598df2d0158544c3b9ce199d3d7ca9db5621af55"
+          },
+          {
+            "sha": "e51c551fb406486afb7ef5c3d43387f1be3c09e8",
+            "title": "Support remote app servers in `codex exec` (#61707)",
+            "message": "Support remote app servers in `codex exec` (#61707)\n\n## What changed\n\nAllow `codex exec --remote <ADDR>` to run a noninteractive turn using an existing app server's configuration and credentials. Support starting a new thread or resuming one by UUID, with human-readable or JSON output and optional bearer-token authentication through `--remote-auth-token-env`.\n\nAccept remote options before or after `exec`, and reject conflicting endpoints. Reject unsupported agent configuration overrides and active threads, and report an error if the server disconnects before the turn completes.\n\n## Testing\n\nExtend CLI integration coverage for remote execution and resume using server authentication, JSON completion events, human-readable thread IDs, and conflicting endpoints. Add a snapshot for `--remote` help text.\n\nGitOrigin-RevId: d4c3b16fb80eb6e8c523aff92110eaa878cbd3ee",
+            "url": "https://github.com/openai/codex/commit/e51c551fb406486afb7ef5c3d43387f1be3c09e8"
+          },
+          {
+            "sha": "b048d4a95cacdccd40425d94d4b5a313df5ed5f5",
+            "title": "Avoid legacy transcript reads in the agents overview (#61709)",
+            "message": "Avoid legacy transcript reads in the agents overview (#61709)\n\n## Why\n\nListing even one turn of a legacy thread replays its entire rollout. Overview refreshes should avoid that work just to populate previews.\n\n## What changed\n\n- Fetch saved prompt and reply previews only for threads with paginated history.\n- Update legacy prompt previews from user-message notifications and preserve them across refreshes and reverts.\n- Retain the latest observed reply preview when a thread closes.\n\n## Testing\n\nExtend overview tests to reject legacy turn-list requests, verify paginated previews, preserve live prompts across stale refreshes and reverts, and retain reply previews after thread closure.\n\nGitOrigin-RevId: 85130adda155c5ea93c5a5c2b3f89a945170ba51",
+            "url": "https://github.com/openai/codex/commit/b048d4a95cacdccd40425d94d4b5a313df5ed5f5"
+          },
+          {
+            "sha": "96e0673f6ec42bd7f48c9182cea477a8fa0e8949",
+            "title": "Enable slash-command completion for unavailable threads (#61710)",
+            "message": "Enable slash-command completion for unavailable threads (#61710)\n\n## Why\n\nRestricted input dismissed the slash-command popup when a thread was unavailable, preventing users from selecting recovery commands from partial input.\n\n## What changed\n\nKeep the command popup available while editing an unavailable thread's draft. Allow navigation, Tab completion, and submission of eligible recovery and local commands, including with custom submit keys. For example, typing `/sub` and pressing Enter selects `/subagents`.\n\nContinue to reject commands unavailable in this state and invalid command arguments. Preserve Vim escape and search behavior without reopening the popup during search.\n\n## Testing\n\nAdd regression tests and a popup snapshot covering highlighted recovery completion, blocked commands, custom submit keys, and Vim escape and search behavior.\n\nGitOrigin-RevId: 38021db8cdcd9f7ec7c62cfa0efd8819bf8057da",
+            "url": "https://github.com/openai/codex/commit/96e0673f6ec42bd7f48c9182cea477a8fa0e8949"
+          },
+          {
+            "sha": "58d5d3a0404bdd4e5d6af0f90a729068eb30396a",
+            "title": "Open Windows desktop sessions through the registered URL handler (#61711)",
+            "message": "Open Windows desktop sessions through the registered URL handler (#61711)\n\n## What changed\n\nLaunch desktop session URLs with PowerShell's `Start-Process` instead of resolving and starting the packaged executable directly. Restrict the installed `OpenAI.Codex` package check to the two supported publisher IDs and select the first match.\n\nGitOrigin-RevId: 350029a2101ff048de52fa9f9444e4b5dbdcc12e",
+            "url": "https://github.com/openai/codex/commit/58d5d3a0404bdd4e5d6af0f90a729068eb30396a"
+          },
+          {
+            "sha": "aea4c6ee4b652d84b416731b11c2b8299d767209",
+            "title": "Restore raw mode after returning from external editors (#61713)",
+            "message": "Restore raw mode after returning from external editors (#61713)\n\n## Why\n\nAn editor's suspend/resume cycle can change terminal settings while crossterm still considers raw mode enabled, preventing Codex from restoring raw mode on return.\n\n## What changed\n\nOn Unix, clear crossterm's raw-mode cache before reapplying TUI terminal modes after an external program exits.\n\n## Testing\n\nExtend the external-editor PTY test to simulate an editor restoring canonical mode with `stty sane` and verify that canonical input and echo are disabled after returning to Codex.\n\nGitOrigin-RevId: 4ae151deaf073bddf5a1c7fdfb5a1b5f4a480375",
+            "url": "https://github.com/openai/codex/commit/aea4c6ee4b652d84b416731b11c2b8299d767209"
+          },
+          {
+            "sha": "09c711b783cf19f5ed60b6e26fcf4ef269acae00",
+            "title": "Use `clip.exe` for single-line ASCII clipboard copies in WSL (#61724)",
+            "message": "Use `clip.exe` for single-line ASCII clipboard copies in WSL (#61724)\n\n## Why\n\nSingle-line ASCII copies can use the lightweight Windows clipboard writer without starting PowerShell.\n\n## What changed\n\n- Try `clip.exe` for printable ASCII text and tabs, falling back to PowerShell if it is unavailable or fails. Bound discovery and execution by short deadlines.\n- Keep PowerShell for Unicode, multiline text, and other control characters. Pad even-length ASCII input with a trailing NUL to prevent `clip.exe` from interpreting it as UTF-16.\n- Preserve precedence and command compatibility for installed Linux `powershell.exe` adapters, and defer Windows PowerShell discovery until needed.\n\n## Testing\n\nExtend WSL clipboard tests to cover input eligibility and padding, adapter precedence, and expired deadlines.\n\nGitOrigin-RevId: 69b66ec1243452d0a4df119563321f38d177bea9",
+            "url": "https://github.com/openai/codex/commit/09c711b783cf19f5ed60b6e26fcf4ef269acae00"
+          },
+          {
+            "sha": "e649c6d74c92c638658af8f08290a1ea81d6872f",
+            "title": "Fix Unicode grapheme highlighting in history search (#61725)",
+            "message": "Fix Unicode grapheme highlighting in history search (#61725)\n\n## Why\n\nCtrl+R history search highlights need to cover whole grapheme clusters so that matches on combining marks highlight the visible character.\n\n## What changed\n\n- Map case-insensitive matches to grapheme boundaries and deduplicate identical highlight ranges.\n- Segment the separately rendered `!` bash prompt independently from the textarea so a prompt-only match does not highlight the command body.\n\n## Testing\n\nExtend match-range tests for repeated combining marks and rendering coverage for combining-mark matches and prompt-only matches.\n\nGitOrigin-RevId: d8f5c5ebb06b1130153b3cfbc8631342a57cfa1c",
+            "url": "https://github.com/openai/codex/commit/e649c6d74c92c638658af8f08290a1ea81d6872f"
+          },
+          {
+            "sha": "eff3036bf41b4b00bb5d34c6ec0ca3a1ff131baa",
+            "title": "Preserve graphemes in mention search match highlighting (#61726)",
+            "message": "Preserve graphemes in mention search match highlighting (#61726)\n\n## Why\n\nSplitting fuzzy matches into individual Unicode scalars can break multi-codepoint emoji when mention results are truncated.\n\n## What changed\n\nRender highlighted names and parent paths as whole grapheme clusters, using scalar match indices for names and grapheme match indices for paths. Bold the entire grapheme when any part matches.\n\n## Testing\n\nAdd a regression test covering truncated plugin names and file paths containing `👩‍💻`, checking both rendered text and bold match styling.\n\nGitOrigin-RevId: 516d6668a9a22f79483adb0c576ed190b4f4a784",
+            "url": "https://github.com/openai/codex/commit/eff3036bf41b4b00bb5d34c6ec0ca3a1ff131baa"
+          },
+          {
+            "sha": "ca0bbbdf0c83cb64f2fb48cf0d5ffbc3d4409ab9",
+            "title": "Optimize default and attached thread listings with targeted indexes (#61727)",
+            "message": "Optimize default and attached thread listings with targeted indexes (#61727)\n\n## Why\n\nDefault thread listings should stay in timestamp order without scanning subagent threads. Attached-thread listings should use both parent and archive filters even without planner statistics.\n\n## What changed\n\n- Add partial indexes for visible interactive threads sorted by creation, update, or recency timestamps.\n- Use literal source predicates for default interactive listings so SQLite can select the partial indexes.\n- Extend the attached-parent index to include archive status.\n\n## Testing\n\nAdd a query-plan test verifying that the default sidebar listing uses the interactive update-time index. Extend app-server coverage to include `chatgpt` custom-source threads in default interactive listings.\n\nGitOrigin-RevId: 5844622b7af629cad71e15ec95a8960739d6d447",
+            "url": "https://github.com/openai/codex/commit/ca0bbbdf0c83cb64f2fb48cf0d5ffbc3d4409ab9"
+          },
+          {
+            "sha": "eb53da6c3ab0787f22707fcdc7f26ffd7316055e",
+            "title": "Fix thread listing migration numbering and test setup (#61730)",
+            "message": "Fix thread listing migration numbering and test setup (#61730)\n\n## Why\n\nThe thread listing index migration shares version `0063` with the session model IDs migration, and the sidebar query-plan test omits the required `included_thread_ids` field.\n\n## What changed\n\n- Renumber the thread listing index migration to `0064`.\n- Set `included_thread_ids` to `None` in the sidebar query-plan test.\n\nGitOrigin-RevId: 2c4c4ed52dd412fbf379ddbd2ed77324fba3b1ca",
+            "url": "https://github.com/openai/codex/commit/eb53da6c3ab0787f22707fcdc7f26ffd7316055e"
+          },
+          {
+            "sha": "540eb31ece8b5fea95062795183fc00a05340c85",
+            "title": "Keep bidirectional TUI headers stable during shimmer (#61731)",
+            "message": "Keep bidirectional TUI headers stable during shimmer (#61731)\n\n## Why\n\nPer-grapheme color updates can break native terminal bidirectional rendering in thinking and reasoning headers.\n\n## What changed\n\nRender text containing strong right-to-left characters or Arabic numbers as a single, static dimmed span in both shimmer implementations. Preserve logical text order and use one-second clock updates for these status headers when progress animation is disabled.\n\n## Testing\n\nAdd snapshot coverage for Hebrew, Arabic, mixed-direction text, and Arabic numbers, checking that headers remain unchanged during the shimmer sweep. Add scheduling tests for static headers and active progress animation.\n\nGitOrigin-RevId: 911abc50f00db597ae4dcfca9941e9f63547c2f9",
+            "url": "https://github.com/openai/codex/commit/540eb31ece8b5fea95062795183fc00a05340c85"
+          },
+          {
+            "sha": "ac2c4a339c15d96c9cd32b242ef487d48d27961b",
+            "title": "Preserve agent message phases in the cloud backend (#61737)",
+            "message": "Preserve agent message phases in the cloud backend (#61737)\n\n## Why\n\nCloud agent messages lost their phase when converted to app-server thread items, leaving consumers unable to distinguish commentary, final answers, and partial answers.\n\n## What changed\n\nDecode the optional phase from cloud agent messages, expose it through `ItemSummary::AgentMessage`, and map it to the corresponding app-server `MessagePhase`. Leave the phase unset for missing or unrecognized values.\n\n## Testing\n\nExtend item lifecycle and completed-reply tests to verify that a final-answer phase survives decoding and conversion. Retain history coverage for messages without a phase.\n\nGitOrigin-RevId: b7661386758685e0f3c07b53935ff7fd7ba35f7d",
+            "url": "https://github.com/openai/codex/commit/ac2c4a339c15d96c9cd32b242ef487d48d27961b"
+          },
+          {
+            "sha": "f1ebc7b372bc837b7c6386113e867256d7cc7036",
+            "title": "Reuse matching thread inventories for lightweight MCP status pages (#61738)",
+            "message": "Reuse matching thread inventories for lightweight MCP status pages (#61738)\n\n## What changed\n\nReuse connected thread tool inventories for paginated `ToolsAndAuthOnly` status requests when registrations, client settings, permissions, environments, and authentication match. Restrict reuse to connections with fixed credentials; discover remaining servers separately and preserve enterprise-managed servers' admitted thread connections.\n\nBind status configuration to the same environment and permission inputs used by the thread runtime, and limit authentication-failure inspection to the requested servers.\n\n## Testing\n\nExtend status tests to cover fixed-credential reuse, fresh discovery for stored OAuth authority, full resource discovery, and inventories for dormant threads without starting their runtime connections. Verify that paginated lightweight results keep same-named servers in different environments separate.\n\nGitOrigin-RevId: eaca6365fb2a739eaad76eefdc62ec9f796b1024",
+            "url": "https://github.com/openai/codex/commit/f1ebc7b372bc837b7c6386113e867256d7cc7036"
+          },
+          {
+            "sha": "630c0d75abbe74784a35673926868cc4133ef6fa",
+            "title": "Mark cloud threads with a cloud icon in the TUI (#61742)",
+            "message": "Mark cloud threads with a cloud icon in the TUI (#61742)\n\n## What changed\n\nPrefix cloud thread labels with `☁︎` in resume and fork pickers, the agents overview and task details, task mention suggestions, side chat tabs and chooser, status lines, and terminal titles. Keep the marker separate from thread names, search text, and identity, and account for its width when truncating labels.\n\nTrack cloud backend identity independently of live connections so thread labels retain their marker after a disconnect.\n\n## Testing\n\nExtend rendering tests and snapshots to cover cloud and local labels, narrow layouts, side chat tabs and chooser, and terminal title fallbacks and truncation.\n\nGitOrigin-RevId: ea8189ebcc5e35d2d2ef95d6a4a87ca23b5e3b8f",
+            "url": "https://github.com/openai/codex/commit/630c0d75abbe74784a35673926868cc4133ef6fa"
+          },
+          {
+            "sha": "5a6bbd29a45d81c69395c12f0d6fa5b31747aaa6",
+            "title": "Clarify shell-specific login guidance for `exec_command` (#61744)",
+            "message": "Clarify shell-specific login guidance for `exec_command` (#61744)\n\n## Why\n\nThe `login` description claimed a fixed default and described Unix shell flags for every shell. In PowerShell, disabling login startup skips profiles, which can make profile-defined commands unavailable.\n\n## What changed\n\nDescribe omitted `login` values as inheriting the setting. When a turn environment reports PowerShell, explain that `login: false` skips profiles and advise keeping profiles enabled for commands that depend on them, including unattended commands.\n\n## Testing\n\nAdd coverage for shell-specific descriptions, remote environment readiness, and exact normalization of PowerShell wording in portable tool snapshots. Update prompt-prefix compatibility checks and affected snapshots.\n\nGitOrigin-RevId: f6cb29c6c32921241cbd1be0c31f985c5ae274f9",
+            "url": "https://github.com/openai/codex/commit/5a6bbd29a45d81c69395c12f0d6fa5b31747aaa6"
+          },
+          {
+            "sha": "710bee73a89385aaf2afb41d885edf82473d941f",
+            "title": "Refactor history and notes tool registration (#61747)",
+            "message": "Refactor history and notes tool registration (#61747)\n\n## What changed\n\nSplit tool construction into `history_tools` and `notes_tools`, with\n`history_notes_tools` combining both. Each builder accepts an optional backend\nand reads its catalog messages directly from the step's `ExtensionData`.\n\nExtract a shared contributor registration helper and simplify the HTTP-backed\nextension to use these helpers. Update the bundled tool contract snapshot test\nto use the revised builder signature.\n\nGitOrigin-RevId: c9804b457ffc5d3634d7e58973a9f0f5028ca6e9",
+            "url": "https://github.com/openai/codex/commit/710bee73a89385aaf2afb41d885edf82473d941f"
+          },
+          {
+            "sha": "0184dfa6a48f0110dd9c6835522492908e5abcf3",
+            "title": "Fix the missing label style in the mention truncation test (#61762)",
+            "message": "Fix the missing label style in the mention truncation test (#61762)\n\nInitialize the file result with `ThreadLabelStyle::Plain` in\n`fuzzy_matches_preserve_graphemes_when_truncated` so the test supplies the\nrequired `SearchResult` field.\n\nGitOrigin-RevId: c1dbfc3b4d094511b2f480020d8365813f2d89d5",
+            "url": "https://github.com/openai/codex/commit/0184dfa6a48f0110dd9c6835522492908e5abcf3"
+          },
+          {
+            "sha": "98e1584a082234ae716a3cc69d4c6f2d3631cf2d",
+            "title": "Simplify history and notes tool registration (#61764)",
+            "message": "Simplify history and notes tool registration (#61764)\n\nGenerate `history_notes_tools` directly from `register_tools!`, removing the\nseparate per-namespace registration helpers and building a single executor\nvector. Preserve tool order, catalog overrides, and empty results when no\nbackend is available.\n\nGitOrigin-RevId: f13a056af4e26b7510b2cc138c69c935be5a5c2d",
+            "url": "https://github.com/openai/codex/commit/98e1584a082234ae716a3cc69d4c6f2d3631cf2d"
+          },
+          {
+            "sha": "75fc67e8f4284a669eebd90ab6bc9ef7697e876e",
+            "title": "Remove numeric positions from project responses (#61771)",
+            "message": "Remove numeric positions from project responses (#61771)\n\n## What changed\n\nRemove `position` from app-server `Project` responses, the thread-store project model, and generated schemas and SDK types.\n\nDocument that clients should use the returned project order and that `beforeProjectId` places a moved project before another project, or appends it when omitted or null.\n\nGitOrigin-RevId: 5de481e13f524c03260b7fed5c74874f051d6f30",
+            "url": "https://github.com/openai/codex/commit/75fc67e8f4284a669eebd90ab6bc9ef7697e876e"
+          },
+          {
+            "sha": "776bd46f03a30df0caf3c37cd2fbbc70d4b7d7b4",
+            "title": "Centralize permission profile compatibility helpers in protocol (#61784)",
+            "message": "Centralize permission profile compatibility helpers in protocol (#61784)\n\n## What changed\n\nMove legacy sandbox policy conversion into `codex-protocol` and add a shared helper for resolving compatibility writable roots. Re-export the policy helper from `codex-sandboxing` and use the writable-roots helper in both Windows sandbox backends, preserving the existing workspace-write fallback.\n\n## Testing\n\nAdd a regression test confirming that an output-only permission profile retains the fallback's output and working-directory writable roots, including protected `.git` and `.codex` subpaths.\n\nGitOrigin-RevId: a40474eb74544f34f7eea8135a7eb1b57706dbc2",
+            "url": "https://github.com/openai/codex/commit/776bd46f03a30df0caf3c37cd2fbbc70d4b7d7b4"
+          },
+          {
+            "sha": "95946faafcd8f068e28610e8ae6a4c03060c1448",
+            "title": "Strengthen workspace-write configuration tests (#61785)",
+            "message": "Strengthen workspace-write configuration tests (#61785)\n\n## What changed\n\n- Exercise an explicit `PermissionProfile` in the additional writable roots test on non-Windows platforms, while preserving Windows coverage of the default read-only fallback.\n- Assert that enabling memories preserves write access to the working directory on non-Windows platforms.\n\nGitOrigin-RevId: ae25690a56825b47ca38e42fece1fdd7a42b48a4",
+            "url": "https://github.com/openai/codex/commit/95946faafcd8f068e28610e8ae6a4c03060c1448"
+          },
+          {
+            "sha": "cd1805370610e71eae7819b4ed28b90679a53f0e",
+            "title": "Add lifecycle-managed Guardian housekeeping (#61795)",
+            "message": "Add lifecycle-managed Guardian housekeeping (#61795)\n\n## What changed\n\n- Add an `install` entry point that registers thread and turn lifecycle hooks for Guardian housekeeping. Coalesce user-message and turn-end wakes into one worker per eligible root thread, flushing history before routing durable evidence in order.\n- Run the housekeeper in an isolated, ephemeral model thread with no tools. Cancel and join its tracked tasks on root shutdown, waiting for accepted evidence appends to finish.\n- Give each routing batch a 90-second deadline, make channel listing and updates cancellable, and redact model response content from JSON parsing errors.\n\n## Testing\n\nExtend housekeeping tests to cover stalled channel creation, redacted model errors, and shutdown waiting for an accepted evidence append without leaving a persisted housekeeper rollout.\n\nGitOrigin-RevId: 519b539c0613c964bac7b18eb84e684f5e105640",
+            "url": "https://github.com/openai/codex/commit/cd1805370610e71eae7819b4ed28b90679a53f0e"
+          },
+          {
+            "sha": "9544f09e7b880f373532b4fb5ca98313d2450d4f",
+            "title": "Wire Guardian V3 housekeeping into the app server (#61797)",
+            "message": "Wire Guardian V3 housekeeping into the app server (#61797)\n\n## What changed\n\n- Install Guardian V3 with a local message-board host when the server enables `features.guardianv3.enabled`, independently of thread overrides.\n- Clear inherited user, thread, and project instructions from Guardian V3 private threads and skip repository instruction discovery.\n\n## Testing\n\nAdd integration coverage for routing the first live message while the actor is still sampling, for both new and resumed threads. Verify that resumed history is skipped, `AGENTS.md` reaches only the actor, and thread overrides cannot enable or disable server-level housekeeping.\n\nGitOrigin-RevId: 3f3ae1be404c9e17b73eea12c95f5a95c96052cf",
+            "url": "https://github.com/openai/codex/commit/9544f09e7b880f373532b4fb5ca98313d2450d4f"
+          },
+          {
+            "sha": "5630d58680af22b71dc0d435049d2a16ec9dace4",
+            "title": "Add a dedicated Guardian v3 housekeeper inference client (#61798)",
+            "message": "Add a dedicated Guardian v3 housekeeper inference client (#61798)\n\n## What changed\n\nAdd a tool-free Responses sampler with persistent conversation history and whole-batch eviction to stay within the model's input budget. Parse completed routing replies and retain their output through an explicit commit step.\n\nAdd WebSocket connection reuse, HTTP fallback, bounded retries, authentication recovery, account-change checks, and cancellation of unfinished responses.\n\nRegister the new modules without connecting them to the existing housekeeper routing flow yet.\n\nGitOrigin-RevId: 2a0ff557a521763ab984249ec6594ae7ce09d59e",
+            "url": "https://github.com/openai/codex/commit/5630d58680af22b71dc0d435049d2a16ec9dace4"
+          },
+          {
+            "sha": "0370e34fe89585a3eb898e2dc21460b48abd1f83",
+            "title": "Route Guardian housekeeping through its dedicated sampler (#61799)",
+            "message": "Route Guardian housekeeping through its dedicated sampler (#61799)\n\n## What changed\n\nUse `HousekeeperSampler` for evidence routing instead of starting a separate review-session thread. The housekeeper now owns a tool-free model conversation, retains completed routing batches, and evicts whole batches under context-window pressure.\n\nCommit sampled history only after all board writes succeed and the evidence cursor advances. Stop the worker after a routing error or an interrupted routing future. Cancel routing when the account changes while allowing accepted appends to finish before shutdown.\n\n## Testing\n\nExtend housekeeping integration coverage for retained history, whole-batch eviction, transient retries, retry exhaustion with `Retry-After`, HTTP fallback, credential renewal, command-token rotation, and shutdown waiting for accepted evidence appends.\n\nGitOrigin-RevId: 316ab1b90529e2a5874e617855d38c41f232872a",
+            "url": "https://github.com/openai/codex/commit/0370e34fe89585a3eb898e2dc21460b48abd1f83"
+          },
+          {
+            "sha": "4fc37acc87fd9eacbc7fd6bf099a4acbdd2252cc",
+            "title": "Clarify managed human command checkpoint stability (#61800)",
+            "message": "Clarify managed human command checkpoint stability (#61800)\n\nDocument managed `prompt-user` command checkpoints as stable in the interactive\nCodex CLI, while keeping app-server integration marked experimental. Clarify\nthat each matching command requires a fresh human decision, even with automatic\nreview enabled, and that session or persistent approvals cannot satisfy it.\n\nGitOrigin-RevId: 98c36d00294bd97ab937f32940dfb24310ecbc32",
+            "url": "https://github.com/openai/codex/commit/4fc37acc87fd9eacbc7fd6bf099a4acbdd2252cc"
+          },
+          {
+            "sha": "662a634e88fcc809d77da393d75572c3d814cb27",
+            "title": "Preserve active turn approvals when an earlier turn finishes late (#61801)",
+            "message": "Preserve active turn approvals when an earlier turn finishes late (#61801)\n\n## Why\n\nA turn's terminal event can arrive after the next turn has started, cancelling the newer turn's pending approval requests and incorrectly changing the thread's active status.\n\n## What changed\n\nTrack the latest started turn in the app server. Only let completion or abort events for that turn cancel pending server requests and update thread watch status, preserving the existing behavior when no started turn is recorded.\n\n## Testing\n\nAdd a regression test that delays one turn's completion until the next turn requests command approval, then verifies that the thread remains waiting on approval and the approval can still be accepted to execute the command.\n\nGitOrigin-RevId: 521f4fb74728b3e70572839b2e73d2d2b2735f35",
+            "url": "https://github.com/openai/codex/commit/662a634e88fcc809d77da393d75572c3d814cb27"
+          },
+          {
+            "sha": "2309bae1ae7a6dcab6dd0ade0fd37a7491b1de01",
+            "title": "Isolate app-server turn metadata by turn ID (#61817)",
+            "message": "Isolate app-server turn metadata by turn ID (#61817)\n\n## Why\n\nA turn can complete after the next turn has started. Sharing one turn summary lets late completion events consume the next turn's metadata and clear its command tracking.\n\n## What changed\n\nTrack turn summaries and command start times by turn ID so errors, timestamps, final agent messages, and command lifecycle notifications stay associated with the correct turn. Read and remove only the completing turn's state, and clear tracked state when listeners are replaced or removed.\n\nInitialize summaries for inline reviews that can finish before their delegate emits `TurnStarted`.\n\n## Testing\n\nExtend regression coverage to check that overlapping turns retain their own errors, completed turns include start timestamps, and the next turn's approved command emits one start and one completion notification despite a late completion from the previous turn.\n\nGitOrigin-RevId: 91f022d885c67c7d8982091c72325f1d701569a6",
+            "url": "https://github.com/openai/codex/commit/2309bae1ae7a6dcab6dd0ade0fd37a7491b1de01"
+          },
+          {
+            "sha": "e5839cbc591df02408d5009e287887c7d57a9167",
+            "title": "Preserve aggregate turn diffs across steering (#61820)",
+            "message": "Preserve aggregate turn diffs across steering (#61820)\n\n## Why\n\nA steer can restart sampling within the same turn. Recreating the diff tracker loses earlier edits, and changing the working directory can change the meaning of relative diff paths.\n\n## What changed\n\nKeep the diff tracker for the lifetime of the turn and retain each environment's first display root. Refresh cached diff headers when new environments are added. Emit the final aggregate `TurnDiff` before `TurnComplete` instead of at sampling completion.\n\n## Testing\n\nExtend regression coverage for steering during the final flush, with and without additional patches and with a changed working directory. Check final diff ordering across continued sampling and header updates when adding an environment.\n\nGitOrigin-RevId: fbd1ebef072d8486a324190c9125fc1446510802",
+            "url": "https://github.com/openai/codex/commit/e5839cbc591df02408d5009e287887c7d57a9167"
+          },
+          {
+            "sha": "cd712429464ac7b96ba278e2ee5c5289489a5244",
+            "title": "Release 0.171.0-alpha.8",
+            "message": "Release 0.171.0-alpha.8",
+            "url": "https://github.com/openai/codex/commit/cd712429464ac7b96ba278e2ee5c5289489a5244"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.171.0-alpha.7",
+          "head": "rust-v0.171.0-alpha.8",
+          "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.7...rust-v0.171.0-alpha.8",
+          "status": "diverged",
+          "total": 31,
+          "behind": 1,
+          "complete": true,
+          "fetched": 31
         },
         "comparisonError": null
       }
