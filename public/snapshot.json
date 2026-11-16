@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-15T20:34:04.892Z",
+  "generatedAt": "2026-11-16T00:20:33.839Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -15765,9 +15765,9 @@
     },
     {
       "id": "openai-status:01M7ATRS6BMZ61E4JDHJGM79Y0",
-      "at": "2026-11-14T05:31:20.000Z",
+      "at": "2026-11-16T00:17:25.000Z",
       "url": "https://status.openai.com/incidents/01M7ATRS6BMZ61E4JDHJGM79Y0",
-      "text": "Delayed Costs Data in the Compliance API. We are monitoring the affected services to confirm recovery. Delays in cost data are still expected.",
+      "text": "Delayed Costs Data in the Compliance API. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -15776,7 +15776,7 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "monitoring",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-11-13T16:10:07.000Z"
     },
     {
@@ -16491,6 +16491,116 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/step-toward-defining-the-standard-model",
+      "at": "2026-11-15T22:00:01.000Z",
+      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+      "text": "A step toward defining the Standard Model on a lattice. Explore a candidate nonperturbative lattice definition of the Standard Model and how GPT-6 Astra helped turn the idea into a detailed proof.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/our-new-blog-for-science",
+      "at": "2026-11-15T22:00:00.000Z",
+      "url": "https://openai.com/index/our-new-blog-for-science",
+      "text": "Our new blog for science. The OpenAI science blog shares new findings, practical methods, and firsthand accounts from researchers using AI to advance scientific discovery.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.7",
+      "at": "2026-11-15T23:18:44.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.7",
+      "text": "0.171.0-alpha.7. Release 0.171.0-alpha.7",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.171.0-alpha.7",
+        "title": "0.171.0-alpha.7",
+        "body": "Release 0.171.0-alpha.7\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-16T00:20:33.841Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.7",
+        "publishedAt": "2026-11-15T23:13:50Z",
+        "commits": [
+          {
+            "sha": "87fccdc1bc0bc9af04db844a23d9c025f3b82000",
+            "title": "Defer plugin manifest loading until marketplace entries are selected (#61686)",
+            "message": "Defer plugin manifest loading until marketplace entries are selected (#61686)\n\n## Why\n\nMarketplace listings read plugin manifests for entries later discarded by policy, product visibility, or duplicate selection across project scopes. This causes unnecessary reads and can emit parse warnings for plugins that never appear in the listing.\n\n## What changed\n\nSeparate marketplace entry validation from plugin manifest loading. Apply marketplace policy, visibility, and path and plugin ID deduplication before loading metadata, preserving first-source and first-scope precedence.\n\n## Testing\n\nAdd a regression test covering repeated marketplace paths and shadowed plugin IDs across scopes. Verify that the selected malformed manifest is read once, the discarded manifest is never read, and the visible plugin IDs and local versions are preserved.\n\nGitOrigin-RevId: 00b1d50593fb6546aafdc2089e6fccec1b4e5f42",
+            "url": "https://github.com/openai/codex/commit/87fccdc1bc0bc9af04db844a23d9c025f3b82000"
+          },
+          {
+            "sha": "375a6b1653ed7007354c2f44d2d4dcfb5f4d150f",
+            "title": "Add TUI review ownership and risk guidance (#61688)",
+            "message": "Add TUI review ownership and risk guidance (#61688)\n\n## What changed\n\n- Add an `OWNERS` file for `codex-rs/tui` with `tempest::evaluate-only`.\n- Add `TEMPEST_REVIEW` guidance requiring inspection of `codex-rs/tui/styles.md`, identifying local rendering and copy fixes with focused snapshots as eligible for automatic approval, and requesting human approval for changes to input actions or app-server-dependent thread and turn state.\n\nGitOrigin-RevId: 6440f1a5a96fa4979292171d0c88c0b5d4d464bd",
+            "url": "https://github.com/openai/codex/commit/375a6b1653ed7007354c2f44d2d4dcfb5f4d150f"
+          },
+          {
+            "sha": "9017fd33f3b9b2485fef9d061ed3802aa47bf480",
+            "title": "Keep pasted text inline in TUI goals (#61690)",
+            "message": "Keep pasted text inline in TUI goals (#61690)\n\n## Why\n\nPasted goal text was stored in separate files, leaving file references in the goal editor instead of the pasted content.\n\n## What changed\n\nExpand pending pastes into the goal objective before processing image attachments and checking the objective length. Short goals now retain their text inline; oversized expanded objectives still use the managed `goal-objective.md` file.\n\n## Testing\n\nUpdate goal tests to cover oversized Unicode pastes, inline text without new attachment files, and pastes combined with image attachments. Add a snapshot showing `Use hello` when reopening a pasted goal in the editor.\n\nGitOrigin-RevId: afd8e8de1ca12fe81bdfd526a0ad9e92a43addc2",
+            "url": "https://github.com/openai/codex/commit/9017fd33f3b9b2485fef9d061ed3802aa47bf480"
+          },
+          {
+            "sha": "03cb329415f3abd4216181443405ef32d5da8143",
+            "title": "Fix status detail truncation for wide Unicode characters (#61692)",
+            "message": "Fix status detail truncation for wide Unicode characters (#61692)\n\n## Why\n\nWhen status details exceed the line limit, character-based truncation can make the final line overflow its available terminal width.\n\n## What changed\n\nUse display-width-aware truncation on the entire final line, including its indentation and trailing ellipsis.\n\n## Testing\n\nExtend the status details test with wide Unicode characters, checking that every line fits within 10 columns and snapshotting the truncated output.\n\nGitOrigin-RevId: 89c6cfb7cf36cdf0d63b6f732c59acd96128f9fd",
+            "url": "https://github.com/openai/codex/commit/03cb329415f3abd4216181443405ef32d5da8143"
+          },
+          {
+            "sha": "1a2a9299c1ae0965ef9303e30a7fa7c4b00ed886",
+            "title": "Discard unsaved experimental feature edits on cancel (#61694)",
+            "message": "Discard unsaved experimental feature edits on cancel (#61694)\n\n## What changed\n\nClose the experimental features popup without saving pending edits when the user presses `Esc`, `Ctrl+C`, or a remapped cancel key. Keep saving on the accept action (`Enter` by default), and update the footer from `esc save/close` to `esc cancel`.\n\n## Testing\n\nUpdate tests to assert that cancellation discards toggles without emitting save events, including after a failed write and with a remapped cancel key. Refresh popup snapshots for the new hint.\n\nGitOrigin-RevId: d7640edaeca1db371a7087312179a001d7528b9a",
+            "url": "https://github.com/openai/codex/commit/1a2a9299c1ae0965ef9303e30a7fa7c4b00ed886"
+          },
+          {
+            "sha": "a394ff9cf66e9c17258077e8f8295178ca0c2025",
+            "title": "Restore the terminal's original alternate-scroll mode (#61697)",
+            "message": "Restore the terminal's original alternate-scroll mode (#61697)\n\n## Why\n\nReleasing TUI input modes previously disabled alternate scrolling unconditionally, overriding terminals where it was initially enabled.\n\n## What changed\n\n- Query alternate-scroll mode (`1007`) during the Unix startup probe and filter its replies from replayed input.\n- Restore the recorded mode during editor handoff and exit, defaulting to disabled when the initial state is unknown.\n- Retry scroll-mode restoration after a failed cleanup write.\n\n## Testing\n\nExtend startup probe tests to parse enabled and disabled reports. Add coverage for preserving both initial states across handoff and exit, and retrying failed restoration.\n\nGitOrigin-RevId: 786a44c04da6e2c9cb9af73c096d8df92ded88e9",
+            "url": "https://github.com/openai/codex/commit/a394ff9cf66e9c17258077e8f8295178ca0c2025"
+          },
+          {
+            "sha": "73c4af9125a8d5e9aabe5aa900eecf70214ba856",
+            "title": "Release 0.171.0-alpha.7",
+            "message": "Release 0.171.0-alpha.7",
+            "url": "https://github.com/openai/codex/commit/73c4af9125a8d5e9aabe5aa900eecf70214ba856"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.171.0-alpha.6",
+          "head": "rust-v0.171.0-alpha.7",
+          "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.6...rust-v0.171.0-alpha.7",
+          "status": "diverged",
+          "total": 7,
+          "behind": 1,
+          "complete": true,
+          "fetched": 7
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -16499,7 +16609,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-15T20:34:04.267Z",
+      "lastSuccessAt": "2026-11-16T00:20:33.147Z",
       "error": null,
       "count": 150
     },
@@ -16508,7 +16618,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-15T20:34:04.267Z",
+      "lastSuccessAt": "2026-11-16T00:20:33.147Z",
       "error": null,
       "count": 10
     },
@@ -16517,7 +16627,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-15T20:34:04.267Z",
+      "lastSuccessAt": "2026-11-16T00:20:33.147Z",
       "error": null,
       "count": 25
     }
@@ -67270,6 +67380,222 @@
           "behind": 1,
           "complete": true,
           "fetched": 73
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/step-toward-defining-the-standard-model:2026-11-16T00:20:33.839Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-16T00:20:33.839Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/step-toward-defining-the-standard-model",
+        "at": "2026-11-15T22:00:01.000Z",
+        "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+        "text": "A step toward defining the Standard Model on a lattice. Explore a candidate nonperturbative lattice definition of the Standard Model and how GPT-6 Astra helped turn the idea into a detailed proof.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/our-new-blog-for-science:2026-11-16T00:20:33.839Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-16T00:20:33.839Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/our-new-blog-for-science",
+        "at": "2026-11-15T22:00:00.000Z",
+        "url": "https://openai.com/index/our-new-blog-for-science",
+        "text": "Our new blog for science. The OpenAI science blog shares new findings, practical methods, and firsthand accounts from researchers using AI to advance scientific discovery.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.7:2026-11-16T00:20:33.839Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-16T00:20:33.839Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.7",
+        "at": "2026-11-15T23:18:44.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.7",
+        "text": "0.171.0-alpha.7. Release 0.171.0-alpha.7",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.171.0-alpha.7",
+          "title": "0.171.0-alpha.7",
+          "body": "Release 0.171.0-alpha.7\n\n",
+          "authored": false,
+          "fetchedAt": "2026-11-16T00:20:33.841Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.7",
+          "publishedAt": "2026-11-15T23:13:50Z",
+          "commits": [
+            {
+              "sha": "87fccdc1bc0bc9af04db844a23d9c025f3b82000",
+              "title": "Defer plugin manifest loading until marketplace entries are selected (#61686)",
+              "message": "Defer plugin manifest loading until marketplace entries are selected (#61686)\n\n## Why\n\nMarketplace listings read plugin manifests for entries later discarded by policy, product visibility, or duplicate selection across project scopes. This causes unnecessary reads and can emit parse warnings for plugins that never appear in the listing.\n\n## What changed\n\nSeparate marketplace entry validation from plugin manifest loading. Apply marketplace policy, visibility, and path and plugin ID deduplication before loading metadata, preserving first-source and first-scope precedence.\n\n## Testing\n\nAdd a regression test covering repeated marketplace paths and shadowed plugin IDs across scopes. Verify that the selected malformed manifest is read once, the discarded manifest is never read, and the visible plugin IDs and local versions are preserved.\n\nGitOrigin-RevId: 00b1d50593fb6546aafdc2089e6fccec1b4e5f42",
+              "url": "https://github.com/openai/codex/commit/87fccdc1bc0bc9af04db844a23d9c025f3b82000"
+            },
+            {
+              "sha": "375a6b1653ed7007354c2f44d2d4dcfb5f4d150f",
+              "title": "Add TUI review ownership and risk guidance (#61688)",
+              "message": "Add TUI review ownership and risk guidance (#61688)\n\n## What changed\n\n- Add an `OWNERS` file for `codex-rs/tui` with `tempest::evaluate-only`.\n- Add `TEMPEST_REVIEW` guidance requiring inspection of `codex-rs/tui/styles.md`, identifying local rendering and copy fixes with focused snapshots as eligible for automatic approval, and requesting human approval for changes to input actions or app-server-dependent thread and turn state.\n\nGitOrigin-RevId: 6440f1a5a96fa4979292171d0c88c0b5d4d464bd",
+              "url": "https://github.com/openai/codex/commit/375a6b1653ed7007354c2f44d2d4dcfb5f4d150f"
+            },
+            {
+              "sha": "9017fd33f3b9b2485fef9d061ed3802aa47bf480",
+              "title": "Keep pasted text inline in TUI goals (#61690)",
+              "message": "Keep pasted text inline in TUI goals (#61690)\n\n## Why\n\nPasted goal text was stored in separate files, leaving file references in the goal editor instead of the pasted content.\n\n## What changed\n\nExpand pending pastes into the goal objective before processing image attachments and checking the objective length. Short goals now retain their text inline; oversized expanded objectives still use the managed `goal-objective.md` file.\n\n## Testing\n\nUpdate goal tests to cover oversized Unicode pastes, inline text without new attachment files, and pastes combined with image attachments. Add a snapshot showing `Use hello` when reopening a pasted goal in the editor.\n\nGitOrigin-RevId: afd8e8de1ca12fe81bdfd526a0ad9e92a43addc2",
+              "url": "https://github.com/openai/codex/commit/9017fd33f3b9b2485fef9d061ed3802aa47bf480"
+            },
+            {
+              "sha": "03cb329415f3abd4216181443405ef32d5da8143",
+              "title": "Fix status detail truncation for wide Unicode characters (#61692)",
+              "message": "Fix status detail truncation for wide Unicode characters (#61692)\n\n## Why\n\nWhen status details exceed the line limit, character-based truncation can make the final line overflow its available terminal width.\n\n## What changed\n\nUse display-width-aware truncation on the entire final line, including its indentation and trailing ellipsis.\n\n## Testing\n\nExtend the status details test with wide Unicode characters, checking that every line fits within 10 columns and snapshotting the truncated output.\n\nGitOrigin-RevId: 89c6cfb7cf36cdf0d63b6f732c59acd96128f9fd",
+              "url": "https://github.com/openai/codex/commit/03cb329415f3abd4216181443405ef32d5da8143"
+            },
+            {
+              "sha": "1a2a9299c1ae0965ef9303e30a7fa7c4b00ed886",
+              "title": "Discard unsaved experimental feature edits on cancel (#61694)",
+              "message": "Discard unsaved experimental feature edits on cancel (#61694)\n\n## What changed\n\nClose the experimental features popup without saving pending edits when the user presses `Esc`, `Ctrl+C`, or a remapped cancel key. Keep saving on the accept action (`Enter` by default), and update the footer from `esc save/close` to `esc cancel`.\n\n## Testing\n\nUpdate tests to assert that cancellation discards toggles without emitting save events, including after a failed write and with a remapped cancel key. Refresh popup snapshots for the new hint.\n\nGitOrigin-RevId: d7640edaeca1db371a7087312179a001d7528b9a",
+              "url": "https://github.com/openai/codex/commit/1a2a9299c1ae0965ef9303e30a7fa7c4b00ed886"
+            },
+            {
+              "sha": "a394ff9cf66e9c17258077e8f8295178ca0c2025",
+              "title": "Restore the terminal's original alternate-scroll mode (#61697)",
+              "message": "Restore the terminal's original alternate-scroll mode (#61697)\n\n## Why\n\nReleasing TUI input modes previously disabled alternate scrolling unconditionally, overriding terminals where it was initially enabled.\n\n## What changed\n\n- Query alternate-scroll mode (`1007`) during the Unix startup probe and filter its replies from replayed input.\n- Restore the recorded mode during editor handoff and exit, defaulting to disabled when the initial state is unknown.\n- Retry scroll-mode restoration after a failed cleanup write.\n\n## Testing\n\nExtend startup probe tests to parse enabled and disabled reports. Add coverage for preserving both initial states across handoff and exit, and retrying failed restoration.\n\nGitOrigin-RevId: 786a44c04da6e2c9cb9af73c096d8df92ded88e9",
+              "url": "https://github.com/openai/codex/commit/a394ff9cf66e9c17258077e8f8295178ca0c2025"
+            },
+            {
+              "sha": "73c4af9125a8d5e9aabe5aa900eecf70214ba856",
+              "title": "Release 0.171.0-alpha.7",
+              "message": "Release 0.171.0-alpha.7",
+              "url": "https://github.com/openai/codex/commit/73c4af9125a8d5e9aabe5aa900eecf70214ba856"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.171.0-alpha.6",
+            "head": "rust-v0.171.0-alpha.7",
+            "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.6...rust-v0.171.0-alpha.7",
+            "status": "diverged",
+            "total": 7,
+            "behind": 1,
+            "complete": true,
+            "fetched": 7
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "openai-status:01M7ATRS6BMZ61E4JDHJGM79Y0:2026-11-16T00:20:33.839Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-16T00:20:33.839Z",
+      "item": {
+        "id": "openai-status:01M7ATRS6BMZ61E4JDHJGM79Y0",
+        "at": "2026-11-16T00:17:25.000Z",
+        "url": "https://status.openai.com/incidents/01M7ATRS6BMZ61E4JDHJGM79Y0",
+        "text": "Delayed Costs Data in the Compliance API. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-13T16:10:07.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.7:2026-11-16T00:20:33.839Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-16T00:20:33.839Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.171.0-alpha.7",
+        "title": "0.171.0-alpha.7",
+        "body": "Release 0.171.0-alpha.7\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-16T00:20:33.841Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.7",
+        "publishedAt": "2026-11-15T23:13:50Z",
+        "commits": [
+          {
+            "sha": "87fccdc1bc0bc9af04db844a23d9c025f3b82000",
+            "title": "Defer plugin manifest loading until marketplace entries are selected (#61686)",
+            "message": "Defer plugin manifest loading until marketplace entries are selected (#61686)\n\n## Why\n\nMarketplace listings read plugin manifests for entries later discarded by policy, product visibility, or duplicate selection across project scopes. This causes unnecessary reads and can emit parse warnings for plugins that never appear in the listing.\n\n## What changed\n\nSeparate marketplace entry validation from plugin manifest loading. Apply marketplace policy, visibility, and path and plugin ID deduplication before loading metadata, preserving first-source and first-scope precedence.\n\n## Testing\n\nAdd a regression test covering repeated marketplace paths and shadowed plugin IDs across scopes. Verify that the selected malformed manifest is read once, the discarded manifest is never read, and the visible plugin IDs and local versions are preserved.\n\nGitOrigin-RevId: 00b1d50593fb6546aafdc2089e6fccec1b4e5f42",
+            "url": "https://github.com/openai/codex/commit/87fccdc1bc0bc9af04db844a23d9c025f3b82000"
+          },
+          {
+            "sha": "375a6b1653ed7007354c2f44d2d4dcfb5f4d150f",
+            "title": "Add TUI review ownership and risk guidance (#61688)",
+            "message": "Add TUI review ownership and risk guidance (#61688)\n\n## What changed\n\n- Add an `OWNERS` file for `codex-rs/tui` with `tempest::evaluate-only`.\n- Add `TEMPEST_REVIEW` guidance requiring inspection of `codex-rs/tui/styles.md`, identifying local rendering and copy fixes with focused snapshots as eligible for automatic approval, and requesting human approval for changes to input actions or app-server-dependent thread and turn state.\n\nGitOrigin-RevId: 6440f1a5a96fa4979292171d0c88c0b5d4d464bd",
+            "url": "https://github.com/openai/codex/commit/375a6b1653ed7007354c2f44d2d4dcfb5f4d150f"
+          },
+          {
+            "sha": "9017fd33f3b9b2485fef9d061ed3802aa47bf480",
+            "title": "Keep pasted text inline in TUI goals (#61690)",
+            "message": "Keep pasted text inline in TUI goals (#61690)\n\n## Why\n\nPasted goal text was stored in separate files, leaving file references in the goal editor instead of the pasted content.\n\n## What changed\n\nExpand pending pastes into the goal objective before processing image attachments and checking the objective length. Short goals now retain their text inline; oversized expanded objectives still use the managed `goal-objective.md` file.\n\n## Testing\n\nUpdate goal tests to cover oversized Unicode pastes, inline text without new attachment files, and pastes combined with image attachments. Add a snapshot showing `Use hello` when reopening a pasted goal in the editor.\n\nGitOrigin-RevId: afd8e8de1ca12fe81bdfd526a0ad9e92a43addc2",
+            "url": "https://github.com/openai/codex/commit/9017fd33f3b9b2485fef9d061ed3802aa47bf480"
+          },
+          {
+            "sha": "03cb329415f3abd4216181443405ef32d5da8143",
+            "title": "Fix status detail truncation for wide Unicode characters (#61692)",
+            "message": "Fix status detail truncation for wide Unicode characters (#61692)\n\n## Why\n\nWhen status details exceed the line limit, character-based truncation can make the final line overflow its available terminal width.\n\n## What changed\n\nUse display-width-aware truncation on the entire final line, including its indentation and trailing ellipsis.\n\n## Testing\n\nExtend the status details test with wide Unicode characters, checking that every line fits within 10 columns and snapshotting the truncated output.\n\nGitOrigin-RevId: 89c6cfb7cf36cdf0d63b6f732c59acd96128f9fd",
+            "url": "https://github.com/openai/codex/commit/03cb329415f3abd4216181443405ef32d5da8143"
+          },
+          {
+            "sha": "1a2a9299c1ae0965ef9303e30a7fa7c4b00ed886",
+            "title": "Discard unsaved experimental feature edits on cancel (#61694)",
+            "message": "Discard unsaved experimental feature edits on cancel (#61694)\n\n## What changed\n\nClose the experimental features popup without saving pending edits when the user presses `Esc`, `Ctrl+C`, or a remapped cancel key. Keep saving on the accept action (`Enter` by default), and update the footer from `esc save/close` to `esc cancel`.\n\n## Testing\n\nUpdate tests to assert that cancellation discards toggles without emitting save events, including after a failed write and with a remapped cancel key. Refresh popup snapshots for the new hint.\n\nGitOrigin-RevId: d7640edaeca1db371a7087312179a001d7528b9a",
+            "url": "https://github.com/openai/codex/commit/1a2a9299c1ae0965ef9303e30a7fa7c4b00ed886"
+          },
+          {
+            "sha": "a394ff9cf66e9c17258077e8f8295178ca0c2025",
+            "title": "Restore the terminal's original alternate-scroll mode (#61697)",
+            "message": "Restore the terminal's original alternate-scroll mode (#61697)\n\n## Why\n\nReleasing TUI input modes previously disabled alternate scrolling unconditionally, overriding terminals where it was initially enabled.\n\n## What changed\n\n- Query alternate-scroll mode (`1007`) during the Unix startup probe and filter its replies from replayed input.\n- Restore the recorded mode during editor handoff and exit, defaulting to disabled when the initial state is unknown.\n- Retry scroll-mode restoration after a failed cleanup write.\n\n## Testing\n\nExtend startup probe tests to parse enabled and disabled reports. Add coverage for preserving both initial states across handoff and exit, and retrying failed restoration.\n\nGitOrigin-RevId: 786a44c04da6e2c9cb9af73c096d8df92ded88e9",
+            "url": "https://github.com/openai/codex/commit/a394ff9cf66e9c17258077e8f8295178ca0c2025"
+          },
+          {
+            "sha": "73c4af9125a8d5e9aabe5aa900eecf70214ba856",
+            "title": "Release 0.171.0-alpha.7",
+            "message": "Release 0.171.0-alpha.7",
+            "url": "https://github.com/openai/codex/commit/73c4af9125a8d5e9aabe5aa900eecf70214ba856"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.171.0-alpha.6",
+          "head": "rust-v0.171.0-alpha.7",
+          "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.6...rust-v0.171.0-alpha.7",
+          "status": "diverged",
+          "total": 7,
+          "behind": 1,
+          "complete": true,
+          "fetched": 7
         },
         "comparisonError": null
       }
