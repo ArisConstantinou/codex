@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-16T16:56:56.578Z",
+  "generatedAt": "2026-11-17T00:45:56.996Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -16664,7 +16664,7 @@
     },
     {
       "id": "openai-news:https://openai.com/index/our-first-phase-of-embedded-assessments",
-      "at": "2026-11-13T08:00:00.000Z",
+      "at": "2026-11-16T08:00:00.000Z",
       "url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
       "text": "Our first phase of embedded assessments. OpenAI begins embedded assessments with Apollo Research, METR, and Transluce, and Goodfire to independently evaluate model alignment, safeguards, and monitoring systems.",
       "kind": "release",
@@ -16900,6 +16900,230 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+      "at": "2026-11-16T17:00:00.000Z",
+      "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+      "text": "Broadening access to AI for scientists. We’re expanding our ChatGPT for Academic Researchers program to offer 200,000 researchers worldwide free access to our frontier models.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/strengthening-online-child-safety",
+      "at": "2026-11-16T17:00:00.000Z",
+      "url": "https://openai.com/index/strengthening-online-child-safety",
+      "text": "Strengthening the fight against online child sexual abuse with new tools and support. New tools, practical guidance, and partnerships will help prevent, detect and respond to online child sexual exploitation and abuse.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/science-at-the-frontier",
+      "at": "2026-11-16T12:00:00.000Z",
+      "url": "https://openai.com/index/science-at-the-frontier",
+      "text": "Science at the Frontier: How scientists use ChatGPT. Explore how more than 1,800 scientists use ChatGPT in research. See findings on daily workflows, reported productivity, and expectations for discovery.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/holiday-extras-dots",
+      "at": "2026-11-16T00:00:00.000Z",
+      "url": "https://openai.com/business/customer-stories/holiday-extras-dots",
+      "text": "At Holiday Extras, dots get to work before anyone asks. Dots deliver launch reports unprompted, flag issues people might miss, and talk through upcoming meetings on the commute to work.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.4.1",
+      "at": "2026-11-17T00:32:54.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4.1",
+      "text": "rust-v0.170.0-alpha.4.1. Release 0.170.0-alpha.4.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.10",
+      "at": "2026-11-16T23:37:29.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.10",
+      "text": "0.171.0-alpha.10. Release 0.171.0-alpha.10",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.171.0-alpha.10",
+        "title": "0.171.0-alpha.10",
+        "body": "Release 0.171.0-alpha.10\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-17T00:45:57.000Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.10",
+        "publishedAt": "2026-11-16T23:32:43Z",
+        "commits": [
+          {
+            "sha": "e0241d4fae4c87b406aacaf11d9ceb8548879873",
+            "title": "Defer code-mode tool catalog construction until first access (#61845)",
+            "message": "Defer code-mode tool catalog construction until first access (#61845)\n\n## Why\n\nEach cell eagerly built `tools` and `ALL_TOOLS`, even when its code never accessed them.\n\n## What changed\n\n- Initialize each catalog global lazily on its first read, preserving writable values and mutations within each cell.\n- Normalize tool metadata at the service boundary and share it through an `Arc`-backed catalog instead of repeatedly converting it between runtime layers.\n- Construct catalog properties without invoking inherited setters.\n\n## Testing\n\nAdd regression tests for cell-local catalog mutations, fresh catalogs across cells, and catalog construction with inherited setters on `Object.prototype` and `Array.prototype`.\n\nGitOrigin-RevId: 04695c24ff33d3b3a4335558e9c754844f04e9f0",
+            "url": "https://github.com/openai/codex/commit/e0241d4fae4c87b406aacaf11d9ceb8548879873"
+          },
+          {
+            "sha": "fef47a6769414444b1ce37aa8188b55bf2624f27",
+            "title": "Reuse code-mode tool catalogs across executions (#61846)",
+            "message": "Reuse code-mode tool catalogs across executions (#61846)\n\n## Why\n\nRepeated executions with the same tools resend the full catalog and duplicate tool metadata. Catalog revisions let clients reuse an acknowledged catalog within a session.\n\n## What changed\n\n- Negotiate catalog revision support over stdio and gRPC, retaining full requests for hosts without support.\n- Send tool definitions when installing a revision, then reference that revision for matching executions. Commit client catalog state only after execution admission succeeds; concurrent admissions can send full requests.\n- Keep immutable tool snapshots for each cell, reject invalid, unknown, or conflicting revisions, and share identical definitions and runtime metadata across sessions in the same process.\n\n## Testing\n\nAdd tests for acknowledged reuse, abandoned admissions, changed definitions, revision conflicts, session isolation, snapshot lifetimes, and shared metadata.\n\nGitOrigin-RevId: d2f29bf668bc2279715f5f1b7d24310923c57d33",
+            "url": "https://github.com/openai/codex/commit/fef47a6769414444b1ce37aa8188b55bf2624f27"
+          },
+          {
+            "sha": "effad7568c7945c524923e71f1919d64e7b614aa",
+            "title": "Allow network policy to enable transparent TCP capture (#61851)",
+            "message": "Allow network policy to enable transparent TCP capture (#61851)\n\n## What changed\n\n- Add `transparent_tcp` to network configuration and managed requirements, defaulting to off. When enabled, route outbound TCP from managed Linux sandbox commands through the managed SOCKS5 proxy without requiring an executor startup flag.\n- Propagate the setting through local and remote execution, require an enabled SOCKS5 proxy, and check the executor's `networkProxyTransparentTcp` capability before remote launches.\n- Refresh the live proxy when switching between permission profiles with different network settings.\n\n## Testing\n\nAdd coverage for configuration-driven sandbox capture, rejection of unsupported launch contexts, execution parameter propagation, and live permission profile changes.\n\nGitOrigin-RevId: c4db87056de116f433a128806bef673802f35397",
+            "url": "https://github.com/openai/codex/commit/effad7568c7945c524923e71f1919d64e7b614aa"
+          },
+          {
+            "sha": "35145aba212e923f987ccefaf9086ceba31e3b7c",
+            "title": "Broadcast read-state changes to experimental clients (#61852)",
+            "message": "Broadcast read-state changes to experimental clients (#61852)\n\n## Why\n\nClients need read-state updates for threads they have not opened so they can keep thread lists current.\n\n## What changed\n\nBroadcast `thread/readState/changed` to initialized experimental clients whenever a durable read receipt changes, regardless of thread subscription. Preserve filtering through `optOutNotificationMethods` and document refreshing the list after reconnecting to recover missed changes.\n\n## Testing\n\nAdd a WebSocket regression test verifying that an unsubscribed experimental client receives updates while clients without the experimental capability and clients that opt out do not.\n\nGitOrigin-RevId: a1a0f29405a856fdf6e379ded1376ed7d3d765cb",
+            "url": "https://github.com/openai/codex/commit/35145aba212e923f987ccefaf9086ceba31e3b7c"
+          },
+          {
+            "sha": "3257e1b3eb04a43a8721ad0e59470327807eb844",
+            "title": "Allow model metadata to control multi-agent tools in code mode (#61854)",
+            "message": "Allow model metadata to control multi-agent tools in code mode (#61854)\n\n## What changed\n\nAdd optional `multi_agent_tools_in_code_mode` model metadata to control whether native multi-agent tools follow the model's `tool_mode`. When `true`, expose them according to `Direct`, `CodeMode`, or `CodeModeOnly`; when `false`, keep them direct-only. When omitted, preserve the `multi_agent_v2.non_code_mode_only` runtime setting.\n\n## Testing\n\nAdd coverage for metadata overrides and runtime fallback across all three tool modes, plus serialization and deserialization of absent, null, and boolean metadata values. Update the namespace-prefix integration scenario to enable code-mode tools through model metadata.\n\nGitOrigin-RevId: be90f436066226bf9971cbd17f28c396341bb83a",
+            "url": "https://github.com/openai/codex/commit/3257e1b3eb04a43a8721ad0e59470327807eb844"
+          },
+          {
+            "sha": "457a191479f15ce517d70e9a7bc4caf9ddd6d404",
+            "title": "Add opt-in tool-call attribution for upstream proxies (#61860)",
+            "message": "Add opt-in tool-call attribution for upstream proxies (#61860)\n\n## What changed\n\nAllow executors to set `CODEX_TOOL_CALL_ATTRIBUTION_PROXY` to designate an upstream proxy that consumes and strips `x-openai-internal-tool-call-id`. When the selected upstream matches that endpoint, attach the controller's tool-call ID to plaintext HTTP requests or the outer HTTPS `CONNECT` request.\n\nStrip caller-supplied attribution headers and send no attribution to direct destinations or other upstream proxies. Leave attribution disabled when the setting is unset.\n\n## Testing\n\nAdd request-capture tests for HTTP and HTTPS attribution, execution-specific IDs, header stripping, split upstream selection with nonstandard origin ports, and inbound `CONNECT` tunneling.\n\nGitOrigin-RevId: f908faf55a991bc11f2f9c7fd3100f42b4f638b9",
+            "url": "https://github.com/openai/codex/commit/457a191479f15ce517d70e9a7bc4caf9ddd6d404"
+          },
+          {
+            "sha": "237d8b104ed06ae46c5ed9a54693672dea21856c",
+            "title": "Report remote plugin local versions from matching cached packages (#61865)",
+            "message": "Report remote plugin local versions from matching cached packages (#61865)\n\n## Why\n\nA remote plugin's catalog version can differ from the package available locally. Matching names and versions also do not establish that a cached package belongs to the same remote plugin.\n\n## What changed\n\n- Resolve `local_version` for remote plugin lists, details, and shares from the active local package, requiring a matching remote plugin ID and an existing manifest. Perform these filesystem reads on a blocking task.\n- Download the package when a same-version cache has a conflicting or unreadable identity receipt. Preserve migration for older caches without receipts, and retain the original receipt if the replacement download fails.\n\n## Testing\n\nAdd coverage for local package identity and manifest requirements, differing catalog and local versions, and preservation of the original receipt after a failed replacement download. Update share expectations to leave `local_version` unset when no matching local package exists.\n\nGitOrigin-RevId: 5d86f834ac3861a4a3d3bf0d042bfe3f991a7cad",
+            "url": "https://github.com/openai/codex/commit/237d8b104ed06ae46c5ed9a54693672dea21856c"
+          },
+          {
+            "sha": "b8cbdbfeff72869e5d715480572aad24f739aa65",
+            "title": "Preserve SQLite row metadata in thread listings (#61866)",
+            "message": "Preserve SQLite row metadata in thread listings (#61866)\n\n## Why\n\nDirect SQLite listings already contain thread titles and section ordering metadata. Converting those rows to rollout summaries and fetching metadata again discards the original per-row values.\n\n## What changed\n\nBuild thread listings directly from the collected SQLite rows, retaining their titles, section positions, and section entry times. Preserve row order and each occurrence's metadata when a thread appears more than once during pagination refill. Continue resolving legacy names from the session index with the existing title precedence.\n\nKeep rollout listings and search name enrichment best effort, and avoid redundant metadata queries for direct SQLite listings.\n\n## Testing\n\nAdd coverage for repeated legacy rows retaining indexed names and distinct timestamps and section positions. Extend listing tests to check SQLite titles and section metadata in recent-thread results.\n\nGitOrigin-RevId: 838036250d38e6ca1b403741de3e6dd3eafdd04b",
+            "url": "https://github.com/openai/codex/commit/b8cbdbfeff72869e5d715480572aad24f739aa65"
+          },
+          {
+            "sha": "77873dd0d284aeba7ce849b995b28ee8f4498d73",
+            "title": "Preserve plugin skill picker ranking across version changes (#61871)",
+            "message": "Preserve plugin skill picker ranking across version changes (#61871)\n\n## Why\n\nPlugin skill paths include the installed version, so changing versions loses the influence of previous selections on `$` picker ordering.\n\n## What changed\n\nAggregate selection frequencies using a version-independent key for cached plugin skills. Recognize both configured and canonical plugin cache paths so usage history still applies when the cache is symlinked. Continue ranking by frequency within each match tier.\n\n## Testing\n\nExtend the composer regression test to load usage from an older plugin version and verify that the current version is preferred within its match tier, including a symlinked cache on Unix.\n\nGitOrigin-RevId: 483619dc75254898982959ff5f3bcb1f17d6ff0e",
+            "url": "https://github.com/openai/codex/commit/77873dd0d284aeba7ce849b995b28ee8f4498d73"
+          },
+          {
+            "sha": "dba22f2acc3bffbd57e3ce1d9c8f7ccc666b47e8",
+            "title": "Support flat subgraphs in native Mermaid flowcharts (#61878)",
+            "message": "Support flat subgraphs in native Mermaid flowcharts (#61878)\n\n## What changed\n\nParse `subgraph title` and `subgraph ID[title]` blocks and render labeled frames around their nodes and internal edges. Support edges between nodes in different groups in all four flowchart directions.\n\nKeep nested subgraphs, edges to subgraph IDs, and subgraph-local directions unsupported, preserving source fallback for unsupported input. Document the expanded syntax subset.\n\n## Testing\n\nAdd snapshot and regression coverage for group rendering, cross-group edges, all four directions, width limits, and invalid or unsupported subgraphs. Extend TUI native-renderer coverage to include grouped flowcharts.\n\nGitOrigin-RevId: 5bed535bcd4991b53143e3a591eef04f46ef4bd1",
+            "url": "https://github.com/openai/codex/commit/dba22f2acc3bffbd57e3ce1d9c8f7ccc666b47e8"
+          },
+          {
+            "sha": "d5a478e31c3296e544d53424a7a6c995e7dfb0f5",
+            "title": "Preserve local Markdown document targets in transcript rendering (#61880)",
+            "message": "Preserve local Markdown document targets in transcript rendering (#61880)\n\n## What changed\n\nRetain eligible local `.md` and `.markdown` link targets as document metadata and allow transcript hit testing to resolve them when `document_links` is enabled. The flag defaults to disabled, and document targets are excluded from terminal OSC-8 links.\n\nPreserve link metadata through narrow table layouts, account for grapheme widths when remapping header links, and retain literal backslashes in POSIX file URI targets. Keep validated workspace artifact links usable as terminal hyperlinks.\n\n## Testing\n\nAdd regression coverage for opt-in document hit testing, narrow table link ranges, styled emoji and escaped pipes, POSIX file URI backslashes, and validated workspace artifact links.\n\nGitOrigin-RevId: e5d12c8558f5210eb66c17b5be8b28b7e80d414f",
+            "url": "https://github.com/openai/codex/commit/d5a478e31c3296e544d53424a7a6c995e7dfb0f5"
+          },
+          {
+            "sha": "59d8c797896c422afe8bff56bcc6207d2114fd7e",
+            "title": "Add app-server file preview read helpers (#61887)",
+            "message": "Add app-server file preview read helpers (#61887)\n\n## What changed\n\nAdd session helpers to resolve file paths against the source thread's workspace and read preview bytes through `fs/readFile`. Require a workspace on the app-server host, restrict reads to POSIX paths, and reject reads when the workspace changes.\n\nAdd text document validation that rejects invalid UTF-8 and control characters other than tabs and line endings.\n\n## Testing\n\nAdd a mock WebSocket app-server test covering source-thread metadata requests, relative path resolution, large text reads, invalid UTF-8, binary content, and workspace changes during a read.\n\nGitOrigin-RevId: b51cb227e478d72cba42309828e40bbffff6d847",
+            "url": "https://github.com/openai/codex/commit/59d8c797896c422afe8bff56bcc6207d2114fd7e"
+          },
+          {
+            "sha": "be5db96264e2f4b68cf01488fc984c3c024eb48e",
+            "title": "Add read-only document previews to the TUI sidebar (#61888)",
+            "message": "Add read-only document previews to the TUI sidebar (#61888)\n\n## What changed\n\n- Open transcript file links in sidebar tabs when the TUI workspace is enabled, resolving and reading files through the focused thread's app server and rendering their contents as Markdown.\n- Support pager keys, mouse scrolling, switching between document and chat tabs, and closing previews with `Esc`. Reuse existing previews and allow failed opens to be retried.\n- Show loading and error states, and prevent late document results from taking focus back after the user switches views.\n- Adapt tab widths to the available space, preserve filename extensions in truncated labels, and keep divider dragging aligned to exact terminal columns.\n\n## Testing\n\nAdd coverage for workspace-gated link opening, loading and error states, retrying, custom pager bindings, multiple previews, tab reuse, closing during loading, and preserving focus when results arrive late. Update tab and divider assertions and snapshots.\n\nGitOrigin-RevId: e979b757c623c29a8ed50277ec929655d783ad18",
+            "url": "https://github.com/openai/codex/commit/be5db96264e2f4b68cf01488fc984c3c024eb48e"
+          },
+          {
+            "sha": "7c3f5e2cc2904c7a41742f337a65d606e1da8fe9",
+            "title": "Add search, selection, and link navigation to document previews (#61889)",
+            "message": "Add search, selection, and link navigation to document previews (#61889)\n\n## What changed\n\n- Enable search, keyboard and mouse selection, and Markdown copying in sidebar document previews, including copying while offline.\n- Navigate links with `Tab` and `Shift+Tab`, then open them with `Enter`. Open web links in the browser and resolve file links relative to the current document.\n- Render local Markdown links as interactive labels and preserve distinct link occurrences across wrapping.\n- Add document zoom, scroll indicators, and contextual footer hints. Disambiguate document tabs with matching filenames, including when titles are truncated.\n- Cancel pending PRIMARY selection publication when a document is hidden and preserve the intended destination for composer clipboard pastes.\n\n## Testing\n\nExtend document preview coverage for search, selection, offline copying, link activation, hidden PRIMARY selections, and duplicate tab titles. Add rendering tests for local link labels and navigation across wrapped links.\n\nGitOrigin-RevId: 80240fa580eed9dda971759afc49bc2bb909fcb5",
+            "url": "https://github.com/openai/codex/commit/7c3f5e2cc2904c7a41742f337a65d606e1da8fe9"
+          },
+          {
+            "sha": "3a51865c8cca4409dbdc77a22839a52a6bb1f8f9",
+            "title": "Open source file links at line and column targets in the TUI (#61890)",
+            "message": "Open source file links at line and column targets in the TUI (#61890)\n\n## What changed\n\n- Extend sidebar previews beyond Markdown to source files, including extensionless files. Preserve line and column targets such as `./Makefile#L12C3`, scroll to the target, and highlight its line and character.\n- Render source previews with syntax highlighting and line numbers when space permits. Keep plain Markdown links rendered as Markdown, and show source when a location is specified.\n- Show local link labels without appended destinations when workspace previews are available, and emphasize links on hover. Refresh rendering when preview availability changes.\n- Limit source previews to 1 MiB and 10,000 lines, and disable document previews for Windows workspaces.\n\n## Testing\n\nAdd coverage for extensionless link parsing, matching hover and click targets, streamed file citation metadata, and source navigation with CRLF input, tab reuse, and Escape handling.\n\nGitOrigin-RevId: c2629b122628a4f5afa17df1890f63bd1c9bbcf6",
+            "url": "https://github.com/openai/codex/commit/3a51865c8cca4409dbdc77a22839a52a6bb1f8f9"
+          },
+          {
+            "sha": "dcacf1774794227fede1c656f773210a3df96e31",
+            "title": "Release 0.171.0-alpha.10",
+            "message": "Release 0.171.0-alpha.10",
+            "url": "https://github.com/openai/codex/commit/dcacf1774794227fede1c656f773210a3df96e31"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.171.0-alpha.9",
+          "head": "rust-v0.171.0-alpha.10",
+          "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.9...rust-v0.171.0-alpha.10",
+          "status": "diverged",
+          "total": 16,
+          "behind": 1,
+          "complete": true,
+          "fetched": 16
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.9",
+      "at": "2026-11-16T19:17:33.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.9",
+      "text": "0.171.0-alpha.9. Release 0.171.0-alpha.9",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -16908,7 +17132,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-16T16:56:55.756Z",
+      "lastSuccessAt": "2026-11-17T00:45:56.640Z",
       "error": null,
       "count": 150
     },
@@ -16917,7 +17141,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-16T16:56:55.756Z",
+      "lastSuccessAt": "2026-11-17T00:45:56.640Z",
       "error": null,
       "count": 10
     },
@@ -16926,7 +17150,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-16T16:56:55.756Z",
+      "lastSuccessAt": "2026-11-17T00:45:56.640Z",
       "error": null,
       "count": 25
     }
@@ -68508,6 +68732,409 @@
           "behind": 1,
           "complete": true,
           "fetched": 31
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/expanding-chatgpt-for-academic-researchers:2026-11-17T00:45:56.996Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T00:45:56.996Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+        "at": "2026-11-16T17:00:00.000Z",
+        "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+        "text": "Broadening access to AI for scientists. We’re expanding our ChatGPT for Academic Researchers program to offer 200,000 researchers worldwide free access to our frontier models.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/strengthening-online-child-safety:2026-11-17T00:45:56.996Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T00:45:56.996Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/strengthening-online-child-safety",
+        "at": "2026-11-16T17:00:00.000Z",
+        "url": "https://openai.com/index/strengthening-online-child-safety",
+        "text": "Strengthening the fight against online child sexual abuse with new tools and support. New tools, practical guidance, and partnerships will help prevent, detect and respond to online child sexual exploitation and abuse.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/science-at-the-frontier:2026-11-17T00:45:56.996Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T00:45:56.996Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/science-at-the-frontier",
+        "at": "2026-11-16T12:00:00.000Z",
+        "url": "https://openai.com/index/science-at-the-frontier",
+        "text": "Science at the Frontier: How scientists use ChatGPT. Explore how more than 1,800 scientists use ChatGPT in research. See findings on daily workflows, reported productivity, and expectations for discovery.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/our-first-phase-of-embedded-assessments:2026-11-17T00:45:56.996Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T00:45:56.996Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/our-first-phase-of-embedded-assessments",
+        "at": "2026-11-16T08:00:00.000Z",
+        "url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
+        "text": "Our first phase of embedded assessments. OpenAI begins embedded assessments with Apollo Research, METR, and Transluce, and Goodfire to independently evaluate model alignment, safeguards, and monitoring systems.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/holiday-extras-dots:2026-11-17T00:45:56.996Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T00:45:56.996Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/customer-stories/holiday-extras-dots",
+        "at": "2026-11-16T00:00:00.000Z",
+        "url": "https://openai.com/business/customer-stories/holiday-extras-dots",
+        "text": "At Holiday Extras, dots get to work before anyone asks. Dots deliver launch reports unprompted, flag issues people might miss, and talk through upcoming meetings on the commute to work.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.4.1:2026-11-17T00:45:56.996Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T00:45:56.996Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.170.0-alpha.4.1",
+        "at": "2026-11-17T00:32:54.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4.1",
+        "text": "rust-v0.170.0-alpha.4.1. Release 0.170.0-alpha.4.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.10:2026-11-17T00:45:56.996Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T00:45:56.996Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.10",
+        "at": "2026-11-16T23:37:29.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.10",
+        "text": "0.171.0-alpha.10. Release 0.171.0-alpha.10",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.171.0-alpha.10",
+          "title": "0.171.0-alpha.10",
+          "body": "Release 0.171.0-alpha.10\n\n",
+          "authored": false,
+          "fetchedAt": "2026-11-17T00:45:57.000Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.10",
+          "publishedAt": "2026-11-16T23:32:43Z",
+          "commits": [
+            {
+              "sha": "e0241d4fae4c87b406aacaf11d9ceb8548879873",
+              "title": "Defer code-mode tool catalog construction until first access (#61845)",
+              "message": "Defer code-mode tool catalog construction until first access (#61845)\n\n## Why\n\nEach cell eagerly built `tools` and `ALL_TOOLS`, even when its code never accessed them.\n\n## What changed\n\n- Initialize each catalog global lazily on its first read, preserving writable values and mutations within each cell.\n- Normalize tool metadata at the service boundary and share it through an `Arc`-backed catalog instead of repeatedly converting it between runtime layers.\n- Construct catalog properties without invoking inherited setters.\n\n## Testing\n\nAdd regression tests for cell-local catalog mutations, fresh catalogs across cells, and catalog construction with inherited setters on `Object.prototype` and `Array.prototype`.\n\nGitOrigin-RevId: 04695c24ff33d3b3a4335558e9c754844f04e9f0",
+              "url": "https://github.com/openai/codex/commit/e0241d4fae4c87b406aacaf11d9ceb8548879873"
+            },
+            {
+              "sha": "fef47a6769414444b1ce37aa8188b55bf2624f27",
+              "title": "Reuse code-mode tool catalogs across executions (#61846)",
+              "message": "Reuse code-mode tool catalogs across executions (#61846)\n\n## Why\n\nRepeated executions with the same tools resend the full catalog and duplicate tool metadata. Catalog revisions let clients reuse an acknowledged catalog within a session.\n\n## What changed\n\n- Negotiate catalog revision support over stdio and gRPC, retaining full requests for hosts without support.\n- Send tool definitions when installing a revision, then reference that revision for matching executions. Commit client catalog state only after execution admission succeeds; concurrent admissions can send full requests.\n- Keep immutable tool snapshots for each cell, reject invalid, unknown, or conflicting revisions, and share identical definitions and runtime metadata across sessions in the same process.\n\n## Testing\n\nAdd tests for acknowledged reuse, abandoned admissions, changed definitions, revision conflicts, session isolation, snapshot lifetimes, and shared metadata.\n\nGitOrigin-RevId: d2f29bf668bc2279715f5f1b7d24310923c57d33",
+              "url": "https://github.com/openai/codex/commit/fef47a6769414444b1ce37aa8188b55bf2624f27"
+            },
+            {
+              "sha": "effad7568c7945c524923e71f1919d64e7b614aa",
+              "title": "Allow network policy to enable transparent TCP capture (#61851)",
+              "message": "Allow network policy to enable transparent TCP capture (#61851)\n\n## What changed\n\n- Add `transparent_tcp` to network configuration and managed requirements, defaulting to off. When enabled, route outbound TCP from managed Linux sandbox commands through the managed SOCKS5 proxy without requiring an executor startup flag.\n- Propagate the setting through local and remote execution, require an enabled SOCKS5 proxy, and check the executor's `networkProxyTransparentTcp` capability before remote launches.\n- Refresh the live proxy when switching between permission profiles with different network settings.\n\n## Testing\n\nAdd coverage for configuration-driven sandbox capture, rejection of unsupported launch contexts, execution parameter propagation, and live permission profile changes.\n\nGitOrigin-RevId: c4db87056de116f433a128806bef673802f35397",
+              "url": "https://github.com/openai/codex/commit/effad7568c7945c524923e71f1919d64e7b614aa"
+            },
+            {
+              "sha": "35145aba212e923f987ccefaf9086ceba31e3b7c",
+              "title": "Broadcast read-state changes to experimental clients (#61852)",
+              "message": "Broadcast read-state changes to experimental clients (#61852)\n\n## Why\n\nClients need read-state updates for threads they have not opened so they can keep thread lists current.\n\n## What changed\n\nBroadcast `thread/readState/changed` to initialized experimental clients whenever a durable read receipt changes, regardless of thread subscription. Preserve filtering through `optOutNotificationMethods` and document refreshing the list after reconnecting to recover missed changes.\n\n## Testing\n\nAdd a WebSocket regression test verifying that an unsubscribed experimental client receives updates while clients without the experimental capability and clients that opt out do not.\n\nGitOrigin-RevId: a1a0f29405a856fdf6e379ded1376ed7d3d765cb",
+              "url": "https://github.com/openai/codex/commit/35145aba212e923f987ccefaf9086ceba31e3b7c"
+            },
+            {
+              "sha": "3257e1b3eb04a43a8721ad0e59470327807eb844",
+              "title": "Allow model metadata to control multi-agent tools in code mode (#61854)",
+              "message": "Allow model metadata to control multi-agent tools in code mode (#61854)\n\n## What changed\n\nAdd optional `multi_agent_tools_in_code_mode` model metadata to control whether native multi-agent tools follow the model's `tool_mode`. When `true`, expose them according to `Direct`, `CodeMode`, or `CodeModeOnly`; when `false`, keep them direct-only. When omitted, preserve the `multi_agent_v2.non_code_mode_only` runtime setting.\n\n## Testing\n\nAdd coverage for metadata overrides and runtime fallback across all three tool modes, plus serialization and deserialization of absent, null, and boolean metadata values. Update the namespace-prefix integration scenario to enable code-mode tools through model metadata.\n\nGitOrigin-RevId: be90f436066226bf9971cbd17f28c396341bb83a",
+              "url": "https://github.com/openai/codex/commit/3257e1b3eb04a43a8721ad0e59470327807eb844"
+            },
+            {
+              "sha": "457a191479f15ce517d70e9a7bc4caf9ddd6d404",
+              "title": "Add opt-in tool-call attribution for upstream proxies (#61860)",
+              "message": "Add opt-in tool-call attribution for upstream proxies (#61860)\n\n## What changed\n\nAllow executors to set `CODEX_TOOL_CALL_ATTRIBUTION_PROXY` to designate an upstream proxy that consumes and strips `x-openai-internal-tool-call-id`. When the selected upstream matches that endpoint, attach the controller's tool-call ID to plaintext HTTP requests or the outer HTTPS `CONNECT` request.\n\nStrip caller-supplied attribution headers and send no attribution to direct destinations or other upstream proxies. Leave attribution disabled when the setting is unset.\n\n## Testing\n\nAdd request-capture tests for HTTP and HTTPS attribution, execution-specific IDs, header stripping, split upstream selection with nonstandard origin ports, and inbound `CONNECT` tunneling.\n\nGitOrigin-RevId: f908faf55a991bc11f2f9c7fd3100f42b4f638b9",
+              "url": "https://github.com/openai/codex/commit/457a191479f15ce517d70e9a7bc4caf9ddd6d404"
+            },
+            {
+              "sha": "237d8b104ed06ae46c5ed9a54693672dea21856c",
+              "title": "Report remote plugin local versions from matching cached packages (#61865)",
+              "message": "Report remote plugin local versions from matching cached packages (#61865)\n\n## Why\n\nA remote plugin's catalog version can differ from the package available locally. Matching names and versions also do not establish that a cached package belongs to the same remote plugin.\n\n## What changed\n\n- Resolve `local_version` for remote plugin lists, details, and shares from the active local package, requiring a matching remote plugin ID and an existing manifest. Perform these filesystem reads on a blocking task.\n- Download the package when a same-version cache has a conflicting or unreadable identity receipt. Preserve migration for older caches without receipts, and retain the original receipt if the replacement download fails.\n\n## Testing\n\nAdd coverage for local package identity and manifest requirements, differing catalog and local versions, and preservation of the original receipt after a failed replacement download. Update share expectations to leave `local_version` unset when no matching local package exists.\n\nGitOrigin-RevId: 5d86f834ac3861a4a3d3bf0d042bfe3f991a7cad",
+              "url": "https://github.com/openai/codex/commit/237d8b104ed06ae46c5ed9a54693672dea21856c"
+            },
+            {
+              "sha": "b8cbdbfeff72869e5d715480572aad24f739aa65",
+              "title": "Preserve SQLite row metadata in thread listings (#61866)",
+              "message": "Preserve SQLite row metadata in thread listings (#61866)\n\n## Why\n\nDirect SQLite listings already contain thread titles and section ordering metadata. Converting those rows to rollout summaries and fetching metadata again discards the original per-row values.\n\n## What changed\n\nBuild thread listings directly from the collected SQLite rows, retaining their titles, section positions, and section entry times. Preserve row order and each occurrence's metadata when a thread appears more than once during pagination refill. Continue resolving legacy names from the session index with the existing title precedence.\n\nKeep rollout listings and search name enrichment best effort, and avoid redundant metadata queries for direct SQLite listings.\n\n## Testing\n\nAdd coverage for repeated legacy rows retaining indexed names and distinct timestamps and section positions. Extend listing tests to check SQLite titles and section metadata in recent-thread results.\n\nGitOrigin-RevId: 838036250d38e6ca1b403741de3e6dd3eafdd04b",
+              "url": "https://github.com/openai/codex/commit/b8cbdbfeff72869e5d715480572aad24f739aa65"
+            },
+            {
+              "sha": "77873dd0d284aeba7ce849b995b28ee8f4498d73",
+              "title": "Preserve plugin skill picker ranking across version changes (#61871)",
+              "message": "Preserve plugin skill picker ranking across version changes (#61871)\n\n## Why\n\nPlugin skill paths include the installed version, so changing versions loses the influence of previous selections on `$` picker ordering.\n\n## What changed\n\nAggregate selection frequencies using a version-independent key for cached plugin skills. Recognize both configured and canonical plugin cache paths so usage history still applies when the cache is symlinked. Continue ranking by frequency within each match tier.\n\n## Testing\n\nExtend the composer regression test to load usage from an older plugin version and verify that the current version is preferred within its match tier, including a symlinked cache on Unix.\n\nGitOrigin-RevId: 483619dc75254898982959ff5f3bcb1f17d6ff0e",
+              "url": "https://github.com/openai/codex/commit/77873dd0d284aeba7ce849b995b28ee8f4498d73"
+            },
+            {
+              "sha": "dba22f2acc3bffbd57e3ce1d9c8f7ccc666b47e8",
+              "title": "Support flat subgraphs in native Mermaid flowcharts (#61878)",
+              "message": "Support flat subgraphs in native Mermaid flowcharts (#61878)\n\n## What changed\n\nParse `subgraph title` and `subgraph ID[title]` blocks and render labeled frames around their nodes and internal edges. Support edges between nodes in different groups in all four flowchart directions.\n\nKeep nested subgraphs, edges to subgraph IDs, and subgraph-local directions unsupported, preserving source fallback for unsupported input. Document the expanded syntax subset.\n\n## Testing\n\nAdd snapshot and regression coverage for group rendering, cross-group edges, all four directions, width limits, and invalid or unsupported subgraphs. Extend TUI native-renderer coverage to include grouped flowcharts.\n\nGitOrigin-RevId: 5bed535bcd4991b53143e3a591eef04f46ef4bd1",
+              "url": "https://github.com/openai/codex/commit/dba22f2acc3bffbd57e3ce1d9c8f7ccc666b47e8"
+            },
+            {
+              "sha": "d5a478e31c3296e544d53424a7a6c995e7dfb0f5",
+              "title": "Preserve local Markdown document targets in transcript rendering (#61880)",
+              "message": "Preserve local Markdown document targets in transcript rendering (#61880)\n\n## What changed\n\nRetain eligible local `.md` and `.markdown` link targets as document metadata and allow transcript hit testing to resolve them when `document_links` is enabled. The flag defaults to disabled, and document targets are excluded from terminal OSC-8 links.\n\nPreserve link metadata through narrow table layouts, account for grapheme widths when remapping header links, and retain literal backslashes in POSIX file URI targets. Keep validated workspace artifact links usable as terminal hyperlinks.\n\n## Testing\n\nAdd regression coverage for opt-in document hit testing, narrow table link ranges, styled emoji and escaped pipes, POSIX file URI backslashes, and validated workspace artifact links.\n\nGitOrigin-RevId: e5d12c8558f5210eb66c17b5be8b28b7e80d414f",
+              "url": "https://github.com/openai/codex/commit/d5a478e31c3296e544d53424a7a6c995e7dfb0f5"
+            },
+            {
+              "sha": "59d8c797896c422afe8bff56bcc6207d2114fd7e",
+              "title": "Add app-server file preview read helpers (#61887)",
+              "message": "Add app-server file preview read helpers (#61887)\n\n## What changed\n\nAdd session helpers to resolve file paths against the source thread's workspace and read preview bytes through `fs/readFile`. Require a workspace on the app-server host, restrict reads to POSIX paths, and reject reads when the workspace changes.\n\nAdd text document validation that rejects invalid UTF-8 and control characters other than tabs and line endings.\n\n## Testing\n\nAdd a mock WebSocket app-server test covering source-thread metadata requests, relative path resolution, large text reads, invalid UTF-8, binary content, and workspace changes during a read.\n\nGitOrigin-RevId: b51cb227e478d72cba42309828e40bbffff6d847",
+              "url": "https://github.com/openai/codex/commit/59d8c797896c422afe8bff56bcc6207d2114fd7e"
+            },
+            {
+              "sha": "be5db96264e2f4b68cf01488fc984c3c024eb48e",
+              "title": "Add read-only document previews to the TUI sidebar (#61888)",
+              "message": "Add read-only document previews to the TUI sidebar (#61888)\n\n## What changed\n\n- Open transcript file links in sidebar tabs when the TUI workspace is enabled, resolving and reading files through the focused thread's app server and rendering their contents as Markdown.\n- Support pager keys, mouse scrolling, switching between document and chat tabs, and closing previews with `Esc`. Reuse existing previews and allow failed opens to be retried.\n- Show loading and error states, and prevent late document results from taking focus back after the user switches views.\n- Adapt tab widths to the available space, preserve filename extensions in truncated labels, and keep divider dragging aligned to exact terminal columns.\n\n## Testing\n\nAdd coverage for workspace-gated link opening, loading and error states, retrying, custom pager bindings, multiple previews, tab reuse, closing during loading, and preserving focus when results arrive late. Update tab and divider assertions and snapshots.\n\nGitOrigin-RevId: e979b757c623c29a8ed50277ec929655d783ad18",
+              "url": "https://github.com/openai/codex/commit/be5db96264e2f4b68cf01488fc984c3c024eb48e"
+            },
+            {
+              "sha": "7c3f5e2cc2904c7a41742f337a65d606e1da8fe9",
+              "title": "Add search, selection, and link navigation to document previews (#61889)",
+              "message": "Add search, selection, and link navigation to document previews (#61889)\n\n## What changed\n\n- Enable search, keyboard and mouse selection, and Markdown copying in sidebar document previews, including copying while offline.\n- Navigate links with `Tab` and `Shift+Tab`, then open them with `Enter`. Open web links in the browser and resolve file links relative to the current document.\n- Render local Markdown links as interactive labels and preserve distinct link occurrences across wrapping.\n- Add document zoom, scroll indicators, and contextual footer hints. Disambiguate document tabs with matching filenames, including when titles are truncated.\n- Cancel pending PRIMARY selection publication when a document is hidden and preserve the intended destination for composer clipboard pastes.\n\n## Testing\n\nExtend document preview coverage for search, selection, offline copying, link activation, hidden PRIMARY selections, and duplicate tab titles. Add rendering tests for local link labels and navigation across wrapped links.\n\nGitOrigin-RevId: 80240fa580eed9dda971759afc49bc2bb909fcb5",
+              "url": "https://github.com/openai/codex/commit/7c3f5e2cc2904c7a41742f337a65d606e1da8fe9"
+            },
+            {
+              "sha": "3a51865c8cca4409dbdc77a22839a52a6bb1f8f9",
+              "title": "Open source file links at line and column targets in the TUI (#61890)",
+              "message": "Open source file links at line and column targets in the TUI (#61890)\n\n## What changed\n\n- Extend sidebar previews beyond Markdown to source files, including extensionless files. Preserve line and column targets such as `./Makefile#L12C3`, scroll to the target, and highlight its line and character.\n- Render source previews with syntax highlighting and line numbers when space permits. Keep plain Markdown links rendered as Markdown, and show source when a location is specified.\n- Show local link labels without appended destinations when workspace previews are available, and emphasize links on hover. Refresh rendering when preview availability changes.\n- Limit source previews to 1 MiB and 10,000 lines, and disable document previews for Windows workspaces.\n\n## Testing\n\nAdd coverage for extensionless link parsing, matching hover and click targets, streamed file citation metadata, and source navigation with CRLF input, tab reuse, and Escape handling.\n\nGitOrigin-RevId: c2629b122628a4f5afa17df1890f63bd1c9bbcf6",
+              "url": "https://github.com/openai/codex/commit/3a51865c8cca4409dbdc77a22839a52a6bb1f8f9"
+            },
+            {
+              "sha": "dcacf1774794227fede1c656f773210a3df96e31",
+              "title": "Release 0.171.0-alpha.10",
+              "message": "Release 0.171.0-alpha.10",
+              "url": "https://github.com/openai/codex/commit/dcacf1774794227fede1c656f773210a3df96e31"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.171.0-alpha.9",
+            "head": "rust-v0.171.0-alpha.10",
+            "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.9...rust-v0.171.0-alpha.10",
+            "status": "diverged",
+            "total": 16,
+            "behind": 1,
+            "complete": true,
+            "fetched": 16
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.9:2026-11-17T00:45:56.996Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T00:45:56.996Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.9",
+        "at": "2026-11-16T19:17:33.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.9",
+        "text": "0.171.0-alpha.9. Release 0.171.0-alpha.9",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.10:2026-11-17T00:45:56.996Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-17T00:45:56.996Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.171.0-alpha.10",
+        "title": "0.171.0-alpha.10",
+        "body": "Release 0.171.0-alpha.10\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-17T00:45:57.000Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.10",
+        "publishedAt": "2026-11-16T23:32:43Z",
+        "commits": [
+          {
+            "sha": "e0241d4fae4c87b406aacaf11d9ceb8548879873",
+            "title": "Defer code-mode tool catalog construction until first access (#61845)",
+            "message": "Defer code-mode tool catalog construction until first access (#61845)\n\n## Why\n\nEach cell eagerly built `tools` and `ALL_TOOLS`, even when its code never accessed them.\n\n## What changed\n\n- Initialize each catalog global lazily on its first read, preserving writable values and mutations within each cell.\n- Normalize tool metadata at the service boundary and share it through an `Arc`-backed catalog instead of repeatedly converting it between runtime layers.\n- Construct catalog properties without invoking inherited setters.\n\n## Testing\n\nAdd regression tests for cell-local catalog mutations, fresh catalogs across cells, and catalog construction with inherited setters on `Object.prototype` and `Array.prototype`.\n\nGitOrigin-RevId: 04695c24ff33d3b3a4335558e9c754844f04e9f0",
+            "url": "https://github.com/openai/codex/commit/e0241d4fae4c87b406aacaf11d9ceb8548879873"
+          },
+          {
+            "sha": "fef47a6769414444b1ce37aa8188b55bf2624f27",
+            "title": "Reuse code-mode tool catalogs across executions (#61846)",
+            "message": "Reuse code-mode tool catalogs across executions (#61846)\n\n## Why\n\nRepeated executions with the same tools resend the full catalog and duplicate tool metadata. Catalog revisions let clients reuse an acknowledged catalog within a session.\n\n## What changed\n\n- Negotiate catalog revision support over stdio and gRPC, retaining full requests for hosts without support.\n- Send tool definitions when installing a revision, then reference that revision for matching executions. Commit client catalog state only after execution admission succeeds; concurrent admissions can send full requests.\n- Keep immutable tool snapshots for each cell, reject invalid, unknown, or conflicting revisions, and share identical definitions and runtime metadata across sessions in the same process.\n\n## Testing\n\nAdd tests for acknowledged reuse, abandoned admissions, changed definitions, revision conflicts, session isolation, snapshot lifetimes, and shared metadata.\n\nGitOrigin-RevId: d2f29bf668bc2279715f5f1b7d24310923c57d33",
+            "url": "https://github.com/openai/codex/commit/fef47a6769414444b1ce37aa8188b55bf2624f27"
+          },
+          {
+            "sha": "effad7568c7945c524923e71f1919d64e7b614aa",
+            "title": "Allow network policy to enable transparent TCP capture (#61851)",
+            "message": "Allow network policy to enable transparent TCP capture (#61851)\n\n## What changed\n\n- Add `transparent_tcp` to network configuration and managed requirements, defaulting to off. When enabled, route outbound TCP from managed Linux sandbox commands through the managed SOCKS5 proxy without requiring an executor startup flag.\n- Propagate the setting through local and remote execution, require an enabled SOCKS5 proxy, and check the executor's `networkProxyTransparentTcp` capability before remote launches.\n- Refresh the live proxy when switching between permission profiles with different network settings.\n\n## Testing\n\nAdd coverage for configuration-driven sandbox capture, rejection of unsupported launch contexts, execution parameter propagation, and live permission profile changes.\n\nGitOrigin-RevId: c4db87056de116f433a128806bef673802f35397",
+            "url": "https://github.com/openai/codex/commit/effad7568c7945c524923e71f1919d64e7b614aa"
+          },
+          {
+            "sha": "35145aba212e923f987ccefaf9086ceba31e3b7c",
+            "title": "Broadcast read-state changes to experimental clients (#61852)",
+            "message": "Broadcast read-state changes to experimental clients (#61852)\n\n## Why\n\nClients need read-state updates for threads they have not opened so they can keep thread lists current.\n\n## What changed\n\nBroadcast `thread/readState/changed` to initialized experimental clients whenever a durable read receipt changes, regardless of thread subscription. Preserve filtering through `optOutNotificationMethods` and document refreshing the list after reconnecting to recover missed changes.\n\n## Testing\n\nAdd a WebSocket regression test verifying that an unsubscribed experimental client receives updates while clients without the experimental capability and clients that opt out do not.\n\nGitOrigin-RevId: a1a0f29405a856fdf6e379ded1376ed7d3d765cb",
+            "url": "https://github.com/openai/codex/commit/35145aba212e923f987ccefaf9086ceba31e3b7c"
+          },
+          {
+            "sha": "3257e1b3eb04a43a8721ad0e59470327807eb844",
+            "title": "Allow model metadata to control multi-agent tools in code mode (#61854)",
+            "message": "Allow model metadata to control multi-agent tools in code mode (#61854)\n\n## What changed\n\nAdd optional `multi_agent_tools_in_code_mode` model metadata to control whether native multi-agent tools follow the model's `tool_mode`. When `true`, expose them according to `Direct`, `CodeMode`, or `CodeModeOnly`; when `false`, keep them direct-only. When omitted, preserve the `multi_agent_v2.non_code_mode_only` runtime setting.\n\n## Testing\n\nAdd coverage for metadata overrides and runtime fallback across all three tool modes, plus serialization and deserialization of absent, null, and boolean metadata values. Update the namespace-prefix integration scenario to enable code-mode tools through model metadata.\n\nGitOrigin-RevId: be90f436066226bf9971cbd17f28c396341bb83a",
+            "url": "https://github.com/openai/codex/commit/3257e1b3eb04a43a8721ad0e59470327807eb844"
+          },
+          {
+            "sha": "457a191479f15ce517d70e9a7bc4caf9ddd6d404",
+            "title": "Add opt-in tool-call attribution for upstream proxies (#61860)",
+            "message": "Add opt-in tool-call attribution for upstream proxies (#61860)\n\n## What changed\n\nAllow executors to set `CODEX_TOOL_CALL_ATTRIBUTION_PROXY` to designate an upstream proxy that consumes and strips `x-openai-internal-tool-call-id`. When the selected upstream matches that endpoint, attach the controller's tool-call ID to plaintext HTTP requests or the outer HTTPS `CONNECT` request.\n\nStrip caller-supplied attribution headers and send no attribution to direct destinations or other upstream proxies. Leave attribution disabled when the setting is unset.\n\n## Testing\n\nAdd request-capture tests for HTTP and HTTPS attribution, execution-specific IDs, header stripping, split upstream selection with nonstandard origin ports, and inbound `CONNECT` tunneling.\n\nGitOrigin-RevId: f908faf55a991bc11f2f9c7fd3100f42b4f638b9",
+            "url": "https://github.com/openai/codex/commit/457a191479f15ce517d70e9a7bc4caf9ddd6d404"
+          },
+          {
+            "sha": "237d8b104ed06ae46c5ed9a54693672dea21856c",
+            "title": "Report remote plugin local versions from matching cached packages (#61865)",
+            "message": "Report remote plugin local versions from matching cached packages (#61865)\n\n## Why\n\nA remote plugin's catalog version can differ from the package available locally. Matching names and versions also do not establish that a cached package belongs to the same remote plugin.\n\n## What changed\n\n- Resolve `local_version` for remote plugin lists, details, and shares from the active local package, requiring a matching remote plugin ID and an existing manifest. Perform these filesystem reads on a blocking task.\n- Download the package when a same-version cache has a conflicting or unreadable identity receipt. Preserve migration for older caches without receipts, and retain the original receipt if the replacement download fails.\n\n## Testing\n\nAdd coverage for local package identity and manifest requirements, differing catalog and local versions, and preservation of the original receipt after a failed replacement download. Update share expectations to leave `local_version` unset when no matching local package exists.\n\nGitOrigin-RevId: 5d86f834ac3861a4a3d3bf0d042bfe3f991a7cad",
+            "url": "https://github.com/openai/codex/commit/237d8b104ed06ae46c5ed9a54693672dea21856c"
+          },
+          {
+            "sha": "b8cbdbfeff72869e5d715480572aad24f739aa65",
+            "title": "Preserve SQLite row metadata in thread listings (#61866)",
+            "message": "Preserve SQLite row metadata in thread listings (#61866)\n\n## Why\n\nDirect SQLite listings already contain thread titles and section ordering metadata. Converting those rows to rollout summaries and fetching metadata again discards the original per-row values.\n\n## What changed\n\nBuild thread listings directly from the collected SQLite rows, retaining their titles, section positions, and section entry times. Preserve row order and each occurrence's metadata when a thread appears more than once during pagination refill. Continue resolving legacy names from the session index with the existing title precedence.\n\nKeep rollout listings and search name enrichment best effort, and avoid redundant metadata queries for direct SQLite listings.\n\n## Testing\n\nAdd coverage for repeated legacy rows retaining indexed names and distinct timestamps and section positions. Extend listing tests to check SQLite titles and section metadata in recent-thread results.\n\nGitOrigin-RevId: 838036250d38e6ca1b403741de3e6dd3eafdd04b",
+            "url": "https://github.com/openai/codex/commit/b8cbdbfeff72869e5d715480572aad24f739aa65"
+          },
+          {
+            "sha": "77873dd0d284aeba7ce849b995b28ee8f4498d73",
+            "title": "Preserve plugin skill picker ranking across version changes (#61871)",
+            "message": "Preserve plugin skill picker ranking across version changes (#61871)\n\n## Why\n\nPlugin skill paths include the installed version, so changing versions loses the influence of previous selections on `$` picker ordering.\n\n## What changed\n\nAggregate selection frequencies using a version-independent key for cached plugin skills. Recognize both configured and canonical plugin cache paths so usage history still applies when the cache is symlinked. Continue ranking by frequency within each match tier.\n\n## Testing\n\nExtend the composer regression test to load usage from an older plugin version and verify that the current version is preferred within its match tier, including a symlinked cache on Unix.\n\nGitOrigin-RevId: 483619dc75254898982959ff5f3bcb1f17d6ff0e",
+            "url": "https://github.com/openai/codex/commit/77873dd0d284aeba7ce849b995b28ee8f4498d73"
+          },
+          {
+            "sha": "dba22f2acc3bffbd57e3ce1d9c8f7ccc666b47e8",
+            "title": "Support flat subgraphs in native Mermaid flowcharts (#61878)",
+            "message": "Support flat subgraphs in native Mermaid flowcharts (#61878)\n\n## What changed\n\nParse `subgraph title` and `subgraph ID[title]` blocks and render labeled frames around their nodes and internal edges. Support edges between nodes in different groups in all four flowchart directions.\n\nKeep nested subgraphs, edges to subgraph IDs, and subgraph-local directions unsupported, preserving source fallback for unsupported input. Document the expanded syntax subset.\n\n## Testing\n\nAdd snapshot and regression coverage for group rendering, cross-group edges, all four directions, width limits, and invalid or unsupported subgraphs. Extend TUI native-renderer coverage to include grouped flowcharts.\n\nGitOrigin-RevId: 5bed535bcd4991b53143e3a591eef04f46ef4bd1",
+            "url": "https://github.com/openai/codex/commit/dba22f2acc3bffbd57e3ce1d9c8f7ccc666b47e8"
+          },
+          {
+            "sha": "d5a478e31c3296e544d53424a7a6c995e7dfb0f5",
+            "title": "Preserve local Markdown document targets in transcript rendering (#61880)",
+            "message": "Preserve local Markdown document targets in transcript rendering (#61880)\n\n## What changed\n\nRetain eligible local `.md` and `.markdown` link targets as document metadata and allow transcript hit testing to resolve them when `document_links` is enabled. The flag defaults to disabled, and document targets are excluded from terminal OSC-8 links.\n\nPreserve link metadata through narrow table layouts, account for grapheme widths when remapping header links, and retain literal backslashes in POSIX file URI targets. Keep validated workspace artifact links usable as terminal hyperlinks.\n\n## Testing\n\nAdd regression coverage for opt-in document hit testing, narrow table link ranges, styled emoji and escaped pipes, POSIX file URI backslashes, and validated workspace artifact links.\n\nGitOrigin-RevId: e5d12c8558f5210eb66c17b5be8b28b7e80d414f",
+            "url": "https://github.com/openai/codex/commit/d5a478e31c3296e544d53424a7a6c995e7dfb0f5"
+          },
+          {
+            "sha": "59d8c797896c422afe8bff56bcc6207d2114fd7e",
+            "title": "Add app-server file preview read helpers (#61887)",
+            "message": "Add app-server file preview read helpers (#61887)\n\n## What changed\n\nAdd session helpers to resolve file paths against the source thread's workspace and read preview bytes through `fs/readFile`. Require a workspace on the app-server host, restrict reads to POSIX paths, and reject reads when the workspace changes.\n\nAdd text document validation that rejects invalid UTF-8 and control characters other than tabs and line endings.\n\n## Testing\n\nAdd a mock WebSocket app-server test covering source-thread metadata requests, relative path resolution, large text reads, invalid UTF-8, binary content, and workspace changes during a read.\n\nGitOrigin-RevId: b51cb227e478d72cba42309828e40bbffff6d847",
+            "url": "https://github.com/openai/codex/commit/59d8c797896c422afe8bff56bcc6207d2114fd7e"
+          },
+          {
+            "sha": "be5db96264e2f4b68cf01488fc984c3c024eb48e",
+            "title": "Add read-only document previews to the TUI sidebar (#61888)",
+            "message": "Add read-only document previews to the TUI sidebar (#61888)\n\n## What changed\n\n- Open transcript file links in sidebar tabs when the TUI workspace is enabled, resolving and reading files through the focused thread's app server and rendering their contents as Markdown.\n- Support pager keys, mouse scrolling, switching between document and chat tabs, and closing previews with `Esc`. Reuse existing previews and allow failed opens to be retried.\n- Show loading and error states, and prevent late document results from taking focus back after the user switches views.\n- Adapt tab widths to the available space, preserve filename extensions in truncated labels, and keep divider dragging aligned to exact terminal columns.\n\n## Testing\n\nAdd coverage for workspace-gated link opening, loading and error states, retrying, custom pager bindings, multiple previews, tab reuse, closing during loading, and preserving focus when results arrive late. Update tab and divider assertions and snapshots.\n\nGitOrigin-RevId: e979b757c623c29a8ed50277ec929655d783ad18",
+            "url": "https://github.com/openai/codex/commit/be5db96264e2f4b68cf01488fc984c3c024eb48e"
+          },
+          {
+            "sha": "7c3f5e2cc2904c7a41742f337a65d606e1da8fe9",
+            "title": "Add search, selection, and link navigation to document previews (#61889)",
+            "message": "Add search, selection, and link navigation to document previews (#61889)\n\n## What changed\n\n- Enable search, keyboard and mouse selection, and Markdown copying in sidebar document previews, including copying while offline.\n- Navigate links with `Tab` and `Shift+Tab`, then open them with `Enter`. Open web links in the browser and resolve file links relative to the current document.\n- Render local Markdown links as interactive labels and preserve distinct link occurrences across wrapping.\n- Add document zoom, scroll indicators, and contextual footer hints. Disambiguate document tabs with matching filenames, including when titles are truncated.\n- Cancel pending PRIMARY selection publication when a document is hidden and preserve the intended destination for composer clipboard pastes.\n\n## Testing\n\nExtend document preview coverage for search, selection, offline copying, link activation, hidden PRIMARY selections, and duplicate tab titles. Add rendering tests for local link labels and navigation across wrapped links.\n\nGitOrigin-RevId: 80240fa580eed9dda971759afc49bc2bb909fcb5",
+            "url": "https://github.com/openai/codex/commit/7c3f5e2cc2904c7a41742f337a65d606e1da8fe9"
+          },
+          {
+            "sha": "3a51865c8cca4409dbdc77a22839a52a6bb1f8f9",
+            "title": "Open source file links at line and column targets in the TUI (#61890)",
+            "message": "Open source file links at line and column targets in the TUI (#61890)\n\n## What changed\n\n- Extend sidebar previews beyond Markdown to source files, including extensionless files. Preserve line and column targets such as `./Makefile#L12C3`, scroll to the target, and highlight its line and character.\n- Render source previews with syntax highlighting and line numbers when space permits. Keep plain Markdown links rendered as Markdown, and show source when a location is specified.\n- Show local link labels without appended destinations when workspace previews are available, and emphasize links on hover. Refresh rendering when preview availability changes.\n- Limit source previews to 1 MiB and 10,000 lines, and disable document previews for Windows workspaces.\n\n## Testing\n\nAdd coverage for extensionless link parsing, matching hover and click targets, streamed file citation metadata, and source navigation with CRLF input, tab reuse, and Escape handling.\n\nGitOrigin-RevId: c2629b122628a4f5afa17df1890f63bd1c9bbcf6",
+            "url": "https://github.com/openai/codex/commit/3a51865c8cca4409dbdc77a22839a52a6bb1f8f9"
+          },
+          {
+            "sha": "dcacf1774794227fede1c656f773210a3df96e31",
+            "title": "Release 0.171.0-alpha.10",
+            "message": "Release 0.171.0-alpha.10",
+            "url": "https://github.com/openai/codex/commit/dcacf1774794227fede1c656f773210a3df96e31"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.171.0-alpha.9",
+          "head": "rust-v0.171.0-alpha.10",
+          "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.9...rust-v0.171.0-alpha.10",
+          "status": "diverged",
+          "total": 16,
+          "behind": 1,
+          "complete": true,
+          "fetched": 16
         },
         "comparisonError": null
       }
