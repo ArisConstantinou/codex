@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-17T08:34:12.041Z",
+  "generatedAt": "2026-11-17T17:51:45.277Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -17372,6 +17372,255 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-openai-for-chile",
+      "at": "2026-11-17T00:00:00.000Z",
+      "url": "https://openai.com/index/introducing-openai-for-chile",
+      "text": "Introducing OpenAI for Chile. OpenAI and the Government of Chile are partnering to support responsible AI adoption, build public-sector skills and help local startups develop AI applications.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/ads/blog/chatgpt-ads-increases-its-market-presence",
+      "at": "2026-11-12T00:00:00.000Z",
+      "url": "https://openai.com/ads/blog/chatgpt-ads-increases-its-market-presence",
+      "text": "ChatGPT Ads increases its market presence in 44 countries. Aleph selected as ChatGPT Ads’ exclusive reseller in 44 countries to offer local invoicing, in-person support and local market expertise to brands and agencies",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/ads/customers/vistaprint",
+      "at": "2026-11-09T00:00:00.000Z",
+      "url": "https://openai.com/ads/customers/vistaprint",
+      "text": "How VistaPrint helps small businesses get the word out. Small business owners preparing for a launch or an event often know what they want to accomplish before they know what to print. VistaPrint uses ChatGPT Ads to show how products like signs and branded merchandise can help them get the word out.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.12",
+      "at": "2026-11-17T14:32:14.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.12",
+      "text": "0.171.0-alpha.12. Release 0.171.0-alpha.12",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.171.0-alpha.12",
+        "title": "0.171.0-alpha.12",
+        "body": "Release 0.171.0-alpha.12\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-17T17:51:45.284Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.12",
+        "publishedAt": "2026-11-17T14:26:49Z",
+        "commits": [
+          {
+            "sha": "1443c64c625e2941ef233de7da0c9ee3aecab74f",
+            "title": "Add undo and redo to the non-Vim prompt composer (#61954)",
+            "message": "Add undo and redo to the non-Vim prompt composer (#61954)\n\n## What changed\n\n- Add configurable `composer.undo` and `composer.redo` actions to the keymap picker. Default undo shortcuts are `Alt+Z` on Unix, `Ctrl+Z` on Windows, and `F7`, with `Super+Z` also available on macOS. Add `Shift` to redo.\n- Group contiguous typing and consecutive Backspaces into separate undo steps, and keep detected paste bursts separate from preceding typing. Restore complete drafts, including attachments and large pastes.\n- Make startup draft transfers undoable, preserve editing history across Vim mode changes, and clear history when a submitted draft is consumed. Track edits while disconnected so new input invalidates redo.\n\n## Testing\n\nAdd regression coverage for grouped edits, paste detection and selection replacement, clipboard images, startup draft transfers, disconnected editing, and keybinding conflicts.\n\nGitOrigin-RevId: 46cadf3c69320367dc972e47e0e8b3d3aac3c4ec",
+            "url": "https://github.com/openai/codex/commit/1443c64c625e2941ef233de7da0c9ee3aecab74f"
+          },
+          {
+            "sha": "50c227a6e24eef3e1cd21321348be812b6d2d87c",
+            "title": "Bound item loading for paginated `read_thread` calls (#61955)",
+            "message": "Bound item loading for paginated `read_thread` calls (#61955)\n\n## Why\n\n`read_thread` returns at most 20 items per turn, but requesting full turns loads every item in paginated history before trimming the result.\n\n## What changed\n\nFor paginated threads, request turn metadata without items, then fetch the newest 20 items per turn concurrently through `thread/items/list`. Restore chronological item order before building the response and share the item limit with the summary code.\n\n## Testing\n\nAdd a regression test that verifies the newest 20 items are returned in order with `includeOutputs` both enabled and disabled.\n\nGitOrigin-RevId: ba73a322cac7ee5262135a271f3574dc22d9d78c",
+            "url": "https://github.com/openai/codex/commit/50c227a6e24eef3e1cd21321348be812b6d2d87c"
+          },
+          {
+            "sha": "e9a2a9e11525d30727ecee93eb15121476e4f87d",
+            "title": "Support saved environments when starting Cloud threads (#61956)",
+            "message": "Support saved environments when starting Cloud threads (#61956)\n\n## What changed\n\n- Add `EnvironmentSelection` to start Cloud threads with either a saved environment ID or a project checkout in the default environment.\n- Expose saved environment discovery through the authenticated Cloud request handle, rejecting results if the account changes.\n- Thread environment selection through the app-server client and TUI session startup, and defer executor readiness for either explicit environment choice.\n\n## Testing\n\nExtend prewarm request tests to cover saved environment IDs and deferred readiness. Extend TUI session tests to verify saved environment routing without local working-directory or workspace-root overrides.\n\nGitOrigin-RevId: 626cec9926dad8f1a89b1a3ee9e4470850ae6a76",
+            "url": "https://github.com/openai/codex/commit/e9a2a9e11525d30727ecee93eb15121476e4f87d"
+          },
+          {
+            "sha": "44834c58fa99d0a04f222e18817b99b430f7c0e8",
+            "title": "Support turn-scoped exhaustion in host usage accounting (#61958)",
+            "message": "Support turn-scoped exhaustion in host usage accounting (#61958)\n\n## What changed\n\n- Add `UsageAccountingDecision::ExhaustedForTurn` so hosts can fail the current response with `SessionBudgetExceeded` while leaving later turns and peer threads eligible.\n- Preserve completed response output and token usage before reporting exhaustion, and track posted charges to avoid accounting twice.\n- When steering or mailbox preemption stops a stream, wait for accounting of any completion already observed before starting a follow-up request, and propagate budget errors.\n\n## Testing\n\nAdd coverage for preserving output and usage on turn exhaustion, successfully starting a later turn, and reporting turn exhaustion during steering.\n\nGitOrigin-RevId: e673bf30775f27a057fdc39d8429b74ff22121db",
+            "url": "https://github.com/openai/codex/commit/44834c58fa99d0a04f222e18817b99b430f7c0e8"
+          },
+          {
+            "sha": "65a44508861af9d78435872ca6633f88b8c406cf",
+            "title": "Prewarm restored file images on cold resume (#61959)",
+            "message": "Prewarm restored file images on cold resume (#61959)\n\n## Why\n\nCold resumes warm only base instructions, leaving historical file images out of the WebSocket warm-up.\n\n## What changed\n\n- Add the disabled-by-default `restored_history_prewarm` feature flag.\n- Start the WebSocket handshake while history loads, then build the warm-up from restored settings and history when it contains file images.\n- Retain the socket and normalized-image cache but discard the image warm-up response ID, so generation resends the full current history and subsequent turns continue from the real response.\n- Keep base warm-up for history without file images and defer image preparation to generation when the handshake falls back to HTTP.\n\n## Testing\n\nAdd request-history tests and snapshots covering text-only history, interrupted and injected images, resuming with a vision model after image omission, and HTTP fallback without duplicate image resolution.\n\nGitOrigin-RevId: 9a828f44ef0952f7335b5a8c0f7844a069f90d80",
+            "url": "https://github.com/openai/codex/commit/65a44508861af9d78435872ca6633f88b8c406cf"
+          },
+          {
+            "sha": "d8d840d32a8ebf9ec75603e6aa9cd88a58a444a2",
+            "title": "Capture local attachments before queuing turn input (#61962)",
+            "message": "Capture local attachments before queuing turn input (#61962)\n\n## Why\n\nQueued input can outlive its local attachment files. Reading those files only when rendering a model message can lose media submitted while turn admission is pending.\n\n## What changed\n\n- Introduce `ResolvedUserInput` to carry captured image bytes, audio data URLs, or read errors through session queues and agent input.\n- Resolve client attachments on the submitting host before queuing, using a blocking task for local file reads.\n- Render messages from captured payloads while preserving original paths and text spans for display, along with image position mappings.\n\n## Testing\n\nAdd coverage for rendering and serialization after source files are removed, steered audio retained during pending admission, and local audio errors and display content.\n\nGitOrigin-RevId: 4bbb6bda44167439a8cfdae15d3c476a7b1d336b",
+            "url": "https://github.com/openai/codex/commit/d8d840d32a8ebf9ec75603e6aa9cd88a58a444a2"
+          },
+          {
+            "sha": "c8d1ba814eb984e8fdd2f595ffd9b287e825a5b3",
+            "title": "Add HTTP/2 fallback for SSH tunnels (#61964)",
+            "message": "Add HTTP/2 fallback for SSH tunnels (#61964)\n\n## Why\n\nSSH tunnels need a working transport when UDP is blocked or a QUIC connection cannot complete an HTTP/3 CONNECT request.\n\n## What changed\n\n- Race TLS HTTP/2 CONNECT against HTTP/3 after a 250 ms QUIC head start, selecting the first successful CONNECT response.\n- Verify the gateway before obtaining credentials, treat CONNECT rejection as terminal, and include admission in the setup timeout.\n- Preserve bounded buffering, TCP half-close behavior, and SSH exit on remote EOF over HTTP/2. Keep peer-supplied debug text out of SSH errors.\n\n## Testing\n\nAdd local TLS HTTP/2 and HTTP/3 peer tests for transport selection, blocked UDP, stalled HTTP/3, terminal rejection, setup deadlines, certificate verification, address retries, and bidirectional forwarding with both half-close orders.\n\nGitOrigin-RevId: a1cde88dff7a4e5e6574cf12eacb453551f01b72",
+            "url": "https://github.com/openai/codex/commit/c8d1ba814eb984e8fdd2f595ffd9b287e825a5b3"
+          },
+          {
+            "sha": "39b590389871c8db85381daa9504886276bbc7c6",
+            "title": "Set explicit image detail in the restored-history prewarm test (#61969)",
+            "message": "Set explicit image detail in the restored-history prewarm test (#61969)\n\nConstruct the injected image as a `ResponseInputItem::Message` with\n`ImageDetail::High` in the restored-history prewarm scenario.\n\nGitOrigin-RevId: 6a414d2c52cb4d2195e6721365c97677c49c956e",
+            "url": "https://github.com/openai/codex/commit/39b590389871c8db85381daa9504886276bbc7c6"
+          },
+          {
+            "sha": "c826ca128699b5464724c8757638ae79f51a45f2",
+            "title": "Preserve accepted tool outputs and local resets in rollout traces (#61973)",
+            "message": "Preserve accepted tool outputs and local resets in rollout traces (#61973)\n\n## Why\n\nAccepted tool outputs may never appear in a later inference request, and request preparation can strip their history IDs. Replay needs to retain these outputs and match them to later snapshots, including trimmed results and outputs with identical wire bodies.\n\n## What changed\n\n- Capture accepted function and custom tool outputs, preserving their acceptance order, identity, and tool provenance during replay.\n- Record stripped tool output IDs alongside inference requests so replay can restore identity without changing the captured wire payload. Reuse accepted items and adopt their first model-visible snapshot bodies.\n- Record compaction checkpoints for local context-window resets using the selected input and frozen installed history, including goal edits retained during installation.\n- Exclude `configuration_update` items from normalized conversation history.\n\n## Testing\n\nAdd replay coverage for outputs accepted without subsequent inference, trimmed results, identical outputs with distinct IDs, and acceptance before or after a request snapshot. Extend checkpoint coverage to verify that retained goal edits are captured and later edits do not alter the checkpoint.\n\nGitOrigin-RevId: 70f737782f5000812f389a4e01b9f9690e39549f",
+            "url": "https://github.com/openai/codex/commit/c826ca128699b5464724c8757638ae79f51a45f2"
+          },
+          {
+            "sha": "9a5a78925d556c565367cbd01fac62617756c955",
+            "title": "Add a Cloud environment picker for new TUI conversations (#61974)",
+            "message": "Add a Cloud environment picker for new TUI conversations (#61974)\n\n## What changed\n\n- Open a searchable picker with `Ctrl+X E` to choose a saved personal or workspace environment, or use Default with the current GitHub project when available.\n- Show the selected environment above the composer and expose `tui.keymap.global.choose_cloud_environment` for custom bindings.\n- Preserve the composer draft and staged model, reasoning effort, and service tier when changing environments. Remember the saved environment when cycling through a local host and back to the same Cloud backend.\n\n## Testing\n\nAdd coverage for picker search and selection, dismissal without losing the draft, keyboard routing, environment label truncation, staged settings on the first turn, and saved-environment reuse after host switching.\n\nGitOrigin-RevId: ac9036fd46b252286852df4d792418a3330bae73",
+            "url": "https://github.com/openai/codex/commit/9a5a78925d556c565367cbd01fac62617756c955"
+          },
+          {
+            "sha": "98323eddf944b765a391fda552be32df46f4bbbd",
+            "title": "Simplify SSH tunneling and honor system HTTPS proxies (#61975)",
+            "message": "Simplify SSH tunneling and honor system HTTPS proxies (#61975)\n\n## What changed\n\n- Make `codex tcp-tunnel` an SSH stdio helper, removing the loopback listener, stdin control protocol, and JSON diagnostics.\n- Add `--token-file` for one-use credentials, consumed only after gateway verification, with environment-based OAuth routing or a legacy IPv4 `--target`.\n- Honor system HTTPS proxy settings without attempting direct QUIC, and keep gateway credentials inside verified TLS.\n- Race direct TCP addresses through TLS and HTTP/2 readiness so stalled peers do not block a working address.\n\n## Testing\n\nAdd coverage for proxy credential isolation and stalled TLS peers, plus an opt-in Linux OpenSSH integration test for complete uploads and remote exit while local stdin remains open.\n\nGitOrigin-RevId: 62423c8a8267842c9e401b3f9094c7278c47a490",
+            "url": "https://github.com/openai/codex/commit/98323eddf944b765a391fda552be32df46f4bbbd"
+          },
+          {
+            "sha": "61f59108263da04deaacd51f12991b454d6b6b52",
+            "title": "Add mouse scroll speed to the TUI config panel (#61976)",
+            "message": "Add mouse scroll speed to the TUI config panel (#61976)\n\n## What changed\n\n- Add an Input setting for fullscreen transcript mouse-wheel speed, with presets of 0.5×, 1×, 1.5×, 2×, and 3×. Keep custom configured values available as the current choice.\n- Save selections to `tui.mouse_scroll_speed` and apply them to the transcript without restarting.\n- Refresh the displayed scroll speed from local settings when changing working directories.\n\n## Testing\n\nAdd picker and snapshot coverage for custom values and preset selection, verify persistence and live application, and check that changing directories updates the setting and picker.\n\nGitOrigin-RevId: 4be118e1403e74f5ce819e44949f4d96d9e17648",
+            "url": "https://github.com/openai/codex/commit/61f59108263da04deaacd51f12991b454d6b6b52"
+          },
+          {
+            "sha": "490394c184eba25ebf4ec728e64f9af485a4cced",
+            "title": "Keep TUI quota state scoped to the active provider (#61977)",
+            "message": "Keep TUI quota state scoped to the active provider (#61977)\n\n## Why\n\nStarting or switching chats can carry quota usage, backend banners, and pending recovery from the previous provider, even when both providers report identical account details.\n\n## What changed\n\n- Refresh account state when the started or cached thread uses a different provider, and discard inherited quota and backend banner state across provider changes.\n- Track the provider associated with quota inherited by the task list, where the local default can differ from the previous chat's provider.\n- Invalidate pending recovery when the provider changes or the chat loses its ChatGPT account, and ignore queued recovery refreshes without a ChatGPT account.\n- Preserve quota state and pending recovery when opening another chat on the same provider.\n\n## Testing\n\nAdd regression coverage for provider changes with matching account details, stale recovery replies, cached side chats, and quota and recovery preservation across `/new` and task list transitions.\n\nGitOrigin-RevId: f4513ca565f2068489327989ae10b24cada0a9bf",
+            "url": "https://github.com/openai/codex/commit/490394c184eba25ebf4ec728e64f9af485a4cced"
+          },
+          {
+            "sha": "7e59b276677a2ee970c741390fb06aada0b01ad6",
+            "title": "Use the current billing plan for TUI thread usage (#61978)",
+            "message": "Use the current billing plan for TUI thread usage (#61978)\n\n## Why\n\nAccount reads can use a cached subscription plan, and rolling quota updates can carry an obsolete plan. This can leave thread usage unavailable or cause `/status` to display costs using the wrong billing model.\n\n## What changed\n\n- Prefer a known plan from a full Codex quota read over the account plan, regardless of reply order. Ignore unknown quota plans and prevent rolling updates from changing the billing plan.\n- Preserve quota plan state across chat widget replacement and apply accepted quota reads even after the requesting status card is gone.\n- Refresh thread usage availability when the plan changes and pair asynchronous `/status` estimates with the corrected plan, including native dollar usage for `Ent26`.\n\n## Testing\n\nAdd regression tests for reply ordering, unknown plans, corrected pending status cards, obsolete rolling updates, and quota replies arriving after widget replacement.\n\nGitOrigin-RevId: 238fadb587fe98cda0eeb5111c1949928acc8153",
+            "url": "https://github.com/openai/codex/commit/7e59b276677a2ee970c741390fb06aada0b01ad6"
+          },
+          {
+            "sha": "46f5a1df9f2ade44cb9712d574cde9401a755d21",
+            "title": "Render selected MCP statusline providers in the TUI footer (#61979)",
+            "message": "Render selected MCP statusline providers in the TUI footer (#61979)\n\n## What changed\n\n- With `tui_extensions_statusline` enabled, resolve the saved MCP provider and read its resource with a snapshot of the displayed thread's statusline state.\n- Show initialization and error messages, validate the JSON UI tree response, and preserve provider content through native statusline refreshes. Ignore stale results when the thread, provider, or working directory changes.\n- Request workspace headlines and thread usage for custom providers even when no built-in statusline items are selected.\n\n## Testing\n\nAdd unit coverage for response validation and footer lifecycle, plus end-to-end tests for embedded and remote app servers, startup delays, current thread metadata, and rejection of project-level provider overrides.\n\nGitOrigin-RevId: 80a46ec780c1f1536f1fd4749f468629627dedf6",
+            "url": "https://github.com/openai/codex/commit/46f5a1df9f2ade44cb9712d574cde9401a755d21"
+          },
+          {
+            "sha": "10a3126a030fa47dbcd93c449d936c870d8329cc",
+            "title": "Poll MCP statusline providers with fresh state and bounded reads (#61981)",
+            "message": "Poll MCP statusline providers with fresh state and bounded reads (#61981)\n\n## Why\n\nMCP statusline resources were read only once, leaving the footer stale when thread state or the display mode changed.\n\n## What changed\n\n- Read the selected provider again one second after each successful read, capturing fresh statusline state for every request.\n- Enforce a one-second resource read deadline and stop polling with an error footer on timeouts, RPC errors, or invalid content.\n- Cancel outstanding reads when the reader is retired, including thread switches and parking a voice session, and disable provider reads in voice-only mode.\n\n## Testing\n\nAdd paused-time tests for polling cadence, fresh state, empty content, failure handling, deadlines, and cancellation. Extend the stdio provider integration test to verify that switching out of raw mode updates the provider footer.\n\nGitOrigin-RevId: 159f17ad9291923e438117d919c875051c9d9426",
+            "url": "https://github.com/openai/codex/commit/10a3126a030fa47dbcd93c449d936c870d8329cc"
+          },
+          {
+            "sha": "47d9cde20e96eed528edcc155c6c0dc4daf7a33d",
+            "title": "Refresh status line providers on config and connection changes (#61985)",
+            "message": "Refresh status line providers on config and connection changes (#61985)\n\n## What changed\n\n- Refresh the status line after reloading configuration so provider and feature-gate changes take effect.\n- Restart the provider reader after saving a selection, including reselecting the same provider to retry a failed read.\n- Cancel provider reads and show the built-in status line while disconnected, then restart the provider after reconnecting.\n\n## Testing\n\nAdd regression coverage for configuration reloads, provider changes, retrying failed reads, and discarding stale results after provider changes or reconnects. Extend the terminal integration test to verify that a new thread picks up a provider changed in `config.toml`.\n\nGitOrigin-RevId: e86531321d190786e8a41a0a0c93167c8a5298e6",
+            "url": "https://github.com/openai/codex/commit/47d9cde20e96eed528edcc155c6c0dc4daf7a33d"
+          },
+          {
+            "sha": "7fb4014d52b5bc5049c389f9df015ff8c7e6e37c",
+            "title": "Preserve statusline provider selections across thread startup (#61986)",
+            "message": "Preserve statusline provider selections across thread startup (#61986)\n\n## What changed\n\n- Pass the provider advertised by the picker into statusline resolution, preserving it when selection precedes the thread ID and avoiding a redundant global catalog lookup.\n- Cancel failed readers and stop requesting provider-specific usage and workspace headline data until the provider is reselected.\n\n## Testing\n\nExtend reader tests to cover reselection before thread startup, resolution using only the thread catalog, and snapshot suppression after invalid provider content.\n\nGitOrigin-RevId: 9531204cb6ef93c721dc7fafdc0a8fea8c20cb99",
+            "url": "https://github.com/openai/codex/commit/7fb4014d52b5bc5049c389f9df015ff8c7e6e37c"
+          },
+          {
+            "sha": "568cccd4f55764bcc253fbb8843fcbaa99953094",
+            "title": "Add a status line provider picker to `/statusline` (#61988)",
+            "message": "Add a status line provider picker to `/statusline` (#61988)\n\n## What changed\n\n- Add a \"Choose a statusline plugin\" action when status line extensions are enabled. Discover MCP providers, show the current selection, and let users save a provider or return to the default status line.\n- Preserve the highlighted row when discovery completes and start reading provider contents only after an explicit selection.\n- Keep the item editor open across picker transitions and disconnects, allow switching to the default while offline, and guard transitions against repeated activation keys.\n- Limit displayed numeric shortcuts to the first nine selectable rows.\n\n## Testing\n\nAdd tests for discovery focus, stale discovery results, explicit reader activation, repeated Enter keys, disconnect handling, and numeric shortcuts. Extend the terminal integration test to switch between the default status line and an MCP provider through the picker.\n\nGitOrigin-RevId: 76a254d7afee3a1b8cfc801617a2176893276e0e",
+            "url": "https://github.com/openai/codex/commit/568cccd4f55764bcc253fbb8843fcbaa99953094"
+          },
+          {
+            "sha": "a3fc418fb29d15fff9df779575aee3a5ca1ea73d",
+            "title": "Classify status line provider failures and shorten error messages (#61990)",
+            "message": "Classify status line provider failures and shorten error messages (#61990)\n\n## What changed\n\nReplace the generic provider error with concise status line messages for unavailable providers, timed-out reads, and other failures. Each message includes `/statusline` to help users reselect a provider.\n\nClassify lookup, snapshot, transport, RPC, and resource validation failures, and log the failure category without carrying raw RPC errors or resource content.\n\n## Testing\n\nUpdate tests to assert specific resource validation errors and the displayed messages for invalid content, RPC failures, read timeouts, and provider lookup timeouts.\n\nGitOrigin-RevId: 4ae4953cf2552c1c146d77463680655697d0d444",
+            "url": "https://github.com/openai/codex/commit/a3fc418fb29d15fff9df779575aee3a5ca1ea73d"
+          },
+          {
+            "sha": "59ac39addbbcd3499319c805a916846ca8ac5fef",
+            "title": "Surface status line discovery failures and lookup timeouts (#61993)",
+            "message": "Surface status line discovery failures and lookup timeouts (#61993)\n\n## Why\n\nStatus line provider discovery failures were silently ignored, and startup lookup timeouts appeared as unavailable providers.\n\n## What changed\n\n- Show incomplete provider discovery in the warnings viewer, with sanitized server names, bounded summaries, and no raw RPC error details. Preserve the warning across canceled scans and clear it after a successful scan.\n- Share a single five-second startup deadline across provider lookup retries and report timed-out lookups as `Status line timed out`.\n\n## Testing\n\nAdd coverage for discovery warning rendering and lifecycle, and for a hung lookup retry exhausting the remaining startup deadline. Update the startup timeout expectation.\n\nGitOrigin-RevId: 0403af2ed688c31c175d1b5c47d2cdd4cd355653",
+            "url": "https://github.com/openai/codex/commit/59ac39addbbcd3499319c805a916846ca8ac5fef"
+          },
+          {
+            "sha": "7df454ceb5a6f0ef51555ba59f920e9dd2e70dee",
+            "title": "Add TypeScript contracts for custom statusline providers (#62034)",
+            "message": "Add TypeScript contracts for custom statusline providers (#62034)\n\n## What changed\n\nBundle a generated `statusline.d.ts` reference with the `create-statusline` skill, covering status snapshots, UI trees, colors, and canonical statusline item IDs. Add test-only `ts-rs` derives and an `UPDATE_STATUSLINE_TYPES` regeneration path.\n\nClarify that rate-limit usage percentages can exceed 100.\n\n## Testing\n\nAdd a Rust test that checks key type exports in the installed skill and a strict TypeScript fixture covering provider rendering and invalid item IDs, row props, and colors.\n\nGitOrigin-RevId: f615e0b3c2cd3d0d95a75de36ce0a84467ecd5b6",
+            "url": "https://github.com/openai/codex/commit/7df454ceb5a6f0ef51555ba59f920e9dd2e70dee"
+          },
+          {
+            "sha": "b47df356af83e099a047e78ef9d694003d4a8c77",
+            "title": "Add a bundled skill for authoring MCP statuslines (#62036)",
+            "message": "Add a bundled skill for authoring MCP statuslines (#62036)\n\n## What changed\n\nAdd the explicitly invoked `create-statusline` skill with guidance for building, registering, and selecting a custom Codex CLI footer provider. Include a Python stdio MCP starter that renders the current thread's model and agent state from each resource read's snapshot.\n\n## Testing\n\nAdd a scenario snapshot for loading the bundled skill by name and a Python protocol test covering provider discovery, per-read snapshots, and Unicode text.\n\nGitOrigin-RevId: e48fd5064ad93bf37b50b5643028d4153a3b4f59",
+            "url": "https://github.com/openai/codex/commit/b47df356af83e099a047e78ef9d694003d4a8c77"
+          },
+          {
+            "sha": "e20ccdfa80361deb81266d3ed6baea9c2cdd5ee1",
+            "title": "Add custom status line authoring to `/statusline` (#62037)",
+            "message": "Add custom status line authoring to `/statusline` (#62037)\n\n## What changed\n\n- Add “Create a custom status line” when `tui_extensions_statusline` is enabled outside cloud mode. Open a new conversation with an editable draft bound to the bundled `create-statusline` skill when available, falling back to a plain request otherwise.\n- Preserve the previous thread’s draft and queued input, including input restored by a late interrupt, while switching conversations.\n- Guard against stale create actions and held Enter submitting the new draft. Rename the provider action to “Choose a status line provider”.\n\n## Testing\n\nAdd regression coverage for draft editing, bundled skill binding, input preservation, activation-key handling, dismissed setup actions, and hiding the create action in cloud mode.\n\nGitOrigin-RevId: d40dd12914cf38968e605987f67d1ddee5ba7dd1",
+            "url": "https://github.com/openai/codex/commit/e20ccdfa80361deb81266d3ed6baea9c2cdd5ee1"
+          },
+          {
+            "sha": "7e5fd57f4baa48e4d33e0d062fcdaf1e5ee3beaf",
+            "title": "Release 0.171.0-alpha.12",
+            "message": "Release 0.171.0-alpha.12",
+            "url": "https://github.com/openai/codex/commit/7e5fd57f4baa48e4d33e0d062fcdaf1e5ee3beaf"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.171.0-alpha.11",
+          "head": "rust-v0.171.0-alpha.12",
+          "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.11...rust-v0.171.0-alpha.12",
+          "status": "diverged",
+          "total": 25,
+          "behind": 1,
+          "complete": true,
+          "fetched": 25
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-status:01M7N9VNR6X5SEC90M1YCDB36D",
+      "at": "2026-11-17T17:46:15.000Z",
+      "url": "https://status.openai.com/incidents/01M7N9VNR6X5SEC90M1YCDB36D",
+      "text": "Costs API data is delayed. We have identified a delay in our Costs API. We are working to resolve the issue.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "investigating",
+      "publishedAt": "2026-11-17T17:46:15.000Z"
     }
   ],
   "sources": {
@@ -17380,7 +17629,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-17T08:34:11.542Z",
+      "lastSuccessAt": "2026-11-17T17:51:44.994Z",
       "error": null,
       "count": 150
     },
@@ -17389,7 +17638,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-17T08:34:11.542Z",
+      "lastSuccessAt": "2026-11-17T17:51:44.994Z",
       "error": null,
       "count": 10
     },
@@ -17398,7 +17647,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-17T08:34:11.542Z",
+      "lastSuccessAt": "2026-11-17T17:51:44.994Z",
       "error": null,
       "count": 25
     }
@@ -69874,6 +70123,458 @@
           "behind": 1,
           "complete": true,
           "fetched": 30
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-openai-for-chile:2026-11-17T17:51:45.277Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T17:51:45.277Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-openai-for-chile",
+        "at": "2026-11-17T00:00:00.000Z",
+        "url": "https://openai.com/index/introducing-openai-for-chile",
+        "text": "Introducing OpenAI for Chile. OpenAI and the Government of Chile are partnering to support responsible AI adoption, build public-sector skills and help local startups develop AI applications.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/ads/blog/chatgpt-ads-increases-its-market-presence:2026-11-17T17:51:45.277Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T17:51:45.277Z",
+      "item": {
+        "id": "openai-news:https://openai.com/ads/blog/chatgpt-ads-increases-its-market-presence",
+        "at": "2026-11-12T00:00:00.000Z",
+        "url": "https://openai.com/ads/blog/chatgpt-ads-increases-its-market-presence",
+        "text": "ChatGPT Ads increases its market presence in 44 countries. Aleph selected as ChatGPT Ads’ exclusive reseller in 44 countries to offer local invoicing, in-person support and local market expertise to brands and agencies",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/ads/customers/vistaprint:2026-11-17T17:51:45.277Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T17:51:45.277Z",
+      "item": {
+        "id": "openai-news:https://openai.com/ads/customers/vistaprint",
+        "at": "2026-11-09T00:00:00.000Z",
+        "url": "https://openai.com/ads/customers/vistaprint",
+        "text": "How VistaPrint helps small businesses get the word out. Small business owners preparing for a launch or an event often know what they want to accomplish before they know what to print. VistaPrint uses ChatGPT Ads to show how products like signs and branded merchandise can help them get the word out.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.12:2026-11-17T17:51:45.277Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T17:51:45.277Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.12",
+        "at": "2026-11-17T14:32:14.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.12",
+        "text": "0.171.0-alpha.12. Release 0.171.0-alpha.12",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.171.0-alpha.12",
+          "title": "0.171.0-alpha.12",
+          "body": "Release 0.171.0-alpha.12\n\n",
+          "authored": false,
+          "fetchedAt": "2026-11-17T17:51:45.284Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.12",
+          "publishedAt": "2026-11-17T14:26:49Z",
+          "commits": [
+            {
+              "sha": "1443c64c625e2941ef233de7da0c9ee3aecab74f",
+              "title": "Add undo and redo to the non-Vim prompt composer (#61954)",
+              "message": "Add undo and redo to the non-Vim prompt composer (#61954)\n\n## What changed\n\n- Add configurable `composer.undo` and `composer.redo` actions to the keymap picker. Default undo shortcuts are `Alt+Z` on Unix, `Ctrl+Z` on Windows, and `F7`, with `Super+Z` also available on macOS. Add `Shift` to redo.\n- Group contiguous typing and consecutive Backspaces into separate undo steps, and keep detected paste bursts separate from preceding typing. Restore complete drafts, including attachments and large pastes.\n- Make startup draft transfers undoable, preserve editing history across Vim mode changes, and clear history when a submitted draft is consumed. Track edits while disconnected so new input invalidates redo.\n\n## Testing\n\nAdd regression coverage for grouped edits, paste detection and selection replacement, clipboard images, startup draft transfers, disconnected editing, and keybinding conflicts.\n\nGitOrigin-RevId: 46cadf3c69320367dc972e47e0e8b3d3aac3c4ec",
+              "url": "https://github.com/openai/codex/commit/1443c64c625e2941ef233de7da0c9ee3aecab74f"
+            },
+            {
+              "sha": "50c227a6e24eef3e1cd21321348be812b6d2d87c",
+              "title": "Bound item loading for paginated `read_thread` calls (#61955)",
+              "message": "Bound item loading for paginated `read_thread` calls (#61955)\n\n## Why\n\n`read_thread` returns at most 20 items per turn, but requesting full turns loads every item in paginated history before trimming the result.\n\n## What changed\n\nFor paginated threads, request turn metadata without items, then fetch the newest 20 items per turn concurrently through `thread/items/list`. Restore chronological item order before building the response and share the item limit with the summary code.\n\n## Testing\n\nAdd a regression test that verifies the newest 20 items are returned in order with `includeOutputs` both enabled and disabled.\n\nGitOrigin-RevId: ba73a322cac7ee5262135a271f3574dc22d9d78c",
+              "url": "https://github.com/openai/codex/commit/50c227a6e24eef3e1cd21321348be812b6d2d87c"
+            },
+            {
+              "sha": "e9a2a9e11525d30727ecee93eb15121476e4f87d",
+              "title": "Support saved environments when starting Cloud threads (#61956)",
+              "message": "Support saved environments when starting Cloud threads (#61956)\n\n## What changed\n\n- Add `EnvironmentSelection` to start Cloud threads with either a saved environment ID or a project checkout in the default environment.\n- Expose saved environment discovery through the authenticated Cloud request handle, rejecting results if the account changes.\n- Thread environment selection through the app-server client and TUI session startup, and defer executor readiness for either explicit environment choice.\n\n## Testing\n\nExtend prewarm request tests to cover saved environment IDs and deferred readiness. Extend TUI session tests to verify saved environment routing without local working-directory or workspace-root overrides.\n\nGitOrigin-RevId: 626cec9926dad8f1a89b1a3ee9e4470850ae6a76",
+              "url": "https://github.com/openai/codex/commit/e9a2a9e11525d30727ecee93eb15121476e4f87d"
+            },
+            {
+              "sha": "44834c58fa99d0a04f222e18817b99b430f7c0e8",
+              "title": "Support turn-scoped exhaustion in host usage accounting (#61958)",
+              "message": "Support turn-scoped exhaustion in host usage accounting (#61958)\n\n## What changed\n\n- Add `UsageAccountingDecision::ExhaustedForTurn` so hosts can fail the current response with `SessionBudgetExceeded` while leaving later turns and peer threads eligible.\n- Preserve completed response output and token usage before reporting exhaustion, and track posted charges to avoid accounting twice.\n- When steering or mailbox preemption stops a stream, wait for accounting of any completion already observed before starting a follow-up request, and propagate budget errors.\n\n## Testing\n\nAdd coverage for preserving output and usage on turn exhaustion, successfully starting a later turn, and reporting turn exhaustion during steering.\n\nGitOrigin-RevId: e673bf30775f27a057fdc39d8429b74ff22121db",
+              "url": "https://github.com/openai/codex/commit/44834c58fa99d0a04f222e18817b99b430f7c0e8"
+            },
+            {
+              "sha": "65a44508861af9d78435872ca6633f88b8c406cf",
+              "title": "Prewarm restored file images on cold resume (#61959)",
+              "message": "Prewarm restored file images on cold resume (#61959)\n\n## Why\n\nCold resumes warm only base instructions, leaving historical file images out of the WebSocket warm-up.\n\n## What changed\n\n- Add the disabled-by-default `restored_history_prewarm` feature flag.\n- Start the WebSocket handshake while history loads, then build the warm-up from restored settings and history when it contains file images.\n- Retain the socket and normalized-image cache but discard the image warm-up response ID, so generation resends the full current history and subsequent turns continue from the real response.\n- Keep base warm-up for history without file images and defer image preparation to generation when the handshake falls back to HTTP.\n\n## Testing\n\nAdd request-history tests and snapshots covering text-only history, interrupted and injected images, resuming with a vision model after image omission, and HTTP fallback without duplicate image resolution.\n\nGitOrigin-RevId: 9a828f44ef0952f7335b5a8c0f7844a069f90d80",
+              "url": "https://github.com/openai/codex/commit/65a44508861af9d78435872ca6633f88b8c406cf"
+            },
+            {
+              "sha": "d8d840d32a8ebf9ec75603e6aa9cd88a58a444a2",
+              "title": "Capture local attachments before queuing turn input (#61962)",
+              "message": "Capture local attachments before queuing turn input (#61962)\n\n## Why\n\nQueued input can outlive its local attachment files. Reading those files only when rendering a model message can lose media submitted while turn admission is pending.\n\n## What changed\n\n- Introduce `ResolvedUserInput` to carry captured image bytes, audio data URLs, or read errors through session queues and agent input.\n- Resolve client attachments on the submitting host before queuing, using a blocking task for local file reads.\n- Render messages from captured payloads while preserving original paths and text spans for display, along with image position mappings.\n\n## Testing\n\nAdd coverage for rendering and serialization after source files are removed, steered audio retained during pending admission, and local audio errors and display content.\n\nGitOrigin-RevId: 4bbb6bda44167439a8cfdae15d3c476a7b1d336b",
+              "url": "https://github.com/openai/codex/commit/d8d840d32a8ebf9ec75603e6aa9cd88a58a444a2"
+            },
+            {
+              "sha": "c8d1ba814eb984e8fdd2f595ffd9b287e825a5b3",
+              "title": "Add HTTP/2 fallback for SSH tunnels (#61964)",
+              "message": "Add HTTP/2 fallback for SSH tunnels (#61964)\n\n## Why\n\nSSH tunnels need a working transport when UDP is blocked or a QUIC connection cannot complete an HTTP/3 CONNECT request.\n\n## What changed\n\n- Race TLS HTTP/2 CONNECT against HTTP/3 after a 250 ms QUIC head start, selecting the first successful CONNECT response.\n- Verify the gateway before obtaining credentials, treat CONNECT rejection as terminal, and include admission in the setup timeout.\n- Preserve bounded buffering, TCP half-close behavior, and SSH exit on remote EOF over HTTP/2. Keep peer-supplied debug text out of SSH errors.\n\n## Testing\n\nAdd local TLS HTTP/2 and HTTP/3 peer tests for transport selection, blocked UDP, stalled HTTP/3, terminal rejection, setup deadlines, certificate verification, address retries, and bidirectional forwarding with both half-close orders.\n\nGitOrigin-RevId: a1cde88dff7a4e5e6574cf12eacb453551f01b72",
+              "url": "https://github.com/openai/codex/commit/c8d1ba814eb984e8fdd2f595ffd9b287e825a5b3"
+            },
+            {
+              "sha": "39b590389871c8db85381daa9504886276bbc7c6",
+              "title": "Set explicit image detail in the restored-history prewarm test (#61969)",
+              "message": "Set explicit image detail in the restored-history prewarm test (#61969)\n\nConstruct the injected image as a `ResponseInputItem::Message` with\n`ImageDetail::High` in the restored-history prewarm scenario.\n\nGitOrigin-RevId: 6a414d2c52cb4d2195e6721365c97677c49c956e",
+              "url": "https://github.com/openai/codex/commit/39b590389871c8db85381daa9504886276bbc7c6"
+            },
+            {
+              "sha": "c826ca128699b5464724c8757638ae79f51a45f2",
+              "title": "Preserve accepted tool outputs and local resets in rollout traces (#61973)",
+              "message": "Preserve accepted tool outputs and local resets in rollout traces (#61973)\n\n## Why\n\nAccepted tool outputs may never appear in a later inference request, and request preparation can strip their history IDs. Replay needs to retain these outputs and match them to later snapshots, including trimmed results and outputs with identical wire bodies.\n\n## What changed\n\n- Capture accepted function and custom tool outputs, preserving their acceptance order, identity, and tool provenance during replay.\n- Record stripped tool output IDs alongside inference requests so replay can restore identity without changing the captured wire payload. Reuse accepted items and adopt their first model-visible snapshot bodies.\n- Record compaction checkpoints for local context-window resets using the selected input and frozen installed history, including goal edits retained during installation.\n- Exclude `configuration_update` items from normalized conversation history.\n\n## Testing\n\nAdd replay coverage for outputs accepted without subsequent inference, trimmed results, identical outputs with distinct IDs, and acceptance before or after a request snapshot. Extend checkpoint coverage to verify that retained goal edits are captured and later edits do not alter the checkpoint.\n\nGitOrigin-RevId: 70f737782f5000812f389a4e01b9f9690e39549f",
+              "url": "https://github.com/openai/codex/commit/c826ca128699b5464724c8757638ae79f51a45f2"
+            },
+            {
+              "sha": "9a5a78925d556c565367cbd01fac62617756c955",
+              "title": "Add a Cloud environment picker for new TUI conversations (#61974)",
+              "message": "Add a Cloud environment picker for new TUI conversations (#61974)\n\n## What changed\n\n- Open a searchable picker with `Ctrl+X E` to choose a saved personal or workspace environment, or use Default with the current GitHub project when available.\n- Show the selected environment above the composer and expose `tui.keymap.global.choose_cloud_environment` for custom bindings.\n- Preserve the composer draft and staged model, reasoning effort, and service tier when changing environments. Remember the saved environment when cycling through a local host and back to the same Cloud backend.\n\n## Testing\n\nAdd coverage for picker search and selection, dismissal without losing the draft, keyboard routing, environment label truncation, staged settings on the first turn, and saved-environment reuse after host switching.\n\nGitOrigin-RevId: ac9036fd46b252286852df4d792418a3330bae73",
+              "url": "https://github.com/openai/codex/commit/9a5a78925d556c565367cbd01fac62617756c955"
+            },
+            {
+              "sha": "98323eddf944b765a391fda552be32df46f4bbbd",
+              "title": "Simplify SSH tunneling and honor system HTTPS proxies (#61975)",
+              "message": "Simplify SSH tunneling and honor system HTTPS proxies (#61975)\n\n## What changed\n\n- Make `codex tcp-tunnel` an SSH stdio helper, removing the loopback listener, stdin control protocol, and JSON diagnostics.\n- Add `--token-file` for one-use credentials, consumed only after gateway verification, with environment-based OAuth routing or a legacy IPv4 `--target`.\n- Honor system HTTPS proxy settings without attempting direct QUIC, and keep gateway credentials inside verified TLS.\n- Race direct TCP addresses through TLS and HTTP/2 readiness so stalled peers do not block a working address.\n\n## Testing\n\nAdd coverage for proxy credential isolation and stalled TLS peers, plus an opt-in Linux OpenSSH integration test for complete uploads and remote exit while local stdin remains open.\n\nGitOrigin-RevId: 62423c8a8267842c9e401b3f9094c7278c47a490",
+              "url": "https://github.com/openai/codex/commit/98323eddf944b765a391fda552be32df46f4bbbd"
+            },
+            {
+              "sha": "61f59108263da04deaacd51f12991b454d6b6b52",
+              "title": "Add mouse scroll speed to the TUI config panel (#61976)",
+              "message": "Add mouse scroll speed to the TUI config panel (#61976)\n\n## What changed\n\n- Add an Input setting for fullscreen transcript mouse-wheel speed, with presets of 0.5×, 1×, 1.5×, 2×, and 3×. Keep custom configured values available as the current choice.\n- Save selections to `tui.mouse_scroll_speed` and apply them to the transcript without restarting.\n- Refresh the displayed scroll speed from local settings when changing working directories.\n\n## Testing\n\nAdd picker and snapshot coverage for custom values and preset selection, verify persistence and live application, and check that changing directories updates the setting and picker.\n\nGitOrigin-RevId: 4be118e1403e74f5ce819e44949f4d96d9e17648",
+              "url": "https://github.com/openai/codex/commit/61f59108263da04deaacd51f12991b454d6b6b52"
+            },
+            {
+              "sha": "490394c184eba25ebf4ec728e64f9af485a4cced",
+              "title": "Keep TUI quota state scoped to the active provider (#61977)",
+              "message": "Keep TUI quota state scoped to the active provider (#61977)\n\n## Why\n\nStarting or switching chats can carry quota usage, backend banners, and pending recovery from the previous provider, even when both providers report identical account details.\n\n## What changed\n\n- Refresh account state when the started or cached thread uses a different provider, and discard inherited quota and backend banner state across provider changes.\n- Track the provider associated with quota inherited by the task list, where the local default can differ from the previous chat's provider.\n- Invalidate pending recovery when the provider changes or the chat loses its ChatGPT account, and ignore queued recovery refreshes without a ChatGPT account.\n- Preserve quota state and pending recovery when opening another chat on the same provider.\n\n## Testing\n\nAdd regression coverage for provider changes with matching account details, stale recovery replies, cached side chats, and quota and recovery preservation across `/new` and task list transitions.\n\nGitOrigin-RevId: f4513ca565f2068489327989ae10b24cada0a9bf",
+              "url": "https://github.com/openai/codex/commit/490394c184eba25ebf4ec728e64f9af485a4cced"
+            },
+            {
+              "sha": "7e59b276677a2ee970c741390fb06aada0b01ad6",
+              "title": "Use the current billing plan for TUI thread usage (#61978)",
+              "message": "Use the current billing plan for TUI thread usage (#61978)\n\n## Why\n\nAccount reads can use a cached subscription plan, and rolling quota updates can carry an obsolete plan. This can leave thread usage unavailable or cause `/status` to display costs using the wrong billing model.\n\n## What changed\n\n- Prefer a known plan from a full Codex quota read over the account plan, regardless of reply order. Ignore unknown quota plans and prevent rolling updates from changing the billing plan.\n- Preserve quota plan state across chat widget replacement and apply accepted quota reads even after the requesting status card is gone.\n- Refresh thread usage availability when the plan changes and pair asynchronous `/status` estimates with the corrected plan, including native dollar usage for `Ent26`.\n\n## Testing\n\nAdd regression tests for reply ordering, unknown plans, corrected pending status cards, obsolete rolling updates, and quota replies arriving after widget replacement.\n\nGitOrigin-RevId: 238fadb587fe98cda0eeb5111c1949928acc8153",
+              "url": "https://github.com/openai/codex/commit/7e59b276677a2ee970c741390fb06aada0b01ad6"
+            },
+            {
+              "sha": "46f5a1df9f2ade44cb9712d574cde9401a755d21",
+              "title": "Render selected MCP statusline providers in the TUI footer (#61979)",
+              "message": "Render selected MCP statusline providers in the TUI footer (#61979)\n\n## What changed\n\n- With `tui_extensions_statusline` enabled, resolve the saved MCP provider and read its resource with a snapshot of the displayed thread's statusline state.\n- Show initialization and error messages, validate the JSON UI tree response, and preserve provider content through native statusline refreshes. Ignore stale results when the thread, provider, or working directory changes.\n- Request workspace headlines and thread usage for custom providers even when no built-in statusline items are selected.\n\n## Testing\n\nAdd unit coverage for response validation and footer lifecycle, plus end-to-end tests for embedded and remote app servers, startup delays, current thread metadata, and rejection of project-level provider overrides.\n\nGitOrigin-RevId: 80a46ec780c1f1536f1fd4749f468629627dedf6",
+              "url": "https://github.com/openai/codex/commit/46f5a1df9f2ade44cb9712d574cde9401a755d21"
+            },
+            {
+              "sha": "10a3126a030fa47dbcd93c449d936c870d8329cc",
+              "title": "Poll MCP statusline providers with fresh state and bounded reads (#61981)",
+              "message": "Poll MCP statusline providers with fresh state and bounded reads (#61981)\n\n## Why\n\nMCP statusline resources were read only once, leaving the footer stale when thread state or the display mode changed.\n\n## What changed\n\n- Read the selected provider again one second after each successful read, capturing fresh statusline state for every request.\n- Enforce a one-second resource read deadline and stop polling with an error footer on timeouts, RPC errors, or invalid content.\n- Cancel outstanding reads when the reader is retired, including thread switches and parking a voice session, and disable provider reads in voice-only mode.\n\n## Testing\n\nAdd paused-time tests for polling cadence, fresh state, empty content, failure handling, deadlines, and cancellation. Extend the stdio provider integration test to verify that switching out of raw mode updates the provider footer.\n\nGitOrigin-RevId: 159f17ad9291923e438117d919c875051c9d9426",
+              "url": "https://github.com/openai/codex/commit/10a3126a030fa47dbcd93c449d936c870d8329cc"
+            },
+            {
+              "sha": "47d9cde20e96eed528edcc155c6c0dc4daf7a33d",
+              "title": "Refresh status line providers on config and connection changes (#61985)",
+              "message": "Refresh status line providers on config and connection changes (#61985)\n\n## What changed\n\n- Refresh the status line after reloading configuration so provider and feature-gate changes take effect.\n- Restart the provider reader after saving a selection, including reselecting the same provider to retry a failed read.\n- Cancel provider reads and show the built-in status line while disconnected, then restart the provider after reconnecting.\n\n## Testing\n\nAdd regression coverage for configuration reloads, provider changes, retrying failed reads, and discarding stale results after provider changes or reconnects. Extend the terminal integration test to verify that a new thread picks up a provider changed in `config.toml`.\n\nGitOrigin-RevId: e86531321d190786e8a41a0a0c93167c8a5298e6",
+              "url": "https://github.com/openai/codex/commit/47d9cde20e96eed528edcc155c6c0dc4daf7a33d"
+            },
+            {
+              "sha": "7fb4014d52b5bc5049c389f9df015ff8c7e6e37c",
+              "title": "Preserve statusline provider selections across thread startup (#61986)",
+              "message": "Preserve statusline provider selections across thread startup (#61986)\n\n## What changed\n\n- Pass the provider advertised by the picker into statusline resolution, preserving it when selection precedes the thread ID and avoiding a redundant global catalog lookup.\n- Cancel failed readers and stop requesting provider-specific usage and workspace headline data until the provider is reselected.\n\n## Testing\n\nExtend reader tests to cover reselection before thread startup, resolution using only the thread catalog, and snapshot suppression after invalid provider content.\n\nGitOrigin-RevId: 9531204cb6ef93c721dc7fafdc0a8fea8c20cb99",
+              "url": "https://github.com/openai/codex/commit/7fb4014d52b5bc5049c389f9df015ff8c7e6e37c"
+            },
+            {
+              "sha": "568cccd4f55764bcc253fbb8843fcbaa99953094",
+              "title": "Add a status line provider picker to `/statusline` (#61988)",
+              "message": "Add a status line provider picker to `/statusline` (#61988)\n\n## What changed\n\n- Add a \"Choose a statusline plugin\" action when status line extensions are enabled. Discover MCP providers, show the current selection, and let users save a provider or return to the default status line.\n- Preserve the highlighted row when discovery completes and start reading provider contents only after an explicit selection.\n- Keep the item editor open across picker transitions and disconnects, allow switching to the default while offline, and guard transitions against repeated activation keys.\n- Limit displayed numeric shortcuts to the first nine selectable rows.\n\n## Testing\n\nAdd tests for discovery focus, stale discovery results, explicit reader activation, repeated Enter keys, disconnect handling, and numeric shortcuts. Extend the terminal integration test to switch between the default status line and an MCP provider through the picker.\n\nGitOrigin-RevId: 76a254d7afee3a1b8cfc801617a2176893276e0e",
+              "url": "https://github.com/openai/codex/commit/568cccd4f55764bcc253fbb8843fcbaa99953094"
+            },
+            {
+              "sha": "a3fc418fb29d15fff9df779575aee3a5ca1ea73d",
+              "title": "Classify status line provider failures and shorten error messages (#61990)",
+              "message": "Classify status line provider failures and shorten error messages (#61990)\n\n## What changed\n\nReplace the generic provider error with concise status line messages for unavailable providers, timed-out reads, and other failures. Each message includes `/statusline` to help users reselect a provider.\n\nClassify lookup, snapshot, transport, RPC, and resource validation failures, and log the failure category without carrying raw RPC errors or resource content.\n\n## Testing\n\nUpdate tests to assert specific resource validation errors and the displayed messages for invalid content, RPC failures, read timeouts, and provider lookup timeouts.\n\nGitOrigin-RevId: 4ae4953cf2552c1c146d77463680655697d0d444",
+              "url": "https://github.com/openai/codex/commit/a3fc418fb29d15fff9df779575aee3a5ca1ea73d"
+            },
+            {
+              "sha": "59ac39addbbcd3499319c805a916846ca8ac5fef",
+              "title": "Surface status line discovery failures and lookup timeouts (#61993)",
+              "message": "Surface status line discovery failures and lookup timeouts (#61993)\n\n## Why\n\nStatus line provider discovery failures were silently ignored, and startup lookup timeouts appeared as unavailable providers.\n\n## What changed\n\n- Show incomplete provider discovery in the warnings viewer, with sanitized server names, bounded summaries, and no raw RPC error details. Preserve the warning across canceled scans and clear it after a successful scan.\n- Share a single five-second startup deadline across provider lookup retries and report timed-out lookups as `Status line timed out`.\n\n## Testing\n\nAdd coverage for discovery warning rendering and lifecycle, and for a hung lookup retry exhausting the remaining startup deadline. Update the startup timeout expectation.\n\nGitOrigin-RevId: 0403af2ed688c31c175d1b5c47d2cdd4cd355653",
+              "url": "https://github.com/openai/codex/commit/59ac39addbbcd3499319c805a916846ca8ac5fef"
+            },
+            {
+              "sha": "7df454ceb5a6f0ef51555ba59f920e9dd2e70dee",
+              "title": "Add TypeScript contracts for custom statusline providers (#62034)",
+              "message": "Add TypeScript contracts for custom statusline providers (#62034)\n\n## What changed\n\nBundle a generated `statusline.d.ts` reference with the `create-statusline` skill, covering status snapshots, UI trees, colors, and canonical statusline item IDs. Add test-only `ts-rs` derives and an `UPDATE_STATUSLINE_TYPES` regeneration path.\n\nClarify that rate-limit usage percentages can exceed 100.\n\n## Testing\n\nAdd a Rust test that checks key type exports in the installed skill and a strict TypeScript fixture covering provider rendering and invalid item IDs, row props, and colors.\n\nGitOrigin-RevId: f615e0b3c2cd3d0d95a75de36ce0a84467ecd5b6",
+              "url": "https://github.com/openai/codex/commit/7df454ceb5a6f0ef51555ba59f920e9dd2e70dee"
+            },
+            {
+              "sha": "b47df356af83e099a047e78ef9d694003d4a8c77",
+              "title": "Add a bundled skill for authoring MCP statuslines (#62036)",
+              "message": "Add a bundled skill for authoring MCP statuslines (#62036)\n\n## What changed\n\nAdd the explicitly invoked `create-statusline` skill with guidance for building, registering, and selecting a custom Codex CLI footer provider. Include a Python stdio MCP starter that renders the current thread's model and agent state from each resource read's snapshot.\n\n## Testing\n\nAdd a scenario snapshot for loading the bundled skill by name and a Python protocol test covering provider discovery, per-read snapshots, and Unicode text.\n\nGitOrigin-RevId: e48fd5064ad93bf37b50b5643028d4153a3b4f59",
+              "url": "https://github.com/openai/codex/commit/b47df356af83e099a047e78ef9d694003d4a8c77"
+            },
+            {
+              "sha": "e20ccdfa80361deb81266d3ed6baea9c2cdd5ee1",
+              "title": "Add custom status line authoring to `/statusline` (#62037)",
+              "message": "Add custom status line authoring to `/statusline` (#62037)\n\n## What changed\n\n- Add “Create a custom status line” when `tui_extensions_statusline` is enabled outside cloud mode. Open a new conversation with an editable draft bound to the bundled `create-statusline` skill when available, falling back to a plain request otherwise.\n- Preserve the previous thread’s draft and queued input, including input restored by a late interrupt, while switching conversations.\n- Guard against stale create actions and held Enter submitting the new draft. Rename the provider action to “Choose a status line provider”.\n\n## Testing\n\nAdd regression coverage for draft editing, bundled skill binding, input preservation, activation-key handling, dismissed setup actions, and hiding the create action in cloud mode.\n\nGitOrigin-RevId: d40dd12914cf38968e605987f67d1ddee5ba7dd1",
+              "url": "https://github.com/openai/codex/commit/e20ccdfa80361deb81266d3ed6baea9c2cdd5ee1"
+            },
+            {
+              "sha": "7e5fd57f4baa48e4d33e0d062fcdaf1e5ee3beaf",
+              "title": "Release 0.171.0-alpha.12",
+              "message": "Release 0.171.0-alpha.12",
+              "url": "https://github.com/openai/codex/commit/7e5fd57f4baa48e4d33e0d062fcdaf1e5ee3beaf"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.171.0-alpha.11",
+            "head": "rust-v0.171.0-alpha.12",
+            "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.11...rust-v0.171.0-alpha.12",
+            "status": "diverged",
+            "total": 25,
+            "behind": 1,
+            "complete": true,
+            "fetched": 25
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "openai-status:01M7N9VNR6X5SEC90M1YCDB36D:2026-11-17T17:51:45.277Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-17T17:51:45.277Z",
+      "item": {
+        "id": "openai-status:01M7N9VNR6X5SEC90M1YCDB36D",
+        "at": "2026-11-17T17:46:15.000Z",
+        "url": "https://status.openai.com/incidents/01M7N9VNR6X5SEC90M1YCDB36D",
+        "text": "Costs API data is delayed. We have identified a delay in our Costs API. We are working to resolve the issue.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "investigating",
+        "publishedAt": "2026-11-17T17:46:15.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.12:2026-11-17T17:51:45.277Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-17T17:51:45.277Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.171.0-alpha.12",
+        "title": "0.171.0-alpha.12",
+        "body": "Release 0.171.0-alpha.12\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-17T17:51:45.284Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.12",
+        "publishedAt": "2026-11-17T14:26:49Z",
+        "commits": [
+          {
+            "sha": "1443c64c625e2941ef233de7da0c9ee3aecab74f",
+            "title": "Add undo and redo to the non-Vim prompt composer (#61954)",
+            "message": "Add undo and redo to the non-Vim prompt composer (#61954)\n\n## What changed\n\n- Add configurable `composer.undo` and `composer.redo` actions to the keymap picker. Default undo shortcuts are `Alt+Z` on Unix, `Ctrl+Z` on Windows, and `F7`, with `Super+Z` also available on macOS. Add `Shift` to redo.\n- Group contiguous typing and consecutive Backspaces into separate undo steps, and keep detected paste bursts separate from preceding typing. Restore complete drafts, including attachments and large pastes.\n- Make startup draft transfers undoable, preserve editing history across Vim mode changes, and clear history when a submitted draft is consumed. Track edits while disconnected so new input invalidates redo.\n\n## Testing\n\nAdd regression coverage for grouped edits, paste detection and selection replacement, clipboard images, startup draft transfers, disconnected editing, and keybinding conflicts.\n\nGitOrigin-RevId: 46cadf3c69320367dc972e47e0e8b3d3aac3c4ec",
+            "url": "https://github.com/openai/codex/commit/1443c64c625e2941ef233de7da0c9ee3aecab74f"
+          },
+          {
+            "sha": "50c227a6e24eef3e1cd21321348be812b6d2d87c",
+            "title": "Bound item loading for paginated `read_thread` calls (#61955)",
+            "message": "Bound item loading for paginated `read_thread` calls (#61955)\n\n## Why\n\n`read_thread` returns at most 20 items per turn, but requesting full turns loads every item in paginated history before trimming the result.\n\n## What changed\n\nFor paginated threads, request turn metadata without items, then fetch the newest 20 items per turn concurrently through `thread/items/list`. Restore chronological item order before building the response and share the item limit with the summary code.\n\n## Testing\n\nAdd a regression test that verifies the newest 20 items are returned in order with `includeOutputs` both enabled and disabled.\n\nGitOrigin-RevId: ba73a322cac7ee5262135a271f3574dc22d9d78c",
+            "url": "https://github.com/openai/codex/commit/50c227a6e24eef3e1cd21321348be812b6d2d87c"
+          },
+          {
+            "sha": "e9a2a9e11525d30727ecee93eb15121476e4f87d",
+            "title": "Support saved environments when starting Cloud threads (#61956)",
+            "message": "Support saved environments when starting Cloud threads (#61956)\n\n## What changed\n\n- Add `EnvironmentSelection` to start Cloud threads with either a saved environment ID or a project checkout in the default environment.\n- Expose saved environment discovery through the authenticated Cloud request handle, rejecting results if the account changes.\n- Thread environment selection through the app-server client and TUI session startup, and defer executor readiness for either explicit environment choice.\n\n## Testing\n\nExtend prewarm request tests to cover saved environment IDs and deferred readiness. Extend TUI session tests to verify saved environment routing without local working-directory or workspace-root overrides.\n\nGitOrigin-RevId: 626cec9926dad8f1a89b1a3ee9e4470850ae6a76",
+            "url": "https://github.com/openai/codex/commit/e9a2a9e11525d30727ecee93eb15121476e4f87d"
+          },
+          {
+            "sha": "44834c58fa99d0a04f222e18817b99b430f7c0e8",
+            "title": "Support turn-scoped exhaustion in host usage accounting (#61958)",
+            "message": "Support turn-scoped exhaustion in host usage accounting (#61958)\n\n## What changed\n\n- Add `UsageAccountingDecision::ExhaustedForTurn` so hosts can fail the current response with `SessionBudgetExceeded` while leaving later turns and peer threads eligible.\n- Preserve completed response output and token usage before reporting exhaustion, and track posted charges to avoid accounting twice.\n- When steering or mailbox preemption stops a stream, wait for accounting of any completion already observed before starting a follow-up request, and propagate budget errors.\n\n## Testing\n\nAdd coverage for preserving output and usage on turn exhaustion, successfully starting a later turn, and reporting turn exhaustion during steering.\n\nGitOrigin-RevId: e673bf30775f27a057fdc39d8429b74ff22121db",
+            "url": "https://github.com/openai/codex/commit/44834c58fa99d0a04f222e18817b99b430f7c0e8"
+          },
+          {
+            "sha": "65a44508861af9d78435872ca6633f88b8c406cf",
+            "title": "Prewarm restored file images on cold resume (#61959)",
+            "message": "Prewarm restored file images on cold resume (#61959)\n\n## Why\n\nCold resumes warm only base instructions, leaving historical file images out of the WebSocket warm-up.\n\n## What changed\n\n- Add the disabled-by-default `restored_history_prewarm` feature flag.\n- Start the WebSocket handshake while history loads, then build the warm-up from restored settings and history when it contains file images.\n- Retain the socket and normalized-image cache but discard the image warm-up response ID, so generation resends the full current history and subsequent turns continue from the real response.\n- Keep base warm-up for history without file images and defer image preparation to generation when the handshake falls back to HTTP.\n\n## Testing\n\nAdd request-history tests and snapshots covering text-only history, interrupted and injected images, resuming with a vision model after image omission, and HTTP fallback without duplicate image resolution.\n\nGitOrigin-RevId: 9a828f44ef0952f7335b5a8c0f7844a069f90d80",
+            "url": "https://github.com/openai/codex/commit/65a44508861af9d78435872ca6633f88b8c406cf"
+          },
+          {
+            "sha": "d8d840d32a8ebf9ec75603e6aa9cd88a58a444a2",
+            "title": "Capture local attachments before queuing turn input (#61962)",
+            "message": "Capture local attachments before queuing turn input (#61962)\n\n## Why\n\nQueued input can outlive its local attachment files. Reading those files only when rendering a model message can lose media submitted while turn admission is pending.\n\n## What changed\n\n- Introduce `ResolvedUserInput` to carry captured image bytes, audio data URLs, or read errors through session queues and agent input.\n- Resolve client attachments on the submitting host before queuing, using a blocking task for local file reads.\n- Render messages from captured payloads while preserving original paths and text spans for display, along with image position mappings.\n\n## Testing\n\nAdd coverage for rendering and serialization after source files are removed, steered audio retained during pending admission, and local audio errors and display content.\n\nGitOrigin-RevId: 4bbb6bda44167439a8cfdae15d3c476a7b1d336b",
+            "url": "https://github.com/openai/codex/commit/d8d840d32a8ebf9ec75603e6aa9cd88a58a444a2"
+          },
+          {
+            "sha": "c8d1ba814eb984e8fdd2f595ffd9b287e825a5b3",
+            "title": "Add HTTP/2 fallback for SSH tunnels (#61964)",
+            "message": "Add HTTP/2 fallback for SSH tunnels (#61964)\n\n## Why\n\nSSH tunnels need a working transport when UDP is blocked or a QUIC connection cannot complete an HTTP/3 CONNECT request.\n\n## What changed\n\n- Race TLS HTTP/2 CONNECT against HTTP/3 after a 250 ms QUIC head start, selecting the first successful CONNECT response.\n- Verify the gateway before obtaining credentials, treat CONNECT rejection as terminal, and include admission in the setup timeout.\n- Preserve bounded buffering, TCP half-close behavior, and SSH exit on remote EOF over HTTP/2. Keep peer-supplied debug text out of SSH errors.\n\n## Testing\n\nAdd local TLS HTTP/2 and HTTP/3 peer tests for transport selection, blocked UDP, stalled HTTP/3, terminal rejection, setup deadlines, certificate verification, address retries, and bidirectional forwarding with both half-close orders.\n\nGitOrigin-RevId: a1cde88dff7a4e5e6574cf12eacb453551f01b72",
+            "url": "https://github.com/openai/codex/commit/c8d1ba814eb984e8fdd2f595ffd9b287e825a5b3"
+          },
+          {
+            "sha": "39b590389871c8db85381daa9504886276bbc7c6",
+            "title": "Set explicit image detail in the restored-history prewarm test (#61969)",
+            "message": "Set explicit image detail in the restored-history prewarm test (#61969)\n\nConstruct the injected image as a `ResponseInputItem::Message` with\n`ImageDetail::High` in the restored-history prewarm scenario.\n\nGitOrigin-RevId: 6a414d2c52cb4d2195e6721365c97677c49c956e",
+            "url": "https://github.com/openai/codex/commit/39b590389871c8db85381daa9504886276bbc7c6"
+          },
+          {
+            "sha": "c826ca128699b5464724c8757638ae79f51a45f2",
+            "title": "Preserve accepted tool outputs and local resets in rollout traces (#61973)",
+            "message": "Preserve accepted tool outputs and local resets in rollout traces (#61973)\n\n## Why\n\nAccepted tool outputs may never appear in a later inference request, and request preparation can strip their history IDs. Replay needs to retain these outputs and match them to later snapshots, including trimmed results and outputs with identical wire bodies.\n\n## What changed\n\n- Capture accepted function and custom tool outputs, preserving their acceptance order, identity, and tool provenance during replay.\n- Record stripped tool output IDs alongside inference requests so replay can restore identity without changing the captured wire payload. Reuse accepted items and adopt their first model-visible snapshot bodies.\n- Record compaction checkpoints for local context-window resets using the selected input and frozen installed history, including goal edits retained during installation.\n- Exclude `configuration_update` items from normalized conversation history.\n\n## Testing\n\nAdd replay coverage for outputs accepted without subsequent inference, trimmed results, identical outputs with distinct IDs, and acceptance before or after a request snapshot. Extend checkpoint coverage to verify that retained goal edits are captured and later edits do not alter the checkpoint.\n\nGitOrigin-RevId: 70f737782f5000812f389a4e01b9f9690e39549f",
+            "url": "https://github.com/openai/codex/commit/c826ca128699b5464724c8757638ae79f51a45f2"
+          },
+          {
+            "sha": "9a5a78925d556c565367cbd01fac62617756c955",
+            "title": "Add a Cloud environment picker for new TUI conversations (#61974)",
+            "message": "Add a Cloud environment picker for new TUI conversations (#61974)\n\n## What changed\n\n- Open a searchable picker with `Ctrl+X E` to choose a saved personal or workspace environment, or use Default with the current GitHub project when available.\n- Show the selected environment above the composer and expose `tui.keymap.global.choose_cloud_environment` for custom bindings.\n- Preserve the composer draft and staged model, reasoning effort, and service tier when changing environments. Remember the saved environment when cycling through a local host and back to the same Cloud backend.\n\n## Testing\n\nAdd coverage for picker search and selection, dismissal without losing the draft, keyboard routing, environment label truncation, staged settings on the first turn, and saved-environment reuse after host switching.\n\nGitOrigin-RevId: ac9036fd46b252286852df4d792418a3330bae73",
+            "url": "https://github.com/openai/codex/commit/9a5a78925d556c565367cbd01fac62617756c955"
+          },
+          {
+            "sha": "98323eddf944b765a391fda552be32df46f4bbbd",
+            "title": "Simplify SSH tunneling and honor system HTTPS proxies (#61975)",
+            "message": "Simplify SSH tunneling and honor system HTTPS proxies (#61975)\n\n## What changed\n\n- Make `codex tcp-tunnel` an SSH stdio helper, removing the loopback listener, stdin control protocol, and JSON diagnostics.\n- Add `--token-file` for one-use credentials, consumed only after gateway verification, with environment-based OAuth routing or a legacy IPv4 `--target`.\n- Honor system HTTPS proxy settings without attempting direct QUIC, and keep gateway credentials inside verified TLS.\n- Race direct TCP addresses through TLS and HTTP/2 readiness so stalled peers do not block a working address.\n\n## Testing\n\nAdd coverage for proxy credential isolation and stalled TLS peers, plus an opt-in Linux OpenSSH integration test for complete uploads and remote exit while local stdin remains open.\n\nGitOrigin-RevId: 62423c8a8267842c9e401b3f9094c7278c47a490",
+            "url": "https://github.com/openai/codex/commit/98323eddf944b765a391fda552be32df46f4bbbd"
+          },
+          {
+            "sha": "61f59108263da04deaacd51f12991b454d6b6b52",
+            "title": "Add mouse scroll speed to the TUI config panel (#61976)",
+            "message": "Add mouse scroll speed to the TUI config panel (#61976)\n\n## What changed\n\n- Add an Input setting for fullscreen transcript mouse-wheel speed, with presets of 0.5×, 1×, 1.5×, 2×, and 3×. Keep custom configured values available as the current choice.\n- Save selections to `tui.mouse_scroll_speed` and apply them to the transcript without restarting.\n- Refresh the displayed scroll speed from local settings when changing working directories.\n\n## Testing\n\nAdd picker and snapshot coverage for custom values and preset selection, verify persistence and live application, and check that changing directories updates the setting and picker.\n\nGitOrigin-RevId: 4be118e1403e74f5ce819e44949f4d96d9e17648",
+            "url": "https://github.com/openai/codex/commit/61f59108263da04deaacd51f12991b454d6b6b52"
+          },
+          {
+            "sha": "490394c184eba25ebf4ec728e64f9af485a4cced",
+            "title": "Keep TUI quota state scoped to the active provider (#61977)",
+            "message": "Keep TUI quota state scoped to the active provider (#61977)\n\n## Why\n\nStarting or switching chats can carry quota usage, backend banners, and pending recovery from the previous provider, even when both providers report identical account details.\n\n## What changed\n\n- Refresh account state when the started or cached thread uses a different provider, and discard inherited quota and backend banner state across provider changes.\n- Track the provider associated with quota inherited by the task list, where the local default can differ from the previous chat's provider.\n- Invalidate pending recovery when the provider changes or the chat loses its ChatGPT account, and ignore queued recovery refreshes without a ChatGPT account.\n- Preserve quota state and pending recovery when opening another chat on the same provider.\n\n## Testing\n\nAdd regression coverage for provider changes with matching account details, stale recovery replies, cached side chats, and quota and recovery preservation across `/new` and task list transitions.\n\nGitOrigin-RevId: f4513ca565f2068489327989ae10b24cada0a9bf",
+            "url": "https://github.com/openai/codex/commit/490394c184eba25ebf4ec728e64f9af485a4cced"
+          },
+          {
+            "sha": "7e59b276677a2ee970c741390fb06aada0b01ad6",
+            "title": "Use the current billing plan for TUI thread usage (#61978)",
+            "message": "Use the current billing plan for TUI thread usage (#61978)\n\n## Why\n\nAccount reads can use a cached subscription plan, and rolling quota updates can carry an obsolete plan. This can leave thread usage unavailable or cause `/status` to display costs using the wrong billing model.\n\n## What changed\n\n- Prefer a known plan from a full Codex quota read over the account plan, regardless of reply order. Ignore unknown quota plans and prevent rolling updates from changing the billing plan.\n- Preserve quota plan state across chat widget replacement and apply accepted quota reads even after the requesting status card is gone.\n- Refresh thread usage availability when the plan changes and pair asynchronous `/status` estimates with the corrected plan, including native dollar usage for `Ent26`.\n\n## Testing\n\nAdd regression tests for reply ordering, unknown plans, corrected pending status cards, obsolete rolling updates, and quota replies arriving after widget replacement.\n\nGitOrigin-RevId: 238fadb587fe98cda0eeb5111c1949928acc8153",
+            "url": "https://github.com/openai/codex/commit/7e59b276677a2ee970c741390fb06aada0b01ad6"
+          },
+          {
+            "sha": "46f5a1df9f2ade44cb9712d574cde9401a755d21",
+            "title": "Render selected MCP statusline providers in the TUI footer (#61979)",
+            "message": "Render selected MCP statusline providers in the TUI footer (#61979)\n\n## What changed\n\n- With `tui_extensions_statusline` enabled, resolve the saved MCP provider and read its resource with a snapshot of the displayed thread's statusline state.\n- Show initialization and error messages, validate the JSON UI tree response, and preserve provider content through native statusline refreshes. Ignore stale results when the thread, provider, or working directory changes.\n- Request workspace headlines and thread usage for custom providers even when no built-in statusline items are selected.\n\n## Testing\n\nAdd unit coverage for response validation and footer lifecycle, plus end-to-end tests for embedded and remote app servers, startup delays, current thread metadata, and rejection of project-level provider overrides.\n\nGitOrigin-RevId: 80a46ec780c1f1536f1fd4749f468629627dedf6",
+            "url": "https://github.com/openai/codex/commit/46f5a1df9f2ade44cb9712d574cde9401a755d21"
+          },
+          {
+            "sha": "10a3126a030fa47dbcd93c449d936c870d8329cc",
+            "title": "Poll MCP statusline providers with fresh state and bounded reads (#61981)",
+            "message": "Poll MCP statusline providers with fresh state and bounded reads (#61981)\n\n## Why\n\nMCP statusline resources were read only once, leaving the footer stale when thread state or the display mode changed.\n\n## What changed\n\n- Read the selected provider again one second after each successful read, capturing fresh statusline state for every request.\n- Enforce a one-second resource read deadline and stop polling with an error footer on timeouts, RPC errors, or invalid content.\n- Cancel outstanding reads when the reader is retired, including thread switches and parking a voice session, and disable provider reads in voice-only mode.\n\n## Testing\n\nAdd paused-time tests for polling cadence, fresh state, empty content, failure handling, deadlines, and cancellation. Extend the stdio provider integration test to verify that switching out of raw mode updates the provider footer.\n\nGitOrigin-RevId: 159f17ad9291923e438117d919c875051c9d9426",
+            "url": "https://github.com/openai/codex/commit/10a3126a030fa47dbcd93c449d936c870d8329cc"
+          },
+          {
+            "sha": "47d9cde20e96eed528edcc155c6c0dc4daf7a33d",
+            "title": "Refresh status line providers on config and connection changes (#61985)",
+            "message": "Refresh status line providers on config and connection changes (#61985)\n\n## What changed\n\n- Refresh the status line after reloading configuration so provider and feature-gate changes take effect.\n- Restart the provider reader after saving a selection, including reselecting the same provider to retry a failed read.\n- Cancel provider reads and show the built-in status line while disconnected, then restart the provider after reconnecting.\n\n## Testing\n\nAdd regression coverage for configuration reloads, provider changes, retrying failed reads, and discarding stale results after provider changes or reconnects. Extend the terminal integration test to verify that a new thread picks up a provider changed in `config.toml`.\n\nGitOrigin-RevId: e86531321d190786e8a41a0a0c93167c8a5298e6",
+            "url": "https://github.com/openai/codex/commit/47d9cde20e96eed528edcc155c6c0dc4daf7a33d"
+          },
+          {
+            "sha": "7fb4014d52b5bc5049c389f9df015ff8c7e6e37c",
+            "title": "Preserve statusline provider selections across thread startup (#61986)",
+            "message": "Preserve statusline provider selections across thread startup (#61986)\n\n## What changed\n\n- Pass the provider advertised by the picker into statusline resolution, preserving it when selection precedes the thread ID and avoiding a redundant global catalog lookup.\n- Cancel failed readers and stop requesting provider-specific usage and workspace headline data until the provider is reselected.\n\n## Testing\n\nExtend reader tests to cover reselection before thread startup, resolution using only the thread catalog, and snapshot suppression after invalid provider content.\n\nGitOrigin-RevId: 9531204cb6ef93c721dc7fafdc0a8fea8c20cb99",
+            "url": "https://github.com/openai/codex/commit/7fb4014d52b5bc5049c389f9df015ff8c7e6e37c"
+          },
+          {
+            "sha": "568cccd4f55764bcc253fbb8843fcbaa99953094",
+            "title": "Add a status line provider picker to `/statusline` (#61988)",
+            "message": "Add a status line provider picker to `/statusline` (#61988)\n\n## What changed\n\n- Add a \"Choose a statusline plugin\" action when status line extensions are enabled. Discover MCP providers, show the current selection, and let users save a provider or return to the default status line.\n- Preserve the highlighted row when discovery completes and start reading provider contents only after an explicit selection.\n- Keep the item editor open across picker transitions and disconnects, allow switching to the default while offline, and guard transitions against repeated activation keys.\n- Limit displayed numeric shortcuts to the first nine selectable rows.\n\n## Testing\n\nAdd tests for discovery focus, stale discovery results, explicit reader activation, repeated Enter keys, disconnect handling, and numeric shortcuts. Extend the terminal integration test to switch between the default status line and an MCP provider through the picker.\n\nGitOrigin-RevId: 76a254d7afee3a1b8cfc801617a2176893276e0e",
+            "url": "https://github.com/openai/codex/commit/568cccd4f55764bcc253fbb8843fcbaa99953094"
+          },
+          {
+            "sha": "a3fc418fb29d15fff9df779575aee3a5ca1ea73d",
+            "title": "Classify status line provider failures and shorten error messages (#61990)",
+            "message": "Classify status line provider failures and shorten error messages (#61990)\n\n## What changed\n\nReplace the generic provider error with concise status line messages for unavailable providers, timed-out reads, and other failures. Each message includes `/statusline` to help users reselect a provider.\n\nClassify lookup, snapshot, transport, RPC, and resource validation failures, and log the failure category without carrying raw RPC errors or resource content.\n\n## Testing\n\nUpdate tests to assert specific resource validation errors and the displayed messages for invalid content, RPC failures, read timeouts, and provider lookup timeouts.\n\nGitOrigin-RevId: 4ae4953cf2552c1c146d77463680655697d0d444",
+            "url": "https://github.com/openai/codex/commit/a3fc418fb29d15fff9df779575aee3a5ca1ea73d"
+          },
+          {
+            "sha": "59ac39addbbcd3499319c805a916846ca8ac5fef",
+            "title": "Surface status line discovery failures and lookup timeouts (#61993)",
+            "message": "Surface status line discovery failures and lookup timeouts (#61993)\n\n## Why\n\nStatus line provider discovery failures were silently ignored, and startup lookup timeouts appeared as unavailable providers.\n\n## What changed\n\n- Show incomplete provider discovery in the warnings viewer, with sanitized server names, bounded summaries, and no raw RPC error details. Preserve the warning across canceled scans and clear it after a successful scan.\n- Share a single five-second startup deadline across provider lookup retries and report timed-out lookups as `Status line timed out`.\n\n## Testing\n\nAdd coverage for discovery warning rendering and lifecycle, and for a hung lookup retry exhausting the remaining startup deadline. Update the startup timeout expectation.\n\nGitOrigin-RevId: 0403af2ed688c31c175d1b5c47d2cdd4cd355653",
+            "url": "https://github.com/openai/codex/commit/59ac39addbbcd3499319c805a916846ca8ac5fef"
+          },
+          {
+            "sha": "7df454ceb5a6f0ef51555ba59f920e9dd2e70dee",
+            "title": "Add TypeScript contracts for custom statusline providers (#62034)",
+            "message": "Add TypeScript contracts for custom statusline providers (#62034)\n\n## What changed\n\nBundle a generated `statusline.d.ts` reference with the `create-statusline` skill, covering status snapshots, UI trees, colors, and canonical statusline item IDs. Add test-only `ts-rs` derives and an `UPDATE_STATUSLINE_TYPES` regeneration path.\n\nClarify that rate-limit usage percentages can exceed 100.\n\n## Testing\n\nAdd a Rust test that checks key type exports in the installed skill and a strict TypeScript fixture covering provider rendering and invalid item IDs, row props, and colors.\n\nGitOrigin-RevId: f615e0b3c2cd3d0d95a75de36ce0a84467ecd5b6",
+            "url": "https://github.com/openai/codex/commit/7df454ceb5a6f0ef51555ba59f920e9dd2e70dee"
+          },
+          {
+            "sha": "b47df356af83e099a047e78ef9d694003d4a8c77",
+            "title": "Add a bundled skill for authoring MCP statuslines (#62036)",
+            "message": "Add a bundled skill for authoring MCP statuslines (#62036)\n\n## What changed\n\nAdd the explicitly invoked `create-statusline` skill with guidance for building, registering, and selecting a custom Codex CLI footer provider. Include a Python stdio MCP starter that renders the current thread's model and agent state from each resource read's snapshot.\n\n## Testing\n\nAdd a scenario snapshot for loading the bundled skill by name and a Python protocol test covering provider discovery, per-read snapshots, and Unicode text.\n\nGitOrigin-RevId: e48fd5064ad93bf37b50b5643028d4153a3b4f59",
+            "url": "https://github.com/openai/codex/commit/b47df356af83e099a047e78ef9d694003d4a8c77"
+          },
+          {
+            "sha": "e20ccdfa80361deb81266d3ed6baea9c2cdd5ee1",
+            "title": "Add custom status line authoring to `/statusline` (#62037)",
+            "message": "Add custom status line authoring to `/statusline` (#62037)\n\n## What changed\n\n- Add “Create a custom status line” when `tui_extensions_statusline` is enabled outside cloud mode. Open a new conversation with an editable draft bound to the bundled `create-statusline` skill when available, falling back to a plain request otherwise.\n- Preserve the previous thread’s draft and queued input, including input restored by a late interrupt, while switching conversations.\n- Guard against stale create actions and held Enter submitting the new draft. Rename the provider action to “Choose a status line provider”.\n\n## Testing\n\nAdd regression coverage for draft editing, bundled skill binding, input preservation, activation-key handling, dismissed setup actions, and hiding the create action in cloud mode.\n\nGitOrigin-RevId: d40dd12914cf38968e605987f67d1ddee5ba7dd1",
+            "url": "https://github.com/openai/codex/commit/e20ccdfa80361deb81266d3ed6baea9c2cdd5ee1"
+          },
+          {
+            "sha": "7e5fd57f4baa48e4d33e0d062fcdaf1e5ee3beaf",
+            "title": "Release 0.171.0-alpha.12",
+            "message": "Release 0.171.0-alpha.12",
+            "url": "https://github.com/openai/codex/commit/7e5fd57f4baa48e4d33e0d062fcdaf1e5ee3beaf"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.171.0-alpha.11",
+          "head": "rust-v0.171.0-alpha.12",
+          "url": "https://github.com/openai/codex/compare/rust-v0.171.0-alpha.11...rust-v0.171.0-alpha.12",
+          "status": "diverged",
+          "total": 25,
+          "behind": 1,
+          "complete": true,
+          "fetched": 25
         },
         "comparisonError": null
       }
