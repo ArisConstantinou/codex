@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-17T17:51:45.277Z",
+  "generatedAt": "2026-11-18T00:17:38.448Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -17608,9 +17608,9 @@
     },
     {
       "id": "openai-status:01M7N9VNR6X5SEC90M1YCDB36D",
-      "at": "2026-11-17T17:46:15.000Z",
+      "at": "2026-11-17T19:53:49.000Z",
       "url": "https://status.openai.com/incidents/01M7N9VNR6X5SEC90M1YCDB36D",
-      "text": "Costs API data is delayed. We have identified a delay in our Costs API. We are working to resolve the issue.",
+      "text": "Costs API data is delayed. We've pushed a fix and are monitoring the recovery.",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -17619,8 +17619,81 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "investigating",
+      "serviceStatus": "monitoring",
       "publishedAt": "2026-11-17T17:46:15.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-gpt-6-2-astra-sol",
+      "at": "2026-11-17T17:45:00.000Z",
+      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+      "text": "Introducing GPT-6.2 Astra and Sol. Introducing GPT‑6.2 Astra and Sol, with better professional outputs, coding, computer use, and efficiency at lower cost across ChatGPT Work, Codex, and the API.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-chatgpt-for-sales",
+      "at": "2026-11-17T08:00:00.000Z",
+      "url": "https://openai.com/index/introducing-chatgpt-for-sales",
+      "text": "Introducing ChatGPT for Sales. Explore the new Sales plugin and 30+ new and expanded partner plugins in ChatGPT to research prospects, prepare pitches, update your CRM, and move deals forward.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/astra-law-6-2",
+      "at": "2026-11-17T00:00:00.000Z",
+      "url": "https://openai.com/index/astra-law-6-2",
+      "text": "Astra for Law leads in legal intelligence. Astra for Law ranked first in a launch evaluation spanning 24 areas of law. Every ChatGPT Enterprise customer can now request access.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.1",
+      "at": "2026-11-17T22:22:49.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.1",
+      "text": "0.169.1. Chores No verified release highlights available. Changelog Full Changelog: rust-v0.169.0...rust-v0.169.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.169.1",
+        "title": "0.169.1",
+        "body": "## Chores\n\nNo verified release highlights available.\n\n## Changelog\n\nFull Changelog: https://github.com/openai/codex/compare/rust-v0.169.0...rust-v0.169.1\n\n\n\n",
+        "authored": true,
+        "fetchedAt": "2026-11-18T00:17:38.451Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.169.1",
+        "publishedAt": "2026-11-17T22:21:10Z",
+        "commits": [],
+        "comparison": null,
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -17629,7 +17702,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-17T17:51:44.994Z",
+      "lastSuccessAt": "2026-11-18T00:17:37.745Z",
       "error": null,
       "count": 150
     },
@@ -17638,7 +17711,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-17T17:51:44.994Z",
+      "lastSuccessAt": "2026-11-18T00:17:37.745Z",
       "error": null,
       "count": 10
     },
@@ -17647,7 +17720,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-17T17:51:44.994Z",
+      "lastSuccessAt": "2026-11-18T00:17:37.745Z",
       "error": null,
       "count": 25
     }
@@ -70576,6 +70649,138 @@
           "complete": true,
           "fetched": 25
         },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-gpt-6-2-astra-sol:2026-11-18T00:17:38.448Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-18T00:17:38.448Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-gpt-6-2-astra-sol",
+        "at": "2026-11-17T17:45:00.000Z",
+        "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+        "text": "Introducing GPT-6.2 Astra and Sol. Introducing GPT‑6.2 Astra and Sol, with better professional outputs, coding, computer use, and efficiency at lower cost across ChatGPT Work, Codex, and the API.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-chatgpt-for-sales:2026-11-18T00:17:38.448Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-18T00:17:38.448Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-chatgpt-for-sales",
+        "at": "2026-11-17T08:00:00.000Z",
+        "url": "https://openai.com/index/introducing-chatgpt-for-sales",
+        "text": "Introducing ChatGPT for Sales. Explore the new Sales plugin and 30+ new and expanded partner plugins in ChatGPT to research prospects, prepare pitches, update your CRM, and move deals forward.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/astra-law-6-2:2026-11-18T00:17:38.448Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-18T00:17:38.448Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/astra-law-6-2",
+        "at": "2026-11-17T00:00:00.000Z",
+        "url": "https://openai.com/index/astra-law-6-2",
+        "text": "Astra for Law leads in legal intelligence. Astra for Law ranked first in a launch evaluation spanning 24 areas of law. Every ChatGPT Enterprise customer can now request access.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.1:2026-11-18T00:17:38.448Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-18T00:17:38.448Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.1",
+        "at": "2026-11-17T22:22:49.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.1",
+        "text": "0.169.1. Chores No verified release highlights available. Changelog Full Changelog: rust-v0.169.0...rust-v0.169.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.169.1",
+          "title": "0.169.1",
+          "body": "## Chores\n\nNo verified release highlights available.\n\n## Changelog\n\nFull Changelog: https://github.com/openai/codex/compare/rust-v0.169.0...rust-v0.169.1\n\n\n\n",
+          "authored": true,
+          "fetchedAt": "2026-11-18T00:17:38.451Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.169.1",
+          "publishedAt": "2026-11-17T22:21:10Z",
+          "commits": [],
+          "comparison": null,
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "openai-status:01M7N9VNR6X5SEC90M1YCDB36D:2026-11-18T00:17:38.448Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-18T00:17:38.448Z",
+      "item": {
+        "id": "openai-status:01M7N9VNR6X5SEC90M1YCDB36D",
+        "at": "2026-11-17T19:53:49.000Z",
+        "url": "https://status.openai.com/incidents/01M7N9VNR6X5SEC90M1YCDB36D",
+        "text": "Costs API data is delayed. We've pushed a fix and are monitoring the recovery.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "monitoring",
+        "publishedAt": "2026-11-17T17:46:15.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.169.1:2026-11-18T00:17:38.448Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-18T00:17:38.448Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.169.1",
+        "title": "0.169.1",
+        "body": "## Chores\n\nNo verified release highlights available.\n\n## Changelog\n\nFull Changelog: https://github.com/openai/codex/compare/rust-v0.169.0...rust-v0.169.1\n\n\n\n",
+        "authored": true,
+        "fetchedAt": "2026-11-18T00:17:38.451Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.169.1",
+        "publishedAt": "2026-11-17T22:21:10Z",
+        "commits": [],
+        "comparison": null,
         "comparisonError": null
       }
     }
