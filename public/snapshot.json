@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-18T07:43:32.462Z",
+  "generatedAt": "2026-11-18T16:44:43.385Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -18260,6 +18260,52 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "openai-news:https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
+      "at": "2026-11-18T00:00:00.000Z",
+      "url": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
+      "text": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT. Le Groupe Figaro and OpenAI partner to bring Le Figaro’s journalism to ChatGPT through summaries and excerpts, with links to original stories.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.172.0-alpha.1",
+      "at": "2026-11-18T16:30:55.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0-alpha.1",
+      "text": "rust-v0.172.0-alpha.1. Release 0.172.0-alpha.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M7Q99XRGP8T4DWJN8DSZXA1X",
+      "at": "2026-11-18T14:13:46.000Z",
+      "url": "https://status.openai.com/incidents/01M7Q99XRGP8T4DWJN8DSZXA1X",
+      "text": "Elevated conversation errors for Free and Go users. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-11-18T12:15:02.000Z"
     }
   ],
   "sources": {
@@ -18268,7 +18314,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-18T07:43:31.366Z",
+      "lastSuccessAt": "2026-11-18T16:44:42.786Z",
       "error": null,
       "count": 150
     },
@@ -18277,7 +18323,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-18T07:43:31.366Z",
+      "lastSuccessAt": "2026-11-18T16:44:42.786Z",
       "error": null,
       "count": 10
     },
@@ -18286,7 +18332,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-18T07:43:31.366Z",
+      "lastSuccessAt": "2026-11-18T16:44:42.786Z",
       "error": null,
       "count": 25
     }
@@ -72456,6 +72502,67 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership:2026-11-18T16:44:43.385Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-18T16:44:43.385Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
+        "at": "2026-11-18T00:00:00.000Z",
+        "url": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
+        "text": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT. Le Groupe Figaro and OpenAI partner to bring Le Figaro’s journalism to ChatGPT through summaries and excerpts, with links to original stories.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.172.0-alpha.1:2026-11-18T16:44:43.385Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-18T16:44:43.385Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.172.0-alpha.1",
+        "at": "2026-11-18T16:30:55.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0-alpha.1",
+        "text": "rust-v0.172.0-alpha.1. Release 0.172.0-alpha.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M7Q99XRGP8T4DWJN8DSZXA1X:2026-11-18T16:44:43.385Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-18T16:44:43.385Z",
+      "item": {
+        "id": "openai-status:01M7Q99XRGP8T4DWJN8DSZXA1X",
+        "at": "2026-11-18T14:13:46.000Z",
+        "url": "https://status.openai.com/incidents/01M7Q99XRGP8T4DWJN8DSZXA1X",
+        "text": "Elevated conversation errors for Free and Go users. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-18T12:15:02.000Z"
+      }
     }
   ],
   "releaseRequests": {
@@ -72488,7 +72595,8 @@
       "rust-v0.170.0-alpha.1": 1794423624005,
       "rust-v0.168.0": 1794524180075,
       "rust-v0.171.0-alpha.1": 1794539622166,
-      "rust-v0.171.0-alpha.4": 1794594675767
+      "rust-v0.171.0-alpha.4": 1794594675767,
+      "rust-v0.172.0-alpha.1": 1795021183388
     }
   }
 }
