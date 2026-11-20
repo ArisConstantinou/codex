@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-19T21:46:04.272Z",
+  "generatedAt": "2026-11-20T02:41:03.351Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -21031,9 +21031,9 @@
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.13.1",
-      "at": "2026-11-19T20:39:52.000Z",
+      "at": "2026-11-19T22:07:59.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.13.1",
-      "text": "rust-v0.171.0-alpha.13.1. Release 0.171.0-alpha.13.1",
+      "text": "0.171.0-alpha.13.1. Release 0.171.0-alpha.13.1",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -21059,6 +21059,96 @@
       "origin": "direct-official",
       "serviceStatus": "resolved",
       "publishedAt": "2026-11-19T16:01:12.000Z"
+    },
+    {
+      "id": "openai-news:https://openai.com/business/learn/deploying-daybreak-red",
+      "at": "2026-11-19T00:00:00.000Z",
+      "url": "https://openai.com/business/learn/deploying-daybreak-red",
+      "text": "Deploying Daybreak Red. Explore a reference architecture for supervised security investigations with Daybreak Red, including safety controls, setup, and monitoring.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/business/learn/pr-scans-demo",
+      "at": "2026-11-19T00:00:00.000Z",
+      "url": "https://openai.com/business/learn/pr-scans-demo",
+      "text": "See PR scans in action. Watch a walkthrough of PR scans and see how the presenter reviews scan results in a pull request workflow.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/business/learn/codex-security-plugin-demo",
+      "at": "2026-11-19T00:00:00.000Z",
+      "url": "https://openai.com/business/learn/codex-security-plugin-demo",
+      "text": "Explore the Codex Security Plugin. Watch a demo of the Codex Security Plugin and see the workflow in action, from getting started to reviewing the results shown in the recording.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/business/learn/daybreak-blue-onboarding-demo",
+      "at": "2026-11-19T00:00:00.000Z",
+      "url": "https://openai.com/business/learn/daybreak-blue-onboarding-demo",
+      "text": "Get started with Daybreak Blue. Watch a walkthrough of onboarding to Daybreak Blue, with a closer look at the setup experience and how to get started.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.1",
+      "at": "2026-11-20T01:44:36.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.1",
+      "text": "rust-v0.173.0-alpha.1. Release 0.173.0-alpha.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0",
+      "at": "2026-11-20T00:47:14.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0",
+      "text": "0.171.0. New Features Added GPT-6.2 Sol and Astra to model catalogs, with Sol as the default catalog selection. ( #62106 ) Enabled the TUI workspace by default, with searchable document previews, image previews, and subagent transcripts alongside the main conversation. ( #61352 , #61888 , #61889 , #61919 , #62157 ) Added configurable undo and redo shortcuts to the non-Vim prompt composer, including restoration of attachments and large pastes. ( #61954 ) Added codex exec --remote &lt;ADDR&gt; to start or resume noninteractive sessions on an existing app server. ( #61707 ) Added /rc and /remote to manage local remote control and display device pairing codes from the TUI. ( #62121 ) Added custom MCP status line selection and authoring through /statusline when tui_extensions_statusline is enabled. ( #61979 , #61988 , #62037 ) Bug Fixes Preserved drafts, queued follow-ups, and interrupted input with their original threads when switching or resuming sessions. ( #61216 ) Kept permission profiles intact when changing working directories. ( #61195 ) Prevented late completion events from cancelling approvals for a newer turn. ( #61801 ) Preserved earlier edits in aggregate diffs when steering an active turn. ( #61820 ) Fixed scrolling that inserted stray characters, composer caret jumps, and redraws using stale terminal dimensions. ( #62139 , #62174 , #62175 ) Fixed enterprise MCP sign-in for identity providers that issue ID tokens without refresh tokens. ( #62129 ) Chores Updated source builds and release tooling to Rust 1.99.1. ( #61205 ) Updated XML dependencies and removed obsolete security advisory exceptions. ( #62068 ) Changelog Full Changelog: rust-v0.170.0...rust-v0.171.0 #61178 Enable conversation-scoped speed selection for Cloud turns @bc-openai #61180 Reclaim abandoned trusted Git repositories @etraut-openai #61181 Fix pagination for unindexed threads sorted by ascending recency @etraut-openai #61182 Support renaming cloud threads @bc-openai #61183 Fix fork parent metadata in reconstructed TUI sessions @fcoury-oai #61185 Defer Guardian context limits to request preparation @ioanbudea-OAI #61186 Keep plan item IDs unique after completion @neerajrj-oai #61187 Add authenticated GCS caching for Bazel CI and releases @dkovalenko-oai #61194 Remove redundant legacy permission helpers @ioanbudea-OAI #61195 Preserve permission profiles across working directory updates @ioanbudea-OAI #61196 Clear inline image previews before history insertion can scroll them @dob-oai #61197 Clarify remote message board and clock documentation @anp-oai #61198 Add graceful agent-tree suspension and recovery @bryanashley #61199 Align rollout trace replay with the same-binary contract @cassirer-openai #61200 Unify TUI status content and layout caching in StatusLine @fcoury-oai #61201 Clean up Rust error handling and OTLP test assertions @ioanbudea-OAI #61205 Upgrade the Rust toolchain to 1.99.1 @ioanbudea-OAI #61206 Enforce Linux seccomp restrictions for x32 syscalls @dhavalkapil-oai #61207 Add SPIFFE JWT-SVID support for workload identity authentication @cooper-oai #61210 Retain TUI delegation prompts in thread model history @won-openai #61211 Add local status line provider configuration @joesavona #61212 Add persistence support for status line provider selections @joesavona #61213 Support model catalog Apps usage instructions @goodman-oai #61215 Track dictation usage from accepted user inputs @chrisdong-oai #61216 Preserve thread input across TUI session resumes @bc-openai #61218 Hide attached threads from the agents overview @fcoury-oai #61219 Hide TUI status details for read-only history @joesavona #61220 Deduplicate overlapping Apps startup tool listings @charliemarsh-oai #61221 Forward repeated signals through the npm wrapper @etraut-openai #61222 Store rollout trace payloads in compressed shards @cassirer-openai #61224 Include AppX event IDs in Windows runtime registration errors @zm-oai #61227 Include Win32 error codes in MXC process launch failures @zm-oai #61228 Add a missing semicolon in the realtime call test helper @bc-openai #61248 Add MCP inventory support for statusline providers @joesavona #61249 Resolve MCP statusline providers and read thread-scoped resources @joesavona #61250 Add bounded streaming discovery for statusline providers @joesavona #61251 Refactor history and notes tools around backend traits @euroelessar #61253 Move rollout trace recording to a background worker @cassirer-openai #61254 Fix Bazel tool resolution for bubblewrap and voice builds @bencodes-oai #61255 Honor PIP_INDEX_URL for V8 Python dependencies @bencodes-oai #61256 Block request_key in Linux network sandbox filters @dhavalkapil-oai #61257 Preserve MCP registration scope across client operations @sayan-oai #61259 Update realtime model and honor provider-specific voice defaults @cooper-oai #61260 Accept ERS v1 and v2 tunnel JWTs @dines-oai #61263 Refactor session window access and async compaction test setup @maxj-oai #61264 Enable gzip and zstd support in the shared HTTP client @joeyp-openai #61272 Set the environment field in statusline MCP requests @anp-oai #61276 Consolidate Windows filesystem helper sandbox preparation @viyatb-oai #61283 Accept explicit contribution context for MCP runtime configuration @sayan-oai #61286 Add and preserve the marketplace auto-update setting @smurching-oai #61337 Centralize managed network proxy startup @viyatb-oai #61338 Record host-confirmed Code Mode wait targets in rollout traces @tz-openai #61339 Add session-scoped stores for stable model-facing IDs @anp-oai #61341 Add opt-in prompt image sanitization @vivi #61342 Cancel abandoned cloud thread list requests @bc-openai #61343 Title saved side chats from their first direct input @fcoury-oai #61344 Add per-item retention policies for injected history @vivi #61345 Add opt-in elastic budgeting for asynchronous Guardian requests @ioanbudea-OAI #61346 Apply elastic entry caps to Guardian classifier evidence @ioanbudea-OAI #61347 Reserve item ID o",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
     }
   ],
   "sources": {
@@ -21067,7 +21157,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-19T21:46:03.698Z",
+      "lastSuccessAt": "2026-11-20T02:41:02.622Z",
       "error": null,
       "count": 150
     },
@@ -21076,7 +21166,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-19T21:46:03.698Z",
+      "lastSuccessAt": "2026-11-20T02:41:02.622Z",
       "error": null,
       "count": 10
     },
@@ -21085,7 +21175,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-19T21:46:03.698Z",
+      "lastSuccessAt": "2026-11-20T02:41:02.622Z",
       "error": null,
       "count": 25
     }
@@ -85217,6 +85307,146 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/learn/deploying-daybreak-red:2026-11-20T02:41:03.351Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-20T02:41:03.351Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/learn/deploying-daybreak-red",
+        "at": "2026-11-19T00:00:00.000Z",
+        "url": "https://openai.com/business/learn/deploying-daybreak-red",
+        "text": "Deploying Daybreak Red. Explore a reference architecture for supervised security investigations with Daybreak Red, including safety controls, setup, and monitoring.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/learn/pr-scans-demo:2026-11-20T02:41:03.351Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-20T02:41:03.351Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/learn/pr-scans-demo",
+        "at": "2026-11-19T00:00:00.000Z",
+        "url": "https://openai.com/business/learn/pr-scans-demo",
+        "text": "See PR scans in action. Watch a walkthrough of PR scans and see how the presenter reviews scan results in a pull request workflow.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/learn/codex-security-plugin-demo:2026-11-20T02:41:03.351Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-20T02:41:03.351Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/learn/codex-security-plugin-demo",
+        "at": "2026-11-19T00:00:00.000Z",
+        "url": "https://openai.com/business/learn/codex-security-plugin-demo",
+        "text": "Explore the Codex Security Plugin. Watch a demo of the Codex Security Plugin and see the workflow in action, from getting started to reviewing the results shown in the recording.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/learn/daybreak-blue-onboarding-demo:2026-11-20T02:41:03.351Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-20T02:41:03.351Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/learn/daybreak-blue-onboarding-demo",
+        "at": "2026-11-19T00:00:00.000Z",
+        "url": "https://openai.com/business/learn/daybreak-blue-onboarding-demo",
+        "text": "Get started with Daybreak Blue. Watch a walkthrough of onboarding to Daybreak Blue, with a closer look at the setup experience and how to get started.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.1:2026-11-20T02:41:03.351Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-20T02:41:03.351Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.1",
+        "at": "2026-11-20T01:44:36.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.1",
+        "text": "rust-v0.173.0-alpha.1. Release 0.173.0-alpha.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0:2026-11-20T02:41:03.351Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-20T02:41:03.351Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0",
+        "at": "2026-11-20T00:47:14.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0",
+        "text": "0.171.0. New Features Added GPT-6.2 Sol and Astra to model catalogs, with Sol as the default catalog selection. ( #62106 ) Enabled the TUI workspace by default, with searchable document previews, image previews, and subagent transcripts alongside the main conversation. ( #61352 , #61888 , #61889 , #61919 , #62157 ) Added configurable undo and redo shortcuts to the non-Vim prompt composer, including restoration of attachments and large pastes. ( #61954 ) Added codex exec --remote &lt;ADDR&gt; to start or resume noninteractive sessions on an existing app server. ( #61707 ) Added /rc and /remote to manage local remote control and display device pairing codes from the TUI. ( #62121 ) Added custom MCP status line selection and authoring through /statusline when tui_extensions_statusline is enabled. ( #61979 , #61988 , #62037 ) Bug Fixes Preserved drafts, queued follow-ups, and interrupted input with their original threads when switching or resuming sessions. ( #61216 ) Kept permission profiles intact when changing working directories. ( #61195 ) Prevented late completion events from cancelling approvals for a newer turn. ( #61801 ) Preserved earlier edits in aggregate diffs when steering an active turn. ( #61820 ) Fixed scrolling that inserted stray characters, composer caret jumps, and redraws using stale terminal dimensions. ( #62139 , #62174 , #62175 ) Fixed enterprise MCP sign-in for identity providers that issue ID tokens without refresh tokens. ( #62129 ) Chores Updated source builds and release tooling to Rust 1.99.1. ( #61205 ) Updated XML dependencies and removed obsolete security advisory exceptions. ( #62068 ) Changelog Full Changelog: rust-v0.170.0...rust-v0.171.0 #61178 Enable conversation-scoped speed selection for Cloud turns @bc-openai #61180 Reclaim abandoned trusted Git repositories @etraut-openai #61181 Fix pagination for unindexed threads sorted by ascending recency @etraut-openai #61182 Support renaming cloud threads @bc-openai #61183 Fix fork parent metadata in reconstructed TUI sessions @fcoury-oai #61185 Defer Guardian context limits to request preparation @ioanbudea-OAI #61186 Keep plan item IDs unique after completion @neerajrj-oai #61187 Add authenticated GCS caching for Bazel CI and releases @dkovalenko-oai #61194 Remove redundant legacy permission helpers @ioanbudea-OAI #61195 Preserve permission profiles across working directory updates @ioanbudea-OAI #61196 Clear inline image previews before history insertion can scroll them @dob-oai #61197 Clarify remote message board and clock documentation @anp-oai #61198 Add graceful agent-tree suspension and recovery @bryanashley #61199 Align rollout trace replay with the same-binary contract @cassirer-openai #61200 Unify TUI status content and layout caching in StatusLine @fcoury-oai #61201 Clean up Rust error handling and OTLP test assertions @ioanbudea-OAI #61205 Upgrade the Rust toolchain to 1.99.1 @ioanbudea-OAI #61206 Enforce Linux seccomp restrictions for x32 syscalls @dhavalkapil-oai #61207 Add SPIFFE JWT-SVID support for workload identity authentication @cooper-oai #61210 Retain TUI delegation prompts in thread model history @won-openai #61211 Add local status line provider configuration @joesavona #61212 Add persistence support for status line provider selections @joesavona #61213 Support model catalog Apps usage instructions @goodman-oai #61215 Track dictation usage from accepted user inputs @chrisdong-oai #61216 Preserve thread input across TUI session resumes @bc-openai #61218 Hide attached threads from the agents overview @fcoury-oai #61219 Hide TUI status details for read-only history @joesavona #61220 Deduplicate overlapping Apps startup tool listings @charliemarsh-oai #61221 Forward repeated signals through the npm wrapper @etraut-openai #61222 Store rollout trace payloads in compressed shards @cassirer-openai #61224 Include AppX event IDs in Windows runtime registration errors @zm-oai #61227 Include Win32 error codes in MXC process launch failures @zm-oai #61228 Add a missing semicolon in the realtime call test helper @bc-openai #61248 Add MCP inventory support for statusline providers @joesavona #61249 Resolve MCP statusline providers and read thread-scoped resources @joesavona #61250 Add bounded streaming discovery for statusline providers @joesavona #61251 Refactor history and notes tools around backend traits @euroelessar #61253 Move rollout trace recording to a background worker @cassirer-openai #61254 Fix Bazel tool resolution for bubblewrap and voice builds @bencodes-oai #61255 Honor PIP_INDEX_URL for V8 Python dependencies @bencodes-oai #61256 Block request_key in Linux network sandbox filters @dhavalkapil-oai #61257 Preserve MCP registration scope across client operations @sayan-oai #61259 Update realtime model and honor provider-specific voice defaults @cooper-oai #61260 Accept ERS v1 and v2 tunnel JWTs @dines-oai #61263 Refactor session window access and async compaction test setup @maxj-oai #61264 Enable gzip and zstd support in the shared HTTP client @joeyp-openai #61272 Set the environment field in statusline MCP requests @anp-oai #61276 Consolidate Windows filesystem helper sandbox preparation @viyatb-oai #61283 Accept explicit contribution context for MCP runtime configuration @sayan-oai #61286 Add and preserve the marketplace auto-update setting @smurching-oai #61337 Centralize managed network proxy startup @viyatb-oai #61338 Record host-confirmed Code Mode wait targets in rollout traces @tz-openai #61339 Add session-scoped stores for stable model-facing IDs @anp-oai #61341 Add opt-in prompt image sanitization @vivi #61342 Cancel abandoned cloud thread list requests @bc-openai #61343 Title saved side chats from their first direct input @fcoury-oai #61344 Add per-item retention policies for injected history @vivi #61345 Add opt-in elastic budgeting for asynchronous Guardian requests @ioanbudea-OAI #61346 Apply elastic entry caps to Guardian classifier evidence @ioanbudea-OAI #61347 Reserve item ID o",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.13.1:2026-11-20T02:41:03.351Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-20T02:41:03.351Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.13.1",
+        "at": "2026-11-19T22:07:59.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.13.1",
+        "text": "0.171.0-alpha.13.1. Release 0.171.0-alpha.13.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
@@ -85249,7 +85479,8 @@
       "rust-v0.170.0-alpha.1": 1794423624005,
       "rust-v0.168.0": 1794524180075,
       "rust-v0.171.0-alpha.1": 1794539622166,
-      "rust-v0.171.0-alpha.4": 1794594675767
+      "rust-v0.171.0-alpha.4": 1794594675767,
+      "rust-v0.173.0-alpha.1": 1795143363358
     }
   }
 }
