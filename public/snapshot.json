@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-20T18:49:41.049Z",
+  "generatedAt": "2026-11-21T00:23:18.860Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -21958,6 +21958,96 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/combatting-adversarial-distillation",
+      "at": "2026-11-20T10:00:00.000Z",
+      "url": "https://openai.com/index/combatting-adversarial-distillation",
+      "text": "Combatting adversarial distillation. OpenAI’s layered approach to adversarial distillation combines model training, safeguards, detection, and enforcement to protect against capability extraction.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/hebbia",
+      "at": "2026-11-20T00:00:00.000Z",
+      "url": "https://openai.com/business/customer-stories/hebbia",
+      "text": "Hebbia sees improvements in financial research with GPT-6 Astra. Hebbia tested GPT-6 Astra for financial research. Its prerelease evaluations found gains in source coverage, citation relevance, and presentation quality.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-medchembench",
+      "at": "2026-11-20T00:00:00.000Z",
+      "url": "https://openai.com/index/introducing-medchembench",
+      "text": "Can AI help scientists identify promising drug candidates?. MedChemBench evaluates how well AI models interpret molecular structures, reason from experimental evidence, and select compounds in early drug discovery.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.4",
+      "at": "2026-11-20T23:29:38.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.4",
+      "text": "rust-v0.173.0-alpha.4. Release 0.173.0-alpha.4",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.3",
+      "at": "2026-11-20T22:28:53.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.3",
+      "text": "0.173.0-alpha.3. Release 0.173.0-alpha.3",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.2",
+      "at": "2026-11-20T20:50:10.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.2",
+      "text": "0.173.0-alpha.2. Release 0.173.0-alpha.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -21966,7 +22056,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-20T18:49:40.056Z",
+      "lastSuccessAt": "2026-11-21T00:23:18.074Z",
       "error": null,
       "count": 150
     },
@@ -21975,7 +22065,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-20T18:49:40.056Z",
+      "lastSuccessAt": "2026-11-21T00:23:18.074Z",
       "error": null,
       "count": 10
     },
@@ -21984,7 +22074,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-20T18:49:40.056Z",
+      "lastSuccessAt": "2026-11-21T00:23:18.074Z",
       "error": null,
       "count": 25
     }
@@ -88713,6 +88803,126 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/combatting-adversarial-distillation:2026-11-21T00:23:18.860Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-21T00:23:18.860Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/combatting-adversarial-distillation",
+        "at": "2026-11-20T10:00:00.000Z",
+        "url": "https://openai.com/index/combatting-adversarial-distillation",
+        "text": "Combatting adversarial distillation. OpenAI’s layered approach to adversarial distillation combines model training, safeguards, detection, and enforcement to protect against capability extraction.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/hebbia:2026-11-21T00:23:18.860Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-21T00:23:18.860Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/customer-stories/hebbia",
+        "at": "2026-11-20T00:00:00.000Z",
+        "url": "https://openai.com/business/customer-stories/hebbia",
+        "text": "Hebbia sees improvements in financial research with GPT-6 Astra. Hebbia tested GPT-6 Astra for financial research. Its prerelease evaluations found gains in source coverage, citation relevance, and presentation quality.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-medchembench:2026-11-21T00:23:18.860Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-21T00:23:18.860Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-medchembench",
+        "at": "2026-11-20T00:00:00.000Z",
+        "url": "https://openai.com/index/introducing-medchembench",
+        "text": "Can AI help scientists identify promising drug candidates?. MedChemBench evaluates how well AI models interpret molecular structures, reason from experimental evidence, and select compounds in early drug discovery.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.4:2026-11-21T00:23:18.860Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-21T00:23:18.860Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.4",
+        "at": "2026-11-20T23:29:38.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.4",
+        "text": "rust-v0.173.0-alpha.4. Release 0.173.0-alpha.4",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.3:2026-11-21T00:23:18.860Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-21T00:23:18.860Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.3",
+        "at": "2026-11-20T22:28:53.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.3",
+        "text": "0.173.0-alpha.3. Release 0.173.0-alpha.3",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.2:2026-11-21T00:23:18.860Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-21T00:23:18.860Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.2",
+        "at": "2026-11-20T20:50:10.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.2",
+        "text": "0.173.0-alpha.2. Release 0.173.0-alpha.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
     }
   ],
   "releaseRequests": {
@@ -88745,7 +88955,8 @@
       "rust-v0.170.0-alpha.1": 1794423624005,
       "rust-v0.168.0": 1794524180075,
       "rust-v0.171.0-alpha.1": 1794539622166,
-      "rust-v0.171.0-alpha.4": 1794594675767
+      "rust-v0.171.0-alpha.4": 1794594675767,
+      "rust-v0.173.0-alpha.4": 1795221498869
     }
   }
 }
