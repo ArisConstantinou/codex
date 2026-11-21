@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-21T15:40:29.035Z",
+  "generatedAt": "2026-11-21T21:14:18.090Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -22024,7 +22024,7 @@
         "title": "0.173.0-alpha.4",
         "body": "Release 0.173.0-alpha.4\n\n",
         "authored": false,
-        "fetchedAt": "2026-11-21T15:40:29.052Z",
+        "fetchedAt": "2026-11-21T21:14:18.098Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.4",
         "publishedAt": "2026-11-21T00:35:19Z",
         "commits": [
@@ -22139,7 +22139,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-21T15:40:28.249Z",
+      "lastSuccessAt": "2026-11-21T21:14:17.046Z",
       "error": null,
       "count": 150
     },
@@ -22148,7 +22148,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-21T15:40:28.249Z",
+      "lastSuccessAt": "2026-11-21T21:14:17.046Z",
       "error": null,
       "count": 10
     },
@@ -22157,7 +22157,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-21T15:40:28.249Z",
+      "lastSuccessAt": "2026-11-21T21:14:17.046Z",
       "error": null,
       "count": 25
     }
@@ -89209,6 +89209,94 @@
         "body": "Release 0.173.0-alpha.4\n\n",
         "authored": false,
         "fetchedAt": "2026-11-21T15:40:29.052Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.4",
+        "publishedAt": "2026-11-21T00:35:19Z",
+        "commits": [
+          {
+            "sha": "5bee962f5e9c99c1e91b3fd097b03fc280aaf956",
+            "title": "Reuse one syntax highlighter when building TUI Markdown styles (#62840)",
+            "message": "Reuse one syntax highlighter when building TUI Markdown styles (#62840)\n\n## Why\n\nBuilding Markdown styles clones the active syntax theme and constructs a new\nhighlighter for each foreground lookup.\n\n## What changed\n\nBorrow the active theme and use one highlighter for all foreground lookups\nin `MarkdownStyles`. Preserve the readability adjustment for text styles\nand the accent-color fallback for inline code.\n\nGitOrigin-RevId: 8ddfad7e61e2dc7968398ff3bdecd3b389c1bb07",
+            "url": "https://github.com/openai/codex/commit/5bee962f5e9c99c1e91b3fd097b03fc280aaf956"
+          },
+          {
+            "sha": "2b5111917c1497ed945da543221f67ebe6e95280",
+            "title": "Tag all multi-agent role instructions consistently (#62842)",
+            "message": "Tag all multi-agent role instructions consistently (#62842)\n\n## Why\n\nOnly catalog role instructions carried the `<multi_agent_role>` tag,\nso the same guidance appeared in different formats depending on its source.\n\n## What changed\n\nRender bundled, catalog, and configured root and subagent guidance as\n`multi_agent.role_instructions` developer messages. Wrap the guidance in\n`<multi_agent_role>` tags and preserve configured text that's already tagged.\nMatch untagged parent guidance by its body when filtering forked history.\n\n## Testing\n\nUpdate prompt and session assertions for tagged role instructions, and keep\nthe cold-resume test exercising a rollout with legacy untagged guidance.\n\nGitOrigin-RevId: 60c55b5d7227811b92bd1bf125f1cd3a965720fd",
+            "url": "https://github.com/openai/codex/commit/2b5111917c1497ed945da543221f67ebe6e95280"
+          },
+          {
+            "sha": "9735367e18dcaeb02f5031460625b5f7f0f59e21",
+            "title": "Return an assessment for explicit Guardian reviews (#62846)",
+            "message": "Return an assessment for explicit Guardian reviews (#62846)\n\n## Why\n\nAn explicit `thread/guardianReview` request could return a null assessment when live execution would skip approval, leaving callers without a verdict on the recorded action.\n\n## What changed\n\nRequire `assessment` on every successful `thread/guardianReview` response. Review eligible recorded calls even when a command is allowlisted, an MCP tool is configured for automatic approval or has a remembered approval, or the policy disables permission requests. The review runs without executing the call or granting permissions.\n\nInclude the MCP server's owning environment permissions in the review context, matching live review.\n\n## Testing\n\nCover allowlisted commands, permission requests with prompting disabled, and automatically approved MCP tools. Compare live and recorded MCP review input for a server whose owning environment has denied paths.\n\nGitOrigin-RevId: 54689dc043d77f940e10d29842308340f6937980",
+            "url": "https://github.com/openai/codex/commit/9735367e18dcaeb02f5031460625b5f7f0f59e21"
+          },
+          {
+            "sha": "4c153c26c0b5c54a22e0e775b46bcc4aa8872c79",
+            "title": "Reduce allocations when preparing tool schemas and catalogs (#62849)",
+            "message": "Reduce allocations when preparing tool schemas and catalogs (#62849)\n\n## Why\n\nTool schema budget checks cloned the schema and allocated a JSON buffer\njust to measure its size. Building a Responses Lite catalog also cloned\ntool definitions before serializing them.\n\n## What changed\n\n- Deserialize schemas from borrowed JSON during compaction, count\n  serialized bytes without allocating a buffer, and reuse the parsed\n  schema when it fits the budget.\n- Serialize borrowed tool specs and namespace members directly, and pass\n  filtered specs as an iterator. Preserve the serialized namespace field\n  order because the bytes contribute to the `additional_tools` item ID.\n\n## Testing\n\n- Compare the exact serialized Responses Lite catalog against the\n  expected namespace layout.\n- Add a `tool_catalog` benchmark for connector schema preparation and\n  Responses Lite catalog encoding with 1 and 64 tool specs.\n\nGitOrigin-RevId: 6bd03a12fcedd4abfa8c3a03f298243483e98c63",
+            "url": "https://github.com/openai/codex/commit/4c153c26c0b5c54a22e0e775b46bcc4aa8872c79"
+          },
+          {
+            "sha": "63598243af3fa93ac670fb39da48b4b0967fb365",
+            "title": "Limit guardian response resampling to one retry (#62852)",
+            "message": "Limit guardian response resampling to one retry (#62852)\n\n## Why\n\nWhen the retried response also meets the guardian's resampling criteria,\nit can trigger another model request and keep the turn from finishing.\n\n## What changed\n\nConsume the original prompt when scheduling the retry. The second\nverdict stays buffered until completion and is replayed after usage\naccounting, even if it also meets the resampling criteria. Usage from\nthe discarded first response still counts toward spending.\n\nGitOrigin-RevId: f8ded8f31bd7d9e440c0c92a92a80480acec61d2",
+            "url": "https://github.com/openai/codex/commit/63598243af3fa93ac670fb39da48b4b0967fb365"
+          },
+          {
+            "sha": "548dd628df95e01dbaee503ca9cbb216242baaf1",
+            "title": "Specialize OpenTelemetry providers for HTTP traces and metrics (#62854)",
+            "message": "Specialize OpenTelemetry providers for HTTP traces and metrics (#62854)\n\n## Why\n\nThe code-mode host exports traces over OTLP/HTTP, and the elevated Windows\nFiltering Platform setup helper exports Statsig metrics. Both used the\ngeneral-purpose provider, which made exporter builders for unused signals\nand transports reachable from those binaries.\n\n## What changed\n\nAdd `OtelProvider::try_new_http_traces` for the code-mode host and\n`OtelProvider::try_new_http_metrics` for the Windows setup helper. Select\nexporter builders at compile time so each constructor reaches only the\nbuilders it needs. Both constructors reject unsupported signals and gRPC\nconfiguration. The metrics constructor also accepts Statsig.\n\n## Testing\n\nAdd unit tests for unsupported signals and gRPC configuration. Exercise\nthe specialized constructors in the HTTP loopback tests for trace delivery\non a current-thread Tokio runtime and cumulative metrics export.\n\nGitOrigin-RevId: 875916791f0176839764c51b5ab289d5dc45a4d2",
+            "url": "https://github.com/openai/codex/commit/548dd628df95e01dbaee503ca9cbb216242baaf1"
+          },
+          {
+            "sha": "941e1dcade1598f7d10ac06b7a0c77df6857a32e",
+            "title": "Defer built-in Default mode instructions until after Plan mode (#62857)",
+            "message": "Defer built-in Default mode instructions until after Plan mode (#62857)\n\n## Why\n\nThreads that stay in Default mode carry a collaboration-mode prompt even\nthough they have no Plan mode instructions to supersede.\n\n## What changed\n\nOmit bundled and model-catalog Default mode instructions until a thread\nuses Plan mode. Emit Plan mode instructions on entry and Default mode\ninstructions when switching back. Preserve eligible caller-provided\ninstructions and carry the active mode through compaction and resume.\n\n## Testing\n\nCover prompt contents before, during, and after Plan mode in core and\napp-server tests, including compaction and resume in the core tests.\n\nGitOrigin-RevId: b734767da15be53c4eccae71994e46eba63a9ecc",
+            "url": "https://github.com/openai/codex/commit/941e1dcade1598f7d10ac06b7a0c77df6857a32e"
+          },
+          {
+            "sha": "beac2ef8fc1ccba3e6014c8d1009737fc1dfd378",
+            "title": "Keep Cloud threads current in the Agents overview (#62858)",
+            "message": "Keep Cloud threads current in the Agents overview (#62858)\n\n## Why\n\nThe Agents overview can go stale when Cloud threads change from another\nclient, especially when the TUI has no conversation stream attached.\n\n## What changed\n\n- Use Cloud stream notifications to update thread status and refresh the\n  thread list. Poll every 10 seconds while the overview is visible and\n  no stream is attached.\n- Refresh the history already shown while preserving the `Show more`\n  cursor. Use fresh list metadata for thread names, recency, and unread\n  state, and restore rows when a refresh catches a missed unarchive.\n\n## Testing\n\nCover Cloud inventory notifications, polling while detached, pagination\nacross refreshes, and recovery from a missed unarchive.\n\nGitOrigin-RevId: 63c98438b6ddd2e47dd2d1f419c2a676508c6d91",
+            "url": "https://github.com/openai/codex/commit/beac2ef8fc1ccba3e6014c8d1009737fc1dfd378"
+          },
+          {
+            "sha": "b392250f487949a79931ef4f7871bfdacc19c6e9",
+            "title": "Define the startup OAuth protocol for config servers (#62859)",
+            "message": "Define the startup OAuth protocol for config servers (#62859)\n\n## What changed\n\nAdd the optional `target` field to `account/gatewayOAuth/login`.\nThe startup protocol defines `{\"kind\":\"configServer\"}` as a target\nfor `--startup-oauth`, mutually exclusive with `modelProvider`.\nThe regular app-server login handler rejects explicit targets.\n\nDefine `StartupGatewayOAuthChangedNotification` with the target,\nstatus, and authorization URL for the browser handoff. Export the\nnew types in the JSON schemas, TypeScript bindings, and Python SDK.\n\n## Testing\n\nUpdate the TUI device login regression test to expect `target: null`\nwhen signing in to a resumed thread's saved gateway.\n\nGitOrigin-RevId: fb3ce66a143cad9ad56c93f3ac37f8b6f1abdb0e",
+            "url": "https://github.com/openai/codex/commit/b392250f487949a79931ef4f7871bfdacc19c6e9"
+          },
+          {
+            "sha": "e5e0304dd1693dc2b640449bec34349584d065e5",
+            "title": "Release 0.173.0-alpha.4",
+            "message": "Release 0.173.0-alpha.4",
+            "url": "https://github.com/openai/codex/commit/e5e0304dd1693dc2b640449bec34349584d065e5"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.173.0-alpha.3",
+          "head": "rust-v0.173.0-alpha.4",
+          "url": "https://github.com/openai/codex/compare/rust-v0.173.0-alpha.3...rust-v0.173.0-alpha.4",
+          "status": "diverged",
+          "total": 10,
+          "behind": 1,
+          "complete": true,
+          "fetched": 10
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.4:2026-11-21T21:14:18.090Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-21T21:14:18.090Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.173.0-alpha.4",
+        "title": "0.173.0-alpha.4",
+        "body": "Release 0.173.0-alpha.4\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-21T21:14:18.098Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.4",
         "publishedAt": "2026-11-21T00:35:19Z",
         "commits": [
