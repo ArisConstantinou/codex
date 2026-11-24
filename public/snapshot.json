@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-24T09:46:21.303Z",
+  "generatedAt": "2026-11-24T20:23:55.674Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -23109,6 +23109,278 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "openai-news:https://openai.com/index/searching-for-distant-planets-with-astra",
+      "at": "2026-11-24T11:00:00.000Z",
+      "url": "https://openai.com/index/searching-for-distant-planets-with-astra",
+      "text": "Searching for distant planets with Astra. See how two amateur astronomers used Codex and Astra to find potential exoplanets in public data from NASA’s Kepler and TESS space telescopes.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/intentful-dots",
+      "at": "2026-11-24T00:00:00.000Z",
+      "url": "https://openai.com/business/customer-stories/intentful-dots",
+      "text": "How Intentful uses dots to make more time for growth. Marina Petrova’s dot Aria helps research websites and build proposals, while proactively flagging messages and resolving issues.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/ifood",
+      "at": "2026-11-24T00:00:00.000Z",
+      "url": "https://openai.com/business/customer-stories/ifood",
+      "text": "How iFood scales coding agents across 15,000 repositories",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.3",
+      "at": "2026-11-24T20:18:38.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.3",
+      "text": "0.174.0-alpha.3. Release 0.174.0-alpha.3",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.174.0-alpha.3",
+        "title": "0.174.0-alpha.3",
+        "body": "Release 0.174.0-alpha.3\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-24T20:23:55.680Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.3",
+        "publishedAt": "2026-11-24T20:14:27Z",
+        "commits": [
+          {
+            "sha": "e351ffa4b625325575e2a49e8b554e45c1c73b88",
+            "title": "Remove the legacy test-only `/mcp` renderer (#63639)",
+            "message": "Remove the legacy test-only `/mcp` renderer (#63639)\n\n## Why\n\nThe TUI renders `/mcp` from app-server `McpServerStatus` responses.\nThe legacy renderer's snapshot still exercises grouping by qualified tool\nname, a path the command no longer uses.\n\n## What changed\n\nDelete the legacy renderer, its hyphenated-server-name snapshot test and\nfixtures, and the TUI's `codex-mcp` dev-dependency.\n\nGitOrigin-RevId: 69f1601f19b34576ea2d9dcebdd2bfb30f414d99",
+            "url": "https://github.com/openai/codex/commit/e351ffa4b625325575e2a49e8b554e45c1c73b88"
+          },
+          {
+            "sha": "75df5098a6d92b40dc61e7a9964233ce9c359677",
+            "title": "Route in-memory message board notifications through app-server (#63641)",
+            "message": "Route in-memory message board notifications through app-server (#63641)\n\n## Why\n\nThe SQLite message board can queue native agent mail through app-server.\nIn-memory boards previously relied on the host's notification callback\nfor delivery.\n\n## What changed\n\nAdd `launch_in_memory_with_app_server` so runners can opt into the same\nbounded, queue-only delivery as SQLite via `thread/inject_items`. The\nhost still resolves agent membership, and the shared notification client\nqueues post previews without starting a turn.\n\n## Testing\n\nExtend the app-server integration test to check that, after an\napp-server restart, a post from each backend reaches an idle worker\nexactly once on its next turn. The test also checks that app-server\ndelivery bypasses the in-memory host's notification callback.\n\nGitOrigin-RevId: fc01b5e3f43dcfca5f43366f0b184c41dc07f9eb",
+            "url": "https://github.com/openai/codex/commit/75df5098a6d92b40dc61e7a9964233ce9c359677"
+          },
+          {
+            "sha": "264f7d60f5599fa40f7d1381bca5dff1192bbf02",
+            "title": "Return startup timing with MCP connection attempts (#63647)",
+            "message": "Return startup timing with MCP connection attempts (#63647)\n\n## What changed\n\nHave the MCP connection pool return an optional startup measurement\nalongside the connection result. For a new connection, measure through\nlease registration when required, including when registration fails.\nIf a chat falls back to opening its own connection, start the timer at\nthe fallback. Joining an existing connection produces no startup\nmeasurement.\n\n## Testing\n\nPool tests cover timing a lease-open timeout on a new connection,\nomitting timing for the same timeout on a reused connection, and\nrecording timing when a chat falls back to its own connection.\n\nGitOrigin-RevId: 364963ca2f4e7bd8338c8acc9a7869e3a7a6e9c4",
+            "url": "https://github.com/openai/codex/commit/264f7d60f5599fa40f7d1381bca5dff1192bbf02"
+          },
+          {
+            "sha": "9acdf80aaf0e2910fd313315f9aec3d4192125ba",
+            "title": "Remove the unused agent extension crate (#63648)",
+            "message": "Remove the unused agent extension crate (#63648)\n\n## What changed\n\nDelete `codex-agent-extension`, whose `AgentRunner` submitted resolved\nagent prompts in forked legacy threads and was used only by the crate's\nintegration test. Remove the test, the Bazel target, and the crate's\nCargo workspace and lockfile entries.\n\nGitOrigin-RevId: 1e966ccb7b7f37f6cdd68882975bb1e940ae85db",
+            "url": "https://github.com/openai/codex/commit/9acdf80aaf0e2910fd313315f9aec3d4192125ba"
+          },
+          {
+            "sha": "a2c17b833cab61e48f7b4acd757c3738a5914d3c",
+            "title": "Frame pending native agent calls as Guardian approval requests (#63649)",
+            "message": "Frame pending native agent calls as Guardian approval requests (#63649)\n\n## Why\n\nA pending native agent call can appear alongside historical tool calls in\nGuardian's review context. Explicit request boundaries identify the exact call\nGuardian should judge.\n\n## What changed\n\nAdd the off-by-default `guardian_native_action_framing` feature for Multi-Agent\nV2 reviews with native multi-agent history enabled. Wrap the pending call and\nits evidence-only output in approval request markers, and point the transcript\nentry to the current request.\n\nKeep the call-ID reference when reviewer history already contains the call.\nReserve room for the approval markers when budgeting screenshots so a retry\ncan replay the framed call if reviewer history changes.\n\n## Testing\n\nCover call deduplication, replay after compaction, and screenshot admission at\nthe token limit. Update the incremental review scenario to show the framed\n`send_message` call alongside encrypted parent reply history.\n\nGitOrigin-RevId: dd99cd4ad4cf3451afe30d2e93aa3e47b493a4c4",
+            "url": "https://github.com/openai/codex/commit/a2c17b833cab61e48f7b4acd757c3738a5914d3c"
+          },
+          {
+            "sha": "5f2bd3342ffd8524def5fde93f079054b5e7042e",
+            "title": "Remove unused SQLite thread-listing helpers from rollout (#63652)",
+            "message": "Remove unused SQLite thread-listing helpers from rollout (#63652)\n\nDelete `list_archived_threads_from_state_db` and the `list_thread_ids_db`\nhelper for parity checks.\n\nGitOrigin-RevId: cfcd7b24dd0dfbc97c7b245ef00390c0aded872b",
+            "url": "https://github.com/openai/codex/commit/5f2bd3342ffd8524def5fde93f079054b5e7042e"
+          },
+          {
+            "sha": "53fe98bdc22c19b9520b0d033c2b0a1b0be62bcb",
+            "title": "Accept an explicit tool call in Guardian review requests (#63654)",
+            "message": "Accept an explicit tool call in Guardian review requests (#63654)\n\n## Why\n\nSelecting the final item in an idle thread's history ties Guardian review\nto what was recorded. For example, a client may record an `exec` script\nand need an assessment of an individual `exec_command` from that script.\n\n## What changed\n\nRequire `toolCall` in the experimental `thread/guardianReview` request.\nGuardian assesses the supplied `function_call` or `custom_tool_call`\nagainst the idle thread's full history without appending or executing it.\n\n## Testing\n\nCover rejection of requests missing `toolCall` and verify that Guardian\nsees the recorded script alongside each command submitted for review.\nCheck that only the original script call is persisted in the thread.\n\nGitOrigin-RevId: a1ce61e10e98107b38db60071dd63f189ef33ad1",
+            "url": "https://github.com/openai/codex/commit/53fe98bdc22c19b9520b0d033c2b0a1b0be62bcb"
+          },
+          {
+            "sha": "3e6daebb4889457479355f92c43d1e2e925ac278",
+            "title": "Avoid model lookups for thread metadata and goal updates (#63655)",
+            "message": "Avoid model lookups for thread metadata and goal updates (#63655)\n\n## Why\n\nA slow model lookup can delay thread metadata reads and goal updates even\nthough both operations have the settings and data they need locally.\n\n## What changed\n\nUse locally configured settings for app-server thread reads, enrichment,\nand direct-input checks. The effective configuration snapshot still\nvalidates the service tier against the selected model.\n\nRecord goal updates and emit their raw response events using an internal\nsubmission ID without constructing a turn context.\n\n## Testing\n\nAdd a regression test that gates model lookup and checks that the local\nsnapshot and goal recording complete without requesting model info. It\nalso checks that the goal event matches the history item and that the\neffective snapshot filters out an unsupported service tier.\n\nGitOrigin-RevId: 7d008edd775ae459a1fd1e3db79f38f2d9b5ca30",
+            "url": "https://github.com/openai/codex/commit/3e6daebb4889457479355f92c43d1e2e925ac278"
+          },
+          {
+            "sha": "5a2cb7358038f536afeaabbfeb59c0fff87f5bf7",
+            "title": "Remove the unused `codex-utils-readiness` crate (#63660)",
+            "message": "Remove the unused `codex-utils-readiness` crate (#63660)\n\nGitOrigin-RevId: 68ea46742c3c08a2dda097bb385f91e388b8bba4",
+            "url": "https://github.com/openai/codex/commit/5a2cb7358038f536afeaabbfeb59c0fff87f5bf7"
+          },
+          {
+            "sha": "3781b6c627faec56449004485e032aed03095e36",
+            "title": "Remove no-op rate limit polling hooks from the TUI (#63661)",
+            "message": "Remove no-op rate limit polling hooks from the TUI (#63661)\n\n## What changed\n\nRemove `ChatWidget`'s prefetch and poller shutdown hooks from widget\ncreation, teardown, and the transition to background voice mode.\nPrefetch only called the empty shutdown hook.\n\nGitOrigin-RevId: c25c33a53d63be982d8cfebf405401a4c4f0e0c4",
+            "url": "https://github.com/openai/codex/commit/3781b6c627faec56449004485e032aed03095e36"
+          },
+          {
+            "sha": "ebd5c2fddc2ec215c7ab1108564bc209907c7fee",
+            "title": "Make unified exec output closure race-safe (#63664)",
+            "message": "Make unified exec output closure race-safe (#63664)\n\n## Why\n\nThe output collector could miss a closure notification while starting its\npost-exit wait. It could also see an empty buffer just before the producer\nappended its final chunk and closed the stream.\n\n## What changed\n\nUse a dedicated `CancellationToken` to signal when the output producer is\ndone. The collector samples closure before draining the buffer so that\nclosure during the drain wakes it for another pass. The streaming watcher\nflushes queued chunks when it observes closure, and sandbox denial checks\ncan proceed immediately when output is already closed.\n\n## Testing\n\nUpdate the bounded collection test to verify that closure alone wakes\nthe post-exit collector and that the final bytes survive repeated drains.\n\nGitOrigin-RevId: 4b94a018d784664031f326ec360d27fcf166bbda",
+            "url": "https://github.com/openai/codex/commit/ebd5c2fddc2ec215c7ab1108564bc209907c7fee"
+          },
+          {
+            "sha": "cba3c40cf754cc7e53c236c42d3465dc158ecf2f",
+            "title": "Defer parsing response items until completion when streaming is suppressed (#63666)",
+            "message": "Defer parsing response items until completion when streaming is suppressed (#63666)\n\n## Why\n\nMailbox preemption can discard partial response items, and turn item\ncontributors can rewrite completed items. Parsing those items as soon as they\narrive does extra work before their final contents are known.\n\n## What changed\n\nDuring mailbox draining or when turn item contributors are registered, track\nnew response items as deferred, suppress their text and reasoning deltas, and\nwait for `OutputItemDone` before parsing them. Rely on the response client to\ncarry the added item's ID forward when the completion omits it.\n\n## Testing\n\nThe mailbox preemption tests check that a buffered reasoning item completes\nexactly once under its original ID when the completion omits it, and that raw\nreasoning deltas for a discarded item stay hidden.\n\nGitOrigin-RevId: 940e062c8c44faa6670945262ee8c8f16abf4e20",
+            "url": "https://github.com/openai/codex/commit/cba3c40cf754cc7e53c236c42d3465dc158ecf2f"
+          },
+          {
+            "sha": "77acaa207f59e0f9ecfabdf14a557ff74bee26a2",
+            "title": "Keep rejected audio file IDs out of protocol events (#63667)",
+            "message": "Keep rejected audio file IDs out of protocol events (#63667)\n\n## Why\n\nCodex needs rejected audio file IDs when reconstructing a session so\nlater model requests can omit those attachments. Clients only need the\nturn error.\n\n## What changed\n\nStore rejected audio file IDs as rollout metadata and restore them from\nthat metadata when replaying history. Keep the existing JSONL layout\nunder `error.rejected_audio_file_ids` so older versions can still read\nnewly written rollouts.\n\n## Testing\n\nAdd a regression test that round-trips a legacy rollout entry and\nverifies that serializing the protocol event omits the rejected IDs.\n\nGitOrigin-RevId: 982dd85d0037cebee056caf61d70988762e42767",
+            "url": "https://github.com/openai/codex/commit/77acaa207f59e0f9ecfabdf14a557ff74bee26a2"
+          },
+          {
+            "sha": "1a6c8514ccab30d5ac310016e12fa3d48eced868",
+            "title": "Make the remote MCP timeout test expire during discovery (#63668)",
+            "message": "Make the remote MCP timeout test expire during discovery (#63668)\n\n## Why\n\nThe discovery test used a 15-second deadline, which let RMCP fall back to\n`initialize` after 10 seconds. The test needs to cancel a stalled\n`server/discover` request to verify that discovery cancellation releases\nthe remote executor.\n\n## What changed\n\nWarm up the executor's HTTP connection with a successful `GET /ready`\nbefore starting a 5-second discovery deadline. Keep the 15-second\ndeadline for the legacy handshake test.\n\nGitOrigin-RevId: cbf299fc264c2635e0ea471545010bccbdcee94d",
+            "url": "https://github.com/openai/codex/commit/1a6c8514ccab30d5ac310016e12fa3d48eced868"
+          },
+          {
+            "sha": "6b7a16fe76a9d5666df025af8ccd1c445aad3a67",
+            "title": "Remove unused HTTP client APIs (#63669)",
+            "message": "Remove unused HTTP client APIs (#63669)\n\n## What changed\n\n- Remove the deprecated `build_with_transport_default_proxy` method and\n  inline its shared helper into the remaining caller, `build_direct`.\n- Remove the unused `has_chatgpt_cookies` accessor, `with_raw_body`\n  setter, and `with_chatgpt_cloudflare_cookies_without_redirects` pool\n  constructor.\n\nGitOrigin-RevId: 9dd19b7a28b1aac6f196968b53160ffbc7443b8a",
+            "url": "https://github.com/openai/codex/commit/6b7a16fe76a9d5666df025af8ccd1c445aad3a67"
+          },
+          {
+            "sha": "e713c4c3026e492624b22ba71e9b2ece66a4509f",
+            "title": "Batch Guardian review history cutoffs by root thread (#63673)",
+            "message": "Batch Guardian review history cutoffs by root thread (#63673)\n\n## Why\n\nConcurrent Guardian reviews of the same root thread can repeat history\nflushes and reads to establish how far to route evidence.\n\n## What changed\n\nShare one flush and durable history position across binding and catch-up\nrequests queued before capture begins. Requests arriving during capture get\na fresh position so they can account for newer records. A lone catch-up reads\nunread records and their end position together, skipping the separate tail\nread. Catch-up still waits for evidence to be routed through its cutoff.\n\n## Testing\n\nCover shared cutoffs and read failures, separate capture for late arrivals,\nand a lone retry that picks up a newer revocation without a separate tail\nread when another queued request is canceled.\n\nGitOrigin-RevId: ef07231d66bc38d8b244b6ee37ec3d483b54bc0f",
+            "url": "https://github.com/openai/codex/commit/e713c4c3026e492624b22ba71e9b2ece66a4509f"
+          },
+          {
+            "sha": "98630438816570b0985fc35fa8869beaaa565ab9",
+            "title": "Wait for pending history writes before Guardian v3 reviews (#63675)",
+            "message": "Wait for pending history writes before Guardian v3 reviews (#63675)\n\n## Why\n\nA root-thread instruction can be visible in memory while its history append is still pending. Guardian v3 reads persisted history, so a review can miss a newer instruction that revokes permission for an action.\n\n## What changed\n\nTrack pending appends for review-relevant root history and wait for confirmation before capturing the evidence cutoff for an initial review or retry. Confirm the append when the thread store accepts the history batch, before updating thread metadata.\n\nIf an append goes unconfirmed, fail review preparation and prompt the user to reload the root thread and resend any missing instructions.\n\n## Testing\n\nAdd regression coverage for initial and retry cutoffs waiting on a pending revocation, failed appends of forwarded instructions, and history remaining readable after an acknowledged append followed by a metadata failure.\n\nGitOrigin-RevId: b83ca178ca7b58dbc23b1f064b402df30f9689e1",
+            "url": "https://github.com/openai/codex/commit/98630438816570b0985fc35fa8869beaaa565ab9"
+          },
+          {
+            "sha": "39c6485cb75b4b55d8cefb3c7d468253f89a3376",
+            "title": "Fix Home and End navigation in the agent center (#63677)",
+            "message": "Fix Home and End navigation in the agent center (#63677)\n\n## Why\n\nThe agent center's `Home` and `End` shortcuts skipped the **Show more**\nrow, so pressing `End` could stop before the last selectable row.\n\n## What changed\n\nJump to the first or last selectable row and preserve whether **Show\nmore** is selected across view refreshes. Reconcile selection when\ntoggling search on and let the cancel shortcut dismiss search even when\nthe view cannot return to chat.\n\n## Testing\n\nAdd a regression test that presses `End`, `Home`, and `End` across\nview refreshes and verifies that `Enter` on **Show more** requests\nanother page.\n\nGitOrigin-RevId: e508c7926ce83b68c229d638364e6e41f671490e",
+            "url": "https://github.com/openai/codex/commit/39c6485cb75b4b55d8cefb3c7d468253f89a3376"
+          },
+          {
+            "sha": "5e857c65a529587c052b656769122b7902e8ed3d",
+            "title": "Remove unused spawned-thread lookups by agent path (#63678)",
+            "message": "Remove unused spawned-thread lookups by agent path (#63678)\n\nGitOrigin-RevId: 2bb6d0d64df0cfeed79a08e55ed437db864dd1d6",
+            "url": "https://github.com/openai/codex/commit/5e857c65a529587c052b656769122b7902e8ed3d"
+          },
+          {
+            "sha": "a009fc6a4ea8058c6d7a1897571f2ce443998907",
+            "title": "Remove unused core config loading wrappers (#63682)",
+            "message": "Remove unused core config loading wrappers (#63682)\n\nDrop the deprecated `load_config_as_toml_with_cli_*` helpers and\n`Config::load_with_cli_overrides_and_harness_overrides`. Existing callers\ncan use `ConfigBuilder` to apply harness overrides and\n`load_config_toml_with_layer_stack` to inspect raw config during startup.\n\nGitOrigin-RevId: 4901d876cf4d87094055f9907bd761525057fa99",
+            "url": "https://github.com/openai/codex/commit/a009fc6a4ea8058c6d7a1897571f2ce443998907"
+          },
+          {
+            "sha": "f67868d05034d989bcda1503795039cd7ac8e6a3",
+            "title": "Align sandbox retries with the permissions reviewed for them (#63683)",
+            "message": "Align sandbox retries with the permissions reviewed for them (#63683)\n\n## What changed\n\nBuild the retry from the initial sandbox attempt. When policy permits an\nunsandboxed retry, clear the sandbox settings and mark the command as\n`RequireEscalated` for approval. When policy requires the sandbox to stay\nin place, reuse the initial attempt so a network retry preserves file read\nrestrictions.\n\n## Testing\n\nCover both Guardian verdicts after a sandboxed attempt. An approved retry\nreaches the exec server without a sandbox, and a denied retry is blocked\nbefore it reaches the executor.\n\nGitOrigin-RevId: 5bf36dd4f43b7c0379457b88b8ddbf3dbd482b87",
+            "url": "https://github.com/openai/codex/commit/f67868d05034d989bcda1503795039cd7ac8e6a3"
+          },
+          {
+            "sha": "9a3303253bfe12050d1c998eb96ac3d6739a15e9",
+            "title": "Remove unused standalone connector listing helpers (#63692)",
+            "message": "Remove unused standalone connector listing helpers (#63692)\n\n## Why\n\nThe app server already passes its environment and MCP managers to\nconnector discovery, leaving the standalone listing helpers unused.\n\n## What changed\n\nRemove the unused listing wrappers and re-exports from `codex-core`\nand `codex-chatgpt`, including the setup that created temporary managers.\nMove `tokio` to the dev dependencies of `codex-chatgpt` and enable only\nthe features its tests use.\n\nGitOrigin-RevId: 757b32afeb6e46dddb46d507c5af07bf8ff7a2a3",
+            "url": "https://github.com/openai/codex/commit/9a3303253bfe12050d1c998eb96ac3d6739a15e9"
+          },
+          {
+            "sha": "4ec69d3c5fe9e30227058d07e8accd4882affde8",
+            "title": "Preserve Guardian review evidence when callers are cancelled (#63693)",
+            "message": "Preserve Guardian review evidence when callers are cancelled (#63693)\n\n## Why\n\nCancelling a turn or tool call could drop a pending history write or\nlose an answer the session had already accepted. A missing write leaves\nGuardian unable to confirm that its review history is complete.\n\n## What changed\n\nLet the session finish tracked evidence writes in queue order after the\ncaller is cancelled, and drain those writes on shutdown. Record verified\n`request_user_input` answers at acceptance before waking the tool.\nContinue persisting evidence after an earlier write goes unconfirmed,\nwhile still reporting the history gap to Guardian.\n\n## Testing\n\nRegression tests cover initial and retried reviews waiting for a\nrevocation after caller cancellation, and an accepted answer reaching\nhistory before the turn interruption even with an earlier unconfirmed\nwrite.\n\nGitOrigin-RevId: b8e212d34686bbc793002a34f5a97834a900a342",
+            "url": "https://github.com/openai/codex/commit/4ec69d3c5fe9e30227058d07e8accd4882affde8"
+          },
+          {
+            "sha": "44308610ef5cbc03d149707735878b0c8743b2df",
+            "title": "Measure initial output collection time for `exec_command` (#63695)",
+            "message": "Measure initial output collection time for `exec_command` (#63695)\n\n## Why\n\nEnd-to-end tool duration does not show how much time `exec_command`\nspends collecting its initial output. Tracking the duration and call\ncount separately lets readers of the metrics compute the mean\ncollection time for each configured shell snapshot mode.\n\n## What changed\n\nRecord the initial output collection time in whole milliseconds and\ncount each successful process manager response, including collections\nshorter than a millisecond. The timing starts after the early-exit wait\nand can include draining output after the process exits.\n\nTag both counters with the configured `shell_snapshot_mode` (`disabled`,\n`v1`, or `v2`), including when execution falls back. Intercepted patches,\nprocess manager errors, and `write_stdin` calls are excluded.\n\n## Testing\n\nExtend a unified exec integration test to check that the recorded time\nmatches the initial response within one millisecond, both counters carry\nthe `v2` tag, and a subsequent `write_stdin` leaves the count at one.\n\nGitOrigin-RevId: 289336cf2544a78abb3417484b48d2d22109a56c",
+            "url": "https://github.com/openai/codex/commit/44308610ef5cbc03d149707735878b0c8743b2df"
+          },
+          {
+            "sha": "2ee23c7f8fc886dd274d4d6e923430f6680d7708",
+            "title": "Show URL elicitation instructions in the TUI confirmation (#63701)",
+            "message": "Show URL elicitation instructions in the TUI confirmation (#63701)\n\n## Why\n\nA URL elicitation request can include instructions users need to complete\nthe browser action, such as a code to enter. The TUI's “Finish in Browser”\nscreen previously showed only generic guidance for that step.\n\n## What changed\n\nRender the request message above the generic browser instructions when\nconfirming an external action.\n\n## Testing\n\nUpdate the URL elicitation confirmation snapshot to verify that a payment\nconfirmation code appears on the “Finish in Browser” screen.\n\nGitOrigin-RevId: 85566e783341fc46d8e21ef4710b7c30687316f8",
+            "url": "https://github.com/openai/codex/commit/2ee23c7f8fc886dd274d4d6e923430f6680d7708"
+          },
+          {
+            "sha": "c4345a0079c6ba0e378911f4d2f31156818c5702",
+            "title": "Refresh the Codex CLI screenshot in the README (#63708)",
+            "message": "Refresh the Codex CLI screenshot in the README (#63708)\n\nShow a prefix-search optimization with an inline code diff and a\nside-by-side Markdown preview of the benchmark results.\n\nGitOrigin-RevId: 3ca40e4e29b8ec5745f49fde5e7da592db0d9217",
+            "url": "https://github.com/openai/codex/commit/c4345a0079c6ba0e378911f4d2f31156818c5702"
+          },
+          {
+            "sha": "7f8dcb3e64a6a2526a66e814457e0bfcf3d6bd03",
+            "title": "Detect Ghostty truecolor when SSH omits `COLORTERM` (#63710)",
+            "message": "Detect Ghostty truecolor when SSH omits `COLORTERM` (#63710)\n\n## Why\n\nSSH can forward Ghostty's `TERM=xterm-ghostty` without `COLORTERM`,\nleaving Codex to use an ANSI-16 palette for a truecolor terminal.\n\n## What changed\n\nCentralize stdout color detection in `codex-terminal-detection`. Upgrade\nan ANSI-16 result to truecolor when `TERM` is `xterm-ghostty` and neither\n`FORCE_COLOR` nor an active `CLICOLOR_FORCE` override is present.\n\nUse the shared detection for TUI colors, including shimmer and activity\nindicators. Share the existing Windows Terminal palette rules between\ndiff rendering and theme colors.\n\n## Testing\n\nCover Ghostty's `TERM` fallback, explicit color overrides, and Windows\nTerminal palette detection in unit tests. Exercise theme preview,\nselection, and restoration with Ghostty's `TERM` and no `COLORTERM`.\n\nGitOrigin-RevId: e7b6832fc7e721d5e2c23ef19df5fe55fbfeb21a",
+            "url": "https://github.com/openai/codex/commit/7f8dcb3e64a6a2526a66e814457e0bfcf3d6bd03"
+          },
+          {
+            "sha": "1263a383a5cca21ed7d152f2d92fd947388d18d1",
+            "title": "Bind sandbox CA access to the prepared managed proxy route (#63711)",
+            "message": "Bind sandbox CA access to the prepared managed proxy route (#63711)\n\n## Why\n\nA sandboxed command needs read access to the generated CA bundle for its\nmanaged proxy route. Choosing the bundle from the command environment or\nfrom live proxy settings can give the sandbox a different bundle from\nthe one captured when the route was prepared.\n\n## What changed\n\nCapture the generated CA bundle alongside the proxy environment and\nsandbox network policy. Validate the captured bundle when granting read\naccess. A locally prepared route with no generated CA grants no CA\naccess. Controller-supplied portable routes still look up and validate\nthe generated bundle in the command environment.\n\n## Testing\n\nCover restricted reads for remote processes using both portable routes\nand executor-local proxies. Verify that a borrowed proxy's prepared\nroute preserves its listener and CA grant across a proxy configuration\nchange.\n\nGitOrigin-RevId: 1a4024b5b84c14febda7cdd6b6f4f950a7741054",
+            "url": "https://github.com/openai/codex/commit/1263a383a5cca21ed7d152f2d92fd947388d18d1"
+          },
+          {
+            "sha": "a178b3a06d6286b5536747aba44ecb4d70772e86",
+            "title": "Release 0.174.0-alpha.3",
+            "message": "Release 0.174.0-alpha.3",
+            "url": "https://github.com/openai/codex/commit/a178b3a06d6286b5536747aba44ecb4d70772e86"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.174.0-alpha.2",
+          "head": "rust-v0.174.0-alpha.3",
+          "url": "https://github.com/openai/codex/compare/rust-v0.174.0-alpha.2...rust-v0.174.0-alpha.3",
+          "status": "diverged",
+          "total": 29,
+          "behind": 1,
+          "complete": true,
+          "fetched": 29
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.2",
+      "at": "2026-11-24T16:21:51.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.2",
+      "text": "0.174.0-alpha.2. Release 0.174.0-alpha.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
     }
   ],
   "sources": {
@@ -23117,7 +23389,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-24T09:46:20.785Z",
+      "lastSuccessAt": "2026-11-24T20:23:55.133Z",
       "error": null,
       "count": 150
     },
@@ -23126,7 +23398,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-24T09:46:20.785Z",
+      "lastSuccessAt": "2026-11-24T20:23:55.133Z",
       "error": null,
       "count": 10
     },
@@ -23135,7 +23407,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-24T09:46:20.785Z",
+      "lastSuccessAt": "2026-11-24T20:23:55.133Z",
       "error": null,
       "count": 25
     }
@@ -92776,6 +93048,505 @@
           "behind": 1,
           "complete": true,
           "fetched": 134
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/searching-for-distant-planets-with-astra:2026-11-24T20:23:55.674Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T20:23:55.674Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/searching-for-distant-planets-with-astra",
+        "at": "2026-11-24T11:00:00.000Z",
+        "url": "https://openai.com/index/searching-for-distant-planets-with-astra",
+        "text": "Searching for distant planets with Astra. See how two amateur astronomers used Codex and Astra to find potential exoplanets in public data from NASA’s Kepler and TESS space telescopes.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/intentful-dots:2026-11-24T20:23:55.674Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T20:23:55.674Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/customer-stories/intentful-dots",
+        "at": "2026-11-24T00:00:00.000Z",
+        "url": "https://openai.com/business/customer-stories/intentful-dots",
+        "text": "How Intentful uses dots to make more time for growth. Marina Petrova’s dot Aria helps research websites and build proposals, while proactively flagging messages and resolving issues.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/ifood:2026-11-24T20:23:55.674Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T20:23:55.674Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/customer-stories/ifood",
+        "at": "2026-11-24T00:00:00.000Z",
+        "url": "https://openai.com/business/customer-stories/ifood",
+        "text": "How iFood scales coding agents across 15,000 repositories",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.3:2026-11-24T20:23:55.674Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T20:23:55.674Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.3",
+        "at": "2026-11-24T20:18:38.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.3",
+        "text": "0.174.0-alpha.3. Release 0.174.0-alpha.3",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.174.0-alpha.3",
+          "title": "0.174.0-alpha.3",
+          "body": "Release 0.174.0-alpha.3\n\n",
+          "authored": false,
+          "fetchedAt": "2026-11-24T20:23:55.680Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.3",
+          "publishedAt": "2026-11-24T20:14:27Z",
+          "commits": [
+            {
+              "sha": "e351ffa4b625325575e2a49e8b554e45c1c73b88",
+              "title": "Remove the legacy test-only `/mcp` renderer (#63639)",
+              "message": "Remove the legacy test-only `/mcp` renderer (#63639)\n\n## Why\n\nThe TUI renders `/mcp` from app-server `McpServerStatus` responses.\nThe legacy renderer's snapshot still exercises grouping by qualified tool\nname, a path the command no longer uses.\n\n## What changed\n\nDelete the legacy renderer, its hyphenated-server-name snapshot test and\nfixtures, and the TUI's `codex-mcp` dev-dependency.\n\nGitOrigin-RevId: 69f1601f19b34576ea2d9dcebdd2bfb30f414d99",
+              "url": "https://github.com/openai/codex/commit/e351ffa4b625325575e2a49e8b554e45c1c73b88"
+            },
+            {
+              "sha": "75df5098a6d92b40dc61e7a9964233ce9c359677",
+              "title": "Route in-memory message board notifications through app-server (#63641)",
+              "message": "Route in-memory message board notifications through app-server (#63641)\n\n## Why\n\nThe SQLite message board can queue native agent mail through app-server.\nIn-memory boards previously relied on the host's notification callback\nfor delivery.\n\n## What changed\n\nAdd `launch_in_memory_with_app_server` so runners can opt into the same\nbounded, queue-only delivery as SQLite via `thread/inject_items`. The\nhost still resolves agent membership, and the shared notification client\nqueues post previews without starting a turn.\n\n## Testing\n\nExtend the app-server integration test to check that, after an\napp-server restart, a post from each backend reaches an idle worker\nexactly once on its next turn. The test also checks that app-server\ndelivery bypasses the in-memory host's notification callback.\n\nGitOrigin-RevId: fc01b5e3f43dcfca5f43366f0b184c41dc07f9eb",
+              "url": "https://github.com/openai/codex/commit/75df5098a6d92b40dc61e7a9964233ce9c359677"
+            },
+            {
+              "sha": "264f7d60f5599fa40f7d1381bca5dff1192bbf02",
+              "title": "Return startup timing with MCP connection attempts (#63647)",
+              "message": "Return startup timing with MCP connection attempts (#63647)\n\n## What changed\n\nHave the MCP connection pool return an optional startup measurement\nalongside the connection result. For a new connection, measure through\nlease registration when required, including when registration fails.\nIf a chat falls back to opening its own connection, start the timer at\nthe fallback. Joining an existing connection produces no startup\nmeasurement.\n\n## Testing\n\nPool tests cover timing a lease-open timeout on a new connection,\nomitting timing for the same timeout on a reused connection, and\nrecording timing when a chat falls back to its own connection.\n\nGitOrigin-RevId: 364963ca2f4e7bd8338c8acc9a7869e3a7a6e9c4",
+              "url": "https://github.com/openai/codex/commit/264f7d60f5599fa40f7d1381bca5dff1192bbf02"
+            },
+            {
+              "sha": "9acdf80aaf0e2910fd313315f9aec3d4192125ba",
+              "title": "Remove the unused agent extension crate (#63648)",
+              "message": "Remove the unused agent extension crate (#63648)\n\n## What changed\n\nDelete `codex-agent-extension`, whose `AgentRunner` submitted resolved\nagent prompts in forked legacy threads and was used only by the crate's\nintegration test. Remove the test, the Bazel target, and the crate's\nCargo workspace and lockfile entries.\n\nGitOrigin-RevId: 1e966ccb7b7f37f6cdd68882975bb1e940ae85db",
+              "url": "https://github.com/openai/codex/commit/9acdf80aaf0e2910fd313315f9aec3d4192125ba"
+            },
+            {
+              "sha": "a2c17b833cab61e48f7b4acd757c3738a5914d3c",
+              "title": "Frame pending native agent calls as Guardian approval requests (#63649)",
+              "message": "Frame pending native agent calls as Guardian approval requests (#63649)\n\n## Why\n\nA pending native agent call can appear alongside historical tool calls in\nGuardian's review context. Explicit request boundaries identify the exact call\nGuardian should judge.\n\n## What changed\n\nAdd the off-by-default `guardian_native_action_framing` feature for Multi-Agent\nV2 reviews with native multi-agent history enabled. Wrap the pending call and\nits evidence-only output in approval request markers, and point the transcript\nentry to the current request.\n\nKeep the call-ID reference when reviewer history already contains the call.\nReserve room for the approval markers when budgeting screenshots so a retry\ncan replay the framed call if reviewer history changes.\n\n## Testing\n\nCover call deduplication, replay after compaction, and screenshot admission at\nthe token limit. Update the incremental review scenario to show the framed\n`send_message` call alongside encrypted parent reply history.\n\nGitOrigin-RevId: dd99cd4ad4cf3451afe30d2e93aa3e47b493a4c4",
+              "url": "https://github.com/openai/codex/commit/a2c17b833cab61e48f7b4acd757c3738a5914d3c"
+            },
+            {
+              "sha": "5f2bd3342ffd8524def5fde93f079054b5e7042e",
+              "title": "Remove unused SQLite thread-listing helpers from rollout (#63652)",
+              "message": "Remove unused SQLite thread-listing helpers from rollout (#63652)\n\nDelete `list_archived_threads_from_state_db` and the `list_thread_ids_db`\nhelper for parity checks.\n\nGitOrigin-RevId: cfcd7b24dd0dfbc97c7b245ef00390c0aded872b",
+              "url": "https://github.com/openai/codex/commit/5f2bd3342ffd8524def5fde93f079054b5e7042e"
+            },
+            {
+              "sha": "53fe98bdc22c19b9520b0d033c2b0a1b0be62bcb",
+              "title": "Accept an explicit tool call in Guardian review requests (#63654)",
+              "message": "Accept an explicit tool call in Guardian review requests (#63654)\n\n## Why\n\nSelecting the final item in an idle thread's history ties Guardian review\nto what was recorded. For example, a client may record an `exec` script\nand need an assessment of an individual `exec_command` from that script.\n\n## What changed\n\nRequire `toolCall` in the experimental `thread/guardianReview` request.\nGuardian assesses the supplied `function_call` or `custom_tool_call`\nagainst the idle thread's full history without appending or executing it.\n\n## Testing\n\nCover rejection of requests missing `toolCall` and verify that Guardian\nsees the recorded script alongside each command submitted for review.\nCheck that only the original script call is persisted in the thread.\n\nGitOrigin-RevId: a1ce61e10e98107b38db60071dd63f189ef33ad1",
+              "url": "https://github.com/openai/codex/commit/53fe98bdc22c19b9520b0d033c2b0a1b0be62bcb"
+            },
+            {
+              "sha": "3e6daebb4889457479355f92c43d1e2e925ac278",
+              "title": "Avoid model lookups for thread metadata and goal updates (#63655)",
+              "message": "Avoid model lookups for thread metadata and goal updates (#63655)\n\n## Why\n\nA slow model lookup can delay thread metadata reads and goal updates even\nthough both operations have the settings and data they need locally.\n\n## What changed\n\nUse locally configured settings for app-server thread reads, enrichment,\nand direct-input checks. The effective configuration snapshot still\nvalidates the service tier against the selected model.\n\nRecord goal updates and emit their raw response events using an internal\nsubmission ID without constructing a turn context.\n\n## Testing\n\nAdd a regression test that gates model lookup and checks that the local\nsnapshot and goal recording complete without requesting model info. It\nalso checks that the goal event matches the history item and that the\neffective snapshot filters out an unsupported service tier.\n\nGitOrigin-RevId: 7d008edd775ae459a1fd1e3db79f38f2d9b5ca30",
+              "url": "https://github.com/openai/codex/commit/3e6daebb4889457479355f92c43d1e2e925ac278"
+            },
+            {
+              "sha": "5a2cb7358038f536afeaabbfeb59c0fff87f5bf7",
+              "title": "Remove the unused `codex-utils-readiness` crate (#63660)",
+              "message": "Remove the unused `codex-utils-readiness` crate (#63660)\n\nGitOrigin-RevId: 68ea46742c3c08a2dda097bb385f91e388b8bba4",
+              "url": "https://github.com/openai/codex/commit/5a2cb7358038f536afeaabbfeb59c0fff87f5bf7"
+            },
+            {
+              "sha": "3781b6c627faec56449004485e032aed03095e36",
+              "title": "Remove no-op rate limit polling hooks from the TUI (#63661)",
+              "message": "Remove no-op rate limit polling hooks from the TUI (#63661)\n\n## What changed\n\nRemove `ChatWidget`'s prefetch and poller shutdown hooks from widget\ncreation, teardown, and the transition to background voice mode.\nPrefetch only called the empty shutdown hook.\n\nGitOrigin-RevId: c25c33a53d63be982d8cfebf405401a4c4f0e0c4",
+              "url": "https://github.com/openai/codex/commit/3781b6c627faec56449004485e032aed03095e36"
+            },
+            {
+              "sha": "ebd5c2fddc2ec215c7ab1108564bc209907c7fee",
+              "title": "Make unified exec output closure race-safe (#63664)",
+              "message": "Make unified exec output closure race-safe (#63664)\n\n## Why\n\nThe output collector could miss a closure notification while starting its\npost-exit wait. It could also see an empty buffer just before the producer\nappended its final chunk and closed the stream.\n\n## What changed\n\nUse a dedicated `CancellationToken` to signal when the output producer is\ndone. The collector samples closure before draining the buffer so that\nclosure during the drain wakes it for another pass. The streaming watcher\nflushes queued chunks when it observes closure, and sandbox denial checks\ncan proceed immediately when output is already closed.\n\n## Testing\n\nUpdate the bounded collection test to verify that closure alone wakes\nthe post-exit collector and that the final bytes survive repeated drains.\n\nGitOrigin-RevId: 4b94a018d784664031f326ec360d27fcf166bbda",
+              "url": "https://github.com/openai/codex/commit/ebd5c2fddc2ec215c7ab1108564bc209907c7fee"
+            },
+            {
+              "sha": "cba3c40cf754cc7e53c236c42d3465dc158ecf2f",
+              "title": "Defer parsing response items until completion when streaming is suppressed (#63666)",
+              "message": "Defer parsing response items until completion when streaming is suppressed (#63666)\n\n## Why\n\nMailbox preemption can discard partial response items, and turn item\ncontributors can rewrite completed items. Parsing those items as soon as they\narrive does extra work before their final contents are known.\n\n## What changed\n\nDuring mailbox draining or when turn item contributors are registered, track\nnew response items as deferred, suppress their text and reasoning deltas, and\nwait for `OutputItemDone` before parsing them. Rely on the response client to\ncarry the added item's ID forward when the completion omits it.\n\n## Testing\n\nThe mailbox preemption tests check that a buffered reasoning item completes\nexactly once under its original ID when the completion omits it, and that raw\nreasoning deltas for a discarded item stay hidden.\n\nGitOrigin-RevId: 940e062c8c44faa6670945262ee8c8f16abf4e20",
+              "url": "https://github.com/openai/codex/commit/cba3c40cf754cc7e53c236c42d3465dc158ecf2f"
+            },
+            {
+              "sha": "77acaa207f59e0f9ecfabdf14a557ff74bee26a2",
+              "title": "Keep rejected audio file IDs out of protocol events (#63667)",
+              "message": "Keep rejected audio file IDs out of protocol events (#63667)\n\n## Why\n\nCodex needs rejected audio file IDs when reconstructing a session so\nlater model requests can omit those attachments. Clients only need the\nturn error.\n\n## What changed\n\nStore rejected audio file IDs as rollout metadata and restore them from\nthat metadata when replaying history. Keep the existing JSONL layout\nunder `error.rejected_audio_file_ids` so older versions can still read\nnewly written rollouts.\n\n## Testing\n\nAdd a regression test that round-trips a legacy rollout entry and\nverifies that serializing the protocol event omits the rejected IDs.\n\nGitOrigin-RevId: 982dd85d0037cebee056caf61d70988762e42767",
+              "url": "https://github.com/openai/codex/commit/77acaa207f59e0f9ecfabdf14a557ff74bee26a2"
+            },
+            {
+              "sha": "1a6c8514ccab30d5ac310016e12fa3d48eced868",
+              "title": "Make the remote MCP timeout test expire during discovery (#63668)",
+              "message": "Make the remote MCP timeout test expire during discovery (#63668)\n\n## Why\n\nThe discovery test used a 15-second deadline, which let RMCP fall back to\n`initialize` after 10 seconds. The test needs to cancel a stalled\n`server/discover` request to verify that discovery cancellation releases\nthe remote executor.\n\n## What changed\n\nWarm up the executor's HTTP connection with a successful `GET /ready`\nbefore starting a 5-second discovery deadline. Keep the 15-second\ndeadline for the legacy handshake test.\n\nGitOrigin-RevId: cbf299fc264c2635e0ea471545010bccbdcee94d",
+              "url": "https://github.com/openai/codex/commit/1a6c8514ccab30d5ac310016e12fa3d48eced868"
+            },
+            {
+              "sha": "6b7a16fe76a9d5666df025af8ccd1c445aad3a67",
+              "title": "Remove unused HTTP client APIs (#63669)",
+              "message": "Remove unused HTTP client APIs (#63669)\n\n## What changed\n\n- Remove the deprecated `build_with_transport_default_proxy` method and\n  inline its shared helper into the remaining caller, `build_direct`.\n- Remove the unused `has_chatgpt_cookies` accessor, `with_raw_body`\n  setter, and `with_chatgpt_cloudflare_cookies_without_redirects` pool\n  constructor.\n\nGitOrigin-RevId: 9dd19b7a28b1aac6f196968b53160ffbc7443b8a",
+              "url": "https://github.com/openai/codex/commit/6b7a16fe76a9d5666df025af8ccd1c445aad3a67"
+            },
+            {
+              "sha": "e713c4c3026e492624b22ba71e9b2ece66a4509f",
+              "title": "Batch Guardian review history cutoffs by root thread (#63673)",
+              "message": "Batch Guardian review history cutoffs by root thread (#63673)\n\n## Why\n\nConcurrent Guardian reviews of the same root thread can repeat history\nflushes and reads to establish how far to route evidence.\n\n## What changed\n\nShare one flush and durable history position across binding and catch-up\nrequests queued before capture begins. Requests arriving during capture get\na fresh position so they can account for newer records. A lone catch-up reads\nunread records and their end position together, skipping the separate tail\nread. Catch-up still waits for evidence to be routed through its cutoff.\n\n## Testing\n\nCover shared cutoffs and read failures, separate capture for late arrivals,\nand a lone retry that picks up a newer revocation without a separate tail\nread when another queued request is canceled.\n\nGitOrigin-RevId: ef07231d66bc38d8b244b6ee37ec3d483b54bc0f",
+              "url": "https://github.com/openai/codex/commit/e713c4c3026e492624b22ba71e9b2ece66a4509f"
+            },
+            {
+              "sha": "98630438816570b0985fc35fa8869beaaa565ab9",
+              "title": "Wait for pending history writes before Guardian v3 reviews (#63675)",
+              "message": "Wait for pending history writes before Guardian v3 reviews (#63675)\n\n## Why\n\nA root-thread instruction can be visible in memory while its history append is still pending. Guardian v3 reads persisted history, so a review can miss a newer instruction that revokes permission for an action.\n\n## What changed\n\nTrack pending appends for review-relevant root history and wait for confirmation before capturing the evidence cutoff for an initial review or retry. Confirm the append when the thread store accepts the history batch, before updating thread metadata.\n\nIf an append goes unconfirmed, fail review preparation and prompt the user to reload the root thread and resend any missing instructions.\n\n## Testing\n\nAdd regression coverage for initial and retry cutoffs waiting on a pending revocation, failed appends of forwarded instructions, and history remaining readable after an acknowledged append followed by a metadata failure.\n\nGitOrigin-RevId: b83ca178ca7b58dbc23b1f064b402df30f9689e1",
+              "url": "https://github.com/openai/codex/commit/98630438816570b0985fc35fa8869beaaa565ab9"
+            },
+            {
+              "sha": "39c6485cb75b4b55d8cefb3c7d468253f89a3376",
+              "title": "Fix Home and End navigation in the agent center (#63677)",
+              "message": "Fix Home and End navigation in the agent center (#63677)\n\n## Why\n\nThe agent center's `Home` and `End` shortcuts skipped the **Show more**\nrow, so pressing `End` could stop before the last selectable row.\n\n## What changed\n\nJump to the first or last selectable row and preserve whether **Show\nmore** is selected across view refreshes. Reconcile selection when\ntoggling search on and let the cancel shortcut dismiss search even when\nthe view cannot return to chat.\n\n## Testing\n\nAdd a regression test that presses `End`, `Home`, and `End` across\nview refreshes and verifies that `Enter` on **Show more** requests\nanother page.\n\nGitOrigin-RevId: e508c7926ce83b68c229d638364e6e41f671490e",
+              "url": "https://github.com/openai/codex/commit/39c6485cb75b4b55d8cefb3c7d468253f89a3376"
+            },
+            {
+              "sha": "5e857c65a529587c052b656769122b7902e8ed3d",
+              "title": "Remove unused spawned-thread lookups by agent path (#63678)",
+              "message": "Remove unused spawned-thread lookups by agent path (#63678)\n\nGitOrigin-RevId: 2bb6d0d64df0cfeed79a08e55ed437db864dd1d6",
+              "url": "https://github.com/openai/codex/commit/5e857c65a529587c052b656769122b7902e8ed3d"
+            },
+            {
+              "sha": "a009fc6a4ea8058c6d7a1897571f2ce443998907",
+              "title": "Remove unused core config loading wrappers (#63682)",
+              "message": "Remove unused core config loading wrappers (#63682)\n\nDrop the deprecated `load_config_as_toml_with_cli_*` helpers and\n`Config::load_with_cli_overrides_and_harness_overrides`. Existing callers\ncan use `ConfigBuilder` to apply harness overrides and\n`load_config_toml_with_layer_stack` to inspect raw config during startup.\n\nGitOrigin-RevId: 4901d876cf4d87094055f9907bd761525057fa99",
+              "url": "https://github.com/openai/codex/commit/a009fc6a4ea8058c6d7a1897571f2ce443998907"
+            },
+            {
+              "sha": "f67868d05034d989bcda1503795039cd7ac8e6a3",
+              "title": "Align sandbox retries with the permissions reviewed for them (#63683)",
+              "message": "Align sandbox retries with the permissions reviewed for them (#63683)\n\n## What changed\n\nBuild the retry from the initial sandbox attempt. When policy permits an\nunsandboxed retry, clear the sandbox settings and mark the command as\n`RequireEscalated` for approval. When policy requires the sandbox to stay\nin place, reuse the initial attempt so a network retry preserves file read\nrestrictions.\n\n## Testing\n\nCover both Guardian verdicts after a sandboxed attempt. An approved retry\nreaches the exec server without a sandbox, and a denied retry is blocked\nbefore it reaches the executor.\n\nGitOrigin-RevId: 5bf36dd4f43b7c0379457b88b8ddbf3dbd482b87",
+              "url": "https://github.com/openai/codex/commit/f67868d05034d989bcda1503795039cd7ac8e6a3"
+            },
+            {
+              "sha": "9a3303253bfe12050d1c998eb96ac3d6739a15e9",
+              "title": "Remove unused standalone connector listing helpers (#63692)",
+              "message": "Remove unused standalone connector listing helpers (#63692)\n\n## Why\n\nThe app server already passes its environment and MCP managers to\nconnector discovery, leaving the standalone listing helpers unused.\n\n## What changed\n\nRemove the unused listing wrappers and re-exports from `codex-core`\nand `codex-chatgpt`, including the setup that created temporary managers.\nMove `tokio` to the dev dependencies of `codex-chatgpt` and enable only\nthe features its tests use.\n\nGitOrigin-RevId: 757b32afeb6e46dddb46d507c5af07bf8ff7a2a3",
+              "url": "https://github.com/openai/codex/commit/9a3303253bfe12050d1c998eb96ac3d6739a15e9"
+            },
+            {
+              "sha": "4ec69d3c5fe9e30227058d07e8accd4882affde8",
+              "title": "Preserve Guardian review evidence when callers are cancelled (#63693)",
+              "message": "Preserve Guardian review evidence when callers are cancelled (#63693)\n\n## Why\n\nCancelling a turn or tool call could drop a pending history write or\nlose an answer the session had already accepted. A missing write leaves\nGuardian unable to confirm that its review history is complete.\n\n## What changed\n\nLet the session finish tracked evidence writes in queue order after the\ncaller is cancelled, and drain those writes on shutdown. Record verified\n`request_user_input` answers at acceptance before waking the tool.\nContinue persisting evidence after an earlier write goes unconfirmed,\nwhile still reporting the history gap to Guardian.\n\n## Testing\n\nRegression tests cover initial and retried reviews waiting for a\nrevocation after caller cancellation, and an accepted answer reaching\nhistory before the turn interruption even with an earlier unconfirmed\nwrite.\n\nGitOrigin-RevId: b8e212d34686bbc793002a34f5a97834a900a342",
+              "url": "https://github.com/openai/codex/commit/4ec69d3c5fe9e30227058d07e8accd4882affde8"
+            },
+            {
+              "sha": "44308610ef5cbc03d149707735878b0c8743b2df",
+              "title": "Measure initial output collection time for `exec_command` (#63695)",
+              "message": "Measure initial output collection time for `exec_command` (#63695)\n\n## Why\n\nEnd-to-end tool duration does not show how much time `exec_command`\nspends collecting its initial output. Tracking the duration and call\ncount separately lets readers of the metrics compute the mean\ncollection time for each configured shell snapshot mode.\n\n## What changed\n\nRecord the initial output collection time in whole milliseconds and\ncount each successful process manager response, including collections\nshorter than a millisecond. The timing starts after the early-exit wait\nand can include draining output after the process exits.\n\nTag both counters with the configured `shell_snapshot_mode` (`disabled`,\n`v1`, or `v2`), including when execution falls back. Intercepted patches,\nprocess manager errors, and `write_stdin` calls are excluded.\n\n## Testing\n\nExtend a unified exec integration test to check that the recorded time\nmatches the initial response within one millisecond, both counters carry\nthe `v2` tag, and a subsequent `write_stdin` leaves the count at one.\n\nGitOrigin-RevId: 289336cf2544a78abb3417484b48d2d22109a56c",
+              "url": "https://github.com/openai/codex/commit/44308610ef5cbc03d149707735878b0c8743b2df"
+            },
+            {
+              "sha": "2ee23c7f8fc886dd274d4d6e923430f6680d7708",
+              "title": "Show URL elicitation instructions in the TUI confirmation (#63701)",
+              "message": "Show URL elicitation instructions in the TUI confirmation (#63701)\n\n## Why\n\nA URL elicitation request can include instructions users need to complete\nthe browser action, such as a code to enter. The TUI's “Finish in Browser”\nscreen previously showed only generic guidance for that step.\n\n## What changed\n\nRender the request message above the generic browser instructions when\nconfirming an external action.\n\n## Testing\n\nUpdate the URL elicitation confirmation snapshot to verify that a payment\nconfirmation code appears on the “Finish in Browser” screen.\n\nGitOrigin-RevId: 85566e783341fc46d8e21ef4710b7c30687316f8",
+              "url": "https://github.com/openai/codex/commit/2ee23c7f8fc886dd274d4d6e923430f6680d7708"
+            },
+            {
+              "sha": "c4345a0079c6ba0e378911f4d2f31156818c5702",
+              "title": "Refresh the Codex CLI screenshot in the README (#63708)",
+              "message": "Refresh the Codex CLI screenshot in the README (#63708)\n\nShow a prefix-search optimization with an inline code diff and a\nside-by-side Markdown preview of the benchmark results.\n\nGitOrigin-RevId: 3ca40e4e29b8ec5745f49fde5e7da592db0d9217",
+              "url": "https://github.com/openai/codex/commit/c4345a0079c6ba0e378911f4d2f31156818c5702"
+            },
+            {
+              "sha": "7f8dcb3e64a6a2526a66e814457e0bfcf3d6bd03",
+              "title": "Detect Ghostty truecolor when SSH omits `COLORTERM` (#63710)",
+              "message": "Detect Ghostty truecolor when SSH omits `COLORTERM` (#63710)\n\n## Why\n\nSSH can forward Ghostty's `TERM=xterm-ghostty` without `COLORTERM`,\nleaving Codex to use an ANSI-16 palette for a truecolor terminal.\n\n## What changed\n\nCentralize stdout color detection in `codex-terminal-detection`. Upgrade\nan ANSI-16 result to truecolor when `TERM` is `xterm-ghostty` and neither\n`FORCE_COLOR` nor an active `CLICOLOR_FORCE` override is present.\n\nUse the shared detection for TUI colors, including shimmer and activity\nindicators. Share the existing Windows Terminal palette rules between\ndiff rendering and theme colors.\n\n## Testing\n\nCover Ghostty's `TERM` fallback, explicit color overrides, and Windows\nTerminal palette detection in unit tests. Exercise theme preview,\nselection, and restoration with Ghostty's `TERM` and no `COLORTERM`.\n\nGitOrigin-RevId: e7b6832fc7e721d5e2c23ef19df5fe55fbfeb21a",
+              "url": "https://github.com/openai/codex/commit/7f8dcb3e64a6a2526a66e814457e0bfcf3d6bd03"
+            },
+            {
+              "sha": "1263a383a5cca21ed7d152f2d92fd947388d18d1",
+              "title": "Bind sandbox CA access to the prepared managed proxy route (#63711)",
+              "message": "Bind sandbox CA access to the prepared managed proxy route (#63711)\n\n## Why\n\nA sandboxed command needs read access to the generated CA bundle for its\nmanaged proxy route. Choosing the bundle from the command environment or\nfrom live proxy settings can give the sandbox a different bundle from\nthe one captured when the route was prepared.\n\n## What changed\n\nCapture the generated CA bundle alongside the proxy environment and\nsandbox network policy. Validate the captured bundle when granting read\naccess. A locally prepared route with no generated CA grants no CA\naccess. Controller-supplied portable routes still look up and validate\nthe generated bundle in the command environment.\n\n## Testing\n\nCover restricted reads for remote processes using both portable routes\nand executor-local proxies. Verify that a borrowed proxy's prepared\nroute preserves its listener and CA grant across a proxy configuration\nchange.\n\nGitOrigin-RevId: 1a4024b5b84c14febda7cdd6b6f4f950a7741054",
+              "url": "https://github.com/openai/codex/commit/1263a383a5cca21ed7d152f2d92fd947388d18d1"
+            },
+            {
+              "sha": "a178b3a06d6286b5536747aba44ecb4d70772e86",
+              "title": "Release 0.174.0-alpha.3",
+              "message": "Release 0.174.0-alpha.3",
+              "url": "https://github.com/openai/codex/commit/a178b3a06d6286b5536747aba44ecb4d70772e86"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.174.0-alpha.2",
+            "head": "rust-v0.174.0-alpha.3",
+            "url": "https://github.com/openai/codex/compare/rust-v0.174.0-alpha.2...rust-v0.174.0-alpha.3",
+            "status": "diverged",
+            "total": 29,
+            "behind": 1,
+            "complete": true,
+            "fetched": 29
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.2:2026-11-24T20:23:55.674Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T20:23:55.674Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.2",
+        "at": "2026-11-24T16:21:51.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.2",
+        "text": "0.174.0-alpha.2. Release 0.174.0-alpha.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.3:2026-11-24T20:23:55.674Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-24T20:23:55.674Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.174.0-alpha.3",
+        "title": "0.174.0-alpha.3",
+        "body": "Release 0.174.0-alpha.3\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-24T20:23:55.680Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.3",
+        "publishedAt": "2026-11-24T20:14:27Z",
+        "commits": [
+          {
+            "sha": "e351ffa4b625325575e2a49e8b554e45c1c73b88",
+            "title": "Remove the legacy test-only `/mcp` renderer (#63639)",
+            "message": "Remove the legacy test-only `/mcp` renderer (#63639)\n\n## Why\n\nThe TUI renders `/mcp` from app-server `McpServerStatus` responses.\nThe legacy renderer's snapshot still exercises grouping by qualified tool\nname, a path the command no longer uses.\n\n## What changed\n\nDelete the legacy renderer, its hyphenated-server-name snapshot test and\nfixtures, and the TUI's `codex-mcp` dev-dependency.\n\nGitOrigin-RevId: 69f1601f19b34576ea2d9dcebdd2bfb30f414d99",
+            "url": "https://github.com/openai/codex/commit/e351ffa4b625325575e2a49e8b554e45c1c73b88"
+          },
+          {
+            "sha": "75df5098a6d92b40dc61e7a9964233ce9c359677",
+            "title": "Route in-memory message board notifications through app-server (#63641)",
+            "message": "Route in-memory message board notifications through app-server (#63641)\n\n## Why\n\nThe SQLite message board can queue native agent mail through app-server.\nIn-memory boards previously relied on the host's notification callback\nfor delivery.\n\n## What changed\n\nAdd `launch_in_memory_with_app_server` so runners can opt into the same\nbounded, queue-only delivery as SQLite via `thread/inject_items`. The\nhost still resolves agent membership, and the shared notification client\nqueues post previews without starting a turn.\n\n## Testing\n\nExtend the app-server integration test to check that, after an\napp-server restart, a post from each backend reaches an idle worker\nexactly once on its next turn. The test also checks that app-server\ndelivery bypasses the in-memory host's notification callback.\n\nGitOrigin-RevId: fc01b5e3f43dcfca5f43366f0b184c41dc07f9eb",
+            "url": "https://github.com/openai/codex/commit/75df5098a6d92b40dc61e7a9964233ce9c359677"
+          },
+          {
+            "sha": "264f7d60f5599fa40f7d1381bca5dff1192bbf02",
+            "title": "Return startup timing with MCP connection attempts (#63647)",
+            "message": "Return startup timing with MCP connection attempts (#63647)\n\n## What changed\n\nHave the MCP connection pool return an optional startup measurement\nalongside the connection result. For a new connection, measure through\nlease registration when required, including when registration fails.\nIf a chat falls back to opening its own connection, start the timer at\nthe fallback. Joining an existing connection produces no startup\nmeasurement.\n\n## Testing\n\nPool tests cover timing a lease-open timeout on a new connection,\nomitting timing for the same timeout on a reused connection, and\nrecording timing when a chat falls back to its own connection.\n\nGitOrigin-RevId: 364963ca2f4e7bd8338c8acc9a7869e3a7a6e9c4",
+            "url": "https://github.com/openai/codex/commit/264f7d60f5599fa40f7d1381bca5dff1192bbf02"
+          },
+          {
+            "sha": "9acdf80aaf0e2910fd313315f9aec3d4192125ba",
+            "title": "Remove the unused agent extension crate (#63648)",
+            "message": "Remove the unused agent extension crate (#63648)\n\n## What changed\n\nDelete `codex-agent-extension`, whose `AgentRunner` submitted resolved\nagent prompts in forked legacy threads and was used only by the crate's\nintegration test. Remove the test, the Bazel target, and the crate's\nCargo workspace and lockfile entries.\n\nGitOrigin-RevId: 1e966ccb7b7f37f6cdd68882975bb1e940ae85db",
+            "url": "https://github.com/openai/codex/commit/9acdf80aaf0e2910fd313315f9aec3d4192125ba"
+          },
+          {
+            "sha": "a2c17b833cab61e48f7b4acd757c3738a5914d3c",
+            "title": "Frame pending native agent calls as Guardian approval requests (#63649)",
+            "message": "Frame pending native agent calls as Guardian approval requests (#63649)\n\n## Why\n\nA pending native agent call can appear alongside historical tool calls in\nGuardian's review context. Explicit request boundaries identify the exact call\nGuardian should judge.\n\n## What changed\n\nAdd the off-by-default `guardian_native_action_framing` feature for Multi-Agent\nV2 reviews with native multi-agent history enabled. Wrap the pending call and\nits evidence-only output in approval request markers, and point the transcript\nentry to the current request.\n\nKeep the call-ID reference when reviewer history already contains the call.\nReserve room for the approval markers when budgeting screenshots so a retry\ncan replay the framed call if reviewer history changes.\n\n## Testing\n\nCover call deduplication, replay after compaction, and screenshot admission at\nthe token limit. Update the incremental review scenario to show the framed\n`send_message` call alongside encrypted parent reply history.\n\nGitOrigin-RevId: dd99cd4ad4cf3451afe30d2e93aa3e47b493a4c4",
+            "url": "https://github.com/openai/codex/commit/a2c17b833cab61e48f7b4acd757c3738a5914d3c"
+          },
+          {
+            "sha": "5f2bd3342ffd8524def5fde93f079054b5e7042e",
+            "title": "Remove unused SQLite thread-listing helpers from rollout (#63652)",
+            "message": "Remove unused SQLite thread-listing helpers from rollout (#63652)\n\nDelete `list_archived_threads_from_state_db` and the `list_thread_ids_db`\nhelper for parity checks.\n\nGitOrigin-RevId: cfcd7b24dd0dfbc97c7b245ef00390c0aded872b",
+            "url": "https://github.com/openai/codex/commit/5f2bd3342ffd8524def5fde93f079054b5e7042e"
+          },
+          {
+            "sha": "53fe98bdc22c19b9520b0d033c2b0a1b0be62bcb",
+            "title": "Accept an explicit tool call in Guardian review requests (#63654)",
+            "message": "Accept an explicit tool call in Guardian review requests (#63654)\n\n## Why\n\nSelecting the final item in an idle thread's history ties Guardian review\nto what was recorded. For example, a client may record an `exec` script\nand need an assessment of an individual `exec_command` from that script.\n\n## What changed\n\nRequire `toolCall` in the experimental `thread/guardianReview` request.\nGuardian assesses the supplied `function_call` or `custom_tool_call`\nagainst the idle thread's full history without appending or executing it.\n\n## Testing\n\nCover rejection of requests missing `toolCall` and verify that Guardian\nsees the recorded script alongside each command submitted for review.\nCheck that only the original script call is persisted in the thread.\n\nGitOrigin-RevId: a1ce61e10e98107b38db60071dd63f189ef33ad1",
+            "url": "https://github.com/openai/codex/commit/53fe98bdc22c19b9520b0d033c2b0a1b0be62bcb"
+          },
+          {
+            "sha": "3e6daebb4889457479355f92c43d1e2e925ac278",
+            "title": "Avoid model lookups for thread metadata and goal updates (#63655)",
+            "message": "Avoid model lookups for thread metadata and goal updates (#63655)\n\n## Why\n\nA slow model lookup can delay thread metadata reads and goal updates even\nthough both operations have the settings and data they need locally.\n\n## What changed\n\nUse locally configured settings for app-server thread reads, enrichment,\nand direct-input checks. The effective configuration snapshot still\nvalidates the service tier against the selected model.\n\nRecord goal updates and emit their raw response events using an internal\nsubmission ID without constructing a turn context.\n\n## Testing\n\nAdd a regression test that gates model lookup and checks that the local\nsnapshot and goal recording complete without requesting model info. It\nalso checks that the goal event matches the history item and that the\neffective snapshot filters out an unsupported service tier.\n\nGitOrigin-RevId: 7d008edd775ae459a1fd1e3db79f38f2d9b5ca30",
+            "url": "https://github.com/openai/codex/commit/3e6daebb4889457479355f92c43d1e2e925ac278"
+          },
+          {
+            "sha": "5a2cb7358038f536afeaabbfeb59c0fff87f5bf7",
+            "title": "Remove the unused `codex-utils-readiness` crate (#63660)",
+            "message": "Remove the unused `codex-utils-readiness` crate (#63660)\n\nGitOrigin-RevId: 68ea46742c3c08a2dda097bb385f91e388b8bba4",
+            "url": "https://github.com/openai/codex/commit/5a2cb7358038f536afeaabbfeb59c0fff87f5bf7"
+          },
+          {
+            "sha": "3781b6c627faec56449004485e032aed03095e36",
+            "title": "Remove no-op rate limit polling hooks from the TUI (#63661)",
+            "message": "Remove no-op rate limit polling hooks from the TUI (#63661)\n\n## What changed\n\nRemove `ChatWidget`'s prefetch and poller shutdown hooks from widget\ncreation, teardown, and the transition to background voice mode.\nPrefetch only called the empty shutdown hook.\n\nGitOrigin-RevId: c25c33a53d63be982d8cfebf405401a4c4f0e0c4",
+            "url": "https://github.com/openai/codex/commit/3781b6c627faec56449004485e032aed03095e36"
+          },
+          {
+            "sha": "ebd5c2fddc2ec215c7ab1108564bc209907c7fee",
+            "title": "Make unified exec output closure race-safe (#63664)",
+            "message": "Make unified exec output closure race-safe (#63664)\n\n## Why\n\nThe output collector could miss a closure notification while starting its\npost-exit wait. It could also see an empty buffer just before the producer\nappended its final chunk and closed the stream.\n\n## What changed\n\nUse a dedicated `CancellationToken` to signal when the output producer is\ndone. The collector samples closure before draining the buffer so that\nclosure during the drain wakes it for another pass. The streaming watcher\nflushes queued chunks when it observes closure, and sandbox denial checks\ncan proceed immediately when output is already closed.\n\n## Testing\n\nUpdate the bounded collection test to verify that closure alone wakes\nthe post-exit collector and that the final bytes survive repeated drains.\n\nGitOrigin-RevId: 4b94a018d784664031f326ec360d27fcf166bbda",
+            "url": "https://github.com/openai/codex/commit/ebd5c2fddc2ec215c7ab1108564bc209907c7fee"
+          },
+          {
+            "sha": "cba3c40cf754cc7e53c236c42d3465dc158ecf2f",
+            "title": "Defer parsing response items until completion when streaming is suppressed (#63666)",
+            "message": "Defer parsing response items until completion when streaming is suppressed (#63666)\n\n## Why\n\nMailbox preemption can discard partial response items, and turn item\ncontributors can rewrite completed items. Parsing those items as soon as they\narrive does extra work before their final contents are known.\n\n## What changed\n\nDuring mailbox draining or when turn item contributors are registered, track\nnew response items as deferred, suppress their text and reasoning deltas, and\nwait for `OutputItemDone` before parsing them. Rely on the response client to\ncarry the added item's ID forward when the completion omits it.\n\n## Testing\n\nThe mailbox preemption tests check that a buffered reasoning item completes\nexactly once under its original ID when the completion omits it, and that raw\nreasoning deltas for a discarded item stay hidden.\n\nGitOrigin-RevId: 940e062c8c44faa6670945262ee8c8f16abf4e20",
+            "url": "https://github.com/openai/codex/commit/cba3c40cf754cc7e53c236c42d3465dc158ecf2f"
+          },
+          {
+            "sha": "77acaa207f59e0f9ecfabdf14a557ff74bee26a2",
+            "title": "Keep rejected audio file IDs out of protocol events (#63667)",
+            "message": "Keep rejected audio file IDs out of protocol events (#63667)\n\n## Why\n\nCodex needs rejected audio file IDs when reconstructing a session so\nlater model requests can omit those attachments. Clients only need the\nturn error.\n\n## What changed\n\nStore rejected audio file IDs as rollout metadata and restore them from\nthat metadata when replaying history. Keep the existing JSONL layout\nunder `error.rejected_audio_file_ids` so older versions can still read\nnewly written rollouts.\n\n## Testing\n\nAdd a regression test that round-trips a legacy rollout entry and\nverifies that serializing the protocol event omits the rejected IDs.\n\nGitOrigin-RevId: 982dd85d0037cebee056caf61d70988762e42767",
+            "url": "https://github.com/openai/codex/commit/77acaa207f59e0f9ecfabdf14a557ff74bee26a2"
+          },
+          {
+            "sha": "1a6c8514ccab30d5ac310016e12fa3d48eced868",
+            "title": "Make the remote MCP timeout test expire during discovery (#63668)",
+            "message": "Make the remote MCP timeout test expire during discovery (#63668)\n\n## Why\n\nThe discovery test used a 15-second deadline, which let RMCP fall back to\n`initialize` after 10 seconds. The test needs to cancel a stalled\n`server/discover` request to verify that discovery cancellation releases\nthe remote executor.\n\n## What changed\n\nWarm up the executor's HTTP connection with a successful `GET /ready`\nbefore starting a 5-second discovery deadline. Keep the 15-second\ndeadline for the legacy handshake test.\n\nGitOrigin-RevId: cbf299fc264c2635e0ea471545010bccbdcee94d",
+            "url": "https://github.com/openai/codex/commit/1a6c8514ccab30d5ac310016e12fa3d48eced868"
+          },
+          {
+            "sha": "6b7a16fe76a9d5666df025af8ccd1c445aad3a67",
+            "title": "Remove unused HTTP client APIs (#63669)",
+            "message": "Remove unused HTTP client APIs (#63669)\n\n## What changed\n\n- Remove the deprecated `build_with_transport_default_proxy` method and\n  inline its shared helper into the remaining caller, `build_direct`.\n- Remove the unused `has_chatgpt_cookies` accessor, `with_raw_body`\n  setter, and `with_chatgpt_cloudflare_cookies_without_redirects` pool\n  constructor.\n\nGitOrigin-RevId: 9dd19b7a28b1aac6f196968b53160ffbc7443b8a",
+            "url": "https://github.com/openai/codex/commit/6b7a16fe76a9d5666df025af8ccd1c445aad3a67"
+          },
+          {
+            "sha": "e713c4c3026e492624b22ba71e9b2ece66a4509f",
+            "title": "Batch Guardian review history cutoffs by root thread (#63673)",
+            "message": "Batch Guardian review history cutoffs by root thread (#63673)\n\n## Why\n\nConcurrent Guardian reviews of the same root thread can repeat history\nflushes and reads to establish how far to route evidence.\n\n## What changed\n\nShare one flush and durable history position across binding and catch-up\nrequests queued before capture begins. Requests arriving during capture get\na fresh position so they can account for newer records. A lone catch-up reads\nunread records and their end position together, skipping the separate tail\nread. Catch-up still waits for evidence to be routed through its cutoff.\n\n## Testing\n\nCover shared cutoffs and read failures, separate capture for late arrivals,\nand a lone retry that picks up a newer revocation without a separate tail\nread when another queued request is canceled.\n\nGitOrigin-RevId: ef07231d66bc38d8b244b6ee37ec3d483b54bc0f",
+            "url": "https://github.com/openai/codex/commit/e713c4c3026e492624b22ba71e9b2ece66a4509f"
+          },
+          {
+            "sha": "98630438816570b0985fc35fa8869beaaa565ab9",
+            "title": "Wait for pending history writes before Guardian v3 reviews (#63675)",
+            "message": "Wait for pending history writes before Guardian v3 reviews (#63675)\n\n## Why\n\nA root-thread instruction can be visible in memory while its history append is still pending. Guardian v3 reads persisted history, so a review can miss a newer instruction that revokes permission for an action.\n\n## What changed\n\nTrack pending appends for review-relevant root history and wait for confirmation before capturing the evidence cutoff for an initial review or retry. Confirm the append when the thread store accepts the history batch, before updating thread metadata.\n\nIf an append goes unconfirmed, fail review preparation and prompt the user to reload the root thread and resend any missing instructions.\n\n## Testing\n\nAdd regression coverage for initial and retry cutoffs waiting on a pending revocation, failed appends of forwarded instructions, and history remaining readable after an acknowledged append followed by a metadata failure.\n\nGitOrigin-RevId: b83ca178ca7b58dbc23b1f064b402df30f9689e1",
+            "url": "https://github.com/openai/codex/commit/98630438816570b0985fc35fa8869beaaa565ab9"
+          },
+          {
+            "sha": "39c6485cb75b4b55d8cefb3c7d468253f89a3376",
+            "title": "Fix Home and End navigation in the agent center (#63677)",
+            "message": "Fix Home and End navigation in the agent center (#63677)\n\n## Why\n\nThe agent center's `Home` and `End` shortcuts skipped the **Show more**\nrow, so pressing `End` could stop before the last selectable row.\n\n## What changed\n\nJump to the first or last selectable row and preserve whether **Show\nmore** is selected across view refreshes. Reconcile selection when\ntoggling search on and let the cancel shortcut dismiss search even when\nthe view cannot return to chat.\n\n## Testing\n\nAdd a regression test that presses `End`, `Home`, and `End` across\nview refreshes and verifies that `Enter` on **Show more** requests\nanother page.\n\nGitOrigin-RevId: e508c7926ce83b68c229d638364e6e41f671490e",
+            "url": "https://github.com/openai/codex/commit/39c6485cb75b4b55d8cefb3c7d468253f89a3376"
+          },
+          {
+            "sha": "5e857c65a529587c052b656769122b7902e8ed3d",
+            "title": "Remove unused spawned-thread lookups by agent path (#63678)",
+            "message": "Remove unused spawned-thread lookups by agent path (#63678)\n\nGitOrigin-RevId: 2bb6d0d64df0cfeed79a08e55ed437db864dd1d6",
+            "url": "https://github.com/openai/codex/commit/5e857c65a529587c052b656769122b7902e8ed3d"
+          },
+          {
+            "sha": "a009fc6a4ea8058c6d7a1897571f2ce443998907",
+            "title": "Remove unused core config loading wrappers (#63682)",
+            "message": "Remove unused core config loading wrappers (#63682)\n\nDrop the deprecated `load_config_as_toml_with_cli_*` helpers and\n`Config::load_with_cli_overrides_and_harness_overrides`. Existing callers\ncan use `ConfigBuilder` to apply harness overrides and\n`load_config_toml_with_layer_stack` to inspect raw config during startup.\n\nGitOrigin-RevId: 4901d876cf4d87094055f9907bd761525057fa99",
+            "url": "https://github.com/openai/codex/commit/a009fc6a4ea8058c6d7a1897571f2ce443998907"
+          },
+          {
+            "sha": "f67868d05034d989bcda1503795039cd7ac8e6a3",
+            "title": "Align sandbox retries with the permissions reviewed for them (#63683)",
+            "message": "Align sandbox retries with the permissions reviewed for them (#63683)\n\n## What changed\n\nBuild the retry from the initial sandbox attempt. When policy permits an\nunsandboxed retry, clear the sandbox settings and mark the command as\n`RequireEscalated` for approval. When policy requires the sandbox to stay\nin place, reuse the initial attempt so a network retry preserves file read\nrestrictions.\n\n## Testing\n\nCover both Guardian verdicts after a sandboxed attempt. An approved retry\nreaches the exec server without a sandbox, and a denied retry is blocked\nbefore it reaches the executor.\n\nGitOrigin-RevId: 5bf36dd4f43b7c0379457b88b8ddbf3dbd482b87",
+            "url": "https://github.com/openai/codex/commit/f67868d05034d989bcda1503795039cd7ac8e6a3"
+          },
+          {
+            "sha": "9a3303253bfe12050d1c998eb96ac3d6739a15e9",
+            "title": "Remove unused standalone connector listing helpers (#63692)",
+            "message": "Remove unused standalone connector listing helpers (#63692)\n\n## Why\n\nThe app server already passes its environment and MCP managers to\nconnector discovery, leaving the standalone listing helpers unused.\n\n## What changed\n\nRemove the unused listing wrappers and re-exports from `codex-core`\nand `codex-chatgpt`, including the setup that created temporary managers.\nMove `tokio` to the dev dependencies of `codex-chatgpt` and enable only\nthe features its tests use.\n\nGitOrigin-RevId: 757b32afeb6e46dddb46d507c5af07bf8ff7a2a3",
+            "url": "https://github.com/openai/codex/commit/9a3303253bfe12050d1c998eb96ac3d6739a15e9"
+          },
+          {
+            "sha": "4ec69d3c5fe9e30227058d07e8accd4882affde8",
+            "title": "Preserve Guardian review evidence when callers are cancelled (#63693)",
+            "message": "Preserve Guardian review evidence when callers are cancelled (#63693)\n\n## Why\n\nCancelling a turn or tool call could drop a pending history write or\nlose an answer the session had already accepted. A missing write leaves\nGuardian unable to confirm that its review history is complete.\n\n## What changed\n\nLet the session finish tracked evidence writes in queue order after the\ncaller is cancelled, and drain those writes on shutdown. Record verified\n`request_user_input` answers at acceptance before waking the tool.\nContinue persisting evidence after an earlier write goes unconfirmed,\nwhile still reporting the history gap to Guardian.\n\n## Testing\n\nRegression tests cover initial and retried reviews waiting for a\nrevocation after caller cancellation, and an accepted answer reaching\nhistory before the turn interruption even with an earlier unconfirmed\nwrite.\n\nGitOrigin-RevId: b8e212d34686bbc793002a34f5a97834a900a342",
+            "url": "https://github.com/openai/codex/commit/4ec69d3c5fe9e30227058d07e8accd4882affde8"
+          },
+          {
+            "sha": "44308610ef5cbc03d149707735878b0c8743b2df",
+            "title": "Measure initial output collection time for `exec_command` (#63695)",
+            "message": "Measure initial output collection time for `exec_command` (#63695)\n\n## Why\n\nEnd-to-end tool duration does not show how much time `exec_command`\nspends collecting its initial output. Tracking the duration and call\ncount separately lets readers of the metrics compute the mean\ncollection time for each configured shell snapshot mode.\n\n## What changed\n\nRecord the initial output collection time in whole milliseconds and\ncount each successful process manager response, including collections\nshorter than a millisecond. The timing starts after the early-exit wait\nand can include draining output after the process exits.\n\nTag both counters with the configured `shell_snapshot_mode` (`disabled`,\n`v1`, or `v2`), including when execution falls back. Intercepted patches,\nprocess manager errors, and `write_stdin` calls are excluded.\n\n## Testing\n\nExtend a unified exec integration test to check that the recorded time\nmatches the initial response within one millisecond, both counters carry\nthe `v2` tag, and a subsequent `write_stdin` leaves the count at one.\n\nGitOrigin-RevId: 289336cf2544a78abb3417484b48d2d22109a56c",
+            "url": "https://github.com/openai/codex/commit/44308610ef5cbc03d149707735878b0c8743b2df"
+          },
+          {
+            "sha": "2ee23c7f8fc886dd274d4d6e923430f6680d7708",
+            "title": "Show URL elicitation instructions in the TUI confirmation (#63701)",
+            "message": "Show URL elicitation instructions in the TUI confirmation (#63701)\n\n## Why\n\nA URL elicitation request can include instructions users need to complete\nthe browser action, such as a code to enter. The TUI's “Finish in Browser”\nscreen previously showed only generic guidance for that step.\n\n## What changed\n\nRender the request message above the generic browser instructions when\nconfirming an external action.\n\n## Testing\n\nUpdate the URL elicitation confirmation snapshot to verify that a payment\nconfirmation code appears on the “Finish in Browser” screen.\n\nGitOrigin-RevId: 85566e783341fc46d8e21ef4710b7c30687316f8",
+            "url": "https://github.com/openai/codex/commit/2ee23c7f8fc886dd274d4d6e923430f6680d7708"
+          },
+          {
+            "sha": "c4345a0079c6ba0e378911f4d2f31156818c5702",
+            "title": "Refresh the Codex CLI screenshot in the README (#63708)",
+            "message": "Refresh the Codex CLI screenshot in the README (#63708)\n\nShow a prefix-search optimization with an inline code diff and a\nside-by-side Markdown preview of the benchmark results.\n\nGitOrigin-RevId: 3ca40e4e29b8ec5745f49fde5e7da592db0d9217",
+            "url": "https://github.com/openai/codex/commit/c4345a0079c6ba0e378911f4d2f31156818c5702"
+          },
+          {
+            "sha": "7f8dcb3e64a6a2526a66e814457e0bfcf3d6bd03",
+            "title": "Detect Ghostty truecolor when SSH omits `COLORTERM` (#63710)",
+            "message": "Detect Ghostty truecolor when SSH omits `COLORTERM` (#63710)\n\n## Why\n\nSSH can forward Ghostty's `TERM=xterm-ghostty` without `COLORTERM`,\nleaving Codex to use an ANSI-16 palette for a truecolor terminal.\n\n## What changed\n\nCentralize stdout color detection in `codex-terminal-detection`. Upgrade\nan ANSI-16 result to truecolor when `TERM` is `xterm-ghostty` and neither\n`FORCE_COLOR` nor an active `CLICOLOR_FORCE` override is present.\n\nUse the shared detection for TUI colors, including shimmer and activity\nindicators. Share the existing Windows Terminal palette rules between\ndiff rendering and theme colors.\n\n## Testing\n\nCover Ghostty's `TERM` fallback, explicit color overrides, and Windows\nTerminal palette detection in unit tests. Exercise theme preview,\nselection, and restoration with Ghostty's `TERM` and no `COLORTERM`.\n\nGitOrigin-RevId: e7b6832fc7e721d5e2c23ef19df5fe55fbfeb21a",
+            "url": "https://github.com/openai/codex/commit/7f8dcb3e64a6a2526a66e814457e0bfcf3d6bd03"
+          },
+          {
+            "sha": "1263a383a5cca21ed7d152f2d92fd947388d18d1",
+            "title": "Bind sandbox CA access to the prepared managed proxy route (#63711)",
+            "message": "Bind sandbox CA access to the prepared managed proxy route (#63711)\n\n## Why\n\nA sandboxed command needs read access to the generated CA bundle for its\nmanaged proxy route. Choosing the bundle from the command environment or\nfrom live proxy settings can give the sandbox a different bundle from\nthe one captured when the route was prepared.\n\n## What changed\n\nCapture the generated CA bundle alongside the proxy environment and\nsandbox network policy. Validate the captured bundle when granting read\naccess. A locally prepared route with no generated CA grants no CA\naccess. Controller-supplied portable routes still look up and validate\nthe generated bundle in the command environment.\n\n## Testing\n\nCover restricted reads for remote processes using both portable routes\nand executor-local proxies. Verify that a borrowed proxy's prepared\nroute preserves its listener and CA grant across a proxy configuration\nchange.\n\nGitOrigin-RevId: 1a4024b5b84c14febda7cdd6b6f4f950a7741054",
+            "url": "https://github.com/openai/codex/commit/1263a383a5cca21ed7d152f2d92fd947388d18d1"
+          },
+          {
+            "sha": "a178b3a06d6286b5536747aba44ecb4d70772e86",
+            "title": "Release 0.174.0-alpha.3",
+            "message": "Release 0.174.0-alpha.3",
+            "url": "https://github.com/openai/codex/commit/a178b3a06d6286b5536747aba44ecb4d70772e86"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.174.0-alpha.2",
+          "head": "rust-v0.174.0-alpha.3",
+          "url": "https://github.com/openai/codex/compare/rust-v0.174.0-alpha.2...rust-v0.174.0-alpha.3",
+          "status": "diverged",
+          "total": 29,
+          "behind": 1,
+          "complete": true,
+          "fetched": 29
         },
         "comparisonError": null
       }
