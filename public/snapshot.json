@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-23T12:17:30.126Z",
+  "generatedAt": "2026-11-24T00:04:51.429Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -22146,6 +22146,127 @@
       ],
       "origin": "direct-official",
       "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-shirudo",
+      "at": "2026-11-23T21:20:00.000Z",
+      "url": "https://openai.com/index/introducing-shirudo",
+      "text": "OpenAI and Cisco introduce Shirudo. OpenAI and Cisco introduce Shirudo, an open-source runtime for Linux. It helps teams protect running systems while they roll out patches.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+      "at": "2026-11-23T08:00:00.000Z",
+      "url": "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+      "text": "Connected intelligence for in-house legal. Watch OpenAI’s Stacey Wang and Craig Bruney, Mary O’Carroll of LECG, and Cooley’s Richard Segal explore how AI can help in-house legal teams connect business context, build reusable workflows and get more from outside counsel.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+      "at": "2026-11-23T08:00:00.000Z",
+      "url": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+      "text": "Richpanel helps companies automate 50% of support in 30 days. Richpanel uses GPT-6 Astra and GPT-6.1 Sol to equip its AI support agents with tools and procedures, and GPT-6 Luna for their conversations.",
+      "kind": "release",
+      "status": "post",
+      "author": "OpenAI News",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.5",
+      "at": "2026-11-23T23:10:34.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.5",
+      "text": "rust-v0.173.0-alpha.5. Release 0.173.0-alpha.5",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.172.0",
+      "at": "2026-11-24T00:03:55.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
+      "text": "0.172.0. New Features Follow thread links from search results and transcripts to open saved conversations and nested agents in the terminal. ( #62332 ) Press Tab to complete arguments for supported slash commands. For example, /mcp lo completes to /mcp login . ( #62343 ) Jump between task groups in the agent command center with Shift+Up and Shift+Down . ( #62200 ) Optional stdio MCP servers with cached tool lists now start on their first tool call by default. ( #62366 ) Set an approval reviewer for individual connected app tools in config.toml . ( #62360 ) App-server clients can select Amazon Bedrock Runtime during setup or sign-in. ( #62222 ) Bug Fixes codex exec resume restores saved sandbox permissions, the working directory, and workspace roots unless explicitly overridden. ( #62194 ) Remote sessions preserve working directories, workspace roots, and writable paths when the client and server run on different operating systems. ( #62375 , #62376 , #62377 ) Codex reports provider errors as soon as they arrive in a response stream and identifies which API spend limit was reached. ( #62329 , #62356 ) Interrupting a parent turn preserves queued replies from child agents for the next turn. ( #62348 ) Use PageUp and PageDown to read and submit answer choices that are taller than the terminal’s answer area. ( #62209 ) Cloud replies that finish after history loads now update in place, keeping the terminal transcript in order. ( #62403 ) Documentation The bundled openai-docs skill now covers migration to GPT-6.2 Astra and Sol, including endpoint choices and tool-calling requirements. ( #62447 ) Chores Code Mode now uses gRPC for all host connections. The code_mode_host_grpc setting is deprecated. ( #62476 ) Python formatting and SDK type generation now verify dependency hashes against the repository lockfile. ( #62346 ) Changelog Full Changelog: rust-v0.171.0...rust-v0.172.0 #62190 Route turn and response checkpoints through the rollout budget policy @anp-oai #62192 Distinguish Windows sandbox provisioning timeouts and pipe closures @zm-oai #62194 Preserve saved sandbox permissions when resuming codex exec @viyatb-oai #62200 Add task group navigation to the agent command center @bc-openai #62202 Omit unknown server versions from /status @bc-openai #62205 Keep sandbox preparation with the command through launch @viyatb-oai #62206 Prevent duplicate initial context when injection races the first turn @euroelessar #62209 Allow paging through long choices in async questions @bc-openai #62215 Resolve Linux sandbox mode once before launching the helper @viyatb-oai #62222 Allow Bedrock Runtime selection during setup and login @alexsong-oai #62225 Tag Guardian review counts with turn origin @cazhang-oai #62245 Refactor realtime handoff and history access @zahan-oai #62251 Derive realtime input receipts from thread history @zahan-oai #62271 Gate local realtime frame history on paginated storage @zahan-oai #62274 Support independent refreshes of managed Guardian policy @ioanbudea-OAI #62276 Refresh managed Guardian policy independently of MCP @ioanbudea-OAI #62284 Use the system clock for in-memory MCP message boards @jif-oai #62288 Persist realtime handoffs before accepting turn input @zahan-oai #62292 Route injected plaintext agent mail through the native mailbox @jif-oai #62299 Preserve pending realtime speech when a call ends @zahan-oai #62302 Route local MCP board notifications through response item injection @jif-oai #62308 Extract Guardian verdict execution and pending-action context @felixxia-oai #62309 Use attached Guardian reviewers for synchronous approvals @felixxia-oai #62310 Use Guardian V3 board evidence for synchronous approvals @felixxia-oai #62314 Keep authorization evidence local to agent forks @rhan-oai #62317 Move sandbox preparation into platform backends @viyatb-oai #62320 Trace MCP binding capture and tool catalog refresh @bkotsopoulos #62325 Accept inbound Noise connections in remote exec-server @richardopenai #62326 Measure plugin recommendation latency during initial context setup @bkotsopoulos #62329 Report API spend limit errors by scope @apcha-oai #62331 Migrate the Windows MXC sandbox to the public V1 SDK @iceweasel-oai #62332 Open Codex thread links inside the TUI @bc-openai #62335 Let users open the command center from provider error screens @bc-openai #62337 Box the config reload future for persistent MCP tool approvals @dylan-hurd-oai #62338 Account for macOS voice build parallelism in Bazel @dylan-hurd-oai #62343 Add slash command argument completion to the TUI composer @bc-openai #62346 Verify dependency hashes when running Python repository tools @colby-oai #62348 Preserve queued agent messages when a parent turn is interrupted @jif-oai #62350 Support piped I/O when starting Seatbelt sandbox commands @charliemarsh-oai #62353 Add a shared sandbox launcher for Linux and macOS @charliemarsh-oai #62354 Treat statusless bio and cyber policy errors as terminal @charliemarsh-oai #62356 Surface Responses stream errors as soon as they arrive @charliemarsh-oai #62357 Report why turn critical path capture is incomplete @akak-oai #62358 Reserve credential permission tables in Codex configuration @viyatb-oai #62360 Allow per-tool approval reviewers for Codex apps @jameswt-oai #62362 Make sidebar file preview errors easier to act on @fcoury-oai #62366 Enable lazy startup for stdio MCP servers by default @charliemarsh-oai #62370 Share config layer entries across snapshots @charliemarsh-oai #62372 Make Guardian V3 routing and retrieval guidance configurable @felixxia-oai #62373 Add opt-in in-memory message boards for Guardian v3 @felixxia-oai #62374 Reconsider denials in attached Guardian reviews @felixxia-oai #62375 Preserve app-server thread working directories across platforms @etraut-openai #62376 Preserve sandbox writable roots across client and server platforms @etraut-openai #62377 Preserve workspace roots across client and server platforms @etraut-openai #62378 Remove the 4,000-byte ",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": false
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.172.0-alpha.2.1",
+      "at": "2026-11-23T18:07:33.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0-alpha.2.1",
+      "text": "0.172.0-alpha.2.1. Release 0.172.0-alpha.2.1",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.13.2",
+      "at": "2026-11-23T19:43:27.000Z",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.13.2",
+      "text": "0.171.0-alpha.13.2. Release 0.171.0-alpha.13.2",
+      "kind": "release",
+      "status": "post",
+      "author": "Codex Releases",
+      "hasAnnouncement": true,
+      "tags": [
+        "release"
+      ],
+      "origin": "direct-official",
+      "prerelease": true
+    },
+    {
+      "id": "openai-status:01M84HKHX73RF7HTVZQ2A9GFXP",
+      "at": "2026-11-23T16:38:46.000Z",
+      "url": "https://status.openai.com/incidents/01M84HKHX73RF7HTVZQ2A9GFXP",
+      "text": "Elevated errors with GPT-6 conversations on paid ChatGPT plans. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "resolved",
+      "publishedAt": "2026-11-23T15:50:14.000Z"
     }
   ],
   "sources": {
@@ -22154,7 +22275,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-23T12:17:29.275Z",
+      "lastSuccessAt": "2026-11-24T00:04:50.325Z",
       "error": null,
       "count": 150
     },
@@ -22163,7 +22284,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-23T12:17:29.275Z",
+      "lastSuccessAt": "2026-11-24T00:04:50.325Z",
       "error": null,
       "count": 10
     },
@@ -22172,7 +22293,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-23T12:17:29.275Z",
+      "lastSuccessAt": "2026-11-24T00:04:50.325Z",
       "error": null,
       "count": 25
     }
@@ -89936,10 +90057,171 @@
         },
         "comparisonError": null
       }
+    },
+    {
+      "id": "openai-news:https://openai.com/index/introducing-shirudo:2026-11-24T00:04:51.429Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T00:04:51.429Z",
+      "item": {
+        "id": "openai-news:https://openai.com/index/introducing-shirudo",
+        "at": "2026-11-23T21:20:00.000Z",
+        "url": "https://openai.com/index/introducing-shirudo",
+        "text": "OpenAI and Cisco introduce Shirudo. OpenAI and Cisco introduce Shirudo, an open-source runtime for Linux. It helps teams protect running systems while they roll out patches.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/learn/connected-intelligence-for-in-house-legal:2026-11-24T00:04:51.429Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T00:04:51.429Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+        "at": "2026-11-23T08:00:00.000Z",
+        "url": "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+        "text": "Connected intelligence for in-house legal. Watch OpenAI’s Stacey Wang and Craig Bruney, Mary O’Carroll of LECG, and Cooley’s Richard Segal explore how AI can help in-house legal teams connect business context, build reusable workflows and get more from outside counsel.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "openai-news:https://openai.com/business/customer-stories/richpanel-ai-customer-support:2026-11-24T00:04:51.429Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T00:04:51.429Z",
+      "item": {
+        "id": "openai-news:https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+        "at": "2026-11-23T08:00:00.000Z",
+        "url": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+        "text": "Richpanel helps companies automate 50% of support in 30 days. Richpanel uses GPT-6 Astra and GPT-6.1 Sol to equip its AI support agents with tools and procedures, and GPT-6 Luna for their conversations.",
+        "kind": "release",
+        "status": "post",
+        "author": "OpenAI News",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.5:2026-11-24T00:04:51.429Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T00:04:51.429Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.173.0-alpha.5",
+        "at": "2026-11-23T23:10:34.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.5",
+        "text": "rust-v0.173.0-alpha.5. Release 0.173.0-alpha.5",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.172.0:2026-11-24T00:04:51.429Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T00:04:51.429Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.172.0",
+        "at": "2026-11-24T00:03:55.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
+        "text": "0.172.0. New Features Follow thread links from search results and transcripts to open saved conversations and nested agents in the terminal. ( #62332 ) Press Tab to complete arguments for supported slash commands. For example, /mcp lo completes to /mcp login . ( #62343 ) Jump between task groups in the agent command center with Shift+Up and Shift+Down . ( #62200 ) Optional stdio MCP servers with cached tool lists now start on their first tool call by default. ( #62366 ) Set an approval reviewer for individual connected app tools in config.toml . ( #62360 ) App-server clients can select Amazon Bedrock Runtime during setup or sign-in. ( #62222 ) Bug Fixes codex exec resume restores saved sandbox permissions, the working directory, and workspace roots unless explicitly overridden. ( #62194 ) Remote sessions preserve working directories, workspace roots, and writable paths when the client and server run on different operating systems. ( #62375 , #62376 , #62377 ) Codex reports provider errors as soon as they arrive in a response stream and identifies which API spend limit was reached. ( #62329 , #62356 ) Interrupting a parent turn preserves queued replies from child agents for the next turn. ( #62348 ) Use PageUp and PageDown to read and submit answer choices that are taller than the terminal’s answer area. ( #62209 ) Cloud replies that finish after history loads now update in place, keeping the terminal transcript in order. ( #62403 ) Documentation The bundled openai-docs skill now covers migration to GPT-6.2 Astra and Sol, including endpoint choices and tool-calling requirements. ( #62447 ) Chores Code Mode now uses gRPC for all host connections. The code_mode_host_grpc setting is deprecated. ( #62476 ) Python formatting and SDK type generation now verify dependency hashes against the repository lockfile. ( #62346 ) Changelog Full Changelog: rust-v0.171.0...rust-v0.172.0 #62190 Route turn and response checkpoints through the rollout budget policy @anp-oai #62192 Distinguish Windows sandbox provisioning timeouts and pipe closures @zm-oai #62194 Preserve saved sandbox permissions when resuming codex exec @viyatb-oai #62200 Add task group navigation to the agent command center @bc-openai #62202 Omit unknown server versions from /status @bc-openai #62205 Keep sandbox preparation with the command through launch @viyatb-oai #62206 Prevent duplicate initial context when injection races the first turn @euroelessar #62209 Allow paging through long choices in async questions @bc-openai #62215 Resolve Linux sandbox mode once before launching the helper @viyatb-oai #62222 Allow Bedrock Runtime selection during setup and login @alexsong-oai #62225 Tag Guardian review counts with turn origin @cazhang-oai #62245 Refactor realtime handoff and history access @zahan-oai #62251 Derive realtime input receipts from thread history @zahan-oai #62271 Gate local realtime frame history on paginated storage @zahan-oai #62274 Support independent refreshes of managed Guardian policy @ioanbudea-OAI #62276 Refresh managed Guardian policy independently of MCP @ioanbudea-OAI #62284 Use the system clock for in-memory MCP message boards @jif-oai #62288 Persist realtime handoffs before accepting turn input @zahan-oai #62292 Route injected plaintext agent mail through the native mailbox @jif-oai #62299 Preserve pending realtime speech when a call ends @zahan-oai #62302 Route local MCP board notifications through response item injection @jif-oai #62308 Extract Guardian verdict execution and pending-action context @felixxia-oai #62309 Use attached Guardian reviewers for synchronous approvals @felixxia-oai #62310 Use Guardian V3 board evidence for synchronous approvals @felixxia-oai #62314 Keep authorization evidence local to agent forks @rhan-oai #62317 Move sandbox preparation into platform backends @viyatb-oai #62320 Trace MCP binding capture and tool catalog refresh @bkotsopoulos #62325 Accept inbound Noise connections in remote exec-server @richardopenai #62326 Measure plugin recommendation latency during initial context setup @bkotsopoulos #62329 Report API spend limit errors by scope @apcha-oai #62331 Migrate the Windows MXC sandbox to the public V1 SDK @iceweasel-oai #62332 Open Codex thread links inside the TUI @bc-openai #62335 Let users open the command center from provider error screens @bc-openai #62337 Box the config reload future for persistent MCP tool approvals @dylan-hurd-oai #62338 Account for macOS voice build parallelism in Bazel @dylan-hurd-oai #62343 Add slash command argument completion to the TUI composer @bc-openai #62346 Verify dependency hashes when running Python repository tools @colby-oai #62348 Preserve queued agent messages when a parent turn is interrupted @jif-oai #62350 Support piped I/O when starting Seatbelt sandbox commands @charliemarsh-oai #62353 Add a shared sandbox launcher for Linux and macOS @charliemarsh-oai #62354 Treat statusless bio and cyber policy errors as terminal @charliemarsh-oai #62356 Surface Responses stream errors as soon as they arrive @charliemarsh-oai #62357 Report why turn critical path capture is incomplete @akak-oai #62358 Reserve credential permission tables in Codex configuration @viyatb-oai #62360 Allow per-tool approval reviewers for Codex apps @jameswt-oai #62362 Make sidebar file preview errors easier to act on @fcoury-oai #62366 Enable lazy startup for stdio MCP servers by default @charliemarsh-oai #62370 Share config layer entries across snapshots @charliemarsh-oai #62372 Make Guardian V3 routing and retrieval guidance configurable @felixxia-oai #62373 Add opt-in in-memory message boards for Guardian v3 @felixxia-oai #62374 Reconsider denials in attached Guardian reviews @felixxia-oai #62375 Preserve app-server thread working directories across platforms @etraut-openai #62376 Preserve sandbox writable roots across client and server platforms @etraut-openai #62377 Preserve workspace roots across client and server platforms @etraut-openai #62378 Remove the 4,000-byte ",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": false
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.172.0-alpha.2.1:2026-11-24T00:04:51.429Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T00:04:51.429Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.172.0-alpha.2.1",
+        "at": "2026-11-23T18:07:33.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0-alpha.2.1",
+        "text": "0.172.0-alpha.2.1. Release 0.172.0-alpha.2.1",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.13.2:2026-11-24T00:04:51.429Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T00:04:51.429Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.171.0-alpha.13.2",
+        "at": "2026-11-23T19:43:27.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.13.2",
+        "text": "0.171.0-alpha.13.2. Release 0.171.0-alpha.13.2",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true
+      }
+    },
+    {
+      "id": "openai-status:01M84HKHX73RF7HTVZQ2A9GFXP:2026-11-24T00:04:51.429Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-24T00:04:51.429Z",
+      "item": {
+        "id": "openai-status:01M84HKHX73RF7HTVZQ2A9GFXP",
+        "at": "2026-11-23T16:38:46.000Z",
+        "url": "https://status.openai.com/incidents/01M84HKHX73RF7HTVZQ2A9GFXP",
+        "text": "Elevated errors with GPT-6 conversations on paid ChatGPT plans. All affected services are operating normally again. We’re sorry for the disruption, and we appreciate your patience.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-23T15:50:14.000Z"
+      }
     }
   ],
   "releaseRequests": {
-    "blockedUntil": 1792877058000,
+    "blockedUntil": 1795480687000,
     "retryByTag": {
       "rust-v0.162.0-alpha.17": 1791321037742,
       "rust-v0.163.0-alpha.1": 1791488791542,
@@ -89968,7 +90250,8 @@
       "rust-v0.170.0-alpha.1": 1794423624005,
       "rust-v0.168.0": 1794524180075,
       "rust-v0.171.0-alpha.1": 1794539622166,
-      "rust-v0.171.0-alpha.4": 1794594675767
+      "rust-v0.171.0-alpha.4": 1794594675767,
+      "rust-v0.172.0": 1795480687000
     }
   }
 }
