@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-25T03:42:25.943Z",
+  "generatedAt": "2026-11-25T13:38:01.446Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -23432,7 +23432,7 @@
         "title": "0.174.0-alpha.5",
         "body": "Release 0.174.0-alpha.5\n\n",
         "authored": false,
-        "fetchedAt": "2026-11-25T03:42:25.948Z",
+        "fetchedAt": "2026-11-25T13:38:01.451Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.5",
         "publishedAt": "2026-11-25T01:11:35Z",
         "commits": [
@@ -23530,6 +23530,22 @@
       ],
       "origin": "direct-official",
       "prerelease": true
+    },
+    {
+      "id": "openai-status:01M898HVZGXFV2XC4775CG9GF8",
+      "at": "2026-11-25T13:22:34.000Z",
+      "url": "https://status.openai.com/incidents/01M898HVZGXFV2XC4775CG9GF8",
+      "text": "ChatGPT, ChatGPT Work, and Codex Cloud are experiencing elevated conversation errors. We have applied mitigations and are seeing recovery across ChatGPT, ChatGPT Work, and Codex cloud threads. We are monitoring the affected services to ensure continued stability. Our investigation into the underlying cause remains ongoing.",
+      "kind": "signal",
+      "status": "post",
+      "author": "OpenAI Status",
+      "hasAnnouncement": true,
+      "tags": [
+        "status"
+      ],
+      "origin": "direct-official",
+      "serviceStatus": "monitoring",
+      "publishedAt": "2026-11-25T11:48:13.000Z"
     }
   ],
   "sources": {
@@ -23538,7 +23554,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-25T03:42:25.227Z",
+      "lastSuccessAt": "2026-11-25T13:38:00.963Z",
       "error": null,
       "count": 150
     },
@@ -23547,7 +23563,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-25T03:42:25.227Z",
+      "lastSuccessAt": "2026-11-25T13:38:00.963Z",
       "error": null,
       "count": 10
     },
@@ -23556,7 +23572,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-25T03:42:25.227Z",
+      "lastSuccessAt": "2026-11-25T13:38:00.963Z",
       "error": null,
       "count": 25
     }
@@ -93880,6 +93896,121 @@
         "body": "Release 0.174.0-alpha.5\n\n",
         "authored": false,
         "fetchedAt": "2026-11-25T03:42:25.948Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.5",
+        "publishedAt": "2026-11-25T01:11:35Z",
+        "commits": [
+          {
+            "sha": "38e42cdb210b6cfed3ff89728ae419492c33baf6",
+            "title": "Add vertical layouts to custom status lines (#63752)",
+            "message": "Add vertical layouts to custom status lines (#63752)\n\n## What changed\n\nAdd a `col` element that stacks children vertically with a required `gap` measured in blank terminal rows. Rows and columns can nest, and a column inside styled text starts a new block while inheriting the surrounding style.\n\nIn both `row` and `col`, adjacent strings form one layout item. Null children and standalone whitespace are skipped, while explicit empty elements still count when spacing items.\n\n## Testing\n\nAdd renderer tests for nested layouts, wrapping, viewport clipping, and spacing around empty elements. Extend the TypeScript contract checks to cover `ColElement` and its required `gap`.\n\nGitOrigin-RevId: cca7d0057582de001bd8f5008fe949a05d7ebe22",
+            "url": "https://github.com/openai/codex/commit/38e42cdb210b6cfed3ff89728ae419492c33baf6"
+          },
+          {
+            "sha": "15843299be5ad385da2c2a9b3b93d222f1cf1186",
+            "title": "Support inline code in custom status lines (#63755)",
+            "message": "Support inline code in custom status lines (#63755)\n\n## Why\n\nOrdinary status line text collapses spaces and tabs, so it cannot\npreserve the spacing of commands and other literals.\n\n## What changed\n\nAdd a `code` element to the terminal UI tree and expose it as\n`CodeElement` in the status line TypeScript contract. Code spans\npreserve literal spacing, expand tabs to terminal tab stops, and use\ntheme-aware foreground and background colors. They prefer word breaks\nand can wrap long tokens at grapheme boundaries in narrow layouts.\n\n## Testing\n\nAdd renderer coverage for whitespace, wrapping across styled children,\nclipping, and theme contrast. Extend the TypeScript contract fixture to\ncheck that `CodeElement` requires a child list.\n\nGitOrigin-RevId: 626d7624829a25e342fc052ab5194ff53b2a7673",
+            "url": "https://github.com/openai/codex/commit/15843299be5ad385da2c2a9b3b93d222f1cf1186"
+          },
+          {
+            "sha": "110f065202bc1990aab7c85d56b32be78bb39414",
+            "title": "Add whitespace preservation to status line text (#63757)",
+            "message": "Add whitespace preservation to status line text (#63757)\n\n## Why\n\nStatus line text collapses spaces and tabs by default. Authors need a\nway to retain indentation and alignment while styling parts of the text.\n\n## What changed\n\nAdd the optional `preserveWhitespace` prop to text nodes. When enabled,\nit preserves spaces and tabs across nested styles and uses the same\nwrapping rules as inline code. Inline code continues to preserve\nwhitespace automatically.\n\n## Testing\n\nAdd a rendering test that compares styled and unstyled text across\nterminal widths and checks tab expansion and bold styling. Add a\nTypeScript contract fixture that uses the new prop.\n\nGitOrigin-RevId: 525ae1d7df2df036d74990e18092286030041b23",
+            "url": "https://github.com/openai/codex/commit/110f065202bc1990aab7c85d56b32be78bb39414"
+          },
+          {
+            "sha": "9202c7916b434d5312ac580148b7d2460e57fe7e",
+            "title": "Search inline link labels in user messages (#63758)",
+            "message": "Search inline link labels in user messages (#63758)\n\n## Why\n\nSearching raw user messages can return hits from Markdown link destinations\nthat readers never see in the link label.\n\n## What changed\n\nUse inline Markdown link labels for user-message matches and snippets while\npreserving surrounding whitespace and code blocks. Keep literal text for\nmessages with byte-ranged inline elements.\n\nReject cursors that counted raw-text matches because hidden URL hits could\nshift the index and cause pagination to skip a visible match.\n\n## Testing\n\nExtend the thread search integration test to check match offsets, snippet\nformatting, pagination, and rejection of a raw-text cursor.\n\nGitOrigin-RevId: 19af5ab4aa16933e83b4eb2cb15e57cc92597b6b",
+            "url": "https://github.com/openai/codex/commit/9202c7916b434d5312ac580148b7d2460e57fe7e"
+          },
+          {
+            "sha": "0adee0df26c7dcdaf4a19a4013b94f4058d26f33",
+            "title": "Add a process-wide runtime for Statsig evaluations (#63762)",
+            "message": "Add a process-wide runtime for Statsig evaluations (#63762)\n\n## Why\n\nCodex callers need to read feature gates and dynamic configs locally and\nstop using account-scoped decisions when the authentication owner changes.\n\n## What changed\n\n- Bootstrap ChatGPT evaluations through the Codex backend. Initialize\n  API-key and installation identities through the Statsig SDK.\n- Share one background worker per process to retry initialization and\n  refresh evaluations through the SDK. Keep the last successful values\n  on refresh failure while the authentication owner remains current.\n- Expose `Gate` and `DynamicConfig` readers that return `false` and an\n  empty JSON object, respectively, when current evaluations are unavailable.\n\n## Testing\n\nAdd a mock-server test for bootstrap retries after credential changes,\nlocal gate and config reads, and value retention after a failed refresh\nfollowed by replacement on a successful refresh.\n\nGitOrigin-RevId: c02cd976a44229518a7159eb2bd35107ef280b56",
+            "url": "https://github.com/openai/codex/commit/0adee0df26c7dcdaf4a19a4013b94f4058d26f33"
+          },
+          {
+            "sha": "ff146c344d1f103e47da9722cbe5c456fce73e96",
+            "title": "Support structured dynamic tool results in Code Mode (#63766)",
+            "message": "Support structured dynamic tool results in Code Mode (#63766)\n\n## Why\n\nDynamic tool clients could return JSON as text in `contentItems`, so Code Mode scripts had to parse that text to access fields in the result.\n\n## What changed\n\nApp server dynamic tool requests advertise `supportedResultFormat: \"structuredContent\"`. Clients can reply with `structuredContent` and a `success` flag, report a failure with `errorMessage` and `success: false`, or continue using `contentItems`.\n\nCode Mode exposes structured replies as MCP-style tool results, with the original JSON under `structuredContent` and failure status in `isError`. Completed tool items include a text representation of the reply. Matching post-tool-use hooks can receive the structured result for successful calls.\n\n## Testing\n\nAdd protocol tests for the wire formats and rejection of ambiguous replies, plus an app server integration test that exercises structured results, content items, and errors through Code Mode.\n\nGitOrigin-RevId: d63152633b43bd5bd236f6e0dcb41ee7e98e7947",
+            "url": "https://github.com/openai/codex/commit/ff146c344d1f103e47da9722cbe5c456fce73e96"
+          },
+          {
+            "sha": "bc6728ef6872a8982a0d1f104ae2affceb689493",
+            "title": "Stabilize code-mode panic and process metrics tests (#63767)",
+            "message": "Stabilize code-mode panic and process metrics tests (#63767)\n\n## Why\n\nFormatting a panic backtrace can outlast the process metrics RPC deadline.\nA timed-out RPC can also hold the collector permit before its worker starts,\nso checking the invocation count immediately can race with worker scheduling.\n\n## What changed\n\n- Trigger the collector unwind without running the panic hook. Check the\n  collection failure, panic, and busy errors explicitly, and wait for the\n  blocked collector to start before checking invocation and connection counts.\n- Await the V8 runtime thread panic notifications directly in both tests,\n  removing their one-second receive timeouts.\n\nGitOrigin-RevId: 9b2c36577e838c9d327592f9729d3a8a7868c56b",
+            "url": "https://github.com/openai/codex/commit/bc6728ef6872a8982a0d1f104ae2affceb689493"
+          },
+          {
+            "sha": "ff2ee6212c05e0e53eb97c47d49f4a9e952816a1",
+            "title": "Track additional context in conversation world state (#63769)",
+            "message": "Track additional context in conversation world state (#63769)\n\n## Why\n\nThe baseline for comparing additional context submissions lived in memory,\nso resuming a conversation could append context that was already in its\nhistory.\n\n## What changed\n\nPersist the rendered fingerprints and history item IDs for active context\nentries in world state. Reuse unchanged entries across turns and resumes,\nand use their IDs to restore active items during compaction.\n\nA client submission replaces the active set. Tool-provided context updates\nonly its own keys and is recorded after tool results, before the next\nprompt.\n\n## Testing\n\nExtend scenario coverage to check deduplication after resume for both\nmessage and tool-output rendering. Verify that edits in the truncated\nportion of application context do not produce duplicate developer messages.\n\nGitOrigin-RevId: 12a65a70d871f8dcefa082825c0ec4e9446efb56",
+            "url": "https://github.com/openai/codex/commit/ff2ee6212c05e0e53eb97c47d49f4a9e952816a1"
+          },
+          {
+            "sha": "e1492bd86d8f64e851952ab2fb9720b6d34df68d",
+            "title": "Include parent evidence in recorded Guardian reviews (#63770)",
+            "message": "Include parent evidence in recorded Guardian reviews (#63770)\n\n## Why\n\nAn archived worker's transcript can omit the original user instructions and\nassistant context that Guardian needs to assess a recorded tool call.\n\n## What changed\n\nLet clients supply optional `rootEvidence` to experimental\n`thread/guardianReview` on an idle, ephemeral non-subagent thread. Guardian\nreviews the ordered parent messages and omission flags alongside the worker\nhistory loaded through `thread/inject_items`. The parent evidence stays out\nof the worker history, and `usedRootEvidence: true` confirms that the review\nused it.\n\nGuardian can reuse reviewer history when the evidence is unchanged. Changing\nor omitting the evidence resets that history.\n\n## Testing\n\nAdd an app-server integration test covering rejection on persisted threads,\nreviewer history reuse and reset, and review without executing the tool call.\n\nGitOrigin-RevId: a4e78d770af5ad29864cb745b2e31f0fc921f213",
+            "url": "https://github.com/openai/codex/commit/e1492bd86d8f64e851952ab2fb9720b6d34df68d"
+          },
+          {
+            "sha": "17b00277cce64211f59110c0f47bbfa162e98621",
+            "title": "Make Bazel Rust tests portable across Linux environments (#63773)",
+            "message": "Make Bazel Rust tests portable across Linux environments (#63773)\n\n## Why\n\nSome test fixtures depend on `python3` being on the host's `PATH` or\non reading Rust's process arguments from a constructor. Bazel workers\nneed a declared Python runtime, and musl does not provide those\narguments to constructors.\n\n## What changed\n\n- Put Bazel's Python 3.12 runtime on `PATH` for Linux test suites that\n  invoke `python3`, including their Wine launchers.\n- Use standalone helper binaries for exec-server and sandbox fixtures on\n  musl, and read `/proc/self/cmdline` for the MCP hook fixture.\n- Add launcher options for test execution tags and for routing selected\n  Linux cases to a local companion target that shares the test binary.\n- Adjust test fixtures for platform differences in file creation\n  timestamps and shell script execution. Keep cloud-config error tests\n  pointed at their mock server after startup falls back to defaults.\n\n## Testing\n\nExercise marketplace upgrade negotiation at Git 2.20 and check whether\nthe installed Git supports limiting the refs advertised by the clone.\n\nGitOrigin-RevId: 3a83cde954d52ca29d346d67488c9a25c0790614",
+            "url": "https://github.com/openai/codex/commit/17b00277cce64211f59110c0f47bbfa162e98621"
+          },
+          {
+            "sha": "3ccfbbfb92771fb0d130556cbb646cef75a0a86b",
+            "title": "Release 0.174.0-alpha.5",
+            "message": "Release 0.174.0-alpha.5",
+            "url": "https://github.com/openai/codex/commit/3ccfbbfb92771fb0d130556cbb646cef75a0a86b"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.174.0-alpha.4",
+          "head": "rust-v0.174.0-alpha.5",
+          "url": "https://github.com/openai/codex/compare/rust-v0.174.0-alpha.4...rust-v0.174.0-alpha.5",
+          "status": "diverged",
+          "total": 11,
+          "behind": 1,
+          "complete": true,
+          "fetched": 11
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "openai-status:01M898HVZGXFV2XC4775CG9GF8:2026-11-25T13:38:01.446Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-25T13:38:01.446Z",
+      "item": {
+        "id": "openai-status:01M898HVZGXFV2XC4775CG9GF8",
+        "at": "2026-11-25T13:22:34.000Z",
+        "url": "https://status.openai.com/incidents/01M898HVZGXFV2XC4775CG9GF8",
+        "text": "ChatGPT, ChatGPT Work, and Codex Cloud are experiencing elevated conversation errors. We have applied mitigations and are seeing recovery across ChatGPT, ChatGPT Work, and Codex cloud threads. We are monitoring the affected services to ensure continued stability. Our investigation into the underlying cause remains ongoing.",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "monitoring",
+        "publishedAt": "2026-11-25T11:48:13.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.5:2026-11-25T13:38:01.446Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-25T13:38:01.446Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.174.0-alpha.5",
+        "title": "0.174.0-alpha.5",
+        "body": "Release 0.174.0-alpha.5\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-25T13:38:01.451Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.5",
         "publishedAt": "2026-11-25T01:11:35Z",
         "commits": [
