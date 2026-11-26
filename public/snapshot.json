@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-26T04:33:19.221Z",
+  "generatedAt": "2026-11-26T14:23:03.964Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -23875,9 +23875,9 @@
     },
     {
       "id": "openai-status:01M89RGC3STKK2MT53TXHFMY4H",
-      "at": "2026-11-25T16:58:51.000Z",
+      "at": "2026-11-26T14:07:54.000Z",
       "url": "https://status.openai.com/incidents/01M89RGC3STKK2MT53TXHFMY4H",
-      "text": "Elevated errors with Codex GitHub reviews and pull request merges. GitHub reports that the service disruption affecting pull requests and webhooks has been mitigated. We are monitoring Codex automated pull request reviews and merge operations to confirm recovery and stability.",
+      "text": "Elevated errors with Codex GitHub reviews and pull request merges. The GitHub service disruption has been resolved. Codex automated GitHub pull request reviews and merges are operating normally",
       "kind": "signal",
       "status": "post",
       "author": "OpenAI Status",
@@ -23886,14 +23886,14 @@
         "status"
       ],
       "origin": "direct-official",
-      "serviceStatus": "monitoring",
+      "serviceStatus": "resolved",
       "publishedAt": "2026-11-25T16:27:02.000Z"
     },
     {
       "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.7",
-      "at": "2026-11-26T02:55:12.000Z",
+      "at": "2026-11-26T04:42:57.000Z",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.7",
-      "text": "rust-v0.174.0-alpha.7. Release 0.174.0-alpha.7",
+      "text": "0.174.0-alpha.7. Release 0.174.0-alpha.7",
       "kind": "release",
       "status": "post",
       "author": "Codex Releases",
@@ -23902,7 +23902,276 @@
         "release"
       ],
       "origin": "direct-official",
-      "prerelease": true
+      "prerelease": true,
+      "releaseNotes": {
+        "version": 1,
+        "tag": "rust-v0.174.0-alpha.7",
+        "title": "0.174.0-alpha.7",
+        "body": "Release 0.174.0-alpha.7\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-26T14:23:03.969Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.7",
+        "publishedAt": "2026-11-26T04:36:47Z",
+        "commits": [
+          {
+            "sha": "c6bbf8a413d38a8a24b9c6f4fc05d2e90d96a948",
+            "title": "Extract shared network policy types from the proxy crate (#63986)",
+            "message": "Extract shared network policy types from the proxy crate (#63986)\n\n## Why\n\nThe protocol and feature configuration crates depend on the network proxy\ncrate for data types. Give them a smaller dependency that contains the\nshared definitions.\n\n## What changed\n\nMove environment network policies, domain and Unix socket permissions,\npolicy decisions and their sources, and credential provider definitions\ninto `codex-network-policy-types`. Use the new crate directly from\n`codex-protocol` and `codex-features`.\n\nRe-export the moved types from `codex-network-proxy` and keep environment\npolicy conversion and application, along with credential provider\nvalidation, in the proxy crate.\n\nGitOrigin-RevId: 8af684da746830bce45ac00135aed8052dba3824",
+            "url": "https://github.com/openai/codex/commit/c6bbf8a413d38a8a24b9c6f4fc05d2e90d96a948"
+          },
+          {
+            "sha": "1c1e383a7ba3deab78966d648f7f844cf2e307e0",
+            "title": "Harden Guardian v2 hosted messaging tests (#63987)",
+            "message": "Harden Guardian v2 hosted messaging tests (#63987)\n\n## What changed\n\nWait for worker creation with its own timeout before waiting for MCP\ndelivery in the cached approval invalidation test. This gives a missing\nworker a distinct failure from a delivery that never reaches the server.\n\nDisable analytics in the Code Mode conversation history test so hosted\nmessaging only contacts the mock servers.\n\nGitOrigin-RevId: 15887b9f37cc48b938fd67801a0dda9374027492",
+            "url": "https://github.com/openai/codex/commit/1c1e383a7ba3deab78966d648f7f844cf2e307e0"
+          },
+          {
+            "sha": "d800b00e886a77181baf03e9e9aa2ea3445d9a4b",
+            "title": "Restart Guardian v3 shadow intake when Auto Review resumes (#63988)",
+            "message": "Restart Guardian v3 shadow intake when Auto Review resumes (#63988)\n\n## Why\n\nSwitching an enrolled thread to user approvals stops Guardian v3 shadow\nintake. Previously, switching the same thread back to Auto Review left\nintake stopped for subsequent turns.\n\n## What changed\n\nRestart intake in the background with a fresh evidence board after\nchecking that the thread still routes approvals to Auto Review. Start\nat the end of persisted history so the new board only receives new\nevidence. Existing child threads can attach to the new board on their\nnext turn.\n\n## Testing\n\nAdd app-server coverage for routing later turns after Auto Review\nresumes without replaying earlier turns. Extend the host test to cover\nstale settings notifications, cancellation of a queued restart, and\ncreation of a fresh board and reviewer.\n\nGitOrigin-RevId: 5201d7f7a7e3f2c045c69b9584b036467a5767d7",
+            "url": "https://github.com/openai/codex/commit/d800b00e886a77181baf03e9e9aa2ea3445d9a4b"
+          },
+          {
+            "sha": "ceed625df96fe3ca7107fe16d282aef25c57b85e",
+            "title": "Keep TUI tool groups independent when results arrive late (#63989)",
+            "message": "Keep TUI tool groups independent when results arrive late (#63989)\n\n## Why\n\nWhen a command or tool finishes in a different transcript group from where it\nstarted, both groups can share an identity. The later group can inherit the\noriginal group's expanded state or steal its keyboard focus.\n\n## What changed\n\nAssign distinct identities to repeated tool activity in chronological order.\nKeep those identities stable as the live transcript updates and results move\ninto history, so each group retains its own expansion state and focus.\n\n## Testing\n\nAdd regression tests for a command that finishes after assistant commentary\nand an MCP tool that returns an error in a later turn.\n\nGitOrigin-RevId: ca69a68bb32746bdbe22ec7bc9633e4323f38347",
+            "url": "https://github.com/openai/codex/commit/ceed625df96fe3ca7107fe16d282aef25c57b85e"
+          },
+          {
+            "sha": "a089ec6a93dbf6e00fa5f3a66e068e8ce9bacdcd",
+            "title": "Use lightweight settings for app-server thread metadata (#63990)",
+            "message": "Use lightweight settings for app-server thread metadata (#63990)\n\n## Why\n\nEnriching loaded thread results builds a full configuration snapshot,\nincluding an execution permission profile, just to read display settings.\n\n## What changed\n\nRead the configured model, reasoning effort, environment selections, and\nsession source directly from the loaded thread when enriching results.\nThe environment data still includes the working directory and runtime\nworkspace roots.\n\n## Testing\n\nExtend the core test to verify that reading display settings matches the\nconfigured snapshot's display fields without triggering a model lookup.\nExtend the app-server test to verify that thread reads and lists return\nexplicit runtime workspace roots.\n\nGitOrigin-RevId: f7053554fdb0f02bebb51b4cafda2ef39e6e81a5",
+            "url": "https://github.com/openai/codex/commit/a089ec6a93dbf6e00fa5f3a66e068e8ce9bacdcd"
+          },
+          {
+            "sha": "db360f8b002039b3b54108a1432b724b0bff9c20",
+            "title": "Suppress Kitty graphics replies on every pet image chunk (#63992)",
+            "message": "Suppress Kitty graphics replies on every pet image chunk (#63992)\n\nThe first chunk of a Kitty pet image upload already requests quiet mode,\nbut continuation chunks omit that setting. Send `q=2` on every\ncontinuation chunk, including the final one, to suppress terminal replies\nthroughout the upload.\n\n## Testing\n\nExtend the command snapshot test to check the headers of a three-chunk\nupload, including the final `m=0,q=2` header.\n\nGitOrigin-RevId: cd12c3e6f4c27320c4823f593657ab92824c83ff",
+            "url": "https://github.com/openai/codex/commit/db360f8b002039b3b54108a1432b724b0bff9c20"
+          },
+          {
+            "sha": "06c718ae68a305e45ed322d80dd89da24791542f",
+            "title": "Remove the shadow skill ranking experiment (#63993)",
+            "message": "Remove the shadow skill ranking experiment (#63993)\n\n## What changed\n\nRemove the background ranking of skill candidates and the metrics that\ncompared those rankings with skills actually used. Drop the experiment's\nper-thread state and metrics wiring.\n\nContinue accepting `skill_search` in existing feature configurations as\nan ignored compatibility key.\n\n## Testing\n\nExtend the feature configuration test to cover both `true` and `false`\nvalues for `skill_search`.\n\nGitOrigin-RevId: 9492533bdeea58d4976bc9fbcffb6b82036b7894",
+            "url": "https://github.com/openai/codex/commit/06c718ae68a305e45ed322d80dd89da24791542f"
+          },
+          {
+            "sha": "71cf244137e9a8e0dc1c47f9ccd374819106d581",
+            "title": "Avoid cloning thread metadata during rollout read repair (#63994)",
+            "message": "Avoid cloning thread metadata during rollout read repair (#63994)\n\nWhen the stored rollout path matches, compare the normalized working\ndirectory and computed archive timestamp with the stored values. Return\nearly if both match. Otherwise, reuse the existing metadata to build\nthe updated row.\n\nGitOrigin-RevId: 2c5d3e98851f2c8f72414bd688ccc99b2219adeb",
+            "url": "https://github.com/openai/codex/commit/71cf244137e9a8e0dc1c47f9ccd374819106d581"
+          },
+          {
+            "sha": "9938ffba35f731c08603e1bf60cd0bcb88048388",
+            "title": "Notify extensions when Guardian policy changes the approvals reviewer (#63995)",
+            "message": "Notify extensions when Guardian policy changes the approvals reviewer (#63995)\n\n## Why\n\nA Guardian policy refresh can switch a running thread from Auto Review\nto user approvals. Without a config change notification, Guardian's\nshadow reviewers can stay active after that switch.\n\n## What changed\n\nNotify config contributors with the previous and updated effective\nconfigs when a policy refresh changes the approvals reviewer. Send the\nnotification after releasing the session locks, even if the refreshed\npolicy blocks the current model.\n\n## Testing\n\nExtend the Guardian shadow test to refresh policy on a root thread and\nits child. Verify that both receive the reviewer change, that switching\nto user approvals cancels their shadow reviewers, and that allowing\nAuto Review again restores the requested reviewer.\n\nGitOrigin-RevId: fd61acf7fb161be341a63a2e867582e6c308d0dc",
+            "url": "https://github.com/openai/codex/commit/9938ffba35f731c08603e1bf60cd0bcb88048388"
+          },
+          {
+            "sha": "76696132f04983e6283fdc97d8e7b11a4ca59f9b",
+            "title": "Fix clipboard notices in the transcript overlay (#63996)",
+            "message": "Fix clipboard notices in the transcript overlay (#63996)\n\n## Why\n\nCopying a whole message can leave the overlay showing “Copying selection…”\nbecause the copy has no active selection to receive the clipboard result.\n\n## What changed\n\nTrack which clipboard request owns the notice so its completion can show\nsuccess or failure even without an active selection. Older results leave a\nnewer notice intact.\n\nTrack the last rendered transcript width for resize detection and render\nprewrapped rows without hyperlinks using Ratatui’s `Paragraph`.\n\n## Testing\n\nAdd a snapshot test that checks pending, failure, and success notices\nwithout a selection, verifies that an older result leaves the notice\nintact, and confirms the overlay stays open.\n\nGitOrigin-RevId: c4076ccc425240ca39af9fd5c8cf6fca96303dda",
+            "url": "https://github.com/openai/codex/commit/76696132f04983e6283fdc97d8e7b11a4ca59f9b"
+          },
+          {
+            "sha": "03f4f4e6b75858cb529432fa28d9b44c7151055f",
+            "title": "Make TUI workspace divider drags more responsive (#63997)",
+            "message": "Make TUI workspace divider drags more responsive (#63997)\n\n## Why\n\nRapid mouse motion can queue more drag reports than the TUI needs to\nresize a pane. Rebuilding sidebar document layouts at each preview width\nalso adds work while the divider moves.\n\n## What changed\n\n- Share drag handling between the Command Center and sidebar dividers.\n  Let users grab either column of the Command Center gutter, keep the\n  grab offset, and highlight the divider on hover and during a drag.\n- Use the release position for the final width. If focus loss interrupts\n  a valid drag, keep the last width. When the terminal holds image pixels,\n  show a guide and defer pane reflow until the drag ends.\n- Batch consecutive mouse motion reports during divider drags while\n  preserving input order at batch boundaries. Rewrap cached sidebar\n  document content during live previews and rebuild its layout at the\n  final width.\n\n## Testing\n\nCover gutter hit testing, grab offsets, release and focus-loss behavior,\ndrag batching at input boundaries, and document layout reuse during\npreview followed by a rebuild.\n\nGitOrigin-RevId: 949a805a42d269f4bac1a86ac7e4b7f8c2a4cacf",
+            "url": "https://github.com/openai/codex/commit/03f4f4e6b75858cb529432fa28d9b44c7151055f"
+          },
+          {
+            "sha": "fd95d89146661880b8ccb0b70d89658679b2adc5",
+            "title": "Skip reasoning effort animations during TUI thread replay (#63998)",
+            "message": "Skip reasoning effort animations during TUI thread replay (#63998)\n\n## Why\n\nSwitching back to a thread restores its current settings before replaying\nolder updates. Those updates can trigger reasoning effort animations and\nleave the status line temporarily showing an older effort level.\n\n## What changed\n\nSet the composer's reasoning effort baseline before refreshing it for\neach replayed settings update. The status line reflects the replayed\neffort immediately, and live changes still animate.\n\n## Testing\n\nAdd a regression test that replays earlier effort changes after restoring\na thread, checks the displayed effort, and verifies that a subsequent\nlive change starts the animation.\n\nGitOrigin-RevId: 3daadc7b8b5917eba1055940c67399b8ab729eda",
+            "url": "https://github.com/openai/codex/commit/fd95d89146661880b8ccb0b70d89658679b2adc5"
+          },
+          {
+            "sha": "b420c7ca54e1caa01ebbba608b95495aaa304f69",
+            "title": "Preserve sidebar clicks when the terminal gains focus (#63999)",
+            "message": "Preserve sidebar clicks when the terminal gains focus (#63999)\n\n## Why\n\nA terminal can report a focus gain between mouse-down and mouse-up.\nClearing the pending sidebar press on that event causes the release to\nbe ignored, so clicking the tab chooser's close button can fail to open\nthe confirmation dialog.\n\n## What changed\n\nKeep the pending sidebar press on `TuiEvent::FocusGained` so the mouse\nrelease can complete the click.\n\n## Testing\n\nExtend the tab chooser test to send a focus gain between the press and\nrelease and check that the close confirmation dialog appears.\n\nGitOrigin-RevId: 4173292c50383304e9ef62104251434be7580789",
+            "url": "https://github.com/openai/codex/commit/b420c7ca54e1caa01ebbba608b95495aaa304f69"
+          },
+          {
+            "sha": "f3c6076ac262569dfe8e69f0df601759b6d42211",
+            "title": "Skip `SessionEnd` hooks when child threads shut down (#64000)",
+            "message": "Skip `SessionEnd` hooks when child threads shut down (#64000)\n\n## Why\n\nA hosted child thread can inherit the root session ID and use a custom\nsession source. The existing subagent source check can miss that child,\nallowing its shutdown to fire `SessionEnd` while the root is still active.\n\n## What changed\n\nBefore preparing `SessionEnd` hooks, skip threads whose ID does not match\nthe session ID.\n\n## Testing\n\nExtend the shutdown test to close a hosted child with an inherited\nsession ID before closing the root and verify that exactly one\n`SessionEnd` hook invocation is logged for the session.\n\nGitOrigin-RevId: 4c80a17724cab57003b33080482d00f3cc2afea4",
+            "url": "https://github.com/openai/codex/commit/f3c6076ac262569dfe8e69f0df601759b6d42211"
+          },
+          {
+            "sha": "f39c3c78d732a2650c9a747a47ae084d6ea4eb43",
+            "title": "Initialize Statsig feature gates across Codex launch modes (#64001)",
+            "message": "Initialize Statsig feature gates across Codex launch modes (#64001)\n\n## Why\n\nEnabling `statsig_gates` can only load evaluations if the process starts\nthe Statsig runtime. Several Codex entry points never started it.\n\n## What changed\n\nStart Statsig in standalone and embedded app servers, the TUI when it\nconnects to a separate app server, eligible `codex sandbox` launches, and\nlocal and remote exec servers. This also covers `codex exec` through its\nembedded app server. Use the serving or local account where applicable\nand installation identity for remote execution. Share the runtime with\nthe embedded TUI and flush it on normal shutdown.\n\n## Testing\n\nAdd a CLI integration test that checks which evaluation endpoint each\nlaunch mode requests, including signed-in and signed-out sandbox launches.\nSupply a bundled fixture key in Bazel and nextest CI builds so the test runs.\n\nGitOrigin-RevId: 64df9933c1a9783a86be8712fa012b495f34b0f8",
+            "url": "https://github.com/openai/codex/commit/f39c3c78d732a2650c9a747a47ae084d6ea4eb43"
+          },
+          {
+            "sha": "44d359767fa12b5c75f0b6f57a5c795428c3ec6f",
+            "title": "Preserve initial turn input when suspension races with startup (#64002)",
+            "message": "Preserve initial turn input when suspension races with startup (#64002)\n\n## Why\n\nSuspension can detach the active task just as startup tries to save\nunrecorded input before reading the host roster. If detachment wins,\ncleanup can miss the initial submission when saving the turn for recovery.\n\n## What changed\n\nStore pending initial input in the shared `TurnContext` during host\nadmission and startup steps that can wait on the host roster. Save the\ninput before checking whether the task is still active, so suspension\nand abort cleanup can retrieve it after the task exits. Reclaim it under\nthe active-turn lock when startup completes so only one path records\nthe submission.\n\nGitOrigin-RevId: 2f180fc372daaa8f2d8e0ebcb4787a1b2cfd61fa",
+            "url": "https://github.com/openai/codex/commit/44d359767fa12b5c75f0b6f57a5c795428c3ec6f"
+          },
+          {
+            "sha": "30d71606a18878a05f91538a19f15eedc50ce26d",
+            "title": "Allow callers to redact encoded JSON request bodies from logs (#64003)",
+            "message": "Allow callers to redact encoded JSON request bodies from logs (#64003)\n\n## Why\n\nCallers need a way to keep encoded JSON payloads out of request\ndiagnostics while preserving what the server receives.\n\n## What changed\n\nAdd `EncodedJsonBody::omit_from_logs()` to replace the trace body with\n`<redacted>` and show only the byte length in debug output. Preserve the\nsetting through private JSON enrichment and request preparation. The\nsetting leaves the wire payload and redirect policy unchanged.\n\n## Testing\n\nAdd a regression test that checks trace redaction and debug output for\nboth plain and enriched bodies before and after preparation, and\nverifies that decompressing the wire body yields the expected bytes.\n\nGitOrigin-RevId: 5b1ae2c810242f8c7f35bcdf653af9127360c29c",
+            "url": "https://github.com/openai/codex/commit/30d71606a18878a05f91538a19f15eedc50ce26d"
+          },
+          {
+            "sha": "9b6a7e3d0ed9297c5829d4ac0aedaaeedaa91969",
+            "title": "Update the TUI thread replay snapshot to include composer borders (#64004)",
+            "message": "Update the TUI thread replay snapshot to include composer borders (#64004)\n\nGitOrigin-RevId: ba97eedebbe9558cd698f0af4955a16c3041c5aa",
+            "url": "https://github.com/openai/codex/commit/9b6a7e3d0ed9297c5829d4ac0aedaaeedaa91969"
+          },
+          {
+            "sha": "897d47ac95f0abaf6cb459da6aa0f4e82dd54363",
+            "title": "Batch native scrollback replays during history refill (#64005)",
+            "message": "Batch native scrollback replays during history refill (#64005)\n\n## Why\n\nRefilling terminal scrollback can take several history pages. Replaying\nscrollback after each page rebuilds it while more history is still loading.\n\n## What changed\n\nBuffer older pages while the next page is loading, then replay them together\nwhen the refill finishes. Flush buffered history if a page request fails,\nthe transcript overlay opens during the refill, or the five-second deadline\nfrom the first buffered page expires. The overlay still updates page by page.\n\n## Testing\n\nExtend the scrollback refill test to cover batching across pages, replay\nafter a page failure, and replay at the deadline with a request still pending.\n\nGitOrigin-RevId: 577b9f7394e2741267099e4595f69345a6a70a21",
+            "url": "https://github.com/openai/codex/commit/897d47ac95f0abaf6cb459da6aa0f4e82dd54363"
+          },
+          {
+            "sha": "7d0d2ac81adbd8df84af3761704cc41b414135ed",
+            "title": "Update the Bazel `zstd` dependency to 1.6.0 (#64006)",
+            "message": "Update the Bazel `zstd` dependency to 1.6.0 (#64006)\n\nGitOrigin-RevId: 5b15b754dd09d9fc9f9c57b61448458799d85a78",
+            "url": "https://github.com/openai/codex/commit/7d0d2ac81adbd8df84af3761704cc41b414135ed"
+          },
+          {
+            "sha": "b8498ada1c02f829057e5e171a0db2d6913d9329",
+            "title": "Add `maxLines` to statusline text blocks (#64007)",
+            "message": "Add `maxLines` to statusline text blocks (#64007)\n\n## Why\n\nLong statusline text can wrap across enough lines to push fields below it out of view.\n\n## What changed\n\nSet `maxLines` to a positive safe integer to cap a text block after wrapping. If content exceeds the cap, the last visible line ends with an ellipsis when space permits. Long words can break at grapheme boundaries so a clamped block can shrink alongside other fields.\n\n## Testing\n\nCover invalid limits, visibility of neighboring fields, and truncation that preserves whole graphemes and leaves the ellipsis outside hyperlinks.\n\nGitOrigin-RevId: 42f57b3f92e81860f888b733ce6121bb94dc78c3",
+            "url": "https://github.com/openai/codex/commit/b8498ada1c02f829057e5e171a0db2d6913d9329"
+          },
+          {
+            "sha": "163c555f18b7616b40f7466c039ec5614a787b46",
+            "title": "Add a directional `box` element for custom status lines (#64008)",
+            "message": "Add a directional `box` element for custom status lines (#64008)\n\n## What changed\n\nCustom status lines can choose between row and column layouts by setting\n`direction` on a `box`. Omitting `direction` stacks children in a column.\nBoth layouts require `gap`, and only rows accept `wrap` and `justify`.\n\nHorizontal boxes group adjacent strings into one layout item even when\n`justify` is omitted. Use separate elements to insert a gap between\ntext items.\n\n## Testing\n\nAdd renderer tests for default column layout, wrapping and alignment in\nrows, and spacing around empty boxes. Extend the TypeScript contract\nchecks to cover dynamic direction, required gaps, and rejection of\nrow-only props on columns.\n\nGitOrigin-RevId: 3ff9b4a8be6ae79b90512c1ad1ec1c16dafad0cf",
+            "url": "https://github.com/openai/codex/commit/163c555f18b7616b40f7466c039ec5614a787b46"
+          },
+          {
+            "sha": "8d8de8f693fbbb494583371cc97248287ef93036",
+            "title": "Add flexible spacers to custom statusline layouts (#64009)",
+            "message": "Add flexible spacers to custom statusline layouts (#64009)\n\n## Why\n\nStatusline authors can set fixed gaps or justify a whole row. An expandable gap lets them place a field at the far edge by putting a spacer between it and the other fields.\n\n## What changed\n\nAdd the empty `spacer` element to the statusline renderer and its bundled TypeScript contract. Spacers share the remaining width on each wrapped row line before `justify` is applied. In columns stretched by a taller sibling, spacers share the added height.\n\n## Testing\n\nAdd renderer tests for wrapped and nested layouts, background fill, and clipping. Cover empty spacer declarations and reject spacer children in the parser and TypeScript contract tests.\n\nGitOrigin-RevId: d8bb58304b2a1f10ac0c60ec198aa3c25a169cae",
+            "url": "https://github.com/openai/codex/commit/8d8de8f693fbbb494583371cc97248287ef93036"
+          },
+          {
+            "sha": "09b1cfd3371e546dacb290a3fcc56f32a86dccf0",
+            "title": "Add inline badges to custom statuslines (#64010)",
+            "message": "Add inline badges to custom statuslines (#64010)\n\nAdd a `badge` element to the statusline UI tree and TypeScript contract.\nIt renders one string as a padded, single-line label with normalized\nwhitespace. The optional `color` accepts `secondary` (the default),\n`info`, `success`, `warning`, or `danger`. The renderer uses the\nactive theme for the label and blends the fill with the surrounding\nbackground when its color is known.\n\nBadges wrap as a unit. When a line limit requires an ellipsis after\nearlier content, a trailing badge that cannot fit is dropped. At the\nviewport edge, the right padding can clip while the full label remains\nvisible.\n\n## Testing\n\nAdd rendering tests for wrapping, clipping, theme colors, and linked\nbadges, along with checks for UI tree limits and the TypeScript contract.\n\nGitOrigin-RevId: be9e9799d6832976d325ba5fda48f5793dbbc722",
+            "url": "https://github.com/openai/codex/commit/09b1cfd3371e546dacb290a3fcc56f32a86dccf0"
+          },
+          {
+            "sha": "3d5a786a205b19b96c640d4eb2e4e8313fae1229",
+            "title": "Clean up abandoned MCP sessions during HTTP recovery (#64011)",
+            "message": "Clean up abandoned MCP sessions during HTTP recovery (#64011)\n\n## Why\n\nA Streamable HTTP server can assign a replacement session ID before the\ninitialization handshake finishes. If recovery fails or times out at\nthat point, the abandoned session can occupy server capacity needed by\nthe next attempt.\n\n## What changed\n\n- Track replacement sessions as soon as the server returns\n  `Mcp-Session-Id`. Coordinate a single `DELETE` between handshake cleanup\n  and SDK teardown, leaving successfully initialized sessions active.\n- Let cleanup finish in the background when the caller's deadline\n  expires. Coordinate cleanup with OAuth refresh so the deletion can use\n  updated credentials.\n- Keep the service, OAuth state, and expiry signal together for each\n  connection. Keep recovery scoped to the failed connection and\n  recheck client state before returning a replacement so shutdown can\n  take precedence.\n\n## Testing\n\nCover interrupted JSON and SSE handshakes, cleanup before retry on a\nserver with limited session capacity, OAuth refresh during cleanup,\nconcurrent calls on expired sessions, and recovery racing with shutdown.\n\nGitOrigin-RevId: 0caa1b1271f4e7ae667f90f15bfa86b1bdfe7d0b",
+            "url": "https://github.com/openai/codex/commit/3d5a786a205b19b96c640d4eb2e4e8313fae1229"
+          },
+          {
+            "sha": "e54baff042954a4462e9f1a522fd1872b32c777b",
+            "title": "Move environment selection tests into a dedicated file (#64012)",
+            "message": "Move environment selection tests into a dedicated file (#64012)\n\nMove the existing selection, readiness, and configuration inheritance\ntests into `environment_selection_tests.rs` and keep them wired up as\nthe `environment_selection::tests` module.\n\nGitOrigin-RevId: 304944a8875c5d92e21bcc2ab39e760e41083d37",
+            "url": "https://github.com/openai/codex/commit/e54baff042954a4462e9f1a522fd1872b32c777b"
+          },
+          {
+            "sha": "653def34fbbe123cf06710afcdcd61011eb8cb8f",
+            "title": "Preserve native exit codes in Windows PowerShell hooks (#64013)",
+            "message": "Preserve native exit codes in Windows PowerShell hooks (#64013)\n\n## Why\n\nPowerShell's `-Command` can report a native command's exit code `2` as\n`1`, so a `PreToolUse` hook can fail to block a tool call.\n\n## What changed\n\nUse `$?` to preserve successful hook results and forward\n`$LASTEXITCODE` on failure when available. Pass scripts with named\nblocks through as written because PowerShell forbids trailing\ntop-level statements after those blocks.\n\n## Testing\n\nAdd Windows regression coverage for a native command and a PowerShell\n`end` block that each exit with code `2`. Both cases check that\n`PreToolUse` denies `apply_patch` before approval, reports the denial\nreason, and leaves the target file uncreated.\n\nGitOrigin-RevId: 9668b1382bb56f168794dd8d4d2fecac13d2f649",
+            "url": "https://github.com/openai/codex/commit/653def34fbbe123cf06710afcdcd61011eb8cb8f"
+          },
+          {
+            "sha": "2f83e4843fddcf15fb451224d973773a387254e9",
+            "title": "Surface session lookup errors in the TUI (#64014)",
+            "message": "Surface session lookup errors in the TUI (#64014)\n\n## Why\n\nLooking up a session by ID treated every `thread/read` failure as a\nmissing session, hiding errors such as unreadable session metadata.\n\n## What changed\n\nStartup resume and fork report lookup failures after cleaning up the\napp-server session. In an active TUI, `/resume` displays lookup errors\nin the current chat or invokes transport recovery when applicable. If\na Cloud chat must be opened first, `/resume` directs the user to run\nthe command without an ID and select the chat from the picker.\n\n## Testing\n\nAdd regression coverage for missing and unreadable sessions, preserving\nthe active session after a failed lookup, and showing picker guidance\nfor an unopened Cloud chat.\n\nGitOrigin-RevId: dddac289a2959133809c050b8701975ab474ef13",
+            "url": "https://github.com/openai/codex/commit/2f83e4843fddcf15fb451224d973773a387254e9"
+          },
+          {
+            "sha": "ad07f04e470afd3ed700d591c58f8ab7ae57b94f",
+            "title": "Show background command launches and late results in the TUI (#64015)",
+            "message": "Show background command launches and late results in the TUI (#64015)\n\n## Why\n\nA background command can outlive the turn that launched it. Its result\ncould be dropped when no turn was active or appear as a separate\ntranscript entry if later output had already displaced its running row.\n\n## What changed\n\n- Show background commands as they start, including commands that don't\n  match a recognized tool action. Keep tracking their exits after a\n  turn ends or is interrupted.\n- Update the original transcript row with the exit status and output,\n  including when the command finishes in a parked side conversation.\n- In rich terminal scrollback, label an unfinished launch `Started`.\n  If the launch has already printed, append the result in order.\n  Otherwise, replace the queued launch with the completed entry.\n\n## Testing\n\nCover late exits after turn completion and interruption, completion\nduring a side conversation handoff, and result ordering behind queued\nscrollback.\n\nGitOrigin-RevId: 65f069af28c112078d85613da2c95e5c1c4f29bf",
+            "url": "https://github.com/openai/codex/commit/ad07f04e470afd3ed700d591c58f8ab7ae57b94f"
+          },
+          {
+            "sha": "80ea5901ad7f53b1f6478a33f5fd51ffc2676d33",
+            "title": "Bundle the Statsig client key in release builds (#64016)",
+            "message": "Bundle the Statsig client key in release builds (#64016)\n\n## Why\n\nCodex needs a non-empty client key at compile time to use Statsig gates\nwhen the feature is enabled.\n\n## What changed\n\nSet `CODEX_BUNDLED_STATSIG_CLIENT_KEY` from the `CODEX_STATSIG_CLIENT_KEY`\nGitHub Actions variable in the Cargo and Bazel build steps of both release\nworkflows. The shared Bazel action forwards the key to Rust compilation\nwhen the value is non-empty.\n\nGitOrigin-RevId: 90ad3471417bc030acf90836d3fd0c24d35feffe",
+            "url": "https://github.com/openai/codex/commit/80ea5901ad7f53b1f6478a33f5fd51ffc2676d33"
+          },
+          {
+            "sha": "58b14699ec8dcd9f6efd27ef776036c2ae1b943b",
+            "title": "Keep interrupt guidance visible during TUI streaming (#64018)",
+            "message": "Keep interrupt guidance visible during TUI streaming (#64018)\n\n## Why\n\nStreaming output hides the working status row and its interrupt shortcut.\nWhen a message without a phase finishes before the turn does, the status\nrow can also stay hidden while Codex is still working.\n\n## What changed\n\nShow the configured interrupt shortcut in the composer footer while output\nstreams and the status row is hidden. With the default binding, the footer\nshows `esc twice to interrupt` in Vim insert mode.\n\nKeep the status row visible through whitespace-only output. Restore it\nafter a message without a phase completes and the stream queues drain if\nthe turn is still running.\n\n## Testing\n\nCover whitespace-only output, footer hints with a draft and in Vim modes,\nhint layout at narrow widths, and status restoration before turn completion.\n\nGitOrigin-RevId: 246180593baf2d6ead0e84634bf7bd8ee4ec3ea5",
+            "url": "https://github.com/openai/codex/commit/58b14699ec8dcd9f6efd27ef776036c2ae1b943b"
+          },
+          {
+            "sha": "2055a99af459a503509828abd579e34668d345b6",
+            "title": "Support numeric MCP elicitation fields in the TUI (#64023)",
+            "message": "Support numeric MCP elicitation fields in the TUI (#64023)\n\n## Why\n\nMCP forms with numeric fields fell back to a generic approval prompt,\nwhere users had no way to enter the requested values. That prompt also\noffered acceptance for forms whose required fields could not be filled in.\n\n## What changed\n\n- Render `integer` and `number` fields with schema defaults, validate\n  minimum and maximum bounds, and submit answers as JSON numbers.\n- Show the requesting server on forms, allow users to skip blank optional\n  inputs with the submit key, and add `F6` to decline a form. `Esc` cancels\n  the request.\n- Explain when a form cannot be displayed and offer acceptance without\n  answers only when the form has no required fields.\n\n## Testing\n\nExercise invalid numeric input and defaults, exact large integer\nsubmission, blank optional fields, and queue advancement after declining.\nSnapshot the numeric validation error and the fallback prompts for\nunsupported forms with and without required fields.\n\nGitOrigin-RevId: 1dd65b78fb271a027d9ae479c6fc9754607189f2",
+            "url": "https://github.com/openai/codex/commit/2055a99af459a503509828abd579e34668d345b6"
+          },
+          {
+            "sha": "dbb9b2e31ee5dbaac391a422d3f8b25b88fc8d5c",
+            "title": "Show TUI shortcut hints for the focused pane (#64024)",
+            "message": "Show TUI shortcut hints for the focused pane (#64024)\n\n## Why\n\nThe sidebar can stay visible while the conversation has keyboard focus.\nShowing sidebar shortcuts in that state makes keys such as `Esc` look\nlike they act on the sidebar even when the conversation receives them.\n\n## What changed\n\nHide keyboard hints in unfocused panes and show the configured shortcut\nfor focusing the sidebar when it is available. Keep mouse controls\nclickable, including the file path view's Back button when its keyboard\nbinding is disabled. An unmodified left click in the file path body\nfocuses the sidebar.\n\nUse configured pager bindings for reading and search hints. Watch-only\nagent transcripts use single-key pager bindings because they handle\npager keys directly.\n\n## Testing\n\nAdd coverage for file path focus and mouse controls, hint placement and\nclick targets in narrow panes, and pager hints in watch-only transcripts.\n\nGitOrigin-RevId: 3d9375d957789c9f71f6e45f919f815713536622",
+            "url": "https://github.com/openai/codex/commit/dbb9b2e31ee5dbaac391a422d3f8b25b88fc8d5c"
+          },
+          {
+            "sha": "1d05b9851ca29721fef85f9261ed050706c6b0ca",
+            "title": "Show Command Center shortcuts that match focus and input (#64025)",
+            "message": "Show Command Center shortcuts that match focus and input (#64025)\n\n## Why\n\nThe Command Center can show action shortcuts while the conversation has\nkeyboard focus or while a search or rename field consumes those keys.\n\n## What changed\n\nUse the shared footer renderer to show a focus shortcut in the unfocused\nCommand Center and action hints when it has focus. Keep the editor cursor\nin the active pane and hide header shortcuts when their actions are\nunavailable. For example, the default `g` grouping hint disappears while\ntyping a search because `g` goes into the query.\n\n## Testing\n\nExtend the workspace navigation test to check the focus hint and cover\ncustom accept and grouping bindings during search and rename.\n\nGitOrigin-RevId: a96a093b77b6ef04d717b542e30b041164d1210c",
+            "url": "https://github.com/openai/codex/commit/1d05b9851ca29721fef85f9261ed050706c6b0ca"
+          },
+          {
+            "sha": "5148e3d6421c3adb9991b712b85f973ac33b9e50",
+            "title": "Show status for subagent waits without targets in the TUI (#64026)",
+            "message": "Show status for subagent waits without targets in the TUI (#64026)\n\n## Why\n\nThe TUI showed “Waiting for agents” even when a wait had no agent\ntargets, and “Finished waiting” even when it failed or was interrupted.\n\n## What changed\n\nWhen a wait has no receiver thread IDs or agent states, show “Waiting,”\n“Waited,” “Failed to wait,” or “Interrupted” according to its status.\n\n## Testing\n\nExtend the collaboration transcript snapshot to cover all four statuses\nfor waits without targets.\n\nGitOrigin-RevId: 62097034b160852b5921d869e0a04737b69923f9",
+            "url": "https://github.com/openai/codex/commit/5148e3d6421c3adb9991b712b85f973ac33b9e50"
+          },
+          {
+            "sha": "963d4f57179b579bc24d5270019e857a80a7f0de",
+            "title": "Honor per-executor plugin settings in capability discovery (#64052)",
+            "message": "Honor per-executor plugin settings in capability discovery (#64052)\n\n## Why\n\nA plugin can be installed in several executor environments. Disabling one\ninstallation should leave the others available, while a thread-wide exclusion\nneeds to apply across environments.\n\n## What changed\n\n- In executor capability discovery V2, allow an executor to list its own\n  plugin installations subject to marketplace policy. A named entry such as\n  `\"notes@market\": {}` inherits the executor default when the thread has\n  no enablement preference. A default alone does not list any plugins.\n- Apply thread enablement preferences across installations and scope executor\n  opt-outs to the affected installation. When MCP server names are shared,\n  use the first enabled installation.\n- Preserve connector mappings for explicit `disabledPluginIds` exclusions\n  so Apps tool search can honor them even when the executor has already\n  disabled the installation.\n\n## Testing\n\nAdd regression coverage for marketplace filtering, thread and executor\nprecedence, installation-scoped exclusions, and Apps connector suppression\nafter an executor opt-out.\n\nGitOrigin-RevId: d3465a38f3ebf5042d5c45dabfdb32f8ada81727",
+            "url": "https://github.com/openai/codex/commit/963d4f57179b579bc24d5270019e857a80a7f0de"
+          },
+          {
+            "sha": "2a3f7da44529617e4f65d776e985d1e49cf89e4e",
+            "title": "Extract TUI sidebar input routing into its own module (#64053)",
+            "message": "Extract TUI sidebar input routing into its own module (#64053)\n\n## What changed\n\nMove sidebar hit testing and mouse press tracking into `sidebar_input`.\nResolve pointer events before executing tab actions or dispatching input\nto the visible document, subagent panel, or chooser.\n\nKeep requiring the press and release to resolve\nto the same target in the current sidebar state.\n\nGitOrigin-RevId: a818dbfd53cbf79c97ae5036d3608c7d4d67da52",
+            "url": "https://github.com/openai/codex/commit/2a3f7da44529617e4f65d776e985d1e49cf89e4e"
+          },
+          {
+            "sha": "57a49fc013732d85fb51ce88d994e4be0e038b38",
+            "title": "Refactor TUI sidebar chooser input handling (#64054)",
+            "message": "Refactor TUI sidebar chooser input handling (#64054)\n\n## What changed\n\nMove chooser handling from `side_focus.rs` into a dedicated sidebar input\nmodule. Distinguish events the chooser consumes from events it leaves\nunhandled and events that produce an action.\n\nCheck row visibility and guard against stale keyboard selections before\nresolving an open action to an agent, retry row, document, existing\nchat, or new chat.\n\nGitOrigin-RevId: 681dadbb3b964fbb886795120fa28760cb11be9d",
+            "url": "https://github.com/openai/codex/commit/57a49fc013732d85fb51ce88d994e4be0e038b38"
+          },
+          {
+            "sha": "06023b038f642a2290a9ab53392342c18c5b4f39",
+            "title": "Add mouse controls to hide and restore the TUI sidebar (#64055)",
+            "message": "Add mouse controls to hide and restore the TUI sidebar (#64055)\n\n## Why\n\nHiding the sidebar through keyboard navigation leaves no visible control\nfor reopening it.\n\n## What changed\n\nClick `›` in the sidebar tab strip to hide the sidebar and return focus\nto the parent conversation. Click `‹` above the main transcript to\nrestore the previous sidebar content. The restore control also appears\nwhen the terminal is too narrow to show the sidebar alongside the main\nconversation.\n\n## Testing\n\nCover hiding and restoring side chats and document previews with the\nmouse, including reopening a side chat at narrow terminal widths and\npreserving the parent conversation's reading position.\n\nGitOrigin-RevId: 1f0f893b736b61c109e0761abbe3bde3d388e1b6",
+            "url": "https://github.com/openai/codex/commit/06023b038f642a2290a9ab53392342c18c5b4f39"
+          },
+          {
+            "sha": "f79875c21bd77d23e36e6dbe6505226f2961f270",
+            "title": "Fix Unicode fuzzy matching and slash popup activation (#64058)",
+            "message": "Fix Unicode fuzzy matching and slash popup activation (#64058)\n\n## Why\n\nFuzzy matching lowercased candidates and queries differently, so Greek\nsigma variants could fail to match. The slash-command popup could also\nopen for fuzzy matches that its exact and prefix filters never displayed,\ntaking over the arrow keys while the user was editing a draft.\n\n## What changed\n\n- Apply the same Unicode case folding to both sides of a fuzzy match and\n  use it to rank exact and prefix matches in the skill popup.\n- Use the same command list and case-insensitive exact and prefix\n  matching rules to open and filter the slash-command popup.\n\n## Testing\n\nCover Greek sigma and long s in the fuzzy matcher, snapshot skill\nresults with a folded exact match above a prefix match, and check that\nthe arrow keys move the cursor through a draft starting with `/ſtatus`.\n\nGitOrigin-RevId: 04cf3a65b02204221569c4f7b2d4397f48554e2d",
+            "url": "https://github.com/openai/codex/commit/f79875c21bd77d23e36e6dbe6505226f2961f270"
+          },
+          {
+            "sha": "380fb87780a51eaf4815103e234c812a33a72bbd",
+            "title": "Release 0.174.0-alpha.7",
+            "message": "Release 0.174.0-alpha.7",
+            "url": "https://github.com/openai/codex/commit/380fb87780a51eaf4815103e234c812a33a72bbd"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.174.0-alpha.6",
+          "head": "rust-v0.174.0-alpha.7",
+          "url": "https://github.com/openai/codex/compare/rust-v0.174.0-alpha.6...rust-v0.174.0-alpha.7",
+          "status": "diverged",
+          "total": 41,
+          "behind": 1,
+          "complete": true,
+          "fetched": 41
+        },
+        "comparisonError": null
+      }
     }
   ],
   "sources": {
@@ -23911,7 +24180,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-26T04:33:18.460Z",
+      "lastSuccessAt": "2026-11-26T14:23:03.516Z",
       "error": null,
       "count": 150
     },
@@ -23920,7 +24189,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-26T04:33:18.460Z",
+      "lastSuccessAt": "2026-11-26T14:23:03.516Z",
       "error": null,
       "count": 10
     },
@@ -23929,7 +24198,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-26T04:33:18.460Z",
+      "lastSuccessAt": "2026-11-26T14:23:03.516Z",
       "error": null,
       "count": 25
     }
@@ -95159,6 +95428,590 @@
         "origin": "direct-official",
         "prerelease": true
       }
+    },
+    {
+      "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.7:2026-11-26T14:23:03.964Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-26T14:23:03.964Z",
+      "item": {
+        "id": "codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.7",
+        "at": "2026-11-26T04:42:57.000Z",
+        "url": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.7",
+        "text": "0.174.0-alpha.7. Release 0.174.0-alpha.7",
+        "kind": "release",
+        "status": "post",
+        "author": "Codex Releases",
+        "hasAnnouncement": true,
+        "tags": [
+          "release"
+        ],
+        "origin": "direct-official",
+        "prerelease": true,
+        "releaseNotes": {
+          "version": 1,
+          "tag": "rust-v0.174.0-alpha.7",
+          "title": "0.174.0-alpha.7",
+          "body": "Release 0.174.0-alpha.7\n\n",
+          "authored": false,
+          "fetchedAt": "2026-11-26T14:23:03.969Z",
+          "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.7",
+          "publishedAt": "2026-11-26T04:36:47Z",
+          "commits": [
+            {
+              "sha": "c6bbf8a413d38a8a24b9c6f4fc05d2e90d96a948",
+              "title": "Extract shared network policy types from the proxy crate (#63986)",
+              "message": "Extract shared network policy types from the proxy crate (#63986)\n\n## Why\n\nThe protocol and feature configuration crates depend on the network proxy\ncrate for data types. Give them a smaller dependency that contains the\nshared definitions.\n\n## What changed\n\nMove environment network policies, domain and Unix socket permissions,\npolicy decisions and their sources, and credential provider definitions\ninto `codex-network-policy-types`. Use the new crate directly from\n`codex-protocol` and `codex-features`.\n\nRe-export the moved types from `codex-network-proxy` and keep environment\npolicy conversion and application, along with credential provider\nvalidation, in the proxy crate.\n\nGitOrigin-RevId: 8af684da746830bce45ac00135aed8052dba3824",
+              "url": "https://github.com/openai/codex/commit/c6bbf8a413d38a8a24b9c6f4fc05d2e90d96a948"
+            },
+            {
+              "sha": "1c1e383a7ba3deab78966d648f7f844cf2e307e0",
+              "title": "Harden Guardian v2 hosted messaging tests (#63987)",
+              "message": "Harden Guardian v2 hosted messaging tests (#63987)\n\n## What changed\n\nWait for worker creation with its own timeout before waiting for MCP\ndelivery in the cached approval invalidation test. This gives a missing\nworker a distinct failure from a delivery that never reaches the server.\n\nDisable analytics in the Code Mode conversation history test so hosted\nmessaging only contacts the mock servers.\n\nGitOrigin-RevId: 15887b9f37cc48b938fd67801a0dda9374027492",
+              "url": "https://github.com/openai/codex/commit/1c1e383a7ba3deab78966d648f7f844cf2e307e0"
+            },
+            {
+              "sha": "d800b00e886a77181baf03e9e9aa2ea3445d9a4b",
+              "title": "Restart Guardian v3 shadow intake when Auto Review resumes (#63988)",
+              "message": "Restart Guardian v3 shadow intake when Auto Review resumes (#63988)\n\n## Why\n\nSwitching an enrolled thread to user approvals stops Guardian v3 shadow\nintake. Previously, switching the same thread back to Auto Review left\nintake stopped for subsequent turns.\n\n## What changed\n\nRestart intake in the background with a fresh evidence board after\nchecking that the thread still routes approvals to Auto Review. Start\nat the end of persisted history so the new board only receives new\nevidence. Existing child threads can attach to the new board on their\nnext turn.\n\n## Testing\n\nAdd app-server coverage for routing later turns after Auto Review\nresumes without replaying earlier turns. Extend the host test to cover\nstale settings notifications, cancellation of a queued restart, and\ncreation of a fresh board and reviewer.\n\nGitOrigin-RevId: 5201d7f7a7e3f2c045c69b9584b036467a5767d7",
+              "url": "https://github.com/openai/codex/commit/d800b00e886a77181baf03e9e9aa2ea3445d9a4b"
+            },
+            {
+              "sha": "ceed625df96fe3ca7107fe16d282aef25c57b85e",
+              "title": "Keep TUI tool groups independent when results arrive late (#63989)",
+              "message": "Keep TUI tool groups independent when results arrive late (#63989)\n\n## Why\n\nWhen a command or tool finishes in a different transcript group from where it\nstarted, both groups can share an identity. The later group can inherit the\noriginal group's expanded state or steal its keyboard focus.\n\n## What changed\n\nAssign distinct identities to repeated tool activity in chronological order.\nKeep those identities stable as the live transcript updates and results move\ninto history, so each group retains its own expansion state and focus.\n\n## Testing\n\nAdd regression tests for a command that finishes after assistant commentary\nand an MCP tool that returns an error in a later turn.\n\nGitOrigin-RevId: ca69a68bb32746bdbe22ec7bc9633e4323f38347",
+              "url": "https://github.com/openai/codex/commit/ceed625df96fe3ca7107fe16d282aef25c57b85e"
+            },
+            {
+              "sha": "a089ec6a93dbf6e00fa5f3a66e068e8ce9bacdcd",
+              "title": "Use lightweight settings for app-server thread metadata (#63990)",
+              "message": "Use lightweight settings for app-server thread metadata (#63990)\n\n## Why\n\nEnriching loaded thread results builds a full configuration snapshot,\nincluding an execution permission profile, just to read display settings.\n\n## What changed\n\nRead the configured model, reasoning effort, environment selections, and\nsession source directly from the loaded thread when enriching results.\nThe environment data still includes the working directory and runtime\nworkspace roots.\n\n## Testing\n\nExtend the core test to verify that reading display settings matches the\nconfigured snapshot's display fields without triggering a model lookup.\nExtend the app-server test to verify that thread reads and lists return\nexplicit runtime workspace roots.\n\nGitOrigin-RevId: f7053554fdb0f02bebb51b4cafda2ef39e6e81a5",
+              "url": "https://github.com/openai/codex/commit/a089ec6a93dbf6e00fa5f3a66e068e8ce9bacdcd"
+            },
+            {
+              "sha": "db360f8b002039b3b54108a1432b724b0bff9c20",
+              "title": "Suppress Kitty graphics replies on every pet image chunk (#63992)",
+              "message": "Suppress Kitty graphics replies on every pet image chunk (#63992)\n\nThe first chunk of a Kitty pet image upload already requests quiet mode,\nbut continuation chunks omit that setting. Send `q=2` on every\ncontinuation chunk, including the final one, to suppress terminal replies\nthroughout the upload.\n\n## Testing\n\nExtend the command snapshot test to check the headers of a three-chunk\nupload, including the final `m=0,q=2` header.\n\nGitOrigin-RevId: cd12c3e6f4c27320c4823f593657ab92824c83ff",
+              "url": "https://github.com/openai/codex/commit/db360f8b002039b3b54108a1432b724b0bff9c20"
+            },
+            {
+              "sha": "06c718ae68a305e45ed322d80dd89da24791542f",
+              "title": "Remove the shadow skill ranking experiment (#63993)",
+              "message": "Remove the shadow skill ranking experiment (#63993)\n\n## What changed\n\nRemove the background ranking of skill candidates and the metrics that\ncompared those rankings with skills actually used. Drop the experiment's\nper-thread state and metrics wiring.\n\nContinue accepting `skill_search` in existing feature configurations as\nan ignored compatibility key.\n\n## Testing\n\nExtend the feature configuration test to cover both `true` and `false`\nvalues for `skill_search`.\n\nGitOrigin-RevId: 9492533bdeea58d4976bc9fbcffb6b82036b7894",
+              "url": "https://github.com/openai/codex/commit/06c718ae68a305e45ed322d80dd89da24791542f"
+            },
+            {
+              "sha": "71cf244137e9a8e0dc1c47f9ccd374819106d581",
+              "title": "Avoid cloning thread metadata during rollout read repair (#63994)",
+              "message": "Avoid cloning thread metadata during rollout read repair (#63994)\n\nWhen the stored rollout path matches, compare the normalized working\ndirectory and computed archive timestamp with the stored values. Return\nearly if both match. Otherwise, reuse the existing metadata to build\nthe updated row.\n\nGitOrigin-RevId: 2c5d3e98851f2c8f72414bd688ccc99b2219adeb",
+              "url": "https://github.com/openai/codex/commit/71cf244137e9a8e0dc1c47f9ccd374819106d581"
+            },
+            {
+              "sha": "9938ffba35f731c08603e1bf60cd0bcb88048388",
+              "title": "Notify extensions when Guardian policy changes the approvals reviewer (#63995)",
+              "message": "Notify extensions when Guardian policy changes the approvals reviewer (#63995)\n\n## Why\n\nA Guardian policy refresh can switch a running thread from Auto Review\nto user approvals. Without a config change notification, Guardian's\nshadow reviewers can stay active after that switch.\n\n## What changed\n\nNotify config contributors with the previous and updated effective\nconfigs when a policy refresh changes the approvals reviewer. Send the\nnotification after releasing the session locks, even if the refreshed\npolicy blocks the current model.\n\n## Testing\n\nExtend the Guardian shadow test to refresh policy on a root thread and\nits child. Verify that both receive the reviewer change, that switching\nto user approvals cancels their shadow reviewers, and that allowing\nAuto Review again restores the requested reviewer.\n\nGitOrigin-RevId: fd61acf7fb161be341a63a2e867582e6c308d0dc",
+              "url": "https://github.com/openai/codex/commit/9938ffba35f731c08603e1bf60cd0bcb88048388"
+            },
+            {
+              "sha": "76696132f04983e6283fdc97d8e7b11a4ca59f9b",
+              "title": "Fix clipboard notices in the transcript overlay (#63996)",
+              "message": "Fix clipboard notices in the transcript overlay (#63996)\n\n## Why\n\nCopying a whole message can leave the overlay showing “Copying selection…”\nbecause the copy has no active selection to receive the clipboard result.\n\n## What changed\n\nTrack which clipboard request owns the notice so its completion can show\nsuccess or failure even without an active selection. Older results leave a\nnewer notice intact.\n\nTrack the last rendered transcript width for resize detection and render\nprewrapped rows without hyperlinks using Ratatui’s `Paragraph`.\n\n## Testing\n\nAdd a snapshot test that checks pending, failure, and success notices\nwithout a selection, verifies that an older result leaves the notice\nintact, and confirms the overlay stays open.\n\nGitOrigin-RevId: c4076ccc425240ca39af9fd5c8cf6fca96303dda",
+              "url": "https://github.com/openai/codex/commit/76696132f04983e6283fdc97d8e7b11a4ca59f9b"
+            },
+            {
+              "sha": "03f4f4e6b75858cb529432fa28d9b44c7151055f",
+              "title": "Make TUI workspace divider drags more responsive (#63997)",
+              "message": "Make TUI workspace divider drags more responsive (#63997)\n\n## Why\n\nRapid mouse motion can queue more drag reports than the TUI needs to\nresize a pane. Rebuilding sidebar document layouts at each preview width\nalso adds work while the divider moves.\n\n## What changed\n\n- Share drag handling between the Command Center and sidebar dividers.\n  Let users grab either column of the Command Center gutter, keep the\n  grab offset, and highlight the divider on hover and during a drag.\n- Use the release position for the final width. If focus loss interrupts\n  a valid drag, keep the last width. When the terminal holds image pixels,\n  show a guide and defer pane reflow until the drag ends.\n- Batch consecutive mouse motion reports during divider drags while\n  preserving input order at batch boundaries. Rewrap cached sidebar\n  document content during live previews and rebuild its layout at the\n  final width.\n\n## Testing\n\nCover gutter hit testing, grab offsets, release and focus-loss behavior,\ndrag batching at input boundaries, and document layout reuse during\npreview followed by a rebuild.\n\nGitOrigin-RevId: 949a805a42d269f4bac1a86ac7e4b7f8c2a4cacf",
+              "url": "https://github.com/openai/codex/commit/03f4f4e6b75858cb529432fa28d9b44c7151055f"
+            },
+            {
+              "sha": "fd95d89146661880b8ccb0b70d89658679b2adc5",
+              "title": "Skip reasoning effort animations during TUI thread replay (#63998)",
+              "message": "Skip reasoning effort animations during TUI thread replay (#63998)\n\n## Why\n\nSwitching back to a thread restores its current settings before replaying\nolder updates. Those updates can trigger reasoning effort animations and\nleave the status line temporarily showing an older effort level.\n\n## What changed\n\nSet the composer's reasoning effort baseline before refreshing it for\neach replayed settings update. The status line reflects the replayed\neffort immediately, and live changes still animate.\n\n## Testing\n\nAdd a regression test that replays earlier effort changes after restoring\na thread, checks the displayed effort, and verifies that a subsequent\nlive change starts the animation.\n\nGitOrigin-RevId: 3daadc7b8b5917eba1055940c67399b8ab729eda",
+              "url": "https://github.com/openai/codex/commit/fd95d89146661880b8ccb0b70d89658679b2adc5"
+            },
+            {
+              "sha": "b420c7ca54e1caa01ebbba608b95495aaa304f69",
+              "title": "Preserve sidebar clicks when the terminal gains focus (#63999)",
+              "message": "Preserve sidebar clicks when the terminal gains focus (#63999)\n\n## Why\n\nA terminal can report a focus gain between mouse-down and mouse-up.\nClearing the pending sidebar press on that event causes the release to\nbe ignored, so clicking the tab chooser's close button can fail to open\nthe confirmation dialog.\n\n## What changed\n\nKeep the pending sidebar press on `TuiEvent::FocusGained` so the mouse\nrelease can complete the click.\n\n## Testing\n\nExtend the tab chooser test to send a focus gain between the press and\nrelease and check that the close confirmation dialog appears.\n\nGitOrigin-RevId: 4173292c50383304e9ef62104251434be7580789",
+              "url": "https://github.com/openai/codex/commit/b420c7ca54e1caa01ebbba608b95495aaa304f69"
+            },
+            {
+              "sha": "f3c6076ac262569dfe8e69f0df601759b6d42211",
+              "title": "Skip `SessionEnd` hooks when child threads shut down (#64000)",
+              "message": "Skip `SessionEnd` hooks when child threads shut down (#64000)\n\n## Why\n\nA hosted child thread can inherit the root session ID and use a custom\nsession source. The existing subagent source check can miss that child,\nallowing its shutdown to fire `SessionEnd` while the root is still active.\n\n## What changed\n\nBefore preparing `SessionEnd` hooks, skip threads whose ID does not match\nthe session ID.\n\n## Testing\n\nExtend the shutdown test to close a hosted child with an inherited\nsession ID before closing the root and verify that exactly one\n`SessionEnd` hook invocation is logged for the session.\n\nGitOrigin-RevId: 4c80a17724cab57003b33080482d00f3cc2afea4",
+              "url": "https://github.com/openai/codex/commit/f3c6076ac262569dfe8e69f0df601759b6d42211"
+            },
+            {
+              "sha": "f39c3c78d732a2650c9a747a47ae084d6ea4eb43",
+              "title": "Initialize Statsig feature gates across Codex launch modes (#64001)",
+              "message": "Initialize Statsig feature gates across Codex launch modes (#64001)\n\n## Why\n\nEnabling `statsig_gates` can only load evaluations if the process starts\nthe Statsig runtime. Several Codex entry points never started it.\n\n## What changed\n\nStart Statsig in standalone and embedded app servers, the TUI when it\nconnects to a separate app server, eligible `codex sandbox` launches, and\nlocal and remote exec servers. This also covers `codex exec` through its\nembedded app server. Use the serving or local account where applicable\nand installation identity for remote execution. Share the runtime with\nthe embedded TUI and flush it on normal shutdown.\n\n## Testing\n\nAdd a CLI integration test that checks which evaluation endpoint each\nlaunch mode requests, including signed-in and signed-out sandbox launches.\nSupply a bundled fixture key in Bazel and nextest CI builds so the test runs.\n\nGitOrigin-RevId: 64df9933c1a9783a86be8712fa012b495f34b0f8",
+              "url": "https://github.com/openai/codex/commit/f39c3c78d732a2650c9a747a47ae084d6ea4eb43"
+            },
+            {
+              "sha": "44d359767fa12b5c75f0b6f57a5c795428c3ec6f",
+              "title": "Preserve initial turn input when suspension races with startup (#64002)",
+              "message": "Preserve initial turn input when suspension races with startup (#64002)\n\n## Why\n\nSuspension can detach the active task just as startup tries to save\nunrecorded input before reading the host roster. If detachment wins,\ncleanup can miss the initial submission when saving the turn for recovery.\n\n## What changed\n\nStore pending initial input in the shared `TurnContext` during host\nadmission and startup steps that can wait on the host roster. Save the\ninput before checking whether the task is still active, so suspension\nand abort cleanup can retrieve it after the task exits. Reclaim it under\nthe active-turn lock when startup completes so only one path records\nthe submission.\n\nGitOrigin-RevId: 2f180fc372daaa8f2d8e0ebcb4787a1b2cfd61fa",
+              "url": "https://github.com/openai/codex/commit/44d359767fa12b5c75f0b6f57a5c795428c3ec6f"
+            },
+            {
+              "sha": "30d71606a18878a05f91538a19f15eedc50ce26d",
+              "title": "Allow callers to redact encoded JSON request bodies from logs (#64003)",
+              "message": "Allow callers to redact encoded JSON request bodies from logs (#64003)\n\n## Why\n\nCallers need a way to keep encoded JSON payloads out of request\ndiagnostics while preserving what the server receives.\n\n## What changed\n\nAdd `EncodedJsonBody::omit_from_logs()` to replace the trace body with\n`<redacted>` and show only the byte length in debug output. Preserve the\nsetting through private JSON enrichment and request preparation. The\nsetting leaves the wire payload and redirect policy unchanged.\n\n## Testing\n\nAdd a regression test that checks trace redaction and debug output for\nboth plain and enriched bodies before and after preparation, and\nverifies that decompressing the wire body yields the expected bytes.\n\nGitOrigin-RevId: 5b1ae2c810242f8c7f35bcdf653af9127360c29c",
+              "url": "https://github.com/openai/codex/commit/30d71606a18878a05f91538a19f15eedc50ce26d"
+            },
+            {
+              "sha": "9b6a7e3d0ed9297c5829d4ac0aedaaeedaa91969",
+              "title": "Update the TUI thread replay snapshot to include composer borders (#64004)",
+              "message": "Update the TUI thread replay snapshot to include composer borders (#64004)\n\nGitOrigin-RevId: ba97eedebbe9558cd698f0af4955a16c3041c5aa",
+              "url": "https://github.com/openai/codex/commit/9b6a7e3d0ed9297c5829d4ac0aedaaeedaa91969"
+            },
+            {
+              "sha": "897d47ac95f0abaf6cb459da6aa0f4e82dd54363",
+              "title": "Batch native scrollback replays during history refill (#64005)",
+              "message": "Batch native scrollback replays during history refill (#64005)\n\n## Why\n\nRefilling terminal scrollback can take several history pages. Replaying\nscrollback after each page rebuilds it while more history is still loading.\n\n## What changed\n\nBuffer older pages while the next page is loading, then replay them together\nwhen the refill finishes. Flush buffered history if a page request fails,\nthe transcript overlay opens during the refill, or the five-second deadline\nfrom the first buffered page expires. The overlay still updates page by page.\n\n## Testing\n\nExtend the scrollback refill test to cover batching across pages, replay\nafter a page failure, and replay at the deadline with a request still pending.\n\nGitOrigin-RevId: 577b9f7394e2741267099e4595f69345a6a70a21",
+              "url": "https://github.com/openai/codex/commit/897d47ac95f0abaf6cb459da6aa0f4e82dd54363"
+            },
+            {
+              "sha": "7d0d2ac81adbd8df84af3761704cc41b414135ed",
+              "title": "Update the Bazel `zstd` dependency to 1.6.0 (#64006)",
+              "message": "Update the Bazel `zstd` dependency to 1.6.0 (#64006)\n\nGitOrigin-RevId: 5b15b754dd09d9fc9f9c57b61448458799d85a78",
+              "url": "https://github.com/openai/codex/commit/7d0d2ac81adbd8df84af3761704cc41b414135ed"
+            },
+            {
+              "sha": "b8498ada1c02f829057e5e171a0db2d6913d9329",
+              "title": "Add `maxLines` to statusline text blocks (#64007)",
+              "message": "Add `maxLines` to statusline text blocks (#64007)\n\n## Why\n\nLong statusline text can wrap across enough lines to push fields below it out of view.\n\n## What changed\n\nSet `maxLines` to a positive safe integer to cap a text block after wrapping. If content exceeds the cap, the last visible line ends with an ellipsis when space permits. Long words can break at grapheme boundaries so a clamped block can shrink alongside other fields.\n\n## Testing\n\nCover invalid limits, visibility of neighboring fields, and truncation that preserves whole graphemes and leaves the ellipsis outside hyperlinks.\n\nGitOrigin-RevId: 42f57b3f92e81860f888b733ce6121bb94dc78c3",
+              "url": "https://github.com/openai/codex/commit/b8498ada1c02f829057e5e171a0db2d6913d9329"
+            },
+            {
+              "sha": "163c555f18b7616b40f7466c039ec5614a787b46",
+              "title": "Add a directional `box` element for custom status lines (#64008)",
+              "message": "Add a directional `box` element for custom status lines (#64008)\n\n## What changed\n\nCustom status lines can choose between row and column layouts by setting\n`direction` on a `box`. Omitting `direction` stacks children in a column.\nBoth layouts require `gap`, and only rows accept `wrap` and `justify`.\n\nHorizontal boxes group adjacent strings into one layout item even when\n`justify` is omitted. Use separate elements to insert a gap between\ntext items.\n\n## Testing\n\nAdd renderer tests for default column layout, wrapping and alignment in\nrows, and spacing around empty boxes. Extend the TypeScript contract\nchecks to cover dynamic direction, required gaps, and rejection of\nrow-only props on columns.\n\nGitOrigin-RevId: 3ff9b4a8be6ae79b90512c1ad1ec1c16dafad0cf",
+              "url": "https://github.com/openai/codex/commit/163c555f18b7616b40f7466c039ec5614a787b46"
+            },
+            {
+              "sha": "8d8de8f693fbbb494583371cc97248287ef93036",
+              "title": "Add flexible spacers to custom statusline layouts (#64009)",
+              "message": "Add flexible spacers to custom statusline layouts (#64009)\n\n## Why\n\nStatusline authors can set fixed gaps or justify a whole row. An expandable gap lets them place a field at the far edge by putting a spacer between it and the other fields.\n\n## What changed\n\nAdd the empty `spacer` element to the statusline renderer and its bundled TypeScript contract. Spacers share the remaining width on each wrapped row line before `justify` is applied. In columns stretched by a taller sibling, spacers share the added height.\n\n## Testing\n\nAdd renderer tests for wrapped and nested layouts, background fill, and clipping. Cover empty spacer declarations and reject spacer children in the parser and TypeScript contract tests.\n\nGitOrigin-RevId: d8bb58304b2a1f10ac0c60ec198aa3c25a169cae",
+              "url": "https://github.com/openai/codex/commit/8d8de8f693fbbb494583371cc97248287ef93036"
+            },
+            {
+              "sha": "09b1cfd3371e546dacb290a3fcc56f32a86dccf0",
+              "title": "Add inline badges to custom statuslines (#64010)",
+              "message": "Add inline badges to custom statuslines (#64010)\n\nAdd a `badge` element to the statusline UI tree and TypeScript contract.\nIt renders one string as a padded, single-line label with normalized\nwhitespace. The optional `color` accepts `secondary` (the default),\n`info`, `success`, `warning`, or `danger`. The renderer uses the\nactive theme for the label and blends the fill with the surrounding\nbackground when its color is known.\n\nBadges wrap as a unit. When a line limit requires an ellipsis after\nearlier content, a trailing badge that cannot fit is dropped. At the\nviewport edge, the right padding can clip while the full label remains\nvisible.\n\n## Testing\n\nAdd rendering tests for wrapping, clipping, theme colors, and linked\nbadges, along with checks for UI tree limits and the TypeScript contract.\n\nGitOrigin-RevId: be9e9799d6832976d325ba5fda48f5793dbbc722",
+              "url": "https://github.com/openai/codex/commit/09b1cfd3371e546dacb290a3fcc56f32a86dccf0"
+            },
+            {
+              "sha": "3d5a786a205b19b96c640d4eb2e4e8313fae1229",
+              "title": "Clean up abandoned MCP sessions during HTTP recovery (#64011)",
+              "message": "Clean up abandoned MCP sessions during HTTP recovery (#64011)\n\n## Why\n\nA Streamable HTTP server can assign a replacement session ID before the\ninitialization handshake finishes. If recovery fails or times out at\nthat point, the abandoned session can occupy server capacity needed by\nthe next attempt.\n\n## What changed\n\n- Track replacement sessions as soon as the server returns\n  `Mcp-Session-Id`. Coordinate a single `DELETE` between handshake cleanup\n  and SDK teardown, leaving successfully initialized sessions active.\n- Let cleanup finish in the background when the caller's deadline\n  expires. Coordinate cleanup with OAuth refresh so the deletion can use\n  updated credentials.\n- Keep the service, OAuth state, and expiry signal together for each\n  connection. Keep recovery scoped to the failed connection and\n  recheck client state before returning a replacement so shutdown can\n  take precedence.\n\n## Testing\n\nCover interrupted JSON and SSE handshakes, cleanup before retry on a\nserver with limited session capacity, OAuth refresh during cleanup,\nconcurrent calls on expired sessions, and recovery racing with shutdown.\n\nGitOrigin-RevId: 0caa1b1271f4e7ae667f90f15bfa86b1bdfe7d0b",
+              "url": "https://github.com/openai/codex/commit/3d5a786a205b19b96c640d4eb2e4e8313fae1229"
+            },
+            {
+              "sha": "e54baff042954a4462e9f1a522fd1872b32c777b",
+              "title": "Move environment selection tests into a dedicated file (#64012)",
+              "message": "Move environment selection tests into a dedicated file (#64012)\n\nMove the existing selection, readiness, and configuration inheritance\ntests into `environment_selection_tests.rs` and keep them wired up as\nthe `environment_selection::tests` module.\n\nGitOrigin-RevId: 304944a8875c5d92e21bcc2ab39e760e41083d37",
+              "url": "https://github.com/openai/codex/commit/e54baff042954a4462e9f1a522fd1872b32c777b"
+            },
+            {
+              "sha": "653def34fbbe123cf06710afcdcd61011eb8cb8f",
+              "title": "Preserve native exit codes in Windows PowerShell hooks (#64013)",
+              "message": "Preserve native exit codes in Windows PowerShell hooks (#64013)\n\n## Why\n\nPowerShell's `-Command` can report a native command's exit code `2` as\n`1`, so a `PreToolUse` hook can fail to block a tool call.\n\n## What changed\n\nUse `$?` to preserve successful hook results and forward\n`$LASTEXITCODE` on failure when available. Pass scripts with named\nblocks through as written because PowerShell forbids trailing\ntop-level statements after those blocks.\n\n## Testing\n\nAdd Windows regression coverage for a native command and a PowerShell\n`end` block that each exit with code `2`. Both cases check that\n`PreToolUse` denies `apply_patch` before approval, reports the denial\nreason, and leaves the target file uncreated.\n\nGitOrigin-RevId: 9668b1382bb56f168794dd8d4d2fecac13d2f649",
+              "url": "https://github.com/openai/codex/commit/653def34fbbe123cf06710afcdcd61011eb8cb8f"
+            },
+            {
+              "sha": "2f83e4843fddcf15fb451224d973773a387254e9",
+              "title": "Surface session lookup errors in the TUI (#64014)",
+              "message": "Surface session lookup errors in the TUI (#64014)\n\n## Why\n\nLooking up a session by ID treated every `thread/read` failure as a\nmissing session, hiding errors such as unreadable session metadata.\n\n## What changed\n\nStartup resume and fork report lookup failures after cleaning up the\napp-server session. In an active TUI, `/resume` displays lookup errors\nin the current chat or invokes transport recovery when applicable. If\na Cloud chat must be opened first, `/resume` directs the user to run\nthe command without an ID and select the chat from the picker.\n\n## Testing\n\nAdd regression coverage for missing and unreadable sessions, preserving\nthe active session after a failed lookup, and showing picker guidance\nfor an unopened Cloud chat.\n\nGitOrigin-RevId: dddac289a2959133809c050b8701975ab474ef13",
+              "url": "https://github.com/openai/codex/commit/2f83e4843fddcf15fb451224d973773a387254e9"
+            },
+            {
+              "sha": "ad07f04e470afd3ed700d591c58f8ab7ae57b94f",
+              "title": "Show background command launches and late results in the TUI (#64015)",
+              "message": "Show background command launches and late results in the TUI (#64015)\n\n## Why\n\nA background command can outlive the turn that launched it. Its result\ncould be dropped when no turn was active or appear as a separate\ntranscript entry if later output had already displaced its running row.\n\n## What changed\n\n- Show background commands as they start, including commands that don't\n  match a recognized tool action. Keep tracking their exits after a\n  turn ends or is interrupted.\n- Update the original transcript row with the exit status and output,\n  including when the command finishes in a parked side conversation.\n- In rich terminal scrollback, label an unfinished launch `Started`.\n  If the launch has already printed, append the result in order.\n  Otherwise, replace the queued launch with the completed entry.\n\n## Testing\n\nCover late exits after turn completion and interruption, completion\nduring a side conversation handoff, and result ordering behind queued\nscrollback.\n\nGitOrigin-RevId: 65f069af28c112078d85613da2c95e5c1c4f29bf",
+              "url": "https://github.com/openai/codex/commit/ad07f04e470afd3ed700d591c58f8ab7ae57b94f"
+            },
+            {
+              "sha": "80ea5901ad7f53b1f6478a33f5fd51ffc2676d33",
+              "title": "Bundle the Statsig client key in release builds (#64016)",
+              "message": "Bundle the Statsig client key in release builds (#64016)\n\n## Why\n\nCodex needs a non-empty client key at compile time to use Statsig gates\nwhen the feature is enabled.\n\n## What changed\n\nSet `CODEX_BUNDLED_STATSIG_CLIENT_KEY` from the `CODEX_STATSIG_CLIENT_KEY`\nGitHub Actions variable in the Cargo and Bazel build steps of both release\nworkflows. The shared Bazel action forwards the key to Rust compilation\nwhen the value is non-empty.\n\nGitOrigin-RevId: 90ad3471417bc030acf90836d3fd0c24d35feffe",
+              "url": "https://github.com/openai/codex/commit/80ea5901ad7f53b1f6478a33f5fd51ffc2676d33"
+            },
+            {
+              "sha": "58b14699ec8dcd9f6efd27ef776036c2ae1b943b",
+              "title": "Keep interrupt guidance visible during TUI streaming (#64018)",
+              "message": "Keep interrupt guidance visible during TUI streaming (#64018)\n\n## Why\n\nStreaming output hides the working status row and its interrupt shortcut.\nWhen a message without a phase finishes before the turn does, the status\nrow can also stay hidden while Codex is still working.\n\n## What changed\n\nShow the configured interrupt shortcut in the composer footer while output\nstreams and the status row is hidden. With the default binding, the footer\nshows `esc twice to interrupt` in Vim insert mode.\n\nKeep the status row visible through whitespace-only output. Restore it\nafter a message without a phase completes and the stream queues drain if\nthe turn is still running.\n\n## Testing\n\nCover whitespace-only output, footer hints with a draft and in Vim modes,\nhint layout at narrow widths, and status restoration before turn completion.\n\nGitOrigin-RevId: 246180593baf2d6ead0e84634bf7bd8ee4ec3ea5",
+              "url": "https://github.com/openai/codex/commit/58b14699ec8dcd9f6efd27ef776036c2ae1b943b"
+            },
+            {
+              "sha": "2055a99af459a503509828abd579e34668d345b6",
+              "title": "Support numeric MCP elicitation fields in the TUI (#64023)",
+              "message": "Support numeric MCP elicitation fields in the TUI (#64023)\n\n## Why\n\nMCP forms with numeric fields fell back to a generic approval prompt,\nwhere users had no way to enter the requested values. That prompt also\noffered acceptance for forms whose required fields could not be filled in.\n\n## What changed\n\n- Render `integer` and `number` fields with schema defaults, validate\n  minimum and maximum bounds, and submit answers as JSON numbers.\n- Show the requesting server on forms, allow users to skip blank optional\n  inputs with the submit key, and add `F6` to decline a form. `Esc` cancels\n  the request.\n- Explain when a form cannot be displayed and offer acceptance without\n  answers only when the form has no required fields.\n\n## Testing\n\nExercise invalid numeric input and defaults, exact large integer\nsubmission, blank optional fields, and queue advancement after declining.\nSnapshot the numeric validation error and the fallback prompts for\nunsupported forms with and without required fields.\n\nGitOrigin-RevId: 1dd65b78fb271a027d9ae479c6fc9754607189f2",
+              "url": "https://github.com/openai/codex/commit/2055a99af459a503509828abd579e34668d345b6"
+            },
+            {
+              "sha": "dbb9b2e31ee5dbaac391a422d3f8b25b88fc8d5c",
+              "title": "Show TUI shortcut hints for the focused pane (#64024)",
+              "message": "Show TUI shortcut hints for the focused pane (#64024)\n\n## Why\n\nThe sidebar can stay visible while the conversation has keyboard focus.\nShowing sidebar shortcuts in that state makes keys such as `Esc` look\nlike they act on the sidebar even when the conversation receives them.\n\n## What changed\n\nHide keyboard hints in unfocused panes and show the configured shortcut\nfor focusing the sidebar when it is available. Keep mouse controls\nclickable, including the file path view's Back button when its keyboard\nbinding is disabled. An unmodified left click in the file path body\nfocuses the sidebar.\n\nUse configured pager bindings for reading and search hints. Watch-only\nagent transcripts use single-key pager bindings because they handle\npager keys directly.\n\n## Testing\n\nAdd coverage for file path focus and mouse controls, hint placement and\nclick targets in narrow panes, and pager hints in watch-only transcripts.\n\nGitOrigin-RevId: 3d9375d957789c9f71f6e45f919f815713536622",
+              "url": "https://github.com/openai/codex/commit/dbb9b2e31ee5dbaac391a422d3f8b25b88fc8d5c"
+            },
+            {
+              "sha": "1d05b9851ca29721fef85f9261ed050706c6b0ca",
+              "title": "Show Command Center shortcuts that match focus and input (#64025)",
+              "message": "Show Command Center shortcuts that match focus and input (#64025)\n\n## Why\n\nThe Command Center can show action shortcuts while the conversation has\nkeyboard focus or while a search or rename field consumes those keys.\n\n## What changed\n\nUse the shared footer renderer to show a focus shortcut in the unfocused\nCommand Center and action hints when it has focus. Keep the editor cursor\nin the active pane and hide header shortcuts when their actions are\nunavailable. For example, the default `g` grouping hint disappears while\ntyping a search because `g` goes into the query.\n\n## Testing\n\nExtend the workspace navigation test to check the focus hint and cover\ncustom accept and grouping bindings during search and rename.\n\nGitOrigin-RevId: a96a093b77b6ef04d717b542e30b041164d1210c",
+              "url": "https://github.com/openai/codex/commit/1d05b9851ca29721fef85f9261ed050706c6b0ca"
+            },
+            {
+              "sha": "5148e3d6421c3adb9991b712b85f973ac33b9e50",
+              "title": "Show status for subagent waits without targets in the TUI (#64026)",
+              "message": "Show status for subagent waits without targets in the TUI (#64026)\n\n## Why\n\nThe TUI showed “Waiting for agents” even when a wait had no agent\ntargets, and “Finished waiting” even when it failed or was interrupted.\n\n## What changed\n\nWhen a wait has no receiver thread IDs or agent states, show “Waiting,”\n“Waited,” “Failed to wait,” or “Interrupted” according to its status.\n\n## Testing\n\nExtend the collaboration transcript snapshot to cover all four statuses\nfor waits without targets.\n\nGitOrigin-RevId: 62097034b160852b5921d869e0a04737b69923f9",
+              "url": "https://github.com/openai/codex/commit/5148e3d6421c3adb9991b712b85f973ac33b9e50"
+            },
+            {
+              "sha": "963d4f57179b579bc24d5270019e857a80a7f0de",
+              "title": "Honor per-executor plugin settings in capability discovery (#64052)",
+              "message": "Honor per-executor plugin settings in capability discovery (#64052)\n\n## Why\n\nA plugin can be installed in several executor environments. Disabling one\ninstallation should leave the others available, while a thread-wide exclusion\nneeds to apply across environments.\n\n## What changed\n\n- In executor capability discovery V2, allow an executor to list its own\n  plugin installations subject to marketplace policy. A named entry such as\n  `\"notes@market\": {}` inherits the executor default when the thread has\n  no enablement preference. A default alone does not list any plugins.\n- Apply thread enablement preferences across installations and scope executor\n  opt-outs to the affected installation. When MCP server names are shared,\n  use the first enabled installation.\n- Preserve connector mappings for explicit `disabledPluginIds` exclusions\n  so Apps tool search can honor them even when the executor has already\n  disabled the installation.\n\n## Testing\n\nAdd regression coverage for marketplace filtering, thread and executor\nprecedence, installation-scoped exclusions, and Apps connector suppression\nafter an executor opt-out.\n\nGitOrigin-RevId: d3465a38f3ebf5042d5c45dabfdb32f8ada81727",
+              "url": "https://github.com/openai/codex/commit/963d4f57179b579bc24d5270019e857a80a7f0de"
+            },
+            {
+              "sha": "2a3f7da44529617e4f65d776e985d1e49cf89e4e",
+              "title": "Extract TUI sidebar input routing into its own module (#64053)",
+              "message": "Extract TUI sidebar input routing into its own module (#64053)\n\n## What changed\n\nMove sidebar hit testing and mouse press tracking into `sidebar_input`.\nResolve pointer events before executing tab actions or dispatching input\nto the visible document, subagent panel, or chooser.\n\nKeep requiring the press and release to resolve\nto the same target in the current sidebar state.\n\nGitOrigin-RevId: a818dbfd53cbf79c97ae5036d3608c7d4d67da52",
+              "url": "https://github.com/openai/codex/commit/2a3f7da44529617e4f65d776e985d1e49cf89e4e"
+            },
+            {
+              "sha": "57a49fc013732d85fb51ce88d994e4be0e038b38",
+              "title": "Refactor TUI sidebar chooser input handling (#64054)",
+              "message": "Refactor TUI sidebar chooser input handling (#64054)\n\n## What changed\n\nMove chooser handling from `side_focus.rs` into a dedicated sidebar input\nmodule. Distinguish events the chooser consumes from events it leaves\nunhandled and events that produce an action.\n\nCheck row visibility and guard against stale keyboard selections before\nresolving an open action to an agent, retry row, document, existing\nchat, or new chat.\n\nGitOrigin-RevId: 681dadbb3b964fbb886795120fa28760cb11be9d",
+              "url": "https://github.com/openai/codex/commit/57a49fc013732d85fb51ce88d994e4be0e038b38"
+            },
+            {
+              "sha": "06023b038f642a2290a9ab53392342c18c5b4f39",
+              "title": "Add mouse controls to hide and restore the TUI sidebar (#64055)",
+              "message": "Add mouse controls to hide and restore the TUI sidebar (#64055)\n\n## Why\n\nHiding the sidebar through keyboard navigation leaves no visible control\nfor reopening it.\n\n## What changed\n\nClick `›` in the sidebar tab strip to hide the sidebar and return focus\nto the parent conversation. Click `‹` above the main transcript to\nrestore the previous sidebar content. The restore control also appears\nwhen the terminal is too narrow to show the sidebar alongside the main\nconversation.\n\n## Testing\n\nCover hiding and restoring side chats and document previews with the\nmouse, including reopening a side chat at narrow terminal widths and\npreserving the parent conversation's reading position.\n\nGitOrigin-RevId: 1f0f893b736b61c109e0761abbe3bde3d388e1b6",
+              "url": "https://github.com/openai/codex/commit/06023b038f642a2290a9ab53392342c18c5b4f39"
+            },
+            {
+              "sha": "f79875c21bd77d23e36e6dbe6505226f2961f270",
+              "title": "Fix Unicode fuzzy matching and slash popup activation (#64058)",
+              "message": "Fix Unicode fuzzy matching and slash popup activation (#64058)\n\n## Why\n\nFuzzy matching lowercased candidates and queries differently, so Greek\nsigma variants could fail to match. The slash-command popup could also\nopen for fuzzy matches that its exact and prefix filters never displayed,\ntaking over the arrow keys while the user was editing a draft.\n\n## What changed\n\n- Apply the same Unicode case folding to both sides of a fuzzy match and\n  use it to rank exact and prefix matches in the skill popup.\n- Use the same command list and case-insensitive exact and prefix\n  matching rules to open and filter the slash-command popup.\n\n## Testing\n\nCover Greek sigma and long s in the fuzzy matcher, snapshot skill\nresults with a folded exact match above a prefix match, and check that\nthe arrow keys move the cursor through a draft starting with `/ſtatus`.\n\nGitOrigin-RevId: 04cf3a65b02204221569c4f7b2d4397f48554e2d",
+              "url": "https://github.com/openai/codex/commit/f79875c21bd77d23e36e6dbe6505226f2961f270"
+            },
+            {
+              "sha": "380fb87780a51eaf4815103e234c812a33a72bbd",
+              "title": "Release 0.174.0-alpha.7",
+              "message": "Release 0.174.0-alpha.7",
+              "url": "https://github.com/openai/codex/commit/380fb87780a51eaf4815103e234c812a33a72bbd"
+            }
+          ],
+          "comparison": {
+            "base": "rust-v0.174.0-alpha.6",
+            "head": "rust-v0.174.0-alpha.7",
+            "url": "https://github.com/openai/codex/compare/rust-v0.174.0-alpha.6...rust-v0.174.0-alpha.7",
+            "status": "diverged",
+            "total": 41,
+            "behind": 1,
+            "complete": true,
+            "fetched": 41
+          },
+          "comparisonError": null
+        }
+      }
+    },
+    {
+      "id": "openai-status:01M89RGC3STKK2MT53TXHFMY4H:2026-11-26T14:23:03.964Z",
+      "kind": "official-item-observed",
+      "at": "2026-11-26T14:23:03.964Z",
+      "item": {
+        "id": "openai-status:01M89RGC3STKK2MT53TXHFMY4H",
+        "at": "2026-11-26T14:07:54.000Z",
+        "url": "https://status.openai.com/incidents/01M89RGC3STKK2MT53TXHFMY4H",
+        "text": "Elevated errors with Codex GitHub reviews and pull request merges. The GitHub service disruption has been resolved. Codex automated GitHub pull request reviews and merges are operating normally",
+        "kind": "signal",
+        "status": "post",
+        "author": "OpenAI Status",
+        "hasAnnouncement": true,
+        "tags": [
+          "status"
+        ],
+        "origin": "direct-official",
+        "serviceStatus": "resolved",
+        "publishedAt": "2026-11-25T16:27:02.000Z"
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.7:2026-11-26T14:23:03.964Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-26T14:23:03.964Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.174.0-alpha.7",
+        "title": "0.174.0-alpha.7",
+        "body": "Release 0.174.0-alpha.7\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-26T14:23:03.969Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.7",
+        "publishedAt": "2026-11-26T04:36:47Z",
+        "commits": [
+          {
+            "sha": "c6bbf8a413d38a8a24b9c6f4fc05d2e90d96a948",
+            "title": "Extract shared network policy types from the proxy crate (#63986)",
+            "message": "Extract shared network policy types from the proxy crate (#63986)\n\n## Why\n\nThe protocol and feature configuration crates depend on the network proxy\ncrate for data types. Give them a smaller dependency that contains the\nshared definitions.\n\n## What changed\n\nMove environment network policies, domain and Unix socket permissions,\npolicy decisions and their sources, and credential provider definitions\ninto `codex-network-policy-types`. Use the new crate directly from\n`codex-protocol` and `codex-features`.\n\nRe-export the moved types from `codex-network-proxy` and keep environment\npolicy conversion and application, along with credential provider\nvalidation, in the proxy crate.\n\nGitOrigin-RevId: 8af684da746830bce45ac00135aed8052dba3824",
+            "url": "https://github.com/openai/codex/commit/c6bbf8a413d38a8a24b9c6f4fc05d2e90d96a948"
+          },
+          {
+            "sha": "1c1e383a7ba3deab78966d648f7f844cf2e307e0",
+            "title": "Harden Guardian v2 hosted messaging tests (#63987)",
+            "message": "Harden Guardian v2 hosted messaging tests (#63987)\n\n## What changed\n\nWait for worker creation with its own timeout before waiting for MCP\ndelivery in the cached approval invalidation test. This gives a missing\nworker a distinct failure from a delivery that never reaches the server.\n\nDisable analytics in the Code Mode conversation history test so hosted\nmessaging only contacts the mock servers.\n\nGitOrigin-RevId: 15887b9f37cc48b938fd67801a0dda9374027492",
+            "url": "https://github.com/openai/codex/commit/1c1e383a7ba3deab78966d648f7f844cf2e307e0"
+          },
+          {
+            "sha": "d800b00e886a77181baf03e9e9aa2ea3445d9a4b",
+            "title": "Restart Guardian v3 shadow intake when Auto Review resumes (#63988)",
+            "message": "Restart Guardian v3 shadow intake when Auto Review resumes (#63988)\n\n## Why\n\nSwitching an enrolled thread to user approvals stops Guardian v3 shadow\nintake. Previously, switching the same thread back to Auto Review left\nintake stopped for subsequent turns.\n\n## What changed\n\nRestart intake in the background with a fresh evidence board after\nchecking that the thread still routes approvals to Auto Review. Start\nat the end of persisted history so the new board only receives new\nevidence. Existing child threads can attach to the new board on their\nnext turn.\n\n## Testing\n\nAdd app-server coverage for routing later turns after Auto Review\nresumes without replaying earlier turns. Extend the host test to cover\nstale settings notifications, cancellation of a queued restart, and\ncreation of a fresh board and reviewer.\n\nGitOrigin-RevId: 5201d7f7a7e3f2c045c69b9584b036467a5767d7",
+            "url": "https://github.com/openai/codex/commit/d800b00e886a77181baf03e9e9aa2ea3445d9a4b"
+          },
+          {
+            "sha": "ceed625df96fe3ca7107fe16d282aef25c57b85e",
+            "title": "Keep TUI tool groups independent when results arrive late (#63989)",
+            "message": "Keep TUI tool groups independent when results arrive late (#63989)\n\n## Why\n\nWhen a command or tool finishes in a different transcript group from where it\nstarted, both groups can share an identity. The later group can inherit the\noriginal group's expanded state or steal its keyboard focus.\n\n## What changed\n\nAssign distinct identities to repeated tool activity in chronological order.\nKeep those identities stable as the live transcript updates and results move\ninto history, so each group retains its own expansion state and focus.\n\n## Testing\n\nAdd regression tests for a command that finishes after assistant commentary\nand an MCP tool that returns an error in a later turn.\n\nGitOrigin-RevId: ca69a68bb32746bdbe22ec7bc9633e4323f38347",
+            "url": "https://github.com/openai/codex/commit/ceed625df96fe3ca7107fe16d282aef25c57b85e"
+          },
+          {
+            "sha": "a089ec6a93dbf6e00fa5f3a66e068e8ce9bacdcd",
+            "title": "Use lightweight settings for app-server thread metadata (#63990)",
+            "message": "Use lightweight settings for app-server thread metadata (#63990)\n\n## Why\n\nEnriching loaded thread results builds a full configuration snapshot,\nincluding an execution permission profile, just to read display settings.\n\n## What changed\n\nRead the configured model, reasoning effort, environment selections, and\nsession source directly from the loaded thread when enriching results.\nThe environment data still includes the working directory and runtime\nworkspace roots.\n\n## Testing\n\nExtend the core test to verify that reading display settings matches the\nconfigured snapshot's display fields without triggering a model lookup.\nExtend the app-server test to verify that thread reads and lists return\nexplicit runtime workspace roots.\n\nGitOrigin-RevId: f7053554fdb0f02bebb51b4cafda2ef39e6e81a5",
+            "url": "https://github.com/openai/codex/commit/a089ec6a93dbf6e00fa5f3a66e068e8ce9bacdcd"
+          },
+          {
+            "sha": "db360f8b002039b3b54108a1432b724b0bff9c20",
+            "title": "Suppress Kitty graphics replies on every pet image chunk (#63992)",
+            "message": "Suppress Kitty graphics replies on every pet image chunk (#63992)\n\nThe first chunk of a Kitty pet image upload already requests quiet mode,\nbut continuation chunks omit that setting. Send `q=2` on every\ncontinuation chunk, including the final one, to suppress terminal replies\nthroughout the upload.\n\n## Testing\n\nExtend the command snapshot test to check the headers of a three-chunk\nupload, including the final `m=0,q=2` header.\n\nGitOrigin-RevId: cd12c3e6f4c27320c4823f593657ab92824c83ff",
+            "url": "https://github.com/openai/codex/commit/db360f8b002039b3b54108a1432b724b0bff9c20"
+          },
+          {
+            "sha": "06c718ae68a305e45ed322d80dd89da24791542f",
+            "title": "Remove the shadow skill ranking experiment (#63993)",
+            "message": "Remove the shadow skill ranking experiment (#63993)\n\n## What changed\n\nRemove the background ranking of skill candidates and the metrics that\ncompared those rankings with skills actually used. Drop the experiment's\nper-thread state and metrics wiring.\n\nContinue accepting `skill_search` in existing feature configurations as\nan ignored compatibility key.\n\n## Testing\n\nExtend the feature configuration test to cover both `true` and `false`\nvalues for `skill_search`.\n\nGitOrigin-RevId: 9492533bdeea58d4976bc9fbcffb6b82036b7894",
+            "url": "https://github.com/openai/codex/commit/06c718ae68a305e45ed322d80dd89da24791542f"
+          },
+          {
+            "sha": "71cf244137e9a8e0dc1c47f9ccd374819106d581",
+            "title": "Avoid cloning thread metadata during rollout read repair (#63994)",
+            "message": "Avoid cloning thread metadata during rollout read repair (#63994)\n\nWhen the stored rollout path matches, compare the normalized working\ndirectory and computed archive timestamp with the stored values. Return\nearly if both match. Otherwise, reuse the existing metadata to build\nthe updated row.\n\nGitOrigin-RevId: 2c5d3e98851f2c8f72414bd688ccc99b2219adeb",
+            "url": "https://github.com/openai/codex/commit/71cf244137e9a8e0dc1c47f9ccd374819106d581"
+          },
+          {
+            "sha": "9938ffba35f731c08603e1bf60cd0bcb88048388",
+            "title": "Notify extensions when Guardian policy changes the approvals reviewer (#63995)",
+            "message": "Notify extensions when Guardian policy changes the approvals reviewer (#63995)\n\n## Why\n\nA Guardian policy refresh can switch a running thread from Auto Review\nto user approvals. Without a config change notification, Guardian's\nshadow reviewers can stay active after that switch.\n\n## What changed\n\nNotify config contributors with the previous and updated effective\nconfigs when a policy refresh changes the approvals reviewer. Send the\nnotification after releasing the session locks, even if the refreshed\npolicy blocks the current model.\n\n## Testing\n\nExtend the Guardian shadow test to refresh policy on a root thread and\nits child. Verify that both receive the reviewer change, that switching\nto user approvals cancels their shadow reviewers, and that allowing\nAuto Review again restores the requested reviewer.\n\nGitOrigin-RevId: fd61acf7fb161be341a63a2e867582e6c308d0dc",
+            "url": "https://github.com/openai/codex/commit/9938ffba35f731c08603e1bf60cd0bcb88048388"
+          },
+          {
+            "sha": "76696132f04983e6283fdc97d8e7b11a4ca59f9b",
+            "title": "Fix clipboard notices in the transcript overlay (#63996)",
+            "message": "Fix clipboard notices in the transcript overlay (#63996)\n\n## Why\n\nCopying a whole message can leave the overlay showing “Copying selection…”\nbecause the copy has no active selection to receive the clipboard result.\n\n## What changed\n\nTrack which clipboard request owns the notice so its completion can show\nsuccess or failure even without an active selection. Older results leave a\nnewer notice intact.\n\nTrack the last rendered transcript width for resize detection and render\nprewrapped rows without hyperlinks using Ratatui’s `Paragraph`.\n\n## Testing\n\nAdd a snapshot test that checks pending, failure, and success notices\nwithout a selection, verifies that an older result leaves the notice\nintact, and confirms the overlay stays open.\n\nGitOrigin-RevId: c4076ccc425240ca39af9fd5c8cf6fca96303dda",
+            "url": "https://github.com/openai/codex/commit/76696132f04983e6283fdc97d8e7b11a4ca59f9b"
+          },
+          {
+            "sha": "03f4f4e6b75858cb529432fa28d9b44c7151055f",
+            "title": "Make TUI workspace divider drags more responsive (#63997)",
+            "message": "Make TUI workspace divider drags more responsive (#63997)\n\n## Why\n\nRapid mouse motion can queue more drag reports than the TUI needs to\nresize a pane. Rebuilding sidebar document layouts at each preview width\nalso adds work while the divider moves.\n\n## What changed\n\n- Share drag handling between the Command Center and sidebar dividers.\n  Let users grab either column of the Command Center gutter, keep the\n  grab offset, and highlight the divider on hover and during a drag.\n- Use the release position for the final width. If focus loss interrupts\n  a valid drag, keep the last width. When the terminal holds image pixels,\n  show a guide and defer pane reflow until the drag ends.\n- Batch consecutive mouse motion reports during divider drags while\n  preserving input order at batch boundaries. Rewrap cached sidebar\n  document content during live previews and rebuild its layout at the\n  final width.\n\n## Testing\n\nCover gutter hit testing, grab offsets, release and focus-loss behavior,\ndrag batching at input boundaries, and document layout reuse during\npreview followed by a rebuild.\n\nGitOrigin-RevId: 949a805a42d269f4bac1a86ac7e4b7f8c2a4cacf",
+            "url": "https://github.com/openai/codex/commit/03f4f4e6b75858cb529432fa28d9b44c7151055f"
+          },
+          {
+            "sha": "fd95d89146661880b8ccb0b70d89658679b2adc5",
+            "title": "Skip reasoning effort animations during TUI thread replay (#63998)",
+            "message": "Skip reasoning effort animations during TUI thread replay (#63998)\n\n## Why\n\nSwitching back to a thread restores its current settings before replaying\nolder updates. Those updates can trigger reasoning effort animations and\nleave the status line temporarily showing an older effort level.\n\n## What changed\n\nSet the composer's reasoning effort baseline before refreshing it for\neach replayed settings update. The status line reflects the replayed\neffort immediately, and live changes still animate.\n\n## Testing\n\nAdd a regression test that replays earlier effort changes after restoring\na thread, checks the displayed effort, and verifies that a subsequent\nlive change starts the animation.\n\nGitOrigin-RevId: 3daadc7b8b5917eba1055940c67399b8ab729eda",
+            "url": "https://github.com/openai/codex/commit/fd95d89146661880b8ccb0b70d89658679b2adc5"
+          },
+          {
+            "sha": "b420c7ca54e1caa01ebbba608b95495aaa304f69",
+            "title": "Preserve sidebar clicks when the terminal gains focus (#63999)",
+            "message": "Preserve sidebar clicks when the terminal gains focus (#63999)\n\n## Why\n\nA terminal can report a focus gain between mouse-down and mouse-up.\nClearing the pending sidebar press on that event causes the release to\nbe ignored, so clicking the tab chooser's close button can fail to open\nthe confirmation dialog.\n\n## What changed\n\nKeep the pending sidebar press on `TuiEvent::FocusGained` so the mouse\nrelease can complete the click.\n\n## Testing\n\nExtend the tab chooser test to send a focus gain between the press and\nrelease and check that the close confirmation dialog appears.\n\nGitOrigin-RevId: 4173292c50383304e9ef62104251434be7580789",
+            "url": "https://github.com/openai/codex/commit/b420c7ca54e1caa01ebbba608b95495aaa304f69"
+          },
+          {
+            "sha": "f3c6076ac262569dfe8e69f0df601759b6d42211",
+            "title": "Skip `SessionEnd` hooks when child threads shut down (#64000)",
+            "message": "Skip `SessionEnd` hooks when child threads shut down (#64000)\n\n## Why\n\nA hosted child thread can inherit the root session ID and use a custom\nsession source. The existing subagent source check can miss that child,\nallowing its shutdown to fire `SessionEnd` while the root is still active.\n\n## What changed\n\nBefore preparing `SessionEnd` hooks, skip threads whose ID does not match\nthe session ID.\n\n## Testing\n\nExtend the shutdown test to close a hosted child with an inherited\nsession ID before closing the root and verify that exactly one\n`SessionEnd` hook invocation is logged for the session.\n\nGitOrigin-RevId: 4c80a17724cab57003b33080482d00f3cc2afea4",
+            "url": "https://github.com/openai/codex/commit/f3c6076ac262569dfe8e69f0df601759b6d42211"
+          },
+          {
+            "sha": "f39c3c78d732a2650c9a747a47ae084d6ea4eb43",
+            "title": "Initialize Statsig feature gates across Codex launch modes (#64001)",
+            "message": "Initialize Statsig feature gates across Codex launch modes (#64001)\n\n## Why\n\nEnabling `statsig_gates` can only load evaluations if the process starts\nthe Statsig runtime. Several Codex entry points never started it.\n\n## What changed\n\nStart Statsig in standalone and embedded app servers, the TUI when it\nconnects to a separate app server, eligible `codex sandbox` launches, and\nlocal and remote exec servers. This also covers `codex exec` through its\nembedded app server. Use the serving or local account where applicable\nand installation identity for remote execution. Share the runtime with\nthe embedded TUI and flush it on normal shutdown.\n\n## Testing\n\nAdd a CLI integration test that checks which evaluation endpoint each\nlaunch mode requests, including signed-in and signed-out sandbox launches.\nSupply a bundled fixture key in Bazel and nextest CI builds so the test runs.\n\nGitOrigin-RevId: 64df9933c1a9783a86be8712fa012b495f34b0f8",
+            "url": "https://github.com/openai/codex/commit/f39c3c78d732a2650c9a747a47ae084d6ea4eb43"
+          },
+          {
+            "sha": "44d359767fa12b5c75f0b6f57a5c795428c3ec6f",
+            "title": "Preserve initial turn input when suspension races with startup (#64002)",
+            "message": "Preserve initial turn input when suspension races with startup (#64002)\n\n## Why\n\nSuspension can detach the active task just as startup tries to save\nunrecorded input before reading the host roster. If detachment wins,\ncleanup can miss the initial submission when saving the turn for recovery.\n\n## What changed\n\nStore pending initial input in the shared `TurnContext` during host\nadmission and startup steps that can wait on the host roster. Save the\ninput before checking whether the task is still active, so suspension\nand abort cleanup can retrieve it after the task exits. Reclaim it under\nthe active-turn lock when startup completes so only one path records\nthe submission.\n\nGitOrigin-RevId: 2f180fc372daaa8f2d8e0ebcb4787a1b2cfd61fa",
+            "url": "https://github.com/openai/codex/commit/44d359767fa12b5c75f0b6f57a5c795428c3ec6f"
+          },
+          {
+            "sha": "30d71606a18878a05f91538a19f15eedc50ce26d",
+            "title": "Allow callers to redact encoded JSON request bodies from logs (#64003)",
+            "message": "Allow callers to redact encoded JSON request bodies from logs (#64003)\n\n## Why\n\nCallers need a way to keep encoded JSON payloads out of request\ndiagnostics while preserving what the server receives.\n\n## What changed\n\nAdd `EncodedJsonBody::omit_from_logs()` to replace the trace body with\n`<redacted>` and show only the byte length in debug output. Preserve the\nsetting through private JSON enrichment and request preparation. The\nsetting leaves the wire payload and redirect policy unchanged.\n\n## Testing\n\nAdd a regression test that checks trace redaction and debug output for\nboth plain and enriched bodies before and after preparation, and\nverifies that decompressing the wire body yields the expected bytes.\n\nGitOrigin-RevId: 5b1ae2c810242f8c7f35bcdf653af9127360c29c",
+            "url": "https://github.com/openai/codex/commit/30d71606a18878a05f91538a19f15eedc50ce26d"
+          },
+          {
+            "sha": "9b6a7e3d0ed9297c5829d4ac0aedaaeedaa91969",
+            "title": "Update the TUI thread replay snapshot to include composer borders (#64004)",
+            "message": "Update the TUI thread replay snapshot to include composer borders (#64004)\n\nGitOrigin-RevId: ba97eedebbe9558cd698f0af4955a16c3041c5aa",
+            "url": "https://github.com/openai/codex/commit/9b6a7e3d0ed9297c5829d4ac0aedaaeedaa91969"
+          },
+          {
+            "sha": "897d47ac95f0abaf6cb459da6aa0f4e82dd54363",
+            "title": "Batch native scrollback replays during history refill (#64005)",
+            "message": "Batch native scrollback replays during history refill (#64005)\n\n## Why\n\nRefilling terminal scrollback can take several history pages. Replaying\nscrollback after each page rebuilds it while more history is still loading.\n\n## What changed\n\nBuffer older pages while the next page is loading, then replay them together\nwhen the refill finishes. Flush buffered history if a page request fails,\nthe transcript overlay opens during the refill, or the five-second deadline\nfrom the first buffered page expires. The overlay still updates page by page.\n\n## Testing\n\nExtend the scrollback refill test to cover batching across pages, replay\nafter a page failure, and replay at the deadline with a request still pending.\n\nGitOrigin-RevId: 577b9f7394e2741267099e4595f69345a6a70a21",
+            "url": "https://github.com/openai/codex/commit/897d47ac95f0abaf6cb459da6aa0f4e82dd54363"
+          },
+          {
+            "sha": "7d0d2ac81adbd8df84af3761704cc41b414135ed",
+            "title": "Update the Bazel `zstd` dependency to 1.6.0 (#64006)",
+            "message": "Update the Bazel `zstd` dependency to 1.6.0 (#64006)\n\nGitOrigin-RevId: 5b15b754dd09d9fc9f9c57b61448458799d85a78",
+            "url": "https://github.com/openai/codex/commit/7d0d2ac81adbd8df84af3761704cc41b414135ed"
+          },
+          {
+            "sha": "b8498ada1c02f829057e5e171a0db2d6913d9329",
+            "title": "Add `maxLines` to statusline text blocks (#64007)",
+            "message": "Add `maxLines` to statusline text blocks (#64007)\n\n## Why\n\nLong statusline text can wrap across enough lines to push fields below it out of view.\n\n## What changed\n\nSet `maxLines` to a positive safe integer to cap a text block after wrapping. If content exceeds the cap, the last visible line ends with an ellipsis when space permits. Long words can break at grapheme boundaries so a clamped block can shrink alongside other fields.\n\n## Testing\n\nCover invalid limits, visibility of neighboring fields, and truncation that preserves whole graphemes and leaves the ellipsis outside hyperlinks.\n\nGitOrigin-RevId: 42f57b3f92e81860f888b733ce6121bb94dc78c3",
+            "url": "https://github.com/openai/codex/commit/b8498ada1c02f829057e5e171a0db2d6913d9329"
+          },
+          {
+            "sha": "163c555f18b7616b40f7466c039ec5614a787b46",
+            "title": "Add a directional `box` element for custom status lines (#64008)",
+            "message": "Add a directional `box` element for custom status lines (#64008)\n\n## What changed\n\nCustom status lines can choose between row and column layouts by setting\n`direction` on a `box`. Omitting `direction` stacks children in a column.\nBoth layouts require `gap`, and only rows accept `wrap` and `justify`.\n\nHorizontal boxes group adjacent strings into one layout item even when\n`justify` is omitted. Use separate elements to insert a gap between\ntext items.\n\n## Testing\n\nAdd renderer tests for default column layout, wrapping and alignment in\nrows, and spacing around empty boxes. Extend the TypeScript contract\nchecks to cover dynamic direction, required gaps, and rejection of\nrow-only props on columns.\n\nGitOrigin-RevId: 3ff9b4a8be6ae79b90512c1ad1ec1c16dafad0cf",
+            "url": "https://github.com/openai/codex/commit/163c555f18b7616b40f7466c039ec5614a787b46"
+          },
+          {
+            "sha": "8d8de8f693fbbb494583371cc97248287ef93036",
+            "title": "Add flexible spacers to custom statusline layouts (#64009)",
+            "message": "Add flexible spacers to custom statusline layouts (#64009)\n\n## Why\n\nStatusline authors can set fixed gaps or justify a whole row. An expandable gap lets them place a field at the far edge by putting a spacer between it and the other fields.\n\n## What changed\n\nAdd the empty `spacer` element to the statusline renderer and its bundled TypeScript contract. Spacers share the remaining width on each wrapped row line before `justify` is applied. In columns stretched by a taller sibling, spacers share the added height.\n\n## Testing\n\nAdd renderer tests for wrapped and nested layouts, background fill, and clipping. Cover empty spacer declarations and reject spacer children in the parser and TypeScript contract tests.\n\nGitOrigin-RevId: d8bb58304b2a1f10ac0c60ec198aa3c25a169cae",
+            "url": "https://github.com/openai/codex/commit/8d8de8f693fbbb494583371cc97248287ef93036"
+          },
+          {
+            "sha": "09b1cfd3371e546dacb290a3fcc56f32a86dccf0",
+            "title": "Add inline badges to custom statuslines (#64010)",
+            "message": "Add inline badges to custom statuslines (#64010)\n\nAdd a `badge` element to the statusline UI tree and TypeScript contract.\nIt renders one string as a padded, single-line label with normalized\nwhitespace. The optional `color` accepts `secondary` (the default),\n`info`, `success`, `warning`, or `danger`. The renderer uses the\nactive theme for the label and blends the fill with the surrounding\nbackground when its color is known.\n\nBadges wrap as a unit. When a line limit requires an ellipsis after\nearlier content, a trailing badge that cannot fit is dropped. At the\nviewport edge, the right padding can clip while the full label remains\nvisible.\n\n## Testing\n\nAdd rendering tests for wrapping, clipping, theme colors, and linked\nbadges, along with checks for UI tree limits and the TypeScript contract.\n\nGitOrigin-RevId: be9e9799d6832976d325ba5fda48f5793dbbc722",
+            "url": "https://github.com/openai/codex/commit/09b1cfd3371e546dacb290a3fcc56f32a86dccf0"
+          },
+          {
+            "sha": "3d5a786a205b19b96c640d4eb2e4e8313fae1229",
+            "title": "Clean up abandoned MCP sessions during HTTP recovery (#64011)",
+            "message": "Clean up abandoned MCP sessions during HTTP recovery (#64011)\n\n## Why\n\nA Streamable HTTP server can assign a replacement session ID before the\ninitialization handshake finishes. If recovery fails or times out at\nthat point, the abandoned session can occupy server capacity needed by\nthe next attempt.\n\n## What changed\n\n- Track replacement sessions as soon as the server returns\n  `Mcp-Session-Id`. Coordinate a single `DELETE` between handshake cleanup\n  and SDK teardown, leaving successfully initialized sessions active.\n- Let cleanup finish in the background when the caller's deadline\n  expires. Coordinate cleanup with OAuth refresh so the deletion can use\n  updated credentials.\n- Keep the service, OAuth state, and expiry signal together for each\n  connection. Keep recovery scoped to the failed connection and\n  recheck client state before returning a replacement so shutdown can\n  take precedence.\n\n## Testing\n\nCover interrupted JSON and SSE handshakes, cleanup before retry on a\nserver with limited session capacity, OAuth refresh during cleanup,\nconcurrent calls on expired sessions, and recovery racing with shutdown.\n\nGitOrigin-RevId: 0caa1b1271f4e7ae667f90f15bfa86b1bdfe7d0b",
+            "url": "https://github.com/openai/codex/commit/3d5a786a205b19b96c640d4eb2e4e8313fae1229"
+          },
+          {
+            "sha": "e54baff042954a4462e9f1a522fd1872b32c777b",
+            "title": "Move environment selection tests into a dedicated file (#64012)",
+            "message": "Move environment selection tests into a dedicated file (#64012)\n\nMove the existing selection, readiness, and configuration inheritance\ntests into `environment_selection_tests.rs` and keep them wired up as\nthe `environment_selection::tests` module.\n\nGitOrigin-RevId: 304944a8875c5d92e21bcc2ab39e760e41083d37",
+            "url": "https://github.com/openai/codex/commit/e54baff042954a4462e9f1a522fd1872b32c777b"
+          },
+          {
+            "sha": "653def34fbbe123cf06710afcdcd61011eb8cb8f",
+            "title": "Preserve native exit codes in Windows PowerShell hooks (#64013)",
+            "message": "Preserve native exit codes in Windows PowerShell hooks (#64013)\n\n## Why\n\nPowerShell's `-Command` can report a native command's exit code `2` as\n`1`, so a `PreToolUse` hook can fail to block a tool call.\n\n## What changed\n\nUse `$?` to preserve successful hook results and forward\n`$LASTEXITCODE` on failure when available. Pass scripts with named\nblocks through as written because PowerShell forbids trailing\ntop-level statements after those blocks.\n\n## Testing\n\nAdd Windows regression coverage for a native command and a PowerShell\n`end` block that each exit with code `2`. Both cases check that\n`PreToolUse` denies `apply_patch` before approval, reports the denial\nreason, and leaves the target file uncreated.\n\nGitOrigin-RevId: 9668b1382bb56f168794dd8d4d2fecac13d2f649",
+            "url": "https://github.com/openai/codex/commit/653def34fbbe123cf06710afcdcd61011eb8cb8f"
+          },
+          {
+            "sha": "2f83e4843fddcf15fb451224d973773a387254e9",
+            "title": "Surface session lookup errors in the TUI (#64014)",
+            "message": "Surface session lookup errors in the TUI (#64014)\n\n## Why\n\nLooking up a session by ID treated every `thread/read` failure as a\nmissing session, hiding errors such as unreadable session metadata.\n\n## What changed\n\nStartup resume and fork report lookup failures after cleaning up the\napp-server session. In an active TUI, `/resume` displays lookup errors\nin the current chat or invokes transport recovery when applicable. If\na Cloud chat must be opened first, `/resume` directs the user to run\nthe command without an ID and select the chat from the picker.\n\n## Testing\n\nAdd regression coverage for missing and unreadable sessions, preserving\nthe active session after a failed lookup, and showing picker guidance\nfor an unopened Cloud chat.\n\nGitOrigin-RevId: dddac289a2959133809c050b8701975ab474ef13",
+            "url": "https://github.com/openai/codex/commit/2f83e4843fddcf15fb451224d973773a387254e9"
+          },
+          {
+            "sha": "ad07f04e470afd3ed700d591c58f8ab7ae57b94f",
+            "title": "Show background command launches and late results in the TUI (#64015)",
+            "message": "Show background command launches and late results in the TUI (#64015)\n\n## Why\n\nA background command can outlive the turn that launched it. Its result\ncould be dropped when no turn was active or appear as a separate\ntranscript entry if later output had already displaced its running row.\n\n## What changed\n\n- Show background commands as they start, including commands that don't\n  match a recognized tool action. Keep tracking their exits after a\n  turn ends or is interrupted.\n- Update the original transcript row with the exit status and output,\n  including when the command finishes in a parked side conversation.\n- In rich terminal scrollback, label an unfinished launch `Started`.\n  If the launch has already printed, append the result in order.\n  Otherwise, replace the queued launch with the completed entry.\n\n## Testing\n\nCover late exits after turn completion and interruption, completion\nduring a side conversation handoff, and result ordering behind queued\nscrollback.\n\nGitOrigin-RevId: 65f069af28c112078d85613da2c95e5c1c4f29bf",
+            "url": "https://github.com/openai/codex/commit/ad07f04e470afd3ed700d591c58f8ab7ae57b94f"
+          },
+          {
+            "sha": "80ea5901ad7f53b1f6478a33f5fd51ffc2676d33",
+            "title": "Bundle the Statsig client key in release builds (#64016)",
+            "message": "Bundle the Statsig client key in release builds (#64016)\n\n## Why\n\nCodex needs a non-empty client key at compile time to use Statsig gates\nwhen the feature is enabled.\n\n## What changed\n\nSet `CODEX_BUNDLED_STATSIG_CLIENT_KEY` from the `CODEX_STATSIG_CLIENT_KEY`\nGitHub Actions variable in the Cargo and Bazel build steps of both release\nworkflows. The shared Bazel action forwards the key to Rust compilation\nwhen the value is non-empty.\n\nGitOrigin-RevId: 90ad3471417bc030acf90836d3fd0c24d35feffe",
+            "url": "https://github.com/openai/codex/commit/80ea5901ad7f53b1f6478a33f5fd51ffc2676d33"
+          },
+          {
+            "sha": "58b14699ec8dcd9f6efd27ef776036c2ae1b943b",
+            "title": "Keep interrupt guidance visible during TUI streaming (#64018)",
+            "message": "Keep interrupt guidance visible during TUI streaming (#64018)\n\n## Why\n\nStreaming output hides the working status row and its interrupt shortcut.\nWhen a message without a phase finishes before the turn does, the status\nrow can also stay hidden while Codex is still working.\n\n## What changed\n\nShow the configured interrupt shortcut in the composer footer while output\nstreams and the status row is hidden. With the default binding, the footer\nshows `esc twice to interrupt` in Vim insert mode.\n\nKeep the status row visible through whitespace-only output. Restore it\nafter a message without a phase completes and the stream queues drain if\nthe turn is still running.\n\n## Testing\n\nCover whitespace-only output, footer hints with a draft and in Vim modes,\nhint layout at narrow widths, and status restoration before turn completion.\n\nGitOrigin-RevId: 246180593baf2d6ead0e84634bf7bd8ee4ec3ea5",
+            "url": "https://github.com/openai/codex/commit/58b14699ec8dcd9f6efd27ef776036c2ae1b943b"
+          },
+          {
+            "sha": "2055a99af459a503509828abd579e34668d345b6",
+            "title": "Support numeric MCP elicitation fields in the TUI (#64023)",
+            "message": "Support numeric MCP elicitation fields in the TUI (#64023)\n\n## Why\n\nMCP forms with numeric fields fell back to a generic approval prompt,\nwhere users had no way to enter the requested values. That prompt also\noffered acceptance for forms whose required fields could not be filled in.\n\n## What changed\n\n- Render `integer` and `number` fields with schema defaults, validate\n  minimum and maximum bounds, and submit answers as JSON numbers.\n- Show the requesting server on forms, allow users to skip blank optional\n  inputs with the submit key, and add `F6` to decline a form. `Esc` cancels\n  the request.\n- Explain when a form cannot be displayed and offer acceptance without\n  answers only when the form has no required fields.\n\n## Testing\n\nExercise invalid numeric input and defaults, exact large integer\nsubmission, blank optional fields, and queue advancement after declining.\nSnapshot the numeric validation error and the fallback prompts for\nunsupported forms with and without required fields.\n\nGitOrigin-RevId: 1dd65b78fb271a027d9ae479c6fc9754607189f2",
+            "url": "https://github.com/openai/codex/commit/2055a99af459a503509828abd579e34668d345b6"
+          },
+          {
+            "sha": "dbb9b2e31ee5dbaac391a422d3f8b25b88fc8d5c",
+            "title": "Show TUI shortcut hints for the focused pane (#64024)",
+            "message": "Show TUI shortcut hints for the focused pane (#64024)\n\n## Why\n\nThe sidebar can stay visible while the conversation has keyboard focus.\nShowing sidebar shortcuts in that state makes keys such as `Esc` look\nlike they act on the sidebar even when the conversation receives them.\n\n## What changed\n\nHide keyboard hints in unfocused panes and show the configured shortcut\nfor focusing the sidebar when it is available. Keep mouse controls\nclickable, including the file path view's Back button when its keyboard\nbinding is disabled. An unmodified left click in the file path body\nfocuses the sidebar.\n\nUse configured pager bindings for reading and search hints. Watch-only\nagent transcripts use single-key pager bindings because they handle\npager keys directly.\n\n## Testing\n\nAdd coverage for file path focus and mouse controls, hint placement and\nclick targets in narrow panes, and pager hints in watch-only transcripts.\n\nGitOrigin-RevId: 3d9375d957789c9f71f6e45f919f815713536622",
+            "url": "https://github.com/openai/codex/commit/dbb9b2e31ee5dbaac391a422d3f8b25b88fc8d5c"
+          },
+          {
+            "sha": "1d05b9851ca29721fef85f9261ed050706c6b0ca",
+            "title": "Show Command Center shortcuts that match focus and input (#64025)",
+            "message": "Show Command Center shortcuts that match focus and input (#64025)\n\n## Why\n\nThe Command Center can show action shortcuts while the conversation has\nkeyboard focus or while a search or rename field consumes those keys.\n\n## What changed\n\nUse the shared footer renderer to show a focus shortcut in the unfocused\nCommand Center and action hints when it has focus. Keep the editor cursor\nin the active pane and hide header shortcuts when their actions are\nunavailable. For example, the default `g` grouping hint disappears while\ntyping a search because `g` goes into the query.\n\n## Testing\n\nExtend the workspace navigation test to check the focus hint and cover\ncustom accept and grouping bindings during search and rename.\n\nGitOrigin-RevId: a96a093b77b6ef04d717b542e30b041164d1210c",
+            "url": "https://github.com/openai/codex/commit/1d05b9851ca29721fef85f9261ed050706c6b0ca"
+          },
+          {
+            "sha": "5148e3d6421c3adb9991b712b85f973ac33b9e50",
+            "title": "Show status for subagent waits without targets in the TUI (#64026)",
+            "message": "Show status for subagent waits without targets in the TUI (#64026)\n\n## Why\n\nThe TUI showed “Waiting for agents” even when a wait had no agent\ntargets, and “Finished waiting” even when it failed or was interrupted.\n\n## What changed\n\nWhen a wait has no receiver thread IDs or agent states, show “Waiting,”\n“Waited,” “Failed to wait,” or “Interrupted” according to its status.\n\n## Testing\n\nExtend the collaboration transcript snapshot to cover all four statuses\nfor waits without targets.\n\nGitOrigin-RevId: 62097034b160852b5921d869e0a04737b69923f9",
+            "url": "https://github.com/openai/codex/commit/5148e3d6421c3adb9991b712b85f973ac33b9e50"
+          },
+          {
+            "sha": "963d4f57179b579bc24d5270019e857a80a7f0de",
+            "title": "Honor per-executor plugin settings in capability discovery (#64052)",
+            "message": "Honor per-executor plugin settings in capability discovery (#64052)\n\n## Why\n\nA plugin can be installed in several executor environments. Disabling one\ninstallation should leave the others available, while a thread-wide exclusion\nneeds to apply across environments.\n\n## What changed\n\n- In executor capability discovery V2, allow an executor to list its own\n  plugin installations subject to marketplace policy. A named entry such as\n  `\"notes@market\": {}` inherits the executor default when the thread has\n  no enablement preference. A default alone does not list any plugins.\n- Apply thread enablement preferences across installations and scope executor\n  opt-outs to the affected installation. When MCP server names are shared,\n  use the first enabled installation.\n- Preserve connector mappings for explicit `disabledPluginIds` exclusions\n  so Apps tool search can honor them even when the executor has already\n  disabled the installation.\n\n## Testing\n\nAdd regression coverage for marketplace filtering, thread and executor\nprecedence, installation-scoped exclusions, and Apps connector suppression\nafter an executor opt-out.\n\nGitOrigin-RevId: d3465a38f3ebf5042d5c45dabfdb32f8ada81727",
+            "url": "https://github.com/openai/codex/commit/963d4f57179b579bc24d5270019e857a80a7f0de"
+          },
+          {
+            "sha": "2a3f7da44529617e4f65d776e985d1e49cf89e4e",
+            "title": "Extract TUI sidebar input routing into its own module (#64053)",
+            "message": "Extract TUI sidebar input routing into its own module (#64053)\n\n## What changed\n\nMove sidebar hit testing and mouse press tracking into `sidebar_input`.\nResolve pointer events before executing tab actions or dispatching input\nto the visible document, subagent panel, or chooser.\n\nKeep requiring the press and release to resolve\nto the same target in the current sidebar state.\n\nGitOrigin-RevId: a818dbfd53cbf79c97ae5036d3608c7d4d67da52",
+            "url": "https://github.com/openai/codex/commit/2a3f7da44529617e4f65d776e985d1e49cf89e4e"
+          },
+          {
+            "sha": "57a49fc013732d85fb51ce88d994e4be0e038b38",
+            "title": "Refactor TUI sidebar chooser input handling (#64054)",
+            "message": "Refactor TUI sidebar chooser input handling (#64054)\n\n## What changed\n\nMove chooser handling from `side_focus.rs` into a dedicated sidebar input\nmodule. Distinguish events the chooser consumes from events it leaves\nunhandled and events that produce an action.\n\nCheck row visibility and guard against stale keyboard selections before\nresolving an open action to an agent, retry row, document, existing\nchat, or new chat.\n\nGitOrigin-RevId: 681dadbb3b964fbb886795120fa28760cb11be9d",
+            "url": "https://github.com/openai/codex/commit/57a49fc013732d85fb51ce88d994e4be0e038b38"
+          },
+          {
+            "sha": "06023b038f642a2290a9ab53392342c18c5b4f39",
+            "title": "Add mouse controls to hide and restore the TUI sidebar (#64055)",
+            "message": "Add mouse controls to hide and restore the TUI sidebar (#64055)\n\n## Why\n\nHiding the sidebar through keyboard navigation leaves no visible control\nfor reopening it.\n\n## What changed\n\nClick `›` in the sidebar tab strip to hide the sidebar and return focus\nto the parent conversation. Click `‹` above the main transcript to\nrestore the previous sidebar content. The restore control also appears\nwhen the terminal is too narrow to show the sidebar alongside the main\nconversation.\n\n## Testing\n\nCover hiding and restoring side chats and document previews with the\nmouse, including reopening a side chat at narrow terminal widths and\npreserving the parent conversation's reading position.\n\nGitOrigin-RevId: 1f0f893b736b61c109e0761abbe3bde3d388e1b6",
+            "url": "https://github.com/openai/codex/commit/06023b038f642a2290a9ab53392342c18c5b4f39"
+          },
+          {
+            "sha": "f79875c21bd77d23e36e6dbe6505226f2961f270",
+            "title": "Fix Unicode fuzzy matching and slash popup activation (#64058)",
+            "message": "Fix Unicode fuzzy matching and slash popup activation (#64058)\n\n## Why\n\nFuzzy matching lowercased candidates and queries differently, so Greek\nsigma variants could fail to match. The slash-command popup could also\nopen for fuzzy matches that its exact and prefix filters never displayed,\ntaking over the arrow keys while the user was editing a draft.\n\n## What changed\n\n- Apply the same Unicode case folding to both sides of a fuzzy match and\n  use it to rank exact and prefix matches in the skill popup.\n- Use the same command list and case-insensitive exact and prefix\n  matching rules to open and filter the slash-command popup.\n\n## Testing\n\nCover Greek sigma and long s in the fuzzy matcher, snapshot skill\nresults with a folded exact match above a prefix match, and check that\nthe arrow keys move the cursor through a draft starting with `/ſtatus`.\n\nGitOrigin-RevId: 04cf3a65b02204221569c4f7b2d4397f48554e2d",
+            "url": "https://github.com/openai/codex/commit/f79875c21bd77d23e36e6dbe6505226f2961f270"
+          },
+          {
+            "sha": "380fb87780a51eaf4815103e234c812a33a72bbd",
+            "title": "Release 0.174.0-alpha.7",
+            "message": "Release 0.174.0-alpha.7",
+            "url": "https://github.com/openai/codex/commit/380fb87780a51eaf4815103e234c812a33a72bbd"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.174.0-alpha.6",
+          "head": "rust-v0.174.0-alpha.7",
+          "url": "https://github.com/openai/codex/compare/rust-v0.174.0-alpha.6...rust-v0.174.0-alpha.7",
+          "status": "diverged",
+          "total": 41,
+          "behind": 1,
+          "complete": true,
+          "fetched": 41
+        },
+        "comparisonError": null
+      }
     }
   ],
   "releaseRequests": {
@@ -95192,8 +96045,7 @@
       "rust-v0.168.0": 1794524180075,
       "rust-v0.171.0-alpha.1": 1794539622166,
       "rust-v0.171.0-alpha.4": 1794594675767,
-      "rust-v0.172.0": 1795480687000,
-      "rust-v0.174.0-alpha.7": 1795668499227
+      "rust-v0.172.0": 1795480687000
     }
   }
 }
