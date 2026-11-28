@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-27T23:35:13.492Z",
+  "generatedAt": "2026-11-28T04:56:46.836Z",
   "items": [
     {
       "id": "openai-news:https://openai.com/index/practical-guide-building-gpt-6",
@@ -24369,7 +24369,7 @@
         "title": "0.174.0-alpha.9",
         "body": "Release 0.174.0-alpha.9\n\n",
         "authored": false,
-        "fetchedAt": "2026-11-27T23:35:13.499Z",
+        "fetchedAt": "2026-11-28T04:56:46.841Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.9",
         "publishedAt": "2026-11-27T16:56:00Z",
         "commits": [
@@ -24490,7 +24490,7 @@
       "name": "OpenAI News",
       "url": "https://openai.com/news/rss.xml",
       "type": "rss",
-      "lastSuccessAt": "2026-11-27T23:35:13.143Z",
+      "lastSuccessAt": "2026-11-28T04:56:46.559Z",
       "error": null,
       "count": 150
     },
@@ -24499,7 +24499,7 @@
       "name": "Codex Releases",
       "url": "https://github.com/openai/codex/releases.atom",
       "type": "atom",
-      "lastSuccessAt": "2026-11-27T23:35:13.143Z",
+      "lastSuccessAt": "2026-11-28T04:56:46.559Z",
       "error": null,
       "count": 10
     },
@@ -24508,7 +24508,7 @@
       "name": "OpenAI Status",
       "url": "https://status.openai.com/api/v2/incidents.json",
       "type": "status",
-      "lastSuccessAt": "2026-11-27T23:35:13.143Z",
+      "lastSuccessAt": "2026-11-28T04:56:46.559Z",
       "error": null,
       "count": 25
     }
@@ -97152,6 +97152,130 @@
         "body": "Release 0.174.0-alpha.9\n\n",
         "authored": false,
         "fetchedAt": "2026-11-27T23:35:13.499Z",
+        "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.9",
+        "publishedAt": "2026-11-27T16:56:00Z",
+        "commits": [
+          {
+            "sha": "4e19f0f20b487c9c38c3b4bc6cc5551730d62b26",
+            "title": "Focus the sidebar chooser when clicking empty space (#64219)",
+            "message": "Focus the sidebar chooser when clicking empty space (#64219)\n\n## Why\n\nWith the composer focused, clicking below the sidebar file list left\nkeyboard focus in the composer. This made it harder to resume keyboard\nnavigation from the current selection.\n\n## What changed\n\nAn unmodified left-click on a non-interactive area of the chooser now\nmoves focus from the composer to the sidebar.\n\n## Testing\n\nExtend the sidebar file path test to click below the file list and verify\nthat the sidebar regains focus and the path shortcut still works for the\nselected file.\n\nGitOrigin-RevId: dbae18a87bc6516dcb8672c0c8c7bb4b9b9ea505",
+            "url": "https://github.com/openai/codex/commit/4e19f0f20b487c9c38c3b4bc6cc5551730d62b26"
+          },
+          {
+            "sha": "c587ff1f0b2bfc083deb2224319c2a1e3fd55612",
+            "title": "Keep MCP startup from showing the TUI as working (#64221)",
+            "message": "Keep MCP startup from showing the TUI as working (#64221)\n\n## Why\n\nMCP startup could show `Working` before a user turn began, and\nreloading MCP servers could temporarily hide an unread `Done` status.\n\n## What changed\n\nDerive the terminal program status from user turn activity, active\ngoals, blocked states, and the stored turn result.\n\n## Testing\n\nExtend the status regression test to check that the TUI stays idle\nwhile MCP starts, reports `Working` when a turn begins before MCP is\nready, and keeps `Done` visible throughout an MCP reload until the\nresult is acknowledged.\n\nGitOrigin-RevId: f05fab26e54e610743f0f799ef30306835d5cbdd",
+            "url": "https://github.com/openai/codex/commit/c587ff1f0b2bfc083deb2224319c2a1e3fd55612"
+          },
+          {
+            "sha": "588439645d154fe7da38f46a064f36ed8c663553",
+            "title": "Render matching file link labels once in the TUI (#64230)",
+            "message": "Render matching file link labels once in the TUI (#64230)\n\n## Why\n\nMarkdown file links can repeat the same path in the transcript. For\nexample, `[docs/guide.md](docs/guide.md)` renders as\n`docs/guide.md (docs/guide.md)`.\n\n## What changed\n\nWhen a file link's visible label matches the displayed destination, use\nthe label as the clickable path and preserve its inline formatting. When\nthe label differs, keep the destination in parentheses so details such as\nline anchors remain visible.\n\n## Testing\n\nExtend rendering snapshots for relative paths and line anchors, check\nhyperlink ranges in narrow tables, and cover copying selections from\nformatted file link labels.\n\nGitOrigin-RevId: ade81a85e0dfe336d630388bd586634d0a80357f",
+            "url": "https://github.com/openai/codex/commit/588439645d154fe7da38f46a064f36ed8c663553"
+          },
+          {
+            "sha": "b9e830fb986ae478ce59c3c97408bdfa1bd5ddab",
+            "title": "Consolidate TUI tests and prune snapshots (#64232)",
+            "message": "Consolidate TUI tests and prune snapshots (#64232)\n\n## What changed\n\n- Use table-driven tests for Markdown file links, credit display, and text\n  truncation so related cases share setup and assertions.\n- Combine checks for history search deduplication and boundaries, Vim cursor\n  movement with arrow keys and `hjkl`, and status-line previews that mix runtime\n  values with placeholders.\n- Remove standalone tests and snapshots, including the Windows paused-goal\n  footer snapshot, while retaining the test that checks Esc pauses the goal.\n\nGitOrigin-RevId: b508e7d46e81451186b04d4d9e9d3557596e04c3",
+            "url": "https://github.com/openai/codex/commit/b9e830fb986ae478ce59c3c97408bdfa1bd5ddab"
+          },
+          {
+            "sha": "ad0ab3d832ffe22e70321e7d219275aa25070b7f",
+            "title": "Fix `fd` search summaries in the terminal UI (#64235)",
+            "message": "Fix `fd` search summaries in the terminal UI (#64235)\n\n## Why\n\nDepth values in commands like `fd -Hd 1 . repro/scripts` can be\nmistaken for search queries, obscuring the actual pattern and directory\nin the exploration summary.\n\n## What changed\n\nSkip values for supported `fd` options, including depth options and\ngrouped short options that take a separate value. Preserve positional\narguments after `--` so patterns that start with a dash are recognized.\n\n## Testing\n\nAdd parser cases for depth options, grouped flags, and dash-prefixed\npatterns. Extend the exec history test to check that an `fd` command\nwith depth, type, and extension filters displays `Search . in scripts`.\n\nGitOrigin-RevId: d6e2ab4f0cdb35b0715ef3484ff97856268c9437",
+            "url": "https://github.com/openai/codex/commit/ad0ab3d832ffe22e70321e7d219275aa25070b7f"
+          },
+          {
+            "sha": "bee5dc55ac118d9136171fed55ffd89af26f8d21",
+            "title": "Clear stale turn and review state when the TUI resumes (#64236)",
+            "message": "Clear stale turn and review state when the TUI resumes (#64236)\n\n## Why\n\nPersisted history can still show a turn as in progress after its task\nhas stopped. A review interrupted by a crash can also lack an exit\nevent, leaving the resumed TUI in review mode.\n\n## What changed\n\n- Treat in-progress turns as interrupted when legacy or anchored resume\n  history reports a non-active thread. Preserve in-progress turns on\n  unanchored pages, which can include a turn started after the status\n  was read.\n- Reconcile buffered thread status updates during resume. An idle update\n  clears activity restored from history while preserving newer live\n  turns and retaining elapsed time for a later completion event.\n- Reset review state when replay reaches an interrupted turn and end\n  review mode at the same boundary when backtracking.\n\n## Testing\n\nExtend resume and replay coverage for stale and live turns, buffered\nidle updates, and elapsed time when completion arrives after idle.\n\nGitOrigin-RevId: ac46b271e86960e7e7b7e81d1c45f7ef655118fa",
+            "url": "https://github.com/openai/codex/commit/bee5dc55ac118d9136171fed55ffd89af26f8d21"
+          },
+          {
+            "sha": "0ea76be91e8dca2dbd021ebf75b7b84cae46d393",
+            "title": "Restore hidden sidebars with the workspace shortcut (#64253)",
+            "message": "Restore hidden sidebars with the workspace shortcut (#64253)\n\n## Why\n\nThe sidebar shortcut can hide an open sidebar, but pressing it again\ncan fail to bring back the content the user was viewing.\n\n## What changed\n\nMake the default `Ctrl+X`, `s` shortcut restore hidden sidebar content\nand show “Restore sidebar” in the shortcut guide. Hide the previous and\nnext tab hints when there is no other tab to switch to, and show “Pane\nright” when focus can move from the main pane to an open sidebar panel.\n\n## Testing\n\nExtend the sidebar tests to verify that the shortcut restores the same\ndocument with its updated text. Snapshot the restore hint and the\ndirectional hints shown when switching focus between panes.\n\nGitOrigin-RevId: 1093039deb8390ca532ae00613c7c0e7ceb29b5c",
+            "url": "https://github.com/openai/codex/commit/0ea76be91e8dca2dbd021ebf75b7b84cae46d393"
+          },
+          {
+            "sha": "c7005a3d84c3f5ede86f7131c9621ebf1537259a",
+            "title": "Render local Markdown images inline in TUI replies (#64254)",
+            "message": "Render local Markdown images inline in TUI replies (#64254)\n\n## Why\n\nMarkdown image references in assistant replies showed only their alt text,\nso users had to open the referenced file to see the image.\n\n## What changed\n\n- Show previews in place of alt text in rich transcript views on supported\n  terminals, including in side conversations. For example,\n  `![Build chart](./chart.png)` can display the chart directly in the reply.\n- Confirm that the conversation uses a local workspace before loading\n  visible images off the render thread. Keep alt text as the fallback\n  when a preview is unavailable, and preserve it for copying and Find.\n\n## Testing\n\nAdd a transcript snapshot covering inline placement and fallback text,\nplus tests for selection across previews, text-only Find layout, and\nterminal image sizing.\n\nGitOrigin-RevId: 6a3473d340b8771066d1f249f3d3363e1ca9f3bd",
+            "url": "https://github.com/openai/codex/commit/c7005a3d84c3f5ede86f7131c9621ebf1537259a"
+          },
+          {
+            "sha": "fe6dca34229d9db8f5be09f7dc4b99c2de9ee44e",
+            "title": "Keep the TUI status timer ticking with animations disabled (#64256)",
+            "message": "Keep the TUI status timer ticking with animations disabled (#64256)\n\n## Why\n\nWith animations disabled, the status row did not request redraws for\nthe standard elapsed timer. The displayed time could stay stale until\nanother event triggered a redraw.\n\n## What changed\n\nSchedule redraws for a static status row at the next whole second of\nits displayed elapsed time. Skip clock redraws while the timer is paused\nunless a phase-specific display clock is still running. Active visual\neffects continue to request frames every 32 ms.\n\n## Testing\n\nCover redraw scheduling with animations disabled and with static or\nanimated headers. Check tick timing across pause, resume, and phase\noverrides, and snapshot the paused elapsed display.\n\nGitOrigin-RevId: f3ccb534316d72f49c0d28818931bf8fd2a85f9b",
+            "url": "https://github.com/openai/codex/commit/fe6dca34229d9db8f5be09f7dc4b99c2de9ee44e"
+          },
+          {
+            "sha": "cd30214700a69a3f6acc75ef0eb113d8ab6aaa5a",
+            "title": "Open `/diff` in a TUI sidebar tab (#64258)",
+            "message": "Open `/diff` in a TUI sidebar tab (#64258)\n\n## Why\n\nThe full-screen diff pager takes the conversation off screen. A sidebar tab lets users review working-tree changes alongside the conversation.\n\n## What changed\n\n- Open a read-only `Diff` tab when the sidebar is available, and fall back to the full-screen pager otherwise.\n- Reuse the tab on repeated runs. Keep the previous patch visible while Git runs, preserve the reading position on refresh, and apply only the latest result without stealing focus.\n- Render large patches in chunks and derive scroll indicators from visible rows so redraws can skip layout of the off-screen tail.\n\n## Testing\n\nCover tab reuse, stale result handling, and the visibility of the last hunk across resize and refresh. Verify that scroll indicators render without laying out the off-screen tail.\n\nGitOrigin-RevId: 812ea99896dfd3131af9cf356cb844f4f0f7c267",
+            "url": "https://github.com/openai/codex/commit/cd30214700a69a3f6acc75ef0eb113d8ab6aaa5a"
+          },
+          {
+            "sha": "afe555b9d3e95b4f58b247212565070f1555bc5d",
+            "title": "Resolve Command Center worktree groups in the background (#64259)",
+            "message": "Resolve Command Center worktree groups in the background (#64259)\n\n## Why\n\nGit lookups for saved session directories can stall the Command Center\nwhen a filesystem mount is slow or unresponsive.\n\n## What changed\n\nGroup sessions by their saved working directories immediately. When\nworktree support is enabled, resolve local paths with up to four\nbackground workers and refresh the view as grouping changes arrive.\nReopening the Command Center retries completed lookups without\nduplicating pending work.\n\n## Testing\n\nExtend the worktree grouping test to check that the initial view shows\ndirectory groups, related worktrees regroup under their project, and\nthe selected session stays selected.\n\nGitOrigin-RevId: c1411749c9db31dec5827c78cb89fe94255f0c7e",
+            "url": "https://github.com/openai/codex/commit/afe555b9d3e95b4f58b247212565070f1555bc5d"
+          },
+          {
+            "sha": "181d051417b3d5a4af558a188897e4c90f8eb5a8",
+            "title": "Fix lifecycle hook dispatch for hosted subagents (#64310)",
+            "message": "Fix lifecycle hook dispatch for hosted subagents (#64310)\n\n## Why\n\nHosted workers keep the host's session source, so hook dispatch\ncan mistake them for root sessions and run `SessionStart` and\n`Stop` on worker turns.\n\n## What changed\n\nRecognize host-managed workers by their inherited session ID and\ndispatch `SubagentStart` and `SubagentStop` for them. Resolve the\nparent transcript for `SubagentStop` using the immediate parent\nthread ID when available.\n\n## Testing\n\nAdd a regression test that verifies a hosted worker runs only the\nsubagent lifecycle hooks, receives start-hook context, and reports\nits own transcript and final message in the stop hook.\n\nGitOrigin-RevId: 272d29d275120a1b020b1a00a0db2e00402ebe06",
+            "url": "https://github.com/openai/codex/commit/181d051417b3d5a4af558a188897e4c90f8eb5a8"
+          },
+          {
+            "sha": "57b493a648aa44547f5debf6e3344fcd2b2af529",
+            "title": "Compute the Responses WebSocket privacy flag before building the request (#64324)",
+            "message": "Compute the Responses WebSocket privacy flag before building the request (#64324)\n\nGitOrigin-RevId: bced2fd4db353e13da74ae50707d4d8e3e640259",
+            "url": "https://github.com/openai/codex/commit/57b493a648aa44547f5debf6e3344fcd2b2af529"
+          },
+          {
+            "sha": "6bf1e3e68765e1c91e031f692e2b918dcd10365c",
+            "title": "Persist command completions when approval is declined or fails (#64341)",
+            "message": "Persist command completions when approval is declined or fails (#64341)\n\n## Why\n\nThe app server completed command items for rejected approval responses\ndirectly in the live stream. That bypassed core's history recording, so\nclients could see a completed command live and lose it when reloading\nthe turn.\n\n## What changed\n\nKeep top-level command items with their pending approvals in core.\nRecord and emit the command completion before unblocking the turn.\nDeclines and cancellations produce a `declined` item, while invalid\nresponses and approval request failures produce a `failed` item.\n\n## Testing\n\nApp-server integration tests cover cancellation, decline, and malformed\nresponses. They check that `item/completed` precedes `turn/completed`\nand that paginated history returns the same command item after restart.\n\nGitOrigin-RevId: d3d95272c8a6af2fa65fa980f312260313cc5e32",
+            "url": "https://github.com/openai/codex/commit/6bf1e3e68765e1c91e031f692e2b918dcd10365c"
+          },
+          {
+            "sha": "1a1f005766a841ec5741a51833e2adde8e15ed65",
+            "title": "Gate hosted Guardian test helpers to non-Windows builds (#64345)",
+            "message": "Gate hosted Guardian test helpers to non-Windows builds (#64345)\n\nThe hosted Guardian scenarios are already excluded on Windows, leaving\ntheir reload and stall helpers unused in Windows test builds.\n\nApply the same platform gate to the `Reloaded` and `Stalled` read modes\nand the stall notification. Make the root snapshot mutable only in\nthe reload branch.\n\nGitOrigin-RevId: 1f517e56ba6ce436b96c6e44c4dc4731b94e1e97",
+            "url": "https://github.com/openai/codex/commit/1a1f005766a841ec5741a51833e2adde8e15ed65"
+          },
+          {
+            "sha": "8ff9ca844c06750a426000e81dcf21d7355263f2",
+            "title": "Release 0.174.0-alpha.9",
+            "message": "Release 0.174.0-alpha.9",
+            "url": "https://github.com/openai/codex/commit/8ff9ca844c06750a426000e81dcf21d7355263f2"
+          }
+        ],
+        "comparison": {
+          "base": "rust-v0.174.0-alpha.8",
+          "head": "rust-v0.174.0-alpha.9",
+          "url": "https://github.com/openai/codex/compare/rust-v0.174.0-alpha.8...rust-v0.174.0-alpha.9",
+          "status": "diverged",
+          "total": 16,
+          "behind": 1,
+          "complete": true,
+          "fetched": 16
+        },
+        "comparisonError": null
+      }
+    },
+    {
+      "id": "notes:codex-releases:tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.9:2026-11-28T04:56:46.836Z",
+      "kind": "release-notes-saved",
+      "at": "2026-11-28T04:56:46.836Z",
+      "notes": {
+        "version": 1,
+        "tag": "rust-v0.174.0-alpha.9",
+        "title": "0.174.0-alpha.9",
+        "body": "Release 0.174.0-alpha.9\n\n",
+        "authored": false,
+        "fetchedAt": "2026-11-28T04:56:46.841Z",
         "releaseUrl": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.9",
         "publishedAt": "2026-11-27T16:56:00Z",
         "commits": [
